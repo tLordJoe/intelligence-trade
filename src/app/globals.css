@@ -1,26 +1,94 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --accent: #4ECDC4;
+  --accent-dim: #3BA99E;
+  --bg: #f5f5f5;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f0faf9;
+  --text: #1a1a1a;
+  --text-dim: #6b7280;
+  --border: #e5e7eb;
+  --grid-color: rgba(0, 0, 0, 0.04);
+  --green: #10B981;
+  --red: #EF4444;
+  --terminal-bg: #fafafa;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --accent: #4ECDC4;
+  --accent-dim: #3BA99E;
+  --bg: #0a0a0a;
+  --bg-card: #141414;
+  --bg-card-hover: #1a2a28;
+  --text: #e5e5e5;
+  --text-dim: #9ca3af;
+  --border: #2a2a2a;
+  --grid-color: rgba(255, 255, 255, 0.03);
+  --green: #34D399;
+  --red: #F87171;
+  --terminal-bg: #111111;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.stack-bar {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.stack-bar:hover {
+  filter: brightness(1.1);
+  transform: scaleY(1.05);
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.typing-cursor::after {
+  content: "_";
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
