@@ -1,15 +1,59 @@
 import { NextRequest, NextResponse } from "next/server";
-import { MOCK_CONGRESS_TRADES } from "@/lib/congress-data";
+import liveData from "@/lib/congress-live.json";
+import { getAllTickers } from "@/lib/data";
+
+interface LiveTrade {
+  id: string;
+  politician: string;
+  party: string | null;
+  chamber: string;
+  state: string;
+  district: string;
+  ticker: string;
+  companyName: string;
+  type: string;
+  amount: string;
+  transactionDate: string;
+  filedDate: string;
+  isOptions: boolean;
+  source: string;
+}
+
+function daysAgo(iso: string): number {
+  if (!iso) return 0;
+  const then = new Date(iso).getTime();
+  return Math.max(0, Math.floor((Date.now() - then) / 86_400_000));
+}
 
 export async function GET(req: NextRequest) {
   const ticker = req.nextUrl.searchParams.get("ticker");
-  const limit = parseInt(req.nextUrl.searchParams.get("limit") || "10");
+  const scope = req.nextUrl.searchParams.get("scope") || "stack";
+  const limit = parseInt(req.nextUrl.searchParams.get("limit") || "50");
 
-  let trades = MOCK_CONGRESS_TRADES;
+  let trades = (liveData.trades as LiveTrade[]).map((t) => ({
+    ...t,
+    party: t.party ?? "?",
+    daysAgo: daysAgo(t.filedDate),
+  }));
+
+  // Default to trades in the AI-stack universe; ?scope=all returns everything
+  if (scope !== "all") {
+    const universe = new Set(getAllTickers());
+    trades = trades.filter((t) => universe.has(t.ticker));
+  }
 
   if (ticker) {
     trades = trades.filter((t) => t.ticker === ticker);
   }
 
-  return NextResponse.json(trades.slice(0, limit));
+  trades.sort(
+    (a, b) =>
+      new Date(b.transactionDate).getTime() - new Date(a.transactionDate).getTime()
+  );
+
+  return NextResponse.json({
+    updatedAt: liveData.updatedAt,
+    source: liveData.source,
+    trades: trades.slice(0, limit),
+  });
 }

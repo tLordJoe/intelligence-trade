@@ -45,12 +45,16 @@ function PartyBadge({ party, chamber }: { party: "D" | "R"; chamber: string }) {
 
 export default function CongressTrades() {
   const [trades, setTrades] = useState<CongressTrade[]>([]);
+  const [updatedAt, setUpdatedAt] = useState<string>("");
   const [filter, setFilter] = useState<"all" | "D" | "R">("all");
 
   useEffect(() => {
     fetch("/api/congress?limit=12")
       .then((r) => r.json())
-      .then(setTrades)
+      .then((d) => {
+        setTrades(Array.isArray(d) ? d : d.trades || []);
+        if (d.updatedAt) setUpdatedAt(d.updatedAt);
+      })
       .catch(() => {});
   }, []);
 
@@ -185,7 +189,8 @@ export default function CongressTrades() {
 
         <div className="mt-4 pt-3 border-t text-center" style={{ borderColor: "var(--border)" }}>
           <p className="text-[10px]" style={{ color: "var(--text-dim)" }}>
-            Source: U.S. House & Senate financial disclosures (STOCK Act) • Updated daily
+            Source: Clerk of the U.S. House — official STOCK Act filings
+            {updatedAt && ` • Updated ${new Date(updatedAt).toLocaleDateString()}`}
           </p>
         </div>
       </div>
