@@ -11,6 +11,7 @@ import LayerCards from "@/components/LayerCards";
 import StockList from "@/components/StockList";
 import NewsFeed from "@/components/NewsFeed";
 import CongressTrades from "@/components/CongressTrades";
+import CongressChart from "@/components/CongressChart";
 import TechnicalSignals from "@/components/TechnicalSignals";
 import SiteFooter from "@/components/SiteFooter";
 
@@ -60,10 +61,11 @@ export default function Home() {
             </div>
           </div>
 
+          <LayerCards activeLayer={activeLayer} onSelectLayer={handleSelectLayer} />
           <CongressTrades />
+          <CongressChart />
           <TechnicalSignals />
           <PerformanceChart />
-          <LayerCards activeLayer={activeLayer} onSelectLayer={handleSelectLayer} />
           <StockList layer={selectedLayer} prices={prices} />
           <NewsFeed ticker={selectedLayer.stocks[0]?.ticker} />
         </div>

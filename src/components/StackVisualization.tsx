@@ -21,6 +21,39 @@ const MARKET_CAPS: Record<string, number> = {
   cybersecurity: 450e9,
 };
 
+// What each subcategory icon means, for hover tooltips
+const EMOJI_LABELS: Record<string, string> = {
+  "🤖": "AI models & agents",
+  "🛠️": "Developer tools",
+  "📱": "Consumer applications",
+  "🚀": "High-growth software",
+  "🏢": "Hyperscale data centers",
+  "🖥️": "Colocation & hosting",
+  "⚡": "Power & grid",
+  "☢️": "Nuclear energy",
+  "🔋": "Batteries & storage",
+  "🌊": "Cooling & hydro",
+  "🌐": "Internet backbone",
+  "📡": "Optical & telecom",
+  "🔗": "Interconnects",
+  "🧠": "Accelerators & memory chips",
+  "⚙️": "Custom silicon",
+  "💻": "CPUs & compute",
+  "💾": "Storage",
+  "🏭": "Fabrication plants",
+  "🔧": "Fab equipment",
+  "⚗️": "Process chemicals",
+  "🧪": "Specialty chemicals",
+  "🔬": "Lithography & metrology",
+  "🔶": "Silicon & substrates",
+  "⬜": "Wafers",
+  "💎": "Rare materials",
+  "🛡️": "Endpoint security",
+  "🔒": "Zero trust & encryption",
+  "🔑": "Identity & access",
+  "🕵️": "Threat intelligence",
+};
+
 interface Props {
   activeLayer: string | null;
   highlightLayer: string | null;
@@ -78,10 +111,27 @@ export default function StackVisualization({
                   onFocus={() => onHoverLayer(layer.slug)}
                   onBlur={() => onHoverLayer(null)}
                 >
-                  <span className="text-white font-semibold text-xs md:text-sm uppercase tracking-wide">
-                    {layer.name}
+                  <span className="flex items-center gap-2 min-w-0">
+                    <span className="text-white font-semibold text-xs md:text-sm uppercase tracking-wide truncate">
+                      {layer.name}
+                    </span>
+                    <span
+                      className="items-center gap-1 shrink-0"
+                      style={{ display: width > 45 ? "flex" : "none" }}
+                    >
+                      {layer.emojis.map((e, i) => (
+                        <span
+                          key={i}
+                          title={EMOJI_LABELS[e] || e}
+                          className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] leading-none"
+                          style={{ backgroundColor: "rgba(255,255,255,0.35)" }}
+                        >
+                          {e}
+                        </span>
+                      ))}
+                    </span>
                   </span>
-                  <span className="flex items-center gap-2 text-white">
+                  <span className="flex items-center gap-2 text-white shrink-0">
                     <span className="text-xs md:text-sm font-bold">
                       {formatMarketCap(cap)}
                     </span>
