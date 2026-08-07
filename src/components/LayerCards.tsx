@@ -19,7 +19,7 @@ export default function LayerCards({ activeLayer, onSelectLayer }: Props) {
         return r.json();
       })
       .then((d) => {
-        setPrices(d);
+        setPrices(d.quotes || {});
         setStatus("ok");
       })
       .catch(() => setStatus("error"));
