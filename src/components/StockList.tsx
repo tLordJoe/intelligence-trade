@@ -7,18 +7,23 @@ import Link from "next/link";
 interface Props {
   layer: Layer;
   prices: Record<string, { price: number; change: number }>;
+  chartTickers?: string[];
+  onAddToChart?: (ticker: string) => void;
 }
 
 function getInitials(name: string): string {
   return name.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase();
 }
 
-export default function StockList({ layer, prices }: Props) {
+export default function StockList({ layer, prices, chartTickers = [], onAddToChart }: Props) {
   const [portfolio, setPortfolio] = useState<string[]>([]);
 
   useEffect(() => {
     const saved = localStorage.getItem("portfolio");
-    if (saved) setPortfolio(JSON.parse(saved));
+    const frame = requestAnimationFrame(() => {
+      if (saved) setPortfolio(JSON.parse(saved));
+    });
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const addToPortfolio = useCallback((ticker: string) => {
@@ -99,16 +104,32 @@ export default function StockList({ layer, prices }: Props) {
                 )}
               </div>
 
-              <button
-                onClick={(e) => { e.stopPropagation(); addToPortfolio(stock.ticker); }}
-                className="text-xs px-2 py-1 rounded border transition-colors hover:bg-[var(--accent)] hover:text-white hover:border-[var(--accent)]"
-                style={{
-                  borderColor: portfolio.includes(stock.ticker) ? "var(--accent)" : "var(--border)",
-                  color: portfolio.includes(stock.ticker) ? "var(--accent)" : "var(--text-dim)",
-                }}
-              >
-                {portfolio.includes(stock.ticker) ? "added" : "add"}
-              </button>
+              <div className="flex shrink-0 flex-col gap-1.5 sm:flex-row">
+                {onAddToChart && <button
+                  type="button"
+                  onClick={(event) => { event.stopPropagation(); onAddToChart(stock.ticker); }}
+                  disabled={chartTickers.includes(stock.ticker) || chartTickers.length >= 10}
+                  className="text-xs px-2.5 py-1.5 rounded border transition-colors hover:border-[var(--accent)] disabled:cursor-default disabled:opacity-60"
+                  style={{
+                    borderColor: chartTickers.includes(stock.ticker) ? "var(--accent)" : "var(--border)",
+                    color: chartTickers.includes(stock.ticker) ? "var(--accent)" : "var(--text-dim)",
+                  }}
+                >
+                  {chartTickers.includes(stock.ticker) ? "On chart" : "Add to chart"}
+                </button>}
+                <button
+                  type="button"
+                  onClick={(event) => { event.stopPropagation(); addToPortfolio(stock.ticker); }}
+                  disabled={portfolio.includes(stock.ticker)}
+                  className="text-xs px-2.5 py-1.5 rounded border transition-colors hover:border-[var(--accent)] disabled:cursor-default"
+                  style={{
+                    borderColor: portfolio.includes(stock.ticker) ? "var(--accent)" : "var(--border)",
+                    color: portfolio.includes(stock.ticker) ? "var(--accent)" : "var(--text-dim)",
+                  }}
+                >
+                  {portfolio.includes(stock.ticker) ? "Watching" : "Add to watchlist"}
+                </button>
+              </div>
             </div>
           );
         })}

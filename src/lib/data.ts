@@ -17,7 +17,7 @@ export interface Layer {
   stocks: Stock[];
 }
 
-export const layers: Layer[] = [
+const layerDefinitions: Layer[] = [
   {
     slug: "software-models",
     name: "Software & Models",
@@ -207,18 +207,39 @@ export const layers: Layer[] = [
     color: "#DC2626",
     stocks: [
       { ticker: "CRWD", name: "CrowdStrike", description: "AI-native endpoint security, Falcon platform", country: "US" },
-      { ticker: "PANW", name: "Palo Alto Networks", description: "AI-powered network security, Cortex XSIAM", country: "US" },
+      { ticker: "PANW", name: "Palo Alto Networks", description: "AI-powered security, Cortex XSIAM, and CyberArk identity security", country: "US" },
       { ticker: "ZS", name: "Zscaler", description: "Zero trust cloud security for AI workloads", country: "US" },
       { ticker: "FTNT", name: "Fortinet", description: "AI-driven firewalls and threat detection", country: "US" },
       { ticker: "S", name: "SentinelOne", description: "Autonomous AI-powered threat response", country: "US" },
       { ticker: "NET", name: "Cloudflare", description: "Edge security, DDoS protection for AI APIs", country: "US" },
-      { ticker: "CYBR", name: "CyberArk", description: "Identity security for AI infrastructure", country: "IL" },
       { ticker: "OKTA", name: "Okta", description: "Identity and access management", country: "US" },
       { ticker: "VRNS", name: "Varonis Systems", description: "Data security and AI threat detection", country: "US" },
       { ticker: "QLYS", name: "Qualys", description: "Cloud security and vulnerability management", country: "US" },
     ],
   },
 ];
+
+// The stack reads from the customer-facing application layer down to its inputs.
+// Cybersecurity belongs near software because it protects every layer below it,
+// but it uses the same visual treatment as the others to avoid implying a rating.
+const layerOrder = [
+  "software-models",
+  "cybersecurity",
+  "data-centers",
+  "energy-infrastructure",
+  "networking",
+  "processors",
+  "memory-storage",
+  "foundries",
+  "semiconductor-equipment",
+  "raw-materials",
+];
+
+export const layers: Layer[] = layerOrder.map((slug) => {
+  const layer = layerDefinitions.find((item) => item.slug === slug);
+  if (!layer) throw new Error(`Missing layer definition: ${slug}`);
+  return layer;
+});
 
 export function getAllTickers(): string[] {
   const seen = new Set<string>();

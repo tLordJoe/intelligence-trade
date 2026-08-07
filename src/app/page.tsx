@@ -19,6 +19,7 @@ export default function Home() {
   const [activeLayer, setActiveLayer] = useState<string>("processors");
   const [hoveredLayer, setHoveredLayer] = useState<string | null>(null);
   const [prices, setPrices] = useState<Record<string, { price: number; change: number }>>({});
+  const [chartTickers, setChartTickers] = useState<string[]>(["QQQ"]);
 
   const selectedLayer = getLayerBySlug(activeLayer) || layers[4];
   // Hover previews a layer in the detail panel; click pins it for the whole page
@@ -30,6 +31,17 @@ export default function Home() {
 
   const handleHoverLayer = useCallback((slug: string | null) => {
     setHoveredLayer(slug);
+  }, []);
+
+  const handleAddToChart = useCallback((ticker: string) => {
+    setChartTickers((current) =>
+      current.includes(ticker) || current.length >= 10 ? current : [...current, ticker]
+    );
+    document.getElementById("market-performance")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, []);
+
+  const handleRemoveFromChart = useCallback((ticker: string) => {
+    setChartTickers((current) => current.filter((item) => item !== ticker));
   }, []);
 
   useEffect(() => {
@@ -65,12 +77,21 @@ export default function Home() {
             </div>
           </div>
 
+          <PerformanceChart
+            comparedTickers={chartTickers}
+            onAddTicker={handleAddToChart}
+            onRemoveTicker={handleRemoveFromChart}
+          />
+          <StockList
+            layer={selectedLayer}
+            prices={prices}
+            chartTickers={chartTickers}
+            onAddToChart={handleAddToChart}
+          />
           <LayerCards activeLayer={activeLayer} onSelectLayer={handleSelectLayer} />
           <CongressTrades />
           <CongressChart />
           <TechnicalSignals />
-          <PerformanceChart />
-          <StockList layer={selectedLayer} prices={prices} />
           <NewsFeed ticker={selectedLayer.stocks[0]?.ticker} />
         </div>
       </main>

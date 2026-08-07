@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="100 110 650 550" role="img" aria-labelledby="title desc">
+  <title id="title">Outfox tail</title>
+  <desc id="desc">A navy fox tail sweeping upward into a pointed orange tip.</desc>
+  <g fill-rule="evenodd">
+    <path fill="#0B1F44" d="M120 603 C220 576 318 530 404 468 C476 416 528 363 563 312 C575 310 586 310 595 312 C624 420 608 518 548 568 C466 636 285 638 120 603 Z"/>
+    <path fill="#F26A16" d="M510 286 C593 238 663 187 726 129 C719 224 696 338 643 440 C646 386 643 335 628 281 C590 279 551 281 510 286 Z"/>
+  </g>
+</svg>

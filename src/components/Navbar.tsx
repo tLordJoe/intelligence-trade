@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -43,9 +44,17 @@ export default function Navbar() {
       }}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 py-3">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-1.5" aria-label="Outfox home">
+          <Image
+            src="/brand/outfox-tail.svg"
+            alt=""
+            width={42}
+            height={36}
+            priority
+            className="h-8 w-auto md:h-9"
+          />
           <span
-            className="text-lg font-extrabold tracking-tight"
+            className="text-xl font-extrabold tracking-tight"
             style={{ color: "var(--text)", letterSpacing: "-0.03em" }}
           >
             outfox
