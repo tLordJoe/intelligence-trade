@@ -7,20 +7,30 @@ import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
 import StockList from "@/components/StockList";
 import NewsFeed from "@/components/NewsFeed";
+import type { DataMeta, StockQuoteResponse } from "@/lib/market-data";
 
 export default function LayerPage() {
   const params = useParams();
   const slug = params.slug as string;
   const layer = getLayerBySlug(slug);
   const [prices, setPrices] = useState<Record<string, { price: number; change: number }>>({});
+  const [quoteMeta, setQuoteMeta] = useState<DataMeta | null>(null);
+  const [quoteError, setQuoteError] = useState(false);
 
   useEffect(() => {
     if (!layer) return;
     const tickers = layer.stocks.map((s) => s.ticker).join(",");
     fetch(`/api/stocks?tickers=${tickers}`)
-      .then((r) => r.json())
-      .then(setPrices)
-      .catch(() => {});
+      .then((r) => {
+        if (!r.ok) throw new Error(String(r.status));
+        return r.json() as Promise<StockQuoteResponse>;
+      })
+      .then((data) => {
+        setPrices(data.quotes);
+        setQuoteMeta(data.meta);
+        setQuoteError(false);
+      })
+      .catch(() => setQuoteError(true));
   }, [layer]);
 
   if (!layer) {
@@ -34,9 +44,10 @@ export default function LayerPage() {
     );
   }
 
-  const avgChange =
-    layer.stocks.reduce((sum, s) => sum + (prices[s.ticker]?.change ?? 0), 0) /
-    layer.stocks.length;
+  const availableQuotes = layer.stocks.map((stock) => prices[stock.ticker]).filter(Boolean);
+  const avgChange = availableQuotes.length
+    ? availableQuotes.reduce((sum, quote) => sum + quote.change, 0) / availableQuotes.length
+    : null;
 
   return (
     <>
@@ -76,9 +87,9 @@ export default function LayerPage() {
               <div className="text-xs mb-1" style={{ color: "var(--text-dim)" }}>AVG CHANGE</div>
               <div
                 className="text-2xl font-bold font-mono"
-                style={{ color: avgChange >= 0 ? "var(--green)" : "var(--red)" }}
+                style={{ color: avgChange == null ? "var(--text-dim)" : avgChange >= 0 ? "var(--green)" : "var(--red)" }}
               >
-                {avgChange >= 0 ? "+" : ""}{avgChange.toFixed(2)}%
+                {avgChange == null ? "n/a" : `${avgChange >= 0 ? "+" : ""}${avgChange.toFixed(2)}%`}
               </div>
             </div>
           </div>
@@ -98,7 +109,7 @@ export default function LayerPage() {
             </p>
           </div>
 
-          <StockList layer={layer} prices={prices} />
+          <StockList layer={layer} prices={prices} dataMeta={quoteMeta} dataUnavailable={quoteError} />
           <NewsFeed ticker={layer.stocks[0]?.ticker} />
         </div>
       </main>
