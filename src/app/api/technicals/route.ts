@@ -1,17 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
-import { getTechnicalsForTicker, getAllSignals, getStrongBuys } from "@/lib/technicals";
+import { NextResponse } from "next/server";
 
-export async function GET(req: NextRequest) {
-  const ticker = req.nextUrl.searchParams.get("ticker");
-  const filter = req.nextUrl.searchParams.get("filter");
-
-  if (ticker) {
-    return NextResponse.json(getTechnicalsForTicker(ticker));
-  }
-
-  if (filter === "buys") {
-    return NextResponse.json(getStrongBuys());
-  }
-
-  return NextResponse.json(getAllSignals());
+export async function GET() {
+  return NextResponse.json(
+    {
+      error: "Technical indicators are unavailable while the methodology is being validated.",
+    },
+    { status: 503 }
+  );
 }
