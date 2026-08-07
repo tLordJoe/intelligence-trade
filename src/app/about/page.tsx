@@ -69,6 +69,21 @@ export default function AboutPage() {
               of our data. Currently covers the House; Senate coverage is coming.
               Filings can be amended after publication and may contain errors.
             </p>
+            <p>
+              Outfox currently ingests the House&apos;s annual disclosure index,
+              selects periodic transaction reports, downloads each source PDF,
+              and extracts the filer, ticker, transaction type, amount range,
+              transaction date, and filing date. Duplicate record IDs are removed
+              before the API responds. Every displayed record links to the
+              government PDF used as its source.
+            </p>
+            <p>
+              A disclosure is not proof of illegal insider trading, a recommendation,
+              or a real-time signal. Transactions may belong to a spouse or dependent,
+              may be reported weeks after execution, and may later be amended. Senate
+              records will remain unpublished until their separate official source,
+              parsing, duplicate handling, and verification workflow pass the same review.
+            </p>
           </Section>
 
           <Section title="Market data">

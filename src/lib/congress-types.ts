@@ -11,5 +11,7 @@ export interface CongressTrade {
   transactionDate: string;
   filedDate: string;
   daysAgo: number;
+  source: string;
+  isOptions?: boolean;
   committee?: string;
 }
