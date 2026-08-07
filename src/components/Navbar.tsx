@@ -44,17 +44,17 @@ export default function Navbar() {
       }}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 py-3">
-        <Link href="/" className="flex items-center gap-1.5" aria-label="Outfox home">
+        <Link href="/" className="flex shrink-0 items-center gap-2" aria-label="Outfox home">
           <Image
             src="/brand/outfox-tail.svg"
             alt=""
             width={42}
             height={36}
             priority
-            className="h-8 w-auto md:h-9"
+            className="h-9 w-auto md:h-10"
           />
           <span
-            className="text-xl font-extrabold tracking-tight"
+            className="text-2xl font-extrabold leading-none tracking-tight md:text-[27px]"
             style={{ color: "var(--text)", letterSpacing: "-0.03em" }}
           >
             outfox
