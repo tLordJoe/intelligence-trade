@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import type { KeyboardEvent as ReactKeyboardEvent, PointerEvent as ReactPointerEvent } from "react";
+import { clampIndex, nearestTimestampIndex } from "@/lib/chart-interaction";
 
 interface Trade {
   id: string;
@@ -11,6 +13,7 @@ interface Trade {
   type: string;
   amount: string;
   transactionDate: string;
+  filedDate: string;
 }
 
 interface History {
@@ -29,6 +32,7 @@ export default function CongressChart() {
   const [history, setHistory] = useState<History | null>(null);
   const [status, setStatus] = useState<"loading" | "ok" | "error">("loading");
   const [hovered, setHovered] = useState<string | null>(null);
+  const [crosshairIndex, setCrosshairIndex] = useState<number | null>(null);
 
   useEffect(() => {
     fetch("/api/congress?limit=100")
@@ -117,8 +121,28 @@ export default function CongressChart() {
       pct: number;
     }[];
 
-    return { path, min, max, last, markers, x, y };
+    return { path, min, max, last, markers, x, y, timestamps, closes };
   }, [history, tickerTrades]);
+
+  const inspectPriceAtPointer = (event: ReactPointerEvent<SVGSVGElement>) => {
+    if (!chart) return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    const viewX = ((event.clientX - rect.left) / rect.width) * W;
+    const ratio = Math.min(Math.max((viewX - PAD.left) / (W - PAD.left - PAD.right), 0), 1);
+    setCrosshairIndex(Math.round(ratio * (chart.timestamps.length - 1)));
+  };
+
+  const inspectPriceWithKeyboard = (event: ReactKeyboardEvent<SVGSVGElement>) => {
+    if (!chart || !["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+    event.preventDefault();
+    const current = crosshairIndex ?? chart.timestamps.length - 1;
+    const next = event.key === "Home"
+      ? 0
+      : event.key === "End"
+        ? chart.timestamps.length - 1
+        : clampIndex(current + (event.key === "ArrowLeft" ? -1 : 1), chart.timestamps.length);
+    setCrosshairIndex(next);
+  };
 
   return (
     <section className="px-4 md:px-8 py-8">
@@ -178,13 +202,57 @@ export default function CongressChart() {
             <div className="overflow-x-auto">
               <svg
                 viewBox={`0 0 ${W} ${H}`}
-                className="w-full"
-                style={{ minWidth: "560px" }}
                 role="img"
-                aria-label={`${ticker} price with congressional trade markers`}
+                tabIndex={0}
+                aria-label={`Interactive ${ticker} price chart with congressional trade markers. Move the pointer or use the left and right arrow keys to inspect historical prices.`}
+                className="w-full outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                onPointerMove={inspectPriceAtPointer}
+                onPointerLeave={() => {
+                  setCrosshairIndex(null);
+                  setHovered(null);
+                }}
+                onFocus={() => setCrosshairIndex((current) => current ?? chart.timestamps.length - 1)}
+                onBlur={() => {
+                  setCrosshairIndex(null);
+                  setHovered(null);
+                }}
+                onKeyDown={inspectPriceWithKeyboard}
+                style={{ minWidth: "560px", touchAction: "pan-y" }}
               >
                 {/* price line */}
                 <path d={chart.path} fill="none" stroke="var(--accent)" strokeWidth="2" />
+                {crosshairIndex !== null && (() => {
+                  const index = clampIndex(crosshairIndex, chart.timestamps.length);
+                  const cx = chart.x(index);
+                  const price = chart.closes[index];
+                  const cy = chart.y(price);
+                  const date = new Date(chart.timestamps[index] * 1000);
+                  const nearbyTrades = chart.markers.filter((marker) => {
+                    const markerIndex = nearestTimestampIndex(chart.timestamps, new Date(marker.trade.transactionDate + "T12:00:00Z").getTime() / 1000);
+                    return markerIndex === index;
+                  });
+                  const boxX = cx > W * 0.65 ? cx - 190 : cx + 10;
+                  const boxHeight = 47 + nearbyTrades.length * 17;
+                  return (
+                    <g pointerEvents="none">
+                      <line x1={cx} x2={cx} y1={PAD.top} y2={H - PAD.bottom} stroke="var(--text-dim)" strokeWidth="1" strokeDasharray="4 4" />
+                      <line x1={PAD.left} x2={W - PAD.right} y1={cy} y2={cy} stroke="var(--text-dim)" strokeWidth="1" strokeDasharray="3 4" opacity="0.75" />
+                      <circle cx={cx} cy={cy} r="4" fill="var(--accent)" stroke="var(--bg-card)" strokeWidth="2" />
+                      <rect x={Math.min(Math.max(cx - 42, PAD.left), W - PAD.right - 84)} y={H - 23} width="84" height="20" rx="4" fill="var(--text)" />
+                      <text x={Math.min(Math.max(cx, PAD.left + 42), W - PAD.right - 42)} y={H - 9} textAnchor="middle" fontSize="9.5" fontWeight="700" fill="var(--bg)">{date.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "2-digit" })}</text>
+                      <rect x={W - PAD.right} y={Math.min(Math.max(cy - 10, PAD.top), H - PAD.bottom - 20)} width={PAD.right} height="20" rx="4" fill="var(--text)" />
+                      <text x={W - PAD.right / 2} y={Math.min(Math.max(cy + 4, PAD.top + 14), H - PAD.bottom - 6)} textAnchor="middle" fontSize="9.5" fontWeight="700" fill="var(--bg)">${price.toFixed(2)}</text>
+                      <rect x={boxX} y="24" width="180" height={boxHeight} rx="6" fill="var(--bg-card)" stroke="var(--border)" opacity="0.97" />
+                      <text x={boxX + 10} y="40" fontSize="10" fontWeight="800" fill="var(--text)">{ticker} · ${price.toFixed(2)}</text>
+                      <text x={boxX + 10} y="55" fontSize="9" fill="var(--text-dim)">{date.toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" })}</text>
+                      {nearbyTrades.map((marker, markerIndex) => (
+                        <text key={marker.trade.id} x={boxX + 10} y={70 + markerIndex * 17} fontSize="9" fontWeight="700" fill={marker.trade.type === "Buy" ? "var(--green)" : "var(--red)"}>
+                          {marker.trade.type.toUpperCase()} · {marker.trade.politician} · {marker.trade.amount}
+                        </text>
+                      ))}
+                    </g>
+                  );
+                })()}
                 {/* last price label */}
                 <text
                   x={W - PAD.right + 6}
@@ -209,8 +277,13 @@ export default function CongressChart() {
                   return (
                     <g
                       key={m.trade.id}
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`${m.trade.politician} ${isBuy ? "bought" : "sold"} ${m.trade.ticker} on ${m.trade.transactionDate}, filed ${m.trade.filedDate}, amount ${m.trade.amount}`}
                       onMouseEnter={() => setHovered(m.trade.id)}
                       onMouseLeave={() => setHovered(null)}
+                      onFocus={() => setHovered(m.trade.id)}
+                      onBlur={() => setHovered(null)}
                       style={{ cursor: "pointer" }}
                     >
                       <line
@@ -237,6 +310,22 @@ export default function CongressChart() {
                     </g>
                   );
                 })}
+                {hovered && (() => {
+                  const marker = chart.markers.find((item) => item.trade.id === hovered);
+                  if (!marker) return null;
+                  const panelWidth = 236;
+                  const panelX = marker.cx > W * 0.6 ? marker.cx - panelWidth - 10 : marker.cx + 10;
+                  return (
+                    <g pointerEvents="none">
+                      <rect x={panelX} y="18" width={panelWidth} height="92" rx="7" fill="var(--bg-card)" stroke="var(--accent)" opacity="0.98" />
+                      <text x={panelX + 12} y="36" fontSize="10.5" fontWeight="800" fill="var(--text)">{marker.trade.politician} · {marker.trade.party}</text>
+                      <text x={panelX + 12} y="52" fontSize="9.5" fontWeight="700" fill={marker.trade.type === "Buy" ? "var(--green)" : "var(--red)"}>{marker.trade.type.toUpperCase()} {marker.trade.ticker} · {marker.trade.amount}</text>
+                      <text x={panelX + 12} y="68" fontSize="9" fill="var(--text-dim)">Traded {marker.trade.transactionDate} · ~${marker.priceThen.toFixed(2)}</text>
+                      <text x={panelX + 12} y="83" fontSize="9" fill="var(--text-dim)">Filed {marker.trade.filedDate}</text>
+                      <text x={panelX + 12} y="98" fontSize="9.5" fontWeight="800" fill={marker.pct >= 0 ? "var(--green)" : "var(--red)"}>{marker.pct >= 0 ? "+" : ""}{marker.pct.toFixed(1)}% since transaction date</text>
+                    </g>
+                  );
+                })()}
               </svg>
             </div>
 
