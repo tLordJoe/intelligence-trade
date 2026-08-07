@@ -23,11 +23,19 @@ const MARKET_CAPS: Record<string, number> = {
 
 interface Props {
   activeLayer: string | null;
+  highlightLayer: string | null;
   onSelectLayer: (slug: string) => void;
+  onHoverLayer: (slug: string | null) => void;
 }
 
-export default function StackVisualization({ activeLayer, onSelectLayer }: Props) {
+export default function StackVisualization({
+  activeLayer,
+  highlightLayer,
+  onSelectLayer,
+  onHoverLayer,
+}: Props) {
   const maxCap = Math.max(...Object.values(MARKET_CAPS));
+  const focus = highlightLayer ?? activeLayer;
 
   return (
     <section className="px-4 md:px-8 py-8">
@@ -41,41 +49,44 @@ export default function StackVisualization({ activeLayer, onSelectLayer }: Props
             Ten layers, one supply chain
           </h2>
           <p className="text-xs mt-1" style={{ color: "var(--text-dim)" }}>
-            Bar width = total market cap. Select a layer to see who&apos;s inside it.
+            Bar width = total market cap. Hover to preview a layer, click to pin it.
           </p>
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2" onMouseLeave={() => onHoverLayer(null)}>
           {layers.map((layer) => {
             const cap = MARKET_CAPS[layer.slug] || 0;
             const width = Math.max((cap / maxCap) * 100, 8);
-            const isActive = activeLayer === layer.slug;
+            const isFocused = focus === layer.slug;
+            const isPinned = activeLayer === layer.slug;
 
             return (
-              <div
+              <button
                 key={layer.slug}
-                className="stack-bar rounded-md px-3 py-2.5 flex items-center justify-between transition-all"
+                type="button"
+                className="stack-bar rounded-md px-3 py-2.5 flex items-center justify-between text-left"
                 style={{
                   width: `${width}%`,
                   backgroundColor: layer.color,
-                  opacity: activeLayer && !isActive ? 0.4 : 1,
-                  border: isActive ? "2px solid white" : "none",
+                  opacity: focus && !isFocused ? 0.35 : 1,
+                  border: isPinned ? "2px solid var(--text)" : "2px solid transparent",
                   minWidth: "200px",
                 }}
                 onClick={() => onSelectLayer(layer.slug)}
+                onMouseEnter={() => onHoverLayer(layer.slug)}
+                onFocus={() => onHoverLayer(layer.slug)}
+                onBlur={() => onHoverLayer(null)}
               >
-                <div className="flex items-center gap-2">
-                  <span className="text-white font-semibold text-xs md:text-sm uppercase tracking-wide">
-                    {layer.name}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 text-white">
-                  <span className="font-mono text-xs md:text-sm font-bold">
+                <span className="text-white font-semibold text-xs md:text-sm uppercase tracking-wide">
+                  {layer.name}
+                </span>
+                <span className="flex items-center gap-2 text-white">
+                  <span className="text-xs md:text-sm font-bold">
                     {formatMarketCap(cap)}
                   </span>
                   <span className="text-xs opacity-70">({layer.stocks.length})</span>
-                </div>
-              </div>
+                </span>
+              </button>
             );
           })}
         </div>

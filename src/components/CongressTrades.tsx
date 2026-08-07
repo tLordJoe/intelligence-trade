@@ -46,16 +46,21 @@ function PartyBadge({ party, chamber }: { party: "D" | "R"; chamber: string }) {
 export default function CongressTrades() {
   const [trades, setTrades] = useState<CongressTrade[]>([]);
   const [updatedAt, setUpdatedAt] = useState<string>("");
+  const [status, setStatus] = useState<"loading" | "ok" | "error">("loading");
   const [filter, setFilter] = useState<"all" | "D" | "R">("all");
 
   useEffect(() => {
     fetch("/api/congress?limit=12")
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error(String(r.status));
+        return r.json();
+      })
       .then((d) => {
         setTrades(Array.isArray(d) ? d : d.trades || []);
         if (d.updatedAt) setUpdatedAt(d.updatedAt);
+        setStatus("ok");
       })
-      .catch(() => {});
+      .catch(() => setStatus("error"));
   }, []);
 
   const filtered = filter === "all" ? trades : trades.filter((t) => t.party === filter);
@@ -122,6 +127,22 @@ export default function CongressTrades() {
             <div className="text-lg font-bold font-mono" style={{ color: "var(--text)" }}>{uniqueTickers}</div>
           </div>
         </div>
+
+        {status === "loading" && (
+          <div className="rounded-lg border p-6 text-center text-xs" style={{ borderColor: "var(--border)", color: "var(--text-dim)" }}>
+            Loading congressional filings…
+          </div>
+        )}
+        {status === "error" && (
+          <div className="rounded-lg border p-6 text-center text-xs" style={{ borderColor: "var(--border)", color: "var(--red)" }}>
+            Couldn&apos;t load trade data. Refresh the page to try again.
+          </div>
+        )}
+        {status === "ok" && filtered.length === 0 && (
+          <div className="rounded-lg border p-6 text-center text-xs" style={{ borderColor: "var(--border)", color: "var(--text-dim)" }}>
+            No recent trades match this filter. Congress files on a delay of up to 45 days — check back soon.
+          </div>
+        )}
 
         <div className="space-y-2">
           {filtered.map((trade) => (

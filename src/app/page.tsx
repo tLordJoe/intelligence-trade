@@ -16,21 +16,28 @@ import SiteFooter from "@/components/SiteFooter";
 
 export default function Home() {
   const [activeLayer, setActiveLayer] = useState<string>("processors");
+  const [hoveredLayer, setHoveredLayer] = useState<string | null>(null);
   const [prices, setPrices] = useState<Record<string, { price: number; change: number }>>({});
 
   const selectedLayer = getLayerBySlug(activeLayer) || layers[4];
+  // Hover previews a layer in the detail panel; click pins it for the whole page
+  const previewLayer = getLayerBySlug(hoveredLayer ?? activeLayer) || selectedLayer;
 
   const handleSelectLayer = useCallback((slug: string) => {
     setActiveLayer(slug);
   }, []);
 
+  const handleHoverLayer = useCallback((slug: string | null) => {
+    setHoveredLayer(slug);
+  }, []);
+
   useEffect(() => {
-    const tickers = selectedLayer.stocks.map((s) => s.ticker).join(",");
+    const tickers = previewLayer.stocks.map((s) => s.ticker).join(",");
     fetch(`/api/stocks?tickers=${tickers}`)
       .then((r) => r.json())
-      .then(setPrices)
+      .then((data) => setPrices((prev) => ({ ...prev, ...data })))
       .catch(() => {});
-  }, [selectedLayer]);
+  }, [previewLayer]);
 
   return (
     <>
@@ -43,11 +50,13 @@ export default function Home() {
             <div className="lg:col-span-3">
               <StackVisualization
                 activeLayer={activeLayer}
+                highlightLayer={hoveredLayer}
                 onSelectLayer={handleSelectLayer}
+                onHoverLayer={handleHoverLayer}
               />
             </div>
             <div className="lg:col-span-2 px-4 md:px-8 py-8">
-              <LayerDetail layer={selectedLayer} prices={prices} />
+              <LayerDetail layer={previewLayer} prices={prices} />
             </div>
           </div>
 

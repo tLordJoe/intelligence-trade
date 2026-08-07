@@ -39,14 +39,21 @@ interface Props {
 
 export default function TechnicalSignals({ ticker }: Props) {
   const [data, setData] = useState<TechnicalData[]>([]);
+  const [status, setStatus] = useState<"loading" | "ok" | "error">("loading");
   const [filter, setFilter] = useState<"all" | "buys" | "sells">("buys");
 
   useEffect(() => {
     const url = ticker ? `/api/technicals?ticker=${ticker}` : "/api/technicals";
     fetch(url)
-      .then((r) => r.json())
-      .then((d) => setData(Array.isArray(d) ? d : [d]))
-      .catch(() => {});
+      .then((r) => {
+        if (!r.ok) throw new Error(String(r.status));
+        return r.json();
+      })
+      .then((d) => {
+        setData(Array.isArray(d) ? d : [d]);
+        setStatus("ok");
+      })
+      .catch(() => setStatus("error"));
   }, [ticker]);
 
   const filtered = data.filter((t) => {
@@ -106,6 +113,22 @@ export default function TechnicalSignals({ ticker }: Props) {
             <div className="text-lg font-bold font-mono" style={{ color: "var(--red)" }}>{sellCount}</div>
           </div>
         </div>
+
+        {status === "loading" && (
+          <div className="rounded-lg border p-6 text-center text-xs" style={{ borderColor: "var(--border)", color: "var(--text-dim)" }}>
+            Computing signals…
+          </div>
+        )}
+        {status === "error" && (
+          <div className="rounded-lg border p-6 text-center text-xs" style={{ borderColor: "var(--border)", color: "var(--red)" }}>
+            Couldn&apos;t load signal data. Refresh the page to try again.
+          </div>
+        )}
+        {status === "ok" && filtered.length === 0 && (
+          <div className="rounded-lg border p-6 text-center text-xs" style={{ borderColor: "var(--border)", color: "var(--text-dim)" }}>
+            No stocks currently match this signal filter.
+          </div>
+        )}
 
         <div className="space-y-3">
           {filtered.slice(0, 12).map((t) => (
