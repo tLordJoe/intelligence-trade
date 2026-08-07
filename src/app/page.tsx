@@ -57,7 +57,11 @@ export default function Home() {
               />
             </div>
             <div className="lg:col-span-2 px-4 md:px-8 py-8">
-              <LayerDetail layer={previewLayer} prices={prices} />
+              <LayerDetail
+                layer={previewLayer}
+                prices={prices}
+                mode={hoveredLayer && hoveredLayer !== activeLayer ? "previewing" : "selected"}
+              />
             </div>
           </div>
 

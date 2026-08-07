@@ -6,14 +6,21 @@ import Link from "next/link";
 interface Props {
   layer: Layer;
   prices: Record<string, { price: number; change: number }>;
+  mode?: "previewing" | "selected";
 }
 
-export default function LayerDetail({ layer, prices }: Props) {
+export default function LayerDetail({ layer, prices, mode = "selected" }: Props) {
   const topHoldings = layer.stocks.slice(0, 4);
 
   return (
     <div className="fade-in rounded-xl border p-4 md:p-6"
       style={{ backgroundColor: "var(--bg-card)", borderColor: "var(--border)" }}>
+      <div
+        className="text-[10px] font-bold uppercase tracking-widest mb-2"
+        style={{ color: mode === "previewing" ? "var(--text-dim)" : "var(--accent)" }}
+      >
+        {mode === "previewing" ? "Previewing" : "Selected"} · {layer.name}
+      </div>
       <div className="flex items-center justify-between mb-3">
         <h3 className="text-xl font-bold" style={{ color: "var(--text)" }}>{layer.name}</h3>
         <Link

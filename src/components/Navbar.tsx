@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import FoxLogo from "./FoxLogo";
 
 const NAV_LINKS = [
   { href: "/", label: "Stack" },
@@ -45,9 +44,6 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 py-3">
         <Link href="/" className="flex items-center gap-2">
-          <span style={{ color: "var(--fox)" }}>
-            <FoxLogo size={44} />
-          </span>
           <span
             className="text-lg font-extrabold tracking-tight"
             style={{ color: "var(--text)", letterSpacing: "-0.03em" }}

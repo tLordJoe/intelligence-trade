@@ -1,5 +1,4 @@
 import Link from "next/link";
-import FoxLogo from "./FoxLogo";
 
 export default function SiteFooter() {
   return (
@@ -11,9 +10,6 @@ export default function SiteFooter() {
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
           <div className="max-w-sm">
             <div className="flex items-center gap-2 mb-3">
-              <span style={{ color: "var(--fox)" }}>
-                <FoxLogo size={40} />
-              </span>
               <span
                 className="text-base font-extrabold"
                 style={{ color: "var(--text)", letterSpacing: "-0.03em" }}

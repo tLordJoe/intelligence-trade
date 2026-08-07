@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import FoxLogo from "./FoxLogo";
 
 export default function HeroSection() {
   const [tradeCount, setTradeCount] = useState<number | null>(null);
@@ -18,10 +17,6 @@ export default function HeroSection() {
   return (
     <section className="px-4 md:px-8 pt-14 md:pt-20 pb-8 md:pb-12 text-center">
       <div className="max-w-3xl mx-auto">
-        <div className="flex justify-center mb-5" style={{ color: "var(--fox)" }}>
-          <FoxLogo size={120} />
-        </div>
-
         <h1
           className="text-4xl md:text-6xl font-extrabold leading-[1.03] mb-5"
           style={{ color: "var(--text)", letterSpacing: "-0.03em" }}
