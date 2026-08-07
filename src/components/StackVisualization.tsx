@@ -41,6 +41,51 @@ const MARKET_CAPS: Record<string, number> = {
   cybersecurity: 450e9,
 };
 
+const STACK_GRADIENTS: Record<string, string> = {
+  "software-models": "linear-gradient(120deg, #b91c1c 0%, #ef4444 100%)",
+  cybersecurity: "linear-gradient(120deg, #0f766e 0%, #14b8a6 100%)",
+  "data-centers": "linear-gradient(120deg, #0e7490 0%, #22b8cf 100%)",
+  "energy-infrastructure": "linear-gradient(120deg, #b45309 0%, #f59e0b 100%)",
+  networking: "linear-gradient(120deg, #6d28d9 0%, #8b5cf6 100%)",
+  processors: "linear-gradient(120deg, #047857 0%, #10b981 100%)",
+  "memory-storage": "linear-gradient(120deg, #be185d 0%, #ec4899 100%)",
+  foundries: "linear-gradient(120deg, #c2410c 0%, #f97316 100%)",
+  "semiconductor-equipment": "linear-gradient(120deg, #4338ca 0%, #6366f1 100%)",
+  "raw-materials": "linear-gradient(120deg, #44403c 0%, #78716c 100%)",
+};
+
+const SUBCATEGORY_LEADERS: Record<string, string[]> = {
+  "Foundation Models": ["MSFT", "AMZN"],
+  "Developer Tools": ["MSFT", "NOW"],
+  "AI Applications": ["ADBE", "CRM"],
+  "Growth Software": ["PLTR", "SNOW"],
+  "Endpoint & XDR": ["CRWD", "S"],
+  "Network & Cloud Security": ["PANW", "ZS"],
+  "Identity & Access": ["PANW", "OKTA"],
+  "Hyperscale Cloud": ["AMZN", "MSFT"],
+  "Colocation & REITs": ["EQIX", "DLR"],
+  "Edge & CDN": ["NET", "AKAM"],
+  "Utilities & Grid": ["VST", "CEG"],
+  Nuclear: ["CEG", "CCJ"],
+  "Gas & Builders": ["GEV", "PWR"],
+  "Switching & Ethernet": ["AVGO", "ANET"],
+  "Optical & Interconnect": ["COHR", "LITE"],
+  "Telecom Backbone": ["CSCO", "NOK"],
+  "GPUs & Accelerators": ["NVDA", "AMD"],
+  "Custom Silicon": ["AVGO", "GOOGL"],
+  "CPUs & Compute": ["INTC", "QCOM"],
+  "High-Bandwidth Memory": ["MU", "SKM"],
+  "Flash & SSD": ["WDC", "STX"],
+  "Leading-Edge Fabs": ["TSM", "SSNLF"],
+  "Specialty Foundries": ["GFS", "UMC"],
+  Lithography: ["ASML"],
+  "Deposition & Etch": ["AMAT", "LRCX"],
+  "Metrology & Test": ["KLAC", "TER"],
+  "Silicon & Wafers": ["SUMCO", "WAFD"],
+  "Rare Earths & Metals": ["MP", "ALB"],
+  "Chemicals & Gases": ["LIN", "APD"],
+};
+
 interface Props {
   activeLayer: string | null;
   highlightLayer: string | null;
@@ -89,66 +134,66 @@ export default function StackVisualization({
               <div key={layer.slug} className="relative">
                 <button
                   type="button"
-                  className="stack-bar rounded-xl px-3.5 py-2.5 flex items-center justify-between text-left w-full"
+                  className="stack-bar rounded-xl px-3.5 py-3 text-left w-full"
                   aria-pressed={isPinned}
                   style={{
                     width: `${width}%`,
-                    background: `linear-gradient(135deg, ${layer.color}, color-mix(in srgb, ${layer.color} 62%, white))`,
-                    opacity: focus && !isFocused ? 0.35 : 1,
+                    background: STACK_GRADIENTS[layer.slug] ?? layer.color,
+                    opacity: highlightLayer && !isFocused ? 0.62 : 1,
                     border: isPinned ? "2px solid var(--text)" : "2px solid transparent",
                     minWidth: "230px",
+                    marginInline: "auto",
                   }}
                   onClick={() => onSelectLayer(layer.slug)}
                   onMouseEnter={() => onHoverLayer(layer.slug)}
                   onFocus={() => onHoverLayer(layer.slug)}
                   onBlur={() => onHoverLayer(null)}
                 >
-                  <span className="flex items-center gap-2.5 min-w-0">
-                    <span className="text-white font-semibold text-xs md:text-sm uppercase tracking-wide truncate">
+                  <span className="flex w-full items-center justify-between gap-3">
+                    <span className="text-white font-bold text-xs md:text-sm uppercase tracking-wide leading-tight">
                       {layer.name}
                     </span>
-
-                    {/* subcategory bubbles, sized by market cap */}
-                    <span
-                      className="items-center gap-1.5 shrink-0 hidden md:flex"
-                      style={{ display: width > 52 ? undefined : "none" }}
-                    >
-                      {subs.map((sub) => {
-                        const size = 26 + (sub.cap / maxSubCap) * 22;
-                        const Icon = ICONS[sub.icon] || Gem;
-                        const key = `${layer.slug}:${sub.name}`;
-                        return (
-                          <span key={key} className="relative inline-flex">
-                            <span
-                              className="subcategory-bubble"
-                              style={{
-                                width: size,
-                                height: size,
-                                transform: hoveredBubble === key ? "scale(1.18)" : "scale(1)",
-                              }}
-                              onMouseEnter={() => setHoveredBubble(key)}
-                              onMouseLeave={() => setHoveredBubble(null)}
-                            >
-                              <Icon size={size * 0.5} color="#fff" strokeWidth={2.2} />
-                            </span>
-                            {hoveredBubble === key && (
-                              <span className="bubble-tooltip">
-                                <strong>{sub.name}</strong>
-                                <span>{sub.description}</span>
-                                <small>{formatCapB(sub.cap)} market cap</small>
-                              </span>
-                            )}
-                          </span>
-                        );
-                      })}
+                    <span className="flex items-center gap-2 text-white shrink-0">
+                      <span className="text-xs md:text-sm font-bold">
+                      {formatMarketCap(cap)}
+                      </span>
+                      <span className="text-xs opacity-75">({layer.stocks.length})</span>
                     </span>
                   </span>
 
-                  <span className="flex items-center gap-2 text-white shrink-0 pl-2">
-                    <span className="text-xs md:text-sm font-bold">
-                      {formatMarketCap(cap)}
-                    </span>
-                    <span className="text-xs opacity-70">({layer.stocks.length})</span>
+                  <span className="mt-2.5 flex min-h-9 items-end gap-1.5">
+                    {subs.map((sub) => {
+                      const size = 25 + (sub.cap / maxSubCap) * 18;
+                      const Icon = ICONS[sub.icon] || Gem;
+                      const key = `${layer.slug}:${sub.name}`;
+                      const leaders = SUBCATEGORY_LEADERS[sub.name] ?? [];
+                      return (
+                        <span key={key} className="relative inline-flex">
+                          <span
+                            className="subcategory-bubble"
+                            aria-label={`${sub.name}, ${formatCapB(sub.cap)} market cap. ${sub.description}`}
+                            style={{
+                              width: size,
+                              height: size,
+                              transform: hoveredBubble === key ? "scale(1.14)" : "scale(1)",
+                            }}
+                            onMouseEnter={() => setHoveredBubble(key)}
+                            onMouseLeave={() => setHoveredBubble(null)}
+                          >
+                            <Icon size={size * 0.48} color="#fff" strokeWidth={2.2} />
+                          </span>
+                          {hoveredBubble === key && (
+                            <span className="bubble-tooltip">
+                              <strong><Icon size={14} strokeWidth={2.2} /> {sub.name}</strong>
+                              <span className="bubble-stat"><small>Market cap</small><b>{formatCapB(sub.cap)}</b></span>
+                              {leaders.length > 0 && (
+                                <span className="bubble-leaders"><small>Leading names</small><b>{leaders.join("  ·  ")}</b></span>
+                              )}
+                            </span>
+                          )}
+                        </span>
+                      );
+                    })}
                   </span>
                 </button>
               </div>
