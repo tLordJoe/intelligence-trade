@@ -13,11 +13,14 @@ import NewsFeed from "@/components/NewsFeed";
 import CongressTrades from "@/components/CongressTrades";
 import CongressChart from "@/components/CongressChart";
 import SiteFooter from "@/components/SiteFooter";
+import type { DataMeta, StockQuoteResponse } from "@/lib/market-data";
 
 export default function Home() {
   const [activeLayer, setActiveLayer] = useState<string>("processors");
   const [hoveredLayer, setHoveredLayer] = useState<string | null>(null);
   const [prices, setPrices] = useState<Record<string, { price: number; change: number }>>({});
+  const [quoteMeta, setQuoteMeta] = useState<DataMeta | null>(null);
+  const [quoteError, setQuoteError] = useState(false);
   const [chartTickers, setChartTickers] = useState<string[]>(["QQQ"]);
 
   const selectedLayer = getLayerBySlug(activeLayer) || layers[4];
@@ -46,9 +49,16 @@ export default function Home() {
   useEffect(() => {
     const tickers = previewLayer.stocks.map((s) => s.ticker).join(",");
     fetch(`/api/stocks?tickers=${tickers}`)
-      .then((r) => r.json())
-      .then((data) => setPrices((prev) => ({ ...prev, ...data })))
-      .catch(() => {});
+      .then((r) => {
+        if (!r.ok) throw new Error(String(r.status));
+        return r.json() as Promise<StockQuoteResponse>;
+      })
+      .then((data) => {
+        setPrices((prev) => ({ ...prev, ...data.quotes }));
+        setQuoteMeta(data.meta);
+        setQuoteError(false);
+      })
+      .catch(() => setQuoteError(true));
   }, [previewLayer]);
 
   return (
@@ -86,6 +96,8 @@ export default function Home() {
             prices={prices}
             chartTickers={chartTickers}
             onAddToChart={handleAddToChart}
+            dataMeta={quoteMeta}
+            dataUnavailable={quoteError}
           />
           <LayerCards activeLayer={activeLayer} onSelectLayer={handleSelectLayer} />
           <CongressTrades />
