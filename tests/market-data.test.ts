@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { normalizeTickers, percentagePerformance } from "../src/lib/market-data.ts";
 import { dedupeById, isOfficialHouseFilingUrl } from "../src/lib/congress-utils.ts";
+import { assessHouseDataset } from "../src/lib/data-health.ts";
 
 test("normalizeTickers trims, uppercases, deduplicates, and rejects invalid symbols", () => {
   assert.deepEqual(
@@ -38,4 +39,42 @@ test("official filing links are restricted to House PTR PDFs", () => {
   );
   assert.equal(isOfficialHouseFilingUrl("https://example.com/filing.pdf"), false);
   assert.equal(isOfficialHouseFilingUrl("javascript:alert(1)"), false);
+});
+
+test("House dataset health rejects empty or unverified disclosure data", () => {
+  const empty = assessHouseDataset([], "2026-08-07T00:00:00.000Z", Date.parse("2026-08-07T12:00:00.000Z"));
+  assert.equal(empty.status, "error");
+  assert.ok(empty.issues.includes("dataset is empty"));
+
+  const unverified = assessHouseDataset(
+    [{
+      id: "example-1",
+      transactionDate: "2026-08-01",
+      filedDate: "2026-08-02",
+      source: "https://example.com/report.pdf",
+    }],
+    "2026-08-07T00:00:00.000Z",
+    Date.parse("2026-08-07T12:00:00.000Z")
+  );
+  assert.equal(unverified.status, "error");
+  assert.ok(unverified.issues.includes("unverified source: example-1"));
+});
+
+test("House dataset health accepts recent records with official sources", () => {
+  const health = assessHouseDataset(
+    [{
+      id: "20034736-0",
+      transactionDate: "2026-07-21",
+      filedDate: "2026-07-27",
+      source: "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034736.pdf",
+    }],
+    "2026-08-06T00:00:00.000Z",
+    Date.parse("2026-08-07T12:00:00.000Z")
+  );
+  assert.deepEqual(health, {
+    status: "ok",
+    recordCount: 1,
+    updatedAt: "2026-08-06T00:00:00.000Z",
+    issues: [],
+  });
 });
