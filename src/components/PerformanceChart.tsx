@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import type { KeyboardEvent as ReactKeyboardEvent, PointerEvent as ReactPointerEvent } from "react";
 import { getAllTickers } from "@/lib/data";
 import { percentagePerformance } from "@/lib/market-data";
+import { clampIndex, nearestTimestampIndex } from "@/lib/chart-interaction";
 
 interface Props {
   comparedTickers: string[];
@@ -18,7 +20,7 @@ interface HistoryData {
 
 interface ChartSeries {
   ticker: string;
-  points: { timestamp: number; value: number }[];
+  points: { timestamp: number; value: number; price: number }[];
   change: number;
 }
 
@@ -54,6 +56,7 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
   const [loading, setLoading] = useState(true);
   const [failedTickers, setFailedTickers] = useState<string[]>([]);
   const [retryVersion, setRetryVersion] = useState(0);
+  const [hoveredPoint, setHoveredPoint] = useState<{ timestamp: number; activeTicker: string } | null>(null);
 
   const tickers = useMemo(() => ["SPY", ...comparedTickers], [comparedTickers]);
   const availableTickers = useMemo(
@@ -75,6 +78,7 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
         const points = data.closes.map((close, index) => ({
           timestamp: data.timestamps[index],
           value: percentagePerformance(base, close),
+          price: close,
         }));
         return { ticker, points, change: points.at(-1)?.value ?? 0 } satisfies ChartSeries;
       })
@@ -114,6 +118,63 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
     if (!bounds) return [];
     return Array.from({ length: 5 }, (_, index) => bounds.maxValue - ((bounds.maxValue - bounds.minValue) * index) / 4);
   }, [bounds]);
+
+  const hoverDetails = useMemo(() => {
+    if (!bounds || !hoveredPoint || !series.length) return null;
+    const items = series.map((item, colorIndex) => {
+      const pointIndex = nearestTimestampIndex(
+        item.points.map((point) => point.timestamp),
+        hoveredPoint.timestamp
+      );
+      const point = item.points[pointIndex];
+      return { ...point, ticker: item.ticker, color: COLORS[colorIndex] };
+    });
+    const active = items.find((item) => item.ticker === hoveredPoint.activeTicker) ?? items[0];
+    const x = 58 + ((active.timestamp - bounds.minTime) / Math.max(bounds.maxTime - bounds.minTime, 1)) * 920;
+    const y = 18 + (1 - (active.value - bounds.minValue) / Math.max(bounds.maxValue - bounds.minValue, 1)) * 300;
+    return { items, active, x, y };
+  }, [bounds, hoveredPoint, series]);
+
+  const inspectAtPointer = (event: ReactPointerEvent<SVGSVGElement>) => {
+    if (!bounds || !series.length) return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    const viewX = ((event.clientX - rect.left) / rect.width) * 1000;
+    const viewY = ((event.clientY - rect.top) / rect.height) * 340;
+    const ratio = Math.min(Math.max((viewX - 58) / 920, 0), 1);
+    const target = bounds.minTime + ratio * (bounds.maxTime - bounds.minTime);
+    const anchor = series[0];
+    const anchorIndex = nearestTimestampIndex(anchor.points.map((point) => point.timestamp), target);
+    const timestamp = anchor.points[anchorIndex].timestamp;
+    let activeTicker = anchor.ticker;
+    let closestDistance = Infinity;
+
+    for (const item of series) {
+      const index = nearestTimestampIndex(item.points.map((point) => point.timestamp), timestamp);
+      const point = item.points[index];
+      const pointY = 18 + (1 - (point.value - bounds.minValue) / Math.max(bounds.maxValue - bounds.minValue, 1)) * 300;
+      const distance = Math.abs(pointY - viewY);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        activeTicker = item.ticker;
+      }
+    }
+    setHoveredPoint({ timestamp, activeTicker });
+  };
+
+  const inspectWithKeyboard = (event: ReactKeyboardEvent<SVGSVGElement>) => {
+    if (!series.length || !["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+    event.preventDefault();
+    const anchor = series[0];
+    const current = hoveredPoint
+      ? nearestTimestampIndex(anchor.points.map((point) => point.timestamp), hoveredPoint.timestamp)
+      : anchor.points.length - 1;
+    const next = event.key === "Home"
+      ? 0
+      : event.key === "End"
+        ? anchor.points.length - 1
+        : clampIndex(current + (event.key === "ArrowLeft" ? -1 : 1), anchor.points.length);
+    setHoveredPoint({ timestamp: anchor.points[next].timestamp, activeTicker: hoveredPoint?.activeTicker ?? anchor.ticker });
+  };
 
   const addSelectedTicker = () => {
     if (!selectedTicker) return;
@@ -226,7 +287,24 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
                   </span>
                 ))}
               </div>
-              <svg viewBox="0 0 1000 340" className="h-[330px] w-full" role="img" aria-label={`Percentage performance chart for ${series.map((item) => item.ticker).join(", ")}`}>
+              <svg
+                viewBox="0 0 1000 340"
+                className="h-[330px] w-full outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                role="img"
+                tabIndex={0}
+                aria-label={`Interactive percentage performance chart for ${series.map((item) => item.ticker).join(", ")}. Move the pointer or use the left and right arrow keys to inspect dates and prices.`}
+                onPointerMove={inspectAtPointer}
+                onPointerLeave={() => setHoveredPoint(null)}
+                onFocus={() => {
+                  if (!hoveredPoint) {
+                    const anchor = series[0];
+                    setHoveredPoint({ timestamp: anchor.points.at(-1)!.timestamp, activeTicker: anchor.ticker });
+                  }
+                }}
+                onBlur={() => setHoveredPoint(null)}
+                onKeyDown={inspectWithKeyboard}
+                style={{ touchAction: "pan-y" }}
+              >
                 {gridValues.map((value, index) => {
                   const y = 18 + (index / 4) * 300;
                   return (
@@ -259,6 +337,46 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
                     vectorEffect="non-scaling-stroke"
                   />
                 ))}
+                {hoverDetails && (
+                  <g pointerEvents="none">
+                    <line x1={hoverDetails.x} x2={hoverDetails.x} y1="18" y2="318" stroke="var(--text-dim)" strokeWidth="1" strokeDasharray="4 4" />
+                    <line x1="58" x2="978" y1={hoverDetails.y} y2={hoverDetails.y} stroke="var(--text-dim)" strokeWidth="1" strokeDasharray="3 4" opacity="0.75" />
+                    {hoverDetails.items.map((item) => {
+                      const pointY = 18 + (1 - (item.value - bounds.minValue) / Math.max(bounds.maxValue - bounds.minValue, 1)) * 300;
+                      return <circle key={item.ticker} cx={hoverDetails.x} cy={pointY} r="4" fill={item.color} stroke="var(--bg)" strokeWidth="2" />;
+                    })}
+                    <rect x={Math.min(Math.max(hoverDetails.x - 48, 58), 880)} y="316" width="96" height="22" rx="5" fill="var(--text)" />
+                    <text x={Math.min(Math.max(hoverDetails.x, 106), 928)} y="331" textAnchor="middle" fontSize="11" fontWeight="700" fill="var(--bg)">
+                      {new Date(hoverDetails.active.timestamp * 1000).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "2-digit" })}
+                    </text>
+                    <rect x="926" y={Math.min(Math.max(hoverDetails.y - 10, 18), 298)} width="72" height="20" rx="4" fill="var(--text)" />
+                    <text x="962" y={Math.min(Math.max(hoverDetails.y + 4, 32), 312)} textAnchor="middle" fontSize="10" fontWeight="700" fill="var(--bg)">
+                      {hoverDetails.active.value >= 0 ? "+" : ""}{hoverDetails.active.value.toFixed(1)}%
+                    </text>
+                    {(() => {
+                      const panelWidth = 224;
+                      const panelHeight = 34 + hoverDetails.items.length * 19;
+                      const panelX = hoverDetails.x > 720 ? hoverDetails.x - panelWidth - 14 : hoverDetails.x + 14;
+                      const panelY = 26;
+                      return (
+                        <g>
+                          <rect x={panelX} y={panelY} width={panelWidth} height={panelHeight} rx="7" fill="var(--bg-card)" stroke="var(--border)" strokeWidth="1" opacity="0.97" />
+                          <text x={panelX + 12} y={panelY + 20} fontSize="11" fontWeight="800" fill="var(--text)">
+                            {new Date(hoverDetails.active.timestamp * 1000).toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" })}
+                          </text>
+                          {hoverDetails.items.map((item, index) => (
+                            <g key={item.ticker}>
+                              <circle cx={panelX + 13} cy={panelY + 38 + index * 19} r="3" fill={item.color} />
+                              <text x={panelX + 22} y={panelY + 42 + index * 19} fontSize="10.5" fontWeight={item.ticker === hoverDetails.active.ticker ? "800" : "600"} fill="var(--text)">{item.ticker}</text>
+                              <text x={panelX + 104} y={panelY + 42 + index * 19} fontSize="10.5" textAnchor="end" fill="var(--text)">${item.price.toFixed(2)}</text>
+                              <text x={panelX + 212} y={panelY + 42 + index * 19} fontSize="10.5" fontWeight="700" textAnchor="end" fill={item.value >= 0 ? "var(--green)" : "var(--red)"}>{item.value >= 0 ? "+" : ""}{item.value.toFixed(1)}%</text>
+                            </g>
+                          ))}
+                        </g>
+                      );
+                    })()}
+                  </g>
+                )}
               </svg>
             </>
           )}
