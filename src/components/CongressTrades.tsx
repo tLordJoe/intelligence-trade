@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { CongressTrade } from "@/lib/congress-types";
+import { isOfficialHouseFilingUrl } from "@/lib/congress-utils";
 
 function AmountBadge({ amount }: { amount: string }) {
   const num = parseInt(amount.replace(/[^0-9]/g, ""));
@@ -114,7 +115,7 @@ export default function CongressTrades() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
           <div className="rounded-md p-2 border" style={{ borderColor: "var(--border)" }}>
-            <div className="text-[10px] uppercase" style={{ color: "var(--text-dim)" }}>Trades (30d)</div>
+            <div className="text-[10px] uppercase" style={{ color: "var(--text-dim)" }}>Displayed filings</div>
             <div className="text-lg font-bold font-mono" style={{ color: "var(--text)" }}>{totalTrades}</div>
           </div>
           <div className="rounded-md p-2 border" style={{ borderColor: "var(--border)" }}>
@@ -201,8 +202,20 @@ export default function CongressTrades() {
 
                 <AmountBadge amount={trade.amount} />
 
-                <div className="text-xs text-right shrink-0" style={{ color: "var(--text-dim)" }}>
-                  {trade.daysAgo}d ago
+                <div className="text-[10px] text-right shrink-0" style={{ color: "var(--text-dim)" }}>
+                  <div>Traded {trade.transactionDate}</div>
+                  <div>Filed {trade.filedDate}</div>
+                  {isOfficialHouseFilingUrl(trade.source) && (
+                    <a
+                      href={trade.source}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-semibold underline"
+                      style={{ color: "var(--accent)" }}
+                    >
+                      Verify filing ↗
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
@@ -211,7 +224,7 @@ export default function CongressTrades() {
 
         <div className="mt-4 pt-3 border-t text-center" style={{ borderColor: "var(--border)" }}>
           <p className="text-[10px]" style={{ color: "var(--text-dim)" }}>
-            Source: Clerk of the U.S. House — official STOCK Act filings
+            Source: Clerk of the U.S. House — official STOCK Act filings · House coverage only
             {updatedAt && ` • Updated ${new Date(updatedAt).toLocaleDateString()}`}
           </p>
         </div>
