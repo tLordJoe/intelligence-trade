@@ -3,6 +3,16 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import FoxLogo from "./FoxLogo";
+
+const NAV_LINKS = [
+  { href: "/", label: "Stack" },
+  { href: "/congress", label: "Congress" },
+  { href: "/signals", label: "Signals" },
+  { href: "/blog", label: "Briefing" },
+  { href: "/portfolio", label: "Watchlist" },
+  { href: "/about", label: "About" },
+];
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -19,89 +29,57 @@ export default function Navbar() {
     localStorage.setItem("theme", next ? "dark" : "light");
   }
 
+  function isActive(href: string) {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  }
+
   return (
     <header
-      className="sticky top-0 z-50 flex items-center justify-between px-4 py-3 border-b"
+      className="sticky top-0 z-50 border-b"
       style={{
         backgroundColor: "var(--bg-card)",
         borderColor: "var(--border)",
         boxShadow: "var(--shadow)",
       }}
     >
-      <Link href="/" className="flex items-center gap-2">
-        <div className="flex gap-1.5">
-          <span className="w-3 h-3 rounded-full bg-red-500" />
-          <span className="w-3 h-3 rounded-full bg-yellow-400" />
-          <span className="w-3 h-3 rounded-full bg-green-500" />
-        </div>
-        <span className="mx-2 opacity-30">|</span>
-        <span style={{ color: "var(--accent)" }}>$</span>
-        <span className="font-semibold text-sm" style={{ color: "var(--text)" }}>
-          intelligence-trade
-        </span>
-        <span className="typing-cursor opacity-50" />
-      </Link>
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 py-3">
+        <Link href="/" className="flex items-center gap-2">
+          <span style={{ color: "var(--fox)" }}>
+            <FoxLogo size={44} />
+          </span>
+          <span
+            className="text-lg font-extrabold tracking-tight"
+            style={{ color: "var(--text)", letterSpacing: "-0.03em" }}
+          >
+            outfox
+          </span>
+        </Link>
 
-      <nav className="flex items-center gap-1">
-        <Link
-          href="/"
-          className="px-3 py-1.5 rounded text-xs font-medium transition-colors"
-          style={{
-            backgroundColor: pathname === "/" ? "var(--accent)" : "transparent",
-            color: pathname === "/" ? "#fff" : "var(--text-dim)",
-          }}
-        >
-          stack
-        </Link>
-        <Link
-          href="/congress"
-          className="px-3 py-1.5 rounded text-xs font-medium transition-colors"
-          style={{
-            backgroundColor: pathname === "/congress" ? "var(--accent)" : "transparent",
-            color: pathname === "/congress" ? "#fff" : "var(--text-dim)",
-          }}
-        >
-          congress
-        </Link>
-        <Link
-          href="/signals"
-          className="px-3 py-1.5 rounded text-xs font-medium transition-colors"
-          style={{
-            backgroundColor: pathname === "/signals" ? "var(--accent)" : "transparent",
-            color: pathname === "/signals" ? "#fff" : "var(--text-dim)",
-          }}
-        >
-          signals
-        </Link>
-        <Link
-          href="/blog"
-          className="px-3 py-1.5 rounded text-xs font-medium transition-colors"
-          style={{
-            backgroundColor: pathname.startsWith("/blog") ? "var(--accent)" : "transparent",
-            color: pathname.startsWith("/blog") ? "#fff" : "var(--text-dim)",
-          }}
-        >
-          blog
-        </Link>
-        <Link
-          href="/portfolio"
-          className="px-3 py-1.5 rounded text-xs font-medium transition-colors"
-          style={{
-            backgroundColor: pathname === "/portfolio" ? "var(--accent)" : "transparent",
-            color: pathname === "/portfolio" ? "#fff" : "var(--text-dim)",
-          }}
-        >
-          portfolio
-        </Link>
-        <button
-          onClick={toggleTheme}
-          className="ml-2 w-8 h-8 rounded-full flex items-center justify-center border transition-colors"
-          style={{ borderColor: "var(--border)", color: "var(--text)" }}
-          aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
-        >
-          {dark ? "☀" : "☽"}
-        </button>
-      </nav>
+        <nav className="flex items-center gap-0.5 md:gap-1 overflow-x-auto scrollbar-hide">
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="px-2.5 md:px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors"
+              style={{
+                backgroundColor: isActive(link.href) ? "var(--accent-soft)" : "transparent",
+                color: isActive(link.href) ? "var(--accent)" : "var(--text-dim)",
+              }}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <button
+            onClick={toggleTheme}
+            className="ml-1 md:ml-2 w-8 h-8 rounded-full flex items-center justify-center border transition-colors shrink-0"
+            style={{ borderColor: "var(--border)", color: "var(--text)" }}
+            aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            {dark ? "☀" : "☽"}
+          </button>
+        </nav>
+      </div>
     </header>
   );
 }

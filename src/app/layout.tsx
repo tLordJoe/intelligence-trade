@@ -1,22 +1,40 @@
 import type { Metadata } from "next";
-import { Fira_Code } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const firaCode = Fira_Code({
-  variable: "--font-fira-code",
+const inter = Inter({
+  variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "Intelligence Trade - AI Supply Chain Tracker",
+  metadataBase: new URL("https://outfoxmarkets.com"),
+  title: {
+    default: "Outfox — Financial intelligence for the rest of us",
+    template: "%s · Outfox",
+  },
   description:
-    "Tracking the means of intelligence production. Control over AI production infrastructure determines 21st-century power dynamics.",
+    "See every AI stock Congress is buying, sourced from their own required filings. Live prices across the AI supply chain and the signals that show where the smart money is moving.",
+  openGraph: {
+    title: "Outfox — Financial intelligence for the rest of us",
+    description:
+      "See every AI stock Congress is buying — sourced from their own required filings.",
+    url: "https://outfoxmarkets.com",
+    siteName: "Outfox",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Outfox — Financial intelligence for the rest of us",
+    description:
+      "See every AI stock Congress is buying — sourced from their own required filings.",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${firaCode.variable} h-full`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} h-full`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -31,9 +49,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col" style={{ fontFamily: "var(--font-fira-code), monospace" }}>
-        {children}
-      </body>
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }

@@ -23,8 +23,9 @@ interface Props {
 export default function LayerCards({ activeLayer, onSelectLayer }: Props) {
   return (
     <section className="px-4 md:px-8 py-8">
-      <h2 className="text-sm font-mono mb-4" style={{ color: "var(--text-dim)" }}>
-        <span style={{ color: "var(--accent)" }}>$</span> ls ./layers --performance
+      <div className="kicker mb-1">Explore</div>
+      <h2 className="text-xl font-bold mb-4" style={{ color: "var(--text)" }}>
+        Every sector, at a glance
       </h2>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">

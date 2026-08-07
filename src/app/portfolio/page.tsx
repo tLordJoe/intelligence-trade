@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { layers, getAllTickers } from "@/lib/data";
 import Navbar from "@/components/Navbar";
+import SiteFooter from "@/components/SiteFooter";
 
 export default function PortfolioPage() {
   const [prices, setPrices] = useState<Record<string, { price: number; change: number }>>({});
@@ -50,18 +51,14 @@ export default function PortfolioPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1 grid-bg">
+      <main className="flex-1">
         <div className="max-w-5xl mx-auto px-4 md:px-8 py-8">
-          <div className="flex items-center gap-2 text-xs mb-6" style={{ color: "var(--text-dim)" }}>
-            <span style={{ color: "var(--accent)" }}>$</span>
-            <span>cat ./portfolio</span>
-          </div>
-
-          <h1 className="text-3xl font-bold mb-2" style={{ color: "var(--text)" }}>
-            <span style={{ color: "var(--accent)" }}>My</span> Portfolio
+          <div className="kicker mb-2">Watchlist</div>
+          <h1 className="text-3xl font-extrabold mb-2" style={{ color: "var(--text)", letterSpacing: "-0.02em" }}>
+            Your watchlist
           </h1>
           <p className="text-sm mb-8" style={{ color: "var(--text-dim)" }}>
-            Track your AI supply chain exposure
+            Track your AI supply chain exposure. Saved on this device.
           </p>
 
           {portfolio.length === 0 ? (
@@ -168,6 +165,7 @@ export default function PortfolioPage() {
           )}
         </div>
       </main>
+    <SiteFooter />
     </>
   );
 }

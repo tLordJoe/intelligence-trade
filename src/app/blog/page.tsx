@@ -2,24 +2,21 @@
 
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import SiteFooter from "@/components/SiteFooter";
 import { blogPosts } from "@/lib/blog-data";
 
 export default function BlogPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1 grid-bg">
+      <main className="flex-1">
         <div className="max-w-4xl mx-auto px-4 md:px-8 py-8">
-          <div className="flex items-center gap-2 text-xs mb-6" style={{ color: "var(--text-dim)" }}>
-            <span style={{ color: "var(--accent)" }}>$</span>
-            <span>ls ./blog --latest</span>
-          </div>
-
-          <h1 className="text-3xl font-bold mb-2" style={{ color: "var(--text)" }}>
-            <span style={{ color: "var(--accent)" }}>Intelligence</span> Blog
+          <div className="kicker mb-2">The Briefing</div>
+          <h1 className="text-3xl font-extrabold mb-2" style={{ color: "var(--text)", letterSpacing: "-0.02em" }}>
+            Analysis &amp; research
           </h1>
           <p className="text-sm mb-8" style={{ color: "var(--text-dim)" }}>
-            Analysis, research, and insights on the AI supply chain
+            How the AI economy actually works — and who profits from it
           </p>
 
           <div className="space-y-4">
@@ -66,6 +63,7 @@ export default function BlogPage() {
           </div>
         </div>
       </main>
+    <SiteFooter />
     </>
   );
 }

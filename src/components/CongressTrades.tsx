@@ -71,14 +71,10 @@ export default function CongressTrades() {
         className="rounded-lg border p-4 md:p-6"
         style={{ backgroundColor: "var(--bg-card)", borderColor: "var(--border)" }}
       >
-        <div className="flex items-center gap-2 text-xs mb-4" style={{ color: "var(--text-dim)" }}>
-          <span style={{ color: "var(--accent)" }}>$</span>
-          <span>watch --congress-trades --ai-stack</span>
-        </div>
-
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
           <div>
-            <h2 className="text-lg font-bold flex items-center gap-2" style={{ color: "var(--text)" }}>
+            <div className="kicker mb-1">Congress Watch</div>
+            <h2 className="text-xl font-bold flex items-center gap-2" style={{ color: "var(--text)" }}>
               <span>🏛️</span> Congress Is Buying
             </h2>
             <p className="text-xs mt-1" style={{ color: "var(--text-dim)" }}>

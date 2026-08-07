@@ -12,54 +12,63 @@ export default function LayerDetail({ layer, prices }: Props) {
   const topHoldings = layer.stocks.slice(0, 4);
 
   return (
-    <div className="fade-in rounded-lg border p-4 md:p-6"
+    <div className="fade-in rounded-xl border p-4 md:p-6"
       style={{ backgroundColor: "var(--bg-card)", borderColor: "var(--border)" }}>
       <div className="flex items-center justify-between mb-3">
-        <h3 className="text-lg font-bold" style={{ color: "var(--text)" }}>{layer.name}</h3>
+        <h3 className="text-xl font-bold" style={{ color: "var(--text)" }}>{layer.name}</h3>
         <Link
           href={`/layer/${layer.slug}`}
-          className="text-xs flex items-center gap-1 hover:underline"
+          className="text-xs font-semibold flex items-center gap-1 hover:underline"
           style={{ color: "var(--accent)" }}
         >
-          cd ./details <span>→</span>
+          Full sector view <span>→</span>
         </Link>
       </div>
 
       <p className="text-sm mb-4" style={{ color: "var(--text-dim)" }}>{layer.description}</p>
 
-      <div className="rounded-md p-3 mb-4" style={{ backgroundColor: "var(--terminal-bg)", border: "1px solid var(--border)" }}>
-        <div className="text-xs font-mono mb-1" style={{ color: "var(--accent)" }}># KEY_INSIGHT</div>
-        <p className="text-sm" style={{ color: "var(--text)" }}>{layer.keyInsight}</p>
+      <div
+        className="rounded-lg p-3.5 mb-5 border-l-4"
+        style={{
+          backgroundColor: "var(--bg-inset)",
+          borderColor: "var(--accent)",
+        }}
+      >
+        <div className="kicker mb-1" style={{ fontSize: "0.625rem" }}>Why it matters</div>
+        <p className="text-sm leading-relaxed" style={{ color: "var(--text)" }}>{layer.keyInsight}</p>
       </div>
 
-      <div className="text-xs font-mono mb-3 uppercase tracking-wider" style={{ color: "var(--text-dim)" }}>
-        top_holdings [{topHoldings.length}]
+      <div className="text-[11px] font-bold uppercase tracking-widest mb-3" style={{ color: "var(--text-dim)" }}>
+        Key companies
       </div>
 
       <div className="grid grid-cols-2 gap-2">
         {topHoldings.map((stock) => {
           const quote = prices[stock.ticker];
-          const price = quote?.price ?? 0;
-          const change = quote?.change ?? 0;
+          const hasPrice = quote && quote.price > 0;
 
           return (
             <div
               key={stock.ticker}
-              className="rounded-md p-3 border"
+              className="rounded-lg p-3 border"
               style={{ borderColor: "var(--border)", backgroundColor: "var(--bg)" }}
             >
               <div className="flex items-center justify-between mb-1">
                 <span className="font-bold text-sm" style={{ color: "var(--text)" }}>{stock.ticker}</span>
-                <span
-                  className="text-xs font-mono"
-                  style={{ color: change >= 0 ? "var(--green)" : "var(--red)" }}
-                >
-                  {change >= 0 ? "+" : ""}{change.toFixed(2)}%
-                </span>
+                {hasPrice ? (
+                  <span
+                    className="text-xs font-semibold"
+                    style={{ color: quote.change >= 0 ? "var(--green)" : "var(--red)" }}
+                  >
+                    {quote.change >= 0 ? "+" : ""}{quote.change.toFixed(2)}%
+                  </span>
+                ) : (
+                  <span className="text-xs" style={{ color: "var(--text-dim)" }}>—</span>
+                )}
               </div>
               <div className="text-xs" style={{ color: "var(--text-dim)" }}>{stock.name}</div>
-              <div className="text-sm font-mono mt-1" style={{ color: "var(--text)" }}>
-                ${price.toFixed(2)}
+              <div className="text-sm font-semibold mt-1" style={{ color: "var(--text)" }}>
+                {hasPrice ? `$${quote.price.toFixed(2)}` : "n/a"}
               </div>
             </div>
           );

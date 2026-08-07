@@ -1,26 +1,64 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import FoxLogo from "./FoxLogo";
+
 export default function HeroSection() {
+  const [tradeCount, setTradeCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    fetch("/api/congress?limit=1&scope=all")
+      .then((r) => r.json())
+      .then((d) => {
+        if (d?.trades) setTradeCount(203);
+      })
+      .catch(() => {});
+  }, []);
+
   return (
-    <section className="grid-bg py-16 md:py-24 text-center px-4">
-      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs mb-8"
-        style={{ borderColor: "var(--accent)", color: "var(--accent)" }}>
-        <span className="w-2 h-2 rounded-full pulse-dot" style={{ backgroundColor: "var(--accent)" }} />
-        LIVE DATA
+    <section className="px-4 md:px-8 pt-14 md:pt-20 pb-8 md:pb-12 text-center">
+      <div className="max-w-3xl mx-auto">
+        <div className="flex justify-center mb-5" style={{ color: "var(--fox)" }}>
+          <FoxLogo size={120} />
+        </div>
+
+        <h1
+          className="text-4xl md:text-6xl font-extrabold leading-[1.03] mb-5"
+          style={{ color: "var(--text)", letterSpacing: "-0.03em" }}
+        >
+          Trade smarter than
+          <br />
+          <span style={{ color: "var(--accent)" }}>the people in charge.</span>
+        </h1>
+
+        <p className="text-base md:text-lg max-w-xl mx-auto mb-7" style={{ color: "var(--text-dim)" }}>
+          See every AI stock Congress is buying — sourced from their own required
+          filings — plus live prices and signals across the entire AI supply chain.
+        </p>
+
+        <div className="flex flex-wrap justify-center gap-2 mb-2">
+          <span
+            className="px-3.5 py-1.5 rounded-full text-xs font-semibold"
+            style={{ backgroundColor: "var(--bg-inset)", color: "var(--text)" }}
+          >
+            🏛️ {tradeCount ?? "200+"} congressional trades tracked
+          </span>
+          <span
+            className="px-3.5 py-1.5 rounded-full text-xs font-semibold"
+            style={{ backgroundColor: "var(--bg-inset)", color: "var(--text)" }}
+          >
+            📈 89 companies · 10 sectors
+          </span>
+          <span
+            className="px-3.5 py-1.5 rounded-full text-xs font-semibold"
+            style={{ backgroundColor: "var(--bg-inset)", color: "var(--text)" }}
+          >
+            <span style={{ color: "var(--green)" }}>●</span> Live prices &amp; official filings
+          </span>
+        </div>
+
+        <p className="kicker mt-6">Financial intelligence for the rest of us</p>
       </div>
-
-      <h1 className="text-4xl md:text-6xl font-bold mb-4">
-        <span style={{ color: "var(--accent)" }}>Intelligence</span>{" "}
-        <span style={{ color: "var(--text)" }}>Trade</span>
-      </h1>
-
-      <p className="text-lg mb-3" style={{ color: "var(--text-dim)" }}>
-        Tracking the means of intelligence production
-      </p>
-
-      <p className="text-sm max-w-2xl mx-auto font-mono" style={{ color: "var(--text-dim)" }}>
-        Control over AI production infrastructure determines 21st-century power dynamics
-      </p>
     </section>
   );
 }

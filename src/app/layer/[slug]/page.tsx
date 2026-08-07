@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { getLayerBySlug, layers } from "@/lib/data";
 import Navbar from "@/components/Navbar";
+import SiteFooter from "@/components/SiteFooter";
 import StockList from "@/components/StockList";
 import NewsFeed from "@/components/NewsFeed";
 
@@ -26,7 +27,7 @@ export default function LayerPage() {
     return (
       <>
         <Navbar />
-        <main className="flex-1 grid-bg flex items-center justify-center">
+        <main className="flex-1 flex items-center justify-center">
           <p style={{ color: "var(--text-dim)" }}>Layer not found</p>
         </main>
       </>
@@ -40,12 +41,9 @@ export default function LayerPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1 grid-bg">
+      <main className="flex-1">
         <div className="max-w-5xl mx-auto px-4 md:px-8 py-8">
-          <div className="flex items-center gap-2 text-xs mb-6" style={{ color: "var(--text-dim)" }}>
-            <span style={{ color: "var(--accent)" }}>$</span>
-            <span>cd ./layers/{slug}</span>
-          </div>
+          <div className="kicker mb-2">Sector</div>
 
           <div className="flex items-center gap-3 mb-2">
             <div
@@ -86,14 +84,14 @@ export default function LayerPage() {
           </div>
 
           <div
-            className="rounded-md p-4 mb-8 border"
+            className="rounded-lg p-4 mb-8 border-l-4"
             style={{
-              backgroundColor: "var(--terminal-bg)",
-              borderColor: "var(--border)",
+              backgroundColor: "var(--bg-inset)",
+              borderColor: "var(--accent)",
             }}
           >
-            <div className="text-xs font-mono mb-1" style={{ color: "var(--accent)" }}>
-              # KEY_INSIGHT
+            <div className="kicker mb-1" style={{ fontSize: "0.625rem" }}>
+              Why it matters
             </div>
             <p className="text-sm" style={{ color: "var(--text)" }}>
               {layer.keyInsight}
@@ -104,6 +102,7 @@ export default function LayerPage() {
           <NewsFeed ticker={layer.stocks[0]?.ticker} />
         </div>
       </main>
+    <SiteFooter />
     </>
   );
 }

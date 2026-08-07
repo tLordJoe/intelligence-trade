@@ -62,14 +62,10 @@ export default function TechnicalSignals({ ticker }: Props) {
   return (
     <section className="px-4 md:px-8 py-8">
       <div className="rounded-lg border p-4 md:p-6" style={{ backgroundColor: "var(--bg-card)", borderColor: "var(--border)" }}>
-        <div className="flex items-center gap-2 text-xs mb-4" style={{ color: "var(--text-dim)" }}>
-          <span style={{ color: "var(--accent)" }}>$</span>
-          <span>analyze --signals --moving-averages</span>
-        </div>
-
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
           <div>
-            <h2 className="text-lg font-bold flex items-center gap-2" style={{ color: "var(--text)" }}>
+            <div className="kicker mb-1">Signals</div>
+            <h2 className="text-xl font-bold flex items-center gap-2" style={{ color: "var(--text)" }}>
               <span>📊</span> Technical Signals
             </h2>
             <p className="text-xs mt-1" style={{ color: "var(--text-dim)" }}>

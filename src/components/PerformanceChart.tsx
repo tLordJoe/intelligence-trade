@@ -59,11 +59,12 @@ export default function PerformanceChart() {
     <section className="px-4 md:px-8 py-8">
       <div className="rounded-lg border p-4 md:p-6"
         style={{ backgroundColor: "var(--bg-card)", borderColor: "var(--border)" }}>
-        <h2 className="text-lg font-bold mb-1" style={{ color: "var(--text)" }}>
-          Full Stack Performance
+        <div className="kicker mb-1">Benchmarks</div>
+        <h2 className="text-xl font-bold mb-1" style={{ color: "var(--text)" }}>
+          Market performance
         </h2>
         <p className="text-xs mb-4" style={{ color: "var(--text-dim)" }}>
-          equal-weight index of 80 tickers vs SPY
+          S&amp;P 500 (SPY) vs Nasdaq-100 (QQQ) — chart by TradingView
         </p>
 
         <div className="flex gap-1 mb-4">
@@ -97,7 +98,7 @@ export default function PerformanceChart() {
           </span>
           <span className="flex items-center gap-1">
             <span className="w-3 h-0.5 inline-block bg-purple-400" />
-            Full Stack Portfolio
+            QQQ
           </span>
         </div>
       </div>

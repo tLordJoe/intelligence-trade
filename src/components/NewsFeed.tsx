@@ -39,8 +39,9 @@ export default function NewsFeed({ ticker = "NVDA" }: Props) {
 
   return (
     <section className="px-4 md:px-8 py-8">
-      <h2 className="text-sm font-mono mb-4" style={{ color: "var(--text-dim)" }}>
-        <span style={{ color: "var(--accent)" }}>$</span> tail -f ./news
+      <div className="kicker mb-1">Latest headlines</div>
+      <h2 className="text-xl font-bold mb-4" style={{ color: "var(--text)" }}>
+        In the news
       </h2>
 
       <div className="space-y-2">

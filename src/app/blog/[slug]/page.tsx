@@ -3,6 +3,7 @@
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import SiteFooter from "@/components/SiteFooter";
 import { getBlogPost, blogPosts } from "@/lib/blog-data";
 
 export default function BlogPostPage() {
@@ -14,7 +15,7 @@ export default function BlogPostPage() {
     return (
       <>
         <Navbar />
-        <main className="flex-1 grid-bg flex items-center justify-center">
+        <main className="flex-1 flex items-center justify-center">
           <p style={{ color: "var(--text-dim)" }}>Post not found</p>
         </main>
       </>
@@ -28,12 +29,9 @@ export default function BlogPostPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1 grid-bg">
+      <main className="flex-1">
         <article className="max-w-3xl mx-auto px-4 md:px-8 py-8">
-          <div className="flex items-center gap-2 text-xs mb-6" style={{ color: "var(--text-dim)" }}>
-            <span style={{ color: "var(--accent)" }}>$</span>
-            <span>cat ./blog/{slug}.md</span>
-          </div>
+          <div className="kicker mb-4">The Briefing</div>
 
           <div className="flex items-center gap-2 mb-4">
             <span
@@ -155,6 +153,7 @@ export default function BlogPostPage() {
           </div>
         </article>
       </main>
+    <SiteFooter />
     </>
   );
 }

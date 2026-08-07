@@ -33,24 +33,25 @@ export default function StockList({ layer, prices }: Props) {
   return (
     <section className="px-4 md:px-8 py-8">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-bold" style={{ color: "var(--text)" }}>
+        <h2 className="text-xl font-bold" style={{ color: "var(--text)" }}>
           {layer.name}{" "}
-          <span className="text-xs font-mono" style={{ color: "var(--text-dim)" }}>
-            [{layer.stocks.length}]
+          <span className="text-sm font-normal" style={{ color: "var(--text-dim)" }}>
+            · {layer.stocks.length} companies
           </span>
         </h2>
         <Link
           href={`/layer/${layer.slug}`}
-          className="text-xs flex items-center gap-1 hover:underline"
+          className="text-xs font-semibold flex items-center gap-1 hover:underline"
           style={{ color: "var(--accent)" }}
         >
-          view all <span>→</span>
+          View all <span>→</span>
         </Link>
       </div>
 
       <div className="space-y-2">
         {layer.stocks.map((stock) => {
           const quote = prices[stock.ticker];
+          const hasPrice = !!quote && quote.price > 0;
           const price = quote?.price ?? 0;
           const change = quote?.change ?? 0;
 
@@ -79,15 +80,23 @@ export default function StockList({ layer, prices }: Props) {
               </div>
 
               <div className="text-right shrink-0">
-                <div className="font-mono text-sm font-semibold" style={{ color: "var(--text)" }}>
-                  ${price.toFixed(2)}
-                </div>
-                <div
-                  className="font-mono text-xs"
-                  style={{ color: change >= 0 ? "var(--green)" : "var(--red)" }}
-                >
-                  {change >= 0 ? "+" : ""}{change.toFixed(2)}%
-                </div>
+                {hasPrice ? (
+                  <>
+                    <div className="text-sm font-semibold" style={{ color: "var(--text)" }}>
+                      ${price.toFixed(2)}
+                    </div>
+                    <div
+                      className="text-xs font-medium"
+                      style={{ color: change >= 0 ? "var(--green)" : "var(--red)" }}
+                    >
+                      {change >= 0 ? "+" : ""}{change.toFixed(2)}%
+                    </div>
+                  </>
+                ) : (
+                  <div className="text-xs" style={{ color: "var(--text-dim)" }}>
+                    price n/a
+                  </div>
+                )}
               </div>
 
               <button

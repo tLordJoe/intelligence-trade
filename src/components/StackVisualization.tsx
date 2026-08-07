@@ -35,9 +35,14 @@ export default function StackVisualization({ activeLayer, onSelectLayer }: Props
         className="rounded-lg border p-4 md:p-6"
         style={{ backgroundColor: "var(--bg-card)", borderColor: "var(--border)" }}
       >
-        <div className="flex items-center gap-2 text-xs mb-6" style={{ color: "var(--text-dim)" }}>
-          <span style={{ color: "var(--accent)" }}>$</span>
-          <span>render stack --market-cap</span>
+        <div className="mb-6">
+          <div className="kicker mb-1">The AI Stack</div>
+          <h2 className="text-xl font-bold" style={{ color: "var(--text)" }}>
+            Ten layers, one supply chain
+          </h2>
+          <p className="text-xs mt-1" style={{ color: "var(--text-dim)" }}>
+            Bar width = total market cap. Select a layer to see who&apos;s inside it.
+          </p>
         </div>
 
         <div className="space-y-2">
@@ -75,13 +80,8 @@ export default function StackVisualization({ activeLayer, onSelectLayer }: Props
           })}
         </div>
 
-        <div className="mt-4 flex flex-col md:flex-row gap-2 md:gap-6 text-xs" style={{ color: "var(--text-dim)" }}>
-          <span>bubble = subcategory</span>
-          <span className="hidden md:inline">|</span>
-          <span>bar width = total market cap</span>
-        </div>
-        <div className="mt-1 text-xs" style={{ color: "var(--text-dim)" }}>
-          click layer to inspect | hover bars for details
+        <div className="mt-4 text-xs" style={{ color: "var(--text-dim)" }}>
+          Market caps are approximate sums of tracked companies per layer.
         </div>
       </div>
     </section>
