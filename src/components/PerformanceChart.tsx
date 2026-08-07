@@ -62,9 +62,6 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
 
   useEffect(() => {
     const controller = new AbortController();
-    setLoading(true);
-    setFailedTickers([]);
-
     Promise.allSettled(
       tickers.map(async (ticker) => {
         const response = await fetch(`/api/history?ticker=${ticker}&range=${RANGE_BY_TIMEFRAME[timeframe]}`, {
