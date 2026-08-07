@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { getAllTickers } from "@/lib/data";
 
 export default function HeroSection() {
   const [tradeCount, setTradeCount] = useState<number | null>(null);
@@ -9,7 +10,7 @@ export default function HeroSection() {
     fetch("/api/congress?limit=1&scope=all")
       .then((r) => r.json())
       .then((d) => {
-        if (d?.trades) setTradeCount(203);
+        if (typeof d?.total === "number") setTradeCount(d.total);
       })
       .catch(() => {});
   }, []);
@@ -27,8 +28,8 @@ export default function HeroSection() {
         </h1>
 
         <p className="text-base md:text-lg max-w-xl mx-auto mb-7" style={{ color: "var(--text-dim)" }}>
-          See every AI stock Congress is buying — sourced from their own required
-          filings — plus live prices and signals across the entire AI supply chain.
+          Explore disclosed U.S. House trades involving AI supply-chain stocks,
+          alongside market data for the companies that make AI possible.
         </p>
 
         <div className="flex flex-wrap justify-center gap-2 mb-2">
@@ -36,19 +37,19 @@ export default function HeroSection() {
             className="px-3.5 py-1.5 rounded-full text-xs font-semibold"
             style={{ backgroundColor: "var(--bg-inset)", color: "var(--text)" }}
           >
-            🏛️ {tradeCount ?? "200+"} congressional trades tracked
+            🏛️ {tradeCount ?? "—"} House trades tracked
           </span>
           <span
             className="px-3.5 py-1.5 rounded-full text-xs font-semibold"
             style={{ backgroundColor: "var(--bg-inset)", color: "var(--text)" }}
           >
-            📈 89 companies · 10 sectors
+            📈 {getAllTickers().length} companies · 10 sectors
           </span>
           <span
             className="px-3.5 py-1.5 rounded-full text-xs font-semibold"
             style={{ backgroundColor: "var(--bg-inset)", color: "var(--text)" }}
           >
-            <span style={{ color: "var(--green)" }}>●</span> Live prices &amp; official filings
+            <span style={{ color: "var(--green)" }}>●</span> Market data &amp; official House filings
           </span>
         </div>
 
