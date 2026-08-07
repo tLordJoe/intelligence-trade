@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   },
   description:
     "See every AI stock Congress is buying, sourced from their own required filings. Live prices across the AI supply chain and the signals that show where the smart money is moving.",
+  icons: {
+    icon: [{ url: "/brand/outfox-tail.svg", type: "image/svg+xml" }],
+    shortcut: "/brand/outfox-tail.svg",
+  },
   openGraph: {
     title: "Outfox — Financial intelligence for the rest of us",
     description:
