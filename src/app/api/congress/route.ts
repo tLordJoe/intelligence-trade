@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import liveData from "@/lib/congress-live.json";
 import { getAllTickers } from "@/lib/data";
+import { dedupeById } from "@/lib/congress-utils";
 
 interface LiveTrade {
   id: string;
@@ -28,9 +29,10 @@ function daysAgo(iso: string): number {
 export async function GET(req: NextRequest) {
   const ticker = req.nextUrl.searchParams.get("ticker");
   const scope = req.nextUrl.searchParams.get("scope") || "stack";
-  const limit = parseInt(req.nextUrl.searchParams.get("limit") || "50");
+  const requestedLimit = Number(req.nextUrl.searchParams.get("limit") || "50");
+  const limit = Number.isInteger(requestedLimit) ? Math.min(Math.max(requestedLimit, 1), 250) : 50;
 
-  let trades = (liveData.trades as LiveTrade[]).map((t) => ({
+  let trades = dedupeById(liveData.trades as LiveTrade[]).map((t) => ({
     ...t,
     party: t.party ?? "?",
     daysAgo: daysAgo(t.filedDate),
@@ -57,6 +59,7 @@ export async function GET(req: NextRequest) {
     updatedAt: liveData.updatedAt,
     source: liveData.source,
     coverage: "U.S. House of Representatives",
+    limitations: "House-only coverage; filings can be delayed, amended, or corrected by the filer.",
     total,
     trades: trades.slice(0, limit),
   });
