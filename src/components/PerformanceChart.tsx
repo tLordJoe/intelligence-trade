@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { getAllTickers } from "@/lib/data";
+import { percentagePerformance } from "@/lib/market-data";
 
 interface Props {
   comparedTickers: string[];
@@ -73,7 +74,7 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
         const base = data.closes[0];
         const points = data.closes.map((close, index) => ({
           timestamp: data.timestamps[index],
-          value: ((close / base) - 1) * 100,
+          value: percentagePerformance(base, close),
         }));
         return { ticker, points, change: points.at(-1)?.value ?? 0 } satisfies ChartSeries;
       })

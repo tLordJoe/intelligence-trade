@@ -15,24 +15,22 @@ interface NewsItem {
 const newsCache = new Map<string, { data: NewsItem[]; ts: number }>();
 const CACHE_TTL = 5 * 60_000;
 
-const MOCK_NEWS: NewsItem[] = [
-  { id: 1, headline: "NVIDIA Earnings Beat Expectations as AI Demand Surges", source: "Reuters", datetime: Date.now() / 1000 - 3600, url: "#", related: "NVDA", summary: "" },
-  { id: 2, headline: "CrowdStrike Expands AI-Powered Threat Detection Platform", source: "Bloomberg", datetime: Date.now() / 1000 - 7200, url: "#", related: "CRWD", summary: "" },
-  { id: 3, headline: "TSMC Plans New Arizona Fab for Advanced AI Chips", source: "WSJ", datetime: Date.now() / 1000 - 10800, url: "#", related: "TSM", summary: "" },
-  { id: 4, headline: "Microsoft Azure AI Revenue Grows 60% Year-Over-Year", source: "CNBC", datetime: Date.now() / 1000 - 14400, url: "#", related: "MSFT", summary: "" },
-  { id: 5, headline: "AMD Launches Next-Gen MI400 AI Accelerator Series", source: "TechCrunch", datetime: Date.now() / 1000 - 18000, url: "#", related: "AMD", summary: "" },
-];
-
 export async function GET(req: NextRequest) {
-  const ticker = req.nextUrl.searchParams.get("ticker") || "NVDA";
+  const ticker = (req.nextUrl.searchParams.get("ticker") || "NVDA").toUpperCase();
+  if (!/^[A-Z.]{1,6}$/.test(ticker)) {
+    return NextResponse.json({ error: "Invalid ticker" }, { status: 400 });
+  }
 
   const cached = newsCache.get(ticker);
   if (cached && Date.now() - cached.ts < CACHE_TTL) {
-    return NextResponse.json(cached.data.slice(0, 5));
+    return NextResponse.json({
+      items: cached.data.slice(0, 5),
+      meta: { source: "Finnhub", updatedAt: new Date(cached.ts).toISOString(), delay: "News may be delayed" },
+    });
   }
 
   if (!FINNHUB_KEY) {
-    return NextResponse.json(MOCK_NEWS);
+    return NextResponse.json({ error: "News is temporarily unavailable" }, { status: 503 });
   }
 
   try {
@@ -41,11 +39,14 @@ export async function GET(req: NextRequest) {
     const res = await fetch(
       `https://finnhub.io/api/v1/company-news?symbol=${ticker}&from=${from.toISOString().split("T")[0]}&to=${now.toISOString().split("T")[0]}&token=${FINNHUB_KEY}`
     );
-    if (!res.ok) return NextResponse.json(MOCK_NEWS);
+    if (!res.ok) throw new Error(`upstream ${res.status}`);
     const data: NewsItem[] = await res.json();
     newsCache.set(ticker, { data, ts: Date.now() });
-    return NextResponse.json(data.slice(0, 5));
+    return NextResponse.json({
+      items: data.slice(0, 5),
+      meta: { source: "Finnhub", updatedAt: new Date().toISOString(), delay: "News may be delayed" },
+    });
   } catch {
-    return NextResponse.json(MOCK_NEWS);
+    return NextResponse.json({ error: "News provider is temporarily unavailable" }, { status: 502 });
   }
 }

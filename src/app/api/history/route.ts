@@ -20,7 +20,14 @@ export async function GET(req: NextRequest) {
   const key = `${ticker}:${range}`;
   const hit = cache.get(key);
   if (hit && Date.now() - hit.at < TTL) {
-    return NextResponse.json(hit.data);
+    return NextResponse.json({
+      ...hit.data,
+      meta: {
+        source: "Yahoo Finance chart endpoint (unofficial integration)",
+        updatedAt: new Date(hit.at).toISOString(),
+        delay: "Historical data may be delayed or adjusted",
+      },
+    });
   }
 
   try {
@@ -46,7 +53,14 @@ export async function GET(req: NextRequest) {
 
     const data: HistoryData = { ticker, timestamps: ts, closes: cl };
     cache.set(key, { data, at: Date.now() });
-    return NextResponse.json(data);
+    return NextResponse.json({
+      ...data,
+      meta: {
+        source: "Yahoo Finance chart endpoint (unofficial integration)",
+        updatedAt: new Date().toISOString(),
+        delay: "Historical data may be delayed or adjusted",
+      },
+    });
   } catch {
     return NextResponse.json(
       { error: "history unavailable" },

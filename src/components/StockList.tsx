@@ -3,19 +3,22 @@
 import { useCallback, useState, useEffect } from "react";
 import { Layer } from "@/lib/data";
 import Link from "next/link";
+import type { DataMeta } from "@/lib/market-data";
 
 interface Props {
   layer: Layer;
   prices: Record<string, { price: number; change: number }>;
   chartTickers?: string[];
   onAddToChart?: (ticker: string) => void;
+  dataMeta?: DataMeta | null;
+  dataUnavailable?: boolean;
 }
 
 function getInitials(name: string): string {
   return name.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase();
 }
 
-export default function StockList({ layer, prices, chartTickers = [], onAddToChart }: Props) {
+export default function StockList({ layer, prices, chartTickers = [], onAddToChart, dataMeta, dataUnavailable = false }: Props) {
   const [portfolio, setPortfolio] = useState<string[]>([]);
 
   useEffect(() => {
@@ -134,6 +137,13 @@ export default function StockList({ layer, prices, chartTickers = [], onAddToCha
           );
         })}
       </div>
+      <p className="mt-3 text-[10px]" style={{ color: dataUnavailable ? "var(--red)" : "var(--text-dim)" }}>
+        {dataUnavailable
+          ? "Market quotes are temporarily unavailable; Outfox will not substitute estimated prices."
+          : dataMeta
+            ? `Source: ${dataMeta.source} · ${dataMeta.delay} · Updated ${new Date(dataMeta.updatedAt).toLocaleString()}`
+            : "Loading verified market quotes…"}
+      </p>
     </section>
   );
 }
