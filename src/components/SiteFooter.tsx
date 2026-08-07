@@ -18,18 +18,14 @@ export default function SiteFooter() {
               </span>
             </div>
             <p className="text-xs leading-relaxed" style={{ color: "var(--text-dim)" }}>
-              Financial intelligence for the rest of us. Congressional trades,
-              live AI supply-chain prices, and the signals that show where the
-              smart money is moving.
+              Financial intelligence for the rest of us. Official U.S. House
+              trade disclosures and market data across the AI supply chain.
             </p>
           </div>
 
           <div className="grid grid-cols-2 gap-x-12 gap-y-2 text-xs">
             <Link href="/congress" className="hover:underline" style={{ color: "var(--text-dim)" }}>
               Congress Trades
-            </Link>
-            <Link href="/signals" className="hover:underline" style={{ color: "var(--text-dim)" }}>
-              Signals
             </Link>
             <Link href="/blog" className="hover:underline" style={{ color: "var(--text-dim)" }}>
               The Briefing
@@ -57,7 +53,7 @@ export default function SiteFooter() {
           <p className="mb-2">
             <strong>Not financial advice.</strong> Outfox is an information
             service. Nothing on this site is a recommendation to buy or sell any
-            security. Congressional trade data is compiled from official STOCK
+            security. House trade data is compiled from official STOCK
             Act filings published by the Clerk of the U.S. House of
             Representatives; filings can be amended and may contain errors.
             Market data is provided by Finnhub and may be delayed. Do your own

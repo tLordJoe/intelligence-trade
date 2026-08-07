@@ -51,9 +51,13 @@ export async function GET(req: NextRequest) {
       new Date(b.transactionDate).getTime() - new Date(a.transactionDate).getTime()
   );
 
+  const total = trades.length;
+
   return NextResponse.json({
     updatedAt: liveData.updatedAt,
     source: liveData.source,
+    coverage: "U.S. House of Representatives",
+    total,
     trades: trades.slice(0, limit),
   });
 }

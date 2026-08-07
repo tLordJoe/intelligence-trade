@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
+import { getAllTickers } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "About & Methodology",
@@ -88,18 +89,18 @@ export default function AboutPage() {
             </p>
           </Section>
 
-          <Section title="Technical signals">
+          <Section title="Technical indicators">
             <p>
-              Signal ratings (Strong Buy → Strong Sell) are computed from
-              standard indicators: price vs. 20/50/200-day moving averages, RSI,
-              and MACD. They are descriptive, mechanical summaries of price
-              action — not predictions and not advice.
+              Technical indicators are temporarily unpublished while we validate
+              their market-data source, formulas, adjustment rules, and refresh
+              timing. We will not display them until the values are reproducible
+              and their methodology is documented.
             </p>
           </Section>
 
           <Section title="The AI stack">
             <p>
-              We organize 89 public companies into 10 supply-chain layers — from
+              We organize {getAllTickers().length} public companies into 10 supply-chain layers — from
               raw materials and semiconductor equipment through foundries,
               processors, memory, networking, energy, data centers, software,
               and security. Layer membership is editorial: companies are placed

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     template: "%s · Outfox",
   },
   description:
-    "See every AI stock Congress is buying, sourced from their own required filings. Live prices across the AI supply chain and the signals that show where the smart money is moving.",
+    "Explore official U.S. House stock-trade disclosures and market data across the AI supply chain.",
   icons: {
     icon: [{ url: "/brand/outfox-tail.svg", type: "image/svg+xml" }],
     shortcut: "/brand/outfox-tail.svg",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Outfox — Financial intelligence for the rest of us",
     description:
-      "See every AI stock Congress is buying — sourced from their own required filings.",
+      "Explore official U.S. House stock-trade disclosures across the AI supply chain.",
     url: "https://outfoxmarkets.com",
     siteName: "Outfox",
     type: "website",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Outfox — Financial intelligence for the rest of us",
     description:
-      "See every AI stock Congress is buying — sourced from their own required filings.",
+      "Explore official U.S. House stock-trade disclosures across the AI supply chain.",
   },
 };
 

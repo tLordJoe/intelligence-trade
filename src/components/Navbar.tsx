@@ -3,12 +3,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const NAV_LINKS = [
   { href: "/", label: "Stack" },
   { href: "/congress", label: "Congress" },
-  { href: "/signals", label: "Signals" },
   { href: "/blog", label: "Briefing" },
   { href: "/portfolio", label: "Watchlist" },
   { href: "/about", label: "About" },
@@ -16,11 +15,9 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [dark, setDark] = useState(false);
-
-  useEffect(() => {
-    setDark(document.documentElement.classList.contains("dark"));
-  }, []);
+  const [dark, setDark] = useState(() =>
+    typeof document !== "undefined" && document.documentElement.classList.contains("dark")
+  );
 
   function toggleTheme() {
     const next = !dark;

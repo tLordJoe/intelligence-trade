@@ -47,7 +47,6 @@ export default function CongressChart() {
 
   useEffect(() => {
     if (!ticker) return;
-    setStatus("loading");
     fetch(`/api/history?ticker=${ticker}&range=1y`)
       .then((r) => {
         if (!r.ok) throw new Error(String(r.status));

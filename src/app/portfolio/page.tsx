@@ -7,12 +7,15 @@ import SiteFooter from "@/components/SiteFooter";
 
 export default function PortfolioPage() {
   const [prices, setPrices] = useState<Record<string, { price: number; change: number }>>({});
-  const [portfolio, setPortfolio] = useState<string[]>([]);
-
-  useEffect(() => {
-    const saved = localStorage.getItem("portfolio");
-    if (saved) setPortfolio(JSON.parse(saved));
-  }, []);
+  const [portfolio, setPortfolio] = useState<string[]>(() => {
+    if (typeof window === "undefined") return [];
+    try {
+      const saved = localStorage.getItem("portfolio");
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
 
   useEffect(() => {
     if (!portfolio.length) return;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { CongressTrade } from "@/lib/congress-data";
+import type { CongressTrade } from "@/lib/congress-types";
 
 function AmountBadge({ amount }: { amount: string }) {
   const num = parseInt(amount.replace(/[^0-9]/g, ""));
@@ -25,9 +25,14 @@ function AmountBadge({ amount }: { amount: string }) {
   );
 }
 
-function PartyBadge({ party, chamber }: { party: "D" | "R"; chamber: string }) {
-  const color = party === "D" ? "#3B82F6" : "#EF4444";
-  const bg = party === "D" ? "rgba(59, 130, 246, 0.1)" : "rgba(239, 68, 68, 0.1)";
+function partyColors(party: CongressTrade["party"]) {
+  if (party === "D") return { color: "#3B82F6", bg: "rgba(59, 130, 246, 0.1)" };
+  if (party === "R") return { color: "#EF4444", bg: "rgba(239, 68, 68, 0.1)" };
+  return { color: "var(--text-dim)", bg: "var(--bg-inset)" };
+}
+
+function PartyBadge({ party, chamber }: { party: CongressTrade["party"]; chamber: string }) {
+  const { color, bg } = partyColors(party);
   return (
     <div className="flex items-center gap-1">
       <span
@@ -78,12 +83,12 @@ export default function CongressTrades() {
       >
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
           <div>
-            <div className="kicker mb-1">Congress Watch</div>
+            <div className="kicker mb-1">House Disclosure Watch</div>
             <h2 className="text-xl font-bold flex items-center gap-2" style={{ color: "var(--text)" }}>
-              <span>🏛️</span> Congress Is Buying
+              <span>🏛️</span> Recent House Stock Disclosures
             </h2>
             <p className="text-xs mt-1" style={{ color: "var(--text-dim)" }}>
-              Recent trades by U.S. Congress members in AI supply chain stocks
+              Transactions reported by U.S. House members involving AI supply-chain stocks
             </p>
           </div>
           <div className="flex gap-1">
@@ -140,7 +145,7 @@ export default function CongressTrades() {
         )}
         {status === "ok" && filtered.length === 0 && (
           <div className="rounded-lg border p-6 text-center text-xs" style={{ borderColor: "var(--border)", color: "var(--text-dim)" }}>
-            No recent trades match this filter. Congress files on a delay of up to 45 days — check back soon.
+            No recent trades match this filter. House filings can appear up to 45 days after a transaction.
           </div>
         )}
 
@@ -154,7 +159,7 @@ export default function CongressTrades() {
               <div className="flex items-center gap-3 flex-1 min-w-0">
                 <div
                   className="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0"
-                  style={{ backgroundColor: trade.party === "D" ? "#3B82F6" : "#EF4444" }}
+                  style={{ backgroundColor: partyColors(trade.party).color }}
                 >
                   {trade.politician.split(" ").map((w) => w[0]).join("").slice(0, 2)}
                 </div>

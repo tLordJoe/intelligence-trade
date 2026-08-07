@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { getLayerBySlug, layers } from "@/lib/data";
+import { getLayerBySlug } from "@/lib/data";
 import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
 import StockList from "@/components/StockList";
