@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { normalizeTickers, type Quote, type StockQuoteResponse } from "@/lib/market-data";
 
 const FINNHUB_KEY = process.env.FINNHUB_API_KEY || "";
 
@@ -12,12 +13,15 @@ interface QuoteResponse {
   pc: number; // previous close
 }
 
-const cache = new Map<string, { data: Record<string, { price: number; change: number }>; ts: number }>();
+const cache = new Map<string, { data: StockQuoteResponse; ts: number }>();
 const CACHE_TTL = 60_000;
 
 export async function GET(req: NextRequest) {
-  const tickers = req.nextUrl.searchParams.get("tickers")?.split(",") || [];
-  if (!tickers.length) return NextResponse.json({});
+  const rawTickers = req.nextUrl.searchParams.get("tickers")?.split(",") || [];
+  const tickers = normalizeTickers(rawTickers);
+  if (!tickers.length) {
+    return NextResponse.json({ error: "Provide at least one valid ticker" }, { status: 400 });
+  }
 
   const cacheKey = tickers.sort().join(",");
   const cached = cache.get(cacheKey);
@@ -25,16 +29,13 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(cached.data);
   }
 
-  const results: Record<string, { price: number; change: number }> = {};
+  const results: Record<string, Quote> = {};
 
   if (!FINNHUB_KEY) {
-    for (const t of tickers) {
-      const seed = t.split("").reduce((a, c) => a + c.charCodeAt(0), 0);
-      const base = 50 + (seed % 400);
-      const changePct = ((seed % 800) - 400) / 100;
-      results[t] = { price: base, change: changePct };
-    }
-    return NextResponse.json(results);
+    return NextResponse.json(
+      { error: "Market quotes are temporarily unavailable" },
+      { status: 503 }
+    );
   }
 
   const batchSize = 10;
@@ -58,6 +59,19 @@ export async function GET(req: NextRequest) {
     await Promise.all(promises);
   }
 
-  cache.set(cacheKey, { data: results, ts: Date.now() });
-  return NextResponse.json(results);
+  if (!Object.keys(results).length) {
+    return NextResponse.json({ error: "Market quote provider returned no data" }, { status: 502 });
+  }
+
+  const response: StockQuoteResponse = {
+    quotes: results,
+    unavailable: tickers.filter((ticker) => !results[ticker]),
+    meta: {
+      source: "Finnhub",
+      updatedAt: new Date().toISOString(),
+      delay: "Quotes may be delayed",
+    },
+  };
+  cache.set(cacheKey, { data: response, ts: Date.now() });
+  return NextResponse.json(response);
 }
