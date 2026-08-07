@@ -27,15 +27,24 @@ interface Props {
 
 export default function NewsFeed({ ticker = "NVDA" }: Props) {
   const [news, setNews] = useState<NewsItem[]>([]);
+  const [status, setStatus] = useState<"loading" | "ok" | "error">("loading");
+  const [updatedAt, setUpdatedAt] = useState("");
 
   useEffect(() => {
     fetch(`/api/news?ticker=${ticker}`)
-      .then((r) => r.json())
-      .then(setNews)
-      .catch(() => {});
+      .then((r) => {
+        if (!r.ok) throw new Error(String(r.status));
+        return r.json();
+      })
+      .then((data) => {
+        setNews(data.items || []);
+        setUpdatedAt(data.meta?.updatedAt || "");
+        setStatus("ok");
+      })
+      .catch(() => setStatus("error"));
   }, [ticker]);
 
-  if (!news.length) return null;
+  if (status === "loading") return null;
 
   return (
     <section className="px-4 md:px-8 py-8">
@@ -44,7 +53,13 @@ export default function NewsFeed({ ticker = "NVDA" }: Props) {
         In the news
       </h2>
 
-      <div className="space-y-2">
+      {status === "error" && (
+        <div className="rounded-lg border p-4 text-sm" style={{ borderColor: "var(--border)", color: "var(--text-dim)" }}>
+          Verified news is temporarily unavailable. Outfox does not substitute generated headlines.
+        </div>
+      )}
+
+      {status === "ok" && <div className="space-y-2">
         {news.map((item, i) => (
           <a
             key={item.id || i}
@@ -66,7 +81,12 @@ export default function NewsFeed({ ticker = "NVDA" }: Props) {
             </div>
           </a>
         ))}
-      </div>
+      </div>}
+      {status === "ok" && (
+        <p className="mt-3 text-[10px]" style={{ color: "var(--text-dim)" }}>
+          Source: Finnhub · News may be delayed{updatedAt ? ` · Updated ${new Date(updatedAt).toLocaleString()}` : ""}
+        </p>
+      )}
     </section>
   );
 }
