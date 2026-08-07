@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
   const ticker = (req.nextUrl.searchParams.get("ticker") || "NVDA").toUpperCase();
   const range = req.nextUrl.searchParams.get("range") || "1y";
 
-  if (!/^[A-Z.]{1,6}$/.test(ticker) || !/^(3mo|6mo|1y|2y)$/.test(range)) {
+  if (!/^[A-Z.]{1,6}$/.test(ticker) || !/^(1mo|3mo|6mo|1y|2y|5y|ytd|max)$/.test(range)) {
     return NextResponse.json({ error: "bad params" }, { status: 400 });
   }
 
@@ -25,7 +25,7 @@ export async function GET(req: NextRequest) {
 
   try {
     const res = await fetch(
-      `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?range=${range}&interval=1d`,
+      `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?range=${range}&interval=${range === "max" ? "1wk" : "1d"}`,
       { headers: { "User-Agent": "Mozilla/5.0" }, next: { revalidate: 3600 } }
     );
     if (!res.ok) throw new Error(`upstream ${res.status}`);
