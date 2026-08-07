@@ -57,40 +57,6 @@ As AI infrastructure grows, so does the attack surface. CrowdStrike, Palo Alto N
 Understanding the AI supply chain gives you an edge that most investors lack. While the market focuses on headline names like NVIDIA and Microsoft, the real alpha is in understanding bottlenecks, dependencies, and concentration risks across all 10 layers.`,
   },
   {
-    slug: "congress-trading-ai-stocks",
-    title: "Congress Members Are Loading Up on AI Stocks — Here's What They Know",
-    excerpt: "An analysis of recent congressional trades in AI infrastructure companies and what their committee assignments reveal.",
-    category: "Analysis",
-    date: "2026-08-03",
-    readTime: "8 min",
-    tags: ["Congress", "Insider Trading", "AI Stocks", "STOCK Act"],
-    content: `Members of Congress have been aggressively buying AI infrastructure stocks in 2026, with a clear pattern emerging: lawmakers on the Intelligence, Armed Services, and Commerce committees are disproportionately buying companies in the AI supply chain.
-
-## The Data
-
-Over the past 90 days, we've tracked 47 trades by Congress members in stocks tracked by Intelligence Trade. Key findings:
-
-- **92% were purchases**, not sales
-- **Intelligence Committee members** made 3x more AI trades than the average Congress member
-- The most-bought tickers: NVDA, MSFT, CRWD, PANW, and TSM
-
-## Why Committee Assignments Matter
-
-Congress members on relevant committees have access to classified briefings about national security, cyber threats, and technology policy. When a member of the Intelligence Committee buys CrowdStrike stock, it's worth paying attention.
-
-## Notable Trades
-
-Nancy Pelosi's office disclosed purchases of CRWD and NVDA totaling over $1.5M. Tommy Tuberville, who sits on Armed Services, has been consistently adding NVIDIA and semiconductor positions.
-
-## Legal Framework
-
-The STOCK Act requires disclosure within 45 days, creating a natural delay. By the time we see the trade, the information advantage may have already been priced in — but tracking patterns over time reveals strategic positioning.
-
-## How to Use This Data
-
-Intelligence Trade tracks every congressional trade that touches our AI supply chain universe. Use the Congress tab to filter by party, committee, and stock. The pattern is the signal, not any single trade.`,
-  },
-  {
     slug: "nvidia-cuda-moat",
     title: "NVIDIA's CUDA Moat: Why 94% Market Share Isn't Going Away",
     excerpt: "The technical reasons NVIDIA's dominance in AI accelerators is more durable than most investors realize.",
