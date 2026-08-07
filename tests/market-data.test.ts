@@ -3,6 +3,7 @@ import test from "node:test";
 import { normalizeTickers, percentagePerformance } from "../src/lib/market-data.ts";
 import { dedupeById, isOfficialHouseFilingUrl } from "../src/lib/congress-utils.ts";
 import { assessHouseDataset } from "../src/lib/data-health.ts";
+import { clampIndex, nearestTimestampIndex } from "../src/lib/chart-interaction.ts";
 
 test("normalizeTickers trims, uppercases, deduplicates, and rejects invalid symbols", () => {
   assert.deepEqual(
@@ -77,4 +78,19 @@ test("House dataset health accepts recent records with official sources", () => 
     updatedAt: "2026-08-06T00:00:00.000Z",
     issues: [],
   });
+});
+
+test("chart inspection snaps to the nearest timestamp", () => {
+  const timestamps = [100, 200, 300, 400];
+  assert.equal(nearestTimestampIndex(timestamps, 110), 0);
+  assert.equal(nearestTimestampIndex(timestamps, 249), 1);
+  assert.equal(nearestTimestampIndex(timestamps, 251), 2);
+  assert.equal(nearestTimestampIndex(timestamps, 999), 3);
+});
+
+test("chart keyboard navigation stays inside the available series", () => {
+  assert.equal(clampIndex(-1, 4), 0);
+  assert.equal(clampIndex(2, 4), 2);
+  assert.equal(clampIndex(9, 4), 3);
+  assert.equal(clampIndex(0, 0), -1);
 });
