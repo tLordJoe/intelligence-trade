@@ -59,34 +59,64 @@ export default function StackVisualization({
             const width = Math.max((cap / maxCap) * 100, 8);
             const isFocused = focus === layer.slug;
             const isPinned = activeLayer === layer.slug;
+            const isHovered = highlightLayer === layer.slug;
 
             return (
-              <button
-                key={layer.slug}
-                type="button"
-                className="stack-bar rounded-md px-3 py-2.5 flex items-center justify-between text-left"
-                style={{
-                  width: `${width}%`,
-                  backgroundColor: layer.color,
-                  opacity: focus && !isFocused ? 0.35 : 1,
-                  border: isPinned ? "2px solid var(--text)" : "2px solid transparent",
-                  minWidth: "200px",
-                }}
-                onClick={() => onSelectLayer(layer.slug)}
-                onMouseEnter={() => onHoverLayer(layer.slug)}
-                onFocus={() => onHoverLayer(layer.slug)}
-                onBlur={() => onHoverLayer(null)}
-              >
-                <span className="text-white font-semibold text-xs md:text-sm uppercase tracking-wide">
-                  {layer.name}
-                </span>
-                <span className="flex items-center gap-2 text-white">
-                  <span className="text-xs md:text-sm font-bold">
-                    {formatMarketCap(cap)}
+              <div key={layer.slug} className="relative">
+                <button
+                  type="button"
+                  className="stack-bar rounded-md px-3 py-2.5 flex items-center justify-between text-left"
+                  style={{
+                    width: `${width}%`,
+                    backgroundColor: layer.color,
+                    opacity: focus && !isFocused ? 0.35 : 1,
+                    border: isPinned ? "2px solid var(--text)" : "2px solid transparent",
+                    minWidth: "200px",
+                  }}
+                  onClick={() => onSelectLayer(layer.slug)}
+                  onMouseEnter={() => onHoverLayer(layer.slug)}
+                  onFocus={() => onHoverLayer(layer.slug)}
+                  onBlur={() => onHoverLayer(null)}
+                >
+                  <span className="text-white font-semibold text-xs md:text-sm uppercase tracking-wide">
+                    {layer.name}
                   </span>
-                  <span className="text-xs opacity-70">({layer.stocks.length})</span>
-                </span>
-              </button>
+                  <span className="flex items-center gap-2 text-white">
+                    <span className="text-xs md:text-sm font-bold">
+                      {formatMarketCap(cap)}
+                    </span>
+                    <span className="text-xs opacity-70">({layer.stocks.length})</span>
+                  </span>
+                </button>
+
+                {isHovered && (
+                  <div
+                    className="fade-in hidden md:block absolute z-20 rounded-lg border p-3 pointer-events-none"
+                    style={{
+                      left: `${Math.min(width + 2, 55)}%`,
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      width: "270px",
+                      backgroundColor: "var(--bg-card)",
+                      borderColor: "var(--border)",
+                      boxShadow: "0 8px 24px rgb(16 24 40 / 16%)",
+                    }}
+                  >
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="w-2.5 h-2.5 rounded-sm shrink-0" style={{ backgroundColor: layer.color }} />
+                      <span className="text-xs font-bold" style={{ color: "var(--text)" }}>
+                        {layer.name}
+                      </span>
+                    </div>
+                    <p className="text-[11px] leading-relaxed mb-1.5" style={{ color: "var(--text-dim)" }}>
+                      {layer.description}
+                    </p>
+                    <div className="text-[10px] font-semibold" style={{ color: "var(--accent)" }}>
+                      {formatMarketCap(cap)} across {layer.stocks.length} companies · Click to pin
+                    </div>
+                  </div>
+                )}
+              </div>
             );
           })}
         </div>
