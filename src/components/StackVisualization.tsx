@@ -1,5 +1,6 @@
 "use client";
 
+
 import { useState } from "react";
 import { layers } from "@/lib/data";
 import { SUBCATEGORIES } from "@/lib/subcategories";
@@ -10,6 +11,7 @@ import {
   TestTube, Shield, Lock, KeyRound, type LucideIcon,
 } from "lucide-react";
 
+
 const ICONS: Record<string, LucideIcon> = {
   Bot, Wrench, AppWindow, TrendingUp, Server, Building2, Globe, Zap, Atom,
   Flame, Network, Cable, Antenna, Cpu, CircuitBoard, Binary, MemoryStick,
@@ -17,16 +19,19 @@ const ICONS: Record<string, LucideIcon> = {
   TestTube, Shield, Lock, KeyRound,
 };
 
+
 function formatMarketCap(val: number): string {
   if (val >= 1e12) return `$${(val / 1e12).toFixed(1)}T`;
   if (val >= 1e9) return `$${(val / 1e9).toFixed(0)}B`;
   return `$${(val / 1e6).toFixed(0)}M`;
 }
 
+
 function formatCapB(capB: number): string {
   if (capB >= 1000) return `$${(capB / 1000).toFixed(1)}T`;
   return `$${capB.toFixed(0)}B`;
 }
+
 
 const MARKET_CAPS: Record<string, number> = {
   "software-models": 10.8e12,
@@ -41,6 +46,7 @@ const MARKET_CAPS: Record<string, number> = {
   cybersecurity: 450e9,
 };
 
+
 const STACK_GRADIENTS: Record<string, string> = {
   "software-models": "linear-gradient(120deg, #b91c1c 0%, #ef4444 100%)",
   cybersecurity: "linear-gradient(120deg, #0f766e 0%, #14b8a6 100%)",
@@ -53,6 +59,7 @@ const STACK_GRADIENTS: Record<string, string> = {
   "semiconductor-equipment": "linear-gradient(120deg, #4338ca 0%, #6366f1 100%)",
   "raw-materials": "linear-gradient(120deg, #44403c 0%, #78716c 100%)",
 };
+
 
 const SUBCATEGORY_LEADERS: Record<string, string[]> = {
   "Foundation Models": ["MSFT", "AMZN"],
@@ -86,12 +93,14 @@ const SUBCATEGORY_LEADERS: Record<string, string[]> = {
   "Chemicals & Gases": ["LIN", "APD"],
 };
 
+
 interface Props {
   activeLayer: string | null;
   highlightLayer: string | null;
   onSelectLayer: (slug: string) => void;
   onHoverLayer: (slug: string | null) => void;
 }
+
 
 export default function StackVisualization({
   activeLayer,
@@ -102,6 +111,7 @@ export default function StackVisualization({
   const maxCap = Math.max(...Object.values(MARKET_CAPS));
   const focus = highlightLayer ?? activeLayer;
   const [hoveredBubble, setHoveredBubble] = useState<string | null>(null);
+
 
   return (
     <section className="px-4 md:px-8 py-8">
@@ -120,6 +130,7 @@ export default function StackVisualization({
           </p>
         </div>
 
+
         <div className="space-y-2" onMouseLeave={() => onHoverLayer(null)}>
           {layers.map((layer) => {
             const cap = MARKET_CAPS[layer.slug] || 0;
@@ -129,6 +140,7 @@ export default function StackVisualization({
             const isPinned = activeLayer === layer.slug;
             const subs = SUBCATEGORIES[layer.slug] || [];
             const maxSubCap = Math.max(...subs.map((s) => s.cap), 1);
+
 
             return (
               <div key={layer.slug} className="relative">
@@ -149,8 +161,8 @@ export default function StackVisualization({
                   onFocus={() => onHoverLayer(layer.slug)}
                   onBlur={() => onHoverLayer(null)}
                 >
-                  <span className="flex w-full items-center justify-between gap-3">
-                    <span className="text-white font-bold text-xs md:text-sm uppercase tracking-wide leading-tight">
+                  <span className="relative z-10 flex min-h-5 w-full items-start justify-between gap-3">
+                    <span className="min-w-0 pr-2 text-white font-bold text-xs md:text-sm uppercase tracking-wide leading-tight">
                       {layer.name}
                     </span>
                     <span className="flex items-center gap-2 text-white shrink-0">
@@ -161,9 +173,11 @@ export default function StackVisualization({
                     </span>
                   </span>
 
-                  <span className="mt-2.5 flex min-h-9 items-end gap-1.5">
+
+                  <span className="mt-2 flex min-h-7 items-center gap-1.5">
                     {subs.map((sub) => {
-                      const size = 25 + (sub.cap / maxSubCap) * 18;
+                      // Smaller bubbles preserve the label and keep narrow bars readable.
+                      const size = 20 + (sub.cap / maxSubCap) * 10;
                       const Icon = ICONS[sub.icon] || Gem;
                       const key = `${layer.slug}:${sub.name}`;
                       const leaders = SUBCATEGORY_LEADERS[sub.name] ?? [];
@@ -180,7 +194,7 @@ export default function StackVisualization({
                             onMouseEnter={() => setHoveredBubble(key)}
                             onMouseLeave={() => setHoveredBubble(null)}
                           >
-                            <Icon size={size * 0.48} color="#fff" strokeWidth={2.2} />
+                            <Icon size={size * 0.44} color="#fff" strokeWidth={2.1} />
                           </span>
                           {hoveredBubble === key && (
                             <span className="bubble-tooltip">
@@ -200,6 +214,7 @@ export default function StackVisualization({
             );
           })}
         </div>
+
 
         <div className="mt-4 text-xs" style={{ color: "var(--text-dim)" }}>
           Market caps are approximate sums of tracked companies per layer.
