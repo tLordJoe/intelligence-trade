@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 import { layers, getAllTickers } from "@/lib/data";
 import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
+import type { DataMeta, StockQuoteResponse } from "@/lib/market-data";
 
 export default function PortfolioPage() {
   const [prices, setPrices] = useState<Record<string, { price: number; change: number }>>({});
+  const [quoteMeta, setQuoteMeta] = useState<DataMeta | null>(null);
+  const [quoteError, setQuoteError] = useState(false);
   const [portfolio, setPortfolio] = useState<string[]>(() => {
     if (typeof window === "undefined") return [];
     try {
@@ -20,9 +23,16 @@ export default function PortfolioPage() {
   useEffect(() => {
     if (!portfolio.length) return;
     fetch(`/api/stocks?tickers=${portfolio.join(",")}`)
-      .then((r) => r.json())
-      .then(setPrices)
-      .catch(() => {});
+      .then((r) => {
+        if (!r.ok) throw new Error(String(r.status));
+        return r.json() as Promise<StockQuoteResponse>;
+      })
+      .then((data) => {
+        setPrices(data.quotes);
+        setQuoteMeta(data.meta);
+        setQuoteError(false);
+      })
+      .catch(() => setQuoteError(true));
   }, [portfolio]);
 
   function removeTicker(ticker: string) {
@@ -45,11 +55,10 @@ export default function PortfolioPage() {
     localStorage.setItem("portfolio", JSON.stringify(all));
   }
 
-  const totalValue = portfolio.reduce((sum, t) => sum + (prices[t]?.price || 0), 0);
-  const avgChange =
-    portfolio.length > 0
-      ? portfolio.reduce((sum, t) => sum + (prices[t]?.change || 0), 0) / portfolio.length
-      : 0;
+  const availableQuotes = portfolio.map((ticker) => prices[ticker]).filter(Boolean);
+  const avgChange = availableQuotes.length
+    ? availableQuotes.reduce((sum, quote) => sum + quote.change, 0) / availableQuotes.length
+    : null;
 
   return (
     <>
@@ -94,29 +103,30 @@ export default function PortfolioPage() {
             </div>
           ) : (
             <>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+              <div className="grid grid-cols-2 gap-3 mb-3">
                 <div className="rounded-lg border p-4" style={{ backgroundColor: "var(--bg-card)", borderColor: "var(--border)" }}>
-                  <div className="text-xs mb-1" style={{ color: "var(--text-dim)" }}>POSITIONS</div>
+                  <div className="text-xs mb-1" style={{ color: "var(--text-dim)" }}>WATCHING</div>
                   <div className="text-2xl font-bold font-mono" style={{ color: "var(--text)" }}>
                     {portfolio.length}
-                  </div>
-                </div>
-                <div className="rounded-lg border p-4" style={{ backgroundColor: "var(--bg-card)", borderColor: "var(--border)" }}>
-                  <div className="text-xs mb-1" style={{ color: "var(--text-dim)" }}>TOTAL VALUE</div>
-                  <div className="text-2xl font-bold font-mono" style={{ color: "var(--text)" }}>
-                    ${totalValue.toFixed(2)}
                   </div>
                 </div>
                 <div className="rounded-lg border p-4" style={{ backgroundColor: "var(--bg-card)", borderColor: "var(--border)" }}>
                   <div className="text-xs mb-1" style={{ color: "var(--text-dim)" }}>AVG CHANGE</div>
                   <div
                     className="text-2xl font-bold font-mono"
-                    style={{ color: avgChange >= 0 ? "var(--green)" : "var(--red)" }}
+                    style={{ color: avgChange == null ? "var(--text-dim)" : avgChange >= 0 ? "var(--green)" : "var(--red)" }}
                   >
-                    {avgChange >= 0 ? "+" : ""}{avgChange.toFixed(2)}%
+                    {avgChange == null ? "n/a" : `${avgChange >= 0 ? "+" : ""}${avgChange.toFixed(2)}%`}
                   </div>
                 </div>
               </div>
+              <p className="mb-6 text-[10px]" style={{ color: quoteError ? "var(--red)" : "var(--text-dim)" }}>
+                {quoteError
+                  ? "Market quotes are temporarily unavailable; no estimated prices are shown."
+                  : quoteMeta
+                    ? `Source: ${quoteMeta.source} · ${quoteMeta.delay} · Updated ${new Date(quoteMeta.updatedAt).toLocaleString()}`
+                    : "Loading verified market quotes…"}
+              </p>
 
               <div className="space-y-2">
                 {portfolio.map((ticker) => {
