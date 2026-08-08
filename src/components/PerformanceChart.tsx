@@ -2,9 +2,9 @@
 
 import { useEffect, useMemo, useState } from "react";
 import type { KeyboardEvent as ReactKeyboardEvent, PointerEvent as ReactPointerEvent } from "react";
-import { getAllTickers } from "@/lib/data";
+import { getAllTickers, layers } from "@/lib/data";
 import { percentagePerformance } from "@/lib/market-data";
-import { clampIndex, nearestTimestampIndex } from "@/lib/chart-interaction";
+import { clampIndex, clientPointToSvg, nearestTimestampIndex } from "@/lib/chart-interaction";
 
 interface Props {
   comparedTickers: string[];
@@ -18,10 +18,18 @@ interface HistoryData {
   closes: number[];
 }
 
+interface LayerHistoryData {
+  layer: string;
+  timestamps: number[];
+  values: number[];
+}
+
 interface ChartSeries {
   ticker: string;
   points: { timestamp: number; value: number; price: number }[];
   change: number;
+  color: string;
+  isLayer: boolean;
 }
 
 const ETF_TICKERS = ["QQQ", "SMH", "SOXX", "VGT", "XLK", "CIBR", "HACK"];
@@ -57,6 +65,8 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
   const [failedTickers, setFailedTickers] = useState<string[]>([]);
   const [retryVersion, setRetryVersion] = useState(0);
   const [hoveredPoint, setHoveredPoint] = useState<{ timestamp: number; activeTicker: string } | null>(null);
+  const [chartMode, setChartMode] = useState<"investments" | "layers">("investments");
+  const [selectedLayers, setSelectedLayers] = useState<string[]>(layers.map((layer) => layer.slug));
 
   const tickers = useMemo(() => ["SPY", ...comparedTickers], [comparedTickers]);
   const availableTickers = useMemo(
@@ -66,21 +76,39 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
 
   useEffect(() => {
     const controller = new AbortController();
+    const requests = chartMode === "layers"
+      ? selectedLayers.map((slug) => ({ id: slug, url: `/api/layer-history?layer=${slug}&range=${RANGE_BY_TIMEFRAME[timeframe]}` }))
+      : tickers.map((ticker) => ({ id: ticker, url: `/api/history?ticker=${ticker}&range=${RANGE_BY_TIMEFRAME[timeframe]}` }));
+
+    if (!requests.length) {
+      return () => controller.abort();
+    }
     Promise.allSettled(
-      tickers.map(async (ticker) => {
-        const response = await fetch(`/api/history?ticker=${ticker}&range=${RANGE_BY_TIMEFRAME[timeframe]}`, {
+      requests.map(async ({ id, url }, colorIndex) => {
+        const response = await fetch(url, {
           signal: controller.signal,
         });
-        if (!response.ok) throw new Error(ticker);
+        if (!response.ok) throw new Error(id);
+        if (chartMode === "layers") {
+          const data = (await response.json()) as LayerHistoryData;
+          if (data.values.length < 2) throw new Error(id);
+          const layer = layers.find((item) => item.slug === id)!;
+          const points = data.values.map((value, index) => ({
+            timestamp: data.timestamps[index],
+            value,
+            price: Number.NaN,
+          }));
+          return { ticker: layer.name, points, change: points.at(-1)?.value ?? 0, color: layer.color, isLayer: true } satisfies ChartSeries;
+        }
         const data = (await response.json()) as HistoryData;
-        if (data.closes.length < 2) throw new Error(ticker);
+        if (data.closes.length < 2) throw new Error(id);
         const base = data.closes[0];
         const points = data.closes.map((close, index) => ({
           timestamp: data.timestamps[index],
           value: percentagePerformance(base, close),
           price: close,
         }));
-        return { ticker, points, change: points.at(-1)?.value ?? 0 } satisfies ChartSeries;
+        return { ticker: id, points, change: points.at(-1)?.value ?? 0, color: COLORS[colorIndex], isLayer: false } satisfies ChartSeries;
       })
     ).then((results) => {
       if (controller.signal.aborted) return;
@@ -88,7 +116,7 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
       const failed: string[] = [];
       results.forEach((result, index) => {
         if (result.status === "fulfilled") loaded.push(result.value);
-        else failed.push(tickers[index]);
+        else failed.push(requests[index].id);
       });
       setSeries(loaded);
       setFailedTickers(failed);
@@ -96,7 +124,7 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
     });
 
     return () => controller.abort();
-  }, [tickers, timeframe, retryVersion]);
+  }, [tickers, timeframe, retryVersion, chartMode, selectedLayers]);
 
   const bounds = useMemo(() => {
     const points = series.flatMap((item) => item.points);
@@ -121,13 +149,13 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
 
   const hoverDetails = useMemo(() => {
     if (!bounds || !hoveredPoint || !series.length) return null;
-    const items = series.map((item, colorIndex) => {
+    const items = series.map((item) => {
       const pointIndex = nearestTimestampIndex(
         item.points.map((point) => point.timestamp),
         hoveredPoint.timestamp
       );
       const point = item.points[pointIndex];
-      return { ...point, ticker: item.ticker, color: COLORS[colorIndex] };
+      return { ...point, ticker: item.ticker, color: item.color, isLayer: item.isLayer };
     });
     const active = items.find((item) => item.ticker === hoveredPoint.activeTicker) ?? items[0];
     const x = 58 + ((active.timestamp - bounds.minTime) / Math.max(bounds.maxTime - bounds.minTime, 1)) * 920;
@@ -137,9 +165,10 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
 
   const inspectAtPointer = (event: ReactPointerEvent<SVGSVGElement>) => {
     if (!bounds || !series.length) return;
-    const rect = event.currentTarget.getBoundingClientRect();
-    const viewX = ((event.clientX - rect.left) / rect.width) * 1000;
-    const viewY = ((event.clientY - rect.top) / rect.height) * 340;
+    const point = clientPointToSvg(event.currentTarget, event.clientX, event.clientY);
+    if (!point) return;
+    const viewX = point.x;
+    const viewY = point.y;
     const ratio = Math.min(Math.max((viewX - 58) / 920, 0), 1);
     const target = bounds.minTime + ratio * (bounds.maxTime - bounds.minTime);
     const anchor = series[0];
@@ -178,6 +207,8 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
 
   const addSelectedTicker = () => {
     if (!selectedTicker) return;
+    setLoading(true);
+    setHoveredPoint(null);
     onAddTicker(selectedTicker);
     setSelectedTicker("");
   };
@@ -185,65 +216,151 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
   const timeframes = ["1M", "3M", "6M", "1Y", "YTD", "ALL"];
   const reachedLimit = comparedTickers.length >= 10;
 
+  const toggleLayer = (slug: string) => {
+    setLoading(true);
+    setHoveredPoint(null);
+    setSelectedLayers((current) => current.includes(slug)
+      ? current.filter((item) => item !== slug)
+      : [...current, slug]
+    );
+  };
+
   return (
     <section id="market-performance" className="scroll-mt-20 px-4 md:px-8 py-8">
       <div className="rounded-lg border p-4 md:p-6" style={{ backgroundColor: "var(--bg-card)", borderColor: "var(--border)" }}>
         <div className="kicker mb-1">Compare investments</div>
         <h2 className="text-xl font-bold mb-1" style={{ color: "var(--text)" }}>Market performance</h2>
         <p className="text-sm mb-4" style={{ color: "var(--text-dim)" }}>
-          SPY is the benchmark. Add up to ten stocks or ETFs to compare percentage performance.
+          {chartMode === "investments"
+            ? "SPY is the benchmark. Add up to ten stocks or ETFs to compare percentage performance."
+            : "Toggle equal-weight indexes for each supply-chain layer on or off."}
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-2 mb-3">
-          <label className="sr-only" htmlFor="comparison-ticker">Stock or ETF to compare</label>
-          <select
-            id="comparison-ticker"
-            value={selectedTicker}
-            onChange={(event) => setSelectedTicker(event.target.value)}
-            disabled={reachedLimit}
-            className="min-h-10 flex-1 rounded-md border px-3 text-sm"
-            style={{ backgroundColor: "var(--bg)", borderColor: "var(--border)", color: "var(--text)" }}
-          >
-            <option value="">{reachedLimit ? "Maximum of ten comparisons reached" : "Choose a stock or ETF…"}</option>
-            {availableTickers.filter((ticker) => ticker !== "SPY" && !comparedTickers.includes(ticker)).map((ticker) => (
-              <option key={ticker} value={ticker}>{ticker}</option>
-            ))}
-          </select>
-          <button
-            type="button"
-            onClick={addSelectedTicker}
-            disabled={!selectedTicker || reachedLimit}
-            className="min-h-10 rounded-md px-4 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-40"
-            style={{ backgroundColor: "var(--accent)" }}
-          >
-            Add comparison
-          </button>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-2 mb-4 text-xs">
-          <span className="rounded-full border px-3 py-1.5 font-semibold" style={{ borderColor: "var(--accent)", color: "var(--accent)" }}>
-            SPY · benchmark
-          </span>
-          {comparedTickers.map((ticker) => (
+        <div className="mb-4 inline-flex rounded-md border p-1" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg)" }}>
+          {(["investments", "layers"] as const).map((mode) => (
             <button
               type="button"
-              key={ticker}
-              onClick={() => onRemoveTicker(ticker)}
-              className="rounded-full border px-3 py-1.5 transition-colors hover:border-[var(--red)]"
-              style={{ borderColor: "var(--border)", color: "var(--text)" }}
-              aria-label={`Remove ${ticker} from comparison chart`}
+              key={mode}
+              onClick={() => {
+                setLoading(true);
+                setHoveredPoint(null);
+                setChartMode(mode);
+              }}
+              className="rounded px-3 py-1.5 text-xs font-semibold"
+              style={{
+                backgroundColor: chartMode === mode ? "var(--accent)" : "transparent",
+                color: chartMode === mode ? "#fff" : "var(--text-dim)",
+              }}
             >
-              {ticker} <span aria-hidden="true">×</span>
+              {mode === "investments" ? "Stocks & ETFs" : "By layer"}
             </button>
           ))}
         </div>
+
+        {chartMode === "investments" ? (
+          <>
+            <div className="flex flex-col sm:flex-row gap-2 mb-3">
+              <label className="sr-only" htmlFor="comparison-ticker">Stock or ETF to compare</label>
+              <select
+                id="comparison-ticker"
+                value={selectedTicker}
+                onChange={(event) => setSelectedTicker(event.target.value)}
+                disabled={reachedLimit}
+                className="min-h-10 flex-1 rounded-md border px-3 text-sm"
+                style={{ backgroundColor: "var(--bg)", borderColor: "var(--border)", color: "var(--text)" }}
+              >
+                <option value="">{reachedLimit ? "Maximum of ten comparisons reached" : "Choose a stock or ETF…"}</option>
+                {availableTickers.filter((ticker) => ticker !== "SPY" && !comparedTickers.includes(ticker)).map((ticker) => (
+                  <option key={ticker} value={ticker}>{ticker}</option>
+                ))}
+              </select>
+              <button
+                type="button"
+                onClick={addSelectedTicker}
+                disabled={!selectedTicker || reachedLimit}
+                className="min-h-10 rounded-md px-4 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-40"
+                style={{ backgroundColor: "var(--accent)" }}
+              >
+                Add comparison
+              </button>
+            </div>
+            <div className="flex flex-wrap items-center gap-2 mb-4 text-xs">
+              <span className="rounded-full border px-3 py-1.5 font-semibold" style={{ borderColor: "var(--accent)", color: "var(--accent)" }}>
+                SPY · benchmark
+              </span>
+              {comparedTickers.map((ticker) => (
+                <button
+                  type="button"
+                  key={ticker}
+                  onClick={() => {
+                    setLoading(true);
+                    setHoveredPoint(null);
+                    onRemoveTicker(ticker);
+                  }}
+                  className="rounded-full border px-3 py-1.5 transition-colors hover:border-[var(--red)]"
+                  style={{ borderColor: "var(--border)", color: "var(--text)" }}
+                  aria-label={`Remove ${ticker} from comparison chart`}
+                >
+                  {ticker} <span aria-hidden="true">×</span>
+                </button>
+              ))}
+            </div>
+          </>
+        ) : (
+          <div className="mb-4 flex flex-wrap items-center gap-2 text-xs">
+            <button
+              type="button"
+              onClick={() => {
+                setLoading(true);
+                setSelectedLayers(layers.map((layer) => layer.slug));
+              }}
+              className="font-semibold underline"
+              style={{ color: "var(--text-dim)" }}
+            >
+              All
+            </button>
+            <span style={{ color: "var(--border)" }}>|</span>
+            <button type="button" onClick={() => {
+              setLoading(false);
+              setSeries([]);
+              setFailedTickers([]);
+              setSelectedLayers([]);
+            }} className="font-semibold underline" style={{ color: "var(--text-dim)" }}>
+              None
+            </button>
+            {layers.map((layer) => {
+              const selected = selectedLayers.includes(layer.slug);
+              return (
+                <button
+                  type="button"
+                  key={layer.slug}
+                  onClick={() => toggleLayer(layer.slug)}
+                  aria-pressed={selected}
+                  className="rounded-full border px-3 py-1.5 font-semibold transition-opacity"
+                  style={{
+                    borderColor: layer.color,
+                    backgroundColor: selected ? layer.color : "transparent",
+                    color: selected ? "#fff" : "var(--text-dim)",
+                    opacity: selected ? 1 : 0.6,
+                  }}
+                >
+                  {layer.name}
+                </button>
+              );
+            })}
+          </div>
+        )}
 
         <div className="flex flex-wrap gap-1 mb-4">
           {timeframes.map((item) => (
             <button
               type="button"
               key={item}
-              onClick={() => setTimeframe(item)}
+              onClick={() => {
+                setLoading(true);
+                setHoveredPoint(null);
+                setTimeframe(item);
+              }}
               className="px-3 py-1 rounded text-xs font-medium transition-colors"
               style={{
                 backgroundColor: timeframe === item ? "var(--accent)" : "transparent",
@@ -266,10 +383,19 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
           {!loading && series.length === 0 && (
             <div className="absolute inset-0 grid place-items-center px-6 text-center">
               <div>
-                <p className="font-semibold" style={{ color: "var(--text)" }}>Market history is temporarily unavailable.</p>
-                <button type="button" onClick={() => setRetryVersion((version) => version + 1)} className="mt-2 text-sm underline" style={{ color: "var(--accent)" }}>
-                  Try again
-                </button>
+                <p className="font-semibold" style={{ color: "var(--text)" }}>
+                  {chartMode === "layers" && selectedLayers.length === 0
+                    ? "Select one or more layers to compare."
+                    : "Market history is temporarily unavailable."}
+                </p>
+                {!(chartMode === "layers" && selectedLayers.length === 0) && (
+                  <button type="button" onClick={() => {
+                    setLoading(true);
+                    setRetryVersion((version) => version + 1);
+                  }} className="mt-2 text-sm underline" style={{ color: "var(--accent)" }}>
+                    Try again
+                  </button>
+                )}
               </div>
             </div>
           )}
@@ -277,9 +403,9 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
           {!loading && bounds && series.length > 0 && (
             <>
               <div className="mb-2 flex flex-wrap gap-x-4 gap-y-1 px-2 text-xs">
-                {series.map((item, index) => (
+                {series.map((item) => (
                   <span key={item.ticker} className="inline-flex items-center gap-1.5 font-semibold" style={{ color: "var(--text)" }}>
-                    <span className="h-0.5 w-4" style={{ backgroundColor: COLORS[index] }} />
+                    <span className="h-0.5 w-4" style={{ backgroundColor: item.color }} />
                     {item.ticker}
                     <span style={{ color: item.change >= 0 ? "var(--green)" : "var(--red)" }}>
                       {item.change >= 0 ? "+" : ""}{item.change.toFixed(1)}%
@@ -325,12 +451,12 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
                     strokeDasharray="4 4"
                   />
                 )}
-                {series.map((item, index) => (
+                {series.map((item) => (
                   <path
                     key={item.ticker}
                     d={linePath(item, bounds.minTime, bounds.maxTime, bounds.minValue, bounds.maxValue)}
                     fill="none"
-                    stroke={COLORS[index]}
+                    stroke={item.color}
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -368,7 +494,9 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
                             <g key={item.ticker}>
                               <circle cx={panelX + 13} cy={panelY + 38 + index * 19} r="3" fill={item.color} />
                               <text x={panelX + 22} y={panelY + 42 + index * 19} fontSize="10.5" fontWeight={item.ticker === hoverDetails.active.ticker ? "800" : "600"} fill="var(--text)">{item.ticker}</text>
-                              <text x={panelX + 104} y={panelY + 42 + index * 19} fontSize="10.5" textAnchor="end" fill="var(--text)">${item.price.toFixed(2)}</text>
+                              <text x={panelX + 104} y={panelY + 42 + index * 19} fontSize="10.5" textAnchor="end" fill="var(--text)">
+                                {item.isLayer ? "equal weight" : `$${item.price.toFixed(2)}`}
+                              </text>
                               <text x={panelX + 212} y={panelY + 42 + index * 19} fontSize="10.5" fontWeight="700" textAnchor="end" fill={item.value >= 0 ? "var(--green)" : "var(--red)"}>{item.value >= 0 ? "+" : ""}{item.value.toFixed(1)}%</text>
                             </g>
                           ))}
@@ -388,7 +516,9 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
           </p>
         )}
         <p className="mt-3 text-[11px]" style={{ color: "var(--text-dim)" }}>
-          Percentage return from the first available market close in the selected period. Historical data via Yahoo Finance.
+          {chartMode === "layers"
+            ? "Layer lines are equal-weight averages of available constituent returns. Historical data via Yahoo Finance."
+            : "Percentage return from the first available market close in the selected period. Historical data via Yahoo Finance."}
         </p>
       </div>
     </section>
