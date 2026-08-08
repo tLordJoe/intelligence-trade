@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import type { KeyboardEvent as ReactKeyboardEvent, PointerEvent as ReactPointerEvent } from "react";
-import { clampIndex, nearestTimestampIndex } from "@/lib/chart-interaction";
+import { clampIndex, clientPointToSvg, nearestTimestampIndex } from "@/lib/chart-interaction";
 
 interface Trade {
   id: string;
@@ -126,8 +126,9 @@ export default function CongressChart() {
 
   const inspectPriceAtPointer = (event: ReactPointerEvent<SVGSVGElement>) => {
     if (!chart) return;
-    const rect = event.currentTarget.getBoundingClientRect();
-    const viewX = ((event.clientX - rect.left) / rect.width) * W;
+    const point = clientPointToSvg(event.currentTarget, event.clientX, event.clientY);
+    if (!point) return;
+    const viewX = point.x;
     const ratio = Math.min(Math.max((viewX - PAD.left) / (W - PAD.left - PAD.right), 0), 1);
     setCrosshairIndex(Math.round(ratio * (chart.timestamps.length - 1)));
   };
