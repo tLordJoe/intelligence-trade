@@ -20,3 +20,15 @@ export function clampIndex(index: number, length: number): number {
   if (length <= 0) return -1;
   return Math.min(Math.max(index, 0), length - 1);
 }
+
+export function clientPointToSvg(
+  svg: SVGSVGElement,
+  clientX: number,
+  clientY: number
+): { x: number; y: number } | null {
+  const matrix = svg.getScreenCTM();
+  if (!matrix) return null;
+
+  const point = new DOMPoint(clientX, clientY).matrixTransform(matrix.inverse());
+  return { x: point.x, y: point.y };
+}
