@@ -13,6 +13,7 @@ import NewsFeed from "@/components/NewsFeed";
 import CongressTrades from "@/components/CongressTrades";
 import CongressChart from "@/components/CongressChart";
 import SiteFooter from "@/components/SiteFooter";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import type { DataMeta, StockQuoteResponse } from "@/lib/market-data";
 
 export default function Home() {
@@ -99,6 +100,7 @@ export default function Home() {
             dataMeta={quoteMeta}
             dataUnavailable={quoteError}
           />
+          <NewsletterSignup variant="banner" />
           <LayerCards activeLayer={activeLayer} onSelectLayer={handleSelectLayer} />
           <CongressTrades />
           <CongressChart />

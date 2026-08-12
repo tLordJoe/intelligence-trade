@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import { getBlogPost, blogPosts } from "@/lib/blog-data";
 
 export default function BlogPostPage() {
@@ -152,6 +153,10 @@ export default function BlogPostPage() {
             </Link>
           </div>
         </article>
+
+        <div className="max-w-3xl mx-auto">
+          <NewsletterSignup />
+        </div>
       </main>
     <SiteFooter />
     </>

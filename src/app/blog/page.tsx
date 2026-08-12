@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import { blogPosts } from "@/lib/blog-data";
 
 export default function BlogPage() {
@@ -62,6 +63,7 @@ export default function BlogPage() {
             ))}
           </div>
         </div>
+        <NewsletterSignup />
       </main>
     <SiteFooter />
     </>
