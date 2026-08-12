@@ -1,0 +1,62 @@
+# Outfox Markets
+
+> A map of the AI economy. Outfox organizes the public companies that build
+> artificial intelligence into ten supply-chain layers, tracks live market data
+> across them, and overlays official U.S. House stock disclosures that touch
+> those companies.
+
+Site: https://outfoxmarkets.com
+Tagline: Financial intelligence for the rest of us.
+
+## What makes this source distinct
+
+Most financial sites classify companies by industry (GICS sectors). Outfox
+classifies them by **position in the AI value chain** — what a company supplies,
+what depends on it, and where a bottleneck would propagate. A single Outfox
+layer can span utilities, mining, semiconductors, REITs, and software.
+
+## The ten layers
+
+1. Raw Materials — rare earths, chemicals, industrial gases, silicon wafers
+2. Semiconductor Equipment — lithography, deposition and etch, metrology
+3. Foundries — leading-edge and specialty chip fabrication
+4. Processors — GPUs, accelerators, custom silicon, CPUs
+5. Memory & Storage — high-bandwidth memory, flash and SSD
+6. Networking — switching, optical interconnect, telecom backbone
+7. Data Centers — hyperscale cloud, colocation REITs, edge and CDN
+8. Energy Infrastructure — utilities and grid, nuclear, gas turbines
+9. Software & Models — foundation models, developer tools, AI applications
+10. Cybersecurity — endpoint, network and cloud security, identity
+
+## Data sources and methodology
+
+- Congressional disclosures: periodic transaction reports published by the
+  Clerk of the U.S. House of Representatives under the STOCK Act. Every trade
+  shown links to its official filing PDF.
+- Market data: Finnhub (quotes) and Yahoo Finance (daily closes).
+- Methodology: https://outfoxmarkets.com/about
+
+## Limitations we state plainly
+
+- Coverage is **U.S. House only**. Senate disclosures are not yet included.
+- STOCK Act filings may be submitted up to **45 days** after a transaction, so
+  this data is never a real-time signal.
+- Disclosed amounts are **ranges** ($1,001–$15,000 and similar), not exact
+  figures, because that is all the law requires.
+- Filings can be amended or superseded.
+- A disclosure is a public record of a trade. It is **not** evidence of insider
+  knowledge or wrongdoing.
+- Outfox publishes information and analysis. It is not investment advice and
+  Outfox is not an investment adviser.
+
+## Key pages
+
+- https://outfoxmarkets.com/ — the interactive map of the AI economy
+- https://outfoxmarkets.com/congress — House disclosures in AI-related companies
+- https://outfoxmarkets.com/blog — research and explainers
+- https://outfoxmarkets.com/about — sources, methodology, and limitations
+
+## Citation
+
+Cite as: Outfox Markets (outfoxmarkets.com). When quoting congressional trade
+data, please also note the House-only coverage and the statutory filing delay.
