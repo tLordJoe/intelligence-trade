@@ -1,8 +1,40 @@
 {
-  "updatedAt": "2026-08-13T11:36:04.595Z",
+  "updatedAt": "2026-08-14T11:33:40.734Z",
   "source": "Clerk of the U.S. House of Representatives — STOCK Act PTR filings",
-  "tradeCount": 220,
+  "tradeCount": 221,
   "trades": [
+    {
+      "id": "20035196-0",
+      "politician": "Kevin Hern",
+      "party": "R",
+      "chamber": "House",
+      "state": "OK",
+      "district": "OK01",
+      "ticker": "OGN",
+      "companyName": "Organon & Co.",
+      "type": "Sell",
+      "amount": "$1,001 - $15,000",
+      "transactionDate": "2026-08-05",
+      "filedDate": "2026-08-12",
+      "isOptions": false,
+      "source": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035196.pdf"
+    },
+    {
+      "id": "20035196-1",
+      "politician": "Kevin Hern",
+      "party": "R",
+      "chamber": "House",
+      "state": "OK",
+      "district": "OK01",
+      "ticker": "VSNT",
+      "companyName": "Versant Media Group, Inc.",
+      "type": "Sell",
+      "amount": "$1,001 - $15,000",
+      "transactionDate": "2026-08-05",
+      "filedDate": "2026-08-12",
+      "isOptions": false,
+      "source": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035196.pdf"
+    },
     {
       "id": "20035203-0",
       "politician": "Mike Kelly",
@@ -3506,22 +3538,6 @@
       "filedDate": "2026-07-16",
       "isOptions": false,
       "source": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034894.pdf"
-    },
-    {
-      "id": "20034945-0",
-      "politician": "Richard W. Allen",
-      "party": "R",
-      "chamber": "House",
-      "state": "GA",
-      "district": "GA12",
-      "ticker": "INTU",
-      "companyName": "Intuit Inc.",
-      "type": "Sell",
-      "amount": "$15,001 - $50,000",
-      "transactionDate": "2026-06-10",
-      "filedDate": "2026-07-15",
-      "isOptions": false,
-      "source": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20034945.pdf"
     }
   ]
 }
