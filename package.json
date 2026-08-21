@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --test --experimental-strip-types tests/*.test.ts"
+    "test": "node --test --experimental-strip-types tests/*.test.ts",
+    "import:house": "node --experimental-strip-types scripts/import-house.ts",
+    "import:house:dry": "node --experimental-strip-types scripts/import-house.ts --dry-run"
   },
   "dependencies": {
     "lucide-react": "^1.29.0",
