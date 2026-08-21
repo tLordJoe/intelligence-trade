@@ -243,9 +243,16 @@ discarded.
   ADRs. Treated as advisory.
 - **House only.** Senate disclosures are not ingested. The framework is designed
   to accept a second source, but no Senate collector exists yet.
-- **Scheduled refresh is disabled.** `.github/workflows/refresh-congress.yml`
-  was removed during containment and has not been restored. Re-enabling it is a
-  deliberate decision to be made after this pipeline has been reviewed.
+- **Scheduled refresh is disabled.** The daily workflow was removed during
+  containment. Its replacement,
+  `.github/workflows/supervised-house-refresh.yml`, is **manual only** — it has
+  a `workflow_dispatch` trigger and deliberately no `schedule:` block. It offers
+  three modes: `dry-run` (parse and validate, write nothing), `import` (full
+  import, commit only on a clean pass) and `simulate-failure` (deliberately trip
+  a gate to prove evidence upload works). Evidence is uploaded under
+  `if: always()` with 90-day retention, and the commit step is reachable only
+  when the importer exited zero. A schedule will be added only after one
+  complete supervised run has been reviewed.
 
 ## Adding a source
 

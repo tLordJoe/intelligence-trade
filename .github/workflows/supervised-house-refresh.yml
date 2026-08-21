@@ -1,0 +1,244 @@
+name: Supervised House disclosure refresh
+
+# Manual only. There is deliberately no `schedule:` trigger.
+#
+# The previous automated importer ran daily and published incorrect data for
+# eight consecutive days while reporting success. The schedule stays off until
+# one complete supervised run has been reviewed end to end.
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "What this run should do"
+        type: choice
+        default: dry-run
+        options:
+          - dry-run          # parse and validate, write nothing
+          - import           # full import, commit only if every gate passes
+          - simulate-failure # deliberately trip a gate, to prove evidence upload
+      allow_completeness_drop:
+        description: "Accept a lower yield than the previous run (reviewed override)"
+        type: boolean
+        default: false
+
+# One import at a time. Two concurrent runs could interleave commits to the
+# archive, which is the one file that must never be written by two writers.
+concurrency:
+  group: house-disclosure-import
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Verify the pipeline's own tests before touching data
+        run: npm test
+
+      # ---------------------------------------------------------------------
+      # The import. `continue-on-error` is essential: a non-zero exit must not
+      # skip the upload steps below, because a failed run is precisely the one
+      # whose evidence needs preserving.
+      # ---------------------------------------------------------------------
+      - name: Run the importer
+        id: import
+        continue-on-error: true
+        run: |
+          set +e
+          case "${{ inputs.mode }}" in
+            dry-run)
+              ARGS="--dry-run"
+              ;;
+            simulate-failure)
+              # A three-filing window yields far below the established rate and
+              # trips the completeness gate. Safe by construction: the importer
+              # never writes production when a gate fails.
+              ARGS="--limit 3"
+              ;;
+            *)
+              ARGS=""
+              ;;
+          esac
+
+          if [ "${{ inputs.allow_completeness_drop }}" = "true" ]; then
+            ARGS="$ARGS --allow-completeness-drop"
+          fi
+
+          echo "Running: node scripts/import-house.ts $ARGS"
+          node --experimental-strip-types scripts/import-house.ts $ARGS 2>&1 | tee import.log
+          IMPORT_EXIT=${PIPESTATUS[0]}
+          echo "import_exit=$IMPORT_EXIT" >> "$GITHUB_OUTPUT"
+          exit $IMPORT_EXIT
+
+      # Resolve the run id even if the importer died before writing GITHUB_OUTPUT.
+      - name: Resolve run identity
+        id: run
+        if: always()
+        run: |
+          RUN_ID="${{ steps.import.outputs.run_id }}"
+          if [ -z "$RUN_ID" ] && [ -f data/import-runs/latest-run-id.txt ]; then
+            RUN_ID=$(cat data/import-runs/latest-run-id.txt)
+          fi
+          echo "run_id=$RUN_ID" >> "$GITHUB_OUTPUT"
+          if [ -n "$RUN_ID" ] && [ -d "data/import-runs/$RUN_ID" ]; then
+            echo "run_dir=data/import-runs/$RUN_ID" >> "$GITHUB_OUTPUT"
+            echo "has_evidence=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_evidence=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ---------------------------------------------------------------------
+      # Evidence upload. Runs whatever happened above.
+      # ---------------------------------------------------------------------
+      - name: Upload this run's evidence directory
+        if: always() && steps.run.outputs.has_evidence == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: import-run-${{ steps.run.outputs.run_id }}
+          path: ${{ steps.run.outputs.run_dir }}/
+          retention-days: 90
+          if-no-files-found: error
+
+      - name: Upload report, quarantine queue and run index
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: import-report-${{ github.run_id }}
+          path: |
+            data/last-import-report.txt
+            data/congress-quarantine.json
+            data/import-runs/index.json
+            import.log
+          retention-days: 90
+          if-no-files-found: warn
+
+      # ---------------------------------------------------------------------
+      # Validation summary, rendered on the run's page.
+      # ---------------------------------------------------------------------
+      - name: Publish validation summary
+        if: always()
+        run: |
+          RUN_DIR="${{ steps.run.outputs.run_dir }}"
+          {
+            echo "## House disclosure import"
+            echo ""
+            echo "| | |"
+            echo "|---|---|"
+            echo "| Mode | \`${{ inputs.mode }}\` |"
+            echo "| Completeness override | \`${{ inputs.allow_completeness_drop }}\` |"
+            echo "| Importer exit code | \`${{ steps.import.outputs.import_exit }}\` |"
+            echo "| Run id | \`${{ steps.run.outputs.run_id }}\` |"
+            echo ""
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [ -n "$RUN_DIR" ] && [ -f "$RUN_DIR/summary.json" ]; then
+            node -e '
+              const s = require("./" + process.argv[1] + "/summary.json");
+              const c = s.counts;
+              const rows = [
+                ["Gates", s.passed ? "PASS" : "**FAIL**"],
+                ["Production updated", s.productionUpdated ? "yes" : "no — previous archive retained"],
+                ["Filings selected", c.selectedFilings],
+                ["Filings downloaded", c.downloadedFilings],
+                ["Filings parsed", c.parsedFilings],
+                ["Rows parsed", c.parsedRecords],
+                ["Accepted", c.accepted],
+                ["Quarantined", c.quarantined],
+                ["Archive before", c.archiveBefore],
+                ["Archive after", c.archiveAfter],
+              ];
+              let out = "### Validation\n\n| | |\n|---|---|\n";
+              for (const [k, v] of rows) out += `| ${k} | ${v} |\n`;
+              if (s.failures.length) {
+                out += "\n### Gate failures\n\n";
+                for (const f of s.failures) out += `- \`${f}\`\n`;
+              }
+              if (s.warnings.length) {
+                out += "\n### Warnings\n\n";
+                for (const w of s.warnings) out += `- \`${w}\`\n`;
+              }
+              require("fs").appendFileSync(process.env.GITHUB_STEP_SUMMARY, out);
+            ' "$RUN_DIR"
+
+            {
+              echo ""
+              echo "<details><summary>Full import report</summary>"
+              echo ""
+              echo '```'
+              cat "$RUN_DIR/report.txt"
+              echo '```'
+              echo ""
+              echo "</details>"
+            } >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "No evidence directory was produced — the importer failed before validation." \
+              >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      # ---------------------------------------------------------------------
+      # Commit. Only on a clean pass, and only in `import` mode.
+      #
+      # `steps.import.outcome == 'success'` is the gate: the importer exits
+      # non-zero whenever a run gate fails, so a failing run can never reach
+      # this step.
+      # ---------------------------------------------------------------------
+      - name: Commit approved data
+        if: >-
+          inputs.mode == 'import' &&
+          steps.import.outcome == 'success' &&
+          steps.run.outputs.has_evidence == 'true'
+        run: |
+          set -euo pipefail
+          RUN_DIR="${{ steps.run.outputs.run_dir }}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Explicit paths only. Nothing else in the tree is committed.
+          git add \
+            src/lib/congress-live.json \
+            data/congress-quarantine.json \
+            data/last-import-report.txt \
+            data/import-runs/index.json \
+            data/import-runs/latest-run-id.txt \
+            "$RUN_DIR"
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          COUNT=$(node -p "require('./src/lib/congress-live.json').trades.length")
+          git commit -m "Refresh House disclosures (${COUNT} records, run ${{ steps.run.outputs.run_id }})"
+          git push
+
+      - name: Report that no commit was made
+        if: inputs.mode != 'import' || steps.import.outcome != 'success'
+        run: |
+          echo "No commit: mode=${{ inputs.mode }}, importer outcome=${{ steps.import.outcome }}."
+          echo "Production data is untouched. Evidence was uploaded above."
+          {
+            echo ""
+            echo "> **No commit was made.** Production data is untouched; evidence is attached to this run."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # The job's own result must reflect the importer's, which
+      # `continue-on-error` deliberately suppressed until the uploads finished.
+      - name: Fail the job if the importer failed
+        if: steps.import.outcome != 'success'
+        run: |
+          echo "Importer exited ${{ steps.import.outputs.import_exit }}."
+          exit 1

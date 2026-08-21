@@ -45,6 +45,7 @@ import {
 import {
   appendRunIndex,
   mergeQuarantine,
+  publishRunPointer,
   summarizeRun,
   writeRunArtifacts,
 } from "../src/lib/import-artifacts.ts";
@@ -507,6 +508,9 @@ async function main() {
   };
   const artifactDir = writeRunArtifacts(RUNS_DIR, artifactInput);
   appendRunIndex(RUN_INDEX_PATH, summarizeRun(artifactInput));
+  // Publish identity before the exit path, so CI can find this run's evidence
+  // even when the gates fail.
+  publishRunPointer(RUNS_DIR, runId, artifactDir, process.env.GITHUB_OUTPUT);
   writeFileSync(REPORT_PATH, `${report}\n`);
   console.error(`\nRun evidence retained: ${artifactDir}`);
 
