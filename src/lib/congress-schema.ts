@@ -11,12 +11,70 @@
  *     abandoned.
  */
 
-export const SCHEMA_VERSION = 1;
+/**
+ * Bumped to 2: `amountLow`/`amountHigh` became nullable and `amountStatus` was
+ * added, so a missing amount is no longer indistinguishable from a $0 one.
+ */
+export const SCHEMA_VERSION = 2;
 
 /** Chambers this framework can ingest. Only House is wired up today. */
 export type SourceChamber = "House" | "Senate";
 
 export type TransactionType = "Buy" | "Sell" | "Exchange";
+
+/**
+ * How much is known about a record's amount.
+ *
+ * `disclosed_range` and `disclosed_exact` are the only values that carry
+ * numeric bounds. Everything else has `null` bounds and must be excluded from
+ * totals, averages, sorting and amount filters — never coerced to zero.
+ */
+export type AmountStatus =
+  | "disclosed_range"
+  | "disclosed_exact"
+  | "not_disclosed"
+  | "not_applicable"
+  | "parse_failed";
+
+/** Why a filing produced no transaction rows. */
+export type ZeroRowClassification =
+  | "no_ticker_present"
+  | "no_supported_security_transaction"
+  | "empty_text_extraction"
+  | "unsupported_layout"
+  | "parser_suspicious";
+
+/**
+ * One filing that yielded no rows, recorded so the outcome can be audited.
+ *
+ * Written for every run. A filing that has always been empty is not assumed
+ * healthy: the classification says *why* it is empty, and the unexplained
+ * classification blocks the run.
+ */
+export interface ZeroRowFiling {
+  docId: string;
+  filingUrl: string;
+  filer: string;
+  /** ISO date (YYYY-MM-DD) when the filing was filed. */
+  filedDate: string;
+  classification: ZeroRowClassification;
+  /** Characters of text extracted. Near-zero means a scanned document. */
+  textLength: number;
+  /** Symbol-bearing blocks seen, whether or not they produced a row. */
+  symbolBlocks: number;
+  /** Asset-type codes present but not supported, e.g. `CT` for cryptocurrency. */
+  unsupportedAssetTypes: string[];
+  /** True when this filing has produced rows in a previous run. */
+  previouslyProductive: boolean;
+}
+
+export interface ZeroRowFile {
+  schemaVersion: number;
+  runId: string;
+  capturedAt: string;
+  counts: Record<ZeroRowClassification, number>;
+  filings: ZeroRowFiling[];
+}
 
 /** How confident we are that `ticker` names a real, current security. */
 export type TickerResolution =
@@ -122,10 +180,19 @@ export interface DisclosureRecord {
   ticker: string;
   companyName: string;
   type: TransactionType;
-  /** Human-readable range, preserved for display. */
+  /** Human-readable amount as disclosed, or `""` when none was disclosed. */
   amount: string;
-  amountLow: number;
-  amountHigh: number;
+  /**
+   * Amount bounds in dollars, or `null` when no amount is known.
+   *
+   * Never zero for a missing amount. An absent amount previously stored as
+   * `0`/`0` would have contributed silently to any total or average; `null`
+   * forces every consumer to exclude it. Use the helpers in `amounts.ts`.
+   */
+  amountLow: number | null;
+  amountHigh: number | null;
+  /** How much is known about the amount. See `AmountStatus`. */
+  amountStatus: AmountStatus;
   /** ISO date (YYYY-MM-DD). */
   transactionDate: string;
   /** ISO date (YYYY-MM-DD). */
@@ -159,6 +226,16 @@ export interface ImportCounts {
   failedParses: number;
   /** Filings that parsed but yielded no transaction rows. */
   zeroRowFilings: number;
+  /** Zero-row filings whose text extraction produced essentially nothing. */
+  scannedFilings: number;
+  /** Zero-row filings holding a supported symbol that produced no row. */
+  suspiciousZeroRowFilings: number;
+  /** Rows whose amount could not be read though one is present in the source. */
+  amountParseFailures: number;
+  /** Rows carrying no numeric amount, for any reason. */
+  amountsUnknown: number;
+  /** Rows reassembled from a wrapped layout. */
+  wrappedRows: number;
   /** Filings actually fetched and parsed. */
   parsedFilings: number;
   /** Transaction rows extracted from those filings. */
@@ -232,6 +309,11 @@ export function emptyCounts(): ImportCounts {
     downloadedFilings: 0,
     failedParses: 0,
     zeroRowFilings: 0,
+    scannedFilings: 0,
+    suspiciousZeroRowFilings: 0,
+    amountParseFailures: 0,
+    amountsUnknown: 0,
+    wrappedRows: 0,
     parsedFilings: 0,
     parsedRecords: 0,
     accepted: 0,

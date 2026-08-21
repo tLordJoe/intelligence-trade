@@ -44,6 +44,7 @@ function record(id: string, over: Partial<DisclosureRecord> = {}): DisclosureRec
     amount: "$1,001 - $15,000",
     amountLow: 1001,
     amountHigh: 15000,
+    amountStatus: "disclosed_range",
     transactionDate: "2026-07-01",
     filedDate: "2026-08-05",
     isOptions: false,
@@ -104,6 +105,7 @@ function failedRun(over: Partial<RunArtifactInput> = {}): RunArtifactInput {
     report: "OUTFOX HOUSE DISCLOSURE IMPORT\nGATES  result  FAIL",
     quarantined: [record("DOC1::aaa::0"), record("DOC2::bbb::0")],
     unseenIds: ["DOC9::zzz::0"],
+    zeroRowFilings: [],
     ...over,
   };
 }

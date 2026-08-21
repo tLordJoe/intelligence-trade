@@ -47,7 +47,16 @@ export default function MethodologyPage() {
                 The current product covers periodic transaction reports published by
                 the Clerk of the U.S. House of Representatives. Each displayed record
                 retains its filer, ticker or reported asset, transaction type, reported
-                amount range, transaction date, filing date, and official filing link.
+                amount, transaction date, filing date, and official filing link.
+              </p>
+              <p>
+                Filers disclose an amount either as a bracketed range or, less often, as
+                an exact figure; both are shown as filed. Where a filing discloses no
+                amount, or discloses one we cannot read reliably, the record is labelled
+                &ldquo;Not disclosed&rdquo;, &ldquo;Not applicable&rdquo; or
+                &ldquo;Amount unreadable&rdquo; rather than shown as zero, and it is
+                excluded from every total, average, ranking and amount filter. A blank
+                or zero amount is never used to stand in for one we do not have.
               </p>
               <p>
                 Duplicate internal record IDs are removed before display. Filings may

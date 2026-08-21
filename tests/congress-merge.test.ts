@@ -27,6 +27,7 @@ function makeRecord(
     amount: "$1,001 - $15,000",
     amountLow: 1001,
     amountHigh: 15000,
+    amountStatus: "disclosed_range",
     transactionDate: "2026-07-01",
     filedDate: "2026-08-05",
     isOptions: false,
@@ -145,4 +146,174 @@ test("tallyCounts reports missing fields without altering records", () => {
   assert.equal(counts.missingParty, 2);
   assert.equal(counts.missingFilingUrl, 1);
   assert.equal(counts.missingTicker, 0);
+});
+
+// --- a recovered amount is a revision, not a duplicate ----------------------
+
+test("regression: recovering a missing amount revises rather than duplicates", () => {
+  // The reconciliation key includes the amount, so a record whose amount was
+  // previously unreadable necessarily changes key once the parser can read it.
+  // Without a fallback it arrives as a new record and the amountless original
+  // lingers beside it, double-counting the transaction.
+  const stored = makeRecord("20034999", 0, {
+    amount: "",
+    amountLow: null,
+    amountHigh: null,
+    amountStatus: "parse_failed",
+    ticker: "ICHR",
+    type: "Sell",
+    transactionDate: "2026-06-17",
+  });
+  stored.provenance = {
+    ...stored.provenance,
+    docId: "20034999",
+    occurrence: 0,
+    reconciliationKey: "20034999::oldcore::0",
+  };
+
+  const reparsed = makeRecord("20034999", 0, {
+    amount: "$2,722.50",
+    amountLow: 2722.5,
+    amountHigh: 2722.5,
+    amountStatus: "disclosed_exact",
+    ticker: "ICHR",
+    type: "Sell",
+    transactionDate: "2026-06-17",
+  });
+  reparsed.provenance = {
+    ...reparsed.provenance,
+    docId: "20034999",
+    occurrence: 0,
+    reconciliationKey: "20034999::newcore::0",
+  };
+
+  const result = mergeRecords([stored], [reparsed], "2026-08-21T09:00:00.000Z", "run_1");
+
+  assert.equal(result.added, 0, "no duplicate is created");
+  assert.equal(result.revised, 1, "the correction is a revision");
+  assert.equal(result.records.length, 1, "one transaction, one record");
+  assert.equal(result.records[0].id, stored.id, "identity does not move");
+  assert.equal(result.records[0].amountLow, 2722.5, "the amount is corrected");
+  assert.equal(result.records[0].amountStatus, "disclosed_exact");
+
+  const changes = result.records[0].revisions?.at(-1)?.changes ?? [];
+  assert.ok(
+    changes.some((c) => c.field === "amountLow"),
+    "the amount change is logged"
+  );
+});
+
+test("the fallback never fuses two rows that both have amounts", () => {
+  // Two genuine transactions in one filing differing only by amount must stay
+  // two records. The fallback index is populated only from amountless records,
+  // so it can never reach either of these.
+  const first = makeRecord("DOC", 0, {
+    amount: "$1,001 - $15,000",
+    amountLow: 1001,
+    amountHigh: 15000,
+    ticker: "BRK-B",
+    type: "Sell",
+    transactionDate: "2026-02-10",
+  });
+  first.provenance = { ...first.provenance, docId: "DOC", occurrence: 0, reconciliationKey: "DOC::c1::0" };
+
+  const second = makeRecord("DOC", 1, {
+    amount: "$15,001 - $50,000",
+    amountLow: 15001,
+    amountHigh: 50000,
+    ticker: "BRK-B",
+    type: "Sell",
+    transactionDate: "2026-02-10",
+  });
+  second.provenance = { ...second.provenance, docId: "DOC", occurrence: 0, reconciliationKey: "DOC::c2::0" };
+
+  const result = mergeRecords([first], [second], "2026-08-21T09:00:00.000Z", "run_1");
+
+  assert.equal(result.added, 1, "the second transaction is its own record");
+  assert.equal(result.records.length, 2);
+});
+
+test("the fallback does not reach across filings", () => {
+  const stored = makeRecord("DOC1", 0, {
+    amount: "",
+    amountLow: null,
+    amountHigh: null,
+    amountStatus: "parse_failed",
+    ticker: "ICHR",
+    type: "Sell",
+    transactionDate: "2026-06-17",
+  });
+  stored.provenance = { ...stored.provenance, docId: "DOC1", occurrence: 0, reconciliationKey: "DOC1::x::0" };
+
+  const other = makeRecord("DOC2", 0, {
+    amount: "$2,722.50",
+    amountLow: 2722.5,
+    amountHigh: 2722.5,
+    amountStatus: "disclosed_exact",
+    ticker: "ICHR",
+    type: "Sell",
+    transactionDate: "2026-06-17",
+  });
+  other.provenance = { ...other.provenance, docId: "DOC2", occurrence: 0, reconciliationKey: "DOC2::y::0" };
+
+  const result = mergeRecords([stored], [other], "2026-08-21T09:00:00.000Z", "run_1");
+  assert.equal(result.added, 1, "a different filing is a different transaction");
+  assert.equal(result.records.length, 2);
+});
+
+test("regression: inserting a recovered row must not re-point another record's key", () => {
+  // The reconciliation key ends in an occurrence counted across rows sharing an
+  // economic core, and the core excludes the ticker. Filing 20033737 had five
+  // securities sharing one core — same type, amount, date and owner. Recovering
+  // a previously dropped row shifted every later occurrence by one, so under a
+  // single-pass merge the recovered row claimed the *next* record's key: IDEXX's
+  // values were written onto PTC's record and the genuine PTC row was dropped as
+  // a duplicate. Exact-id matches must therefore be resolved before any
+  // positional fallback.
+  const sharedCore = "coreHASH";
+
+  const storedCdw = makeRecord("D", 0, { ticker: "CDW" });
+  storedCdw.provenance = { ...storedCdw.provenance, reconciliationKey: `D::${sharedCore}::0` };
+  const storedPtc = makeRecord("D", 1, { ticker: "PTC" });
+  storedPtc.provenance = { ...storedPtc.provenance, reconciliationKey: `D::${sharedCore}::1` };
+  const storedPwr = makeRecord("D", 2, { ticker: "PWR" });
+  storedPwr.provenance = { ...storedPwr.provenance, reconciliationKey: `D::${sharedCore}::2` };
+
+  // This run recovers an IDXX row that sorts between CDW and PTC, shifting the
+  // occurrence of everything after it.
+  const incomingCdw = makeRecord("D", 0, { ticker: "CDW" });
+  incomingCdw.provenance = { ...incomingCdw.provenance, reconciliationKey: `D::${sharedCore}::0` };
+  const incomingIdxx = makeRecord("D", 9, { ticker: "IDXX" });
+  incomingIdxx.provenance = { ...incomingIdxx.provenance, reconciliationKey: `D::${sharedCore}::1` };
+  const incomingPtc = makeRecord("D", 1, { ticker: "PTC" });
+  incomingPtc.provenance = { ...incomingPtc.provenance, reconciliationKey: `D::${sharedCore}::2` };
+  const incomingPwr = makeRecord("D", 2, { ticker: "PWR" });
+  incomingPwr.provenance = { ...incomingPwr.provenance, reconciliationKey: `D::${sharedCore}::3` };
+
+  const result = mergeRecords(
+    [storedCdw, storedPtc, storedPwr],
+    [incomingCdw, incomingIdxx, incomingPtc, incomingPwr],
+    "2026-08-21T09:00:00.000Z",
+    "run_1"
+  );
+
+  const byTicker = new Map(result.records.map((r) => [r.ticker, r]));
+
+  assert.equal(result.duplicates, 0, "no genuine row is discarded as a duplicate");
+  assert.equal(result.added, 1, "only the recovered row is new");
+  assert.equal(result.records.length, 4, "three existing plus one recovered");
+
+  assert.ok(byTicker.has("PTC"), "PTC survives");
+  assert.ok(byTicker.has("PWR"), "PWR survives");
+  assert.ok(byTicker.has("CDW"), "CDW survives");
+  assert.ok(byTicker.has("IDXX"), "IDXX is added");
+
+  // The corruption this pins: PTC's stored record must still be PTC's.
+  assert.equal(byTicker.get("PTC")!.id, storedPtc.id, "PTC keeps its own record");
+  assert.equal(byTicker.get("PWR")!.id, storedPwr.id, "PWR keeps its own record");
+  assert.notEqual(
+    byTicker.get("IDXX")!.id,
+    storedPtc.id,
+    "the recovered row never lands on another security's record"
+  );
 });

@@ -196,7 +196,16 @@ export function assessRecord(
   }
   // Party is never guessed. An unknown party is displayed as unknown.
   if (record.party !== "D" && record.party !== "R") warnings.push("unknown_party");
-  if (!record.amountLow && !record.amountHigh) warnings.push("missing_amount");
+  // Distinguished by status, not by falsiness. `!record.amountLow` was also
+  // true for a legitimately disclosed $0, and said nothing about *why* an
+  // amount was absent.
+  if (record.amountStatus === "parse_failed") {
+    warnings.push("amount_parse_failed");
+  } else if (record.amountStatus === "not_disclosed") {
+    warnings.push("amount_not_disclosed");
+  } else if (record.amountStatus === "not_applicable") {
+    warnings.push("amount_not_applicable");
+  }
 
   const status: RecordStatus = quarantine
     ? "quarantined"
@@ -319,6 +328,32 @@ export function assessRun(input: RunGateInput): RunGateResult {
         `previously_productive_filings_now_empty:${regressed.length}:${regressed.slice(0, 5).join(",")}`
       );
     }
+  }
+
+  // --- zero-row filings ----------------------------------------------------
+  //
+  // A filing that has always been empty is not therefore healthy. Each empty
+  // filing is classified, and the classification that means "we found a
+  // security we support and produced nothing from it" blocks the run — that is
+  // the signature of silent row loss, which is exactly how twelve real
+  // transactions went missing before this check existed.
+  if (counts.suspiciousZeroRowFilings > 0) {
+    failures.push(
+      `unexplained_zero_row_filings:${counts.suspiciousZeroRowFilings}`
+    );
+  }
+
+  // Scanned filings extract as nothing. They are a known, stable population of
+  // paper submissions, so they warn rather than block — but they are never
+  // silent, because their contents are genuinely unread.
+  if (counts.scannedFilings > 0) {
+    warnings.push(`scanned_filings_unreadable:${counts.scannedFilings}`);
+  }
+
+  // An amount present in the source that we could not read is a defect, not an
+  // absence. Surfaced separately from amounts the filer never disclosed.
+  if (counts.amountParseFailures > 0) {
+    warnings.push(`amount_parse_failures:${counts.amountParseFailures}`);
   }
 
   // --- completeness --------------------------------------------------------
