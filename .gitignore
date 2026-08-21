@@ -44,3 +44,7 @@ scripts/.cache/
 # Import pipeline working files
 scripts/.cache/
 data/security-master.json
+
+# Ephemeral run pointer. Never committed: a pointer inherited from checkout
+# could otherwise let a crashed run attach a previous run's evidence to itself.
+data/import-runs/latest-run-id.txt

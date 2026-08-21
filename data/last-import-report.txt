@@ -1,23 +1,23 @@
 ================================================================
 OUTFOX HOUSE DISCLOSURE IMPORT
 ================================================================
-  run id                       run_2026-08-21T07-35-15-135Z_2da62b1b
-  started                      2026-08-21T07:35:15.135Z
-  finished                     2026-08-21T07:35:18.340Z
+  run id                       run_2026-08-21T08-14-22-418Z_240139bf
+  started                      2026-08-21T08:14:22.419Z
+  finished                     2026-08-21T08:14:22.890Z
   source                       https://disclosures-clerk.house.gov/public_disc/financial-pdfs/2026FD.xml
 
 SOURCE AND PARSE
   filings advertised           359
-  filings selected             359
-  filings downloaded           359 (100%)
-  filings parsed               359 (100%)
+  filings selected             3
+  filings downloaded           3 (100%)
+  filings parsed               3 (100%)
   parse failures               0
-  filings with zero rows       145
-  transaction rows parsed      945
+  filings with zero rows       0
+  transaction rows parsed      5
 
 VALIDATION
-  accepted (clean)             761
-  accepted with warnings       184
+  accepted (clean)             4
+  accepted with warnings       1
   quarantined                  0
   duplicate ids collapsed      0
   missing party                148
@@ -25,11 +25,11 @@ VALIDATION
   missing filing url           0
 
 ARCHIVE
-  records before               203
-  added                        945
-  refreshed (unchanged)        0
+  records before               945
+  added                        0
+  refreshed (unchanged)        5
   revised (corrected)          0
-  records after                1148
+  records after                945
 
 WARNING CODES
   unknown_party                148
@@ -40,8 +40,9 @@ WARNING CODES
   missing_amount               2
 
 GATES
-  result                       PASS
+  result                       FAIL
+  FAILURE   yield_far_below_previous_run:1.67<2.63_per_filing
 
 OUTCOME
-  production updated           yes — archive written
+  production updated           no — previous known-good archive retained
 ================================================================

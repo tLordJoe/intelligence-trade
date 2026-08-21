@@ -13,7 +13,13 @@
  * run still leaves the archive and the live quarantine queue untouched.
  */
 
-import { mkdirSync, writeFileSync, readFileSync, existsSync } from "node:fs";
+import {
+  mkdirSync,
+  writeFileSync,
+  readFileSync,
+  existsSync,
+  appendFileSync,
+} from "node:fs";
 import { join } from "node:path";
 
 import type {
@@ -161,6 +167,32 @@ export function mergeQuarantine(
     updatedAt: now,
     entries: [...byId.values()],
   };
+}
+
+/**
+ * Publish the run's identity for a CI job to consume.
+ *
+ * The workflow has to upload and commit exactly one run's evidence, including
+ * when the importer exited non-zero, so it needs the run id in a machine
+ * readable form rather than scraped from log output. Written to GITHUB_OUTPUT
+ * when running under Actions, and always to a pointer file so the same
+ * information is available locally.
+ */
+export function publishRunPointer(
+  runsDir: string,
+  runId: string,
+  runDir: string,
+  githubOutputPath?: string
+): void {
+  writeFileSync(join(runsDir, "latest-run-id.txt"), `${runId}\n`);
+
+  if (githubOutputPath) {
+    // Appended, never truncated: other steps may already have written here.
+    appendFileSync(
+      githubOutputPath,
+      `run_id=${runId}\nrun_dir=${runDir}\n`
+    );
+  }
 }
 
 export function summarizeRun(input: RunArtifactInput): RunSummary {

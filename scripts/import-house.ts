@@ -45,6 +45,7 @@ import {
 import {
   appendRunIndex,
   mergeQuarantine,
+  publishRunPointer,
   summarizeRun,
   writeRunArtifacts,
 } from "../src/lib/import-artifacts.ts";
@@ -72,6 +73,22 @@ const argv = process.argv.slice(2);
 const DRY_RUN = argv.includes("--dry-run");
 /** Explicit reviewed override for a completeness drop. Recorded in the report. */
 const ALLOW_DROP = argv.includes("--allow-completeness-drop");
+
+/**
+ * Simulation only. Trips a named gate deterministically, whatever the source
+ * currently contains.
+ *
+ * Exists so the supervised workflow can prove that evidence is uploaded after a
+ * failing importer without depending on real data happening to fail. Relying on
+ * a narrow window to trip the completeness gate was not deterministic: whether
+ * it failed depended on the yield of whichever filings were newest that day.
+ *
+ * Safe by construction. The failure is injected after the run is assessed and
+ * after evidence is written, and it forces `passed: false`, which is the same
+ * condition that already prevents any production write. It can never cause a
+ * bad archive to be published — only a refusal to publish.
+ */
+const SIMULATE_GATE_FAILURE = argv.includes("--simulate-gate-failure");
 /**
  * Filings to process. Defaults to the entire annual index.
  *
@@ -459,13 +476,32 @@ async function main() {
       ? priorCounts.accepted / priorCounts.parsedFilings
       : undefined;
 
-  const gates = assessRun({
+  const assessed = assessRun({
     counts: finalCounts,
     previousYieldPerFiling,
     previouslyProductiveDocIds,
     zeroRowDocIds,
     allowCompletenessDrop: ALLOW_DROP,
   });
+
+  // Injected after assessment, so evidence is still written and production is
+  // still protected by the ordinary `passed === false` path.
+  const gates = SIMULATE_GATE_FAILURE
+    ? {
+        ...assessed,
+        passed: false,
+        failures: [...assessed.failures, "simulated_gate_failure"],
+      }
+    : assessed;
+
+  if (SIMULATE_GATE_FAILURE) {
+    console.error(
+      "\n*** SIMULATION: a gate failure was injected deliberately. ***\n" +
+        "*** No production data will be written. This flag is for verifying ***\n" +
+        "*** that failed-run evidence is captured, and must never be used   ***\n" +
+        "*** during a real import.                                          ***\n"
+    );
+  }
 
   const productionUpdated = gates.passed && !DRY_RUN;
   const finishedAt = new Date().toISOString();
@@ -507,6 +543,9 @@ async function main() {
   };
   const artifactDir = writeRunArtifacts(RUNS_DIR, artifactInput);
   appendRunIndex(RUN_INDEX_PATH, summarizeRun(artifactInput));
+  // Publish identity before the exit path, so CI can find this run's evidence
+  // even when the gates fail.
+  publishRunPointer(RUNS_DIR, runId, artifactDir, process.env.GITHUB_OUTPUT);
   writeFileSync(REPORT_PATH, `${report}\n`);
   console.error(`\nRun evidence retained: ${artifactDir}`);
 

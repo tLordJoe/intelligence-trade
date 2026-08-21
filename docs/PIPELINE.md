@@ -243,9 +243,27 @@ discarded.
   ADRs. Treated as advisory.
 - **House only.** Senate disclosures are not ingested. The framework is designed
   to accept a second source, but no Senate collector exists yet.
-- **Scheduled refresh is disabled.** `.github/workflows/refresh-congress.yml`
-  was removed during containment and has not been restored. Re-enabling it is a
-  deliberate decision to be made after this pipeline has been reviewed.
+- **Scheduled refresh is disabled.** The daily workflow was removed during
+  containment. Its replacement,
+  `.github/workflows/supervised-house-refresh.yml`, is **manual only** — it has
+  a `workflow_dispatch` trigger and deliberately no `schedule:` block. It offers
+  three modes: `dry-run` (parse and validate, write nothing), `import` (full
+  import, commit only on a clean pass) and `simulate-failure`, which passes
+  `--simulate-gate-failure` to inject a named gate failure after assessment.
+  That injection is deterministic — it does not depend on the source happening
+  to fail — and is refused outright in `import` mode. Because it forces
+  `passed: false`, it travels the same path that already prevents production
+  writes: it can only cause a refusal to publish, never a bad publish.
+
+  The run pointer `data/import-runs/latest-run-id.txt` is gitignored and cleared
+  before each run. A pointer inherited from checkout could otherwise let a run
+  that crashed early attach a *previous* run's evidence to itself. Evidence is
+  resolved only from the importer's own output or from a pointer written during
+  that execution; if neither exists, the run reports no evidence and uploads
+  only its log rather than substituting an earlier run. Evidence is uploaded under
+  `if: always()` with 90-day retention, and the commit step is reachable only
+  when the importer exited zero. A schedule will be added only after one
+  complete supervised run has been reviewed.
 
 ## Adding a source
 
