@@ -20,6 +20,10 @@ on:
         description: "Accept a lower yield than the previous run (reviewed override)"
         type: boolean
         default: false
+      simulate_gate_failure:
+        description: "SIMULATION ONLY — inject a gate failure to prove evidence upload. Never valid with mode=import."
+        type: boolean
+        default: false
 
 # One import at a time. Two concurrent runs could interleave commits to the
 # archive, which is the one file that must never be written by two writers.
@@ -45,8 +49,36 @@ jobs:
 
       - run: npm ci
 
+      # Requirement: `import` must never carry the simulation flag. Checked
+      # before anything runs, so a mistaken dispatch stops immediately.
+      - name: Refuse import mode combined with simulation
+        run: |
+          if [ "${{ inputs.mode }}" = "import" ] && [ "${{ inputs.simulate_gate_failure }}" = "true" ]; then
+            echo "::error::simulate_gate_failure cannot be used with mode=import."
+            echo "Simulation deliberately fails a gate; combining it with a real import is never valid."
+            exit 1
+          fi
+          echo "Mode=${{ inputs.mode }}, simulation=${{ inputs.simulate_gate_failure }} — combination allowed."
+
       - name: Verify the pipeline's own tests before touching data
         run: npm test
+
+      # The pointer is committed, so a copy from a previous run is present after
+      # checkout. If the importer crashed before writing a new one, a stale
+      # pointer would make the upload step attach a previous run's evidence to
+      # this execution. Removing it first means anything found later was
+      # necessarily written by this run.
+      # The pointer is gitignored so checkout cannot supply one, and it is
+      # removed here as well in case a cached workspace carries one over. After
+      # this step, any pointer present was necessarily written by this run.
+      - name: Invalidate any pointer inherited from checkout
+        run: |
+          rm -f data/import-runs/latest-run-id.txt
+          if [ -f data/import-runs/latest-run-id.txt ]; then
+            echo "::error::Failed to clear the inherited run pointer."
+            exit 1
+          fi
+          echo "Inherited run pointer cleared; evidence must be produced by this run."
 
       # ---------------------------------------------------------------------
       # The import. `continue-on-error` is essential: a non-zero exit must not
@@ -63,10 +95,11 @@ jobs:
               ARGS="--dry-run"
               ;;
             simulate-failure)
-              # A three-filing window yields far below the established rate and
-              # trips the completeness gate. Safe by construction: the importer
-              # never writes production when a gate fails.
-              ARGS="--limit 3"
+              # Deterministic: injects a named gate failure after assessment,
+              # whatever the source currently holds. A narrow window was not
+              # deterministic — whether it failed depended on the yield of that
+              # day's newest filings.
+              ARGS="--simulate-gate-failure"
               ;;
             *)
               ARGS=""
@@ -76,6 +109,9 @@ jobs:
           if [ "${{ inputs.allow_completeness_drop }}" = "true" ]; then
             ARGS="$ARGS --allow-completeness-drop"
           fi
+          if [ "${{ inputs.simulate_gate_failure }}" = "true" ]; then
+            ARGS="$ARGS --simulate-gate-failure"
+          fi
 
           echo "Running: node scripts/import-house.ts $ARGS"
           node --experimental-strip-types scripts/import-house.ts $ARGS 2>&1 | tee import.log
@@ -83,20 +119,37 @@ jobs:
           echo "import_exit=$IMPORT_EXIT" >> "$GITHUB_OUTPUT"
           exit $IMPORT_EXIT
 
-      # Resolve the run id even if the importer died before writing GITHUB_OUTPUT.
+      # Evidence is resolved only from this execution. The inherited pointer was
+      # deleted above, so a pointer present now was necessarily written by this
+      # run. If the importer crashed before producing evidence, that is reported
+      # honestly as has_evidence=false rather than reaching for an older run.
       - name: Resolve run identity
         id: run
         if: always()
         run: |
           RUN_ID="${{ steps.import.outputs.run_id }}"
+          SOURCE="importer output"
+
           if [ -z "$RUN_ID" ] && [ -f data/import-runs/latest-run-id.txt ]; then
             RUN_ID=$(cat data/import-runs/latest-run-id.txt)
+            SOURCE="pointer written by this run"
           fi
+
+          if [ -z "$RUN_ID" ]; then
+            echo "::warning::The importer produced no run id — it failed before creating evidence."
+            echo "has_evidence=false" >> "$GITHUB_OUTPUT"
+            echo "run_id=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "Run id $RUN_ID (from $SOURCE)"
           echo "run_id=$RUN_ID" >> "$GITHUB_OUTPUT"
-          if [ -n "$RUN_ID" ] && [ -d "data/import-runs/$RUN_ID" ]; then
+
+          if [ -d "data/import-runs/$RUN_ID" ]; then
             echo "run_dir=data/import-runs/$RUN_ID" >> "$GITHUB_OUTPUT"
             echo "has_evidence=true" >> "$GITHUB_OUTPUT"
           else
+            echo "::warning::Run id $RUN_ID has no evidence directory."
             echo "has_evidence=false" >> "$GITHUB_OUTPUT"
           fi
 
@@ -112,6 +165,8 @@ jobs:
           retention-days: 90
           if-no-files-found: error
 
+      # Uploaded regardless. When the importer crashed before producing
+      # evidence, this log is the only record of what happened.
       - name: Upload report, quarantine queue and run index
         if: always()
         uses: actions/upload-artifact@v4
@@ -140,7 +195,9 @@ jobs:
             echo "| Mode | \`${{ inputs.mode }}\` |"
             echo "| Completeness override | \`${{ inputs.allow_completeness_drop }}\` |"
             echo "| Importer exit code | \`${{ steps.import.outputs.import_exit }}\` |"
+            echo "| Simulation | \`${{ inputs.simulate_gate_failure }}\` |"
             echo "| Run id | \`${{ steps.run.outputs.run_id }}\` |"
+            echo "| Evidence produced | \`${{ steps.run.outputs.has_evidence }}\` |"
             echo ""
           } >> "$GITHUB_STEP_SUMMARY"
 
@@ -184,8 +241,12 @@ jobs:
               echo "</details>"
             } >> "$GITHUB_STEP_SUMMARY"
           else
-            echo "No evidence directory was produced — the importer failed before validation." \
-              >> "$GITHUB_STEP_SUMMARY"
+            {
+              echo "### No evidence produced"
+              echo ""
+              echo "The importer failed before writing an evidence directory."
+              echo "Only \`import.log\` was uploaded. **Evidence from earlier runs was deliberately not substituted.**"
+            } >> "$GITHUB_STEP_SUMMARY"
           fi
 
       # ---------------------------------------------------------------------
@@ -198,6 +259,7 @@ jobs:
       - name: Commit approved data
         if: >-
           inputs.mode == 'import' &&
+          inputs.simulate_gate_failure != true &&
           steps.import.outcome == 'success' &&
           steps.run.outputs.has_evidence == 'true'
         run: |
@@ -213,7 +275,6 @@ jobs:
             data/congress-quarantine.json \
             data/last-import-report.txt \
             data/import-runs/index.json \
-            data/import-runs/latest-run-id.txt \
             "$RUN_DIR"
 
           if git diff --cached --quiet; then
