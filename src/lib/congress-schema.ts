@@ -6,9 +6,9 @@
  *  1. Raw source values are never overwritten. Normalization writes to new
  *     fields; `raw` always holds exactly what the filing said. That is what
  *     makes a correction auditable after the fact.
- *  2. Identity comes from the source document, not from the record's content.
- *     Content-derived keys silently merge two legitimate transactions that
- *     happen to match on every visible field.
+ *  2. Identity is content-addressed within its source document, so it survives
+ *     parser changes. See congress-identity.ts for why positional identity was
+ *     abandoned.
  */
 
 export const SCHEMA_VERSION = 1;
@@ -22,17 +22,45 @@ export type TransactionType = "Buy" | "Sell" | "Exchange";
 export type TickerResolution =
   | "verified" // exact match in the SEC security master
   | "aliased" // matched after normalizing punctuation, e.g. BRK.B -> BRK-B
-  | "unknown"; // not in the master — quarantined, never published
+  | "unknown"; // absent from the master — flagged for review, still published
 
 /**
- * Validation outcome. `quarantined` records are written to a separate file and
+ * Validation outcome. `quarantined` records are written to a review queue and
  * are never served; they exist so a human can inspect what the parser produced
  * rather than having it silently dropped.
  */
 export type RecordStatus = "valid" | "warning" | "quarantined";
 
-/** How the record's stable id was derived. */
-export type IdStrategy = "filing-row" | "fingerprint";
+/**
+ * How the record's stable id was derived.
+ *
+ * `content-row` is the current strategy: document id plus a hash of the row's
+ * canonical content plus an occurrence counter. `filing-row` is the superseded
+ * positional strategy, retained only so older archives can be recognized during
+ * reconciliation.
+ */
+export type IdStrategy = "content-row" | "filing-row" | "fingerprint";
+
+/** One field changed by a reviewed re-interpretation of the same filing row. */
+export interface FieldChange {
+  field: string;
+  from: string;
+  to: string;
+}
+
+/**
+ * A recorded correction.
+ *
+ * Raw source values and provenance are immutable. When a parser improvement
+ * changes how a row is *interpreted*, the new normalized values are applied and
+ * the change is logged here, so a correction is always visible rather than
+ * silent.
+ */
+export interface RecordRevision {
+  at: string;
+  importRunId: string;
+  changes: FieldChange[];
+}
 
 /** Exactly what the filing said, before any cleanup. Never mutated. */
 export interface RawDisclosureValues {
@@ -52,8 +80,12 @@ export interface RecordProvenance {
   filingUrl: string;
   /** Source document identifier, e.g. the House Clerk DocID. */
   docId: string;
-  /** Zero-based transaction row within that document. */
+  /** Zero-based transaction row within that document, in document order. */
   rowIndex: number;
+  /** Hash of the row's canonical content — the stable part of its identity. */
+  contentHash: string;
+  /** Which occurrence of identical content within the document this is. */
+  occurrence: number;
   /** ISO timestamp, set on first ingest and never changed afterwards. */
   firstSeen: string;
   /** ISO timestamp, refreshed each time the record is seen again. */
@@ -70,7 +102,7 @@ export interface RecordProvenance {
  * renders, then the audit trail.
  */
 export interface DisclosureRecord {
-  /** Stable identity, `${docId}#${rowIndex}` for filing-row strategy. */
+  /** Stable identity: `{docId}::{contentHash}::{occurrence}`. */
   id: string;
   idStrategy: IdStrategy;
 
@@ -105,12 +137,22 @@ export interface DisclosureRecord {
   tickerResolution: TickerResolution;
   /** SEC Central Index Key when the ticker resolved. */
   cik?: string;
+  /** Corrections applied to normalized fields, oldest first. */
+  revisions?: RecordRevision[];
 }
 
 /** Per-run counts. Every stage is recorded so drops are visible, not inferred. */
 export interface ImportCounts {
   /** Filings advertised by the source index. */
   sourceFilings: number;
+  /** Filings this run intended to process. */
+  selectedFilings: number;
+  /** Filings whose document downloaded successfully. */
+  downloadedFilings: number;
+  /** Filings that downloaded but could not be parsed. */
+  failedParses: number;
+  /** Filings that parsed but yielded no transaction rows. */
+  zeroRowFilings: number;
   /** Filings actually fetched and parsed. */
   parsedFilings: number;
   /** Transaction rows extracted from those filings. */
@@ -126,6 +168,8 @@ export interface ImportCounts {
   added: number;
   /** Existing records whose lastSeen was refreshed. */
   refreshed: number;
+  /** Existing records whose normalized fields were corrected. */
+  revised: number;
   /** Archive size before and after the merge. */
   archiveBefore: number;
   archiveAfter: number;
@@ -150,16 +194,38 @@ export interface DisclosureArchive {
   trades: DisclosureRecord[];
 }
 
-/** Records held back from publication, with the reason. */
+/** Whether a quarantined record has been dealt with. */
+export type QuarantineResolution = "open" | "resolved" | "dismissed";
+
+/**
+ * A quarantined record and its history.
+ *
+ * Quarantine is a review queue, not a bin. Entries accumulate across runs with
+ * their own first/last-seen timestamps so a recurring problem is visible as
+ * recurring, and a resolved one keeps its record.
+ */
+export interface QuarantineEntry {
+  record: DisclosureRecord;
+  firstSeen: string;
+  lastSeen: string;
+  /** Import runs in which this record was quarantined, oldest first. */
+  runIds: string[];
+  resolution: QuarantineResolution;
+}
+
 export interface QuarantineFile {
   schemaVersion: number;
   updatedAt: string;
-  records: DisclosureRecord[];
+  entries: QuarantineEntry[];
 }
 
 export function emptyCounts(): ImportCounts {
   return {
     sourceFilings: 0,
+    selectedFilings: 0,
+    downloadedFilings: 0,
+    failedParses: 0,
+    zeroRowFilings: 0,
     parsedFilings: 0,
     parsedRecords: 0,
     accepted: 0,
@@ -171,12 +237,16 @@ export function emptyCounts(): ImportCounts {
     missingFilingUrl: 0,
     added: 0,
     refreshed: 0,
+    revised: 0,
     archiveBefore: 0,
     archiveAfter: 0,
   };
 }
 
-/** `${docId}#${rowIndex}` — stable across re-parses of the same filing. */
+/**
+ * Superseded positional id. Retained for reconciling older archives only —
+ * new records use content-addressed identity from congress-identity.ts.
+ */
 export function filingRowId(docId: string, rowIndex: number): string {
   return `${docId}#${rowIndex}`;
 }

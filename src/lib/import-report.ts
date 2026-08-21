@@ -44,7 +44,29 @@ export function renderImportReport(input: ImportReportInput): string {
 
   out.push("SOURCE AND PARSE");
   out.push(line("filings advertised", counts.sourceFilings));
-  out.push(line("filings parsed", counts.parsedFilings));
+  out.push(line("filings selected", counts.selectedFilings));
+  out.push(
+    line(
+      "filings downloaded",
+      `${counts.downloadedFilings}${
+        counts.selectedFilings
+          ? ` (${Math.round((counts.downloadedFilings / counts.selectedFilings) * 100)}%)`
+          : ""
+      }`
+    )
+  );
+  out.push(
+    line(
+      "filings parsed",
+      `${counts.parsedFilings}${
+        counts.downloadedFilings
+          ? ` (${Math.round((counts.parsedFilings / counts.downloadedFilings) * 100)}%)`
+          : ""
+      }`
+    )
+  );
+  out.push(line("parse failures", counts.failedParses));
+  out.push(line("filings with zero rows", counts.zeroRowFilings));
   out.push(line("transaction rows parsed", counts.parsedRecords));
   out.push("");
 
@@ -61,7 +83,8 @@ export function renderImportReport(input: ImportReportInput): string {
   out.push("ARCHIVE");
   out.push(line("records before", counts.archiveBefore));
   out.push(line("added", counts.added));
-  out.push(line("refreshed (seen again)", counts.refreshed));
+  out.push(line("refreshed (unchanged)", counts.refreshed));
+  out.push(line("revised (corrected)", counts.revised));
   out.push(line("records after", counts.archiveAfter));
   out.push("");
 

@@ -1,20 +1,24 @@
 #!/usr/bin/env node --experimental-strip-types
 /**
- * One-time archive migration and reconciliation.
+ * One-time archive migration with record-level reconciliation.
  *
- * The archive predating this rebuild used ids of the form `${docId}-${n}`,
- * where `n` counted accepted rows. The new importer uses `${docId}#${n}`, where
- * `n` is the ordinal of the symbol-bearing block within the filing. Those
- * numbers coincide only when no row was skipped, so ids cannot simply be
- * rewritten — the mapping is not reliable.
+ * The pre-rebuild archive used positional ids (`{docId}-{n}`, later
+ * `{docId}#{n}`). The rebuild uses content-addressed ids. Those cannot be
+ * mapped onto each other arithmetically, because the old index counted accepted
+ * rows while the new one hashes row content — so the archive is rebuilt from the
+ * authoritative source and the old records are retired.
  *
- * Instead this rebuilds the archive from the authoritative source and then
- * proves the result is a superset: every filing (docId) represented in the
- * frozen 203-record dataset must still be represented afterwards. Any docId
- * that fails that check is reported and the migration exits non-zero.
+ * Retiring records is exactly the operation that caused the August incident, so
+ * it is not done on trust. Every legacy record must be shown to have a
+ * counterpart in the rebuild before any of them are dropped:
  *
- * Run once, reviewed as part of the pipeline rebuild. Routine imports remain
- * strictly append-only.
+ *   Tier 1  same filing, ticker, direction, date and amount   — identical
+ *   Tier 2  same filing, direction, date and amount           — ticker corrected
+ *   Tier 3  no counterpart                                    — MIGRATION ABORTS
+ *
+ * Tier 2 exists because correcting tickers is one of the defects this rebuild
+ * fixes: the Berkshire holding stored as CARR is the same disclosure, now
+ * carrying BRK.B.
  *
  * Usage:
  *   node --experimental-strip-types scripts/migrate-archive.ts [--apply]
@@ -29,16 +33,26 @@ import type {
   DisclosureArchive,
   DisclosureRecord,
 } from "../src/lib/congress-schema.ts";
+import { docIdFromRecordId } from "../src/lib/congress-identity.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const ARCHIVE_PATH = join(ROOT, "src", "lib", "congress-live.json");
+const REPORT_PATH = join(ROOT, "data", "migration-reconciliation.txt");
 const FROZEN_TAG = "data-known-good-203";
 
 const APPLY = process.argv.includes("--apply");
 
-/** Read the frozen known-good dataset straight out of git. */
-function readFrozenBaseline(): { trades: Array<Record<string, unknown>> } {
+interface LegacyRecord {
+  id?: string;
+  ticker?: string;
+  type?: string;
+  transactionDate?: string;
+  amount?: string;
+  politician?: string;
+}
+
+function readFrozenBaseline(): { trades: LegacyRecord[] } {
   const raw = execFileSync(
     "git",
     ["show", `${FROZEN_TAG}:src/lib/congress-live.json`],
@@ -47,12 +61,16 @@ function readFrozenBaseline(): { trades: Array<Record<string, unknown>> } {
   return JSON.parse(raw);
 }
 
-function docIdOf(record: { id?: string; provenance?: { docId?: string } }): string {
-  if (record.provenance?.docId) return record.provenance.docId;
-  // Legacy ids: `${docId}-${n}` — the docId is everything before the last dash.
-  const id = String(record.id ?? "");
-  const cut = id.lastIndexOf("-");
-  return cut > 0 ? id.slice(0, cut) : id;
+const norm = (v: unknown) => String(v ?? "").toUpperCase().replace(/\s+/g, " ").trim();
+
+/** Same filing, ticker, direction, date and amount. */
+function exactKey(r: { ticker?: string; type?: string; transactionDate?: string; amount?: string }, docId: string) {
+  return [docId, norm(r.ticker), norm(r.type), norm(r.transactionDate), norm(r.amount)].join("|");
+}
+
+/** Same filing, direction, date and amount — ticker allowed to differ. */
+function tickerAgnosticKey(r: { type?: string; transactionDate?: string; amount?: string }, docId: string) {
+  return [docId, norm(r.type), norm(r.transactionDate), norm(r.amount)].join("|");
 }
 
 function main() {
@@ -64,57 +82,119 @@ function main() {
   const current: DisclosureArchive = JSON.parse(readFileSync(ARCHIVE_PATH, "utf8"));
   const baseline = readFrozenBaseline();
 
-  const currentRecords = (current.trades ?? []) as DisclosureRecord[];
-  const migrated = currentRecords.filter((r) => r.idStrategy === "filing-row");
-  const legacy = currentRecords.filter((r) => r.idStrategy !== "filing-row");
+  const all = (current.trades ?? []) as DisclosureRecord[];
+  const rebuilt = all.filter((r) => r.idStrategy === "content-row");
+  const legacy = all.filter((r) => r.idStrategy !== "content-row");
 
-  const baselineDocIds = new Set(baseline.trades.map(docIdOf));
-  const migratedDocIds = new Set(migrated.map(docIdOf));
-
-  const missing = [...baselineDocIds].filter((d) => !migratedDocIds.has(d));
-
-  console.log("=".repeat(64));
-  console.log("ARCHIVE MIGRATION RECONCILIATION");
-  console.log("=".repeat(64));
-  console.log(`  frozen baseline (${FROZEN_TAG})`);
-  console.log(`    records                    ${baseline.trades.length}`);
-  console.log(`    distinct filings (docId)   ${baselineDocIds.size}`);
-  console.log("");
-  console.log("  current archive");
-  console.log(`    records total              ${currentRecords.length}`);
-  console.log(`    new-format (filing-row)    ${migrated.length}`);
-  console.log(`    legacy-format remaining    ${legacy.length}`);
-  console.log(`    distinct filings (docId)   ${migratedDocIds.size}`);
-  console.log("");
-  console.log("  coverage check");
-  console.log(`    baseline filings covered   ${baselineDocIds.size - missing.length}/${baselineDocIds.size}`);
-  console.log(`    filings NOT covered        ${missing.length}`);
-
-  if (missing.length) {
-    console.log("");
-    console.log("  MISSING FILINGS (first 20):");
-    for (const d of missing.slice(0, 20)) console.log(`    ${d}`);
+  // Index the rebuild for lookup.
+  const exactIndex = new Map<string, DisclosureRecord[]>();
+  const looseIndex = new Map<string, DisclosureRecord[]>();
+  for (const r of rebuilt) {
+    const docId = r.provenance?.docId ?? docIdFromRecordId(r.id);
+    for (const [index, key] of [
+      [exactIndex, exactKey(r, docId)],
+      [looseIndex, tickerAgnosticKey(r, docId)],
+    ] as const) {
+      const list = index.get(key) ?? [];
+      list.push(r);
+      index.set(key, list);
+    }
   }
 
-  console.log("=".repeat(64));
+  let tier1 = 0;
+  let tier2 = 0;
+  const unmatched: LegacyRecord[] = [];
+  const tickerCorrections: Array<{ docId: string; from: string; to: string }> = [];
 
-  if (missing.length) {
+  for (const legacyRecord of baseline.trades) {
+    const docId = docIdFromRecordId(String(legacyRecord.id ?? ""));
+
+    if (exactIndex.has(exactKey(legacyRecord, docId))) {
+      tier1 += 1;
+      continue;
+    }
+    const loose = looseIndex.get(tickerAgnosticKey(legacyRecord, docId));
+    if (loose?.length) {
+      tier2 += 1;
+      const replacement = loose[0];
+      if (norm(replacement.ticker) !== norm(legacyRecord.ticker)) {
+        tickerCorrections.push({
+          docId,
+          from: String(legacyRecord.ticker),
+          to: String(replacement.ticker),
+        });
+      }
+      continue;
+    }
+    unmatched.push(legacyRecord);
+  }
+
+  const out: string[] = [];
+  out.push("=".repeat(66));
+  out.push("ARCHIVE MIGRATION — RECORD-LEVEL RECONCILIATION");
+  out.push("=".repeat(66));
+  out.push(`  frozen baseline (${FROZEN_TAG})`);
+  out.push(`    records                          ${baseline.trades.length}`);
+  out.push("");
+  out.push("  current archive before migration");
+  out.push(`    total                            ${all.length}`);
+  out.push(`    rebuilt (content-addressed)      ${rebuilt.length}`);
+  out.push(`    legacy (positional ids)          ${legacy.length}`);
+  out.push("");
+  out.push("  legacy record reconciliation");
+  out.push(`    tier 1 — identical counterpart   ${tier1}`);
+  out.push(`    tier 2 — ticker corrected        ${tier2}`);
+  out.push(`    tier 3 — NO counterpart          ${unmatched.length}`);
+  out.push(
+    `    accounted for                    ${tier1 + tier2}/${baseline.trades.length}`
+  );
+
+  if (tickerCorrections.length) {
+    out.push("");
+    out.push("  ticker corrections applied by the rebuild (first 10):");
+    for (const c of tickerCorrections.slice(0, 10)) {
+      out.push(`    ${c.docId}  ${c.from} -> ${c.to}`);
+    }
+  }
+
+  if (unmatched.length) {
+    out.push("");
+    out.push("  UNMATCHED LEGACY RECORDS (first 20):");
+    for (const u of unmatched.slice(0, 20)) {
+      out.push(
+        `    ${u.id}  ${u.ticker}  ${u.type}  ${u.transactionDate}  ${u.amount}`
+      );
+    }
+  }
+
+  out.push("");
+  out.push(
+    `  arithmetic: ${all.length} total - ${legacy.length} superseded legacy = ${rebuilt.length} retained`
+  );
+  out.push("=".repeat(66));
+
+  const report = out.join("\n");
+  console.log(report);
+  writeFileSync(REPORT_PATH, `${report}\n`);
+
+  if (unmatched.length) {
     console.error(
-      "\nReconciliation FAILED — the rebuild does not cover every baseline filing."
+      "\nRECONCILIATION FAILED — legacy disclosures have no counterpart in the rebuild."
     );
-    console.error("Legacy records retained. Nothing was changed.");
+    console.error("Nothing was changed. The archive still contains both sets.");
     process.exit(1);
   }
 
   if (!legacy.length) {
-    console.log("\nNothing to migrate: archive already contains no legacy records.");
+    console.log("\nNothing to migrate: no legacy records remain.");
     return;
   }
 
   if (!APPLY) {
     console.log(
-      `\nDry run. ${legacy.length} legacy record(s) would be removed as superseded.`
+      `\nDry run. Every one of the ${baseline.trades.length} baseline disclosures is present in the rebuild.`
     );
+    console.log(`${legacy.length} superseded legacy record(s) would be retired.`);
     console.log("Re-run with --apply to write the migrated archive.");
     return;
   }
@@ -122,12 +202,12 @@ function main() {
   const archive: DisclosureArchive = {
     ...current,
     updatedAt: new Date().toISOString(),
-    counts: { ...current.counts, archiveAfter: migrated.length },
-    trades: migrated,
+    counts: { ...current.counts, archiveAfter: rebuilt.length },
+    trades: rebuilt,
   };
   writeFileSync(ARCHIVE_PATH, `${JSON.stringify(archive, null, 2)}\n`);
   console.log(
-    `\nMigrated. ${legacy.length} superseded legacy record(s) removed; ${migrated.length} retained.`
+    `\nMigrated. ${legacy.length} superseded legacy record(s) retired; ${rebuilt.length} retained.`
   );
 }
 

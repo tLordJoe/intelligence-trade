@@ -74,6 +74,8 @@ function makeRecord(overrides: Partial<DisclosureRecord> = {}): DisclosureRecord
         "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035136.pdf",
       docId: "20035136",
       rowIndex: 0,
+      contentHash: "testhash00000000",
+      occurrence: 0,
       firstSeen: "2026-08-21T00:00:00.000Z",
       lastSeen: "2026-08-21T00:00:00.000Z",
       importRunId: "run_test",
@@ -274,6 +276,8 @@ test("regression: an archive that shrinks fails the run", () => {
   const counts = {
     ...emptyCounts(),
     sourceFilings: 40,
+    selectedFilings: 40,
+    downloadedFilings: 40,
     parsedFilings: 40,
     parsedRecords: 182,
     accepted: 182,
@@ -289,6 +293,8 @@ test("a growing archive passes", () => {
   const counts = {
     ...emptyCounts(),
     sourceFilings: 40,
+    selectedFilings: 40,
+    downloadedFilings: 40,
     parsedFilings: 40,
     parsedRecords: 210,
     accepted: 210,
@@ -312,6 +318,8 @@ test("wholesale rejection fails rather than publishing an empty set", () => {
   const counts = {
     ...emptyCounts(),
     sourceFilings: 40,
+    selectedFilings: 40,
+    downloadedFilings: 40,
     parsedFilings: 40,
     parsedRecords: 100,
     accepted: 0,
@@ -324,10 +332,15 @@ test("wholesale rejection fails rather than publishing an empty set", () => {
   assert.ok(result.failures.includes("all_records_rejected"));
 });
 
-test("a sharp drop against the previous run warns without blocking", () => {
+test("regression: a sharp drop against the previous run now blocks", () => {
+  // Previously a warning. Append-only storage protects records already held but
+  // cannot notice a run that failed to collect what it should have, so a
+  // material shortfall is treated as a broken run.
   const counts = {
     ...emptyCounts(),
     sourceFilings: 40,
+    selectedFilings: 40,
+    downloadedFilings: 40,
     parsedFilings: 40,
     parsedRecords: 120,
     accepted: 120,
@@ -335,6 +348,8 @@ test("a sharp drop against the previous run warns without blocking", () => {
     archiveAfter: 210,
   };
   const result = assessRun({ counts, previousAccepted: 200 });
-  assert.equal(result.passed, true);
-  assert.ok(result.warnings.some((w) => w.startsWith("accepted_below_previous_run")));
+  assert.equal(result.passed, false);
+  assert.ok(
+    result.failures.some((f) => f.startsWith("accepted_far_below_previous_run"))
+  );
 });

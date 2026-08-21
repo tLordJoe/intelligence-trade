@@ -28,12 +28,13 @@ import { randomUUID } from "node:crypto";
 import {
   SCHEMA_VERSION,
   emptyCounts,
-  filingRowId,
   type DisclosureArchive,
   type DisclosureRecord,
+  type QuarantineEntry,
   type QuarantineFile,
   type TransactionType,
 } from "../src/lib/congress-schema.ts";
+import { assignRowIds, docIdFromRecordId } from "../src/lib/congress-identity.ts";
 import { assessRecord, assessRun } from "../src/lib/congress-gates.ts";
 import { mergeRecords, tallyCounts } from "../src/lib/congress-merge.ts";
 import { renderImportReport, tallyWarnings } from "../src/lib/import-report.ts";
@@ -61,6 +62,8 @@ const USER_AGENT = "Outfox Markets research (contact: hello@outfoxmarkets.com)";
 
 const argv = process.argv.slice(2);
 const DRY_RUN = argv.includes("--dry-run");
+/** Explicit reviewed override for a completeness drop. Recorded in the report. */
+const ALLOW_DROP = argv.includes("--allow-completeness-drop");
 const LIMIT = argv.includes("--limit")
   ? Number.parseInt(argv[argv.indexOf("--limit") + 1] ?? "150", 10)
   : 150;
@@ -281,9 +284,18 @@ async function main() {
   counts.sourceFilings = filings.length;
 
   const selected = filings.slice(0, LIMIT);
+  counts.selectedFilings = selected.length;
   console.error(
     `  ${filings.length} PTR filings in index; processing ${selected.length}`
   );
+
+  // Documents that produced rows in the archive we are extending. A filing that
+  // yielded rows before and yields none now is a parser regression.
+  const existingArchiveForDocs = readArchive();
+  const previouslyProductiveDocIds = new Set(
+    (existingArchiveForDocs?.trades ?? []).map((r) => docIdFromRecordId(r.id))
+  );
+  const zeroRowDocIds: string[] = [];
 
   const parsed: DisclosureRecord[] = [];
   const quarantined: DisclosureRecord[] = [];
@@ -299,9 +311,10 @@ async function main() {
         writeFileSync(cachePath, buf);
       }
     } catch (e) {
-      console.error(`  SKIP ${filing.docId}: ${(e as Error).message}`);
+      console.error(`  SKIP ${filing.docId}: download failed — ${(e as Error).message}`);
       continue;
     }
+    counts.downloadedFilings += 1;
 
     let text: string;
     try {
@@ -309,6 +322,7 @@ async function main() {
       ({ text } = await parser.getText());
       await parser.destroy();
     } catch (e) {
+      counts.failedParses += 1;
       console.error(`  SKIP ${filing.docId}: parse failed — ${(e as Error).message}`);
       continue;
     }
@@ -317,12 +331,31 @@ async function main() {
     const filingUrl = `${PDF_BASE}${filing.docId}.pdf`;
     const rows = parseFilingRows(text);
     counts.parsedRecords += rows.length;
+    if (rows.length === 0) {
+      counts.zeroRowFilings += 1;
+      zeroRowDocIds.push(filing.docId);
+    }
 
-    for (const row of rows) {
+    // Content-addressed ids, assigned per filing so an occurrence counter can
+    // distinguish genuinely duplicated transactions.
+    const identities = assignRowIds(
+      filing.docId,
+      rows.map((r) => ({
+        issuerName: r.issuerName,
+        tickerText: r.tickerText,
+        typeText: r.typeText,
+        amountText: r.amountText,
+        transactionDateText: r.transactionDateText,
+        ownerText: r.ownerText,
+      }))
+    );
+
+    for (const [rowPosition, row] of rows.entries()) {
+      const identity = identities[rowPosition];
       const now = new Date().toISOString();
       const record: DisclosureRecord = {
-        id: filingRowId(filing.docId, row.rowIndex),
-        idStrategy: "filing-row",
+        id: identity.id,
+        idStrategy: "content-row",
         politician: filing.name,
         party: PARTY_BY_NAME[filing.name] ?? null,
         chamber: "House",
@@ -352,6 +385,8 @@ async function main() {
           filingUrl,
           docId: filing.docId,
           rowIndex: row.rowIndex,
+          contentHash: identity.contentHash,
+          occurrence: identity.occurrence,
           firstSeen: now,
           lastSeen: now,
           importRunId: runId,
@@ -383,9 +418,15 @@ async function main() {
   const existingRecords = (existingArchive?.trades ?? []) as DisclosureRecord[];
   counts.archiveBefore = existingRecords.length;
 
-  const merged = mergeRecords(existingRecords, parsed, new Date().toISOString());
+  const merged = mergeRecords(
+    existingRecords,
+    parsed,
+    new Date().toISOString(),
+    runId
+  );
   counts.added = merged.added;
   counts.refreshed = merged.refreshed;
+  counts.revised = merged.revised;
   counts.duplicates = merged.duplicates;
   counts.archiveAfter = merged.records.length;
 
@@ -395,6 +436,9 @@ async function main() {
   const gates = assessRun({
     counts: finalCounts,
     previousAccepted: existingArchive?.counts?.accepted,
+    previouslyProductiveDocIds,
+    zeroRowDocIds,
+    allowCompletenessDrop: ALLOW_DROP,
   });
 
   const productionUpdated = gates.passed && !DRY_RUN;
@@ -413,10 +457,44 @@ async function main() {
     };
     writeFileSync(ARCHIVE_PATH, `${JSON.stringify(archive, null, 2)}\n`);
 
+    // Quarantine is a review queue, not a bin: entries accumulate across runs
+    // so a recurring problem reads as recurring.
+    const now = new Date().toISOString();
+    let priorEntries: QuarantineEntry[] = [];
+    if (existsSync(QUARANTINE_PATH)) {
+      try {
+        const prior = JSON.parse(readFileSync(QUARANTINE_PATH, "utf8"));
+        priorEntries = Array.isArray(prior?.entries) ? prior.entries : [];
+      } catch {
+        priorEntries = [];
+      }
+    }
+
+    const byId = new Map(priorEntries.map((e) => [e.record.id, e]));
+    for (const record of quarantined) {
+      const prior = byId.get(record.id);
+      if (prior) {
+        byId.set(record.id, {
+          ...prior,
+          record,
+          lastSeen: now,
+          runIds: [...prior.runIds, runId],
+        });
+      } else {
+        byId.set(record.id, {
+          record,
+          firstSeen: now,
+          lastSeen: now,
+          runIds: [runId],
+          resolution: "open",
+        });
+      }
+    }
+
     const quarantineFile: QuarantineFile = {
       schemaVersion: SCHEMA_VERSION,
-      updatedAt: new Date().toISOString(),
-      records: quarantined,
+      updatedAt: now,
+      entries: [...byId.values()],
     };
     writeFileSync(QUARANTINE_PATH, `${JSON.stringify(quarantineFile, null, 2)}\n`);
   }

@@ -43,16 +43,38 @@ House Clerk XML index
 
 ## Stable identity
 
-Records are keyed `{docId}#{rowIndex}` — the House Clerk's own document id plus
-the ordinal of the symbol-bearing block within that filing.
+Records are keyed `{docId}::{contentHash}::{occurrence}`.
 
-A content-derived key (politician, ticker, type, date, amount) was considered
-and rejected: two legitimate same-day purchases of the same size in different
-accounts would collapse into one record.
+Two earlier designs were tried and rejected:
 
-`rowIndex` counts every symbol-bearing block, including ones that yield no
-usable transaction, so an id stays attached to the same row even if parsing
-rules change later.
+- **A content fingerprint** (politician, ticker, type, date, amount) collapses
+  two legitimate same-day purchases of the same size in different accounts into
+  a single record.
+- **A positional ordinal** (`{docId}#{n}`, counting symbol-bearing blocks) breaks
+  under parser improvement. The moment the parser recognizes a row it previously
+  skipped, every ordinal after it shifts and every later transaction in that
+  filing changes identity — records appear to vanish and be replaced.
+
+Content addressing avoids both. The hash covers the row's own canonical content
+within its document, so recognizing a new *earlier* row leaves every other row's
+identity untouched. The occurrence counter distinguishes genuinely duplicated
+identical transactions (`::0`, `::1`). Whitespace and case are normalized before
+hashing, so cosmetic parser changes do not alter identity.
+
+There is a regression test asserting exactly this: adding a newly recognized
+earlier row must not change the ids of the rows after it.
+
+## Corrections are applied and logged
+
+Seeing a record again is not a no-op. A parser improvement changes how a row is
+*interpreted* — a name parsed more completely, a ticker resolved correctly, a
+warning cleared — and those corrections have to reach readers.
+
+On re-parse, normalized fields are compared. Where they differ, the new values
+are applied and the change is appended to the record's `revisions` log with the
+run id and a field-level before/after. `raw`, `provenance.firstSeen` and identity
+are never touched. A correction is therefore always visible rather than silent,
+and always checkable against the source text.
 
 ## Raw values are never overwritten
 
@@ -112,11 +134,29 @@ live and nothing is written.
 | No filings parsed / no records parsed | **fail** |
 | Every record rejected | **fail** |
 | More than 50% quarantined | **fail** |
+| Fewer than 90% of selected filings downloaded | **fail** |
+| Fewer than 90% of downloaded filings parsed | **fail** |
+| A previously productive filing now yields zero rows | **fail** |
+| Accepted count below 85% of previous run or baseline | **fail** (override available) |
 | More than 15% quarantined | warning |
-| Accepted count below 90% of previous run | warning |
-| Accepted count below 90% of rolling baseline | warning |
+| Accepted count below 95% of previous run or baseline | warning |
 | Records missing filing URL | warning |
 | Duplicate ids collapsed | warning |
+
+Two of these deserve explanation.
+
+**Completeness blocks rather than warns.** Append-only storage protects records
+already held, but it cannot notice that a run *failed to collect* disclosures it
+should have collected — that run looks identical to a healthy one, because
+nothing was lost. A material shortfall is therefore treated as a broken run. A
+reviewed override exists (`--allow-completeness-drop`) for the case where the
+source genuinely published less; it converts the failure into a warning that is
+recorded in the import report, so an override is never invisible.
+
+**Filing completion is tracked separately from record counts.** Selected,
+downloaded, parsed, failed and zero-row filings are counted independently, so a
+run that quietly fetched one filing out of 150 fails on the ratio even if the
+few records it did collect look healthy.
 
 The archive-shrink gate is the one that would have stopped the August incident
 on its first day.
@@ -134,14 +174,24 @@ node --experimental-strip-types scripts/import-house.ts --limit 150
 Every run writes a readable report to `data/last-import-report.txt` covering
 what was fetched, accepted, warned, quarantined, and whether production moved.
 
-Quarantined records are written to `data/congress-quarantine.json`. They are
-never served, and never silently discarded.
+Quarantined records are written to `data/congress-quarantine.json` as
+history-preserving entries — each carries its own `firstSeen`, `lastSeen`, the
+list of runs in which it was quarantined, and a `resolution` state. The file
+accumulates across runs rather than being overwritten, so a recurring problem
+reads as recurring. Quarantined records are never served, and never silently
+discarded.
 
 ## Known limitations
 
 - **Party coverage.** Party comes from `data/house-party-map.json`, a lookup of
   48 members. Unresolved filers are recorded as `null` and warned, never
   guessed. 148 of 945 records currently lack a party.
+
+  Consumers must never count these as Democratic or Republican. `party-stats.ts`
+  buckets strictly into D / R / unknown, exposes an `unknown` filter so those
+  filings stay reachable, and returns a disclosure sentence that any partisan
+  summary is expected to display. Tests cover the legacy `"?"` substitution the
+  API performs, plus null, undefined and empty values.
 - **Security master coverage.** As above — incomplete, especially for foreign
   ADRs. Treated as advisory.
 - **House only.** Senate disclosures are not ingested. The framework is designed

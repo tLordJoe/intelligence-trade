@@ -32,8 +32,23 @@ export const ISSUER_NAME_TRUNCATION_LENGTH = 60;
 /** A run that loses more than this share of the archive is presumed broken. */
 export const ARCHIVE_SHRINK_TOLERANCE = 0;
 
-/** A run producing fewer than this share of the previous run's records warns. */
-export const RECORD_DROP_WARN_RATIO = 0.9;
+/** Below this share of the comparable previous run, a drop warns. */
+export const RECORD_DROP_WARN_RATIO = 0.95;
+
+/**
+ * Below this share of the comparable previous run, a drop blocks.
+ *
+ * Append-only storage protects records already held, but it cannot notice that
+ * a run failed to collect disclosures it should have collected. A materially
+ * smaller harvest is treated as a broken run rather than a quiet one.
+ */
+export const RECORD_DROP_FAIL_RATIO = 0.85;
+
+/** Share of selected filings that must download for the run to be trusted. */
+export const DOWNLOAD_COMPLETION_MIN = 0.9;
+
+/** Share of downloaded filings that must parse for the run to be trusted. */
+export const PARSE_COMPLETION_MIN = 0.9;
 
 export interface RecordAssessment {
   status: RecordStatus;
@@ -163,6 +178,21 @@ export interface RunGateInput {
   previousAccepted?: number;
   /** Mean accepted count over recent runs, if any. */
   baselineAccepted?: number;
+  /**
+   * Documents that produced at least one row in the previous archive. A filing
+   * that parsed before and yields nothing now indicates parser regression.
+   */
+  previouslyProductiveDocIds?: Set<string>;
+  /** Documents that parsed this run but produced no rows. */
+  zeroRowDocIds?: string[];
+  /**
+   * Explicit reviewed override for a completeness drop.
+   *
+   * Set only by a human who has looked at the numbers and accepts them — for
+   * instance when the source genuinely published fewer filings. Recorded in the
+   * import report so the override is never invisible.
+   */
+  allowCompletenessDrop?: boolean;
 }
 
 /**
@@ -174,7 +204,14 @@ export interface RunGateInput {
  * shrink is a hard failure rather than a warning.
  */
 export function assessRun(input: RunGateInput): RunGateResult {
-  const { counts, previousAccepted, baselineAccepted } = input;
+  const {
+    counts,
+    previousAccepted,
+    baselineAccepted,
+    previouslyProductiveDocIds,
+    zeroRowDocIds,
+    allowCompletenessDrop,
+  } = input;
   const failures: string[] = [];
   const warnings: string[] = [];
 
@@ -202,25 +239,59 @@ export function assessRun(input: RunGateInput): RunGateResult {
     warnings.push(`elevated_quarantine_ratio:${quarantineRatio.toFixed(2)}`);
   }
 
-  // A sharp fall in what the source window yields is worth a human look even
-  // though the archive itself is protected by the shrink gate.
-  if (
-    typeof previousAccepted === "number" &&
-    previousAccepted > 0 &&
-    counts.accepted < previousAccepted * RECORD_DROP_WARN_RATIO
-  ) {
-    warnings.push(
-      `accepted_below_previous_run:${counts.accepted}<${previousAccepted}`
-    );
+  // --- filing completion ---------------------------------------------------
+  //
+  // A run that quietly fetched a fraction of what it selected looks identical
+  // to a healthy run once the archive is append-only, because nothing is lost —
+  // it simply fails to gain what it should have.
+  if (counts.selectedFilings > 0) {
+    const downloadRatio = counts.downloadedFilings / counts.selectedFilings;
+    if (downloadRatio < DOWNLOAD_COMPLETION_MIN) {
+      failures.push(
+        `download_completion_too_low:${counts.downloadedFilings}/${counts.selectedFilings}`
+      );
+    }
   }
-  if (
-    typeof baselineAccepted === "number" &&
-    baselineAccepted > 0 &&
-    counts.accepted < baselineAccepted * RECORD_DROP_WARN_RATIO
-  ) {
-    warnings.push(
-      `accepted_below_baseline:${counts.accepted}<${Math.round(baselineAccepted)}`
-    );
+  if (counts.downloadedFilings > 0) {
+    const parseRatio = counts.parsedFilings / counts.downloadedFilings;
+    if (parseRatio < PARSE_COMPLETION_MIN) {
+      failures.push(
+        `parse_completion_too_low:${counts.parsedFilings}/${counts.downloadedFilings}`
+      );
+    }
+  }
+
+  // A filing that yielded rows before and yields none now is a parser
+  // regression, regardless of how healthy the totals look.
+  if (previouslyProductiveDocIds?.size && zeroRowDocIds?.length) {
+    const regressed = zeroRowDocIds.filter((d) => previouslyProductiveDocIds.has(d));
+    if (regressed.length) {
+      failures.push(
+        `previously_productive_filings_now_empty:${regressed.length}:${regressed.slice(0, 5).join(",")}`
+      );
+    }
+  }
+
+  // --- completeness --------------------------------------------------------
+  const dropChecks: Array<[string, number]> = [];
+  if (typeof previousAccepted === "number" && previousAccepted > 0) {
+    dropChecks.push(["previous_run", previousAccepted]);
+  }
+  if (typeof baselineAccepted === "number" && baselineAccepted > 0) {
+    dropChecks.push(["baseline", Math.round(baselineAccepted)]);
+  }
+
+  for (const [label, reference] of dropChecks) {
+    if (counts.accepted < reference * RECORD_DROP_FAIL_RATIO) {
+      const code = `accepted_far_below_${label}:${counts.accepted}<${reference}`;
+      if (allowCompletenessDrop) {
+        warnings.push(`${code}:override_accepted`);
+      } else {
+        failures.push(code);
+      }
+    } else if (counts.accepted < reference * RECORD_DROP_WARN_RATIO) {
+      warnings.push(`accepted_below_${label}:${counts.accepted}<${reference}`);
+    }
   }
 
   if (counts.missingFilingUrl > 0) {

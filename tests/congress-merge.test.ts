@@ -45,6 +45,8 @@ function makeRecord(
       filingUrl: `https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/${docId}.pdf`,
       docId,
       rowIndex,
+      contentHash: "testhash00000000",
+      occurrence: 0,
       firstSeen: "2026-08-01T00:00:00.000Z",
       lastSeen: "2026-08-01T00:00:00.000Z",
       importRunId: "run_old",

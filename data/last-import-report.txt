@@ -1,14 +1,18 @@
 ================================================================
 OUTFOX HOUSE DISCLOSURE IMPORT
 ================================================================
-  run id                       run_2026-08-21T06-35-10-965Z_e0182ddf
-  started                      2026-08-21T06:35:10.966Z
-  finished                     2026-08-21T06:35:14.993Z
+  run id                       run_2026-08-21T07-18-15-938Z_dcba0663
+  started                      2026-08-21T07:18:15.939Z
+  finished                     2026-08-21T07:18:19.958Z
   source                       https://disclosures-clerk.house.gov/public_disc/financial-pdfs/2026FD.xml
 
 SOURCE AND PARSE
   filings advertised           359
-  filings parsed               359
+  filings selected             359
+  filings downloaded           359 (100%)
+  filings parsed               359 (100%)
+  parse failures               0
+  filings with zero rows       145
   transaction rows parsed      945
 
 VALIDATION
@@ -23,7 +27,8 @@ VALIDATION
 ARCHIVE
   records before               203
   added                        945
-  refreshed (seen again)       0
+  refreshed (unchanged)        0
+  revised (corrected)          0
   records after                1148
 
 WARNING CODES
