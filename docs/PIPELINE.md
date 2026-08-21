@@ -205,6 +205,22 @@ and PDFs are cached locally so repeat runs only fetch what is new.
 Every run writes a readable report to `data/last-import-report.txt` covering
 what was fetched, accepted, warned, quarantined, and whether production moved.
 
+It also writes a complete, immutable evidence set under
+`data/import-runs/{runId}/` — `report.txt`, `summary.json`, `quarantine.json`
+and, when relevant, `unseen-ids.json` — plus an entry in
+`data/import-runs/index.json`, newest first.
+
+**These are written whatever the outcome, before any production write.** The
+first version of this pipeline wrote quarantine inside the success branch, so a
+run that failed its gates discarded the very records explaining the failure, and
+a single fixed report path meant the next run overwrote the last one's evidence.
+A failed run now leaves the archive and the live review queue untouched while
+retaining everything needed to diagnose it.
+
+The live queue in `data/congress-quarantine.json` is only advanced by a run that
+passed its gates; a failed run's quarantine stays in its own run directory, so
+records produced by a run we do not trust never enter the review queue.
+
 Quarantined records are written to `data/congress-quarantine.json` as
 history-preserving entries — each carries its own `firstSeen`, `lastSeen`, the
 list of runs in which it was quarantined, and a `resolution` state. The file

@@ -42,6 +42,12 @@ import {
   buildSecurityMaster,
   type SecurityMaster,
 } from "../src/lib/security-master.ts";
+import {
+  appendRunIndex,
+  mergeQuarantine,
+  summarizeRun,
+  writeRunArtifacts,
+} from "../src/lib/import-artifacts.ts";
 
 const require = createRequire(import.meta.url);
 const { PDFParse } = require("pdf-parse");
@@ -52,6 +58,8 @@ const ARCHIVE_PATH = join(ROOT, "src", "lib", "congress-live.json");
 const QUARANTINE_PATH = join(ROOT, "data", "congress-quarantine.json");
 const MASTER_PATH = join(ROOT, "data", "security-master.json");
 const REPORT_PATH = join(ROOT, "data", "last-import-report.txt");
+const RUNS_DIR = join(ROOT, "data", "import-runs");
+const RUN_INDEX_PATH = join(ROOT, "data", "import-runs", "index.json");
 const PDF_CACHE = join(__dirname, ".cache", "ptr-pdfs");
 
 const YEAR = new Date().getFullYear();
@@ -460,67 +468,12 @@ async function main() {
   });
 
   const productionUpdated = gates.passed && !DRY_RUN;
-
-  if (productionUpdated) {
-    const archive: DisclosureArchive = {
-      schemaVersion: SCHEMA_VERSION,
-      updatedAt: new Date().toISOString(),
-      source: "Clerk of the U.S. House of Representatives — STOCK Act PTR filings",
-      coverage: "U.S. House of Representatives",
-      limitations:
-        "House-only coverage; filings can be delayed, amended, or corrected by the filer.",
-      counts: finalCounts,
-      lastImportRunId: runId,
-      trades: merged.records,
-    };
-    writeFileSync(ARCHIVE_PATH, `${JSON.stringify(archive, null, 2)}\n`);
-
-    // Quarantine is a review queue, not a bin: entries accumulate across runs
-    // so a recurring problem reads as recurring.
-    const now = new Date().toISOString();
-    let priorEntries: QuarantineEntry[] = [];
-    if (existsSync(QUARANTINE_PATH)) {
-      try {
-        const prior = JSON.parse(readFileSync(QUARANTINE_PATH, "utf8"));
-        priorEntries = Array.isArray(prior?.entries) ? prior.entries : [];
-      } catch {
-        priorEntries = [];
-      }
-    }
-
-    const byId = new Map(priorEntries.map((e) => [e.record.id, e]));
-    for (const record of quarantined) {
-      const prior = byId.get(record.id);
-      if (prior) {
-        byId.set(record.id, {
-          ...prior,
-          record,
-          lastSeen: now,
-          runIds: [...prior.runIds, runId],
-        });
-      } else {
-        byId.set(record.id, {
-          record,
-          firstSeen: now,
-          lastSeen: now,
-          runIds: [runId],
-          resolution: "open",
-        });
-      }
-    }
-
-    const quarantineFile: QuarantineFile = {
-      schemaVersion: SCHEMA_VERSION,
-      updatedAt: now,
-      entries: [...byId.values()],
-    };
-    writeFileSync(QUARANTINE_PATH, `${JSON.stringify(quarantineFile, null, 2)}\n`);
-  }
+  const finishedAt = new Date().toISOString();
 
   const report = renderImportReport({
     runId,
     startedAt,
-    finishedAt: new Date().toISOString(),
+    finishedAt,
     sourceUrl: XML_URL,
     counts: finalCounts,
     gates,
@@ -534,12 +487,69 @@ async function main() {
   });
 
   console.log(report);
+
+  // --- audit artifacts, written whatever the outcome -----------------------
+  //
+  // Deliberately before the production write. A run that fails its gates is
+  // exactly the run whose quarantine and counts need to survive, and the
+  // previous version discarded them by writing quarantine only on success.
+  const artifactInput = {
+    runId,
+    startedAt,
+    finishedAt,
+    counts: finalCounts,
+    gates,
+    productionUpdated,
+    dryRun: DRY_RUN,
+    report,
+    quarantined,
+    unseenIds: merged.unseenIds,
+  };
+  const artifactDir = writeRunArtifacts(RUNS_DIR, artifactInput);
+  appendRunIndex(RUN_INDEX_PATH, summarizeRun(artifactInput));
   writeFileSync(REPORT_PATH, `${report}\n`);
+  console.error(`\nRun evidence retained: ${artifactDir}`);
+
+  // --- production, only on a pass ------------------------------------------
+  if (productionUpdated) {
+    const archive: DisclosureArchive = {
+      schemaVersion: SCHEMA_VERSION,
+      updatedAt: finishedAt,
+      source: "Clerk of the U.S. House of Representatives — STOCK Act PTR filings",
+      coverage: "U.S. House of Representatives",
+      limitations:
+        "House-only coverage; filings can be delayed, amended, or corrected by the filer.",
+      counts: finalCounts,
+      lastImportRunId: runId,
+      trades: merged.records,
+    };
+    writeFileSync(ARCHIVE_PATH, `${JSON.stringify(archive, null, 2)}\n`);
+
+    // The live review queue is only advanced by a run we trust. A failed run's
+    // quarantine lives in its artifact directory instead.
+    let priorEntries: QuarantineEntry[] = [];
+    if (existsSync(QUARANTINE_PATH)) {
+      try {
+        const prior = JSON.parse(readFileSync(QUARANTINE_PATH, "utf8"));
+        priorEntries = Array.isArray(prior?.entries) ? prior.entries : [];
+      } catch {
+        priorEntries = [];
+      }
+    }
+    const quarantineFile: QuarantineFile = mergeQuarantine(
+      priorEntries,
+      quarantined,
+      runId,
+      finishedAt
+    );
+    writeFileSync(QUARANTINE_PATH, `${JSON.stringify(quarantineFile, null, 2)}\n`);
+  }
 
   if (!gates.passed) {
     console.error(
-      "\nGates failed — the previous known-good archive was left in place."
+      "Gates failed — the previous known-good archive and review queue were left in place."
     );
+    console.error("Failure detail and this run's quarantine are in the directory above.");
     process.exit(1);
   }
   if (DRY_RUN) console.error("\nDry run — nothing was written.");
