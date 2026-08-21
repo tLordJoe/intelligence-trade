@@ -1,0 +1,47 @@
+================================================================
+OUTFOX HOUSE DISCLOSURE IMPORT
+================================================================
+  run id                       run_2026-08-21T07-35-15-135Z_2da62b1b
+  started                      2026-08-21T07:35:15.135Z
+  finished                     2026-08-21T07:35:18.340Z
+  source                       https://disclosures-clerk.house.gov/public_disc/financial-pdfs/2026FD.xml
+
+SOURCE AND PARSE
+  filings advertised           359
+  filings selected             359
+  filings downloaded           359 (100%)
+  filings parsed               359 (100%)
+  parse failures               0
+  filings with zero rows       145
+  transaction rows parsed      945
+
+VALIDATION
+  accepted (clean)             761
+  accepted with warnings       184
+  quarantined                  0
+  duplicate ids collapsed      0
+  missing party                148
+  missing ticker               0
+  missing filing url           0
+
+ARCHIVE
+  records before               203
+  added                        945
+  refreshed (unchanged)        0
+  revised (corrected)          0
+  records after                1148
+
+WARNING CODES
+  unknown_party                148
+  unknown_ticker               27
+  truncated_issuer_name        13
+  ticker_aliased               6
+  issuer_ticker_mismatch       3
+  missing_amount               2
+
+GATES
+  result                       PASS
+
+OUTCOME
+  production updated           yes — archive written
+================================================================

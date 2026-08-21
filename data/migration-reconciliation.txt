@@ -1,0 +1,19 @@
+==================================================================
+ARCHIVE MIGRATION — RECORD-LEVEL RECONCILIATION
+==================================================================
+  frozen baseline (data-known-good-203)
+    records                          203
+
+  current archive before migration
+    total                            1148
+    rebuilt (content-addressed)      945
+    legacy (positional ids)          203
+
+  legacy record reconciliation
+    tier 1 — identical counterpart   203
+    tier 2 — ticker corrected        0
+    tier 3 — NO counterpart          0
+    accounted for                    203/203
+
+  arithmetic: 1148 total - 203 superseded legacy = 945 retained
+==================================================================

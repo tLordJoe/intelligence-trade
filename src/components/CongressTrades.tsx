@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { CongressTrade } from "@/lib/congress-types";
 import { isOfficialHouseFilingUrl } from "@/lib/congress-utils";
+import { filterByParty, partyBreakdown, unknownPartyDisclosure } from "@/lib/party-stats";
 
 function AmountBadge({ amount }: { amount: string }) {
   const num = parseInt(amount.replace(/[^0-9]/g, ""));
@@ -29,6 +30,7 @@ function AmountBadge({ amount }: { amount: string }) {
 function partyColors(party: CongressTrade["party"]) {
   if (party === "D") return { color: "#3B82F6", bg: "rgba(59, 130, 246, 0.1)" };
   if (party === "R") return { color: "#EF4444", bg: "rgba(239, 68, 68, 0.1)" };
+  // Unverified party is neutral grey — never coloured as a side.
   return { color: "var(--text-dim)", bg: "var(--bg-inset)" };
 }
 
@@ -53,7 +55,7 @@ export default function CongressTrades() {
   const [trades, setTrades] = useState<CongressTrade[]>([]);
   const [updatedAt, setUpdatedAt] = useState<string>("");
   const [status, setStatus] = useState<"loading" | "ok" | "error">("loading");
-  const [filter, setFilter] = useState<"all" | "D" | "R">("all");
+  const [filter, setFilter] = useState<"all" | "D" | "R" | "unknown">("all");
 
   useEffect(() => {
     fetch("/api/congress?limit=12")
@@ -69,7 +71,9 @@ export default function CongressTrades() {
       .catch(() => setStatus("error"));
   }, []);
 
-  const filtered = filter === "all" ? trades : trades.filter((t) => t.party === filter);
+  const filtered = filterByParty(trades, filter);
+  const parties = partyBreakdown(trades);
+  const partyNote = unknownPartyDisclosure(parties);
 
   const buyCount = trades.filter((t) => t.type === "Buy").length;
   const totalTrades = trades.length;
@@ -93,7 +97,7 @@ export default function CongressTrades() {
             </p>
           </div>
           <div className="flex gap-1">
-            {(["all", "D", "R"] as const).map((f) => (
+            {(["all", "D", "R", "unknown"] as const).map((f) => (
               <button
                 key={f}
                 onClick={() => setFilter(f)}
@@ -101,17 +105,32 @@ export default function CongressTrades() {
                 style={{
                   backgroundColor:
                     filter === f
-                      ? f === "D" ? "#3B82F6" : f === "R" ? "#EF4444" : "var(--accent)"
+                      ? f === "D" ? "#3B82F6" : f === "R" ? "#EF4444" : f === "unknown" ? "#6B7280" : "var(--accent)"
                       : "transparent",
                   color: filter === f ? "#fff" : "var(--text-dim)",
                   border: filter === f ? "none" : "1px solid var(--border)",
                 }}
               >
-                {f === "all" ? "All" : f === "D" ? "Dem" : "Rep"}
+                {f === "all"
+                  ? `All (${parties.total})`
+                  : f === "D"
+                    ? `Dem (${parties.democrat})`
+                    : f === "R"
+                      ? `Rep (${parties.republican})`
+                      : `Unverified (${parties.unknown})`}
               </button>
             ))}
           </div>
         </div>
+
+        {partyNote && (
+          <p
+            className="text-[11px] mb-3 rounded-md px-3 py-2"
+            style={{ color: "var(--text-dim)", backgroundColor: "var(--bg-inset)" }}
+          >
+            {partyNote}
+          </p>
+        )}
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
           <div className="rounded-md p-2 border" style={{ borderColor: "var(--border)" }}>
