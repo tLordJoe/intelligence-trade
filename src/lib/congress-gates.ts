@@ -18,6 +18,7 @@ import type {
   DisclosureRecord,
   ImportCounts,
   RecordStatus,
+  TickerResolution,
 } from "./congress-schema.ts";
 import { isOfficialHouseFilingUrl } from "./congress-utils.ts";
 import {
@@ -53,6 +54,20 @@ export const PARSE_COMPLETION_MIN = 0.9;
 export interface RecordAssessment {
   status: RecordStatus;
   warnings: string[];
+  /**
+   * The resolved security, returned so the caller can persist it.
+   *
+   * Resolution was previously computed here to raise warnings and then thrown
+   * away, leaving every archived record marked `unknown` with no CIK. The
+   * lookup is the useful part; the warning is a by-product.
+   */
+  tickerResolution: TickerResolution;
+  /** Canonical SEC symbol when resolved, otherwise the ticker as filed. */
+  resolvedTicker: string;
+  /** SEC Central Index Key when resolved. */
+  cik?: string;
+  /** Issuer name as registered with the SEC, when resolved. */
+  registeredName?: string;
 }
 
 export interface RunGateResult {
@@ -77,11 +92,31 @@ export function looksTruncated(issuerName: string): boolean {
   return !/[\s.,)\]]$/.test(name);
 }
 
-/** Does the value parse as a real calendar date in ISO form? */
+/**
+ * Does the value name a real calendar date in ISO form?
+ *
+ * A plain Date parse is not enough: JavaScript silently rolls impossible dates
+ * forward, so `2026-02-31` becomes 3 March and `2025-02-29` becomes 1 March —
+ * both would pass a NaN check while denoting a day that never existed. The
+ * components are therefore compared against the parsed date, which only
+ * round-trips when the date is genuine.
+ */
 export function isIsoDate(value: string): boolean {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(String(value ?? ""))) return false;
-  const parsed = new Date(`${value}T00:00:00Z`);
-  return !Number.isNaN(parsed.getTime());
+  const text = String(value ?? "");
+  const m = text.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!m) return false;
+
+  const year = Number(m[1]);
+  const month = Number(m[2]);
+  const day = Number(m[3]);
+  if (month < 1 || month > 12 || day < 1 || day > 31) return false;
+
+  const parsed = new Date(Date.UTC(year, month - 1, day));
+  return (
+    parsed.getUTCFullYear() === year &&
+    parsed.getUTCMonth() === month - 1 &&
+    parsed.getUTCDate() === day
+  );
 }
 
 /**
@@ -169,15 +204,29 @@ export function assessRecord(
       ? "warning"
       : "valid";
 
-  return { status, warnings };
+  return {
+    status,
+    warnings,
+    tickerResolution: lookup.resolution,
+    resolvedTicker: lookup.ticker,
+    cik: lookup.cik,
+    registeredName: lookup.title,
+  };
 }
 
 export interface RunGateInput {
   counts: ImportCounts;
-  /** Accepted-record count from the previous successful run, if any. */
-  previousAccepted?: number;
-  /** Mean accepted count over recent runs, if any. */
-  baselineAccepted?: number;
+  /**
+   * Records accepted per parsed filing in the previous successful run.
+   *
+   * A rate rather than a total, because the import window legitimately varies:
+   * a backfill may cover 359 filings and a routine run 150. Comparing absolute
+   * counts across different window sizes would fail every routine run after a
+   * backfill.
+   */
+  previousYieldPerFiling?: number;
+  /** Mean records per parsed filing across recent runs, if any. */
+  baselineYieldPerFiling?: number;
   /**
    * Documents that produced at least one row in the previous archive. A filing
    * that parsed before and yields nothing now indicates parser regression.
@@ -206,8 +255,8 @@ export interface RunGateInput {
 export function assessRun(input: RunGateInput): RunGateResult {
   const {
     counts,
-    previousAccepted,
-    baselineAccepted,
+    previousYieldPerFiling,
+    baselineYieldPerFiling,
     previouslyProductiveDocIds,
     zeroRowDocIds,
     allowCompletenessDrop,
@@ -273,24 +322,35 @@ export function assessRun(input: RunGateInput): RunGateResult {
   }
 
   // --- completeness --------------------------------------------------------
+  //
+  // Measured as yield per parsed filing rather than an absolute count. The
+  // window size is a scheduling decision — a backfill covers the whole annual
+  // index, a routine run covers a recent slice — and comparing totals across
+  // different windows would fail every routine run following a backfill.
+  const yieldPerFiling =
+    counts.parsedFilings > 0 ? counts.accepted / counts.parsedFilings : 0;
+
   const dropChecks: Array<[string, number]> = [];
-  if (typeof previousAccepted === "number" && previousAccepted > 0) {
-    dropChecks.push(["previous_run", previousAccepted]);
+  if (typeof previousYieldPerFiling === "number" && previousYieldPerFiling > 0) {
+    dropChecks.push(["previous_run", previousYieldPerFiling]);
   }
-  if (typeof baselineAccepted === "number" && baselineAccepted > 0) {
-    dropChecks.push(["baseline", Math.round(baselineAccepted)]);
+  if (typeof baselineYieldPerFiling === "number" && baselineYieldPerFiling > 0) {
+    dropChecks.push(["baseline", baselineYieldPerFiling]);
   }
 
+  const fmt = (n: number) => n.toFixed(2);
   for (const [label, reference] of dropChecks) {
-    if (counts.accepted < reference * RECORD_DROP_FAIL_RATIO) {
-      const code = `accepted_far_below_${label}:${counts.accepted}<${reference}`;
+    if (yieldPerFiling < reference * RECORD_DROP_FAIL_RATIO) {
+      const code = `yield_far_below_${label}:${fmt(yieldPerFiling)}<${fmt(reference)}_per_filing`;
       if (allowCompletenessDrop) {
         warnings.push(`${code}:override_accepted`);
       } else {
         failures.push(code);
       }
-    } else if (counts.accepted < reference * RECORD_DROP_WARN_RATIO) {
-      warnings.push(`accepted_below_${label}:${counts.accepted}<${reference}`);
+    } else if (yieldPerFiling < reference * RECORD_DROP_WARN_RATIO) {
+      warnings.push(
+        `yield_below_${label}:${fmt(yieldPerFiling)}<${fmt(reference)}_per_filing`
+      );
     }
   }
 

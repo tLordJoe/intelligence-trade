@@ -76,6 +76,7 @@ function makeRecord(overrides: Partial<DisclosureRecord> = {}): DisclosureRecord
       rowIndex: 0,
       contentHash: "testhash00000000",
       occurrence: 0,
+      reconciliationKey: "20035136::core::0",
       firstSeen: "2026-08-21T00:00:00.000Z",
       lastSeen: "2026-08-21T00:00:00.000Z",
       importRunId: "run_test",
@@ -347,9 +348,9 @@ test("regression: a sharp drop against the previous run now blocks", () => {
     archiveBefore: 203,
     archiveAfter: 210,
   };
-  const result = assessRun({ counts, previousAccepted: 200 });
+  const result = assessRun({ counts, previousYieldPerFiling: 200 / 40 });
   assert.equal(result.passed, false);
   assert.ok(
-    result.failures.some((f) => f.startsWith("accepted_far_below_previous_run"))
+    result.failures.some((f) => f.startsWith("yield_far_below_previous_run"))
   );
 });

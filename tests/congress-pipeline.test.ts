@@ -74,6 +74,7 @@ function makeRecord(
       rowIndex: 0,
       contentHash: identity.contentHash,
       occurrence: identity.occurrence,
+      reconciliationKey: identity.reconciliationKey,
       firstSeen: "2026-08-01T00:00:00.000Z",
       lastSeen: "2026-08-01T00:00:00.000Z",
       importRunId: "run_old",
@@ -113,7 +114,7 @@ test("e2e: only 1 of 150 filings downloads — run fails, archive untouched", ()
     archiveBefore: 900,
     archiveAfter: 903,
   });
-  const result = assessRun({ counts, previousAccepted: 400 });
+  const result = assessRun({ counts, previousYieldPerFiling: 400 / 150 });
   assert.equal(result.passed, false, "must not publish a near-empty harvest");
   assert.ok(
     result.failures.some((f) => f.startsWith("download_completion_too_low")),
@@ -131,7 +132,7 @@ test("e2e: PDFs download but every one yields zero rows — run fails", () => {
     archiveBefore: 900,
     archiveAfter: 900,
   });
-  const result = assessRun({ counts, previousAccepted: 400 });
+  const result = assessRun({ counts, previousYieldPerFiling: 400 / 150 });
   assert.equal(result.passed, false);
   assert.ok(result.failures.includes("no_records_parsed"));
 });
@@ -140,7 +141,7 @@ test("e2e: previously productive filings suddenly yield nothing — run fails", 
   const counts = healthyCounts({ parsedRecords: 380, accepted: 380 });
   const result = assessRun({
     counts,
-    previousAccepted: 400,
+    previousYieldPerFiling: 400 / 150,
     previouslyProductiveDocIds: new Set(["DOC1", "DOC2", "DOC3"]),
     zeroRowDocIds: ["DOC2", "DOC3"],
   });
@@ -162,25 +163,25 @@ test("e2e: a 20% decline in accepted records blocks the run", () => {
     archiveBefore: 900,
     archiveAfter: 920,
   });
-  const result = assessRun({ counts, previousAccepted: 400 });
-  assert.equal(result.passed, false, "a 20% drop must block, not warn");
+  const result = assessRun({ counts, previousYieldPerFiling: 400 / 150 });
+  assert.equal(result.passed, false, "a 20% yield drop must block, not warn");
   assert.ok(
-    result.failures.some((f) => f.startsWith("accepted_far_below_previous_run"))
+    result.failures.some((f) => f.startsWith("yield_far_below_previous_run"))
   );
 });
 
 test("a modest 12% dip warns rather than blocks", () => {
   const counts = healthyCounts({ parsedRecords: 352, accepted: 352 });
-  const result = assessRun({ counts, previousAccepted: 400 });
+  const result = assessRun({ counts, previousYieldPerFiling: 400 / 150 });
   assert.equal(result.passed, true);
-  assert.ok(result.warnings.some((w) => w.startsWith("accepted_below_previous_run")));
+  assert.ok(result.warnings.some((w) => w.startsWith("yield_below_previous_run")));
 });
 
 test("a reviewed override converts a blocking drop into a recorded warning", () => {
   const counts = healthyCounts({ parsedRecords: 320, accepted: 320 });
   const result = assessRun({
     counts,
-    previousAccepted: 400,
+    previousYieldPerFiling: 400 / 150,
     allowCompletenessDrop: true,
   });
   assert.equal(result.passed, true);
@@ -191,7 +192,7 @@ test("a reviewed override converts a blocking drop into a recorded warning", () 
 });
 
 test("a healthy run passes cleanly", () => {
-  const result = assessRun({ counts: healthyCounts(), previousAccepted: 400 });
+  const result = assessRun({ counts: healthyCounts(), previousYieldPerFiling: 400 / 150 });
   assert.equal(result.passed, true);
   assert.deepEqual(result.failures, []);
 });

@@ -47,6 +47,7 @@ function makeRecord(
       rowIndex,
       contentHash: "testhash00000000",
       occurrence: 0,
+      reconciliationKey: `${docId}::core::${rowIndex}`,
       firstSeen: "2026-08-01T00:00:00.000Z",
       lastSeen: "2026-08-01T00:00:00.000Z",
       importRunId: "run_old",

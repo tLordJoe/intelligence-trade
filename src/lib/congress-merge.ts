@@ -100,8 +100,15 @@ export function mergeRecords(
   importRunId = "unknown"
 ): MergeResult {
   const byId = new Map<string, DisclosureRecord>();
+  // Secondary index on the transaction's economic core, so a row whose issuer
+  // name or ticker was corrected still resolves to the record it revises rather
+  // than arriving as a duplicate.
+  const byReconciliationKey = new Map<string, DisclosureRecord>();
   for (const record of existing) {
-    if (record?.id) byId.set(record.id, record);
+    if (!record?.id) continue;
+    byId.set(record.id, record);
+    const key = record.provenance?.reconciliationKey;
+    if (key && !byReconciliationKey.has(key)) byReconciliationKey.set(key, record);
   }
 
   const seenThisRun = new Set<string>();
@@ -119,16 +126,31 @@ export function mergeRecords(
       duplicates += 1;
       continue;
     }
-    seenThisRun.add(record.id);
+    const reconciliationKey = record.provenance?.reconciliationKey;
+    const priorById = byId.get(record.id);
+    const priorByKey =
+      !priorById && reconciliationKey
+        ? byReconciliationKey.get(reconciliationKey)
+        : undefined;
+    const prior = priorById ?? priorByKey;
 
-    const prior = byId.get(record.id);
+    // Guard against two incoming rows reconciling onto the same stored record.
+    if (prior && seenThisRun.has(prior.id)) {
+      duplicates += 1;
+      continue;
+    }
+    seenThisRun.add(prior?.id ?? record.id);
+
     if (!prior) {
       byId.set(record.id, record);
+      if (reconciliationKey) byReconciliationKey.set(reconciliationKey, record);
       added += 1;
       continue;
     }
 
     const changes = diffRecords(prior, record);
+    // A record reached through the reconciliation key keeps the id it was
+    // stored under; only its interpretation is updated.
     const merged: DisclosureRecord = {
       ...prior,
       // Interpretation may be corrected...
@@ -136,7 +158,13 @@ export function mergeRecords(
       warnings: record.warnings ?? prior.warnings,
       // ...but the source record and its history are immutable.
       raw: prior.raw,
-      provenance: { ...prior.provenance, lastSeen: runTimestamp },
+      provenance: {
+        ...prior.provenance,
+        // Content hash follows the corrected interpretation so the audit trail
+        // reflects what the parser now reads; identity itself does not move.
+        contentHash: record.provenance?.contentHash ?? prior.provenance.contentHash,
+        lastSeen: runTimestamp,
+      },
     };
 
     if (changes.length) {
@@ -149,7 +177,9 @@ export function mergeRecords(
       refreshed += 1;
     }
 
-    byId.set(record.id, merged);
+    byId.set(merged.id, merged);
+    const mergedKey = merged.provenance?.reconciliationKey;
+    if (mergedKey) byReconciliationKey.set(mergedKey, merged);
   }
 
   const unseenIds = [...byId.keys()].filter((id) => !seenThisRun.has(id));

@@ -1,9 +1,9 @@
 ================================================================
 OUTFOX HOUSE DISCLOSURE IMPORT
 ================================================================
-  run id                       run_2026-08-21T07-18-15-938Z_dcba0663
-  started                      2026-08-21T07:18:15.939Z
-  finished                     2026-08-21T07:18:19.958Z
+  run id                       run_2026-08-21T07-35-15-135Z_2da62b1b
+  started                      2026-08-21T07:35:15.135Z
+  finished                     2026-08-21T07:35:18.340Z
   source                       https://disclosures-clerk.house.gov/public_disc/financial-pdfs/2026FD.xml
 
 SOURCE AND PARSE

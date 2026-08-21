@@ -57,7 +57,20 @@ Two earlier designs were tried and rejected:
 
 Content addressing avoids both. The hash covers the row's own canonical content
 within its document, so recognizing a new *earlier* row leaves every other row's
-identity untouched. The occurrence counter distinguishes genuinely duplicated
+identity untouched.
+
+Because the content hash includes fields a parser can correct — issuer name and
+ticker text — a correction does move the hash. Each row therefore also carries a
+**reconciliation key** built from the transaction's economic core alone: type,
+amount, transaction date and owner, with its own occurrence counter. When the
+merge cannot find a record by id, it looks up the reconciliation key, so a
+corrected row is recognized as a revision of the record it supersedes rather
+than arriving as a duplicate. Two different securities bought on the same day
+for the same amount get different occurrence numbers and stay separate.
+
+A correction to the amount or transaction date itself would move both keys and
+appear as a new record. That is an accepted limit: those fields are the
+transaction, not our reading of it. The occurrence counter distinguishes genuinely duplicated
 identical transactions (`::0`, `::1`). Whitespace and case are normalized before
 hashing, so cosmetic parser changes do not alter identity.
 
@@ -137,13 +150,21 @@ live and nothing is written.
 | Fewer than 90% of selected filings downloaded | **fail** |
 | Fewer than 90% of downloaded filings parsed | **fail** |
 | A previously productive filing now yields zero rows | **fail** |
-| Accepted count below 85% of previous run or baseline | **fail** (override available) |
+| Yield per filing below 85% of previous run or baseline | **fail** (override available) |
 | More than 15% quarantined | warning |
-| Accepted count below 95% of previous run or baseline | warning |
+| Yield per filing below 95% of previous run or baseline | warning |
 | Records missing filing URL | warning |
 | Duplicate ids collapsed | warning |
 
 Two of these deserve explanation.
+
+**Completeness is measured as yield per filing, not as an absolute count.** The
+import window is a scheduling decision — a backfill covers the whole annual
+index (359 filings, 945 records), a routine run covers a slice. Comparing totals
+across different window sizes would fail every routine run after a backfill: 150
+filings yields roughly 395 records, far below 85% of 945. Comparing the rate
+makes the check independent of window size while still catching a genuine
+collapse.
 
 **Completeness blocks rather than warns.** Append-only storage protects records
 already held, but it cannot notice that a run *failed to collect* disclosures it
@@ -164,12 +185,22 @@ on its first day.
 ## Running it
 
 ```bash
-# Dry run — parses and reports, writes nothing
-node --experimental-strip-types scripts/import-house.ts --limit 40 --dry-run
+# Normal import — processes the full annual index by default
+node --experimental-strip-types scripts/import-house.ts
 
-# Normal import
+# Dry run — parses and reports, writes nothing
+node --experimental-strip-types scripts/import-house.ts --dry-run
+
+# Narrower window (append-only, so this never removes anything)
 node --experimental-strip-types scripts/import-house.ts --limit 150
+
+# Reviewed override for a genuine drop in source volume
+node --experimental-strip-types scripts/import-house.ts --allow-completeness-drop
 ```
+
+The default is the whole index. The old importer's 40-filing window is what let
+history age out of the archive; with append-only storage a full pass is safe,
+and PDFs are cached locally so repeat runs only fetch what is new.
 
 Every run writes a readable report to `data/last-import-report.txt` covering
 what was fetched, accepted, warned, quarantined, and whether production moved.

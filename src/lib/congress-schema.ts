@@ -86,6 +86,12 @@ export interface RecordProvenance {
   contentHash: string;
   /** Which occurrence of identical content within the document this is. */
   occurrence: number;
+  /**
+   * Identity of the transaction's economic core, independent of the fields a
+   * parser may correct. Used to recognize a corrected row as a revision of an
+   * existing record rather than a new one.
+   */
+  reconciliationKey: string;
   /** ISO timestamp, set on first ingest and never changed afterwards. */
   firstSeen: string;
   /** ISO timestamp, refreshed each time the record is seen again. */

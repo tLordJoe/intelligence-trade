@@ -64,9 +64,16 @@ const argv = process.argv.slice(2);
 const DRY_RUN = argv.includes("--dry-run");
 /** Explicit reviewed override for a completeness drop. Recorded in the report. */
 const ALLOW_DROP = argv.includes("--allow-completeness-drop");
+/**
+ * Filings to process. Defaults to the entire annual index.
+ *
+ * The old importer's 40-filing window is what allowed history to age out of the
+ * archive. With append-only storage a full pass is safe, and PDFs are cached
+ * locally so repeat runs only fetch what is new.
+ */
 const LIMIT = argv.includes("--limit")
-  ? Number.parseInt(argv[argv.indexOf("--limit") + 1] ?? "150", 10)
-  : 150;
+  ? Number.parseInt(argv[argv.indexOf("--limit") + 1] ?? "0", 10)
+  : Number.POSITIVE_INFINITY;
 
 /**
  * Party lookup for House filers.
@@ -283,7 +290,7 @@ async function main() {
   const filings = parseFilingIndex(await fetchText(XML_URL));
   counts.sourceFilings = filings.length;
 
-  const selected = filings.slice(0, LIMIT);
+  const selected = Number.isFinite(LIMIT) ? filings.slice(0, LIMIT) : filings;
   counts.selectedFilings = selected.length;
   console.error(
     `  ${filings.length} PTR filings in index; processing ${selected.length}`
@@ -387,6 +394,7 @@ async function main() {
           rowIndex: row.rowIndex,
           contentHash: identity.contentHash,
           occurrence: identity.occurrence,
+          reconciliationKey: identity.reconciliationKey,
           firstSeen: now,
           lastSeen: now,
           importRunId: runId,
@@ -400,6 +408,10 @@ async function main() {
       const assessment = assessRecord(record, master);
       record.status = assessment.status;
       record.warnings = assessment.warnings;
+      // Persist what the lookup found, rather than discarding it.
+      record.tickerResolution = assessment.tickerResolution;
+      if (assessment.resolvedTicker) record.ticker = assessment.resolvedTicker;
+      if (assessment.cik) record.cik = assessment.cik;
 
       if (assessment.status === "quarantined") {
         quarantined.push(record);
@@ -433,9 +445,15 @@ async function main() {
   const finalCounts = tallyCounts(merged.records, counts);
 
   // --- run gates ---------------------------------------------------------
+  const priorCounts = existingArchive?.counts;
+  const previousYieldPerFiling =
+    priorCounts && priorCounts.parsedFilings > 0
+      ? priorCounts.accepted / priorCounts.parsedFilings
+      : undefined;
+
   const gates = assessRun({
     counts: finalCounts,
-    previousAccepted: existingArchive?.counts?.accepted,
+    previousYieldPerFiling,
     previouslyProductiveDocIds,
     zeroRowDocIds,
     allowCompletenessDrop: ALLOW_DROP,

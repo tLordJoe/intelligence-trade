@@ -67,6 +67,38 @@ export function contentHash(input: IdentityInput): string {
 }
 
 /**
+ * The economic core of a transaction: what was done, for how much, when, and by
+ * whose account.
+ *
+ * Deliberately excludes issuer name and ticker text. Those are the two fields a
+ * parser improvement is most likely to change — correcting a truncated name, or
+ * reading BRK.B where it previously read CARR — and if identity moved with them,
+ * a correction would arrive as a brand new record rather than a revision of the
+ * existing one.
+ *
+ * What remains is stable across parser changes but still distinguishes two
+ * different transactions filed on the same day.
+ */
+export function stableCoreText(input: IdentityInput): string {
+  const norm = (v: string) =>
+    String(v ?? "").toUpperCase().replace(/\s+/g, " ").trim();
+  return [
+    norm(input.typeText),
+    norm(input.amountText),
+    norm(input.transactionDateText),
+    norm(input.ownerText),
+  ].join("|");
+}
+
+/** Hash of the economic core, used to reconcile a corrected row to its original. */
+export function stableCoreHash(input: IdentityInput): string {
+  return createHash("sha256")
+    .update(stableCoreText(input))
+    .digest("hex")
+    .slice(0, 16);
+}
+
+/**
  * Assign stable ids to every row parsed from one filing.
  *
  * Occurrence is scoped to identical content within the same document, counted
@@ -75,16 +107,31 @@ export function contentHash(input: IdentityInput): string {
 export function assignRowIds(
   docId: string,
   rows: IdentityInput[]
-): Array<{ id: string; contentHash: string; occurrence: number }> {
-  const seen = new Map<string, number>();
+): Array<{
+  id: string;
+  contentHash: string;
+  occurrence: number;
+  reconciliationKey: string;
+}> {
+  const seenContent = new Map<string, number>();
+  const seenCore = new Map<string, number>();
+
   return rows.map((row) => {
     const hash = contentHash(row);
-    const occurrence = seen.get(hash) ?? 0;
-    seen.set(hash, occurrence + 1);
+    const occurrence = seenContent.get(hash) ?? 0;
+    seenContent.set(hash, occurrence + 1);
+
+    // The reconciliation key is counted independently, so a corrected row keeps
+    // the same key even though its content hash moved.
+    const core = stableCoreHash(row);
+    const coreOccurrence = seenCore.get(core) ?? 0;
+    seenCore.set(core, coreOccurrence + 1);
+
     return {
       id: `${docId}::${hash}::${occurrence}`,
       contentHash: hash,
       occurrence,
+      reconciliationKey: `${docId}::${core}::${coreOccurrence}`,
     };
   });
 }
