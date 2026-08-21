@@ -22,6 +22,7 @@ import type {
   FieldChange,
   ImportCounts,
 } from "./congress-schema.ts";
+import { hasAmount } from "./amounts.ts";
 
 export interface MergeResult {
   records: DisclosureRecord[];
@@ -49,6 +50,7 @@ const REVISABLE_FIELDS = [
   "amount",
   "amountLow",
   "amountHigh",
+  "amountStatus",
   "transactionDate",
   "filedDate",
   "isOptions",
@@ -87,6 +89,25 @@ export function diffRecords(
 }
 
 /**
+ * The economic core of a transaction with the amount deliberately omitted.
+ *
+ * Used only to reconcile a record whose amount was previously unreadable. The
+ * document id keeps the key scoped to one filing, so this can never fuse rows
+ * from different filings.
+ */
+function amountlessCore(record: DisclosureRecord): string {
+  const norm = (v: unknown) => String(v ?? "").toUpperCase().trim();
+  return [
+    record.provenance?.docId ?? "",
+    norm(record.ticker),
+    norm(record.type),
+    norm(record.transactionDate),
+    norm(record.raw?.ownerText),
+    String(record.provenance?.occurrence ?? 0),
+  ].join("|");
+}
+
+/**
  * Merge freshly parsed records into the existing archive.
  *
  * Records are matched on identity. An existing record keeps its `firstSeen`,
@@ -104,11 +125,28 @@ export function mergeRecords(
   // name or ticker was corrected still resolves to the record it revises rather
   // than arriving as a duplicate.
   const byReconciliationKey = new Map<string, DisclosureRecord>();
+  // Tertiary index for records stored without a readable amount.
+  //
+  // The reconciliation key includes the amount, because two rows of the same
+  // stock on the same day differing only in amount are two transactions. That
+  // is right for the general case and wrong for exactly one: a record whose
+  // amount was never readable, later re-parsed with the amount recovered. Its
+  // key necessarily changes, so it would arrive as a new record and the
+  // amountless original would linger beside it as a duplicate.
+  //
+  // Keyed on the economic core minus the amount, and populated *only* from
+  // records that have no amount, so a record with a known amount can never be
+  // reconciled onto by a row carrying a different one.
+  const byAmountlessCore = new Map<string, DisclosureRecord>();
   for (const record of existing) {
     if (!record?.id) continue;
     byId.set(record.id, record);
     const key = record.provenance?.reconciliationKey;
     if (key && !byReconciliationKey.has(key)) byReconciliationKey.set(key, record);
+    if (!hasAmount(record)) {
+      const core = amountlessCore(record);
+      if (!byAmountlessCore.has(core)) byAmountlessCore.set(core, record);
+    }
   }
 
   const seenThisRun = new Set<string>();
@@ -117,29 +155,73 @@ export function mergeRecords(
   let revised = 0;
   let duplicates = 0;
 
+  // Matching runs in two passes, and the order is load-bearing.
+  //
+  // The reconciliation key ends in an occurrence counted across rows that share
+  // an economic core, and the core excludes the ticker. In one real filing five
+  // different securities shared a core — same type, amount, date and owner — so
+  // recovering a previously dropped row shifted every later occurrence by one.
+  // A single-pass merge then handed the recovered row the *next* record's key:
+  // IDEXX's values were written onto PTC's record, and the genuine PTC row was
+  // discarded as a duplicate.
+  //
+  // Exact identity is never ambiguous, so every id match is resolved first and
+  // its record marked claimed. Only then may the positional fallbacks run, and
+  // only against records nothing has claimed.
+  const pairs = new Map<DisclosureRecord, DisclosureRecord | undefined>();
+  const claimed = new Set<string>();
+  const unmatched: DisclosureRecord[] = [];
+
+  // Pass 1 — exact identity.
   for (const record of incoming) {
     if (!record?.id) continue;
-
-    // Two rows in one run resolving to the same id means the parser produced a
-    // collision — count it and keep the first.
     if (seenThisRun.has(record.id)) {
       duplicates += 1;
       continue;
     }
-    const reconciliationKey = record.provenance?.reconciliationKey;
     const priorById = byId.get(record.id);
-    const priorByKey =
-      !priorById && reconciliationKey
-        ? byReconciliationKey.get(reconciliationKey)
-        : undefined;
-    const prior = priorById ?? priorByKey;
-
-    // Guard against two incoming rows reconciling onto the same stored record.
-    if (prior && seenThisRun.has(prior.id)) {
-      duplicates += 1;
-      continue;
+    if (priorById) {
+      seenThisRun.add(priorById.id);
+      claimed.add(priorById.id);
+      pairs.set(record, priorById);
+    } else {
+      unmatched.push(record);
     }
-    seenThisRun.add(prior?.id ?? record.id);
+  }
+
+  // Pass 2 — fallbacks, over what pass 1 left.
+  for (const record of unmatched) {
+    const reconciliationKey = record.provenance?.reconciliationKey;
+    const byKey = reconciliationKey
+      ? byReconciliationKey.get(reconciliationKey)
+      : undefined;
+    const priorByKey = byKey && !claimed.has(byKey.id) ? byKey : undefined;
+
+    // Last resort: an amount recovered for a record that previously had none.
+    const byCore = !priorByKey && hasAmount(record)
+      ? byAmountlessCore.get(amountlessCore(record))
+      : undefined;
+    const priorByRecoveredAmount =
+      byCore && !claimed.has(byCore.id) ? byCore : undefined;
+
+    const prior = priorByKey ?? priorByRecoveredAmount;
+    if (prior) {
+      seenThisRun.add(prior.id);
+      claimed.add(prior.id);
+    } else {
+      // Two rows in one run resolving to the same id means the parser produced
+      // a collision — count it and keep the first.
+      if (seenThisRun.has(record.id)) {
+        duplicates += 1;
+        continue;
+      }
+      seenThisRun.add(record.id);
+    }
+    pairs.set(record, prior);
+  }
+
+  for (const [record, prior] of pairs) {
+    const reconciliationKey = record.provenance?.reconciliationKey;
 
     if (!prior) {
       byId.set(record.id, record);

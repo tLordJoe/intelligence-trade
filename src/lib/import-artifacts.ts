@@ -27,6 +27,9 @@ import type {
   ImportCounts,
   QuarantineEntry,
   QuarantineFile,
+  ZeroRowClassification,
+  ZeroRowFile,
+  ZeroRowFiling,
 } from "./congress-schema.ts";
 import type { RunGateResult } from "./congress-gates.ts";
 
@@ -42,6 +45,8 @@ export interface RunArtifactInput {
   quarantined: DisclosureRecord[];
   /** Archived record ids absent from this run's source window. */
   unseenIds: string[];
+  /** Every filing that produced no rows, with the reason it produced none. */
+  zeroRowFilings: ZeroRowFiling[];
 }
 
 export interface RunSummary {
@@ -94,6 +99,14 @@ export function writeRunArtifacts(
     )}\n`
   );
 
+  // Written on every run, including runs with no empty filings, so its absence
+  // always means "this run did not produce evidence" rather than "this run had
+  // nothing to report".
+  writeFileSync(
+    join(dir, "zero-row-filings.json"),
+    `${JSON.stringify(buildZeroRowFile(input.runId, input.finishedAt, input.zeroRowFilings), null, 2)}\n`
+  );
+
   // Only meaningful on a failure, but cheap and occasionally useful otherwise.
   if (input.unseenIds.length) {
     writeFileSync(
@@ -103,6 +116,43 @@ export function writeRunArtifacts(
   }
 
   return dir;
+}
+
+const ZERO_ROW_CLASSIFICATIONS: ZeroRowClassification[] = [
+  "no_ticker_present",
+  "no_supported_security_transaction",
+  "empty_text_extraction",
+  "unsupported_layout",
+  "parser_suspicious",
+];
+
+/**
+ * Assemble the zero-row evidence file.
+ *
+ * Every classification appears in `counts`, including the ones at zero, so a
+ * reader can tell "none of these occurred" from "this category was not
+ * measured". Filings are ordered newest first: a newly empty recent filing is
+ * the case most likely to be a regression.
+ */
+export function buildZeroRowFile(
+  runId: string,
+  capturedAt: string,
+  filings: ZeroRowFiling[]
+): ZeroRowFile {
+  const counts = Object.fromEntries(
+    ZERO_ROW_CLASSIFICATIONS.map((c) => [c, 0])
+  ) as Record<ZeroRowClassification, number>;
+  for (const filing of filings) counts[filing.classification] += 1;
+
+  const sorted = [...filings].sort((a, b) => {
+    // Previously productive filings first — those are the alarming ones.
+    if (a.previouslyProductive !== b.previouslyProductive) {
+      return a.previouslyProductive ? -1 : 1;
+    }
+    return b.filedDate.localeCompare(a.filedDate);
+  });
+
+  return { schemaVersion: 1, runId, capturedAt, counts, filings: sorted };
 }
 
 /**

@@ -77,6 +77,20 @@ hashing, so cosmetic parser changes do not alter identity.
 There is a regression test asserting exactly this: adding a newly recognized
 earlier row must not change the ids of the rows after it.
 
+### Matching order
+
+Matching runs in two passes, and the order matters. The reconciliation key ends
+in an occurrence counted across rows that share an economic core, and the core
+excludes the ticker — so in one real filing five different securities shared a
+core. Recovering a previously dropped row shifted every later occurrence by one,
+and a single-pass merge then handed the recovered row the *next* record's key:
+IDEXX's values landed on PTC's record and the genuine PTC row was discarded as a
+duplicate.
+
+Exact identity is never ambiguous, so all `id` matches resolve first and mark
+their record claimed. Only then do the positional fallbacks run, and only
+against records nothing has claimed.
+
 ## Corrections are applied and logged
 
 Seeing a record again is not a no-op. A parser improvement changes how a row is
@@ -119,7 +133,9 @@ put a false statement in front of a reader:
 | Ticker matched only after punctuation normalization (`ticker_aliased`) | warning |
 | Issuer name appears truncated | warning |
 | Party could not be resolved (`unknown_party`) | warning |
-| No amount range found | warning |
+| Amount present but unreadable (`amount_parse_failed`) | warning |
+| Filer disclosed no amount (`amount_not_disclosed`) | warning |
+| Amount marked not applicable (`amount_not_applicable`) | warning |
 
 Two of these deserve explanation, because the first full backfill proved the
 stricter version wrong:
@@ -150,11 +166,14 @@ live and nothing is written.
 | Fewer than 90% of selected filings downloaded | **fail** |
 | Fewer than 90% of downloaded filings parsed | **fail** |
 | A previously productive filing now yields zero rows | **fail** |
+| A zero-row filing holds a supported security (`unexplained_zero_row_filings`) | **fail** |
 | Yield per filing below 85% of previous run or baseline | **fail** (override available) |
 | More than 15% quarantined | warning |
 | Yield per filing below 95% of previous run or baseline | warning |
 | Records missing filing URL | warning |
 | Duplicate ids collapsed | warning |
+| Scanned filings whose text could not be extracted | warning |
+| Amounts present but unreadable | warning |
 
 Two of these deserve explanation.
 
@@ -228,8 +247,62 @@ accumulates across runs rather than being overwritten, so a recurring problem
 reads as recurring. Quarantined records are never served, and never silently
 discarded.
 
+## Amounts
+
+An amount is stored as an explicit status plus **nullable** bounds. A missing
+amount is never zero.
+
+| `amountStatus` | `amountLow` / `amountHigh` | Meaning |
+|---|---|---|
+| `disclosed_range` | numbers | A bracketed range, as filed. |
+| `disclosed_exact` | numbers | An exact figure, as filed. Filers do this. |
+| `not_disclosed` | `null` | The filing discloses no amount. |
+| `not_applicable` | `null` | The filing marks the amount not applicable. |
+| `parse_failed` | `null` | An amount is present and we could not read it. |
+
+`parse_failed` and `not_disclosed` are deliberately distinct: one is our defect,
+the other is the filer's disclosure. Conflating them is how a defect stays
+invisible.
+
+All arithmetic goes through `src/lib/amounts.ts`. Every aggregate returns
+`{ value, included, excluded }` — a total that cannot say how many records it
+omitted is hiding the same problem somewhere else — and `value` is `null`, never
+`0`, when nothing had an amount. Records without amounts sort last in **both**
+directions and never match an amount filter, because unknown is not small.
+
+The UI labels them "Not disclosed", "Not applicable" or "Amount unreadable". A
+blank cell reads as zero, so a blank cell is a bug.
+
+## Filings that produce no rows
+
+Roughly 40% of filings yield no transaction rows, and that number alone hid a
+real defect: twelve transactions were being dropped by the parser. Every empty
+filing is therefore classified, and the classification is written to
+`zero-row-filings.json` in the run's evidence directory — on every run,
+including runs with no empty filings, so a missing file always means "no
+evidence produced" rather than "nothing to report".
+
+| Classification | Handling |
+|---|---|
+| `no_ticker_present` | Normal. A PTR body with no ticker at all. |
+| `no_supported_security_transaction` | Normal. Names the unsupported asset codes (e.g. `CT` for cryptocurrency). |
+| `empty_text_extraction` | **Warns.** Scanned paper filings; the contents are genuinely unread. |
+| `unsupported_layout` | **Warns.** A document we do not recognise. |
+| `parser_suspicious` | **Blocks.** A security we *do* support produced no row. |
+
+`parser_suspicious` is the signature of silent row loss, so it fails the run
+rather than warning. A filing that was empty before is never assumed healthy on
+that basis alone: the separate `previously_productive_filings_now_empty` gate
+covers regression, and classification covers the rest.
+
 ## Known limitations
 
+- **Row owner is read from the filing, not the row.** `ownerText` is taken from
+  the first four characters of the document, so every row in a filing shares one
+  owner (in practice, empty). It is wrong, and it is pinned by a test rather
+  than fixed, because `ownerText` feeds both the content hash and the
+  reconciliation key: correcting it re-identifies every stored record and needs
+  its own migration.
 - **Party coverage.** Party comes from `data/house-party-map.json`, a lookup of
   48 members. Unresolved filers are recorded as `null` and warned, never
   guessed. 148 of 945 records currently lack a party.

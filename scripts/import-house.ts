@@ -32,10 +32,15 @@ import {
   type DisclosureRecord,
   type QuarantineEntry,
   type QuarantineFile,
-  type TransactionType,
+  type ZeroRowFiling,
 } from "../src/lib/congress-schema.ts";
 import { assignRowIds, docIdFromRecordId } from "../src/lib/congress-identity.ts";
+import {
+  parseFilingRows,
+  classifyZeroRow,
+} from "../src/lib/house-parser.ts";
 import { assessRecord, assessRun } from "../src/lib/congress-gates.ts";
+import { hasAmount } from "../src/lib/amounts.ts";
 import { mergeRecords, tallyCounts } from "../src/lib/congress-merge.ts";
 import { renderImportReport, tallyWarnings } from "../src/lib/import-report.ts";
 import {
@@ -176,122 +181,6 @@ function toIso(mdY: string): string {
   return `${m[3]}-${m[1].padStart(2, "0")}-${m[2].padStart(2, "0")}`;
 }
 
-/**
- * Isolate the issuer name from the text preceding a symbol.
- *
- * Two failure modes to avoid. The old importer cut names at 60 characters,
- * losing the tail. Removing that cap exposed the opposite problem: the capture
- * runs back through preceding rows, producing 400-character strings carrying
- * another transaction's dates and amounts.
- *
- * The name is therefore bounded by structure rather than by length — everything
- * up to the last record-boundary marker (an asset-type tag, a date, an amount,
- * or a footer label) belongs to an earlier row and is discarded.
- */
-const RECORD_BOUNDARY =
-  /\[[A-Z]{2}\]|\d{2}\/\d{2}\/\d{4}|\$[\d,]+\s*-\s*\$[\d,]+|F\s*S\s*:|S\s*O\s*:|D\s*:/g;
-
-function cleanIssuerName(value: string): string {
-  let text = value.replace(/[^\x20-\x7E]/g, "").replace(/\s+/g, " ");
-
-  // Keep only what follows the final boundary marker.
-  let lastEnd = 0;
-  RECORD_BOUNDARY.lastIndex = 0;
-  let match: RegExpExecArray | null;
-  while ((match = RECORD_BOUNDARY.exec(text)) !== null) {
-    lastEnd = match.index + match[0].length;
-  }
-  if (lastEnd > 0) text = text.slice(lastEnd);
-
-  return text
-    .replace(/^.*(?:Cap\.?\s*Gains\s*>\s*\$200\?|Filing ID #\d+|Amount\b)\s*/i, "")
-    .replace(/^.*(?:transaction|notification)\s*date\s*/i, "")
-    .replace(/^\d+\s+/, "")
-    .replace(/^(?:SP|JT|DC)\s+/, "")
-    .replace(/^[\s\-–—,.]+/, "")
-    .trim();
-}
-
-interface ParsedRow {
-  rowIndex: number;
-  tickerText: string;
-  issuerName: string;
-  typeText: string;
-  type: TransactionType;
-  amountText: string;
-  amountLow: number;
-  amountHigh: number;
-  transactionDateText: string;
-  ownerText: string;
-  isOptions: boolean;
-}
-
-/**
- * Extract transaction rows from one filing's text.
- *
- * `rowIndex` counts every symbol-bearing block, including ones that yield no
- * usable transaction, so an id stays attached to the same row even if parsing
- * rules change later.
- */
-function parseFilingRows(text: string): ParsedRow[] {
-  const rows: ParsedRow[] = [];
-  const clean = text.replace(/\s+/g, " ");
-  const blocks = clean.split(/\b(?:SP|JT|DC)\s+(?=[A-Z])/);
-  // Widened from [A-Z]{1,5} so share classes such as BRK.B are matched.
-  const tickerRe = /\(([A-Z][A-Z0-9.\-]{0,6})\)\s*\[(ST|OP|CS|ET)\]/;
-
-  let symbolBlockOrdinal = -1;
-
-  for (const block of blocks) {
-    const m = block.match(tickerRe);
-    if (!m || m.index === undefined) continue;
-
-    symbolBlockOrdinal += 1;
-
-    const tickerText = m[1];
-    const assetType = m[2];
-    const after = block.slice(m.index + m[0].length, m.index + m[0].length + 30);
-
-    let type: TransactionType | null = null;
-    if (/^\s*P\b/.test(after)) type = "Buy";
-    else if (/^\s*S\s*\(partial\)/.test(after) || /^\s*S\b/.test(after)) type = "Sell";
-    else if (/^\s*E\b/.test(after)) type = "Exchange";
-    if (!type) continue;
-
-    const amountM = block.match(/\$([\d,]+)\s*-\s*\$([\d,]+)/);
-    const amountText = amountM ? `$${amountM[1]} - $${amountM[2]}` : "";
-    const amountLow = amountM ? Number(amountM[1].replace(/,/g, "")) : 0;
-    const amountHigh = amountM ? Number(amountM[2].replace(/,/g, "")) : 0;
-
-    const dateM = block.slice(m.index).match(/(\d{2}\/\d{2}\/\d{4})/);
-    const transactionDateText = dateM ? dateM[1] : "";
-
-    // Issuer name is everything preceding the symbol, kept whole.
-    const nameM = block.match(
-      new RegExp(`^(.*?)\\(${tickerText.replace(/[.\-]/g, "\\$&")}\\)`)
-    );
-    const issuerName = nameM ? cleanIssuerName(nameM[1]) : "";
-
-    const ownerM = clean.slice(0, 4).match(/^(SP|JT|DC)/);
-
-    rows.push({
-      rowIndex: symbolBlockOrdinal,
-      tickerText,
-      issuerName,
-      typeText: after.trim().slice(0, 12),
-      type,
-      amountText,
-      amountLow,
-      amountHigh,
-      transactionDateText,
-      ownerText: ownerM ? ownerM[1] : "",
-      isOptions: assetType === "OP",
-    });
-  }
-
-  return rows;
-}
-
 function readArchive(): DisclosureArchive | null {
   if (!existsSync(ARCHIVE_PATH)) return null;
   try {
@@ -328,6 +217,8 @@ async function main() {
     (existingArchiveForDocs?.trades ?? []).map((r) => docIdFromRecordId(r.id))
   );
   const zeroRowDocIds: string[] = [];
+  /** Full detail on every empty filing, written to this run's evidence. */
+  const zeroRowFilings: ZeroRowFiling[] = [];
 
   const parsed: DisclosureRecord[] = [];
   const quarantined: DisclosureRecord[] = [];
@@ -361,11 +252,35 @@ async function main() {
 
     counts.parsedFilings += 1;
     const filingUrl = `${PDF_BASE}${filing.docId}.pdf`;
-    const rows = parseFilingRows(text);
+    const parseResult = parseFilingRows(text);
+    const rows = parseResult.rows;
     counts.parsedRecords += rows.length;
+    counts.wrappedRows += rows.filter((r) => r.wrappedLayout).length;
+
     if (rows.length === 0) {
       counts.zeroRowFilings += 1;
       zeroRowDocIds.push(filing.docId);
+
+      // Every empty filing is recorded with the reason it was empty. A filing
+      // that was empty before is not assumed healthy now.
+      const detail = classifyZeroRow(text, parseResult);
+      if (detail.classification === "empty_text_extraction") {
+        counts.scannedFilings += 1;
+      }
+      if (detail.classification === "parser_suspicious") {
+        counts.suspiciousZeroRowFilings += 1;
+      }
+      zeroRowFilings.push({
+        docId: filing.docId,
+        filingUrl,
+        filer: filing.name,
+        filedDate: toIso(filing.filedDateText),
+        classification: detail.classification,
+        textLength: text.length,
+        symbolBlocks: parseResult.symbolBlocks,
+        unsupportedAssetTypes: detail.unsupportedAssetTypes,
+        previouslyProductive: previouslyProductiveDocIds.has(filing.docId),
+      });
     }
 
     // Content-addressed ids, assigned per filing so an occurrence counter can
@@ -376,7 +291,7 @@ async function main() {
         issuerName: r.issuerName,
         tickerText: r.tickerText,
         typeText: r.typeText,
-        amountText: r.amountText,
+        amountText: r.amount.text,
         transactionDateText: r.transactionDateText,
         ownerText: r.ownerText,
       }))
@@ -396,9 +311,10 @@ async function main() {
         ticker: row.tickerText,
         companyName: row.issuerName || row.tickerText,
         type: row.type,
-        amount: row.amountText,
-        amountLow: row.amountLow,
-        amountHigh: row.amountHigh,
+        amount: row.amount.text,
+        amountLow: row.amount.low,
+        amountHigh: row.amount.high,
+        amountStatus: row.amount.status,
         transactionDate: toIso(row.transactionDateText),
         filedDate: toIso(filing.filedDateText),
         isOptions: row.isOptions,
@@ -406,7 +322,7 @@ async function main() {
         raw: {
           issuerName: row.issuerName,
           tickerText: row.tickerText,
-          amountText: row.amountText,
+          amountText: row.amount.text,
           typeText: row.typeText,
           ownerText: row.ownerText,
           transactionDateText: row.transactionDateText,
@@ -449,6 +365,14 @@ async function main() {
   counts.accepted = parsed.length;
   counts.warned = parsed.filter((r) => r.status === "warning").length;
   counts.quarantined = quarantined.length;
+
+  // Amount availability across everything parsed, accepted or not. Split so a
+  // failure to read an amount is never reported as an absence of one.
+  const allRows = [...parsed, ...quarantined];
+  counts.amountParseFailures = allRows.filter(
+    (r) => r.amountStatus === "parse_failed"
+  ).length;
+  counts.amountsUnknown = allRows.filter((r) => !hasAmount(r)).length;
 
   // --- merge -------------------------------------------------------------
   const existingArchive = readArchive();
@@ -540,6 +464,7 @@ async function main() {
     report,
     quarantined,
     unseenIds: merged.unseenIds,
+    zeroRowFilings,
   };
   const artifactDir = writeRunArtifacts(RUNS_DIR, artifactInput);
   appendRunIndex(RUN_INDEX_PATH, summarizeRun(artifactInput));

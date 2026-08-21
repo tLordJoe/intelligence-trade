@@ -4,16 +4,40 @@ import { useEffect, useState } from "react";
 import type { CongressTrade } from "@/lib/congress-types";
 import { isOfficialHouseFilingUrl } from "@/lib/congress-utils";
 import { filterByParty, partyBreakdown, unknownPartyDisclosure } from "@/lib/party-stats";
+import { amountExplanation, formatAmount, hasAmount } from "@/lib/amounts";
 
-function AmountBadge({ amount }: { amount: string }) {
-  const num = parseInt(amount.replace(/[^0-9]/g, ""));
+/**
+ * The amount cell.
+ *
+ * A record with no disclosed amount is labelled, never left blank and never
+ * shown as `$0`. Its badge is deliberately neutral grey: colour here encodes
+ * transaction size, and an unknown amount has no size to encode.
+ */
+function AmountBadge({ trade }: { trade: CongressTrade }) {
+  if (!hasAmount(trade)) {
+    const explanation = amountExplanation(trade.amountStatus);
+    return (
+      <span
+        className="text-xs font-mono px-2 py-0.5 rounded italic"
+        style={{ color: "var(--text-dim)", backgroundColor: "var(--bg-inset)" }}
+        title={explanation ?? undefined}
+      >
+        {formatAmount(trade)}
+      </span>
+    );
+  }
+
+  // Bracket by the lower bound, which is a real disclosed number, rather than
+  // by stripping punctuation out of the label — that read "$2,722.50" as
+  // 272250 and bracketed an ordinary trade as a large one.
+  const low = trade.amountLow as number;
   let intensity = "var(--green)";
   let bg = "rgba(16, 185, 129, 0.1)";
-  if (num >= 500001) {
+  if (low >= 500001) {
     intensity = "#F59E0B";
     bg = "rgba(245, 158, 11, 0.1)";
   }
-  if (num >= 1000001) {
+  if (low >= 1000001) {
     intensity = "#EF4444";
     bg = "rgba(239, 68, 68, 0.1)";
   }
@@ -22,7 +46,7 @@ function AmountBadge({ amount }: { amount: string }) {
       className="text-xs font-mono px-2 py-0.5 rounded"
       style={{ color: intensity, backgroundColor: bg }}
     >
-      {amount}
+      {formatAmount(trade)}
     </span>
   );
 }
@@ -219,7 +243,7 @@ export default function CongressTrades() {
                   <div className="text-[10px]" style={{ color: "var(--text-dim)" }}>{trade.companyName}</div>
                 </div>
 
-                <AmountBadge amount={trade.amount} />
+                <AmountBadge trade={trade} />
 
                 <div className="text-[10px] text-right shrink-0" style={{ color: "var(--text-dim)" }}>
                   <div>Traded {trade.transactionDate}</div>

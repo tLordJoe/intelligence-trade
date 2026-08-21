@@ -1,0 +1,45 @@
+hne Corp - Common Stock
+(TECH) [ST]
+P 	12/02/2025 01/01/2026 $1,001 - $15,000
+F S: New
+DC 	Bio-Techne Corp - Common Stock
+(TECH) [ST]
+P 	12/05/2025 01/01/2026 $1,001 - $15,000
+F S: New
+DC 	Brown & Brown, Inc. Common Stock
+(BRO) [ST]
+P 	12/05/2025 01/01/2026 $1,001 - $15,000
+F S: New
+DC 	Brown & Brown, Inc. Common Stock
+(BRO) [ST]
+P 	12/12/2025 01/01/2026 $1,001 - $15,000
+F S: New
+DC 	CDW Corporation - Common Stock
+(CDW) [ST]
+S (partial) 	12/05/2025 01/01/2026 $1,001 - $15,000
+F S: New
+DC 	CDW Corporation - Common Stock
+(CDW) [ST]
+S (partial) 	12/02/2025 01/01/2026 $1,001 - $15,000
+F S: New
+DC 	Clean Harbors, Inc. Common Stock
+(CLH) [ST]
+P 	12/03/2025 01/01/2026 $1,001 - $15,000
+F S: New
+DC 	IDEXX Laboratories, Inc. - Common S (partial) 	12/02/2025 01/01/2026 $1,001 - $15,000
+Filing ID #20033737
+
+-- 1 of 2 --
+
+ID 	Owner Asset 	Transaction
+Type
+Date 	Notification
+Date
+Amount 	Cap.
+Gains >
+$200?
+Stock (IDXX) [ST]
+F S: New
+DC 	Live Nation Entertainment, Inc.
+Common Stock (LYV) [ST]
+P 	12/0

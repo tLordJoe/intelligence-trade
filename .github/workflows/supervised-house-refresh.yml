@@ -187,6 +187,17 @@ jobs:
         if: always()
         run: |
           RUN_DIR="${{ steps.run.outputs.run_dir }}"
+
+          # Simulation is reported as *effective*, not as the raw checkbox.
+          # `mode=simulate-failure` supplies --simulate-gate-failure on its own,
+          # so the checkbox reads false on a run that is unambiguously a
+          # simulation. Reporting the input alone said "Simulation: false" on
+          # the very run whose purpose was to simulate a failure.
+          EFFECTIVE_SIMULATION=false
+          if [ "${{ inputs.mode }}" = "simulate-failure" ] || [ "${{ inputs.simulate_gate_failure }}" = "true" ]; then
+            EFFECTIVE_SIMULATION=true
+          fi
+
           {
             echo "## House disclosure import"
             echo ""
@@ -195,7 +206,8 @@ jobs:
             echo "| Mode | \`${{ inputs.mode }}\` |"
             echo "| Completeness override | \`${{ inputs.allow_completeness_drop }}\` |"
             echo "| Importer exit code | \`${{ steps.import.outputs.import_exit }}\` |"
-            echo "| Simulation | \`${{ inputs.simulate_gate_failure }}\` |"
+            echo "| Effective simulation | \`$EFFECTIVE_SIMULATION\` |"
+            echo "| Simulation checkbox | \`${{ inputs.simulate_gate_failure }}\` |"
             echo "| Run id | \`${{ steps.run.outputs.run_id }}\` |"
             echo "| Evidence produced | \`${{ steps.run.outputs.has_evidence }}\` |"
             echo ""
@@ -227,7 +239,24 @@ jobs:
                 out += "\n### Warnings\n\n";
                 for (const w of s.warnings) out += `- \`${w}\`\n`;
               }
-              require("fs").appendFileSync(process.env.GITHUB_STEP_SUMMARY, out);
+
+              // Zero-row filings, by reason. Written on every run, so an empty
+              // filing is never reported merely as a number.
+              const fs = require("fs");
+              const zeroPath = process.argv[1] + "/zero-row-filings.json";
+              if (fs.existsSync(zeroPath)) {
+                const z = JSON.parse(fs.readFileSync(zeroPath, "utf8"));
+                out += "\n### Filings with no rows\n\n| Reason | Count |\n|---|---|\n";
+                for (const [k, v] of Object.entries(z.counts)) out += `| \`${k}\` | ${v} |\n`;
+                const regressions = z.filings.filter((f) => f.previouslyProductive);
+                if (regressions.length) {
+                  out += "\n**Previously productive filings that are now empty:**\n\n";
+                  for (const f of regressions.slice(0, 10)) {
+                    out += `- [\`${f.docId}\`](${f.filingUrl}) ${f.filer} — \`${f.classification}\`\n`;
+                  }
+                }
+              }
+              fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, out);
             ' "$RUN_DIR"
 
             {
