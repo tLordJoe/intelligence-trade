@@ -23,7 +23,7 @@ const layerDefinitions: Layer[] = [
     name: "Software & Models",
     description: "Foundation models, AI platforms, and enterprise software",
     keyInsight:
-      "OpenAI, Google, and Meta are in a three-way race for AGI. The model layer captures the most value but has the thinnest moats.",
+      "Model developers and software platforms compete through model quality, distribution, proprietary data, developer ecosystems, and the cost of serving users.",
     emojis: ["🤖", "🛠️", "📱", "🚀"],
     color: "#EF4444",
     stocks: [
@@ -49,7 +49,7 @@ const layerDefinitions: Layer[] = [
     name: "Data Centers",
     description: "Hyperscale facilities and colocation for AI workloads",
     keyInsight:
-      "AI training requires 10x more power per rack than traditional compute. Hyperscalers are building $100B+ campuses.",
+      "Dense AI computing is increasing demand for power, cooling, land, and high-speed connectivity—making data-center capacity a key constraint on deployment.",
     emojis: ["🏢", "🖥️", "⚡"],
     color: "#3B82F6",
     stocks: [
@@ -66,7 +66,7 @@ const layerDefinitions: Layer[] = [
     name: "Energy Infrastructure",
     description: "Power generation and grid infrastructure for AI compute",
     keyInsight:
-      "A single AI data center can consume 100MW — enough to power 80,000 homes. Nuclear and natural gas are the only scalable solutions.",
+      "AI data centers need large amounts of dependable electricity, creating opportunities and constraints across generation, transmission, grid equipment, and construction.",
     emojis: ["⚡", "☢️", "🔋", "🌊"],
     color: "#F59E0B",
     stocks: [
@@ -85,7 +85,7 @@ const layerDefinitions: Layer[] = [
     name: "Networking",
     description: "High-speed interconnects, switches, and optical networking",
     keyInsight:
-      "AI clusters need 400G/800G networking between thousands of GPUs. InfiniBand and custom Ethernet are the bottleneck.",
+      "Large AI clusters depend on low-latency, high-bandwidth connections between accelerators, making switching, optical links, and interconnect design essential to system performance.",
     emojis: ["🌐", "📡", "🔗"],
     color: "#8B5CF6",
     stocks: [
@@ -103,11 +103,11 @@ const layerDefinitions: Layer[] = [
     name: "Processors",
     description: "GPUs, TPUs, AI accelerators — the engines of intelligence",
     keyInsight:
-      "NVIDIA holds 94% of the AI accelerator market. CUDA ecosystem is a 20-year moat.",
+      "Accelerator competition depends on more than chip specifications: software ecosystems, developer adoption, networking, supply, and total operating cost all shape demand.",
     emojis: ["🧠", "⚙️", "💻"],
     color: "#10B981",
     stocks: [
-      { ticker: "NVDA", name: "NVIDIA", description: "94% GPU market share, CUDA ecosystem", country: "US" },
+      { ticker: "NVDA", name: "NVIDIA", description: "AI accelerators, CUDA software, and high-speed networking", country: "US" },
       { ticker: "AMD", name: "AMD", description: "MI series GPUs, ROCm ecosystem", country: "US" },
       { ticker: "AVGO", name: "Broadcom", description: "Custom AI silicon for hyperscalers", country: "US" },
       { ticker: "QCOM", name: "Qualcomm", description: "Edge AI and mobile inference", country: "US" },
@@ -123,7 +123,7 @@ const layerDefinitions: Layer[] = [
     name: "Memory & Storage",
     description: "HBM, DRAM, NAND — feeding data to AI accelerators",
     keyInsight:
-      "HBM (High Bandwidth Memory) revenue is growing 300% YoY. SK Hynix has 50%+ market share in HBM3E.",
+      "High-bandwidth memory and fast storage feed data to accelerators; packaging capacity, product qualification, and manufacturing yields can constrain supply.",
     emojis: ["🧠", "💾"],
     color: "#EC4899",
     stocks: [
@@ -141,11 +141,11 @@ const layerDefinitions: Layer[] = [
     name: "Foundries",
     description: "Semiconductor manufacturing — the factories of intelligence",
     keyInsight:
-      "TSMC fabricates 90% of the world's most advanced chips. A single fab costs $20B+ and takes 3 years to build.",
+      "Leading-edge chip manufacturing requires scarce technical expertise, specialized equipment, large capital commitments, and years of coordinated capacity planning.",
     emojis: ["🏭", "🔧", "⚗️"],
     color: "#F97316",
     stocks: [
-      { ticker: "TSM", name: "TSMC", description: "90% of advanced node chips, Apple/NVIDIA supplier", country: "TW" },
+      { ticker: "TSM", name: "TSMC", description: "Leading-edge contract chip manufacturing for major designers", country: "TW" },
       { ticker: "INTC", name: "Intel Foundry", description: "IDM 2.0 strategy, US chip manufacturing", country: "US" },
       { ticker: "UMC", name: "United Microelectronics", description: "Mature node foundry services", country: "TW" },
       { ticker: "GFS", name: "GlobalFoundries", description: "Specialty and mature node chips", country: "US" },
@@ -157,11 +157,11 @@ const layerDefinitions: Layer[] = [
     name: "Semiconductor Equipment",
     description: "The machines that make the machines that make chips",
     keyInsight:
-      "ASML is the sole supplier of EUV lithography machines ($380M each). No ASML = no advanced chips.",
+      "Advanced chip production depends on a small group of specialized equipment suppliers across lithography, deposition, etch, inspection, and testing.",
     emojis: ["🧪", "🔬", "⚗️"],
     color: "#6366F1",
     stocks: [
-      { ticker: "ASML", name: "ASML", description: "Monopoly on EUV lithography ($380M/machine)", country: "NL" },
+      { ticker: "ASML", name: "ASML", description: "Lithography systems used in advanced semiconductor manufacturing", country: "NL" },
       { ticker: "AMAT", name: "Applied Materials", description: "Deposition, etch, and inspection equipment", country: "US" },
       { ticker: "LRCX", name: "Lam Research", description: "Etch and deposition for advanced nodes", country: "US" },
       { ticker: "KLAC", name: "KLA Corporation", description: "Semiconductor inspection and metrology", country: "US" },
@@ -175,7 +175,7 @@ const layerDefinitions: Layer[] = [
     name: "Raw Materials",
     description: "Silicon, rare earths, and critical minerals for chip manufacturing",
     keyInsight:
-      "China controls 60% of rare earth processing. Gallium and germanium export controls are a geopolitical weapon.",
+      "Semiconductor and electrical supply chains depend on geographically concentrated minerals, refined materials, chemicals, and gases that can be exposed to trade restrictions.",
     emojis: ["🔶", "☢️", "⬜", "💎"],
     color: "#78716C",
     stocks: [
@@ -197,7 +197,7 @@ const layerDefinitions: Layer[] = [
     name: "Cybersecurity",
     description: "Protecting AI infrastructure, data, and models from adversaries",
     keyInsight:
-      "AI systems are both the target and the weapon. The cybersecurity market is projected to reach $500B by 2030 as AI attack surfaces multiply.",
+      "AI expands both defensive capabilities and attack surfaces, increasing the importance of identity, endpoint, network, cloud, application, data, and model security.",
     emojis: ["🛡️", "🔒", "🔑", "🕵️"],
     color: "#DC2626",
     stocks: [

@@ -1,62 +1,68 @@
 # Outfox Markets
 
-> A map of the AI economy. Outfox organizes the public companies that build
-> artificial intelligence into ten supply-chain layers, tracks live market data
-> across them, and overlays official U.S. House stock disclosures that touch
-> those companies.
+> Outfox maps the public companies that build the AI economy, compares how its
+> supply-chain layers perform, and connects those companies with official U.S.
+> House stock-disclosure records.
 
 Site: https://outfoxmarkets.com
 Tagline: Financial intelligence for the rest of us.
 
-## What makes this source distinct
+## What Outfox helps readers understand
 
-Most financial sites classify companies by industry (GICS sectors). Outfox
-classifies them by **position in the AI value chain** — what a company supplies,
-what depends on it, and where a bottleneck would propagate. A single Outfox
-layer can span utilities, mining, semiconductors, REITs, and software.
+Outfox organizes companies by their position in the AI value chain rather than
+only by traditional market sectors. The current map covers ten editorial layers:
 
-## The ten layers
+1. Software & Models
+2. Cybersecurity
+3. Data Centers
+4. Energy Infrastructure
+5. Networking
+6. Processors
+7. Memory & Storage
+8. Foundries
+9. Semiconductor Equipment
+10. Raw Materials
 
-1. Raw Materials — rare earths, chemicals, industrial gases, silicon wafers
-2. Semiconductor Equipment — lithography, deposition and etch, metrology
-3. Foundries — leading-edge and specialty chip fabrication
-4. Processors — GPUs, accelerators, custom silicon, CPUs
-5. Memory & Storage — high-bandwidth memory, flash and SSD
-6. Networking — switching, optical interconnect, telecom backbone
-7. Data Centers — hyperscale cloud, colocation REITs, edge and CDN
-8. Energy Infrastructure — utilities and grid, nuclear, gas turbines
-9. Software & Models — foundation models, developer tools, AI applications
-10. Cybersecurity — endpoint, network and cloud security, identity
+Layer membership is an Outfox editorial classification, not an industry
+standard, investment rating, or recommendation.
 
-## Data sources and methodology
+## Sources and calculations
 
-- Congressional disclosures: periodic transaction reports published by the
-  Clerk of the U.S. House of Representatives under the STOCK Act. Every trade
-  shown links to its official filing PDF.
-- Market data: Finnhub (quotes) and Yahoo Finance (daily closes).
-- Methodology: https://outfoxmarkets.com/about
+- House disclosures come from periodic transaction reports published by the
+  Clerk of the U.S. House of Representatives. Displayed records retain an
+  official government filing link.
+- Current quote cards use Finnhub and may be delayed.
+- Historical comparisons currently use an unofficial Yahoo Finance chart
+  integration and may contain delayed or adjusted closing values.
+- Performance charts show percentage change from the first available closing
+  value in the selected period. Layer lines are equal-weight averages of
+  available constituents.
+- Full methodology: https://outfoxmarkets.com/methodology
+- Corrections policy: https://outfoxmarkets.com/corrections
 
-## Limitations we state plainly
+## Important limitations
 
-- Coverage is **U.S. House only**. Senate disclosures are not yet included.
-- STOCK Act filings may be submitted up to **45 days** after a transaction, so
-  this data is never a real-time signal.
-- Disclosed amounts are **ranges** ($1,001–$15,000 and similar), not exact
-  figures, because that is all the law requires.
-- Filings can be amended or superseded.
-- A disclosure is a public record of a trade. It is **not** evidence of insider
-  knowledge or wrongdoing.
-- Outfox publishes information and analysis. It is not investment advice and
-  Outfox is not an investment adviser.
+- Public-official coverage is currently U.S. House only. Senate disclosures are
+  not yet included.
+- Periodic transaction reports may be filed weeks after a transaction and may
+  later be amended or corrected.
+- Disclosed transaction amounts are ranges rather than exact values.
+- A disclosure is a public record of a reported transaction. It does not prove
+  motive, performance, insider knowledge, or wrongdoing.
+- Outfox is an educational information service, not a broker, registered
+  investment adviser, or fiduciary. Its content is not personalized advice.
 
 ## Key pages
 
-- https://outfoxmarkets.com/ — the interactive map of the AI economy
-- https://outfoxmarkets.com/congress — House disclosures in AI-related companies
-- https://outfoxmarkets.com/blog — research and explainers
-- https://outfoxmarkets.com/about — sources, methodology, and limitations
+- https://outfoxmarkets.com/ — interactive AI-economy map and comparisons
+- https://outfoxmarkets.com/congress — verified House disclosure records
+- https://outfoxmarkets.com/blog — Outfox research and explainers
+- https://outfoxmarkets.com/methodology — data sources and calculations
+- https://outfoxmarkets.com/corrections — corrections policy
+- https://outfoxmarkets.com/about — Outfox's purpose and limitations
 
-## Citation
+## Citation guidance
 
-Cite as: Outfox Markets (outfoxmarkets.com). When quoting congressional trade
-data, please also note the House-only coverage and the statutory filing delay.
+Cite the applicable Outfox page and its displayed source date. When referring
+to public-official transactions, state that coverage is House-only and that
+filings are delayed public disclosures rather than real-time trade signals.

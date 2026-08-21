@@ -41,11 +41,11 @@ export const SUBCATEGORIES: Record<string, Subcategory[]> = {
     { name: "Flash & SSD", icon: "HardDrive", cap: 175, description: "Feeding data to training clusters" },
   ],
   foundries: [
-    { name: "Leading-Edge Fabs", icon: "Factory", cap: 1150, description: "The 3nm-and-below chokepoint" },
+    { name: "Leading-Edge Fabs", icon: "Factory", cap: 1150, description: "Advanced-node manufacturing for high-performance chips" },
     { name: "Specialty Foundries", icon: "Boxes", cap: 150, description: "Mature nodes that everything else needs" },
   ],
   "semiconductor-equipment": [
-    { name: "Lithography", icon: "Microscope", cap: 400, description: "EUV machines — a literal monopoly" },
+    { name: "Lithography", icon: "Microscope", cap: 400, description: "Patterning systems required for advanced chip production" },
     { name: "Deposition & Etch", icon: "FlaskConical", cap: 200, description: "Layer-by-layer chip construction" },
     { name: "Metrology & Test", icon: "Ruler", cap: 106, description: "Measuring what can't be seen" },
   ],

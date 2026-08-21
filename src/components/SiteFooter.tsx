@@ -34,7 +34,13 @@ export default function SiteFooter() {
               Watchlist
             </Link>
             <Link href="/about" className="hover:underline" style={{ color: "var(--text-dim)" }}>
-              About &amp; Methodology
+              About Outfox
+            </Link>
+            <Link href="/methodology" className="hover:underline" style={{ color: "var(--text-dim)" }}>
+              Methodology &amp; Sources
+            </Link>
+            <Link href="/corrections" className="hover:underline" style={{ color: "var(--text-dim)" }}>
+              Corrections Policy
             </Link>
             <a
               href="mailto:hello@outfoxmarkets.com"
