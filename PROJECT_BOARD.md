@@ -29,6 +29,16 @@ Watchlists, alerts, scorecards, and subscriptions
 
 ## Active build queue
 
+### Pinned product positioning
+
+**Primary pitch:** Outfox tracks what influential investors, corporate insiders,
+and members of Congress are doing with their money. We turn those public
+disclosures into understandable patterns that help ordinary investors discover
+what may be worth investigating.
+
+All website UI, Outfox Reports, email, and social work must follow the approved
+[brand messaging and voice rules](docs/BRAND_MESSAGING.md).
+
 Each release follows the same rule: implement → test → independent review →
 publish → verify live. Codex owns implementation; Claude performs the first
 adversarial review when a release reaches its review gate. Grok is used for
