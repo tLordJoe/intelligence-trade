@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { layers } from "@/lib/data";
 import { blogPosts } from "@/lib/blog-data";
+import { learnEntries } from "@/lib/learn-data";
 
 const BASE_URL = "https://outfoxmarkets.com";
 
@@ -9,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: BASE_URL, changeFrequency: "daily", priority: 1 },
     { url: `${BASE_URL}/congress`, changeFrequency: "daily", priority: 0.9 },
     { url: `${BASE_URL}/blog`, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE_URL}/learn`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE_URL}/methodology`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/about`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/corrections`, changeFrequency: "monthly", priority: 0.6 },
@@ -27,5 +29,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...layerPages, ...articlePages];
+  const learnPages: MetadataRoute.Sitemap = learnEntries.map((entry) => ({
+    url: `${BASE_URL}/learn/${entry.slug}`,
+    lastModified: new Date(entry.reviewedAt),
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  return [...staticPages, ...layerPages, ...articlePages, ...learnPages];
 }

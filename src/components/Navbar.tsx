@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { href: "/", label: "Stack" },
   { href: "/congress", label: "Congress" },
   { href: "/blog", label: "Briefing" },
+  { href: "/learn", label: "Learn" },
   { href: "/portfolio", label: "Watchlist" },
   { href: "/about", label: "About" },
 ];

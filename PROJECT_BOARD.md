@@ -1,12 +1,109 @@
 # Outfox Markets — Project Board
 
-Last updated: August 12, 2026
+Last updated: September 2, 2026
 
 This board is the day-to-day operating view. `ROADMAP.md` remains the complete long-term plan.
 
 ## Current objective
 
-Publish a trustworthy, searchable foundation and create the recurring Outfox Report audience loop.
+Build the Outfox intelligence loop: verified informed-money data, understandable
+education, repeatable reports, distribution, return visits, and paid value.
+
+## Execution map
+
+```text
+Official filings and current data
+              ↓
+Protected importers and source evidence
+              ↓
+Congress + insiders + influential managers
+              ↓
+Convergence analysis with visible disagreements
+              ↓
+Outfox Report + Academy + original charts
+              ↓
+Search, ChatGPT, Claude, email, and X discovery
+              ↓
+Watchlists, alerts, scorecards, and subscriptions
+```
+
+## Active build queue
+
+Each release follows the same rule: implement → test → independent review →
+publish → verify live. Codex owns implementation; Claude performs the first
+adversarial review when a release reaches its review gate. Grok is used for
+outside-reader and positioning feedback, not as a source of financial facts.
+
+### Release A — Outfox Academy foundation (doing now)
+
+- [x] Create the reusable `/learn` index and definition-page system
+- [x] Publish the first five primary-sourced guides: Form 4, Form 13F,
+  congressional PTR, corporate insider, and transaction date versus filing date
+- [x] Add canonical metadata, structured page data, sitemap entries, internal
+  links, crawl access, review dates, authorship, limitations, and corrections path
+- [x] Add Academy navigation and AI-readable site-guide links
+- [ ] Test, review, publish, and verify every page on the live domain
+
+Release gate: all five guides are readable without JavaScript, cite official
+sources, state their limitations, and appear in the production sitemap.
+
+### Release B — SEC Form 4 corporate-insider pipeline (next)
+
+- [ ] Define the shared informed-money schema and provenance contract
+- [ ] Collect official SEC ownership XML with accession numbers and source URLs
+- [ ] Parse reporting person, issuer, role, dates, security, shares, price,
+  transaction code, ownership form, remaining ownership, footnotes, and amendments
+- [ ] Separate open-market purchases/sales from awards, exercises, gifts, tax
+  withholding, derivatives, and other transaction classes
+- [ ] Reuse last-known-good protection, append-only history, revisions,
+  quarantine, run evidence, and blocking completeness gates
+- [ ] Hand-verify at least 25 filings and add permanent regression fixtures
+- [ ] Build the first insider activity page and connect terms to Academy guides
+- [ ] Test, review, publish, and verify live
+
+Release gate: every displayed transaction reconciles to official SEC XML and a
+failed import cannot change production data.
+
+### Release C — SEC Form 13F influential-manager pipeline
+
+- [ ] Publish transparent criteria for the initial 10–15 manager cohort
+- [ ] Resolve each manager to the correct filing entity, CIK, and filing history
+- [ ] Import at least nine quarter-end snapshots, including amendments
+- [ ] Normalize holdings without describing snapshots as exact or current trades
+- [ ] Calculate newly reported, increased, reduced, exited, and unchanged holdings
+- [ ] Build manager profiles, quarter comparisons, concentration views, and
+  cross-manager convergence tables
+- [ ] Layer institutional holdings against House and Form 4 activity while
+  preserving each source’s as-of date and disclosure lag
+- [ ] Test, review, publish, and verify live
+
+Release gate: selected managers and every calculated change reproduce the
+official filings, with filing-entity and delay limitations visible.
+
+### Release D — Informed Money and Outfox Report
+
+- [ ] Build the combined Congress / corporate-insider / manager signalboard
+- [ ] Show agreement, disagreement, freshness, source evidence, and counterpoints
+- [ ] Finalize the recurring Outfox Report template and editorial checklist
+- [ ] Configure email consent, delivery, unsubscribe, bot protection, and analytics
+- [ ] Turn each report into a permanent web page, email, X Article, short posts,
+  and shareable original charts
+- [ ] Publish Report No. 1 only after every statement passes evidence review
+
+Release gate: one evidence-backed report completes the full web-to-email loop and
+every material claim can be traced to a source record.
+
+### Release E — ETF scorecards, retention, and paid validation
+
+- [ ] Define transparent ETF scorecard dimensions, weights, update schedule,
+  limitations, and conflict policy
+- [ ] Compare accessible ETFs against themes identified by informed-money analysis
+- [ ] Add server-side accounts, watchlists, and company/manager/theme alerts
+- [ ] Measure return usage and willingness to pay before launching Outfox Pro
+- [ ] Keep issuer sponsorship separate from editorial scoring and disclose conflicts
+
+Release gate: users return for alerts and comparisons, and paid demand is measured
+before a subscription promise is made.
 
 ## Done
 
