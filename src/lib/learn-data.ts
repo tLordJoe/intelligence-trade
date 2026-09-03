@@ -300,7 +300,7 @@ export const learnEntries: LearnEntry[] = [
       {
         heading: "Different filings have different clocks",
         paragraphs: [
-          "Form 4 is generally due within two business days after the transaction. Congressional PTRs operate under different reporting rules and can appear weeks later. Form 13F is a quarter-end holdings snapshot that can be filed up to 45 days after the end of a calendar quarter.",
+          "Form 4 is generally due within two business days after the transaction. For covered House filers, qualifying transactions over $1,000 generally must be reported on a PTR by the earlier of 30 days after the filer becomes aware of the transaction or 45 days after the transaction. Form 13F is a quarter-end holdings snapshot that can be filed up to 45 days after the end of a calendar quarter.",
         ],
       },
       {
@@ -324,9 +324,9 @@ export const learnEntries: LearnEntry[] = [
         verifiedAt: "2026-09-02",
       },
       {
-        label: "Financial Disclosure Reports",
-        url: "https://disclosures-clerk.house.gov/FinancialDisclosure",
-        publisher: "Office of the Clerk, U.S. House of Representatives",
+        label: "Financial disclosure and PTR requirements",
+        url: "https://ethics.house.gov/financial-disclosure/",
+        publisher: "Committee on Ethics, U.S. House of Representatives",
         verifiedAt: "2026-09-02",
       },
     ],
