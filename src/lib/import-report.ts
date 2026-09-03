@@ -67,7 +67,10 @@ export function renderImportReport(input: ImportReportInput): string {
   );
   out.push(line("parse failures", counts.failedParses));
   out.push(line("filings with zero rows", counts.zeroRowFilings));
+  out.push(line("  scanned / unreadable", counts.scannedFilings));
+  out.push(line("  unexplained (blocking)", counts.suspiciousZeroRowFilings));
   out.push(line("transaction rows parsed", counts.parsedRecords));
+  out.push(line("  rows from wrapped rows", counts.wrappedRows));
   out.push("");
 
   out.push("VALIDATION");
@@ -78,6 +81,8 @@ export function renderImportReport(input: ImportReportInput): string {
   out.push(line("missing party", counts.missingParty));
   out.push(line("missing ticker", counts.missingTicker));
   out.push(line("missing filing url", counts.missingFilingUrl));
+  out.push(line("amount not available", counts.amountsUnknown));
+  out.push(line("  of which unreadable", counts.amountParseFailures));
   out.push("");
 
   out.push("ARCHIVE");

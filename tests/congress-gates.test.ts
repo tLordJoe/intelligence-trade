@@ -54,6 +54,7 @@ function makeRecord(overrides: Partial<DisclosureRecord> = {}): DisclosureRecord
     amount: "$1,001 - $15,000",
     amountLow: 1001,
     amountHigh: 15000,
+    amountStatus: "disclosed_range",
     transactionDate: "2026-07-01",
     filedDate: "2026-08-05",
     isOptions: false,

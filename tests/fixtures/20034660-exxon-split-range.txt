@@ -1,0 +1,46 @@
+
+F S: New
+JT 	Boeing Company (BA) [ST] 	P 	02/07/2025 05/29/2026 $15,001 -
+$50,000
+F S: New
+JT 	Caterpillar, Inc. Common Stock (CAT)
+[ST]
+P 	02/07/2025 05/29/2026 $15,001 -
+$50,000
+F S: New
+JT 	Chevron Corporation Common Stock
+(CVX) [ST]
+P 	02/07/2025 05/29/2026 $15,001 -
+$50,000
+F S: New
+JT 	Eaton Corporation, PLC Ordinary
+Shares (ETN) [ST]
+P 	02/07/2025 05/29/2026 $15,001 -
+$50,000
+F S: New
+JT 	Exxon Mobil Corporation Common P 	02/07/2025 05/29/2026 $15,001 -
+Filing ID #20034660
+
+-- 1 of 3 --
+
+ID 	Owner Asset 	Transaction
+Type
+Date 	Notification
+Date
+Amount 	Cap.
+Gains >
+$200?
+Stock (XOM) [ST] 	$50,000
+F S: New
+JT 	FS Specialty Lending Fund Common
+Shares of Beneficial Interest (FSSL)
+[ST]
+P 	02/07/2025 05/29/2026 $1,001 - $15,000
+F S: New
+JT 	FS Specialty Lending Fund Common
+Shares of Beneficial Interest (FSSL)
+[ST]
+S 	06/01/2026 06/01/2026 $15,001 -
+$50,000
+F S: New
+JT 	Jacobs Solutio
