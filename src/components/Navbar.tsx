@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { href: "/", label: "Stack" },
   { href: "/congress", label: "Congress" },
   { href: "/blog", label: "Briefing" },
+  { href: "/learn", label: "Learn" },
   { href: "/portfolio", label: "Watchlist" },
   { href: "/about", label: "About" },
 ];
@@ -58,7 +59,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <nav className="flex items-center gap-0.5 md:gap-1 overflow-x-auto scrollbar-hide">
+        <nav aria-label="Primary" className="flex items-center gap-0.5 md:gap-1 overflow-x-auto scrollbar-hide">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}

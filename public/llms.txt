@@ -57,6 +57,12 @@ standard, investment rating, or recommendation.
 - https://outfoxmarkets.com/ — interactive AI-economy map and comparisons
 - https://outfoxmarkets.com/congress — verified House disclosure records
 - https://outfoxmarkets.com/blog — Outfox research and explainers
+- https://outfoxmarkets.com/learn — Outfox Academy: plain-language investing and filing guides
+- https://outfoxmarkets.com/learn/what-is-form-4 — SEC Form 4 explained
+- https://outfoxmarkets.com/learn/what-is-form-13f — SEC Form 13F explained
+- https://outfoxmarkets.com/learn/what-is-congressional-periodic-transaction-report — congressional PTRs explained
+- https://outfoxmarkets.com/learn/what-is-a-corporate-insider — corporate insiders explained
+- https://outfoxmarkets.com/learn/transaction-date-vs-filing-date — disclosure lag explained
 - https://outfoxmarkets.com/methodology — data sources and calculations
 - https://outfoxmarkets.com/corrections — corrections policy
 - https://outfoxmarkets.com/about — Outfox's purpose and limitations

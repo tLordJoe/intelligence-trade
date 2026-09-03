@@ -30,6 +30,9 @@ export default function SiteFooter() {
             <Link href="/blog" className="hover:underline" style={{ color: "var(--text-dim)" }}>
               The Briefing
             </Link>
+            <Link href="/learn" className="hover:underline" style={{ color: "var(--text-dim)" }}>
+              Outfox Academy
+            </Link>
             <Link href="/portfolio" className="hover:underline" style={{ color: "var(--text-dim)" }}>
               Watchlist
             </Link>
