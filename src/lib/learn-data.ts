@@ -2,6 +2,7 @@ export type LearnSource = {
   label: string;
   url: string;
   publisher: string;
+  verifiedAt: string;
 };
 
 export type LearnSection = {
@@ -15,6 +16,7 @@ export type LearnEntry = {
   shortTitle: string;
   summary: string;
   category: "Filings" | "People" | "Market basics";
+  publishedAt: string;
   reviewedAt: string;
   quickAnswer: string;
   takeaways: string[];
@@ -32,6 +34,7 @@ export const learnEntries: LearnEntry[] = [
     summary:
       "A plain-language guide to the SEC filing that reports many transactions by company directors, officers, and large shareholders.",
     category: "Filings",
+    publishedAt: "2026-09-02",
     reviewedAt: "2026-09-02",
     quickAnswer:
       "Form 4 is a public SEC filing used to report many changes in ownership by a public company’s directors, officers, and shareholders who own more than 10% of a registered class of its equity securities. It is usually due within two business days of the transaction.",
@@ -57,7 +60,7 @@ export const learnEntries: LearnEntry[] = [
       {
         heading: "Why do transaction codes matter?",
         paragraphs: [
-          "Form 4 uses codes to describe why ownership changed. Code P generally means an open-market or private purchase and code S generally means an open-market or private sale. Code A can identify an award, code M an option exercise, code F shares used for an exercise price or tax liability, and code G a gift.",
+          "Form 4 uses codes to describe why ownership changed. Code P generally means an open-market or private purchase and code S generally means an open-market or private sale. Code A can identify an award, code M an exercise or conversion of a derivative security, code F shares used for an exercise price or tax liability, and code G a gift.",
           "Those events can have very different meanings. Outfox will classify them separately instead of combining every acquisition into ‘insider buying’ or every disposition into ‘insider selling.’",
         ],
       },
@@ -73,11 +76,13 @@ export const learnEntries: LearnEntry[] = [
         label: "Investor bulletin: Forms 3, 4 and 5",
         url: "https://www.sec.gov/files/forms-3-4-5.pdf",
         publisher: "U.S. Securities and Exchange Commission",
+        verifiedAt: "2026-09-02",
       },
       {
         label: "General instructions for Form 4",
-        url: "https://www.sec.gov/about/forms/form4data.pdf",
+        url: "https://www.sec.gov/files/form4.pdf",
         publisher: "U.S. Securities and Exchange Commission",
+        verifiedAt: "2026-09-02",
       },
     ],
     relatedSlugs: ["what-is-a-corporate-insider", "transaction-date-vs-filing-date", "what-is-form-13f"],
@@ -89,6 +94,7 @@ export const learnEntries: LearnEntry[] = [
     summary:
       "How quarterly institutional holdings reports work, what changes between filings can reveal, and why a 13F is not a real-time trade feed.",
     category: "Filings",
+    publishedAt: "2026-09-02",
     reviewedAt: "2026-09-02",
     quickAnswer:
       "Form 13F is a quarterly holdings report filed by institutional investment managers that exercise investment discretion over at least $100 million in certain reportable securities. It shows covered holdings as of quarter-end, not a complete, real-time record of everything the manager bought and sold.",
@@ -130,11 +136,13 @@ export const learnEntries: LearnEntry[] = [
         label: "Form 13F data sets",
         url: "https://www.sec.gov/data-research/sec-markets-data/form-13f-data-sets",
         publisher: "U.S. Securities and Exchange Commission",
+        verifiedAt: "2026-09-02",
       },
       {
         label: "Frequently asked questions about Form 13F",
         url: "https://www.sec.gov/rules-regulations/staff-guidance/division-investment-management-frequently-asked-questions/frequently-asked-questions-about-form-13f",
         publisher: "U.S. Securities and Exchange Commission",
+        verifiedAt: "2026-09-02",
       },
     ],
     relatedSlugs: ["what-is-form-4", "transaction-date-vs-filing-date", "what-is-congressional-periodic-transaction-report"],
@@ -146,11 +154,13 @@ export const learnEntries: LearnEntry[] = [
     summary:
       "What congressional transaction disclosures contain, why amounts appear as ranges, and why they are delayed public records rather than live trade alerts.",
     category: "Filings",
+    publishedAt: "2026-09-02",
     reviewedAt: "2026-09-02",
     quickAnswer:
-      "A Periodic Transaction Report, often shortened to PTR, is a public financial-disclosure report used by covered members, officers, employees, candidates, spouses, and dependent children to report certain securities transactions. The public record commonly provides an amount range rather than an exact dollar value.",
+      "A Periodic Transaction Report, often shortened to PTR, is a public financial-disclosure report through which House members, officers, and certain employees report qualifying transactions involving themselves, a spouse, or a dependent child. A report is generally due by the earlier of 30 days after the filer learns of the transaction or 45 days after the transaction.",
     takeaways: [
       "A PTR is a delayed disclosure of a reported transaction, not a live order feed.",
+      "For covered House filers, qualifying transactions generally must be reported within 30 days of awareness and no later than 45 days after the transaction.",
       "The transaction date and filing date answer different questions and should both be shown.",
       "Reported amounts commonly use broad ranges, so precise totals can create false certainty.",
       "House and Senate records come from separate official systems and require separate collection methods.",
@@ -166,6 +176,7 @@ export const learnEntries: LearnEntry[] = [
         heading: "What does the public record show?",
         paragraphs: [
           "A PTR can identify the filer, owner, asset, transaction type, transaction date, notification date, reported amount range, and filing date. Details vary, and some reported assets cannot be mapped reliably to a public-company ticker.",
+          "The covered House filer submits the report. Transactions involving a spouse or dependent child can appear on that filer's report; the spouse or child is not described as the filer.",
         ],
       },
       {
@@ -183,14 +194,16 @@ export const learnEntries: LearnEntry[] = [
     ],
     sources: [
       {
-        label: "Financial Disclosure Reports",
-        url: "https://disclosures-clerk.house.gov/FinancialDisclosure",
-        publisher: "Office of the Clerk, U.S. House of Representatives",
+        label: "Financial disclosure and PTR requirements",
+        url: "https://ethics.house.gov/financial-disclosure/",
+        publisher: "Committee on Ethics, U.S. House of Representatives",
+        verifiedAt: "2026-09-02",
       },
       {
-        label: "Financial Disclosure Reports database",
-        url: "https://disclosures-clerk.house.gov/FinancialDisclosure/ViewSearch",
-        publisher: "Office of the Clerk, U.S. House of Representatives",
+        label: "Financial Disclosure Instruction Guide",
+        url: "https://ethics.house.gov/wp-content/uploads/2025/04/2024-Final-Instruction-Guide-4-15-2025.pdf",
+        publisher: "Committee on Ethics, U.S. House of Representatives",
+        verifiedAt: "2026-09-02",
       },
     ],
     relatedSlugs: ["transaction-date-vs-filing-date", "what-is-form-4", "what-is-form-13f"],
@@ -202,6 +215,7 @@ export const learnEntries: LearnEntry[] = [
     summary:
       "Who is treated as a company insider for ownership reporting, and why insider activity requires context before it becomes useful evidence.",
     category: "People",
+    publishedAt: "2026-09-02",
     reviewedAt: "2026-09-02",
     quickAnswer:
       "In the Form 3, 4, and 5 reporting context, corporate insiders generally include a public company’s directors and officers and beneficial owners of more than 10% of a registered class of the company’s equity securities.",
@@ -242,11 +256,13 @@ export const learnEntries: LearnEntry[] = [
         label: "Investor bulletin: Forms 3, 4 and 5",
         url: "https://www.sec.gov/files/forms-3-4-5.pdf",
         publisher: "U.S. Securities and Exchange Commission",
+        verifiedAt: "2026-09-02",
       },
       {
         label: "Insider trading policy information",
         url: "https://www.investor.gov/introduction-investing/investing-basics/glossary/insider-trading",
         publisher: "Investor.gov, U.S. Securities and Exchange Commission",
+        verifiedAt: "2026-09-02",
       },
     ],
     relatedSlugs: ["what-is-form-4", "transaction-date-vs-filing-date", "what-is-form-13f"],
@@ -258,6 +274,7 @@ export const learnEntries: LearnEntry[] = [
     summary:
       "Why the date an investment transaction occurred differs from the date the public learned about it—and why that delay changes the meaning of a signal.",
     category: "Market basics",
+    publishedAt: "2026-09-02",
     reviewedAt: "2026-09-02",
     quickAnswer:
       "The transaction date is when the reported purchase, sale, or other ownership change occurred. The filing date is when the disclosure was submitted or made public. The time between them is disclosure lag, and it determines how stale a public signal may be.",
@@ -298,16 +315,19 @@ export const learnEntries: LearnEntry[] = [
         label: "Investor bulletin: Forms 3, 4 and 5",
         url: "https://www.sec.gov/files/forms-3-4-5.pdf",
         publisher: "U.S. Securities and Exchange Commission",
+        verifiedAt: "2026-09-02",
       },
       {
         label: "Frequently asked questions about Form 13F",
         url: "https://www.sec.gov/rules-regulations/staff-guidance/division-investment-management-frequently-asked-questions/frequently-asked-questions-about-form-13f",
         publisher: "U.S. Securities and Exchange Commission",
+        verifiedAt: "2026-09-02",
       },
       {
         label: "Financial Disclosure Reports",
         url: "https://disclosures-clerk.house.gov/FinancialDisclosure",
         publisher: "Office of the Clerk, U.S. House of Representatives",
+        verifiedAt: "2026-09-02",
       },
     ],
     relatedSlugs: ["what-is-form-4", "what-is-form-13f", "what-is-congressional-periodic-transaction-report"],

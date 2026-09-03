@@ -56,7 +56,7 @@ export default async function LearnEntryPage({ params }: Props) {
         "@type": "Article",
         headline: entry.title,
         description: entry.summary,
-        datePublished: entry.reviewedAt,
+        datePublished: entry.publishedAt,
         dateModified: entry.reviewedAt,
         author: { "@type": "Organization", name: "Outfox Editorial" },
         publisher: {
@@ -105,10 +105,10 @@ export default async function LearnEntryPage({ params }: Props) {
           <section
             className="rounded-xl border p-5 md:p-6 mb-9"
             style={{ backgroundColor: "var(--accent-soft)", borderColor: "var(--border)" }}
-            aria-labelledby="quick-answer"
+            aria-labelledby="quick-answer-heading"
           >
-            <div className="kicker mb-2">Quick answer</div>
-            <p id="quick-answer" className="text-base md:text-lg font-semibold leading-relaxed" style={{ color: "var(--text)" }}>
+            <h2 id="quick-answer-heading" className="kicker mb-2">Quick answer</h2>
+            <p className="text-base md:text-lg font-semibold leading-relaxed" style={{ color: "var(--text)" }}>
               {entry.quickAnswer}
             </p>
           </section>
@@ -148,9 +148,9 @@ export default async function LearnEntryPage({ params }: Props) {
               {entry.sources.map((source) => (
                 <li key={source.url} className="text-sm">
                   <a href={source.url} target="_blank" rel="noreferrer" className="font-semibold underline" style={{ color: "var(--accent)" }}>
-                    {source.label}
+                    {source.label}<span className="sr-only"> (opens in a new tab)</span>
                   </a>
-                  <div style={{ color: "var(--text-dim)" }}>{source.publisher}</div>
+                  <div style={{ color: "var(--text-dim)" }}>{source.publisher} · Link verified {source.verifiedAt}</div>
                 </li>
               ))}
             </ul>
