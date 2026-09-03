@@ -231,8 +231,31 @@ export function mergeRecords(
     }
 
     const changes = diffRecords(prior, record);
-    // A record reached through the reconciliation key keeps the id it was
-    // stored under; only its interpretation is updated.
+
+    // The reconciliation key must follow the correction.
+    //
+    // The key is a *matching* index, not public identity: it answers "which
+    // stored record does this incoming row supersede?". When a fallback
+    // reconciles a row whose economic core has moved — the amountless record
+    // whose amount is now readable — keeping the stored record's old key breaks
+    // every later import. The corrected row would carry the new key, the stored
+    // record would still be indexed under the old one, and it would no longer
+    // qualify for the amountless fallback because it now has an amount. Nothing
+    // would match, and the transaction would be re-added.
+    //
+    // That produced exactly one permanent phantom duplicate per corrected
+    // record, on the *second* import rather than the first, past both the
+    // archive-shrink gate (the archive grows) and the duplicate-id gate (the
+    // ids genuinely differ).
+    //
+    // Adopting the incoming key is a no-op on the id and reconciliation-key
+    // paths, where the keys already agree by construction. It matters only
+    // where a fallback matched despite a moved core.
+    const priorKey = prior.provenance?.reconciliationKey;
+    const nextKey = record.provenance?.reconciliationKey ?? priorKey;
+
+    // A record reached through a fallback keeps the id it was stored under;
+    // only its interpretation and its matching key are updated.
     const merged: DisclosureRecord = {
       ...prior,
       // Interpretation may be corrected...
@@ -245,9 +268,20 @@ export function mergeRecords(
         // Content hash follows the corrected interpretation so the audit trail
         // reflects what the parser now reads; identity itself does not move.
         contentHash: record.provenance?.contentHash ?? prior.provenance.contentHash,
+        reconciliationKey: nextKey,
         lastSeen: runTimestamp,
       },
     };
+
+    // A moved key is recorded in the revision trail like any other correction,
+    // so the archive shows that reconciliation identity changed and why.
+    if (nextKey !== priorKey) {
+      changes.push({
+        field: "provenance.reconciliationKey",
+        from: priorKey ?? "",
+        to: nextKey ?? "",
+      });
+    }
 
     if (changes.length) {
       merged.revisions = [

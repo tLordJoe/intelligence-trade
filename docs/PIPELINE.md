@@ -91,6 +91,31 @@ Exact identity is never ambiguous, so all `id` matches resolve first and mark
 their record claimed. Only then do the positional fallbacks run, and only
 against records nothing has claimed.
 
+### The reconciliation key follows the correction
+
+The key is a *matching* index, not public identity. It answers one question —
+"which stored record does this incoming row supersede?" — so when a correction
+moves a row's economic core, the stored record's key has to move with it.
+
+Keeping the old key breaks the **next** import rather than the current one. A
+record whose amount was recovered would carry a new key on every later run,
+while the stored record stayed indexed under the old one and no longer
+qualified for the amountless fallback (it now has an amount). Nothing matched,
+and the transaction was added again: exactly one permanent phantom duplicate per
+corrected record, appearing on the second import, past both the archive-shrink
+gate (the archive grows) and the duplicate-id gate (the ids genuinely differ).
+
+On merge the record therefore adopts the incoming key, and the move is written
+to the revision log as `provenance.reconciliationKey` so the change is visible
+in the archive. `id`, `raw` and `provenance.firstSeen` are still never touched.
+
+This also repairs keys that went stale for a second reason. Because the key's
+occurrence counter is scoped to rows sharing an economic core, recovering a
+previously dropped row shifts the occurrence of every later row in that core —
+eight records across filings 20033737, 20034159 and 20034487 were holding keys
+the parser no longer produces. They match by `id`, so nothing was visibly wrong,
+but each was a latent duplicate waiting for its content to change.
+
 ## Corrections are applied and logged
 
 Seeing a record again is not a no-op. A parser improvement changes how a row is
