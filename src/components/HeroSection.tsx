@@ -22,9 +22,9 @@ export default function HeroSection() {
           className="text-4xl md:text-6xl font-extrabold leading-[1.03] mb-5"
           style={{ color: "var(--text)", letterSpacing: "-0.03em" }}
         >
-          See where informed
+          Trade smarter than
           <br />
-          <span style={{ color: "var(--accent)" }}>money is moving.</span>
+          <span style={{ color: "var(--accent)" }}>the people in charge.</span>
         </h1>
 
         <p className="text-base md:text-lg max-w-xl mx-auto mb-7" style={{ color: "var(--text-dim)" }}>
