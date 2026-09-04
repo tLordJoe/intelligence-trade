@@ -41,7 +41,7 @@ export default function Navbar() {
         boxShadow: "var(--shadow)",
       }}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 py-3">
+      <div className="max-w-7xl mx-auto flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between px-4 md:px-8 py-3">
         <Link href="/" className="flex shrink-0 items-center gap-2" aria-label="Outfox home">
           <Image
             src="/brand/outfox-tail.svg"
@@ -59,7 +59,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <nav aria-label="Primary" className="flex items-center gap-0.5 md:gap-1 overflow-x-auto scrollbar-hide">
+        <nav aria-label="Primary" className="flex flex-wrap items-center gap-1 w-full md:w-auto">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}

@@ -5,6 +5,7 @@ import type { CongressTrade } from "@/lib/congress-types";
 import { isOfficialHouseFilingUrl } from "@/lib/congress-utils";
 import { filterByParty, partyBreakdown, unknownPartyDisclosure } from "@/lib/party-stats";
 import { amountExplanation, formatAmount, hasAmount } from "@/lib/amounts";
+import { disclosureStats } from "@/lib/disclosure-stats";
 
 /**
  * The amount cell.
@@ -78,6 +79,7 @@ function PartyBadge({ party, chamber }: { party: CongressTrade["party"]; chamber
 export default function CongressTrades() {
   const [trades, setTrades] = useState<CongressTrade[]>([]);
   const [updatedAt, setUpdatedAt] = useState<string>("");
+  const [matchingTotal, setMatchingTotal] = useState<number | null>(null);
   const [status, setStatus] = useState<"loading" | "ok" | "error">("loading");
   const [filter, setFilter] = useState<"all" | "D" | "R" | "unknown">("all");
 
@@ -89,6 +91,7 @@ export default function CongressTrades() {
       })
       .then((d) => {
         setTrades(Array.isArray(d) ? d : d.trades || []);
+        setMatchingTotal(typeof d.total === "number" ? d.total : null);
         if (d.updatedAt) setUpdatedAt(d.updatedAt);
         setStatus("ok");
       })
@@ -99,10 +102,7 @@ export default function CongressTrades() {
   const parties = partyBreakdown(trades);
   const partyNote = unknownPartyDisclosure(parties);
 
-  const buyCount = trades.filter((t) => t.type === "Buy").length;
-  const totalTrades = trades.length;
-  const uniquePoliticians = new Set(trades.map((t) => t.politician)).size;
-  const uniqueTickers = new Set(trades.map((t) => t.ticker)).size;
+  const { totalTrades, buyRatio, uniquePoliticians, uniqueTickers } = disclosureStats(filtered);
 
   return (
     <section className="px-4 md:px-8 py-8">
@@ -120,7 +120,7 @@ export default function CongressTrades() {
               Transactions reported by U.S. House members involving AI supply-chain stocks
             </p>
           </div>
-          <div className="flex gap-1">
+          <div className="flex flex-wrap gap-1">
             {(["all", "D", "R", "unknown"] as const).map((f) => (
               <button
                 key={f}
@@ -156,15 +156,22 @@ export default function CongressTrades() {
           </p>
         )}
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
+        {status === "ok" && (
+          <p className="text-xs mb-3" style={{ color: "var(--text-dim)" }}>
+            Showing {filtered.length} of {trades.length} loaded disclosures after party filtering.
+            {matchingTotal !== null && ` ${matchingTotal} AI-supply-chain disclosures match in the archive.`}
+            {" "}Statistics below describe the visible rows only.
+          </p>
+        )}
+        {status === "ok" && <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
           <div className="rounded-md p-2 border" style={{ borderColor: "var(--border)" }}>
-            <div className="text-[10px] uppercase" style={{ color: "var(--text-dim)" }}>Displayed filings</div>
+            <div className="text-[10px] uppercase" style={{ color: "var(--text-dim)" }}>Displayed disclosures</div>
             <div className="text-lg font-bold font-mono" style={{ color: "var(--text)" }}>{totalTrades}</div>
           </div>
           <div className="rounded-md p-2 border" style={{ borderColor: "var(--border)" }}>
             <div className="text-[10px] uppercase" style={{ color: "var(--text-dim)" }}>Buy Ratio</div>
             <div className="text-lg font-bold font-mono" style={{ color: "var(--green)" }}>
-              {totalTrades ? Math.round((buyCount / totalTrades) * 100) : 0}%
+              {buyRatio === null ? "n/a" : `${buyRatio}%`}
             </div>
           </div>
           <div className="rounded-md p-2 border" style={{ borderColor: "var(--border)" }}>
@@ -175,7 +182,7 @@ export default function CongressTrades() {
             <div className="text-[10px] uppercase" style={{ color: "var(--text-dim)" }}>Tickers</div>
             <div className="text-lg font-bold font-mono" style={{ color: "var(--text)" }}>{uniqueTickers}</div>
           </div>
-        </div>
+        </div>}
 
         {status === "loading" && (
           <div className="rounded-lg border p-6 text-center text-xs" style={{ borderColor: "var(--border)", color: "var(--text-dim)" }}>

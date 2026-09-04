@@ -1,6 +1,74 @@
 # Outfox Markets — Project Board
 
-Last updated: September 2, 2026
+Last updated: September 3, 2026
+
+## Current execution order — overrides older queue labels below
+
+Outfox owns its source collection, historical archive, analysis, and future API.
+Coverage is broader than AI: full covered-stock browsing with an AI filter.
+Do not use Quiver's API as the core database.
+
+1. **Repair release (in progress, local only):** visible-row statistics, explicit
+   loaded/available counts, mobile navigation, homepage wording. Then test theme
+   persistence repeatedly, trace quote missing-versus-zero behavior, news failures,
+   and add the briefing redirect. Do not mark intermittent issues disproven after
+   one passing trial. Do not mark reported causes confirmed without evidence.
+2. **Supervised refresh:** one operator; review additions/revisions/quarantine
+   and freshness before publishing. Parsed-row subtraction is not a verified
+   count of new disclosures. Ship honest count labels before or with the refresh.
+3. **Archive access:** all/AI scope, search, sorting, real pagination beyond 250,
+   accurate totals and dates. Current API has no offset/cursor; backend work needed.
+4. **Stock research pages + Form 4:** reusable ticker pages, source history,
+   shared provenance contract, original-source collection and backfills.
+5. **Managers/private capital:** 13F snapshots, 13D/13G significant ownership,
+   source-rich family offices with exact entity attribution and coverage limits.
+6. **Analysis, reports, retention, API:** cross-source comparisons, saved alerts,
+   original reports, then versioned external API with rights and reliability gates.
+
+### Owners and acceptance gates
+
+- Codex: implement/integrate; one owner per file/task, no overlapping edits.
+- Claude: independent review and supervised import coordination; do not dispatch
+  another import until the operator and current baseline are agreed.
+- Perplexity: source inventory and repeatable live acceptance trials; record URL,
+  time, viewport, navigation sequence, response payload and trial counts.
+- SuperGrok: reader questions, evidence-linked story candidates and UX critique;
+  never treat social claims as verified production records.
+- Release: regression tests + lint/build → independent review → deploy → live QA.
+- Browser QA: all nav/theme controls accessible at 375px; statistics equal visible
+  rows including empty filters; at least 10 theme-navigation trials in both themes.
+- Quote QA: genuine zero stays zero, missing stays unavailable, loading distinct.
+- Observability backlog: structured provider failures, visible freshness, synthetic
+  endpoint checks and privacy-safe error tracking. Provider/account and recurring
+  monitoring setup require explicit configuration; none has been enabled here.
+- Legal/licensing review runs alongside engineering before monetizing restricted
+  sources or redistributing identifiers/data. Learn supports research, not a new
+  standalone course business.
+
+Local repair changes are not yet browser-verified, independently reviewed or live.
+
+### September 3 — discovery and performance additions
+
+- [x] Implement local "Understand the buildout" panel below the layer detail:
+  five sourced native expand/collapse questions, first open, layer links, mobile
+  stacking and HTML answers without client fetches. Agreed stack headings applied.
+- [ ] Browser/keyboard and desktop/mobile visual QA for the new panel; independent
+  editorial/source review and production verification before marking published.
+
+- [x] Locally reframe the AI stack as "Behind the data-center boom" with an
+  introductory explanation; preserve the map and distinguish the broader AI
+  economy from data-center construction. Pending release verification.
+- [ ] Add stock performance since reported transaction date and since public
+  availability, benchmarked over identical periods. Label as stock performance,
+  not the filer's actual profit. Record price basis, splits/dividends, missing
+  history, options exclusions, and non-trading-day rules.
+- [ ] Add disclosure-aware hypothetical baskets only after historical coverage
+  supports them: explicit entry timing, weighting, exits, rebalancing, costs,
+  delisted securities and no look-ahead. Do not equate sales with short positions.
+- [ ] Keep brokerage execution separate from informational tracking. No trading
+  integration or public API launch required; Outfox's website is the flagship.
+- [ ] Audience-first model: free readership and email subscribers now. External
+  API access, advertising and paid subscriptions remain optional future choices.
 
 This board is the day-to-day operating view. `ROADMAP.md` remains the complete long-term plan.
 

@@ -120,13 +120,19 @@ export default function StackVisualization({
         style={{ backgroundColor: "var(--bg-card)", borderColor: "var(--border)" }}
       >
         <div className="mb-6">
-          <div className="kicker mb-1">The AI Stack</div>
+          <div className="kicker mb-1">What’s behind the data-center boom?</div>
           <h2 className="text-xl font-bold" style={{ color: "var(--text)" }}>
-            Ten layers, one supply chain
+            One buildout. An entire economy behind it.
           </h2>
-          <p className="text-xs mt-1" style={{ color: "var(--text-dim)" }}>
-            Bar width = market cap · bubbles = subcategories. Hover to preview,
-            click to pin.
+          <p className="text-sm mt-2 max-w-3xl" style={{ color: "var(--text-dim)" }}>
+            A data center is more than a building full of servers. It connects
+            power producers, chipmakers, networking companies, and software businesses.
+            Explore ten connected layers of the AI economy—and the companies behind them.
+          </p>
+          <p className="text-xs mt-2" style={{ color: "var(--text-dim)" }}>
+            This map covers the broader AI economy, not just data-center construction.
+            Select a layer to explore. Bar widths reflect approximate market caps
+            with a minimum display width; bubbles represent subcategories.
           </p>
         </div>
 

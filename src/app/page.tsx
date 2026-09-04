@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import StackVisualization from "@/components/StackVisualization";
 import LayerDetail from "@/components/LayerDetail";
+import BuildoutQuestions from "@/components/BuildoutQuestions";
 import PerformanceChart from "@/components/PerformanceChart";
 import LayerCards from "@/components/LayerCards";
 import StockList from "@/components/StockList";
@@ -84,6 +85,7 @@ export default function Home() {
                 prices={prices}
                 mode={hoveredLayer && hoveredLayer !== activeLayer ? "previewing" : "selected"}
               />
+              <BuildoutQuestions />
             </div>
           </div>
 
