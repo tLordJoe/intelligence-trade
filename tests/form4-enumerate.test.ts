@@ -4,7 +4,8 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
 import {
-  dailyIndexUrl, datesInRange, filterByIssuerCik, parseFormIndex,
+  dailyIndexUrl, datesInRange, federalHolidays, filterByIssuerCik,
+  isExpectedFilingDay, isFederalHoliday, isWeekend, parseFormIndex,
   quarterlyIndexUrl, quarterOf, summarizeEnumeration, unavailableIndex,
 } from "../src/lib/form4/enumerate.ts";
 import { mergeCandidate, readCandidate, EMPTY_CANDIDATE } from "../src/lib/form4/merge.ts";
@@ -100,15 +101,16 @@ test("each entry carries the identifiers needed to fetch it", () => {
 
 // --- unavailable is not empty --------------------------------------------------
 
-test("regression: an unavailable index is not a zero-filing day", () => {
-  const missing = unavailableIndex(dailyIndexUrl("2026-09-05"), "2026-09-05", "403 Forbidden");
+test("regression: a missing business-day index is not a zero-filing day", () => {
+  // Thursday 2026-09-10 — a business day whose index we should have seen.
+  const missing = unavailableIndex(dailyIndexUrl("2026-09-10"), "2026-09-10", "403 Forbidden");
   assert.equal(missing.availability, "unavailable");
   assert.deepEqual(missing.entries, []);
   assert.match(missing.detail ?? "", /403/);
 
   const { summary } = summarizeEnumeration([parsed(), missing]);
   assert.equal(summary.complete, false, "a window with a missing index is not complete");
-  assert.deepEqual(summary.unavailableDates, ["2026-09-05"]);
+  assert.deepEqual(summary.unavailableDates, ["2026-09-10"]);
   assert.deepEqual(summary.availableDates, ["2026-09-03"]);
 });
 
@@ -279,4 +281,128 @@ test("output ordering is deterministic, so the file does not churn between runs"
     filing("0000000001-26-000001", "h1"), filing("0000000002-26-000002", "h2"),
   ], "r", "t").archive;
   assert.deepEqual(a.filings.map((f) => f.id), b.filings.map((f) => f.id));
+});
+
+// --- weekends and federal holidays ---------------------------------------------
+
+/**
+ * Expected non-filing days must not block a run; a business day we should have
+ * seen and did not still must.
+ *
+ * This is a real defect being pinned, not a hypothetical: the first version
+ * blocked a live run on 2026-09-05 — a Saturday — and reported it as a missing
+ * index. EDGAR returns the same 403 for a weekend and for a business day whose
+ * index has not published, so the response cannot tell them apart. The calendar
+ * has to.
+ */
+
+test("federal holidays are computed, including observance shifts", () => {
+  const y2026 = federalHolidays(2026);
+
+  assert.ok(y2026.includes("2026-01-01"), "New Year's Day");
+  assert.ok(y2026.includes("2026-01-19"), "MLK Day, third Monday");
+  assert.ok(y2026.includes("2026-02-16"), "Washington's Birthday, third Monday");
+  assert.ok(y2026.includes("2026-05-25"), "Memorial Day, last Monday");
+  assert.ok(y2026.includes("2026-09-07"), "Labor Day, first Monday");
+  assert.ok(y2026.includes("2026-11-26"), "Thanksgiving, fourth Thursday");
+  assert.equal(y2026.length, 11, "eleven federal holidays");
+
+  // Independence Day 2026 falls on a Saturday, so the observed closure is the
+  // preceding Friday. Treating the 4th itself as the holiday would leave the
+  // 3rd looking like a missing business day.
+  assert.ok(y2026.includes("2026-07-03"), "Independence Day observed on Friday 3 July");
+  assert.ok(!y2026.includes("2026-07-04"));
+
+  // A Sunday holiday shifts forward instead.
+  assert.ok(federalHolidays(2027).includes("2027-12-24"), "Christmas 2027 observed Friday");
+  assert.ok(federalHolidays(2022).includes("2022-06-20"), "Juneteenth 2022 observed Monday");
+});
+
+test("weekends and holidays are not expected filing days; business days are", () => {
+  assert.equal(isWeekend("2026-09-05"), true, "Saturday");
+  assert.equal(isWeekend("2026-09-06"), true, "Sunday");
+  assert.equal(isWeekend("2026-09-04"), false, "Friday");
+
+  assert.equal(isFederalHoliday("2026-09-07"), true, "Labor Day");
+  assert.equal(isFederalHoliday("2026-09-08"), false, "the Tuesday after");
+
+  assert.equal(isExpectedFilingDay("2026-09-04"), true, "Friday");
+  assert.equal(isExpectedFilingDay("2026-09-05"), false, "Saturday");
+  assert.equal(isExpectedFilingDay("2026-09-07"), false, "Labor Day");
+  assert.equal(isExpectedFilingDay("2026-09-08"), true, "Tuesday");
+});
+
+test("regression: a weekend with no index does not block the run", () => {
+  const saturday = unavailableIndex(dailyIndexUrl("2026-09-05"), "2026-09-05", "403 Forbidden");
+  const sunday = unavailableIndex(dailyIndexUrl("2026-09-06"), "2026-09-06", "403 Forbidden");
+
+  assert.equal(saturday.availability, "expected_non_filing");
+  assert.equal(sunday.availability, "expected_non_filing");
+  assert.match(saturday.detail ?? "", /weekend/);
+
+  const { summary } = summarizeEnumeration([parsed(), saturday, sunday]);
+  assert.equal(summary.complete, true, "a weekend is the calendar, not a gap");
+  assert.deepEqual(summary.unavailableDates, []);
+  assert.deepEqual(summary.expectedNonFilingDates, ["2026-09-05", "2026-09-06"]);
+});
+
+test("regression: a federal holiday with no index does not block the run", () => {
+  const laborDay = unavailableIndex(dailyIndexUrl("2026-09-07"), "2026-09-07", "403 Forbidden");
+  assert.equal(laborDay.availability, "expected_non_filing");
+  assert.match(laborDay.detail ?? "", /holiday/);
+
+  const { summary } = summarizeEnumeration([parsed(), laborDay]);
+  assert.equal(summary.complete, true);
+  assert.deepEqual(summary.expectedNonFilingDates, ["2026-09-07"]);
+});
+
+test("a missing business-day index still blocks, in the same window as a weekend", () => {
+  // The case that matters: the run must not become permissive just because it
+  // learned to tolerate weekends.
+  const tuesday = unavailableIndex(dailyIndexUrl("2026-09-08"), "2026-09-08", "403 Forbidden");
+  const saturday = unavailableIndex(dailyIndexUrl("2026-09-05"), "2026-09-05", "403 Forbidden");
+
+  const { summary } = summarizeEnumeration([parsed(), saturday, tuesday]);
+  assert.equal(summary.complete, false, "one missing business day is enough to block");
+  assert.deepEqual(summary.unavailableDates, ["2026-09-08"]);
+  assert.deepEqual(summary.expectedNonFilingDates, ["2026-09-05"]);
+});
+
+test("a Friday-to-Monday window spanning a holiday weekend is complete", () => {
+  // 2026-09-04 Friday · 05 Sat · 06 Sun · 07 Labor Day · 08 Tuesday.
+  // Two business days present, three expected closures — this must pass.
+  const dates = datesInRange("2026-09-04", "2026-09-08");
+  assert.deepEqual(dates, [
+    "2026-09-04", "2026-09-05", "2026-09-06", "2026-09-07", "2026-09-08",
+  ]);
+
+  const results = dates.map((date) =>
+    isExpectedFilingDay(date)
+      ? parseFormIndex(INDEX, dailyIndexUrl(date), date)
+      : unavailableIndex(dailyIndexUrl(date), date, "403 Forbidden")
+  );
+
+  const { summary } = summarizeEnumeration(results);
+  assert.equal(summary.complete, true, "a long weekend must not fail a routine run");
+  assert.deepEqual(summary.availableDates, ["2026-09-04", "2026-09-08"]);
+  assert.equal(summary.expectedNonFilingDates.length, 3);
+  assert.deepEqual(summary.unavailableDates, []);
+});
+
+test("a business day that returns a malformed body still blocks", () => {
+  // Tolerating closures must not extend to tolerating garbage on an open day.
+  const results = [
+    parseFormIndex("<html>Access Denied</html>", dailyIndexUrl("2026-09-08"), "2026-09-08"),
+    unavailableIndex(dailyIndexUrl("2026-09-05"), "2026-09-05", "403"),
+  ];
+  const { summary } = summarizeEnumeration(results);
+  assert.equal(summary.complete, false);
+  assert.deepEqual(summary.malformedDates, ["2026-09-08"]);
+});
+
+test("a whole-week window over a normal week expects five indexes", () => {
+  const dates = datesInRange("2026-09-14", "2026-09-20");
+  const business = dates.filter(isExpectedFilingDay);
+  assert.equal(business.length, 5, "Monday to Friday, no holiday that week");
+  assert.deepEqual(dates.filter((d) => !isExpectedFilingDay(d)), ["2026-09-19", "2026-09-20"]);
 });

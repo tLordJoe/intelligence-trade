@@ -35,7 +35,20 @@ export interface IndexEntry {
   indexHeaderUrl: string;
 }
 
-export type IndexAvailability = "available" | "unavailable" | "malformed";
+/**
+ * What we found when we looked for a date's index.
+ *
+ * `expected_non_filing` is the state that keeps a routine window from blocking:
+ * EDGAR publishes no daily index on weekends or federal holidays, so their
+ * absence is the calendar working, not a gap in what we saw. A *business day*
+ * with no index is `unavailable` and does block — that is a day we should have
+ * seen and did not.
+ */
+export type IndexAvailability =
+  | "available"
+  | "expected_non_filing"
+  | "unavailable"
+  | "malformed";
 
 export interface IndexResult {
   url: string;
@@ -49,6 +62,79 @@ export interface IndexResult {
 }
 
 const pad = (n: number) => String(n).padStart(2, "0");
+
+const iso = (y: number, m: number, d: number) => `${y}-${pad(m)}-${pad(d)}`;
+
+/** The `n`th `weekday` of a month, 1-indexed. Weekday 0 is Sunday. */
+function nthWeekdayOfMonth(year: number, month: number, weekday: number, n: number): string {
+  const first = new Date(Date.UTC(year, month - 1, 1));
+  const offset = (weekday - first.getUTCDay() + 7) % 7;
+  return iso(year, month, 1 + offset + (n - 1) * 7);
+}
+
+/** The last `weekday` of a month. */
+function lastWeekdayOfMonth(year: number, month: number, weekday: number): string {
+  const last = new Date(Date.UTC(year, month, 0));
+  const offset = (last.getUTCDay() - weekday + 7) % 7;
+  return iso(year, month, last.getUTCDate() - offset);
+}
+
+/**
+ * A fixed-date holiday, shifted to the day it is observed.
+ *
+ * A Saturday holiday is observed the preceding Friday and a Sunday holiday the
+ * following Monday, and it is the *observed* day on which markets and EDGAR are
+ * closed. Independence Day 2026 falls on a Saturday, so 3 July is the closure.
+ */
+function observed(year: number, month: number, day: number): string {
+  const date = new Date(Date.UTC(year, month - 1, day));
+  const weekday = date.getUTCDay();
+  if (weekday === 6) date.setUTCDate(date.getUTCDate() - 1);
+  if (weekday === 0) date.setUTCDate(date.getUTCDate() + 1);
+  return date.toISOString().slice(0, 10);
+}
+
+/**
+ * US federal holidays, which are the days EDGAR does not publish an index.
+ *
+ * Computed rather than tabulated so the calendar does not expire. Good Friday
+ * is deliberately absent: markets close but EDGAR does publish, so treating it
+ * as a non-filing day would hide a genuinely missing index.
+ */
+export function federalHolidays(year: number): string[] {
+  return [
+    observed(year, 1, 1),                        // New Year's Day
+    nthWeekdayOfMonth(year, 1, 1, 3),            // Martin Luther King Jr. Day
+    nthWeekdayOfMonth(year, 2, 1, 3),            // Washington's Birthday
+    lastWeekdayOfMonth(year, 5, 1),              // Memorial Day
+    observed(year, 6, 19),                       // Juneteenth
+    observed(year, 7, 4),                        // Independence Day
+    nthWeekdayOfMonth(year, 9, 1, 1),            // Labor Day
+    nthWeekdayOfMonth(year, 10, 1, 2),           // Columbus Day
+    observed(year, 11, 11),                      // Veterans Day
+    nthWeekdayOfMonth(year, 11, 4, 4),           // Thanksgiving
+    observed(year, 12, 25),                      // Christmas Day
+  ].sort();
+}
+
+export function isWeekend(date: string): boolean {
+  const day = new Date(`${date}T00:00:00.000Z`).getUTCDay();
+  return day === 0 || day === 6;
+}
+
+export function isFederalHoliday(date: string): boolean {
+  return federalHolidays(Number(date.slice(0, 4))).includes(date);
+}
+
+/**
+ * Whether an index should exist for this date.
+ *
+ * The whole point of the distinction: a run over Friday–Monday covers two days
+ * with no index and must still pass, while a Tuesday with no index must not.
+ */
+export function isExpectedFilingDay(date: string): boolean {
+  return !isWeekend(date) && !isFederalHoliday(date);
+}
 
 export function quarterOf(date: string): number {
   const month = Number(date.slice(5, 7));
@@ -140,14 +226,33 @@ export function parseFormIndex(body: string, url: string, date: string): IndexRe
   return { url, date, availability: "available", detail: null, entries, matchedLines };
 }
 
-/** An index we could not retrieve. Distinct from one that legitimately held nothing. */
+/**
+ * An index we could not retrieve.
+ *
+ * Classified by the calendar rather than by the error: EDGAR returns the same
+ * 403 for a Saturday and for a Tuesday whose index has not been published yet,
+ * so the response cannot tell them apart and the date has to.
+ */
 export function unavailableIndex(url: string, date: string, detail: string): IndexResult {
-  return { url, date, availability: "unavailable", detail, entries: [], matchedLines: 0 };
+  const expected = isExpectedFilingDay(date);
+  return {
+    url,
+    date,
+    availability: expected ? "unavailable" : "expected_non_filing",
+    detail: expected
+      ? detail
+      : `${isWeekend(date) ? "weekend" : "federal holiday"} — no index expected (${detail})`,
+    entries: [],
+    matchedLines: 0,
+  };
 }
 
 export interface EnumerationSummary {
   requestedDates: string[];
   availableDates: string[];
+  /** Weekends and federal holidays. Absent by design, not a gap. */
+  expectedNonFilingDates: string[];
+  /** Business days whose index we should have seen and did not. */
   unavailableDates: string[];
   malformedDates: string[];
   /** True only when every requested date was retrieved. */
@@ -182,12 +287,14 @@ export function summarizeEnumeration(results: IndexResult[]): {
 
   const unavailableDates = by("unavailable");
   const malformedDates = by("malformed");
+  const expectedNonFilingDates = by("expected_non_filing");
 
   return {
     entries,
     summary: {
       requestedDates: results.map((r) => r.date),
       availableDates: by("available"),
+      expectedNonFilingDates,
       unavailableDates,
       malformedDates,
       complete: unavailableDates.length === 0 && malformedDates.length === 0,

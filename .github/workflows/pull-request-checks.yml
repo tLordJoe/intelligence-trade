@@ -1,0 +1,84 @@
+name: Pull request checks
+
+# Runs on every pull request into main, and on pushes to main so the default
+# branch never sits in an unknown state.
+#
+# Deliberately has no secrets and no network dependency beyond installing
+# packages: every test in this repository runs offline against committed
+# fixtures. A check that needed an API key would fail on forks and would tempt
+# someone to skip it.
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+# A newer push supersedes an in-flight run for the same ref.
+concurrency:
+  group: pr-checks-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: tests · lint · types · build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Each step runs on its own so a red check names the thing that broke,
+      # rather than reporting "the build failed".
+      - name: Tests
+        run: npm test
+
+      - name: Lint
+        run: npm run lint
+
+      - name: TypeScript
+        run: npx tsc --noEmit -p tsconfig.json
+
+      - name: Production build
+        run: npm run build
+
+      # The Form 4 importer must never need credentials or the network to be
+      # verified. Running it here proves the offline path stays offline: if it
+      # ever reaches for EDGAR, this step fails without a SEC_USER_AGENT.
+      - name: Form 4 importer, offline fixtures
+        run: node --experimental-strip-types scripts/import-form4.ts --mode fixtures
+
+      # Generated data must not reach the repository. These paths are
+      # gitignored; this asserts the ignore rules actually hold, because a
+      # committed candidate archive would be a published dataset by accident.
+      - name: No generated Form 4 data is tracked
+        run: |
+          set -euo pipefail
+          tracked=$(git ls-files -- \
+            'data/form4-candidate.json' \
+            'data/form4-runs' \
+            'data/form4-runs/**' || true)
+          if [ -n "$tracked" ]; then
+            echo "::error::generated Form 4 data is tracked in git:"
+            echo "$tracked"
+            exit 1
+          fi
+          echo "No generated Form 4 candidate archive or run evidence is tracked."
+
+          # The importer just ran; its output must still be untracked.
+          if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
+            echo "::error::the offline importer modified tracked files:"
+            git status --porcelain --untracked-files=no
+            exit 1
+          fi
+          echo "The offline importer left every tracked file unchanged."
