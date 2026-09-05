@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4/A</documentType>
+
+    <periodOfReport>2018-07-03</periodOfReport>
+
+    <dateOfOriginalSubmission>2018-07-25</dateOfOriginalSubmission>
+
+    <notSubjectToSection16>0</notSubjectToSection16>
+
+    <issuer>
+        <issuerCik>0001650575</issuerCik>
+        <issuerName>Borqs Technologies, Inc.</issuerName>
+        <issuerTradingSymbol>BRQS</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0000050863</rptOwnerCik>
+            <rptOwnerName>INTEL CORP</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>2200 MISSION COLLEGE BLVD</rptOwnerStreet1>
+            <rptOwnerStreet2></rptOwnerStreet2>
+            <rptOwnerCity>SANTA CLARA</rptOwnerCity>
+            <rptOwnerState>CA</rptOwnerState>
+            <rptOwnerZipCode>95054</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>0</isDirector>
+            <isOfficer>0</isOfficer>
+            <isTenPercentOwner>1</isTenPercentOwner>
+            <isOther>0</isOther>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeHolding>
+            <securityTitle>
+                <value>ORDINARY SHARES</value>
+                <footnoteId id="F1"/>
+            </securityTitle>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>4192756</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>Through wholly-owned subsidiary</value>
+                    <footnoteId id="F2"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeHolding>
+    </nonDerivativeTable>
+
+    <footnotes>
+        <footnote id="F1">This amendment amends and restates the Form 4 filed by the reporting person on July 25, 2018, which inadvertently reported the acquisition of 217,524 Ordinary Shares on July 3, 2018.  No acquisition occurred on July 3, 2018, and this amendment withdraws such Form 4. Table I of this amendment discloses the correct amount of Ordinary Shares beneficially owned by the reporting person as of the date of this filing.</footnote>
+        <footnote id="F2">The securities reported in Table I of this report are owned indirectly by Intel Corporation through Intel Capital.</footnote>
+    </footnotes>
+
+    <remarks></remarks>
+
+    <ownerSignature>
+        <signatureName>/s/ Patrick Bombach, Assistant Secretary</signatureName>
+        <signatureDate>2019-06-05</signatureDate>
+    </ownerSignature>
+</ownershipDocument>
