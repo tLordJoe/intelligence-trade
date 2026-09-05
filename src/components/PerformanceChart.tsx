@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import type { KeyboardEvent as ReactKeyboardEvent, PointerEvent as ReactPointerEvent } from "react";
 import { getAllTickers, layers } from "@/lib/data";
@@ -231,20 +230,10 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
       <div className="rounded-lg border p-4 md:p-6" style={{ backgroundColor: "var(--bg-card)", borderColor: "var(--border)" }}>
         <div className="kicker mb-1">Compare investments</div>
         <h2 className="text-xl font-bold mb-1" style={{ color: "var(--text)" }}>Market performance</h2>
-        <p className="text-sm mb-2" style={{ color: "var(--text-dim)" }}>
+        <p className="text-sm mb-4" style={{ color: "var(--text-dim)" }}>
           {chartMode === "investments"
             ? "SPY is the benchmark. Add up to ten stocks or ETFs to compare percentage performance."
             : "Toggle equal-weight indexes for each supply-chain layer on or off."}
-        </p>
-        {/* Entry point to the dedicated fund comparison. Copy only — nothing
-            else in this section is changed. */}
-        <p className="text-sm mb-4">
-          <Link href="/compare" className="underline" style={{ color: "var(--accent)" }}>
-            Compare funds side by side
-          </Link>
-          <span style={{ color: "var(--text-dim)" }}>
-            {" "}— price change over one, three or five years, with an example amount.
-          </span>
         </p>
 
         <div className="mb-4 inline-flex rounded-md border p-1" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg)" }}>

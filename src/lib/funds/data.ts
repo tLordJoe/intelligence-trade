@@ -1,152 +1,94 @@
 /**
- * Adapter from the committed price snapshot to the domain types.
+ * The composition root for the fund comparison.
  *
- * The only place in the application that knows the snapshot's shape. Everything
- * downstream consumes `FundRecord` and `PriceSeries`, so connecting a licensed
- * provider later means writing a second adapter beside this one — not touching
- * the page, the charts, or the calculations.
+ * The one place that names a concrete provider. Everything else — the page, the
+ * chart, the arithmetic, the tests — goes through `FundDataProvider`, so
+ * connecting a licensed source is a change to the constant below and nothing
+ * more.
+ *
+ * Two independent gates stand between a dataset and a reader — rights, and
+ * environment. Both live in `./access.ts`, which is importable without this
+ * module's data, and are re-exported at the foot of this file.
  */
 
-import snapshot from "../fund-prices.json" with { type: "json" };
-
+import { buildColorAssignment, type ColorAssignment } from "./colors.ts";
+import { getLegalIdentity } from "./identity.ts";
+import { demonstrationProvider } from "./providers/demonstration.ts";
+import { getDisplayableSeries, type FundDataProvider } from "./provider.ts";
 import {
-  unavailable,
-  type Coverage,
-  type ExpenseData,
+  isAvailable,
+  toFundIdentity,
+  type Availability,
   type FundIdentity,
   type FundRecord,
   type PriceSeries,
-  type ReturnMethodology,
+  type ReturnBasis,
   type SourceProvenance,
 } from "./types.ts";
 
-interface SnapshotFile {
-  schemaVersion: number;
-  capturedAt: string;
-  provenance: { sourceId: string; sourceName: string; licensed: boolean; capturedBy: string; note: string };
-  methodology: {
-    returnBasis: string; field: string;
-    splitAdjusted: boolean; splitAdjustmentEvidence: string;
-    dividendAdjusted: boolean; dividendAdjustmentEvidence: string;
-    excludes: string[];
-  };
-  series: Record<string, { dates: string[]; closes: number[] }>;
-}
-
-const file = snapshot as unknown as SnapshotFile;
-
-export const PROVENANCE: SourceProvenance = {
-  sourceId: file.provenance.sourceId,
-  sourceName: file.provenance.sourceName,
-  licensed: file.provenance.licensed,
-  capturedAt: file.capturedAt,
-  capturedBy: file.provenance.capturedBy,
-  note: file.provenance.note,
-};
-
-export const METHODOLOGY: ReturnMethodology = {
-  basis: file.methodology.returnBasis === "total_return" ? "total_return" : "price_return",
-  splitAdjusted: file.methodology.splitAdjusted,
-  dividendAdjusted: file.methodology.dividendAdjusted,
-  excludes: file.methodology.excludes,
-  splitAdjustmentEvidence: file.methodology.splitAdjustmentEvidence,
-  dividendAdjustmentEvidence: file.methodology.dividendAdjustmentEvidence,
-};
-
 /**
- * Fund identities.
+ * The provider in use.
  *
- * Descriptions state what a fund holds, in neutral terms. None of them is a
- * rating, a ranking, or a suggestion, and the order here carries no meaning.
+ * Swap this line — and nothing else — to connect a licensed source. The
+ * interface is what the rest of the application is written against.
  */
-const IDENTITIES: Record<string, FundIdentity> = {
-  VOO: {
-    symbol: "VOO", name: "Vanguard S&P 500 ETF", issuer: "Vanguard",
-    exposure: "Large United States companies across the whole market",
-    category: "Broad market",
-  },
-  QQQ: {
-    symbol: "QQQ", name: "Invesco QQQ Trust", issuer: "Invesco",
-    exposure: "The largest non-financial companies listed on the Nasdaq",
-    category: "Growth",
-  },
-  XLK: {
-    symbol: "XLK", name: "Technology Select Sector SPDR Fund", issuer: "State Street",
-    exposure: "Technology companies within the S&P 500",
-    category: "Sector",
-  },
-  SMH: {
-    symbol: "SMH", name: "VanEck Semiconductor ETF", issuer: "VanEck",
-    exposure: "Companies that design and manufacture semiconductors",
-    category: "Industry",
-  },
-  XLU: {
-    symbol: "XLU", name: "Utilities Select Sector SPDR Fund", issuer: "State Street",
-    exposure: "Electric and other utilities within the S&P 500",
-    category: "Utilities",
-  },
-  SOXX: {
-    symbol: "SOXX", name: "iShares Semiconductor ETF", issuer: "BlackRock",
-    exposure: "Semiconductor companies, as a comparison to SMH",
-    category: "Industry",
-  },
-};
+export const activeProvider: FundDataProvider = demonstrationProvider;
 
-function coverageOf(dates: string[]): Coverage {
-  return {
-    firstDate: dates[0] ?? null,
-    lastDate: dates[dates.length - 1] ?? null,
-    observations: dates.length,
-  };
-}
+/** The basis this preview measures. Total return needs distribution records. */
+export const ACTIVE_BASIS: ReturnBasis = "price_return";
 
-function seriesFor(symbol: string): PriceSeries | null {
-  const raw = file.series[symbol];
-  if (!raw) return null;
-  return {
-    symbol,
-    dates: raw.dates,
-    closes: raw.closes,
-    methodology: METHODOLOGY,
-    provenance: PROVENANCE,
-    coverage: coverageOf(raw.dates),
-  };
-}
-
-/**
- * Expenses are not connected.
- *
- * Returned explicitly unavailable rather than omitted, so the interface has a
- * value to render and cannot fall back to zero.
- */
-function expensesFor(symbol: string): ExpenseData {
-  return {
-    symbol,
-    expenseRatioPercent: unavailable<number>(
-      "source_not_connected",
-      "No licensed source for expense ratios is connected in this preview."
-    ),
-  };
-}
+export const PROVENANCE: SourceProvenance = activeProvider.provenance;
 
 export function availableSymbols(): string[] {
-  return Object.keys(file.series).filter((s) => IDENTITIES[s]);
+  return activeProvider.listSymbols();
+}
+
+/**
+ * Colours, assigned once from the provider's whole universe.
+ *
+ * Built here rather than in the component so that the same assignment is used
+ * by the chart, the table, the legend and the tests, and so that nothing can
+ * accidentally rebuild it from a filtered or sorted list.
+ */
+export const COLORS: ColorAssignment = buildColorAssignment(availableSymbols());
+
+export function identityFor(symbol: string): FundIdentity | null {
+  const legal = getLegalIdentity(symbol);
+  return legal ? toFundIdentity(legal) : null;
+}
+
+/** All identities, sorted by symbol. The order carries no meaning. */
+export function allIdentities(): FundIdentity[] {
+  return availableSymbols()
+    .map(identityFor)
+    .filter((f): f is FundIdentity => f !== null);
+}
+
+export function seriesFor(symbol: string, basis: ReturnBasis = ACTIVE_BASIS): Availability<PriceSeries> {
+  return getDisplayableSeries(activeProvider, symbol, basis);
+}
+
+/** Series for the given symbols, silently omitting any the provider cannot supply. */
+export function getSeries(symbols: string[], basis: ReturnBasis = ACTIVE_BASIS): PriceSeries[] {
+  return symbols
+    .map((symbol) => seriesFor(symbol, basis))
+    .filter(isAvailable)
+    .map((entry) => entry.value);
 }
 
 export function getFund(symbol: string): FundRecord | null {
   const key = symbol.trim().toUpperCase();
-  const identity = IDENTITIES[key];
-  const prices = seriesFor(key);
-  if (!identity || !prices) return null;
+  const identity = identityFor(key);
+  if (!identity) return null;
 
   return {
     identity,
-    prices,
-    expenses: expensesFor(key),
+    prices: seriesFor(key),
+    expenses: activeProvider.getExpenses(key),
     // Holdings and overlays are modelled but unconnected. Never an empty array
     // pretending to be an empty portfolio.
-    holdings: unavailable("source_not_connected", "No holdings source is connected in this preview."),
-    overlays: [],
+    holdings: activeProvider.getHoldings(key),
+    overlays: activeProvider.getOverlays(key),
   };
 }
 
@@ -154,15 +96,17 @@ export function getFunds(symbols: string[]): FundRecord[] {
   return symbols.map(getFund).filter((f): f is FundRecord => f !== null);
 }
 
-export function getSeries(symbols: string[]): PriceSeries[] {
-  return symbols
-    .map((s) => seriesFor(s.trim().toUpperCase()))
-    .filter((s): s is PriceSeries => s !== null);
-}
+// --- the gates --------------------------------------------------------------
 
-/** All identities, for the picker. Sorted by symbol; the order means nothing. */
-export function allIdentities(): FundIdentity[] {
-  return availableSymbols()
-    .map((s) => IDENTITIES[s])
-    .sort((a, b) => a.symbol.localeCompare(b.symbol));
-}
+/**
+ * Re-exported from `./access.ts`, which is importable without the fixture.
+ *
+ * A page that only needs to decide whether to show the preview should import
+ * from there rather than from here — importing this module pulls in the
+ * provider and its data, which is exactly what a refusal is trying to avoid
+ * shipping.
+ */
+export {
+  ACTIVE_PROVIDER_DESCRIPTOR, evaluatePreviewAccess, previewAccessFromEnv,
+  type EnvironmentInput, type PreviewAccess, type ProviderDescriptor,
+} from "./access.ts";

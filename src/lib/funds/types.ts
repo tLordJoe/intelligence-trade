@@ -2,145 +2,218 @@
  * Domain types for fund comparison.
  *
  * Written so that connecting a licensed data provider later is a matter of
- * adding an adapter, not rewriting the interface. Nothing here names a vendor:
- * a source identifies itself through `SourceProvenance`, and components consume
- * the domain shapes rather than any provider's payload.
+ * implementing `FundDataProvider`, not rewriting the interface. Nothing here
+ * names a vendor, and no component may.
  *
- * Two rules run through the whole file.
+ * Four rules run through the whole file.
  *
  * **Unavailable is not zero.** Every value a source may not supply is an
  * `Availability<T>` carrying a reason, so a missing expense ratio can never be
  * rendered as 0.00% and a missing weight can never be counted as absent
  * exposure.
  *
- * **Partial holdings stay partial.** A snapshot that covers 62% of a portfolio
- * describes 62% of a portfolio. `HoldingsSnapshot` keeps known, unmapped and
- * unavailable weight as separate quantities that sum to 100 — normalising the
- * known slice up to 100 would turn "we can see two thirds of this fund" into
- * "this is the whole fund", which is the single most misleading thing this
- * model could do.
+ * **Price return is not total return.** They are separate bases carried on
+ * every series, and a caller asking for one never silently receives the other.
+ * A price series says what a share price did; it is not what an investor got,
+ * and the type system is where that distinction is enforced rather than in a
+ * footnote.
+ *
+ * **Partial holdings stay partial.** A snapshot covering 62% of a portfolio
+ * describes 62% of a portfolio. Known, unmapped and unavailable weight are kept
+ * as separate quantities summing to 100 — normalising the known slice up to 100
+ * would turn "we can see two thirds of this fund" into "this is the whole
+ * fund", which is the single most misleading thing this model could do.
+ *
+ * **Rights are not a boolean.** See `./rights.ts`. Every dataset carries the
+ * set of things it is actually permitted to be used for, and everything fails
+ * closed when that set is empty or unexamined.
  */
+
+import type { DataRights } from "./rights.ts";
+import type { FundLegalIdentity } from "./identity.ts";
 
 // --- availability ------------------------------------------------------------
 
 export type UnavailableReason =
   | "source_not_connected"
+  | "basis_not_supplied"
   | "not_published_by_issuer"
   | "outside_snapshot_coverage"
+  | "no_common_date"
+  | "rights_not_established"
   | "licensing_restricted"
   | "stale_beyond_threshold"
   | "parse_failed";
 
-export type Availability<T> =
-  | { status: "available"; value: T; asOf: string; sourceId: string }
-  | { status: "unavailable"; reason: UnavailableReason; detail?: string };
+export type Available<T> = { status: "available"; value: T; asOf: string; sourceId: string };
+export type Unavailable = { status: "unavailable"; reason: UnavailableReason; detail?: string };
+export type Availability<T> = Available<T> | Unavailable;
 
-export const unavailable = <T,>(
-  reason: UnavailableReason,
-  detail?: string
-): Availability<T> => ({ status: "unavailable", reason, detail });
+export const unavailable = <T,>(reason: UnavailableReason, detail?: string): Availability<T> => ({
+  status: "unavailable",
+  reason,
+  detail,
+});
 
-export const available = <T,>(
-  value: T,
-  asOf: string,
-  sourceId: string
-): Availability<T> => ({ status: "available", value, asOf, sourceId });
+export const available = <T,>(value: T, asOf: string, sourceId: string): Availability<T> => ({
+  status: "available",
+  value,
+  asOf,
+  sourceId,
+});
 
-export function isAvailable<T>(
-  value: Availability<T>
-): value is { status: "available"; value: T; asOf: string; sourceId: string } {
+export function isAvailable<T>(value: Availability<T>): value is Available<T> {
   return value.status === "available";
 }
 
-/** Human text for an absence. Never returns an empty string or a number. */
+/** Human text for an absence. Never returns an empty string, and never a number. */
 export function describeUnavailable(reason: UnavailableReason): string {
   switch (reason) {
     case "source_not_connected": return "Unavailable — data source not connected yet";
+    case "basis_not_supplied": return "Unavailable — this source does not supply that return basis";
     case "not_published_by_issuer": return "Unavailable — not published by the issuer";
-    case "outside_snapshot_coverage": return "Unavailable — outside the coverage of this snapshot";
-    case "licensing_restricted": return "Unavailable — licensing does not permit display";
-    case "stale_beyond_threshold": return "Unavailable — the latest snapshot is too old to show";
+    case "outside_snapshot_coverage": return "Unavailable — outside the coverage of this dataset";
+    case "no_common_date": return "Unavailable — the selected funds share no common date";
+    case "rights_not_established": return "Unavailable — rights for this source have not been established";
+    case "licensing_restricted": return "Unavailable — rights do not permit displaying this";
+    case "stale_beyond_threshold": return "Unavailable — the latest data is too old to show";
     case "parse_failed": return "Unavailable — the source value could not be read";
   }
 }
 
 // --- provenance --------------------------------------------------------------
 
+/**
+ * Where a dataset came from and what may be done with it.
+ *
+ * `kind` is the load-bearing field. `demonstration` data is generated by Outfox
+ * and describes nothing real; `licensed` data comes from a provider under terms.
+ * Anything that renders a value must be able to tell the two apart, which is why
+ * this is a required discriminator and not an optional note.
+ */
 export interface SourceProvenance {
-  /** Stable identifier for the source, e.g. `yahoo-chart-unofficial`. */
   sourceId: string;
   sourceName: string;
-  /** Whether the data is used under a licence permitting this display. */
-  licensed: boolean;
-  /** When this particular data was captured. */
-  capturedAt: string;
-  /** How it was obtained, so a reader can audit the path. */
-  capturedBy?: string;
-  note?: string;
+  kind: "demonstration" | "licensed";
+  rights: DataRights;
+  /** When the data was produced or captured. */
+  producedAt: string;
+  /** How it was produced, so a reader can audit the path. */
+  method: string;
+  /**
+   * Required on demonstration sources: the exact words shown wherever its
+   * values appear. Absent on licensed sources, which describe real markets.
+   */
+  demonstrationLabel?: string;
+}
+
+/** True when values from this source must be labelled as demonstration output. */
+export function requiresDemonstrationLabel(provenance: SourceProvenance): boolean {
+  return provenance.kind === "demonstration";
 }
 
 /** How completely a dataset covers what it claims to describe. */
 export interface Coverage {
-  /** Earliest and latest observation actually present. */
   firstDate: string | null;
   lastDate: string | null;
   observations: number;
-  /** Gaps a caller should know about, e.g. a suspended listing. */
-  gaps?: Array<{ from: string; to: string; reason: string }>;
+  /** Dates the source does not cover, e.g. a halt or a reporting gap. */
+  gaps: Array<{ from: string; to: string; reason: string }>;
 }
 
-// --- return methodology ------------------------------------------------------
+// --- return basis ------------------------------------------------------------
 
 /**
- * What a return series does and does not account for.
+ * What a return series accounts for.
  *
- * Carried alongside every series so a page cannot describe a price series as
- * total return by accident.
+ * `price_return` is the change in share price and nothing else.
+ * `total_return` reflects splits *and* distributions, reinvested — the basis
+ * Outfox's eventual primary comparison should use, because it is the one that
+ * answers what an investor actually got.
+ *
+ * They are distinct types on purpose. Labelling a price series as total return
+ * overstates every income-paying fund and understates nothing, which biases a
+ * comparison consistently in one direction.
  */
+export type ReturnBasis = "price_return" | "total_return";
+
+export function describeBasis(basis: ReturnBasis): string {
+  return basis === "total_return"
+    ? "Total return — includes distributions, reinvested, and is adjusted for splits."
+    : "Price return — the change in share price only. Distributions are not included.";
+}
+
+/** Short label safe to place next to a figure. Never says "growth" or "return you earned". */
+export function basisLabel(basis: ReturnBasis): string {
+  return basis === "total_return" ? "Total return" : "Price change";
+}
+
 export interface ReturnMethodology {
-  basis: "price_return" | "total_return";
-  /** True when prior prices are restated across share splits. */
+  basis: ReturnBasis;
+  /** True when prior values are restated across share splits. */
   splitAdjusted: boolean;
-  /** True when distributions are reflected in the series. */
-  dividendAdjusted: boolean;
+  /** True when distributions are reflected. Must be true for `total_return`. */
+  distributionAdjusted: boolean;
   /** What the basis leaves out, for display next to any figure derived from it. */
   excludes: string[];
-  /** Evidence for the adjustment claims, so they are checkable rather than asserted. */
-  splitAdjustmentEvidence?: string;
-  dividendAdjustmentEvidence?: string;
+  /** How the adjustment claims were established, so they are checkable. */
+  adjustmentEvidence: string;
+}
+
+/**
+ * A methodology that claims `total_return` without distributions is incoherent.
+ *
+ * Enforced rather than documented, because the failure is invisible: the numbers
+ * still compute, they are just the wrong numbers under the right label.
+ */
+export function methodologyIsCoherent(methodology: ReturnMethodology): boolean {
+  if (methodology.basis === "total_return") return methodology.distributionAdjusted;
+  return !methodology.distributionAdjusted;
 }
 
 // --- fund identity -----------------------------------------------------------
 
+/**
+ * What the interface needs to name a fund.
+ *
+ * Wraps the EDGAR-sourced legal identity rather than restating it, so the
+ * display name and the registered name cannot drift apart.
+ */
 export interface FundIdentity {
-  /** Exchange ticker, used as the stable key across the app and in URLs. */
   symbol: string;
-  name: string;
-  /** The firm that issues the fund, not the index provider. */
-  issuer: string;
-  /** Short, neutral description of what the fund holds. Not a rating. */
-  exposure: string;
-  /** Editorial grouping for the comparison UI. Not an industry classification. */
-  category: "Broad market" | "Growth" | "Sector" | "Industry" | "Utilities";
-  /** Present only when a source supplies it. Never inferred from the ticker. */
-  isin?: Availability<string>;
+  legal: FundLegalIdentity;
+  /** What the interface calls it. Derived from the official name, never invented. */
+  displayName: string;
+}
+
+export function toFundIdentity(legal: FundLegalIdentity): FundIdentity {
+  return { symbol: legal.symbol, legal, displayName: legal.seriesName };
 }
 
 // --- price history -----------------------------------------------------------
 
 /**
- * A daily close series.
+ * A dated value series.
  *
- * Dates and closes are parallel arrays in ascending date order, which keeps the
- * committed dataset compact and the lookups direct.
+ * `dates` and `values` are parallel and in ascending date order, and every
+ * consumer must look values up **by date**, never by position. Two funds'
+ * arrays are not row-aligned: one may be missing a day the other has, and
+ * pairing them by index slides every later observation onto the wrong day.
+ * `alignment.ts` exists so nothing has to do this by hand.
  */
 export interface PriceSeries {
   symbol: string;
   dates: string[];
-  closes: number[];
+  values: number[];
   methodology: ReturnMethodology;
   provenance: SourceProvenance;
   coverage: Coverage;
+}
+
+/** Value on an exact date, or null when the series has no observation that day. */
+export function valueOn(series: PriceSeries, date: string): number | null {
+  const index = series.dates.indexOf(date);
+  return index === -1 ? null : series.values[index];
 }
 
 // --- expenses ----------------------------------------------------------------
@@ -168,8 +241,8 @@ export interface Holding {
  * The three weight buckets are the point of this type. They are recorded
  * separately and always sum to 100:
  *
- *   knownWeightPercent      positions we have, with weights
- *   unmappedWeightPercent   positions the source gave but we could not map
+ *   knownWeightPercent        positions we have, with weights
+ *   unmappedWeightPercent     positions the source gave but we could not map
  *   unavailableWeightPercent  portfolio the source did not disclose to us
  *
  * A caller computing concentration or overlap must decide explicitly what to do
@@ -187,7 +260,6 @@ export interface HoldingsSnapshot {
   provenance: SourceProvenance;
 }
 
-/** Holdings for one fund across however many snapshot dates exist. */
 export interface HoldingsHistory {
   symbol: string;
   snapshots: HoldingsSnapshot[];
@@ -197,10 +269,67 @@ export interface HoldingsHistory {
 /** Guard against the normalisation this model exists to prevent. */
 export function holdingsWeightsAreConsistent(snapshot: HoldingsSnapshot): boolean {
   const total =
-    snapshot.knownWeightPercent +
-    snapshot.unmappedWeightPercent +
-    snapshot.unavailableWeightPercent;
+    snapshot.knownWeightPercent + snapshot.unmappedWeightPercent + snapshot.unavailableWeightPercent;
   return Math.abs(total - 100) < 0.01;
+}
+
+/**
+ * Comparing holdings across funds requires a date they all report.
+ *
+ * Funds publish on different schedules; comparing a fund's June snapshot with
+ * another's March snapshot and calling the difference "overlap" measures the
+ * calendar, not the portfolios. This returns the latest date every fund has,
+ * along with each fund's own snapshot date so both can be displayed.
+ */
+export interface HoldingsComparisonBasis {
+  commonDate: Availability<string>;
+  perFund: Array<{ symbol: string; ownSnapshotDate: string | null }>;
+}
+
+export function holdingsComparisonBasis(
+  histories: HoldingsHistory[]
+): HoldingsComparisonBasis {
+  const perFund = histories.map((history) => ({
+    symbol: history.symbol,
+    ownSnapshotDate: isAvailable(history.latest) ? history.latest.value.asOf : null,
+  }));
+
+  if (histories.length === 0) {
+    return { commonDate: unavailable("source_not_connected", "No holdings supplied."), perFund };
+  }
+
+  const dateSets = histories.map((h) => new Set(h.snapshots.map((s) => s.asOf)));
+  const shared = [...(dateSets[0] ?? new Set<string>())]
+    .filter((date) => dateSets.every((set) => set.has(date)))
+    .sort();
+
+  const latest = shared[shared.length - 1];
+  if (!latest) {
+    return {
+      commonDate: unavailable(
+        "no_common_date",
+        "These funds have no holdings date in common, so their portfolios cannot be compared."
+      ),
+      perFund,
+    };
+  }
+
+  return { commonDate: available(latest, latest, "holdings"), perFund };
+}
+
+/**
+ * Whether holdings from an issuer may be published.
+ *
+ * Republishing a fund's holdings, and publishing analysis derived from them,
+ * are separate permissions and both are required. Fails closed.
+ */
+export function holdingsMayBePublished(provenance: SourceProvenance): boolean {
+  const { grants } = provenance.rights;
+  if (grants.length === 0 || grants.includes("unknown")) return false;
+  return (
+    grants.includes("redistribution-authorized") &&
+    grants.includes("derived-analytics-authorized")
+  );
 }
 
 // --- disclosure overlays -----------------------------------------------------
@@ -226,10 +355,9 @@ export interface DisclosureOverlay {
 
 // --- the assembled view ------------------------------------------------------
 
-/** Everything the comparison page knows about one fund. */
 export interface FundRecord {
   identity: FundIdentity;
-  prices: PriceSeries;
+  prices: Availability<PriceSeries>;
   expenses: ExpenseData;
   holdings: Availability<HoldingsHistory>;
   overlays: DisclosureOverlay[];
