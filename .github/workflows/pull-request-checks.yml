@@ -46,11 +46,16 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: TypeScript
-        run: npx tsc --noEmit -p tsconfig.json
-
+      # The build must precede the typecheck. Next generates route types into
+      # .next/types — LayoutProps among them — and on a clean checkout they do
+      # not exist yet, so `tsc` alone fails with "Cannot find name 'LayoutProps'".
+      # Locally the directory is usually already present, which is exactly how
+      # this stayed invisible until CI ran on a fresh clone.
       - name: Production build
         run: npm run build
+
+      - name: TypeScript
+        run: npx tsc --noEmit -p tsconfig.json
 
       # The Form 4 importer must never need credentials or the network to be
       # verified. Running it here proves the offline path stays offline: if it
