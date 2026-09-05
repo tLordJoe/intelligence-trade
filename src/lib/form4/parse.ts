@@ -13,7 +13,7 @@
 
 import { createHash } from "node:crypto";
 
-import { classifyRow } from "./classify.ts";
+import { classifyPriceQuality, classifyRow } from "./classify.ts";
 import {
   child,
   children,
@@ -198,6 +198,41 @@ export function parseForm4(input: ParseInput): ParseResult {
 
   const aff10b5OneRaw = childText(root, "aff10b5One");
 
+  // `dateOfOriginalSubmission` is metadata the filer typed. It is preserved and
+  // its problems are surfaced, but it is never used for identity, amendment
+  // linking, ordering or replacement — a value that cannot be right would
+  // otherwise become a link to the wrong filing.
+  const periodOfReport = parseDate(childText(root, "periodOfReport"));
+  const originalSubmission = parseDate(childText(root, "dateOfOriginalSubmission"));
+  const chronologyWarnings: string[] = [];
+
+  if (originalSubmission.reason === "unparseable") {
+    chronologyWarnings.push("original_submission_date_unparseable");
+  }
+  if (originalSubmission.value && periodOfReport.value) {
+    if (originalSubmission.value < periodOfReport.value) {
+      // The original was reportedly filed before the period it reports on.
+      chronologyWarnings.push(
+        `original_submission_before_period:${originalSubmission.value}<${periodOfReport.value}`
+      );
+    }
+  }
+  if (originalSubmission.value && input.filedDate) {
+    const filed = parseDate(input.filedDate);
+    if (filed.value && originalSubmission.value > filed.value) {
+      // An amendment cannot amend something filed after it.
+      chronologyWarnings.push(
+        `original_submission_after_this_filing:${originalSubmission.value}>${filed.value}`
+      );
+    }
+  }
+  if (originalSubmission.value && originalSubmission.value > input.firstObservedAt.slice(0, 10)) {
+    chronologyWarnings.push(`original_submission_in_the_future:${originalSubmission.value}`);
+  }
+  if (declaredType === "4/A" && !originalSubmission.value) {
+    chronologyWarnings.push("amendment_without_original_submission_date");
+  }
+
   const filing: Form4Filing = {
     id: filingId,
     source: "sec-form4",
@@ -220,8 +255,8 @@ export function parseForm4(input: ParseInput): ParseResult {
       tickerResolutionSource: null,
     },
     reportingOwners,
-    periodOfReport: parseDate(childText(root, "periodOfReport")),
-    dateOfOriginalSubmission: parseDate(childText(root, "dateOfOriginalSubmission")),
+    periodOfReport,
+    dateOfOriginalSubmission: originalSubmission,
     timestamps: {
       filedDate: parseDate(input.filedDate ?? null),
       acceptedAt: parseText(input.acceptedAt ?? null),
@@ -237,6 +272,7 @@ export function parseForm4(input: ParseInput): ParseResult {
     notSubjectToSection16: parseBoolean(childText(root, "notSubjectToSection16")),
     footnotes,
     remarks: childText(root, "remarks"),
+    chronologyWarnings,
     rows,
     amendment:
       declaredType === "4/A"
@@ -325,6 +361,12 @@ function readRow(node: XmlNode, ctx: RowContext): Form4Row {
   const unresolved = unresolvedFootnoteIds(referenced, ctx.footnotes);
   for (const id of unresolved) warnings.push(`unresolved_footnote:${id}`);
 
+  const priceQuality = classifyPriceQuality(parsedPrice.value, price.footnoteIds, ctx.footnotes);
+  if (priceQuality === "weighted_average") warnings.push("price_is_weighted_average");
+  if (priceQuality === "unspecified" && parsedPrice.value !== null) {
+    warnings.push("price_qualified_by_unrecognized_footnote");
+  }
+
   const quarantine =
     parsedShares.reason === "unparseable" ||
     parsedPrice.reason === "unparseable" ||
@@ -353,6 +395,7 @@ function readRow(node: XmlNode, ctx: RowContext): Form4Row {
     transactionTimeliness: childText(coding, "transactionTimeliness"),
     shares: parsedShares,
     pricePerShare: parsedPrice,
+    priceQuality: classifyPriceQuality(parsedPrice.value, price.footnoteIds, ctx.footnotes),
     sharesOwnedFollowingTransaction: parseDecimal(owned.value, owned.footnoteIds),
     ownership,
     natureOfOwnership: parseText(natureOfOwnership.value, natureOfOwnership.footnoteIds),

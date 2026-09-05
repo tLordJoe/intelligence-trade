@@ -2,8 +2,8 @@
   "generatedAt": "2026-09-04",
   "source": "SEC EDGAR",
   "userAgentPolicy": "declared contact, <=5 req/s",
-  "note": "Real filings retrieved from EDGAR. 'observed' is what the harvester measured from raw bytes; expected parse results live in the tests.",
-  "count": 35,
+  "note": "Real filings retrieved from EDGAR. issuerSymbol/issuerName/issuerCik are read from each document <issuer> section, never from the CIK used to discover it. \"observed\" is measured from raw bytes by separate code from the parser; expected parse results live in the tests.",
+  "count": 40,
   "filings": [
     {
       "file": "0000002488-15-000095_wf-form4a_145144358604094.xml",
@@ -35,7 +35,10 @@
         "aff10b5": "",
         "indirect": false,
         "remarks": false
-      }
+      },
+      "issuerName": "ADVANCED MICRO DEVICES INC",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0000002488-17-000078_wf-form4a_149342068554051.xml",
@@ -67,7 +70,10 @@
         "aff10b5": "",
         "indirect": false,
         "remarks": false
-      }
+      },
+      "issuerName": "ADVANCED MICRO DEVICES INC",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0000002488-25-000030_wk-form4a_1741036878.xml",
@@ -100,7 +106,10 @@
         "aff10b5": "1",
         "indirect": true,
         "remarks": false
-      }
+      },
+      "issuerName": "ADVANCED MICRO DEVICES INC",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0000002488-26-000172_wk-form4_1787258149.xml",
@@ -132,7 +141,10 @@
         "aff10b5": "0",
         "indirect": false,
         "remarks": false
-      }
+      },
+      "issuerName": "ADVANCED MICRO DEVICES INC",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0000002488-26-000174_wk-form4_1787349005.xml",
@@ -165,7 +177,10 @@
         "aff10b5": "1",
         "indirect": true,
         "remarks": false
-      }
+      },
+      "issuerName": "ADVANCED MICRO DEVICES INC",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0000002488-26-000176_wk-form4_1787776918.xml",
@@ -198,7 +213,10 @@
         "aff10b5": "1",
         "indirect": false,
         "remarks": false
-      }
+      },
+      "issuerName": "ADVANCED MICRO DEVICES INC",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0001452385-26-000008_wk-form4_1787864688.xml",
@@ -230,7 +248,10 @@
         "aff10b5": "1",
         "indirect": true,
         "remarks": false
-      }
+      },
+      "issuerName": "ADVANCED MICRO DEVICES INC",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0001730168-25-000104_wk-form4a_1757982812.xml",
@@ -262,7 +283,78 @@
         "aff10b5": "0",
         "indirect": true,
         "remarks": false
+      },
+      "issuerName": "Broadcom Inc.",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
+    },
+    {
+      "file": "0001104659-26-103217_tm2624277-1_4seq1.xml",
+      "accession": "0001104659-26-103217",
+      "documentType": "4",
+      "schemaVersion": "X0609",
+      "issuerSymbol": "BLLN",
+      "issuerName": "BillionToOne, Inc.",
+      "issuerCik": "0002070849",
+      "documentName": "tm2624277-1_4seq1.xml",
+      "documentUrl": "https://www.sec.gov/Archives/edgar/data/2070849/000110465926103217/tm2624277-1_4seq1.xml",
+      "indexUrl": "https://www.sec.gov/Archives/edgar/data/2070849/000110465926103217/0001104659-26-103217-index.htm",
+      "sha256": "0aec7a9a309dc6396129f4f9003a29ceed2ab495343c26d5574e10b21648f7b1",
+      "bytes": 34849,
+      "retrievedAt": "2026-09-05",
+      "coverage": "authentic rare transaction code J",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false,
+      "observed": {
+        "codes": [
+          "J"
+        ],
+        "owners": 1,
+        "nonDerivTx": 16,
+        "nonDerivHold": 0,
+        "derivTx": 0,
+        "derivHold": 0,
+        "footnotes": 24,
+        "zeroPrice": true,
+        "missingPrice": false,
+        "fractional": false,
+        "aff10b5": "0",
+        "indirect": true,
+        "remarks": false
       }
+    },
+    {
+      "file": "0000899243-19-015532_doc4a.xml",
+      "accession": "0000899243-19-015532",
+      "documentType": "4/A",
+      "schemaVersion": "X0306",
+      "issuerSymbol": "BRQS",
+      "issuerCik": "0001650575",
+      "documentName": "doc4a.xml",
+      "documentUrl": "https://www.sec.gov/Archives/edgar/data/50863/000089924319015532/doc4a.xml",
+      "indexUrl": "https://www.sec.gov/Archives/edgar/data/50863/000089924319015532/0000899243-19-015532-index.htm",
+      "sha256": "153b72b0a0a1a2d8460494d9d1841f4f0c9e7e45b92962115e9fd143443ef920",
+      "bytes": 3023,
+      "retrievedAt": "2026-09-05T04:43:48.932Z",
+      "coverage": "holdings only, no transactions",
+      "observed": {
+        "codes": [],
+        "owners": 1,
+        "nonDerivTx": 0,
+        "nonDerivHold": 1,
+        "derivTx": 0,
+        "derivHold": 0,
+        "footnotes": 2,
+        "zeroPrice": false,
+        "missingPrice": false,
+        "fractional": false,
+        "aff10b5": "",
+        "indirect": true,
+        "remarks": false
+      },
+      "issuerName": "Borqs Technologies, Inc.",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0000905148-26-003642_form4.xml",
@@ -294,7 +386,10 @@
         "aff10b5": "false",
         "indirect": false,
         "remarks": false
-      }
+      },
+      "issuerName": "Constellation Energy Corp",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0000950103-20-002659_dp121295_4-podbere.xml",
@@ -326,7 +421,10 @@
         "aff10b5": "",
         "indirect": false,
         "remarks": false
-      }
+      },
+      "issuerName": "CrowdStrike Holdings, Inc.",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0000050863-26-000174_form4.xml",
@@ -359,7 +457,10 @@
         "aff10b5": "0",
         "indirect": false,
         "remarks": false
-      }
+      },
+      "issuerName": "INTEL CORP",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0000050863-26-000177_form4.xml",
@@ -391,37 +492,10 @@
         "aff10b5": "0",
         "indirect": true,
         "remarks": false
-      }
-    },
-    {
-      "file": "0000899243-19-015532_doc4a.xml",
-      "accession": "0000899243-19-015532",
-      "documentType": "4/A",
-      "schemaVersion": "X0306",
-      "issuerSymbol": "INTC",
-      "issuerCik": "0000050863",
-      "documentName": "doc4a.xml",
-      "documentUrl": "https://www.sec.gov/Archives/edgar/data/50863/000089924319015532/doc4a.xml",
-      "indexUrl": "https://www.sec.gov/Archives/edgar/data/50863/000089924319015532/0000899243-19-015532-index.htm",
-      "sha256": "153b72b0a0a1a2d8460494d9d1841f4f0c9e7e45b92962115e9fd143443ef920",
-      "bytes": 3023,
-      "retrievedAt": "2026-09-05T04:43:48.932Z",
-      "coverage": "holdings only, no transactions",
-      "observed": {
-        "codes": [],
-        "owners": 1,
-        "nonDerivTx": 0,
-        "nonDerivHold": 1,
-        "derivTx": 0,
-        "derivHold": 0,
-        "footnotes": 2,
-        "zeroPrice": false,
-        "missingPrice": false,
-        "fractional": false,
-        "aff10b5": "",
-        "indirect": true,
-        "remarks": false
-      }
+      },
+      "issuerName": "INTEL CORP",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0001127602-19-021019_form4a.xml",
@@ -451,7 +525,10 @@
         "aff10b5": "",
         "indirect": false,
         "remarks": false
-      }
+      },
+      "issuerName": "INTEL CORP",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0001127602-21-018251_form4a.xml",
@@ -485,7 +562,10 @@
         "aff10b5": "",
         "indirect": false,
         "remarks": false
-      }
+      },
+      "issuerName": "INTEL CORP",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0000789019-26-000157_form4.xml",
@@ -518,7 +598,10 @@
         "aff10b5": "0",
         "indirect": true,
         "remarks": false
-      }
+      },
+      "issuerName": "MICROSOFT CORP",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0000789019-26-000158_form4.xml",
@@ -551,7 +634,10 @@
         "aff10b5": "0",
         "indirect": false,
         "remarks": false
-      }
+      },
+      "issuerName": "MICROSOFT CORP",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0000789019-26-000159_form4.xml",
@@ -584,7 +670,10 @@
         "aff10b5": "0",
         "indirect": false,
         "remarks": false
-      }
+      },
+      "issuerName": "MICROSOFT CORP",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0000789019-26-000161_form4.xml",
@@ -616,7 +705,10 @@
         "aff10b5": "1",
         "indirect": true,
         "remarks": true
-      }
+      },
+      "issuerName": "MICROSOFT CORP",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0001062993-22-019798_form4a.xml",
@@ -648,7 +740,10 @@
         "aff10b5": "",
         "indirect": true,
         "remarks": false
-      }
+      },
+      "issuerName": "MICROSOFT CORP",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0001062993-22-023843_form4a.xml",
@@ -681,7 +776,10 @@
         "aff10b5": "",
         "indirect": false,
         "remarks": false
-      }
+      },
+      "issuerName": "MICROSOFT CORP",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0001062993-24-019893_form4a.xml",
@@ -713,7 +811,10 @@
         "aff10b5": "0",
         "indirect": false,
         "remarks": true
-      }
+      },
+      "issuerName": "MICROSOFT CORP",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0000723125-12-000062_edgar.xml",
@@ -746,7 +847,10 @@
         "aff10b5": "",
         "indirect": false,
         "remarks": false
-      }
+      },
+      "issuerName": "MICRON TECHNOLOGY INC",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0000723125-18-000025_edgar.xml",
@@ -778,7 +882,45 @@
         "aff10b5": "",
         "indirect": false,
         "remarks": false
-      }
+      },
+      "issuerName": "MICRON TECHNOLOGY INC",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
+    },
+    {
+      "file": "0000899243-16-033520_doc4a.xml",
+      "accession": "0000899243-16-033520",
+      "documentType": "4/A",
+      "schemaVersion": "X0306",
+      "issuerSymbol": "N",
+      "issuerCik": "0001117106",
+      "documentName": "doc4a.xml",
+      "documentUrl": "https://www.sec.gov/Archives/edgar/data/1341439/000089924316033520/doc4a.xml",
+      "indexUrl": "https://www.sec.gov/Archives/edgar/data/1341439/000089924316033520/0000899243-16-033520-index.htm",
+      "sha256": "e9604f5c5f3ee8af196f54d4d244bf222420af94b76b19883b4737728bb497a6",
+      "bytes": 6187,
+      "retrievedAt": "2026-09-05T04:44:13.654Z",
+      "coverage": "other/explained code (J)",
+      "observed": {
+        "codes": [
+          "J"
+        ],
+        "owners": 3,
+        "nonDerivTx": 1,
+        "nonDerivHold": 0,
+        "derivTx": 0,
+        "derivHold": 0,
+        "footnotes": 1,
+        "zeroPrice": false,
+        "missingPrice": false,
+        "fractional": true,
+        "aff10b5": "",
+        "indirect": false,
+        "remarks": false
+      },
+      "issuerName": "NETSUITE INC",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0001373715-23-000236_wf-form4a_168428207764723.xml",
@@ -810,6 +952,46 @@
         "aff10b5": "1",
         "indirect": false,
         "remarks": true
+      },
+      "issuerName": "ServiceNow, Inc.",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
+    },
+    {
+      "file": "0001045810-23-000006_wf-form4_167486488448198.xml",
+      "accession": "0001045810-23-000006",
+      "documentType": "4",
+      "schemaVersion": "X0306",
+      "issuerSymbol": "NVDA",
+      "issuerName": "NVIDIA CORP",
+      "issuerCik": "0001045810",
+      "documentName": "wf-form4_167486488448198.xml",
+      "documentUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000006/wf-form4_167486488448198.xml",
+      "indexUrl": "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000006/0001045810-23-000006-index.htm",
+      "sha256": "6320b035dea8e4d663eb5e2f89cd7301ab3faab1504e1e969081d1070b591730",
+      "bytes": 6103,
+      "retrievedAt": "2026-09-05",
+      "coverage": "ORIGINAL of amendment 0001045810-23-000050 \u2014 same issuer, owner and period",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false,
+      "amendmentPairRole": "original",
+      "amendmentPairPartner": "0001045810-23-000050",
+      "observed": {
+        "codes": [
+          "S"
+        ],
+        "owners": 1,
+        "nonDerivTx": 1,
+        "nonDerivHold": 4,
+        "derivTx": 0,
+        "derivHold": 0,
+        "footnotes": 2,
+        "zeroPrice": false,
+        "missingPrice": false,
+        "fractional": false,
+        "aff10b5": "",
+        "indirect": true,
+        "remarks": false
       }
     },
     {
@@ -842,7 +1024,12 @@
         "aff10b5": "",
         "indirect": true,
         "remarks": true
-      }
+      },
+      "issuerName": "NVIDIA CORP",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "amendmentPairRole": "amendment",
+      "amendmentPairPartner": "0001045810-23-000006",
+      "synthetic": false
     },
     {
       "file": "0001045810-23-000051_wf-form4a_167882513564677.xml",
@@ -874,7 +1061,10 @@
         "aff10b5": "",
         "indirect": true,
         "remarks": true
-      }
+      },
+      "issuerName": "NVIDIA CORP",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0001045810-23-000242_wk-form4a_1701480208.xml",
@@ -906,7 +1096,10 @@
         "aff10b5": "1",
         "indirect": true,
         "remarks": true
-      }
+      },
+      "issuerName": "NVIDIA CORP",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0001197647-26-000009_wk-form4_1788555631.xml",
@@ -938,7 +1131,10 @@
         "aff10b5": "1",
         "indirect": true,
         "remarks": false
-      }
+      },
+      "issuerName": "NVIDIA CORP",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0001199039-26-000012_wk-form4_1788387031.xml",
@@ -970,7 +1166,10 @@
         "aff10b5": "0",
         "indirect": true,
         "remarks": false
-      }
+      },
+      "issuerName": "NVIDIA CORP",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0001347842-26-000015_wk-form4_1787607122.xml",
@@ -1000,7 +1199,10 @@
         "aff10b5": "0",
         "indirect": false,
         "remarks": true
-      }
+      },
+      "issuerName": "NVIDIA CORP",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0001696841-26-000010_wk-form4_1788386836.xml",
@@ -1032,39 +1234,10 @@
         "aff10b5": "1",
         "indirect": true,
         "remarks": false
-      }
-    },
-    {
-      "file": "0000899243-16-033520_doc4a.xml",
-      "accession": "0000899243-16-033520",
-      "documentType": "4/A",
-      "schemaVersion": "X0306",
-      "issuerSymbol": "ORCL",
-      "issuerCik": "0001341439",
-      "documentName": "doc4a.xml",
-      "documentUrl": "https://www.sec.gov/Archives/edgar/data/1341439/000089924316033520/doc4a.xml",
-      "indexUrl": "https://www.sec.gov/Archives/edgar/data/1341439/000089924316033520/0000899243-16-033520-index.htm",
-      "sha256": "e9604f5c5f3ee8af196f54d4d244bf222420af94b76b19883b4737728bb497a6",
-      "bytes": 6187,
-      "retrievedAt": "2026-09-05T04:44:13.654Z",
-      "coverage": "other/explained code (J)",
-      "observed": {
-        "codes": [
-          "J"
-        ],
-        "owners": 3,
-        "nonDerivTx": 1,
-        "nonDerivHold": 0,
-        "derivTx": 0,
-        "derivHold": 0,
-        "footnotes": 1,
-        "zeroPrice": false,
-        "missingPrice": false,
-        "fractional": true,
-        "aff10b5": "",
-        "indirect": false,
-        "remarks": false
-      }
+      },
+      "issuerName": "NVIDIA CORP",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
     },
     {
       "file": "0001209191-23-026533_doc4a.xml",
@@ -1097,6 +1270,44 @@
         "aff10b5": "0",
         "indirect": true,
         "remarks": true
+      },
+      "issuerName": "Palo Alto Networks Inc",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
+    },
+    {
+      "file": "0001193125-26-374899_ownership.xml",
+      "accession": "0001193125-26-374899",
+      "documentType": "4",
+      "schemaVersion": "X0609",
+      "issuerSymbol": "PAY",
+      "issuerName": "Paymentus Holdings, Inc.",
+      "issuerCik": "0001841156",
+      "documentName": "ownership.xml",
+      "documentUrl": "https://www.sec.gov/Archives/edgar/data/1781975/000119312526374899/ownership.xml",
+      "indexUrl": "https://www.sec.gov/Archives/edgar/data/1781975/000119312526374899/0001193125-26-374899-index.htm",
+      "sha256": "035b2c9e204e289e0355762970b614d97940e869d62c69d2eeb046300ff6680f",
+      "bytes": 26459,
+      "retrievedAt": "2026-09-05",
+      "coverage": "authentic rare transaction code J",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false,
+      "observed": {
+        "codes": [
+          "J"
+        ],
+        "owners": 8,
+        "nonDerivTx": 1,
+        "nonDerivHold": 2,
+        "derivTx": 4,
+        "derivHold": 0,
+        "footnotes": 9,
+        "zeroPrice": true,
+        "missingPrice": false,
+        "fractional": false,
+        "aff10b5": "false",
+        "indirect": true,
+        "remarks": false
       }
     },
     {
@@ -1129,7 +1340,82 @@
         "aff10b5": "",
         "indirect": false,
         "remarks": true
+      },
+      "issuerName": "Vertiv Holdings Co",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false
+    },
+    {
+      "file": "0001193125-26-371997_ownership.xml",
+      "accession": "0001193125-26-371997",
+      "documentType": "4",
+      "schemaVersion": "X0609",
+      "issuerSymbol": "YQ",
+      "issuerName": "17 Education &amp; Technology Group Inc.",
+      "issuerCik": "0001821468",
+      "documentName": "ownership.xml",
+      "documentUrl": "https://www.sec.gov/Archives/edgar/data/1821468/000119312526371997/ownership.xml",
+      "indexUrl": "https://www.sec.gov/Archives/edgar/data/1821468/000119312526371997/0001193125-26-371997-index.htm",
+      "sha256": "f79c554b4ae003ad8d983ac80660637e1cddbe0f0e46aa0ed93fcf8962620629",
+      "bytes": 8198,
+      "retrievedAt": "2026-09-05",
+      "coverage": "authentic rare transaction code L",
+      "issuerSource": "filing issuer section (<issuer>), never a reporting owner",
+      "synthetic": false,
+      "observed": {
+        "codes": [
+          "L",
+          "P"
+        ],
+        "owners": 1,
+        "nonDerivTx": 3,
+        "nonDerivHold": 1,
+        "derivTx": 0,
+        "derivHold": 0,
+        "footnotes": 2,
+        "zeroPrice": false,
+        "missingPrice": false,
+        "fractional": true,
+        "aff10b5": "false",
+        "indirect": true,
+        "remarks": false
+      }
+    },
+    {
+      "file": "SYNTHETIC-blank-transaction-code.xml",
+      "accession": "SYNTHETIC-0000000000-00-000000",
+      "documentType": "4",
+      "schemaVersion": "X0609",
+      "issuerSymbol": "ZZTEST",
+      "issuerName": "SYNTHETIC TEST ISSUER",
+      "issuerCik": "0000123456",
+      "documentName": "SYNTHETIC-blank-transaction-code.xml",
+      "documentUrl": null,
+      "indexUrl": null,
+      "sha256": "9de93bceb5f90c02d560a596f6926fd589815169a9fa5b8647edda43324b54d7",
+      "bytes": 2684,
+      "retrievedAt": null,
+      "coverage": "blank and absent transaction codes",
+      "issuerSource": "synthetic",
+      "synthetic": true,
+      "syntheticReason": "No blank transaction code occurred in 420 real Form 4/4-A documents sampled across 2026-08-27, 08-28, 09-02 and 09-03. Constructed to pin required behaviour; not an SEC filing.",
+      "observed": {
+        "codes": [],
+        "owners": 1,
+        "nonDerivTx": 2,
+        "nonDerivHold": 0,
+        "derivTx": 0,
+        "derivHold": 0,
+        "footnotes": 0,
+        "zeroPrice": false,
+        "missingPrice": false,
+        "fractional": true,
+        "aff10b5": "",
+        "indirect": false,
+        "remarks": false
       }
     }
-  ]
+  ],
+  "authenticCount": 39,
+  "syntheticCount": 1
 }

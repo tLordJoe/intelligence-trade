@@ -17,7 +17,7 @@
  * into transactions that never happened.
  */
 
-import type { Form4Classification, Form4RowKind } from "./types.ts";
+import type { Form4Classification, Form4RowKind, PriceQuality } from "./types.ts";
 
 /**
  * Codes as defined by the Form 4 instructions.
@@ -131,4 +131,49 @@ export function classificationLabel(classification: Form4Classification): string
     case "holding": return "Holding, no transaction";
     case "unknown_code": return "Unrecognized code — needs review";
   }
+}
+
+
+/**
+ * Footnote language that marks a reported price as an aggregate.
+ *
+ * Drawn from the wording filers actually use. The corpus for this project
+ * contains 39 footnotes saying "executed in multiple trades at prices ranging
+ * from $X to $Y" and 27 saying the price "reflects the weighted average".
+ */
+const AGGREGATE_PRICE_LANGUAGE =
+  /weighted[ -]average|average (?:purchase |sale |sales )?price|prices ranging|range of prices|multiple (?:trades|transactions)|various prices/i;
+
+/**
+ * Decide how much confidence a reported price deserves.
+ *
+ * Conservative by construction. A bare number with no footnote is the only case
+ * treated as `exact`; a number carrying a footnote we cannot interpret is
+ * `unspecified`, because that footnote may be qualifying the price in a way we
+ * have not recognised.
+ */
+export function classifyPriceQuality(
+  priceValue: string | null,
+  footnoteIds: string[],
+  footnotes: Record<string, string>
+): PriceQuality {
+  const text = footnoteIds
+    .map((id) => footnotes[id] ?? "")
+    .join(" ")
+    .trim();
+
+  if (priceValue === null) {
+    return footnoteIds.length > 0 ? "footnote_only" : "unspecified";
+  }
+  if (footnoteIds.length === 0) return "exact";
+  if (AGGREGATE_PRICE_LANGUAGE.test(text)) return "weighted_average";
+
+  // A price with an explanation we did not recognise. It may be exact; we
+  // cannot say so.
+  return "unspecified";
+}
+
+/** Whether a price may be presented to a reader as the price actually paid. */
+export function isExecutionPrice(quality: PriceQuality): boolean {
+  return quality === "exact";
 }

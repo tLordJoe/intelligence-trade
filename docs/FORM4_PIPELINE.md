@@ -16,7 +16,7 @@ public UI, no schedule, and no production dataset in this stage.
 | `src/lib/form4/enumerate.ts` | Official SEC index enumeration |
 | `src/lib/form4/merge.ts` | Append-only candidate merging |
 | `scripts/import-form4.ts` | Manual importer, dry-run by default |
-| `tests/fixtures/form4/` | 35 real filings with manifest, URLs and hashes |
+| `tests/fixtures/form4/` | 40 fixtures — 39 real filings with manifest, URLs and hashes, plus 1 labelled synthetic |
 
 ## The rules that shape everything
 
@@ -59,6 +59,44 @@ with common stock.
 Nothing here asserts sentiment, conviction, legality, or that a transaction was
 discretionary. The code says what kind of event was reported and no more.
 
+## Reported prices are often not execution prices
+
+A Form 4 price is not necessarily what was paid. Filers routinely aggregate a
+day's fills into one row and report the **weighted average**, disclosing that in
+a footnote. Across this project's own fixture corpus the aggregate case is the
+*larger* one:
+
+| `priceQuality` | Rows | Meaning |
+|---|---|---|
+| `exact` | 54 | A bare number with no footnote qualifying it |
+| `weighted_average` | 66 | The footnote says the price is an average or covers a range |
+| `unspecified` | 53 | Cannot be established — including a price carrying a footnote we do not recognise |
+| `footnote_only` | 8 | No value; the footnote is the disclosure |
+
+Only **54 of 181 rows** carry a price that may be read as an execution price.
+`isExecutionPrice()` returns true for `exact` and nothing else.
+
+The classification is deliberately conservative. A number with no footnote is
+`exact`; a number with a footnote we cannot interpret is `unspecified`, because
+that footnote may be qualifying the price in a way we have not recognised.
+Guessing `exact` there is the error the field exists to prevent. The reported
+value and its footnotes are always preserved regardless.
+
+## Row counts are not comparable across filers
+
+**Do not rank insiders, issuers or periods by raw row count.**
+
+Some filers report each execution as its own row; others aggregate a day's fills
+into a single row and disclose the weighted average in a footnote. Both are
+correct, and the same underlying activity therefore produces very different row
+counts depending on who filed it. A "most active insider" list built on row
+counts measures filing style, not trading.
+
+Any ranking must state its methodology and normalise on something comparable —
+shares, or a documented value calculation — and must say how aggregated rows
+were handled. Until such a methodology exists and is published, the pipeline
+exposes counts as counts and makes no comparative claim.
+
 ## Identity
 
 A row's id is `{accession}::{documentSha256}::{table}::{rowKind}::{ordinal}`,
@@ -73,6 +111,22 @@ distinct, because two holdings of the same security are two disclosures.
 Multiple reporting owners never multiply a row. A filing with ten owners and one
 sale is one sale.
 
+## Source-reported chronology is preserved, not trusted
+
+`dateOfOriginalSubmission` is metadata the filer typed. It is preserved exactly
+as reported, and impossible or suspicious values are flagged in
+`chronologyWarnings` — but it is **never** used for identity, amendment linking,
+ordering or replacement.
+
+Two fixtures show why: filings `0000723125-12-000062` and `0000899243-16-033520`
+each report an original submitted *before* the period it covers. A pipeline that
+trusted that date for linking would connect an amendment to the wrong filing, or
+order a history backwards.
+
+Flags raised: original submission before the period, after this filing's own
+filed date, in the future, unparseable, and a 4/A carrying no original-submission
+date at all.
+
 ## Amendments
 
 A 4/A has its own accession and its own immutable rows. Original submission
@@ -81,6 +135,13 @@ link status starts at `unresolved` and stays there. **This stage performs no
 automatic supersession.** Multiple price-band rows on one date make broad
 matching unsafe, and an amendment can itself correct the fields you would match
 on. Confirmed links require a reviewed mapping.
+
+The corpus contains an authentic pair — original `0001045810-23-000006` and
+amendment `0001045810-23-000050` — sharing issuer, reporting owner and period,
+with the amendment naming the original's submission date. Everything that would
+tempt an automatic link is present, and none of it produces one: both documents
+are preserved whole, with separate identities and separate rows, and the
+amendment's link status stays `unresolved`.
 
 ## Timestamps
 

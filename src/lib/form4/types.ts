@@ -84,6 +84,25 @@ export type Form4RowKind = "transaction" | "holding";
  * or that a transaction was discretionary or open-market — the code alone does
  * not establish any of that.
  */
+/**
+ * How much confidence the reported price deserves.
+ *
+ * A Form 4 price is not necessarily an execution price. Filers routinely
+ * aggregate a day's fills into one row and report the *weighted average*,
+ * explaining it in a footnote — 39 such footnotes appear across this project's
+ * own fixture corpus. Presenting that number as the price paid would be wrong,
+ * and the row itself does not say which it is; only the footnote does.
+ *
+ * `unspecified` is the answer whenever the distinction cannot be established,
+ * including a price carrying a footnote we cannot interpret. Guessing `exact`
+ * there would be the error this type exists to prevent.
+ */
+export type PriceQuality =
+  | "exact"
+  | "weighted_average"
+  | "footnote_only"
+  | "unspecified";
+
 export type Form4Classification =
   | "reported_purchase"
   | "reported_sale"
@@ -134,6 +153,8 @@ export interface Form4Row {
 
   shares: Nullable<DecimalString>;
   pricePerShare: Nullable<DecimalString>;
+  /** Whether the reported price may be read as an execution price. */
+  priceQuality: PriceQuality;
   sharesOwnedFollowingTransaction: Nullable<DecimalString>;
 
   ownership: OwnershipForm;
@@ -196,6 +217,16 @@ export interface Form4Filing {
   notSubjectToSection16: boolean | null;
   footnotes: Record<string, string>;
   remarks: string | null;
+
+  /**
+   * Chronology problems in source-reported dates.
+   *
+   * `dateOfOriginalSubmission` is metadata the filer typed, not a fact we
+   * verified. It is preserved and surfaced, and these warnings mark values that
+   * cannot be right — but it is never used for identity, amendment linking,
+   * ordering or replacement. See `amendment`.
+   */
+  chronologyWarnings: string[];
 
   rows: Form4Row[];
 
