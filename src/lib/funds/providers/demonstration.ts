@@ -15,6 +15,9 @@
  * answers `basis_not_supplied`, and the interface says so on screen.
  */
 
+// Server-side only. No client component may import this module, directly or
+// through `data.ts`; see the note at the top of `data.ts` for how that is
+// enforced without the `server-only` package.
 import demoData from "../fixtures/demo-price-series.json" with { type: "json" };
 
 import { FUND_IDENTITIES, getLegalIdentity, type FundLegalIdentity } from "../identity.ts";

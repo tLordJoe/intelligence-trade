@@ -11,7 +11,16 @@
  * module's data, and are re-exported at the foot of this file.
  */
 
+// This module reaches the fixture and must never be imported by a client
+// component. That is enforced twice, neither of them here: a source assertion
+// in `tests/fund-ui-contract.test.ts` that no client component imports it, and
+// `scripts/verify-compare-assets.ts`, which scans the emitted browser assets in
+// CI. Next's `server-only` marker was considered and dropped — its npm package
+// throws on import under plain Node, which is what the offline test suite runs
+// on, so it would have traded a build-time guard for a broken test run.
+
 import { buildColorAssignment, type ColorAssignment } from "./colors.ts";
+import type { ComparisonDataset } from "./dataset.ts";
 import { getLegalIdentity } from "./identity.ts";
 import { demonstrationProvider } from "./providers/demonstration.ts";
 import { getDisplayableSeries, type FundDataProvider } from "./provider.ts";
@@ -94,6 +103,25 @@ export function getFund(symbol: string): FundRecord | null {
 
 export function getFunds(symbols: string[]): FundRecord[] {
   return symbols.map(getFund).filter((f): f is FundRecord => f !== null);
+}
+
+/**
+ * Everything the comparison page needs, as plain data.
+ *
+ * Built on the server, after the access gate, and handed to the client
+ * component as a prop. The client never imports this module or the provider,
+ * which is what keeps the fixture out of the browser bundle — see
+ * `./dataset.ts`.
+ */
+export function buildComparisonDataset(): ComparisonDataset {
+  const symbols = availableSymbols();
+  return {
+    symbols,
+    identities: allIdentities(),
+    series: getSeries(symbols),
+    provenance: PROVENANCE,
+    demonstration: activeProvider.kind === "demonstration",
+  };
 }
 
 // --- the gates --------------------------------------------------------------

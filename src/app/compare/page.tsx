@@ -13,20 +13,19 @@ import { previewAccessFromEnv } from "@/lib/funds/access";
  * When the gate refuses, the reader gets an explanation rather than an empty
  * frame.
  *
- * The comparison is pulled in by dynamic `import()` inside the allowed branch,
- * and the gate itself comes from `access.ts`, which can be imported without the
- * fixture. Both are deliberate attempts to keep the demonstration data out of a
- * refused page's bundle.
+ * **The fixture never reaches a browser asset.** The client component does not
+ * import a provider; it is handed a `ComparisonDataset` built here, on the
+ * server, only after the gate has said yes. So the demonstration values travel
+ * as props in the RSC payload of an allowed render, and nowhere else: not in
+ * any chunk under `.next/static`, not in `public/`, and not in the payload of a
+ * refused render, because a refused render never builds them. The data modules
+ * carry `import "server-only"`, so a client import of them is a build error.
+ * `scripts/verify-compare-assets.ts` scans the emitted build for the fixture
+ * and runs in CI after every build.
  *
- * **Measured, and only partly successful.** Building with `VERCEL_ENV=production`
- * produces a `/compare` that renders the refusal and contains no value from the
- * fixture — but it still references the route's client chunk, which is 242 KB
- * and does contain it. Next groups a route's client modules into one chunk from
- * the static module graph, so a branch that is never taken still contributes to
- * it. Nothing is shown and nothing is claimed; a visitor who types the URL on
- * production downloads a file the page then ignores. Removing that would mean
- * serving the fixture as a fetched static asset rather than an imported module,
- * which is a larger change than this stage should make on its own.
+ * The gate comes from `access.ts`, which can be imported without the fixture,
+ * and the data module is pulled in by dynamic `import()` inside the allowed
+ * branch so the refusal path touches none of it.
  *
  * Not indexed and not in the sitemap: a preview running on generated data is
  * exactly the sort of page that should not turn up in a search for fund
@@ -68,7 +67,11 @@ export default async function ComparePage() {
     );
   }
 
-  const { default: FundComparison } = await import("@/components/compare/FundComparison");
+  const [{ default: FundComparison }, { buildComparisonDataset }] = await Promise.all([
+    import("@/components/compare/FundComparison"),
+    import("@/lib/funds/data"),
+  ]);
+  const dataset = buildComparisonDataset();
 
   return (
     <>
@@ -89,7 +92,7 @@ export default async function ComparePage() {
             </div>
           }
         >
-          <FundComparison />
+          <FundComparison dataset={dataset} />
         </Suspense>
       </main>
       <SiteFooter />

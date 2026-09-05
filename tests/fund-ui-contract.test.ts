@@ -13,7 +13,7 @@
 
 import assert from "node:assert/strict";
 import test from "node:test";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { join, resolve } from "node:path";
 
 const ROOT = resolve(import.meta.dirname, "..");
@@ -103,13 +103,47 @@ test("the page evaluates the access gate on the server before rendering anything
 });
 
 test("the comparison is imported inside the allowed branch, not at module scope", () => {
-  // A static import ships the component and the whole fixture in the page's
-  // client bundle whether or not the gate lets it render.
+  // A static import ships the component in the page's client bundle whether or
+  // not the gate lets it render.
   assert.ok(
     !/^import .*compare\/FundComparison/m.test(PAGE),
     "FundComparison must not be statically imported by the page"
   );
-  assert.ok(/await import\(.@\/components\/compare\/FundComparison.\)/.test(PAGE));
+  assert.ok(/import\(.@\/components\/compare\/FundComparison.\)/.test(PAGE));
+});
+
+test("the client component imports no data source", () => {
+  // This is the guarantee that keeps the fixture out of every browser asset.
+  // The component receives a ComparisonDataset as a prop from the server page;
+  // it must not reach for the provider, the data root, or the fixture itself.
+  // The closing quote matters: `@/lib/funds/dataset` is the one import it should have.
+  for (const forbidden of ['@/lib/funds/data"', "providers/", "fixtures/", "demo-price-series"]) {
+    assert.ok(!COMPONENT.includes(forbidden), `FundComparison must not import ${forbidden}`);
+  }
+  assert.ok(COMPONENT.includes("dataset: ComparisonDataset"));
+});
+
+test("the page builds the dataset only after the gate, and passes it as a prop", () => {
+  assert.ok(!/^import .*lib\/funds\/data["']/m.test(PAGE), "data must not be statically imported");
+  const gate = PAGE.indexOf("if (!access.allowed)");
+  const build = PAGE.indexOf("buildComparisonDataset()");
+  assert.ok(gate > 0 && build > gate, "the dataset must be built after the refusal returns");
+  assert.ok(PAGE.includes("<FundComparison dataset={dataset} />"));
+});
+
+test("no client module under the comparison imports the data root or a provider", () => {
+  // Every file that could end up in the /compare client bundle. A static import
+  // of the data root from any of them would carry the fixture into the browser.
+  const clientDirs = ["src/components/compare", "src/app/compare"];
+  for (const dir of clientDirs) {
+    for (const name of readdirSync(join(ROOT, dir))) {
+      const text = readFileSync(join(ROOT, dir, name), "utf8");
+      assert.ok(
+        !/^import .*["'](@\/lib\/funds\/data|.*\/providers\/[^"']+)["']/m.test(text),
+        `${dir}/${name} statically imports a data module`
+      );
+    }
+  }
 });
 
 test("the preview is kept out of search results while it runs on generated data", () => {

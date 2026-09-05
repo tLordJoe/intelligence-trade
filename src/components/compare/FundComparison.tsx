@@ -12,7 +12,8 @@ import {
   placeholderSections, summarize, validateAmount,
   type Comparison, type WindowKey,
 } from "@/lib/funds/compare";
-import { COLORS, PROVENANCE, activeProvider, allIdentities, availableSymbols, getSeries } from "@/lib/funds/data";
+import { colorsFor, seriesFrom, type ComparisonDataset } from "@/lib/funds/dataset";
+import type { ColorAssignment } from "@/lib/funds/colors";
 import { basisLabel, describeBasis, describeUnavailable } from "@/lib/funds/types";
 
 /**
@@ -28,21 +29,26 @@ import { basisLabel, describeBasis, describeUnavailable } from "@/lib/funds/type
  *   the table beside it carry every value the chart encodes, always visible,
  *   and the inspection control is a real slider that works from the keyboard.
  *
- *   **One colour per fund, for the life of the dataset.** Assigned in
- *   `data.ts` from the whole universe of symbols, so sorting the table or
- *   removing a fund cannot move a colour onto a different line.
+ *   **One colour per fund, for the life of the dataset.** Assigned from the
+ *   dataset's whole universe of symbols, so sorting the table or removing a
+ *   fund cannot move a colour onto a different line.
  *
  *   **One period for everything.** Every figure is measured between the same
  *   two dates. A fund that cannot report on both is listed as excluded rather
  *   than measured over a period of its own.
+ *
+ * This component imports no data source. It is given a `ComparisonDataset` by
+ * the server page, after the access gate, and that is the only way values reach
+ * it — which is what keeps the demonstration fixture out of the browser bundle.
  */
-
-const SYMBOLS = availableSymbols();
-const IDENTITIES = allIdentities();
 
 type ChartMode = "percent" | "dollars";
 
-export default function FundComparison() {
+export default function FundComparison({ dataset }: { dataset: ComparisonDataset }) {
+  const SYMBOLS = dataset.symbols;
+  const IDENTITIES = dataset.identities;
+  const PROVENANCE = dataset.provenance;
+  const COLORS = useMemo(() => colorsFor(dataset), [dataset]);
   /**
    * Opening state, read from the query string exactly once.
    *
@@ -69,9 +75,9 @@ export default function FundComparison() {
   const [notice, setNotice] = useState<string | null>(null);
   const [inspectIndex, setInspectIndex] = useState<number | null>(null);
 
-  const isDemonstration = activeProvider.kind === "demonstration";
+  const isDemonstration = dataset.demonstration;
 
-  const series = useMemo(() => getSeries(symbols), [symbols]);
+  const series = useMemo(() => seriesFrom(dataset, symbols), [dataset, symbols]);
   const windows = useMemo(() => availableWindows(series), [series]);
 
   /**
@@ -427,6 +433,7 @@ export default function FundComparison() {
           <>
             <InspectableChart
               frame={frame}
+              colors={COLORS}
               mode={mode}
               amount={amount}
               activeIndex={activeIndex}
@@ -771,9 +778,10 @@ function DemonstrationBanner() {
  * the page.
  */
 function InspectableChart({
-  frame, mode, amount, activeIndex, onInspect,
+  frame, colors, mode, amount, activeIndex, onInspect,
 }: {
   frame: AlignedFrame;
+  colors: ColorAssignment;
   mode: ChartMode;
   amount: number;
   activeIndex: number;
@@ -856,7 +864,7 @@ function InspectableChart({
         />
 
         {frame.columns.map((column) => {
-          const color = COLORS.colorFor(column.symbol);
+          const color = colors.colorFor(column.symbol);
           // Contiguous runs, so a missing observation leaves a break rather than
           // a straight line asserting values on days nobody reported.
           const runs = contiguousRuns(column.values.map((v) => (v === null ? null : toDisplay(v))));
@@ -882,7 +890,7 @@ function InspectableChart({
             <circle
               key={`dot-${column.symbol}`}
               cx={activeX} cy={y(toDisplay(value))} r="4"
-              fill={COLORS.colorFor(column.symbol)} stroke="var(--bg-card)" strokeWidth="1.5"
+              fill={colors.colorFor(column.symbol)} stroke="var(--bg-card)" strokeWidth="1.5"
             />
           );
         })}
