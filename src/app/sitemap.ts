@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/congress`, changeFrequency: "daily", priority: 0.9 },
     { url: `${BASE_URL}/blog`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE_URL}/learn`, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${BASE_URL}/compare`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE_URL}/methodology`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/about`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/corrections`, changeFrequency: "monthly", priority: 0.6 },
