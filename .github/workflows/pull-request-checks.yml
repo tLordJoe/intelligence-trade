@@ -57,6 +57,16 @@ jobs:
       - name: TypeScript
         run: npx tsc --noEmit -p tsconfig.json
 
+      # The fund comparison runs on a generated demonstration fixture that must
+      # not be served to browsers. This scans the emitted build — every file
+      # under .next/static and public/ — for markers that exist only in the
+      # fixture or its generator, and fails on the first hit. It checks the
+      # artefacts, not the source, so a refactor that quietly re-imports the
+      # fixture from a client component is caught here rather than in a bundle
+      # analysis nobody runs.
+      - name: Demonstration fixture absent from browser assets
+        run: node --experimental-strip-types scripts/verify-compare-assets.ts
+
       # The Form 4 importer must never need credentials or the network to be
       # verified. Running it here proves the offline path stays offline: if it
       # ever reaches for EDGAR, this step fails without a SEC_USER_AGENT.
