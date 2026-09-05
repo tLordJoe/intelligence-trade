@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4/A</documentType>
+
+    <periodOfReport>2019-03-18</periodOfReport>
+
+    <dateOfOriginalSubmission>2019-03-18</dateOfOriginalSubmission>
+
+    <issuer>
+        <issuerCik>0000050863</issuerCik>
+        <issuerName>INTEL CORP</issuerName>
+        <issuerTradingSymbol>INTC</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001218363</rptOwnerCik>
+            <rptOwnerName>SWAN ROBERT HOLMES</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>C/O INTEL CORPORATION</rptOwnerStreet1>
+            <rptOwnerStreet2>2200 MISSION COLLEGE BLVD.</rptOwnerStreet2>
+            <rptOwnerCity>SANTA CLARA</rptOwnerCity>
+            <rptOwnerState>CA</rptOwnerState>
+            <rptOwnerZipCode>95054</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+            <isOfficer>1</isOfficer>
+            <officerTitle>CEO</officerTitle>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <derivativeTable>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Phantom Stock Units</value>
+                <footnoteId id="F1"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F2"/>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <footnoteId id="F3"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F3"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>16340.737</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>16340.737</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+    </derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">This amendment amends and restates the Form 4 filed by the reporting person on March 18, 2019, which inadvertently reported the acquisition of 95.865 phantom stock units on March 15, 2019. No acquisition occurred on March 15, 2019, and this amendment withdraws such Form 4. Table II of this amendment reflects the corrected amount of phantom stock units beneficially owned by the reporting person as of March 15, 2019.</footnote>
+        <footnote id="F2">Each phantom stock unit represents the right to receive the cash value of one share of Intel common stock.</footnote>
+        <footnote id="F3">Phantom stock units are acquired under the Intel Sheltered Employee Retirement Plan Plus and are payable in cash following termination of the reporting person's employment. The reporting person may transfer the phantom stock units into an alternative investment account under the plan.</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>/s/ Brian Petirs, attorney-in-fact</signatureName>
+        <signatureDate>2019-06-05</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

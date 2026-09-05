@@ -51,3 +51,5 @@ data/import-runs/latest-run-id.txt
 
 # One-off analysis scratch, never committed
 scripts/.probe/
+data/form4-runs/
+data/form4-candidate.json
