@@ -43,6 +43,7 @@ carries a source URL and, where applicable, an accession number.
 | `xlk-xlu-primary-source-profile.md` | XLK, XLU |
 | `smh-soxx-primary-source-profile.md` | SMH, SOXX |
 | `sec-identifiers-and-mfrr-coverage.md` | SEC series/class identifiers and Risk/Return Summary dataset coverage |
+| `holdings-republication-rights-audit.md` | **Read before building any holdings feature.** Republication and derived-use rights for every candidate holdings source, including all five issuers and four index providers |
 
 ### `vendor-licensing/`
 
@@ -50,6 +51,7 @@ carries a source URL and, where applicable, an accession number.
 |---|---|
 | `vendor-licensing-survey.md` | Cross-vendor survey of market-data licensing terms |
 | `twelve-data-venture-verification.md` | Clause-level verification of the Twelve Data Venture plan against an enumerated rights checklist |
+| `alternative-vendors-rights-verification.md` | Clause-level verification of EODHD, Financial Modeling Prep, Polygon.io/Massive, Intrinio and Nasdaq Data Link against the same rights checklist |
 | `twelve-data-outreach-draft.md` | **Unsent draft.** Written licensing confirmation request. Not to be sent without owner approval. |
 
 ## Two things that will bite an implementer
@@ -64,6 +66,14 @@ Several rights required for a public, anonymous, advertising-supported compariso
 tool are not granted by any publicly documented plan and are marked
 "written vendor confirmation required." Do not build against an assumption that a
 pricing-page phrase grants a contractual right.
+
+**Holdings must come from SEC EDGAR, not from issuer websites.** All five issuers
+of the six funds expressly prohibit republication and commercial or derived use of
+their holdings files, even though several of those files download to an anonymous
+script with no barrier. EDGAR Form NPORT-P is the only holdings source carrying an
+affirmative written republication permission from its publisher. It is quarterly,
+not daily, and the product copy must say so. Details and the full clause-by-clause
+evidence are in `primary-source-research/holdings-republication-rights-audit.md`.
 
 ## Status
 
