@@ -13,6 +13,8 @@ public UI, no schedule, and no production dataset in this stage.
 | `src/lib/form4/validate.ts` | Runtime value rules — dates, decimals, booleans, identifiers |
 | `src/lib/form4/classify.ts` | Transaction-code classification |
 | `src/lib/form4/parse.ts` | Ownership XML → records |
+| `src/lib/form4/enumerate.ts` | Official SEC index enumeration |
+| `src/lib/form4/merge.ts` | Append-only candidate merging |
 | `scripts/import-form4.ts` | Manual importer, dry-run by default |
 | `tests/fixtures/form4/` | 35 real filings with manifest, URLs and hashes |
 
@@ -96,6 +98,53 @@ Kept separate because they answer different questions:
 No freshness class is derived from source type, and no late-filing badge is
 computed.
 
+## Enumeration
+
+Selection comes from the **official SEC daily form index**, one per date in the
+window:
+
+```
+https://www.sec.gov/Archives/edgar/daily-index/{YYYY}/QTR{n}/form.{YYYYMMDD}.idx
+```
+
+Only exact form types `4` and `4/A` are taken — prefix matching would sweep in
+unrelated forms. Columns are split on runs of two or more spaces, because a
+company name contains single ones.
+
+**An unavailable index is not an empty day.** A missing index returns 403, not
+404, and a weekend, a holiday and a publication lag all look alike from outside.
+Each date is recorded as `available`, `unavailable` or `malformed`, and a window
+containing anything but `available` is marked incomplete and **blocks
+promotion** with `enumeration_incomplete:{dates}`. A day whose index was
+retrieved and held no Form 4s is complete with zero filings — a different fact,
+recorded differently.
+
+Issuer filtering is applied **after** enumeration. Narrowing first would make a
+missing issuer indistinguishable from a missing index.
+
+Accession is the deduplication key: EDGAR lists one filing once per associated
+CIK.
+
+## Candidate promotion is append-only
+
+Promotion **merges** into whatever the candidate already holds. It never writes
+the run's selection over the file.
+
+This matters because the runs are bounded. A one-issuer, one-week run that
+overwrote the candidate would replace an archive built from a far wider window
+with its own slice, and the loss would be invisible — the file would simply be
+smaller.
+
+Merging can add a filing, and can add a new *document version* of a filing it
+has seen. It has no path that removes one. If the bytes at an accession change,
+both versions are retained and distinguished by document hash; a source revision
+never silently overwrites what was archived. `firstObservedAt` is set once and
+carried forward.
+
+Any accession present before and absent after blocks the write. A corrupt
+candidate file is refused rather than treated as empty — starting from empty
+would turn one bad file into a total archive loss on the next promotion.
+
 ## Running it
 
 Offline, against the committed fixtures — no network, no credentials:
@@ -113,6 +162,9 @@ SEC_USER_AGENT="Outfox Markets (contact: YOUR_ADDRESS)" \
   --mode dry-run --from 2026-08-28 --to 2026-09-03 --issuers NVDA,MSFT
 ```
 
+`--issuers` is optional. Without it the window is enumerated in full, which for
+a single day is roughly two thousand Form 4s.
+
 `--mode candidate` additionally promotes to `data/form4-candidate.json` when
 every gate passes. `--source fixtures` selects the offline corpus in any mode,
 which is how promotion is exercised without the network. `--simulate-gate-failure`
@@ -126,6 +178,10 @@ backoff. Only `www.sec.gov` archive paths are followed.
 Promotion requires every selected document to be accounted for as parsed,
 unsupported, or failed — and requires zero failures, zero quarantined rows, zero
 quarantined filings, no row-identity collision and no duplicate accession.
+
+A run that fails **before** reaching its gates — an unreachable index, a
+timeout, an invalid window — still writes `summary.json`, `errors.json` and
+`report.txt` recording why, and leaves the previous candidate byte-identical.
 
 A failed run writes its evidence and changes nothing. Each run writes its own
 directory under `data/form4-runs/{runId}` containing the selection manifest,
@@ -147,6 +203,9 @@ issuer-filtered window as complete.
 - No computed transaction value. Deriving one needs decimal arithmetic and a
   documented basis, and must never be called cash paid.
 - No amendment resolution, by design (above).
+- Quarterly full-index enumeration is exposed as a URL builder but the importer
+  uses daily indexes only; a multi-quarter backfill would want the quarterly
+  file instead of hundreds of daily fetches.
 - No exercise-leg pairing. Legs stay separate source rows; linking them is a
   later derived feature that requires evidence.
 - Ticker resolution is unresolved for every filing. The issuer's filed symbol is

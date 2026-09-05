@@ -289,3 +289,109 @@ test("the issuer's own symbol is not promoted to a resolved ticker", () => {
   assert.equal(filing.issuer.resolvedTicker, null, "but resolution has not happened");
   assert.equal(filing.issuer.tickerResolution, "unresolved");
 });
+
+// --- XML reader hardening -----------------------------------------------------
+
+/**
+ * Structural defects the reader previously accepted in silence. Each of these
+ * parsed successfully before hardening, several of them producing a document
+ * that differed from what the bytes actually said.
+ */
+
+test("regression: a document with more than one root is refused", () => {
+  assert.throws(
+    () => parseXml("<a/><b/>"),
+    (e: unknown) => e instanceof XmlError && e.code === "multiple_roots"
+  );
+  assert.throws(
+    () => parseXml("<a></a><b></b>"),
+    (e: unknown) => e instanceof XmlError && e.code === "multiple_roots"
+  );
+});
+
+test("regression: '>' inside a quoted attribute does not terminate the tag", () => {
+  // Previously the scan took the first '>', losing the attribute and leaking
+  // the remainder of the tag into the document as text.
+  const node = parseXml(`<a title="x > y" other='p > q'>text</a>`);
+  assert.equal(node.attrs.title, "x > y", "the attribute survives intact");
+  assert.equal(node.attrs.other, "p > q");
+  assert.equal(node.text, "text", "and no tag fragment leaks into the text");
+});
+
+test("regression: unparsed attribute content is refused, not ignored", () => {
+  for (const bad of [
+    `<a foo=bar><b/></a>`,          // unquoted value
+    `<a x="1" ="2"/>`,               // nameless attribute
+    `<a x="1" y/>`,                  // valueless attribute
+    `<a x="1" junk here/>`,          // trailing garbage
+  ]) {
+    assert.throws(
+      () => parseXml(bad),
+      (e: unknown) => e instanceof XmlError && e.code === "malformed_attributes",
+      `${bad} must be refused`
+    );
+  }
+});
+
+test("a duplicate attribute is refused rather than silently last-wins", () => {
+  assert.throws(
+    () => parseXml(`<a x="1" x="2"/>`),
+    (e: unknown) => e instanceof XmlError && e.code === "malformed_attributes"
+  );
+});
+
+test("regression: non-whitespace content outside the root is refused", () => {
+  for (const bad of ["<a/>trailing", "leading<a/>", "<a/> <!--ok--> junk"]) {
+    assert.throws(
+      () => parseXml(bad),
+      (e: unknown) => e instanceof XmlError && e.code === "content_outside_root",
+      `${bad} must be refused`
+    );
+  }
+  // Whitespace and comments around the root are legitimate.
+  assert.equal(parseXml("  \n<a/>\n  ").name, "a");
+  assert.equal(parseXml("<!-- lead --><a/><!-- trail -->").name, "a");
+});
+
+test("regression: character references outside legal XML are refused", () => {
+  for (const bad of [
+    "<a>&#0;</a>",       // NUL
+    "<a>&#xD800;</a>",   // lone surrogate
+    "<a>&#xDFFF;</a>",
+    "<a>&#x110000;</a>", // beyond Unicode
+    "<a>&#8;</a>",       // forbidden control character
+  ]) {
+    assert.throws(
+      () => parseXml(bad),
+      (e: unknown) => e instanceof XmlError && e.code === "invalid_character_reference",
+      `${bad} must be refused`
+    );
+  }
+  // Legal references still decode, including astral planes.
+  assert.equal(parseXml("<a>&#65;&#x1F600;&#9;</a>").text, "A\u{1F600}\t");
+});
+
+test("a stray ampersand is refused rather than surviving into a value", () => {
+  assert.throws(
+    () => parseXml("<a>Tom & Jerry</a>"),
+    (e: unknown) => e instanceof XmlError && e.code === "malformed"
+  );
+  assert.equal(parseXml("<a>Tom &amp; Jerry</a>").text, "Tom & Jerry");
+});
+
+test("CDATA outside the root is refused", () => {
+  assert.throws(
+    () => parseXml("<![CDATA[x]]><a/>"),
+    (e: unknown) => e instanceof XmlError && e.code === "content_outside_root"
+  );
+});
+
+test("every hardening case is refused by the Form 4 parser too, as unsupported", () => {
+  // The reader throws; the parser must turn that into a recorded refusal rather
+  // than an exception escaping into the importer.
+  for (const bad of ["<a/><b/>", "<a/>junk", `<a foo=bar/>`, "<a>&#0;</a>"]) {
+    const result = run(bad);
+    assert.equal(result.ok, false, `${bad} must be refused`);
+    assert.equal(asUnsupported(result).reason, "xml_refused");
+  }
+});

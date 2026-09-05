@@ -1,0 +1,38 @@
+Description:           Daily Index of EDGAR Dissemination Feed by Form Type
+Last Data Received:    Sep 3, 2026
+Comments:              webmaster@sec.gov
+Anonymous FTP:         ftp://ftp.sec.gov/edgar/
+ 
+ 
+ 
+ 
+Form Type   Company Name                                                  CIK
+      Date Filed  File Name
+---------------------------------------------------------------------------------------------------------------------------------------------
+1-A              Chainvo Blockchain Inc.                                       2152944     20260903    edgar/data/2152944/0002152944-26-000001.txt                                                
+1-A              House Hack, Inc.                                              1945278     20260903    edgar/data/1945278/0001945278-26-000001.txt                                                
+1-A POS          COMPOUND REAL ESTATE BONDS II INC.                            2078250     20260903    edgar/data/2078250/0001829126-26-009704.txt                                                
+1-A/A            Greenfield Robotics Corp                                      1760404     20260903    edgar/data/1760404/0001104659-26-104951.txt                                                
+4                10x Genomics, Inc.                                            1770787     20260903    edgar/data/1770787/0001610717-26-000396.txt                                                
+4                17 Education & Technology Group Inc.                          1821468     20260903    edgar/data/1821468/0001193125-26-380960.txt                                                
+4                3M CO                                                         66740       20260903    edgar/data/66740/0000066740-26-000274.txt                                                
+4                3M CO                                                         66740       20260903    edgar/data/66740/0000066740-26-000276.txt                                                
+4                4D Molecular Therapeutics, Inc.                               1650648     20260903    edgar/data/1650648/0001193125-26-382245.txt                                                
+4                AB Multi-Manager Alternative Fund                             1543188     20260903    edgar/data/1543188/0000919574-26-006165.txt                                                
+4                ABBOTT LABORATORIES                                           1800        20260903    edgar/data/1800/0001644207-26-000012.txt                                                
+4                ABBOTT LABORATORIES                                           1800        20260903    edgar/data/1800/0001805099-26-000008.txt                                                
+4                ACUITY INC. (DE)                                              1144215     20260903    edgar/data/1144215/0001302261-26-000008.txt                                                
+4                ADVANCED DRAINAGE SYSTEMS, INC.                               1604028     20260903    edgar/data/1604028/0001193125-26-382175.txt                                                
+4                ADVANCED DRAINAGE SYSTEMS, INC.                               1604028     20260903    edgar/data/1604028/0001193125-26-382195.txt                                                
+4                AEHR TEST SYSTEMS                                             1040470     20260903    edgar/data/1040470/0001040470-26-000265.txt                                                
+4/A              AMIN TARANG                                                   1513988     20260903    edgar/data/1513988/0001610717-26-000402.txt                                                
+4/A              CRAWFORD & CO                                                 25475       20260903    edgar/data/25475/0000025475-26-000078.txt                                                
+4/A              Carlson Erik                                                  1426816     20260903    edgar/data/1426816/0001104659-26-105168.txt                                                
+4/A              Crevoiserat Joanne C.                                         1607592     20260903    edgar/data/1607592/0001225208-26-007665.txt                                                
+4/A              Howard David E                                                1821332     20260903    edgar/data/1821332/0001225208-26-007663.txt                                                
+4/A              Jenkins Leah R                                                1991141     20260903    edgar/data/1991141/0001104659-26-105166.txt                                                
+1-A/A            Upstream Life Securities Fund I, LLC                          2126686     20260903    edgar/data/2126686/0002126686-26-000005.txt                                                
+1-A/A            WUND Healing Biopharmaceuticals, Inc.                         2078607     20260903    edgar/data/2078607/0001477932-26-005384.txt                                                
+10-12B/A         MSGS Spinco, Inc.                                             2132873     20260903    edgar/data/2132873/0001193125-26-381915.txt                                                
+10-12G/A         Leach John Peter                                              2088960     20260903    edgar/data/2088960/0002088960-26-000009.txt                                                
+4                10x Genomics, Inc.                                            9999999     20260903    edgar/data/9999999/0001610717-26-000396.txt                                                

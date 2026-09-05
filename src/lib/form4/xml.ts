@@ -21,7 +21,11 @@ export type XmlErrorCode =
   | "too_large"
   | "too_deep"
   | "malformed"
-  | "unexpected_entity";
+  | "unexpected_entity"
+  | "multiple_roots"
+  | "content_outside_root"
+  | "malformed_attributes"
+  | "invalid_character_reference";
 
 export class XmlError extends Error {
   // Written longhand rather than as a constructor parameter property: the test
@@ -76,13 +80,44 @@ const PREDEFINED: Record<string, string> = {
  * through: an unresolved `&companyName;` in a filing means the document depends
  * on a declaration we deliberately do not read.
  */
+/**
+ * Whether a code point is legal in XML 1.0 character data.
+ *
+ * Excludes the surrogate range, which is not a character at all, and the
+ * control characters XML forbids. `&#0;` and `&#xD800;` are well-formed
+ * *syntax* for values that cannot appear in a document, so they are refused
+ * rather than substituted with a replacement character.
+ */
+function isLegalXmlCodePoint(code: number): boolean {
+  if (!Number.isInteger(code)) return false;
+  if (code === 0x9 || code === 0xa || code === 0xd) return true;
+  if (code >= 0x20 && code <= 0xd7ff) return true;
+  if (code >= 0xe000 && code <= 0xfffd) return true;
+  if (code >= 0x10000 && code <= 0x10ffff) return true;
+  return false;
+}
+
 export function decodeXmlText(input: string): string {
+  // A bare `&` that is not the start of a reference is itself malformed, and is
+  // caught here rather than silently surviving into a value.
+  const stray = input.match(/&(?!#x?[0-9a-fA-F]+;|[A-Za-z][A-Za-z0-9._-]*;)/);
+  if (stray) {
+    throw new XmlError("stray '&' outside a character or entity reference", "malformed");
+  }
+
   return input.replace(/&(#x?[0-9a-fA-F]+|[A-Za-z][A-Za-z0-9._-]*);/g, (whole, body: string) => {
     if (body.startsWith("#")) {
       const hex = body[1] === "x" || body[1] === "X";
-      const code = Number.parseInt(hex ? body.slice(2) : body.slice(1), hex ? 16 : 10);
-      if (!Number.isFinite(code) || code < 0 || code > 0x10ffff) {
-        throw new XmlError(`invalid character reference ${whole}`, "malformed");
+      const digits = hex ? body.slice(2) : body.slice(1);
+      if (!digits) {
+        throw new XmlError(`invalid character reference ${whole}`, "invalid_character_reference");
+      }
+      const code = Number.parseInt(digits, hex ? 16 : 10);
+      if (!isLegalXmlCodePoint(code)) {
+        throw new XmlError(
+          `character reference ${whole} is not a legal XML character`,
+          "invalid_character_reference"
+        );
       }
       return String.fromCodePoint(code);
     }
@@ -94,16 +129,63 @@ export function decodeXmlText(input: string): string {
   });
 }
 
-const ATTR_RE = /([A-Za-z_:][\w.:-]*)\s*=\s*("([^"]*)"|'([^']*)')/g;
+const ATTR_RE = /\s+([A-Za-z_:][\w.:-]*)\s*=\s*("([^"]*)"|'([^']*)')/y;
 
-function parseAttrs(raw: string): Record<string, string> {
+/**
+ * Parse an attribute list, requiring the *whole* list to be well formed.
+ *
+ * The previous implementation scanned for anything that looked like a pair and
+ * ignored the rest, so `<a foo=bar baz>` silently produced no attributes and
+ * `<a x="1" ="2">` quietly dropped the malformed half. Anything left over after
+ * the sticky scan is now an error: an attribute list we only partly understood
+ * is a tag we cannot claim to have read.
+ */
+function parseAttrs(raw: string, tagName: string): Record<string, string> {
   const attrs: Record<string, string> = {};
   ATTR_RE.lastIndex = 0;
-  let m: RegExpExecArray | null;
-  while ((m = ATTR_RE.exec(raw)) !== null) {
+  let position = 0;
+
+  while (position < raw.length) {
+    ATTR_RE.lastIndex = position;
+    const m = ATTR_RE.exec(raw);
+    if (!m) break;
+    if (m[1] in attrs) {
+      throw new XmlError(`duplicate attribute ${m[1]} on <${tagName}>`, "malformed_attributes");
+    }
     attrs[m[1]] = decodeXmlText(m[3] ?? m[4] ?? "");
+    position = ATTR_RE.lastIndex;
+  }
+
+  if (raw.slice(position).trim().length > 0) {
+    throw new XmlError(
+      `unparsed attribute content on <${tagName}>: ${raw.slice(position).trim().slice(0, 40)}`,
+      "malformed_attributes"
+    );
   }
   return attrs;
+}
+
+/**
+ * Find the `>` that ends a tag, ignoring any inside a quoted attribute value.
+ *
+ * Scanning for the next `>` truncated `<a title="x > y">` mid-attribute: the
+ * attribute was lost and the remainder leaked into the document as text.
+ */
+function findTagEnd(source: string, from: number): number {
+  let quote: string | null = null;
+  for (let i = from; i < source.length; i += 1) {
+    const ch = source[i];
+    if (quote) {
+      if (ch === quote) quote = null;
+      continue;
+    }
+    if (ch === '"' || ch === "'") {
+      quote = ch;
+      continue;
+    }
+    if (ch === ">") return i;
+  }
+  return -1;
 }
 
 /**
@@ -130,10 +212,26 @@ export function parseXml(source: string, limits: XmlLimits = DEFAULT_LIMITS): Xm
   while (i < source.length) {
     const lt = source.indexOf("<", i);
     if (lt === -1) {
-      appendText(stack[stack.length - 1], source.slice(i));
+      const rest = source.slice(i);
+      if (stack.length === 1 && rest.trim().length > 0) {
+        throw new XmlError(
+          "non-whitespace content after the root element",
+          "content_outside_root"
+        );
+      }
+      if (stack.length > 1) appendText(stack[stack.length - 1], rest);
       break;
     }
-    if (lt > i) appendText(stack[stack.length - 1], source.slice(i, lt));
+    if (lt > i) {
+      const between = source.slice(i, lt);
+      if (stack.length === 1 && between.trim().length > 0) {
+        throw new XmlError(
+          "non-whitespace content outside the root element",
+          "content_outside_root"
+        );
+      }
+      if (stack.length > 1) appendText(stack[stack.length - 1], between);
+    }
 
     // Comments, CDATA, declarations.
     if (source.startsWith("<!--", lt)) {
@@ -145,6 +243,9 @@ export function parseXml(source: string, limits: XmlLimits = DEFAULT_LIMITS): Xm
     if (source.startsWith("<![CDATA[", lt)) {
       const end = source.indexOf("]]>", lt + 9);
       if (end === -1) throw new XmlError("unterminated CDATA", "malformed");
+      if (stack.length === 1) {
+        throw new XmlError("CDATA outside the root element", "content_outside_root");
+      }
       // CDATA is literal: appended without entity decoding.
       stack[stack.length - 1].text += source.slice(lt + 9, end);
       i = end + 3;
@@ -165,7 +266,7 @@ export function parseXml(source: string, limits: XmlLimits = DEFAULT_LIMITS): Xm
       continue;
     }
 
-    const gt = source.indexOf(">", lt);
+    const gt = findTagEnd(source, lt);
     if (gt === -1) throw new XmlError("unterminated tag", "malformed");
     const inner = source.slice(lt + 1, gt);
 
@@ -186,10 +287,13 @@ export function parseXml(source: string, limits: XmlLimits = DEFAULT_LIMITS): Xm
 
     const node: XmlNode = {
       name: nameMatch[1],
-      attrs: parseAttrs(body.slice(nameMatch[1].length)),
+      attrs: parseAttrs(body.slice(nameMatch[1].length), nameMatch[1]),
       children: [],
       text: "",
     };
+    if (stack.length === 1 && root.children.length > 0) {
+      throw new XmlError("document declares more than one root element", "multiple_roots");
+    }
     stack[stack.length - 1].children.push(node);
 
     if (!selfClosing) {
@@ -203,10 +307,15 @@ export function parseXml(source: string, limits: XmlLimits = DEFAULT_LIMITS): Xm
 
   if (stack.length !== 1) throw new XmlError("unclosed elements at end of document", "malformed");
 
-  for (const child of root.children) {
-    if (child.name !== "#document") return child;
+  if (root.children.length !== 1) {
+    throw new XmlError(
+      root.children.length === 0
+        ? "document has no root element"
+        : "document declares more than one root element",
+      root.children.length === 0 ? "malformed" : "multiple_roots"
+    );
   }
-  throw new XmlError("document has no root element", "malformed");
+  return root.children[0];
 }
 
 function appendText(node: XmlNode, raw: string) {

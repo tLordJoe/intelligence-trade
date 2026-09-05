@@ -28,6 +28,12 @@ import { fileURLToPath } from "node:url";
 import { createHash, randomUUID } from "node:crypto";
 
 import { parseForm4 } from "../src/lib/form4/parse.ts";
+import {
+  dailyIndexUrl, datesInRange, filterByIssuerCik, parseFormIndex,
+  summarizeEnumeration, unavailableIndex,
+  type EnumerationSummary, type IndexEntry, type IndexResult,
+} from "../src/lib/form4/enumerate.ts";
+import { mergeCandidate, readCandidate } from "../src/lib/form4/merge.ts";
 import type { Form4Filing, UnsupportedDocument } from "../src/lib/form4/types.ts";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -127,7 +133,7 @@ function assertSecUrl(url: string): void {
   const parsed = new URL(url);
   if (parsed.protocol !== "https:") throw new Error(`refusing non-https url ${url}`);
   if (parsed.hostname !== "www.sec.gov") throw new Error(`refusing non-SEC host ${parsed.hostname}`);
-  if (!parsed.pathname.startsWith("/Archives/") && !parsed.pathname.startsWith("/cgi-bin/browse-edgar")) {
+  if (!parsed.pathname.startsWith("/Archives/")) {
     throw new Error(`refusing unexpected SEC path ${parsed.pathname}`);
   }
 }
@@ -173,60 +179,70 @@ function selectFromFixtures(): SelectedDocument[] {
 }
 
 /**
- * Networked selection over a closed historical window.
+ * Networked selection from official SEC form indexes.
  *
- * Enumerates per issuer rather than claiming market-wide coverage: the run
- * summary records exactly what was asked for, so nothing downstream can read a
- * sampled window as complete.
+ * Enumerates the daily index for every date in the window, deduplicates by
+ * accession, and only then narrows to an issuer cohort if one was given.
+ * Filtering before enumeration would make a missing issuer indistinguishable
+ * from a missing index.
  */
-async function selectFromEdgar(userAgent: string): Promise<SelectedDocument[]> {
+async function selectFromEdgar(
+  userAgent: string,
+  runDir: string
+): Promise<{ documents: SelectedDocument[]; indexResults: IndexResult[]; summary: EnumerationSummary; selectedEntries: IndexEntry[] }> {
   if (!FROM || !TO) throw new Error("--from and --to are required for a networked run");
-  if (ISSUERS.length === 0) throw new Error("--issuers is required; market-wide runs are out of scope");
 
-  const cikBySymbol = JSON.parse(readFileSync(join(ROOT, "data", "security-master.json"), "utf8"));
-  const selected: SelectedDocument[] = [];
-  const seenAccessions = new Set<string>();
-
-  for (const symbol of ISSUERS) {
-    const cik = cikBySymbol?.entries?.[symbol]?.cik;
-    if (!cik) {
-      console.error(`  no CIK for ${symbol} in the security master; skipping`);
-      continue;
-    }
-    for (const type of ["4", "4%2FA"]) {
-      const indexUrl =
-        `https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=${cik}` +
-        `&type=${type}&dateb=&owner=include&count=40&datea=${FROM}&dateb=${TO}&output=atom`;
-      assertSecUrl(indexUrl);
-      const atom = await politeFetch(indexUrl, userAgent);
-
-      for (const m of atom.matchAll(/<filing-href>([^<]+)<\/filing-href>/g)) {
-        const href = m[1];
-        const accession = (href.match(/(\d{10}-\d{2}-\d{6})-index/) ?? [])[1];
-        if (!accession || seenAccessions.has(accession)) continue;
-        seenAccessions.add(accession);
-
-        const dir = href.replace(/\/[^/]+-index\.htm.*$/, "");
-        assertSecUrl(`${dir}/index.json`);
-        const listing = JSON.parse(await politeFetch(`${dir}/index.json`, userAgent));
-
-        for (const item of listing.directory.item as { name: string }[]) {
-          if (!item.name.toLowerCase().endsWith(".xml")) continue;
-          const documentUrl = `${dir}/${item.name}`;
-          assertSecUrl(documentUrl);
-          const xml = await politeFetch(documentUrl, userAgent);
-          // Chosen by content, not by filename or by being the first .xml.
-          if (!/<ownershipDocument/.test(xml)) continue;
-          selected.push({
-            accessionNumber: accession, documentUrl, indexUrl: href,
-            documentName: item.name, filedDate: null, xml,
-          });
-          break;
-        }
-      }
+  const indexResults: IndexResult[] = [];
+  for (const date of datesInRange(FROM, TO)) {
+    const url = dailyIndexUrl(date);
+    assertSecUrl(url);
+    try {
+      const body = await politeFetch(url, userAgent);
+      const result = parseFormIndex(body, url, date);
+      // The index bytes are evidence too: what we enumerated from is archivable.
+      writeFileSync(join(runDir, "indexes", `form.${date}.idx`), body);
+      indexResults.push(result);
+    } catch (error) {
+      // A weekend, a holiday, or a publication lag all land here. None of them
+      // is "zero filings" — they are dates we did not see.
+      indexResults.push(unavailableIndex(url, date, (error as Error).message));
     }
   }
-  return selected;
+
+  const { entries, summary } = summarizeEnumeration(indexResults);
+
+  let selectedEntries = entries;
+  if (ISSUERS.length > 0) {
+    const master = JSON.parse(readFileSync(join(ROOT, "data", "security-master.json"), "utf8"));
+    const ciks = ISSUERS
+      .map((symbol) => master?.entries?.[symbol]?.cik)
+      .filter((cik: string | undefined): cik is string => Boolean(cik));
+    if (ciks.length === 0) throw new Error(`no CIK found for any of: ${ISSUERS.join(",")}`);
+    selectedEntries = filterByIssuerCik(entries, ciks);
+  }
+
+  const documents: SelectedDocument[] = [];
+  for (const entry of selectedEntries) {
+    const listingUrl = `${entry.archiveDir}/index.json`;
+    assertSecUrl(listingUrl);
+    const listing = JSON.parse(await politeFetch(listingUrl, userAgent));
+    for (const item of listing.directory.item as { name: string }[]) {
+      if (!item.name.toLowerCase().endsWith(".xml")) continue;
+      const documentUrl = `${entry.archiveDir}/${item.name}`;
+      assertSecUrl(documentUrl);
+      const xml = await politeFetch(documentUrl, userAgent);
+      // Chosen by content, not by filename or by being the first .xml.
+      if (!/<ownershipDocument/.test(xml)) continue;
+      documents.push({
+        accessionNumber: entry.accessionNumber, documentUrl,
+        indexUrl: entry.indexHeaderUrl, documentName: item.name,
+        filedDate: entry.filedDate, xml,
+      });
+      break;
+    }
+  }
+
+  return { documents, indexResults, summary, selectedEntries };
 }
 
 // --- main --------------------------------------------------------------------
@@ -252,11 +268,65 @@ async function main(): Promise<void> {
   }
 
   acquireLock(runId);
-  try {
-    mkdirSync(join(runDir, "raw"), { recursive: true });
+  // Evidence directories exist before anything can fail, so a run that dies
+  // during enumeration still has somewhere to record why.
+  mkdirSync(join(runDir, "raw"), { recursive: true });
+  mkdirSync(join(runDir, "indexes"), { recursive: true });
 
-    const selected =
-      SOURCE === "fixtures" ? selectFromFixtures() : await selectFromEdgar(userAgent);
+  /**
+   * Record a run that failed before it could reach its gates.
+   *
+   * Enumeration, network and timeout failures are exactly the cases where the
+   * previous candidate must be left alone — so this writes evidence and returns
+   * without touching it.
+   */
+  const writeAbortedRunEvidence = (error: Error) => {
+    const finishedAt = new Date().toISOString();
+    const summary = {
+      runId, mode: MODE, source: SOURCE, startedAt, finishedAt,
+      passed: false,
+      gateFailures: ["run_aborted_before_gates"],
+      abortedWith: error.message,
+      selection: { from: FROM, to: TO, issuers: ISSUERS },
+      promoted: false,
+      candidate: null,
+    };
+    writeFileSync(join(runDir, "summary.json"), `${JSON.stringify(summary, null, 2)}\n`);
+    writeFileSync(
+      join(runDir, "errors.json"),
+      `${JSON.stringify([{ stage: "run", error: error.message }], null, 2)}\n`
+    );
+    writeFileSync(
+      join(runDir, "report.txt"),
+      [
+        "================================================================",
+        "OUTFOX FORM 4 IMPORT — ABORTED",
+        "================================================================",
+        `  run id            ${runId}`,
+        `  mode              ${MODE}`,
+        `  aborted with      ${error.message}`,
+        "",
+        "  No gates were reached. The previous candidate is untouched.",
+        "================================================================",
+      ].join("\n") + "\n"
+    );
+    console.error(`form4 import aborted: ${error.message}`);
+    console.error(`Evidence: ${runDir}`);
+  };
+
+  try {
+
+    let selected: SelectedDocument[];
+    let enumeration: EnumerationSummary | null = null;
+    let indexResults: IndexResult[] = [];
+    if (SOURCE === "fixtures") {
+      selected = selectFromFixtures();
+    } else {
+      const result = await selectFromEdgar(userAgent, runDir);
+      selected = result.documents;
+      enumeration = result.summary;
+      indexResults = result.indexResults;
+    }
 
     const counts: RunCounts = {
       selected: selected.length, downloaded: 0, fromCache: SOURCE === "fixtures" ? selected.length : 0,
@@ -318,6 +388,14 @@ async function main(): Promise<void> {
     const accessions = filings.map((f) => f.accessionNumber);
     if (new Set(accessions).size !== accessions.length) gateFailures.push("duplicate_accession");
 
+    // An index we could not retrieve means the window was not fully seen.
+    // Promoting from it would silently record a partial period as complete.
+    if (enumeration && !enumeration.complete) {
+      gateFailures.push(
+        `enumeration_incomplete:${[...enumeration.unavailableDates, ...enumeration.malformedDates].join(",")}`
+      );
+    }
+
     if (SIMULATE_GATE_FAILURE) gateFailures.push("simulated_gate_failure");
 
     const passed = gateFailures.length === 0;
@@ -325,11 +403,20 @@ async function main(): Promise<void> {
 
     const summary = {
       runId, mode: MODE, source: SOURCE, startedAt, finishedAt, passed, gateFailures,
-      selection: { from: FROM, to: TO, issuers: ISSUERS, source: SOURCE === "fixtures" ? "committed fixtures" : "EDGAR" },
+      selection: {
+        from: FROM, to: TO, issuers: ISSUERS,
+        source: SOURCE === "fixtures" ? "committed fixtures" : "EDGAR daily form index",
+      },
+      enumeration,
+      indexes: indexResults.map((r) => ({
+        date: r.date, url: r.url, availability: r.availability,
+        detail: r.detail, matchedLines: r.matchedLines, accessions: r.entries.length,
+      })),
       coverageNote:
         "Issuer-filtered window. This is not market-wide Form 4 coverage and must not be described as such.",
       counts,
       promoted: false as boolean,
+      candidate: null as Record<string, unknown> | null,
     };
 
     writeFileSync(join(runDir, "manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`);
@@ -340,12 +427,39 @@ async function main(): Promise<void> {
     );
     writeFileSync(join(runDir, "errors.json"), `${JSON.stringify(failures, null, 2)}\n`);
 
-    // --- promotion ---------------------------------------------------------
+    // --- promotion, append-only --------------------------------------------
+    //
+    // The run's selection is merged into whatever the candidate already holds.
+    // Writing the selection over the file would let a one-issuer, one-week run
+    // replace an archive built from a far wider window, and the loss would be
+    // invisible because the file would simply be smaller.
     if (passed && MODE === "candidate") {
-      const tmp = `${CANDIDATE_PATH}.${runId}.tmp`;
-      writeFileSync(tmp, `${JSON.stringify({ schemaVersion: 1, runId, generatedAt: finishedAt, filings }, null, 2)}\n`);
-      renameSync(tmp, CANDIDATE_PATH); // atomic replace
-      summary.promoted = true;
+      const prior = readCandidate(
+        existsSync(CANDIDATE_PATH) ? readFileSync(CANDIDATE_PATH, "utf8") : null
+      );
+      const merged = mergeCandidate(prior, filings, runId, finishedAt);
+
+      if (merged.lostAccessions.length > 0) {
+        // Append-only merging has no path that reaches here; if it ever does,
+        // the archive is not written.
+        gateFailures.push(`candidate_history_lost:${merged.lostAccessions.length}`);
+      } else {
+        const tmp = `${CANDIDATE_PATH}.${runId}.tmp`;
+        writeFileSync(tmp, `${JSON.stringify(merged.archive, null, 2)}\n`);
+        renameSync(tmp, CANDIDATE_PATH); // atomic replace of a merged whole
+        summary.promoted = true;
+      }
+
+      summary.candidate = {
+        priorFilings: prior.filings.length,
+        afterFilings: merged.archive.filings.length,
+        addedFilings: merged.addedFilings,
+        addedDocumentVersions: merged.addedDocumentVersions,
+        refreshedFilings: merged.refreshedFilings,
+        sourceRevisedAccessions: merged.sourceRevisedAccessions,
+        carriedForwardUntouched: merged.untouchedAccessions.length,
+        lostAccessions: merged.lostAccessions,
+      };
     }
 
     writeFileSync(join(runDir, "summary.json"), `${JSON.stringify(summary, null, 2)}\n`);
@@ -370,12 +484,27 @@ async function main(): Promise<void> {
       `  rows                ${counts.rows}`,
       `  quarantined rows    ${counts.quarantinedRows}`,
       "",
+      "ENUMERATION",
+      `  dates requested     ${enumeration ? enumeration.requestedDates.length : "n/a (fixtures)"}`,
+      `  indexes available   ${enumeration ? enumeration.availableDates.length : "n/a"}`,
+      `  indexes unavailable ${enumeration ? enumeration.unavailableDates.length : "n/a"}`,
+      `  window complete     ${enumeration ? (enumeration.complete ? "yes" : "NO — not all indexes were seen") : "n/a"}`,
+      "",
       "GATES",
       `  result              ${passed ? "PASS" : "FAIL"}`,
       ...gateFailures.map((f) => `  failure             ${f}`),
       "",
       "OUTCOME",
       `  candidate updated   ${summary.promoted ? "yes" : "no"}`,
+      ...(summary.candidate
+        ? [
+            `  candidate before    ${summary.candidate.priorFilings}`,
+            `  candidate after     ${summary.candidate.afterFilings}`,
+            `  added               ${summary.candidate.addedFilings}`,
+            `  new doc versions    ${summary.candidate.addedDocumentVersions}`,
+            `  carried forward     ${summary.candidate.carriedForwardUntouched}`,
+          ]
+        : []),
       "================================================================",
     ].join("\n");
     writeFileSync(join(runDir, "report.txt"), `${report}\n`);
@@ -383,12 +512,17 @@ async function main(): Promise<void> {
     console.log(`\nEvidence: ${runDir}`);
 
     if (!passed) process.exitCode = 1;
+  } catch (error) {
+    writeAbortedRunEvidence(error as Error);
+    process.exitCode = 1;
   } finally {
     releaseLock();
   }
 }
 
 main().catch((error) => {
+  // Only reachable for failures before the lock is held — a bad --mode, or a
+  // lock already taken. Nothing has been written, so there is nothing to undo.
   console.error(`form4 import failed: ${(error as Error).message}`);
   releaseLock();
   process.exitCode = 1;
