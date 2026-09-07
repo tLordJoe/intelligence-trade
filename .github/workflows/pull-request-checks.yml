@@ -52,6 +52,9 @@ jobs:
       # Locally the directory is usually already present, which is exactly how
       # this stayed invisible until CI ran on a fresh clone.
       - name: Production build
+        env:
+          VERCEL_ENV: production
+          ENABLE_DEMONSTRATION_COMPARE: "0"
         run: npm run build
 
       - name: TypeScript
@@ -66,6 +69,22 @@ jobs:
       # analysis nobody runs.
       - name: Demonstration fixture absent from browser assets
         run: node --experimental-strip-types scripts/verify-compare-assets.ts
+
+      # NODE_ENV=production alone does not select the Vercel production gate.
+      # Check HTML and navigation/segment payloads too, not just JS chunks.
+      - name: Production comparison refuses demonstration payloads
+        run: node --experimental-strip-types scripts/verify-compare-render.ts production
+
+      - name: Preview build
+        env:
+          VERCEL_ENV: preview
+          ENABLE_DEMONSTRATION_COMPARE: "0"
+        run: npm run build
+
+      - name: Preview comparison remains available and assets stay clean
+        run: |
+          node --experimental-strip-types scripts/verify-compare-assets.ts
+          node --experimental-strip-types scripts/verify-compare-render.ts preview
 
       # The Form 4 importer must never need credentials or the network to be
       # verified. Running it here proves the offline path stays offline: if it

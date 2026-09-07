@@ -18,10 +18,9 @@ import { previewAccessFromEnv } from "@/lib/funds/access";
  * server, only after the gate has said yes. So the demonstration values travel
  * as props in the RSC payload of an allowed render, and nowhere else: not in
  * any chunk under `.next/static`, not in `public/`, and not in the payload of a
- * refused render, because a refused render never builds them. The data modules
- * carry `import "server-only"`, so a client import of them is a build error.
- * `scripts/verify-compare-assets.ts` scans the emitted build for the fixture
- * and runs in CI after every build.
+ * refused render, because a refused render never builds them. Source-contract
+ * tests guard client imports; emitted-asset and rendered-payload checks verify
+ * both production and preview builds in CI.
  *
  * The gate comes from `access.ts`, which can be imported without the fixture,
  * and the data module is pulled in by dynamic `import()` inside the allowed
