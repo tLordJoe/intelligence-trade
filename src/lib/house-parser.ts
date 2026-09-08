@@ -72,6 +72,7 @@ export interface ParsedRow {
 /** Why a symbol-bearing block produced no transaction row. */
 export type SkipReason =
   | "no_transaction_type"
+  | "ambiguous_row_boundary"
   | "unsupported_asset_type";
 
 export interface SkippedBlock {
@@ -171,6 +172,9 @@ export function cleanIssuerName(value: string): string {
     .replace(/^.*(?:Cap\.?\s*Gains\s*>\s*\$200\?|Filing ID #\d+|Amount\b)\s*/i, "")
     .replace(/^.*(?:transaction|notification)\s*date\s*/i, "")
     .replace(SENTENCE_TAIL_RE, "")
+    // Some descriptions end in a per-share price or refer to "this PTR"
+    // without final punctuation. These are source prose, never issuer names.
+    .replace(/^.*(?:\/share|\bthis PTR)\s+(?=[A-Z])/, "")
     .replace(/^\d+\s+/, "")
     .replace(/^(?:SP|JT|DC)\s+/, "")
     .replace(/^[\s\-–—,.]+/, "")
@@ -381,33 +385,54 @@ function joinWrappedName(
 /**
  * Extract transaction rows from one filing's text.
  *
- * `rowIndex` counts every symbol-bearing block, including ones that yield no
- * usable transaction, so an id stays attached to the same row even if parsing
- * rules change later.
+ * `rowIndex` counts symbol-bearing blocks, including unresolved ones. It is a
+ * locator, not an identity: content-addressed IDs are assigned separately so
+ * newly recovered earlier transactions do not re-identify later records.
  */
 export function parseFilingRows(rawText: string): FilingParseResult {
   const rows: ParsedRow[] = [];
   const skipped: SkippedBlock[] = [];
 
-  const clean = stripPageFurniture(rawText).replace(/\s+/g, " ");
-  const blocks = clean.split(/\b(?:SP|JT|DC)\s+(?=[A-Z])/);
+  // The PDF's small-cap metadata headings may extract as F<NUL> S<NUL>.
+  // Preserve line boundaries until metadata has been removed: otherwise an
+  // account name or description gets glued onto the next issuer. Filing Status
+  // closes a transaction even when its Owner cell is blank (the common case).
+  const structured = stripPageFurniture(rawText.replace(/\x00/g, ""));
+  const clean = structured.replace(/\s+/g, " ");
+  const blocks = structured
+    .replace(/^(?:[ \t]*)(?:S\s*O|D|L)\s*:[^\n]*(?:\n|$)/gm, "\n")
+    .split(/\bF\s*S\s*:\s*(?:New|Amended|Amendment|Corrected)\b/gi)
+    .flatMap(block => block.split(/\b(?:SP|JT|DC)\s+(?=[A-Za-z])/))
+    .map(block => block.replace(/\s+/g, " "));
   // Widened from [A-Z]{1,5} so share classes such as BRK.B are matched.
-  const tickerRe = /\(([A-Z][A-Z0-9.\-]{0,6})\)\s*\[(ST|OP|CS|ET)\]/;
+  // The tag itself can wrap to the following page after type/date cells.
+  // Capture that bridge so wrapped-cell recovery can read it, rather than
+  // requiring the tag to be immediately adjacent to the symbol.
+  const tickerRe = /\(([A-Z][A-Z0-9.\-]{0,6})\)(\s*(?:(?:P|S\s*\(partial\)|S|E)\s+\d{2}\/\d{2}\/\d{4}[^\[\]]{0,180})?\s*)\[(ST|OP|CS|ET)\]/;
 
   let symbolBlockOrdinal = -1;
 
   for (const block of blocks) {
+    const symbols = [...block.matchAll(new RegExp(tickerRe.source, "g"))];
+    if (symbols.length > 1) {
+      // Without a row boundary, borrowing dates/amounts from another asset is
+      // unsafe. Retain each unresolved symbol as evidence and block the run.
+      for (const symbol of symbols) skipped.push({rowIndex:++symbolBlockOrdinal,
+        tickerText:symbol[1],reason:"ambiguous_row_boundary",
+        excerpt:block.slice(Math.max(0,symbol.index!-60),symbol.index!+160).trim()});
+      continue;
+    }
     const m = block.match(tickerRe);
     if (!m || m.index === undefined) continue;
 
     symbolBlockOrdinal += 1;
 
     const tickerText = m[1];
-    const assetType = m[2];
+    const assetType = m[3];
     const symbolEnd = m.index + m[0].length;
     const after = block.slice(symbolEnd, symbolEnd + TYPE_WINDOW);
 
-    const before = block.slice(0, m.index);
+    const before = block.slice(0, m.index) + m[2];
 
     // Owner is read from the head of the *filing*, not the row.
     //

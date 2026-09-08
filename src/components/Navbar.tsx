@@ -3,10 +3,19 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useSyncExternalStore } from "react";
+
+function subscribeToTheme(onChange: () => void) {
+  const observer = new MutationObserver(onChange);
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+  return () => observer.disconnect();
+}
+function readDarkTheme() { return document.documentElement.classList.contains("dark"); }
+function serverDarkTheme() { return false; }
 
 const NAV_LINKS = [
-  { href: "/", label: "Stack" },
+  { href: "/", label: "Home" },
+  { href: "/explore", label: "Explore" },
   { href: "/congress", label: "Congress" },
   { href: "/blog", label: "Briefing" },
   { href: "/learn", label: "Learn" },
@@ -14,15 +23,12 @@ const NAV_LINKS = [
   { href: "/about", label: "About" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ showCompare = false }: { showCompare?: boolean }) {
   const pathname = usePathname();
-  const [dark, setDark] = useState(() =>
-    typeof document !== "undefined" && document.documentElement.classList.contains("dark")
-  );
+  const dark = useSyncExternalStore(subscribeToTheme, readDarkTheme, serverDarkTheme);
 
   function toggleTheme() {
-    const next = !dark;
-    setDark(next);
+    const next = !readDarkTheme();
     document.documentElement.classList.toggle("dark", next);
     localStorage.setItem("theme", next ? "dark" : "light");
   }
@@ -60,10 +66,12 @@ export default function Navbar() {
         </Link>
 
         <nav aria-label="Primary" className="flex flex-wrap items-center gap-1 w-full md:w-auto">
-          {NAV_LINKS.map((link) => (
+          {NAV_LINKS.flatMap((link) => link.href === "/explore" && showCompare
+            ? [link, { href: "/compare", label: "Compare · Preview" }] : [link]).map((link) => (
             <Link
               key={link.href}
               href={link.href}
+              aria-current={isActive(link.href) ? "page" : undefined}
               className="px-2.5 md:px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors"
               style={{
                 backgroundColor: isActive(link.href) ? "var(--accent-soft)" : "transparent",
