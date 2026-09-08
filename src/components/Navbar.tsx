@@ -3,7 +3,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useSyncExternalStore } from "react";
+
+function subscribeToTheme(onChange: () => void) {
+  const observer = new MutationObserver(onChange);
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+  return () => observer.disconnect();
+}
+function readDarkTheme() { return document.documentElement.classList.contains("dark"); }
+function serverDarkTheme() { return false; }
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -17,13 +25,10 @@ const NAV_LINKS = [
 
 export default function Navbar({ showCompare = false }: { showCompare?: boolean }) {
   const pathname = usePathname();
-  const [dark, setDark] = useState(() =>
-    typeof document !== "undefined" && document.documentElement.classList.contains("dark")
-  );
+  const dark = useSyncExternalStore(subscribeToTheme, readDarkTheme, serverDarkTheme);
 
   function toggleTheme() {
-    const next = !dark;
-    setDark(next);
+    const next = !readDarkTheme();
     document.documentElement.classList.toggle("dark", next);
     localStorage.setItem("theme", next ? "dark" : "light");
   }

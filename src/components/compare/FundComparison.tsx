@@ -236,7 +236,7 @@ export default function FundComparison({ dataset }: { dataset: ComparisonDataset
           <label htmlFor="comparison-search" className="block text-sm font-semibold mb-2">Add a ticker or search by name</label>
           <div className="flex gap-2">
             <input id="comparison-search" value={search} onChange={(event) => setSearch(event.target.value)} maxLength={100}
-              autoComplete="off" placeholder="Try VOO, Microsoft, or your own ticker" aria-describedby="search-coverage"
+              autoComplete="off" placeholder="Try AAPL, Microsoft, or your own ticker" aria-describedby="search-coverage"
               className="min-w-0 flex-1 rounded-lg border px-3" style={{minHeight: 44, backgroundColor: "var(--bg-inset)", borderColor: "var(--border)", color: "var(--text)"}} />
             <button type="submit" className="rounded-lg border px-4 font-semibold" style={{minHeight: 44, borderColor: "var(--border)"}}>Add</button>
           </div>

@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import type { DisclosureRecord } from "../src/lib/congress-schema.ts";
-import { archiveRecords, buildHomeDiscovery, displayFiler, queryArchive, validDisclosureDate } from "../src/lib/home-discovery.ts";
+import { archiveRecords, buildHomeDiscovery, disclosureFilerKey, displayFiler, queryArchive, validDisclosureDate } from "../src/lib/home-discovery.ts";
 
 const archive = JSON.parse(readFileSync(new URL("../src/lib/congress-live.json", import.meta.url), "utf8"));
 const asOf = "2026-09-08";
@@ -34,6 +34,24 @@ test("counts distinct named filers, not repeated purchase rows; sales remain sep
 test("deduplicates identities and reconciliation keys", () => {
   const first = record("1");
   assert.equal(archiveRecords([first, {...first}, {...first, id: "alternate"}], asOf).length, 1);
+});
+test("reviewed McGuire alias counts one filer without merging arbitrary middle names or seat holders", () => {
+  const first = record("alias-1", {politician: "John J Mr McGuire", state: "VA", district: "VA05"});
+  const second = record("alias-2", {politician: "John McGuire", state: "VA", district: "VA05"});
+  assert.equal(disclosureFilerKey(first), disclosureFilerKey(second));
+  assert.equal(buildHomeDiscovery([first, second], asOf, asOf).clusters.length, 0);
+  const other = record("alias-3", {politician: "Other Person", state: "VA", district: "VA05"});
+  const cluster = buildHomeDiscovery([first, second, other, {...first, id: "sale", type: "Sell", provenance: {...first.provenance, reconciliationKey: "sale"}}], asOf, asOf).clusters[0];
+  assert.equal(cluster.buyers, 2);
+  assert.equal(cluster.purchases, 3);
+  assert.equal(cluster.sellers, 1);
+  assert.notEqual(disclosureFilerKey(first), disclosureFilerKey({...first, district: "VA06"}));
+  assert.notEqual(disclosureFilerKey(first), disclosureFilerKey({...first, politician: "John K McGuire"}));
+});
+test("real archived McGuire name variants share one counting identity", () => {
+  const rows = (archive.trades as DisclosureRecord[]).filter(r => r.ticker === "NVDA" && r.type === "Buy" && /McGuire/.test(r.politician));
+  assert.ok(new Set(rows.map(r => r.politician)).size > 1);
+  assert.equal(new Set(rows.map(disclosureFilerKey)).size, 1);
 });
 test("filing window is thirty inclusive calendar dates, not transaction dates", () => {
   const start = "2026-08-10";

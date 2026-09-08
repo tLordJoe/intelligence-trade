@@ -54,7 +54,8 @@ export default function Home() {
         <section aria-labelledby="clusters-heading">
           <p className="kicker mb-2">Look for connections</p><h2 id="clusters-heading" className="text-2xl md:text-3xl font-bold">Where are buys clustering?</h2>
           <p className="text-sm leading-relaxed mt-3" style={{ color: "var(--text-dim)" }}>Stocks with purchases reported by multiple distinct named House filers. Ranked by filers—not transaction count or estimated dollars.</p>
-          <p className="text-xs mt-2 mb-5" style={{ color: "var(--text-dim)" }}>Filed {discovery.periodStart} through {discovery.periodEnd} · 30 calendar days</p>
+          <p className="text-xs mt-2" style={{ color: "var(--text-dim)" }}>Filed {discovery.periodStart} through {discovery.periodEnd} · 30 calendar days</p>
+          <p className="text-xs mt-2 mb-5" style={{ color: "var(--text-dim)" }}>Based on readable records in our House archive—not a complete Congress leaderboard. Senate activity and unreadable filings are not included.</p>
           <div className="space-y-3">
             {discovery.clusters.map((cluster) => <details key={cluster.ticker} className="rounded-xl border px-5" style={{ backgroundColor: "var(--bg-card)", borderColor: "var(--border)" }}>
               <summary className="cursor-pointer py-5">
@@ -77,7 +78,7 @@ export default function Home() {
           {discovery.clusters.length === 0 && <div className="rounded-xl border p-6" style={{ borderColor: "var(--border)" }}>No stocks meet the two-filer threshold in this filing window. This does not mean nobody bought; the archive may not yet contain their disclosures.</div>}
           <details className="text-xs leading-relaxed mt-4" style={{ color: "var(--text-dim)" }}>
             <summary className="cursor-pointer min-h-11 py-3">What these counts include</summary>
-            <p>All archived House tickers are considered, not just the AI stack. Options, exchanges, quarantined records, unverified tickers, ambiguous issuers, future dates, and duplicate records are excluded. Each normalized filer name counts once per ticker and direction; family holdings are not independent buyers. Dates refer to filing, not a claim that these trades happened today. This is not market-wide volume.</p>
+            <p>All archived House tickers are considered, not just the AI stack. Options, exchanges, quarantined records, unverified tickers, ambiguous issuers, future dates, and duplicate records are excluded. Filer names are scoped to their chamber and district, with explicitly reviewed name aliases combined; these are not official person IDs. Each filer counts once per ticker and direction; family holdings are not independent buyers. Dates refer to filing, not a claim that these trades happened today. This is not market-wide volume.</p>
           </details>
           <div className="rounded-xl p-6 mt-5" style={{ backgroundColor: "var(--bg-inset)" }}>
             <h3 className="font-bold text-lg">New to following disclosures?</h3>

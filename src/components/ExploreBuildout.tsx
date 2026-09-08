@@ -5,6 +5,8 @@ import { layers, getLayerBySlug } from "@/lib/data";
 import Navbar from "@/components/Navbar";
 import StackVisualization from "@/components/StackVisualization";
 import LayerDetail from "@/components/LayerDetail";
+import LayerPurchaseActivity from "@/components/LayerPurchaseActivity";
+import type { LayerActivity } from "@/lib/layer-activity";
 import BuildoutQuestions from "@/components/BuildoutQuestions";
 import PerformanceChart from "@/components/PerformanceChart";
 import LayerCards from "@/components/LayerCards";
@@ -16,7 +18,7 @@ import SiteFooter from "@/components/SiteFooter";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import type { DataMeta, StockQuoteResponse } from "@/lib/market-data";
 
-export default function ExploreBuildout({ showCompare = false }: { showCompare?: boolean }) {
+export default function ExploreBuildout({ showCompare = false, activity }: { showCompare?: boolean; activity: LayerActivity }) {
   const [activeLayer, setActiveLayer] = useState<string>("processors");
   const [hoveredLayer, setHoveredLayer] = useState<string | null>(null);
   const [prices, setPrices] = useState<Record<string, { price: number; change: number }>>({});
@@ -91,6 +93,8 @@ export default function ExploreBuildout({ showCompare = false }: { showCompare?:
                 prices={prices}
                 mode={hoveredLayer && hoveredLayer !== activeLayer ? "previewing" : "selected"}
               />
+              <LayerPurchaseActivity activity={activity} slug={previewLayer.slug} name={previewLayer.name}
+                previewing={Boolean(hoveredLayer && hoveredLayer !== activeLayer)} />
               <BuildoutQuestions />
             </div>
           </div>

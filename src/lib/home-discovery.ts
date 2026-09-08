@@ -16,6 +16,18 @@ export function filerKey(name: string): string {
   return displayFiler(name).normalize("NFKC").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
 }
 
+/** Narrow archive alias: both names report VA05 in the original filing metadata.
+ * Do not generally strip middle names or merge by district (seats change hands).
+ * Evidence: House PTRs 20035367, 20034521, and 20033956.
+ * This is an Outfox counting key, not an official person identifier.
+ */
+export function disclosureFilerKey(record: Pick<DisclosureRecord, "politician" | "chamber" | "district" | "state">): string {
+  const name = filerKey(record.politician);
+  if (record.chamber === "House" && record.state === "VA" && record.district === "VA05" &&
+      (name === "john j mcguire" || name === "john mcguire")) return "house:va05:john-mcguire";
+  return `${record.chamber}:${record.state}:${record.district}:${name}`;
+}
+
 export function archiveRecords(records: DisclosureRecord[], asOf: string): DisclosureRecord[] {
   if (!validDisclosureDate(asOf)) throw new Error("A valid as-of date is required.");
   const ids = new Set<string>();
@@ -58,10 +70,10 @@ export function buildHomeDiscovery(records: DisclosureRecord[], updatedAt: strin
     if (new Set(group.map((r) => r.cik).filter(Boolean)).size > 1) continue;
     const buys = group.filter((r) => r.type === "Buy");
     const sells = group.filter((r) => r.type === "Sell");
-    const buyers = new Set(buys.map((r) => filerKey(r.politician))).size;
+    const buyers = new Set(buys.map(disclosureFilerKey)).size;
     if (buyers < 2) continue;
     clusters.push({ ticker, companyName: group[0].companyName, buyers,
-      sellers: new Set(sells.map((r) => filerKey(r.politician))).size,
+      sellers: new Set(sells.map(disclosureFilerKey)).size,
       purchases: buys.length, sales: sells.length, records: group });
   }
   clusters.sort((a, b) => b.buyers - a.buyers || a.ticker.localeCompare(b.ticker));
