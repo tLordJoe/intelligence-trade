@@ -15,11 +15,16 @@ function record(id: string, overrides: Partial<DisclosureRecord> = {}): Disclosu
 }
 
 test("full archive is reachable page by page without dropping records", () => {
-  const rows = archiveRecords(archive.trades, asOf);
-  assert.equal(rows.length, 997);
+  // Real archive growth must not fail a test pinned to yesterday's row count.
+  // Keep exact ID conservation, not just an assertion on the filtered result.
+  const latestFiling = (archive.trades as DisclosureRecord[]).reduce(
+    (latest, r) => r.filedDate > latest ? r.filedDate : latest, asOf);
+  const rows = archiveRecords(archive.trades, latestFiling);
+  assert.equal(rows.length, archive.trades.length);
   const all = Array.from({length: queryArchive(rows, {}).pages}, (_, i) => queryArchive(rows, {page: String(i + 1)}).records).flat();
   assert.equal(all.length, rows.length);
   assert.equal(new Set(all.map(r => r.id)).size, rows.length);
+  assert.deepEqual(all.map(r => r.id).sort(), (archive.trades as DisclosureRecord[]).map(r => r.id).sort());
 });
 test("counts distinct named filers, not repeated purchase rows; sales remain separate", () => {
   const rows = [record("1", {politician: "Hon. Jane Doe"}), record("2", {politician: "Jane Doe"}),

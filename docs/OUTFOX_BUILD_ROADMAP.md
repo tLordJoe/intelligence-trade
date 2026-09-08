@@ -12,6 +12,8 @@ This document supersedes the build ordering and conflicting messaging in the old
 
 ## Status snapshot - evidence, not promises
 
+**Latest release preparation:** All 379 current index reports have now been downloaded and processed in an isolated copy. The readable-data candidate is **2,591 transactions** (75 beyond the frozen repair); all 997 original IDs/raw records survive, independent PDF fields match all 2,591, and all 508 tests pass against it. The production build passed. The scan queue is now **45**, including two newly collected scans; OCR/manual recovery remains unfinished. Production was read directly and still has 997. See `r2b-house-release-preparation-2026-09-08.md`. No remote write or deployment occurred.
+
 **September 8 recovery update:** R1 is ready for review. R2's bounded audit is complete, and its resulting parser repair (R2a) is now verified locally. The candidate contains 2,516 transactions, recovering 1,519 while retaining all 997 existing IDs and raw evidence. Independent PDF extraction matched all 2,516 economic-field rows across 375 cached documents. Final tests: 506 passed, 2 existing skips, no failures; lint, TypeScript, production/preview builds and isolation checks passed. See `r2a-house-recovery-2026-09-08.md`. Nothing was published. Review and a supervised import remain; scanned reports and newer uncollected filings are separate coverage gaps.
 
 | Area | Actual state | Evidence / remaining limit |
@@ -115,6 +117,8 @@ These milestones share dependencies. Their totals are not additive calendar phas
 | Explore card + current preview | R1 ready for review | Verified September 8; see docs/r1-verification-2026-09-08.md. Not published. |
 | House counting / coverage | R2 ready for review - audit complete, release HOLD | Source inventory and targeted identity/date audit complete; serious partial-row loss found. Report: docs/r2-house-audit-2026-09-08.md. |
 | Partial-row recovery | R2a ready for review - local verification complete | 1,519 additional transactions recovered; all 997 old IDs/raw records retained. Independent 2,516-row reconciliation, 506 passing tests, both builds passed. Report: docs/r2a-house-recovery-2026-09-08.md. Full OCR is separate. |
+| Fresh readable-House release | Ready for review; publication decision pending | R2b current-source pass: 379 reports, 2,591 candidate transactions; independent check and 508 tests pass. Live remains 997. |
+| Scanned House recovery | Queued after initial capability check | 45 reports excluded; local OCR failed. Manual/source-review lane remains required, not marked complete. |
 | All other roadmap rows | Queued, not running | Start the next bounded item explicitly within an active work turn. |
 | Other AI tools | Not assigned by this document | Suggested roles below do not dispatch any work. |
 
