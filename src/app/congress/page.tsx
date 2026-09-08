@@ -35,6 +35,7 @@ export default async function CongressPage({ searchParams }: { searchParams: Pro
           <h1 className="text-3xl md:text-5xl font-extrabold">House disclosure archive</h1>
           <p className="text-sm leading-relaxed mt-4 max-w-2xl" style={{ color: "var(--text-dim)" }}>All {archive.length.toLocaleString("en-US")} available disclosures—not just AI supply-chain stocks. Newest filings first. Reports can include family holdings and do not reveal a member&apos;s full portfolio.</p>
           <p className="text-xs mt-3" style={{ color: "var(--text-dim)" }}>Archive refreshed {liveData.updatedAt.slice(0, 10)} · House only · Not a live trading feed</p>
+          {liveData.counts.scannedFilings > 0 && <p className="text-xs mt-2" style={{ color: "var(--text-dim)" }}>{liveData.counts.scannedFilings} scanned reports await recovery and review. Their transactions are not included; this archive is not complete House or Congress coverage.</p>}
           <form action="/congress" className="flex flex-wrap items-end gap-3 my-7">
             <label className="flex-1 min-w-48 text-sm font-semibold">Find a filer, ticker, or company
               <input type="search" name="q" defaultValue={result.q} maxLength={100} placeholder="Try NVDA or a member's name" className="block w-full border rounded-lg px-4 py-3 mt-2 text-base font-normal" style={{ backgroundColor: "var(--bg-card)", borderColor: "var(--border)" }} />

@@ -41,6 +41,7 @@ export default function Home() {
       <div className="border-y py-3 mb-9 flex flex-wrap gap-x-6 gap-y-2 text-xs" style={{ borderColor: "var(--border)", color: "var(--text-dim)" }}>
         <span>Archive refreshed <time dateTime={discovery.updatedAt}>{discovery.updatedAt.slice(0, 10)}</time></span>
         <span>House-only coverage · Disclosures are delayed, not live trades</span>
+        {liveData.counts.scannedFilings > 0 && <span>{liveData.counts.scannedFilings} scanned reports await recovery and review; their transactions are not included.</span>}
         {discovery.stale && <strong role="status" style={{ color: "var(--red)" }}>Archive refresh overdue. Recent activity may be missing.</strong>}
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 items-start">
