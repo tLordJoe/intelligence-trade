@@ -71,10 +71,18 @@ export default async function ComparePage() {
     import("@/lib/funds/data"),
   ]);
   const dataset = buildComparisonDataset();
+  const { layers } = await import("@/lib/data");
+  const catalog = new Map(dataset.identities.map((fund) => [fund.symbol, {
+    symbol: fund.symbol, name: fund.displayName, kind: "fund" as "fund" | "stock",
+  }]));
+  for (const stock of layers.flatMap((layer) => layer.stocks)) {
+    if (!catalog.has(stock.ticker)) catalog.set(stock.ticker, { symbol: stock.ticker, name: stock.name, kind: "stock" });
+  }
+  dataset.catalog = [...catalog.values()];
 
   return (
     <>
-      <Navbar />
+      <Navbar showCompare />
       <main className="flex-1">
         {/*
           The comparison reads its initial state from the query string, so the

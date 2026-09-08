@@ -119,6 +119,10 @@ export interface Coverage {
   observations: number;
   /** Dates the source does not cover, e.g. a halt or a reporting gap. */
   gaps: Array<{ from: string; to: string; reason: string }>;
+  /** Optional provider evidence; never infer fund inception from firstDate. */
+  startEvidence?:
+    | { kind: "verified_inception"; date: string; sourceUrl: string }
+    | { kind: "source_limit" };
 }
 
 // --- return basis ------------------------------------------------------------

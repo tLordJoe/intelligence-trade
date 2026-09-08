@@ -8,6 +8,7 @@ const BASE_URL = "https://outfoxmarkets.com";
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: BASE_URL, changeFrequency: "daily", priority: 1 },
+    { url: `${BASE_URL}/explore`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE_URL}/congress`, changeFrequency: "daily", priority: 0.9 },
     { url: `${BASE_URL}/blog`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE_URL}/learn`, changeFrequency: "weekly", priority: 0.9 },

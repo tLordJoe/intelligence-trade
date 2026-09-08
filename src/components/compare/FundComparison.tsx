@@ -15,6 +15,7 @@ import {
 import { colorsFor, seriesFrom, type ComparisonDataset } from "@/lib/funds/dataset";
 import type { ColorAssignment } from "@/lib/funds/colors";
 import { basisLabel, describeBasis, describeUnavailable } from "@/lib/funds/types";
+import { normalizeTypedSymbol, searchInstruments } from "@/lib/funds/search";
 
 /**
  * Fund comparison preview.
@@ -64,7 +65,8 @@ export default function FundComparison({ dataset }: { dataset: ComparisonDataset
    * reader's selection.
    */
   const searchParams = useSearchParams();
-  const [initial] = useState(() => decodeState(searchParams.toString(), SYMBOLS));
+  const [initial] = useState(() => decodeState(searchParams.toString(), SYMBOLS,
+    (searchParams.get("funds") ?? "").split(",").slice(0, MAX_FUNDS).map(normalizeTypedSymbol).filter((s): s is string => s !== null)));
 
   const [symbols, setSymbols] = useState<string[]>(initial.symbols);
   const [amount, setAmount] = useState<number>(initial.amount);
@@ -74,30 +76,28 @@ export default function FundComparison({ dataset }: { dataset: ComparisonDataset
   const [mode, setMode] = useState<ChartMode>("percent");
   const [notice, setNotice] = useState<string | null>(null);
   const [inspectIndex, setInspectIndex] = useState<number | null>(null);
+  const [search, setSearch] = useState("");
+  const catalog = useMemo(() => dataset.catalog ?? IDENTITIES.map((f) => ({symbol: f.symbol, name: f.displayName, kind: "fund" as const})), [dataset.catalog, IDENTITIES]);
+  const matches = useMemo(() => searchInstruments(catalog, search), [catalog, search]);
+  const typedSymbol = normalizeTypedSymbol(search);
 
   const isDemonstration = dataset.demonstration;
 
   const series = useMemo(() => seriesFrom(dataset, symbols), [dataset, symbols]);
   const windows = useMemo(() => availableWindows(series), [series]);
 
-  /**
-   * The window actually used, derived rather than stored.
-   *
-   * Removing a long-history fund can leave the chosen period uncovered. Falling
-   * back during render — instead of correcting stored state in an effect —
-   * avoids a cascading render and keeps the reader's original choice, so it
-   * returns intact if they add the longer fund back.
-   */
-  const effectiveWindow: WindowKey = useMemo(() => {
-    const chosen = windows.find((w) => w.key === windowKey);
-    if (chosen?.enabled) return windowKey;
-    return windows.find((w) => w.enabled)?.key ?? windowKey;
-  }, [windows, windowKey]);
+  // A selection change must never silently rewrite the requested period.
+  const effectiveWindow = windowKey;
 
-  const comparison: Comparison = useMemo(
-    () => buildComparison(series, effectiveWindow, amount),
-    [series, effectiveWindow, amount]
-  );
+  const missing = useMemo(() => symbols.filter((symbol) => !series.some((s) => s.symbol === symbol)).map((symbol) => ({
+    symbol, reason: `${symbol}: history unavailable — not connected to this preview. ${catalog.some((item) => item.symbol === symbol) ? "Listed in our name catalog." : "Symbol not verified."} No chart or ranking is calculated.`,
+  })), [symbols, series, catalog]);
+  const comparison: Comparison = useMemo(() => {
+    if (effectiveWindow === "shared" && missing.length) return {status: "unmeasurable", reason: "A shared period needs history for every selection. Choose a fixed period to view the available funds.", excluded: missing};
+    const result = buildComparison(series, effectiveWindow, amount);
+    return {...result, excluded: [...(result.excluded ?? []), ...missing]};
+  }, [series, effectiveWindow, amount, missing]);
+  const sharedComparison = useMemo(() => missing.length ? null : buildComparison(series, "shared", amount), [series, amount, missing]);
 
   const methodology = series[0]?.methodology;
   const summary = useMemo(
@@ -179,14 +179,14 @@ export default function FundComparison({ dataset }: { dataset: ComparisonDataset
 
       <p className="text-base md:text-lg max-w-2xl mb-8" style={{ color: "var(--text-dim)" }}>
         A preview of how Outfox will compare funds side by side. Pick {MIN_FUNDS} to{" "}
-        {MAX_FUNDS} funds, choose a period, and every fund is measured between the same
+        {MAX_FUNDS} selections, choose a period, and eligible funds are measured between the same
         two dates. {describeBasis(methodology?.basis ?? "price_return")}
       </p>
 
       {/* --- selection ------------------------------------------------------ */}
       <section className="rounded-xl border p-5 md:p-6 mb-5" style={card} aria-labelledby="funds-heading">
         <h2 id="funds-heading" className="text-lg font-bold mb-1" style={{ color: "var(--text)" }}>
-          Funds in this comparison
+          Your comparison
         </h2>
         <p className="text-xs mb-4" style={{ color: "var(--text-dim)" }}>
           A starting set spanning different kinds of exposure. It is not a recommended
@@ -209,8 +209,9 @@ export default function FundComparison({ dataset }: { dataset: ComparisonDataset
                   />
                   <span className="font-mono font-bold" style={{ color: "var(--text)" }}>{symbol}</span>
                   <span className="hidden sm:inline text-xs" style={{ color: "var(--text-dim)" }}>
-                    {identity?.displayName}
+                    {identity?.displayName ?? catalog.find((item) => item.symbol === symbol)?.name ?? "Unverified symbol"}
                   </span>
+                  {!SYMBOLS.includes(symbol) && <span className="text-xs" style={{color: "var(--text-dim)"}}>History unavailable</span>}
                   <button
                     type="button"
                     onClick={() => removeFund(symbol)}
@@ -233,9 +234,35 @@ export default function FundComparison({ dataset }: { dataset: ComparisonDataset
           })}
         </ul>
 
+        <form className="mb-5" onSubmit={(event) => {
+          event.preventDefault();
+          const exact = catalog.find((item) => item.symbol === typedSymbol || item.name.toLowerCase() === search.trim().toLowerCase());
+          if (exact || typedSymbol) { addFund(exact?.symbol ?? typedSymbol!); setSearch(""); }
+          else setNotice("Choose a name match below or enter a ticker, such as VOO.");
+        }}>
+          <label htmlFor="comparison-search" className="block text-sm font-semibold mb-2">Add a ticker or search by name</label>
+          <div className="flex gap-2">
+            <input id="comparison-search" value={search} onChange={(event) => setSearch(event.target.value)} maxLength={100}
+              autoComplete="off" placeholder="Try VOO, Microsoft, or your own ticker" aria-describedby="search-coverage"
+              className="min-w-0 flex-1 rounded-lg border px-3" style={{minHeight: 44, backgroundColor: "var(--bg-inset)", borderColor: "var(--border)", color: "var(--text)"}} />
+            <button type="submit" className="rounded-lg border px-4 font-semibold" style={{minHeight: 44, borderColor: "var(--border)"}}>Add</button>
+          </div>
+          <p id="search-coverage" className="text-xs mt-2" style={{color: "var(--text-dim)"}}>
+            Search our starter funds and Explore companies, or enter another ticker. Only the six demo funds have generated histories; other selections stay visible as unavailable. This is not a full market search or real performance data.
+          </p>
+          {search.trim() && <ul className="mt-2 list-none p-0 space-y-1" aria-label="Search matches">
+            {matches.map((item) => <li key={item.symbol}><button type="button"
+              onClick={() => {addFund(item.symbol); setSearch("");}}
+              className="w-full rounded-lg border px-3 py-2 text-left text-sm" style={{minHeight: 44, borderColor: "var(--border)"}}>
+              <strong>{item.symbol}</strong> · {item.name} · {SYMBOLS.includes(item.symbol) ? "Demo history" : "History unavailable"}
+            </button></li>)}
+            {matches.length === 0 && <li className="text-xs py-2">No name match. {typedSymbol ? `Add ${typedSymbol} as an unverified ticker; history will be unavailable.` : "Enter a ticker or try another name."}</li>}
+          </ul>}
+        </form>
+
         <fieldset className="border-0 p-0 m-0">
           <legend className="text-xs font-bold mb-2" style={{ color: "var(--text-dim)" }}>
-            Add a fund
+            Starter suggestions · not the whole market
           </legend>
           <div className="flex flex-wrap gap-2">
             {IDENTITIES.filter((f) => !symbols.includes(f.symbol)).map((identity) => (
@@ -259,7 +286,7 @@ export default function FundComparison({ dataset }: { dataset: ComparisonDataset
             ))}
             {IDENTITIES.every((f) => symbols.includes(f.symbol)) && (
               <span className="text-xs" style={{ color: "var(--text-dim)" }}>
-                Every fund in this preview is already selected.
+                All six demo funds are selected. You can still enter another ticker above.
               </span>
             )}
           </div>
@@ -351,8 +378,8 @@ export default function FundComparison({ dataset }: { dataset: ComparisonDataset
             Measurement period
           </h2>
           <p className="text-xs mb-4" style={{ color: "var(--text-dim)" }}>
-            Only periods every selected fund covers can be chosen. The period is governed
-            by the overlap between them, not by the longest history in the set.
+            Choose your period. Funds without enough data stay selected but are not
+            charted or ranked for that period. Or compare all over their shared history.
           </p>
 
           <div className="flex flex-wrap gap-2" role="group" aria-label="Measurement period">
@@ -361,9 +388,8 @@ export default function FundComparison({ dataset }: { dataset: ComparisonDataset
                 key={w.key}
                 type="button"
                 onClick={() => { setWindowKey(w.key); setInspectIndex(null); }}
-                disabled={!w.enabled}
                 aria-pressed={effectiveWindow === w.key}
-                aria-describedby={w.enabled ? undefined : `period-${w.key}-reason`}
+                aria-describedby={!w.enabled && w.key === effectiveWindow ? `period-${w.key}-reason` : undefined}
                 className="rounded-lg border px-4 text-sm font-semibold disabled:opacity-40 disabled:cursor-not-allowed"
                 style={{
                   minHeight: 44,
@@ -375,12 +401,26 @@ export default function FundComparison({ dataset }: { dataset: ComparisonDataset
                 {w.label}
               </button>
             ))}
+            <button
+              type="button"
+              onClick={() => { setWindowKey("shared"); setInspectIndex(null); }}
+              aria-pressed={effectiveWindow === "shared"}
+              className="rounded-lg border px-4 text-sm font-semibold"
+              style={{ minHeight: 44, color: "var(--text)", borderColor: effectiveWindow === "shared" ? "var(--accent)" : "var(--border)", backgroundColor: effectiveWindow === "shared" ? "var(--accent-soft)" : "transparent" }}
+            >
+              Compare shared history
+            </button>
           </div>
-          {windows.filter((w) => !w.enabled).map((w) => (
+          {windows.filter((w) => !w.enabled && w.key === effectiveWindow).map((w) => (
             <p key={w.key} id={`period-${w.key}-reason`} className="mt-2 text-xs" style={{ color: "var(--text-dim)" }}>
               {w.label}: {w.reason}
             </p>
           ))}
+          <p className="mt-3 text-xs" style={{ color: "var(--text-dim)" }}>
+            {sharedComparison?.status === "measured"
+              ? `Shared available dates: ${sharedComparison.endpoints.startDate} to ${sharedComparison.endpoints.endDate}. This may be shorter than your chosen period.`
+              : "The selected funds do not have a usable shared period."}
+          </p>
         </section>
       </div>
 
@@ -413,7 +453,7 @@ export default function FundComparison({ dataset }: { dataset: ComparisonDataset
 
         {measured && (
           <p className="text-xs mb-4" style={{ color: "var(--text-dim)" }}>
-            Every fund measured {measured.endpoints.startDate} to {measured.endpoints.endDate}
+            {measured.ranked.length} of {symbols.length} selected funds measured {measured.endpoints.startDate} to {measured.endpoints.endDate}
             {mode === "dollars" && ` · illustrating $${amount.toLocaleString("en-US")}`}
           </p>
         )}
@@ -505,13 +545,13 @@ export default function FundComparison({ dataset }: { dataset: ComparisonDataset
           </div>
         )}
 
-        {measured && measured.excluded.length > 0 && (
-          <div className="mt-4 rounded-lg border p-4" style={{ borderColor: "var(--border)" }}>
+        {(comparison.excluded?.length ?? 0) > 0 && (
+          <div role="status" className="mt-4 rounded-lg border p-4" style={{ borderColor: "var(--border)" }}>
             <div className="text-sm font-semibold mb-1" style={{ color: "var(--text)" }}>
-              Not measured over this period
+              Still selected · unavailable for this period
             </div>
             <ul className="text-xs space-y-1 list-none p-0" style={{ color: "var(--text-dim)" }}>
-              {measured.excluded.map((entry) => (
+              {comparison.excluded?.map((entry) => (
                 <li key={entry.symbol}>{entry.reason}</li>
               ))}
             </ul>
@@ -571,7 +611,7 @@ export default function FundComparison({ dataset }: { dataset: ComparisonDataset
                         })}
                       </td>
                       <td className="py-2.5 pl-3 text-xs" style={{ color: "var(--text-dim)" }}>
-                        {entry.isHighest ? (
+                        {measured.ranked.length === 1 ? "Not ranked — only eligible fund" : entry.isHighest ? (
                           <span
                             className="inline-block rounded px-2 py-1 font-semibold"
                             style={{ backgroundColor: "var(--accent-soft)", color: "var(--text)" }}
@@ -586,6 +626,13 @@ export default function FundComparison({ dataset }: { dataset: ComparisonDataset
                     </tr>
                   );
                 })}
+                {measured.excluded.map((entry) => (
+                  <tr key={entry.symbol} style={{ borderTop: "1px solid var(--border)", color: "var(--text-dim)" }}>
+                    <th scope="row" className="text-left py-3 pr-3 font-mono">{entry.symbol}</th>
+                    <td className="py-3 px-3" colSpan={2}>Unavailable for this period</td>
+                    <td className="py-3 pl-3 text-xs">Not ranked</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -688,12 +735,15 @@ export default function FundComparison({ dataset }: { dataset: ComparisonDataset
           <p>
             <strong style={{ color: "var(--text)" }}>One period, not one per fund.</strong>{" "}
             {measured
-              ? `This comparison measures every fund between ${measured.endpoints.startDate} and ${measured.endpoints.endDate}. `
+              ? `This comparison measures eligible funds between ${measured.endpoints.startDate} and ${measured.endpoints.endDate}. Funds without usable coverage stay selected but are excluded from these results. `
               : ""}
             Both dates are days on which every included fund reports. A fund measured from
             its own first available date would be measured over a different period from
             the others, and part of the difference between them would be the calendar
             rather than anything about the funds.
+            {" "}For fixed-year views, common observations are chosen within seven calendar
+            days of the requested start and latest available date. The exact dates are
+            always shown; values are never invented for missing dates.
           </p>
           <p>
             <strong style={{ color: "var(--text)" }}>Observations are matched by date.</strong>{" "}

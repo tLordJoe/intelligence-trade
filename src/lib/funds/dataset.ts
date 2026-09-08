@@ -14,6 +14,7 @@
 
 import { buildColorAssignment, type ColorAssignment } from "./colors.ts";
 import type { FundIdentity, PriceSeries, SourceProvenance } from "./types.ts";
+import type { SearchInstrument } from "./search.ts";
 
 export interface ComparisonDataset {
   /** Every symbol the source offers, sorted. Colours are assigned from this. */
@@ -24,6 +25,8 @@ export interface ComparisonDataset {
   provenance: SourceProvenance;
   /** True when every value must be labelled as demonstration output. */
   demonstration: boolean;
+  /** Name lookup only. Inclusion does not imply historical data is connected. */
+  catalog?: SearchInstrument[];
 }
 
 /**

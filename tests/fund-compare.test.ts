@@ -171,25 +171,113 @@ test("windows are the three agreed periods", () => {
   assert.deepEqual(WINDOWS.map((w) => w.key), ["1y", "3y", "5y"]);
 });
 
-test("a window longer than the shared history is disabled with a reason", () => {
+test("a shorter-history fund never disables a period the other fund supports", () => {
   const long = makeSeries("A", LONG_DATES, (i) => 100 + i * 0.1);
   const short = makeSeries("B", LONG_DATES.slice(-300), (i) => 100 + i * 0.1);
 
   const windows = availableWindows([long, short]);
   assert.equal(windows.find((w) => w.key === "1y")?.enabled, true);
-  assert.equal(windows.find((w) => w.key === "3y")?.enabled, false);
-  assert.equal(windows.find((w) => w.key === "5y")?.enabled, false);
+  assert.equal(windows.find((w) => w.key === "3y")?.enabled, true);
+  assert.equal(windows.find((w) => w.key === "5y")?.enabled, true);
 
   const blocked = windows.find((w) => w.key === "5y");
-  assert.ok(blocked?.reason?.includes("share"));
+  assert.equal(blocked?.reason, null);
 });
 
-test("shared history governs the window, not the longest series", () => {
+test("five-year returns and chart survive adding a fund with less than one year", () => {
+  const a = makeSeries("A", LONG_DATES, (i) => 100 + i);
+  const b = makeSeries("B", LONG_DATES, (i) => 100 + i * 0.1);
+  const recent = makeSeries("NEW", LONG_DATES.slice(-60), (i) => 100 + i * 20);
+  const baseline = buildComparison([a, b], "5y", 1000);
+  const actual = buildComparison([a, b, recent], "5y", 1000);
+  assert.equal(actual.status, "measured");
+  assert.equal(baseline.status, "measured");
+  if (actual.status !== "measured" || baseline.status !== "measured") return;
+  assert.deepEqual(actual.ranked, baseline.ranked);
+  assert.deepEqual(actual.frame, baseline.frame);
+  assert.deepEqual(actual.excluded.map((r) => r.symbol), ["NEW"]);
+  assert.ok(actual.excluded[0].reason.includes(recent.dates[0]));
+  assert.ok(actual.excluded[0].reason.includes("generated demo coverage"));
+  assert.equal(actual.ranked.some((r) => r.symbol === "NEW"), false);
+});
+
+test("shared history explicitly includes the recent fund and roundtrips in the URL", () => {
+  const a = makeSeries("A", LONG_DATES, (i) => 100 + i);
+  const b = makeSeries("NEW", LONG_DATES.slice(-60), (i) => 100 + i);
+  const result = buildComparison([a, b], "shared", 500);
+  assert.equal(result.status, "measured");
+  if (result.status !== "measured") return;
+  assert.equal(result.endpoints.startDate, b.dates[0]);
+  assert.equal(result.ranked.length, 2);
+  assert.deepEqual(result.excluded, []);
+  const state = { symbols: ["A", "NEW"], amount: 500, window: "shared" as const };
+  assert.deepEqual(decodeState(encodeState(state), ["A", "NEW"]), state);
+});
+
+test("all short histories produce unavailable rather than disguised five-year returns", () => {
+  const a = makeSeries("A", LONG_DATES.slice(-60), () => 100);
+  const b = makeSeries("B", LONG_DATES.slice(-50), () => 100);
+  const result = buildComparison([a, b], "5y", 1000);
+  assert.equal(result.status, "unmeasurable");
+  assert.equal(result.excluded?.length, 2);
+  assert.equal(availableWindows([a, b]).some((w) => w.enabled), false);
+  assert.equal(buildComparison([a, b], "shared", 1000).status, "measured");
+});
+
+test("exact calendar-year coverage qualifies without requiring an extra fractional day", () => {
+  const a = makeSeries("A", ["2021-08-31", "2026-08-31"], (i) => 100 + i);
+  const result = buildComparison([a], "5y", 1000);
+  assert.equal(result.status, "measured");
+  if (result.status === "measured") assert.equal(result.endpoints.startDate, "2021-08-31");
+  const leap = makeSeries("LEAP", ["2023-02-28", "2024-02-29"], (i) => 100 + i);
+  const leapResult = buildComparison([leap], "1y", 1000);
+  assert.equal(leapResult.status, "measured");
+  if (leapResult.status === "measured") assert.equal(leapResult.endpoints.startDate, "2023-02-28");
+});
+
+test("one eligible fund has a value but no competitive rank or highest claim", () => {
+  const a = makeSeries("A", LONG_DATES, (i) => 100 + i);
+  const b = makeSeries("NEW", LONG_DATES.slice(-60), () => 100);
+  const result = buildComparison([a, b], "5y", 1000);
+  assert.equal(result.status, "measured");
+  if (result.status !== "measured") return;
+  assert.equal(result.ranked[0].isHighest, false);
+  assert.equal(result.ranked[0].rank, 0);
+  const summary = summarize(result.ranked, "5y", METHODOLOGY, { demonstration: true }).join(" ");
+  assert.ok(summary.includes("not ranked"));
+  assert.equal(summary.includes("highest"), false);
+});
+
+test("stale or invalid-endpoint history cannot block healthy funds or move the window back", () => {
+  const a = makeSeries("A", LONG_DATES, (i) => 100 + i);
+  const stale = makeSeries("STALE", LONG_DATES.slice(0, -100), () => 100);
+  const invalid = makeSeries("BAD", LONG_DATES, () => NaN);
+  const result = buildComparison([a, stale, invalid], "5y", 1000);
+  assert.equal(result.status, "measured");
+  if (result.status !== "measured") return;
+  assert.equal(result.endpoints.endDate, LONG_DATES.at(-1));
+  assert.deepEqual(result.ranked.map((r) => r.symbol), ["A"]);
+  assert.equal(result.excluded.length, 2);
+});
+
+test("shared history remains available as separate coverage metadata", () => {
   const long = makeSeries("A", LONG_DATES, () => 100);
   const short = makeSeries("B", LONG_DATES.slice(-300), () => 100);
   const windows = availableWindows([long, short]);
   // The long series alone would support five years.
   assert.ok((windows[0].sharedYears ?? 0) < 2);
+});
+
+test("coverage messaging distinguishes verified inception from source limits and unknowns", () => {
+  const full = makeSeries("A", LONG_DATES, () => 100);
+  const limited = makeSeries("B", LONG_DATES.slice(-60), () => 100);
+  limited.provenance = { ...PROVENANCE, kind: "licensed" };
+  const reason = () => buildComparison([full, limited], "5y", 1000).excluded?.[0].reason ?? "";
+  assert.ok(reason().includes("does not establish"));
+  limited.coverage.startEvidence = { kind: "source_limit" };
+  assert.ok(reason().includes("does not mean the fund is new"));
+  limited.coverage.startEvidence = { kind: "verified_inception", date: limited.dates[0], sourceUrl: "https://www.sec.gov/" };
+  assert.ok(reason().includes(`Verified fund inception: ${limited.dates[0]}`));
 });
 
 test("no funds selected disables every window", () => {

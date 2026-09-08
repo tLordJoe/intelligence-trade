@@ -168,7 +168,7 @@ test("all-null values produce no runs rather than an empty run", () => {
 // --- end to end --------------------------------------------------------------
 
 test("a comparison over a gapped series still measures both funds on the same dates", () => {
-  const comparison = buildComparison([COMPLETE, WITH_GAP], "1y", 1000);
+  const comparison = buildComparison([COMPLETE, WITH_GAP], "shared", 1000);
   assert.equal(comparison.status, "measured");
   if (comparison.status !== "measured") return;
 
@@ -181,12 +181,12 @@ test("a comparison over a gapped series still measures both funds on the same da
   }
 });
 
-test("a shorter fund pulls the shared period in rather than being measured on its own dates", () => {
+test("explicit shared mode shortens the period rather than using per-fund dates", () => {
   // E stops two days early. The common end moves back to a day all three
   // report — it does not stay at 2026-01-09 with E measured to its own last
   // observation, which would compare four days against two.
   const stops = series("E", [["2026-01-05", 10], ["2026-01-06", 11]]);
-  const comparison = buildComparison([COMPLETE, WITH_GAP, stops], "1y", 1000);
+  const comparison = buildComparison([COMPLETE, WITH_GAP, stops], "shared", 1000);
   assert.equal(comparison.status, "measured");
   if (comparison.status !== "measured") return;
 
@@ -204,7 +204,7 @@ test("a fund whose value at the common start is unusable is excluded with a reas
     ["2026-01-05", 0], ["2026-01-06", 5], ["2026-01-07", 6],
     ["2026-01-08", 7], ["2026-01-09", 8],
   ]);
-  const comparison = buildComparison([COMPLETE, zeroBase], "1y", 1000);
+  const comparison = buildComparison([COMPLETE, zeroBase], "shared", 1000);
   assert.equal(comparison.status, "measured");
   if (comparison.status !== "measured") return;
 

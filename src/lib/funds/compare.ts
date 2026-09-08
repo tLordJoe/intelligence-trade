@@ -2,7 +2,7 @@
  * Comparison selection, windows, returns and ranking.
  *
  * Every figure produced here is computed between **one** start date and **one**
- * end date shared by every selected fund, from values looked up by date rather
+ * end date shared by every eligible fund, from values looked up by date rather
  * than by array position. `alignment.ts` establishes those dates; this file
  * refuses to measure anything without them.
  *
@@ -134,7 +134,7 @@ export function validateAmount(input: number | string): AmountValidation {
 
 // --- time windows ------------------------------------------------------------
 
-export type WindowKey = "1y" | "3y" | "5y";
+export type WindowKey = "1y" | "3y" | "5y" | "shared";
 
 export interface TimeWindow {
   key: WindowKey;
@@ -152,18 +152,15 @@ export interface WindowAvailability {
   key: WindowKey;
   label: string;
   enabled: boolean;
-  /** Why a window is unavailable, for display next to the disabled control. */
+  /** Why no result is available, shown when the user chooses this period. */
   reason: string | null;
   /** Years of history every selected fund shares. Not the longest series'. */
   sharedYears: number;
 }
 
 /**
- * Which windows the selected funds jointly support.
- *
- * Governed by the shared history, not the longest: a five-year comparison in
- * which one fund only has two years is not a five-year comparison. Windows
- * beyond the overlap are disabled with the reason, never approximated.
+ * Fixed periods remain usable when at least one selected fund supports them.
+ * A partial-history selection never changes another fund's requested period.
  */
 export function availableWindows(series: PriceSeries[]): WindowAvailability[] {
   if (series.length === 0) {
@@ -176,15 +173,14 @@ export function availableWindows(series: PriceSeries[]): WindowAvailability[] {
   const years = sharedYears(series);
 
   return WINDOWS.map((w) => {
-    const enabled = resolveCommonEndpoints(series, w.years).status === "ok" && years >= w.years;
+    const enabled = buildComparison(series, w.key, DEFAULT_AMOUNT).status === "measured";
     return {
       key: w.key,
       label: w.label,
       enabled,
       reason: enabled
         ? null
-        : `The selected funds share ${years.toFixed(1)} years of overlapping data, so a ` +
-          `comparison over ${w.label.toLowerCase()} cannot cover all of them.`,
+        : `No selected fund can be measured over ${w.label}. Try shared history.`,
       sharedYears: years,
     };
   });
@@ -281,7 +277,60 @@ export type Comparison =
       /** Funds dropped for want of an observation on a common endpoint. */
       excluded: Array<{ symbol: string; reason: string }>;
     }
-  | { status: "unmeasurable"; reason: string };
+  | { status: "unmeasurable"; reason: string; excluded?: Array<{ symbol: string; reason: string }> };
+
+/** Do not infer a fund's age from the beginning of a provider's data. */
+function unavailableHistory(s: PriceSeries): { symbol: string; reason: string } {
+  const first = s.dates[0];
+  const last = s.dates.at(-1);
+  const evidence = s.coverage.startEvidence;
+  const explanation = evidence?.kind === "verified_inception"
+    ? `Verified fund inception: ${evidence.date}.`
+    : evidence?.kind === "source_limit"
+      ? "Older history is missing from this source; this does not mean the fund is new."
+      : "Data coverage alone does not establish when the fund launched.";
+  return {
+    symbol: s.symbol,
+    reason: `${s.symbol}: unavailable for this period. ` + (first && last
+      ? `Available data: ${first} to ${last}. `
+      : "No observations available. ") +
+      (s.provenance.kind === "demonstration"
+        ? "This is generated demo coverage, not the fund's real history."
+        : explanation),
+  };
+}
+
+/**
+ * Use actual common observations near the requested anniversary and latest
+ * observation (at most seven calendar days for market closures). Choose the
+ * pair supporting most funds; ties prefer latest end, then earliest start.
+ * Short or stale series cannot drag the period backwards. Never interpolate.
+ */
+function fixedPeriod(series: PriceSeries[], years: number) {
+  const dates = [...new Set(series.flatMap((s) => s.dates))].sort();
+  const end = dates.at(-1);
+  if (!end) return null;
+  const day = 86_400_000;
+  const anniversary = new Date(`${end}T00:00:00Z`);
+  const month = anniversary.getUTCMonth();
+  anniversary.setUTCFullYear(anniversary.getUTCFullYear() - years);
+  // February 29 in a non-leap target year means February 28, not March 1.
+  if (anniversary.getUTCMonth() !== month) anniversary.setUTCDate(0);
+  const cutoff = anniversary.getTime();
+  const starts = dates.filter((d) => Date.parse(d) >= cutoff && Date.parse(d) <= cutoff + 7 * day);
+  const ends = dates.filter((d) => Date.parse(d) >= Date.parse(end) - 7 * day).reverse();
+  let best: { startDate: string; endDate: string; eligible: PriceSeries[] } | null = null;
+  for (const endDate of ends) {
+    for (const startDate of starts) {
+      const eligible = series.filter((s) => Date.parse(s.dates[0]) <= cutoff &&
+        (valueOn(s, startDate) ?? 0) > 0 && Number.isFinite(valueOn(s, startDate)) &&
+        valueOn(s, endDate) !== null && Number.isFinite(valueOn(s, endDate)) &&
+        (valueOn(s, endDate) ?? -1) >= 0);
+      if (eligible.length > (best?.eligible.length ?? 0)) best = { startDate, endDate, eligible };
+    }
+  }
+  return best;
+}
 
 /**
  * Measure a comparison.
@@ -290,11 +339,8 @@ export type Comparison =
  * exactly those two dates — which is the whole reason this returns one object
  * rather than a list of per-fund results computed independently.
  *
- * The endpoints come from the intersection of every selected fund's dates, so a
- * fund with a shorter history pulls the shared period in rather than being
- * measured over a longer one of its own. The exclusion path below therefore
- * catches the remaining case: a value present but unusable as a base, such as a
- * zero, which would otherwise divide into an infinity or a silent zero.
+ * Fixed periods exclude insufficient history without dropping the selection.
+ * Only the explicit shared-history mode shortens the period for all funds.
  */
 export function buildComparison(
   series: PriceSeries[],
@@ -302,22 +348,27 @@ export function buildComparison(
   amount: number
 ): Comparison {
   const years = WINDOWS.find((w) => w.key === window)?.years;
-  if (!years) return { status: "unmeasurable", reason: `Unknown period ${window}.` };
-
-  const resolved = resolveCommonEndpoints(series, years);
-  if (resolved.status !== "ok") return { status: "unmeasurable", reason: resolved.reason };
+  if (!years && window !== "shared") return { status: "unmeasurable", reason: `Unknown period ${window}.` };
+  const fixed = years ? fixedPeriod(series, years) : null;
+  const eligible = window === "shared" ? series : fixed?.eligible ?? [];
+  const excluded = series.filter((s) => !eligible.includes(s)).map(unavailableHistory);
+  const resolved = window === "shared"
+    ? resolveCommonEndpoints(series, sharedYears(series) + 1)
+    : fixed ? { status: "ok" as const, endpoints: {
+        startDate: fixed.startDate, endDate: fixed.endDate,
+        includedSymbols: eligible.map((s) => s.symbol), excluded,
+      } } : { status: "unavailable" as const, reason: "No selected fund has usable data for this period. Choose shared history to try a shorter comparison." };
+  if (resolved.status !== "ok") return { status: "unmeasurable", reason: resolved.reason, excluded };
 
   const { startDate, endDate } = resolved.endpoints;
-  const basis: ReturnBasis = series[0]?.methodology.basis ?? "price_return";
+  const basis: ReturnBasis = eligible[0]?.methodology.basis ?? "price_return";
 
   const returns: FundReturn[] = [];
-  const excluded: Array<{ symbol: string; reason: string }> = [];
-
-  for (const s of series) {
+  for (const s of eligible) {
     const startValue = valueOn(s, startDate);
     const endValue = valueOn(s, endDate);
 
-    if (startValue === null || endValue === null || !(startValue > 0)) {
+    if (startValue === null || endValue === null || !(startValue > 0) || !Number.isFinite(startValue) || !Number.isFinite(endValue) || endValue < 0) {
       excluded.push({
         symbol: s.symbol,
         reason:
@@ -343,6 +394,7 @@ export function buildComparison(
     return {
       status: "unmeasurable",
       reason: "None of the selected funds report on both ends of the common period.",
+      excluded,
     };
   }
 
@@ -352,7 +404,7 @@ export function buildComparison(
   return {
     status: "measured",
     endpoints: { ...resolved.endpoints, includedSymbols: returns.map((r) => r.symbol), excluded },
-    ranked: rankReturns(returns),
+    ranked: rankReturns(returns).map((r) => returns.length === 1 ? { ...r, isHighest: false, rank: 0 } : r),
     frame,
     percentFrame: toPercentChange(frame),
     basis,
@@ -379,7 +431,7 @@ export function summarize(
 ): string[] {
   if (ranked.length === 0) return ["Select at least two funds to compare."];
 
-  const label = WINDOWS.find((w) => w.key === window)?.label ?? window;
+  const label = window === "shared" ? "the shared available period" : WINDOWS.find((w) => w.key === window)?.label ?? window;
   const top = ranked[0];
   const bottom = ranked[ranked.length - 1];
   const lines: string[] = [];
@@ -396,7 +448,9 @@ export function summarize(
   const fmt = (n: number) => `${n >= 0 ? "+" : ""}${n.toFixed(1)}%`;
 
   const topTied = ranked.filter((r) => r.rank === 1);
-  if (topTied.length > 1) {
+  if (ranked.length === 1) {
+    lines.push(`Only ${top.symbol} can be measured over ${label} (${period}): ${fmt(top.changePercent)}. It is not ranked against the unavailable funds.`);
+  } else if (topTied.length > 1) {
     lines.push(
       `Over ${label} (${period}), ${topTied.map((r) => r.symbol).join(" and ")} show the ` +
         `same highest change in this comparison, ${fmt(top.changePercent)}.`
@@ -413,7 +467,7 @@ export function summarize(
   }
 
   lines.push(
-    `Every fund is measured between the same two dates, ${period}, so no part of the ` +
+    `Every included fund is measured between the same two dates, ${period}, so no part of the ` +
       "difference between them comes from measuring different periods."
   );
 
@@ -452,7 +506,8 @@ export function encodeState(state: CompareState): string {
  */
 export function decodeState(
   query: URLSearchParams | string,
-  availableSymbols: string[]
+  availableSymbols: string[],
+  retainedSymbols: string[] = []
 ): CompareState {
   const params = typeof query === "string" ? new URLSearchParams(query) : query;
 
@@ -461,7 +516,7 @@ export function decodeState(
     .map((s) => s.trim().toUpperCase())
     .filter(Boolean);
 
-  const { symbols } = validateSelection(requested, availableSymbols);
+  const { symbols } = validateSelection(requested, [...availableSymbols, ...retainedSymbols]);
   const fallback = STARTER_SYMBOLS.filter((s) => availableSymbols.includes(s));
   const usable = symbols.length >= MIN_FUNDS ? symbols : [...fallback];
 
@@ -469,7 +524,7 @@ export function decodeState(
   const amount = amountCheck.valid ? amountCheck.amount : DEFAULT_AMOUNT;
 
   const windowParam = params.get("period") as WindowKey | null;
-  const window = WINDOWS.some((w) => w.key === windowParam) ? (windowParam as WindowKey) : "1y";
+  const window = windowParam === "shared" || WINDOWS.some((w) => w.key === windowParam) ? (windowParam as WindowKey) : "1y";
 
   return { symbols: usable, amount, window };
 }
