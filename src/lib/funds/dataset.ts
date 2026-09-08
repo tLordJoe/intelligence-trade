@@ -15,6 +15,7 @@
 import { buildColorAssignment, type ColorAssignment } from "./colors.ts";
 import type { FundIdentity, PriceSeries, SourceProvenance } from "./types.ts";
 import type { SearchInstrument } from "./search.ts";
+import { buildComparison, type Comparison, type WindowKey } from "./compare.ts";
 
 export interface ComparisonDataset {
   /** Every symbol the source offers, sorted. Colours are assigned from this. */
@@ -44,4 +45,22 @@ export function seriesFrom(dataset: ComparisonDataset, symbols: string[]): Price
   return symbols
     .map((symbol) => bySymbol.get(symbol.trim().toUpperCase()))
     .filter((s): s is PriceSeries => s !== undefined);
+}
+
+/** Keep absent series visible in the result contract, not only in UI copy. */
+export function compareDatasetSelection(dataset: ComparisonDataset, symbols: string[], period: WindowKey, amount: number): Comparison {
+  const selected = [...new Set(symbols.map((symbol) => symbol.trim().toUpperCase()))];
+  const series = seriesFrom(dataset, selected);
+  const missing = selected.filter((symbol) => !series.some((s) => s.symbol === symbol)).map((symbol) => ({
+    symbol,
+    reason: `${symbol}: history unavailable — not connected to this preview. ${dataset.catalog?.some((item) => item.symbol === symbol) || dataset.identities.some((item) => item.symbol === symbol) ? "Listed in our name catalog." : "Symbol not verified."} No chart or ranking is calculated.`,
+  }));
+  if (period === "shared" && missing.length) return {
+    status: "unmeasurable", reason: "A shared period needs history for every selection. Choose a fixed period to view the available funds.", excluded: missing,
+  };
+  const result = buildComparison(series, period, amount);
+  const excluded = [...(result.excluded ?? []), ...missing];
+  return result.status === "measured"
+    ? {...result, excluded, endpoints: {...result.endpoints, excluded}}
+    : {...result, excluded};
 }

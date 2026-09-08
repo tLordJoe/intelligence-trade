@@ -8,11 +8,11 @@ import { useSearchParams } from "next/navigation";
 import { contiguousRuns, type AlignedFrame } from "@/lib/funds/alignment";
 import {
   AMOUNT_PRESETS, HIGHEST_RETURN_LABEL, MAX_FUNDS, MIN_FUNDS,
-  availableWindows, buildComparison, canRemoveFund, decodeState, encodeState,
+  availableWindows, canRemoveFund, decodeState, encodeState,
   placeholderSections, summarize, validateAmount,
   type Comparison, type WindowKey,
 } from "@/lib/funds/compare";
-import { colorsFor, seriesFrom, type ComparisonDataset } from "@/lib/funds/dataset";
+import { colorsFor, seriesFrom, compareDatasetSelection, type ComparisonDataset } from "@/lib/funds/dataset";
 import type { ColorAssignment } from "@/lib/funds/colors";
 import { basisLabel, describeBasis, describeUnavailable } from "@/lib/funds/types";
 import { normalizeTypedSymbol, searchInstruments } from "@/lib/funds/search";
@@ -89,15 +89,8 @@ export default function FundComparison({ dataset }: { dataset: ComparisonDataset
   // A selection change must never silently rewrite the requested period.
   const effectiveWindow = windowKey;
 
-  const missing = useMemo(() => symbols.filter((symbol) => !series.some((s) => s.symbol === symbol)).map((symbol) => ({
-    symbol, reason: `${symbol}: history unavailable — not connected to this preview. ${catalog.some((item) => item.symbol === symbol) ? "Listed in our name catalog." : "Symbol not verified."} No chart or ranking is calculated.`,
-  })), [symbols, series, catalog]);
-  const comparison: Comparison = useMemo(() => {
-    if (effectiveWindow === "shared" && missing.length) return {status: "unmeasurable", reason: "A shared period needs history for every selection. Choose a fixed period to view the available funds.", excluded: missing};
-    const result = buildComparison(series, effectiveWindow, amount);
-    return {...result, excluded: [...(result.excluded ?? []), ...missing]};
-  }, [series, effectiveWindow, amount, missing]);
-  const sharedComparison = useMemo(() => missing.length ? null : buildComparison(series, "shared", amount), [series, amount, missing]);
+  const comparison: Comparison = useMemo(() => compareDatasetSelection(dataset, symbols, effectiveWindow, amount), [dataset, symbols, effectiveWindow, amount]);
+  const sharedComparison = useMemo(() => compareDatasetSelection(dataset, symbols, "shared", amount), [dataset, symbols, amount]);
 
   const methodology = series[0]?.methodology;
   const summary = useMemo(

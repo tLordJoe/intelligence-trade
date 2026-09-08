@@ -25,7 +25,8 @@ These need a separate original-document audit before any source correction.
 
 ## Verification
 
-- Full suite: 483 tests, 481 passed, 2 skipped, 0 failed. The existing two House end-to-end tests require a local cache absent from this checkout.
+- Full suite: 486 tests, 484 passed, 2 skipped, 0 failed. The existing two House end-to-end tests require a local cache absent from this checkout.
+- Missing-history behavior is a tested, framework-independent dataset function. Unavailable symbols appear in both result-level and endpoint-level exclusions. One measurable selection is never labeled a ranked winner; all-missing selections never yield prices.
 - Lint and TypeScript passed.
 - Production and preview webpack builds passed.
 - Both builds: 54 public/browser assets scanned, zero fixture markers. Production comparison refuses access, with no demonstration values in five rendered artifacts. Preview receives demonstration data only after the server access gate.
