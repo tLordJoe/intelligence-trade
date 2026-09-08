@@ -92,6 +92,15 @@ function makeRecord(overrides: Partial<DisclosureRecord> = {}): DisclosureRecord
 
 // --- ticker validation ------------------------------------------------------
 
+test("source transaction after filing is retained with an explicit warning, never silently corrected", () => {
+  const record = makeRecord({transactionDate:"2026-12-26",filedDate:"2026-02-09"});
+  const before = JSON.stringify(record);
+  const result = assessRecord(record,master);
+  assert.equal(result.status,"warning");
+  assert.ok(result.warnings.includes("transaction_after_filing"));
+  assert.equal(JSON.stringify(record),before);
+});
+
 test("regression: GOOGM and GOOGN are real Alphabet securities, not parser artifacts", () => {
   // The original audit wrongly called these fabricated. The SEC master lists
   // both under Alphabet's CIK, so the pipeline must publish them.

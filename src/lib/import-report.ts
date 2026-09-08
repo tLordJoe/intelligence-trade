@@ -70,6 +70,7 @@ export function renderImportReport(input: ImportReportInput): string {
   out.push(line("  scanned / unreadable", counts.scannedFilings));
   out.push(line("  unexplained (blocking)", counts.suspiciousZeroRowFilings));
   out.push(line("transaction rows parsed", counts.parsedRecords));
+  out.push(line("unaccounted symbol mentions", counts.unaccountedSymbolMentions ?? 0));
   out.push(line("  rows from wrapped rows", counts.wrappedRows));
   out.push("");
 

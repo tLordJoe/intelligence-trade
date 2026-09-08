@@ -41,6 +41,7 @@ import {
 } from "../src/lib/house-parser.ts";
 import { assessRecord, assessRun } from "../src/lib/congress-gates.ts";
 import { hasAmount } from "../src/lib/amounts.ts";
+import { assessHouseSymbolCoverage } from "../src/lib/house-coverage.ts";
 import { mergeRecords, tallyCounts } from "../src/lib/congress-merge.ts";
 import { renderImportReport, tallyWarnings } from "../src/lib/import-report.ts";
 import {
@@ -253,6 +254,11 @@ async function main() {
     counts.parsedFilings += 1;
     const filingUrl = `${PDF_BASE}${filing.docId}.pdf`;
     const parseResult = parseFilingRows(text);
+    const coverage = assessHouseSymbolCoverage(text, parseResult);
+    counts.unaccountedSymbolMentions = (counts.unaccountedSymbolMentions ?? 0) + coverage.unaccounted;
+    if (coverage.unaccounted > 0) {
+      console.error(`  BLOCK ${filing.docId}: ${coverage.unaccounted} supported symbol mentions were not accounted for by the parser`);
+    }
     const rows = parseResult.rows;
     counts.parsedRecords += rows.length;
     counts.wrappedRows += rows.filter((r) => r.wrappedLayout).length;

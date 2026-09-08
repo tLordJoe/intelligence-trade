@@ -187,6 +187,11 @@ export function assessRecord(
     warnings.push("invalid_filed_date");
     quarantine = true;
   }
+  // Preserve source errors as reported, but do not silently bless chronology.
+  if (isIsoDate(record.transactionDate) && isIsoDate(record.filedDate) &&
+      record.transactionDate > record.filedDate) {
+    warnings.push("transaction_after_filing");
+  }
 
   // --- soft defects: published, but flagged ------------------------------
   if (looksTruncated(record.raw.issuerName)) warnings.push("truncated_issuer_name");
@@ -341,6 +346,9 @@ export function assessRun(input: RunGateInput): RunGateResult {
     failures.push(
       `unexplained_zero_row_filings:${counts.suspiciousZeroRowFilings}`
     );
+  }
+  if ((counts.unaccountedSymbolMentions ?? 0) > 0) {
+    failures.push(`unaccounted_supported_symbol_mentions:${counts.unaccountedSymbolMentions}`);
   }
 
   // Scanned filings extract as nothing. They are a known, stable population of
