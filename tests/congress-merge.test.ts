@@ -7,6 +7,18 @@ import {
   type DisclosureRecord,
 } from "../src/lib/congress-schema.ts";
 
+test("name cleanup plus newly recovered same-day stocks cannot overwrite the old stock",()=>{
+  const old=makeRecord("DOC",0,{ticker:"NEE",companyName:"Prose NextEra Energy"});
+  const carrier=makeRecord("DOC",1,{ticker:"CARR",companyName:"Carrier"});
+  carrier.provenance={...carrier.provenance,reconciliationKey:old.provenance.reconciliationKey};
+  const nextera=makeRecord("DOC",2,{ticker:"NEE",companyName:"NextEra Energy"});
+  const result=mergeRecords([old],[carrier,nextera],"2026-09-08T12:00:00Z");
+  assert.equal(result.records.find(r=>r.id===old.id)?.ticker,"NEE");
+  assert.equal(result.records.find(r=>r.id===old.id)?.companyName,"NextEra Energy");
+  assert.equal(result.added,1); assert.equal(result.unseenIds.length,0);
+  assert.deepEqual(result.records.find(r=>r.id===old.id)?.raw,old.raw);
+});
+
 function makeRecord(
   docId: string,
   rowIndex: number,

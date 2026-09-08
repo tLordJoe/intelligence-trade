@@ -107,6 +107,16 @@ function amountlessCore(record: DisclosureRecord): string {
   ].join("|");
 }
 
+/** Security-aware matching survives issuer-name cleanup and recovery of other
+ * same-day stocks, unlike the old ticker-free occurrence key. Only unique
+ * unmatched pairs are automatic; repeated economic twins remain conservative.
+ */
+function securityCore(record: DisclosureRecord): string {
+  return JSON.stringify([record.provenance.docId, record.ticker.toUpperCase(), record.type,
+    record.transactionDate, record.amountLow, record.amountHigh, record.amountStatus,
+    record.raw.ownerText.trim().toUpperCase()]);
+}
+
 /**
  * Merge freshly parsed records into the existing archive.
  *
@@ -189,8 +199,30 @@ export function mergeRecords(
     }
   }
 
-  // Pass 2 — fallbacks, over what pass 1 left.
+  // Pass 2 — unique security-aware economic matches. Reserve these before
+  // positional fallback, even when cleaning an issuer name changed its hash.
+  const oldBySecurity = new Map<string, DisclosureRecord[]>();
+  const newBySecurity = new Map<string, DisclosureRecord[]>();
+  for (const record of existing) {
+    if (claimed.has(record.id)) continue;
+    const key=securityCore(record);
+    oldBySecurity.set(key,[...(oldBySecurity.get(key) ?? []),record]);
+  }
   for (const record of unmatched) {
+    const key=securityCore(record);
+    newBySecurity.set(key,[...(newBySecurity.get(key) ?? []),record]);
+  }
+  for (const [key, next] of newBySecurity) {
+    const prior=oldBySecurity.get(key);
+    if (next.length !== 1 || prior?.length !== 1) continue;
+    claimed.add(prior[0].id);
+    seenThisRun.add(prior[0].id);
+    pairs.set(next[0],prior[0]);
+  }
+
+  // Pass 3 — legacy fallbacks, over what the stronger matches left.
+  for (const record of unmatched) {
+    if (pairs.has(record)) continue;
     const reconciliationKey = record.provenance?.reconciliationKey;
     const byKey = reconciliationKey
       ? byReconciliationKey.get(reconciliationKey)

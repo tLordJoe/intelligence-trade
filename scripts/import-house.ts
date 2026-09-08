@@ -23,7 +23,7 @@ import { writeFileSync, mkdirSync, existsSync, readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
-import { randomUUID } from "node:crypto";
+import { randomUUID, createHash } from "node:crypto";
 
 import {
   SCHEMA_VERSION,
@@ -42,6 +42,7 @@ import {
 import { assessRecord, assessRun } from "../src/lib/congress-gates.ts";
 import { hasAmount } from "../src/lib/amounts.ts";
 import { assessHouseSymbolCoverage } from "../src/lib/house-coverage.ts";
+import { applyReviewedHouseCorrections } from "../src/lib/house-reviewed-corrections.ts";
 import { mergeRecords, tallyCounts } from "../src/lib/congress-merge.ts";
 import { renderImportReport, tallyWarnings } from "../src/lib/import-report.ts";
 import {
@@ -223,6 +224,7 @@ async function main() {
 
   const parsed: DisclosureRecord[] = [];
   const quarantined: DisclosureRecord[] = [];
+  const sourceHashes = new Map<string,string>();
 
   for (const filing of selected) {
     const cachePath = join(PDF_CACHE, `${filing.docId}.pdf`);
@@ -239,6 +241,7 @@ async function main() {
       continue;
     }
     counts.downloadedFilings += 1;
+    sourceHashes.set(filing.docId,createHash("sha256").update(buf).digest("hex"));
 
     let text: string;
     try {
@@ -256,6 +259,7 @@ async function main() {
     const parseResult = parseFilingRows(text);
     const coverage = assessHouseSymbolCoverage(text, parseResult);
     counts.unaccountedSymbolMentions = (counts.unaccountedSymbolMentions ?? 0) + coverage.unaccounted;
+    counts.unresolvedSymbolRows = (counts.unresolvedSymbolRows ?? 0) + parseResult.skipped.length;
     if (coverage.unaccounted > 0) {
       console.error(`  BLOCK ${filing.docId}: ${coverage.unaccounted} supported symbol mentions were not accounted for by the parser`);
     }
@@ -387,7 +391,7 @@ async function main() {
 
   const merged = mergeRecords(
     existingRecords,
-    parsed,
+    applyReviewedHouseCorrections(existingRecords, parsed, sourceHashes),
     new Date().toISOString(),
     runId
   );

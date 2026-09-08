@@ -350,6 +350,9 @@ export function assessRun(input: RunGateInput): RunGateResult {
   if ((counts.unaccountedSymbolMentions ?? 0) > 0) {
     failures.push(`unaccounted_supported_symbol_mentions:${counts.unaccountedSymbolMentions}`);
   }
+  if ((counts.unresolvedSymbolRows ?? 0) > 0) {
+    failures.push(`unresolved_supported_symbol_rows:${counts.unresolvedSymbolRows}`);
+  }
 
   // Scanned filings extract as nothing. They are a known, stable population of
   // paper submissions, so they warn rather than block — but they are never

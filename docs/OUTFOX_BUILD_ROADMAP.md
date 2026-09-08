@@ -12,7 +12,7 @@ This document supersedes the build ordering and conflicting messaging in the old
 
 ## Status snapshot - evidence, not promises
 
-**September 8 audit update:** R1 is ready for review. R2's bounded audit is complete and found a release-blocking parser coverage defect: 101 cached filings contain 1,515 supported-symbol mentions unaccounted for by the parser. That diagnostic total is not a verified additional-trade count. A fresh original confirms three NVIDIA purchases where the archive holds one. See `r2-house-audit-2026-09-08.md`. Repair row segmentation and review a rebuilt candidate before publishing buying rankings. Completing the audit does not complete the recovery work.
+**September 8 recovery update:** R1 is ready for review. R2's bounded audit is complete, and its resulting parser repair (R2a) is now verified locally. The candidate contains 2,516 transactions, recovering 1,519 while retaining all 997 existing IDs and raw evidence. Independent PDF extraction matched all 2,516 economic-field rows across 375 cached documents. Final tests: 506 passed, 2 existing skips, no failures; lint, TypeScript, production/preview builds and isolation checks passed. See `r2a-house-recovery-2026-09-08.md`. Nothing was published. Review and a supervised import remain; scanned reports and newer uncollected filings are separate coverage gaps.
 
 | Area | Actual state | Evidence / remaining limit |
 |---|---|---|
@@ -33,7 +33,7 @@ R1 automated receipt: **492 tests; 490 passed, 2 existing cache-dependent tests 
 ```mermaid
 flowchart TD
   A[R1 COMPLETE: Home + Compare preview + stack activity] --> B[R2 COMPLETE: Audit found missing transaction rows]
-  B --> Q[NEXT R2a: Repair parser and validate rebuilt archive]
+  B --> Q[R2a READY FOR REVIEW: Parser repaired, candidate verified]
   Q --> C[Release reviewed House discovery experience]
   D[Political sources: House + Senate + executive + judiciary] --> G[Normalized records + dates + source evidence]
   E[Corporate insiders: Form 4] --> G
@@ -61,7 +61,7 @@ At 4 actual focused hours per weekday, 20 hours is about one workweek. At 8, it 
 |---|---|---:|---|
 | R1 | Current preview: activity card, theme, mobile, controls, evidence and production isolation | 0 — complete | Browser proofs and tests/build passed; not published. Original estimate was 2-4 hours. |
 | R2 | House data integrity / coverage audit; identity aliases, missing/scanned inventory, two date anomalies | 0 — audit complete | Findings and safeguards saved; recovery is R2a. Original estimate was 8-16 hours. Full OCR recovery is additional work. |
-| R2a | Repair blank-owner row segmentation and reconcile a candidate archive | Re-estimate after repair design | Newly required by completed R2 audit. Preserve all original rows and identities; validate long and repeated-row filings. No live overwrite until reviewed. |
+| R2a | Repair blank-owner row segmentation and reconcile a candidate archive | 0 — bounded repair complete | Independent 375-document check, nine source-PDF fixtures, identity/raw preservation and repeat replay passed. Ready for review, not published. |
 | R3 | Market-data and holdings source decision packet | 6-12 | Confirm display, derived-calculation and eventual API rights separately; exact costs and sample coverage. No spend without Joe. |
 | R4 | Real Compare for an initial supported catalog | 12-24 | R3; adjusted history, distributions, security lookup, availability handling and independent return reconciliation. Not every global ticker. |
 | R5 | Initial ETF holdings ingestion + stock-to-ETF activity match | 12-24 | R2/R3; dated holdings, stock identity matching, weights and partial coverage; do not imply ETF shares were purchased. |
@@ -86,7 +86,7 @@ At 4 actual focused hours per weekday, 20 hours is about one workweek. At 8, it 
 ### Milestones to discuss in plain English
 
 1. **Showable update complete:** R1 is verified and available in the local preview. This is the House-based experience, not complete political coverage.
-2. **Credible House discovery release:** R2 audit is complete, but its findings invalidate the earlier release estimate. R2a must repair partial-row loss and validate a rebuilt candidate first; remaining effort is not yet estimated. Deployment requires approval.
+2. **Credible House discovery release:** R2 audit and R2a repair are complete locally. Review the repair, then perform a supervised import with regenerated run/publication metadata and production verification. The offline candidate is not a production file to copy. Scanned/newer filings remain explicit coverage gaps. Deployment requires approval.
 3. **Real comparison + ETF connection:** R3-R5, roughly 30-60 focused hours after starting that work; external access/rights wait is additional and currently unknown.
 4. **Three-group overlap:** R6/R8/R12, roughly 38-76 focused hours, with House integrity as a prerequisite. Senate, executive and judiciary remain separate required coverage expansions.
 5. **All three government branches:** R7/R9/R10, roughly 48-96 focused hours for bounded initial collectors, excluding access waits and the work required to substantiate broad historical completeness. This is a low-confidence planning range, not a release date.
@@ -114,7 +114,7 @@ These milestones share dependencies. Their totals are not additive calendar phas
 | This visual roadmap | Active during creation; delivered when files are shown | Joe can inspect the graph and priority order. |
 | Explore card + current preview | R1 ready for review | Verified September 8; see docs/r1-verification-2026-09-08.md. Not published. |
 | House counting / coverage | R2 ready for review - audit complete, release HOLD | Source inventory and targeted identity/date audit complete; serious partial-row loss found. Report: docs/r2-house-audit-2026-09-08.md. |
-| Partial-row recovery | R2a queued - required before release | Replace owner-marker-only segmentation, replay against frozen sources, reconcile every prior record, validate a candidate archive. Full OCR is separate. |
+| Partial-row recovery | R2a ready for review - local verification complete | 1,519 additional transactions recovered; all 997 old IDs/raw records retained. Independent 2,516-row reconciliation, 506 passing tests, both builds passed. Report: docs/r2a-house-recovery-2026-09-08.md. Full OCR is separate. |
 | All other roadmap rows | Queued, not running | Start the next bounded item explicitly within an active work turn. |
 | Other AI tools | Not assigned by this document | Suggested roles below do not dispatch any work. |
 
@@ -132,7 +132,7 @@ At handoff, give an evidence receipt: what changed, what tests passed or were sk
 
 ## Re-entry instruction for the project
 
-Start with this ledger and the latest repository status. Check actual code/tests before repeating any progress claim. Do not resurrect superseded headlines or infer that queued research is implemented. Preserve user edits and keep the original Claude checkout separate. R1 and R2 audit are complete; the next required repair is R2a, documented in the R2 report. Do not publish the ranking experience while the parser's unaccounted-symbol gate fails. The exported seven-page PDF is an earlier snapshot; this ledger carries the audit update.
+Start with this ledger and the latest repository status. Check actual code/tests before repeating any progress claim. Do not resurrect superseded headlines or infer that queued research is implemented. Preserve user edits and keep the original Claude checkout separate. R1, the R2 audit, and R2a's bounded repair are ready for review. Next is review and a supervised import/publication decision, not another claim that the parser repair has yet to start. Do not publish while unaccounted or unresolved supported rows remain. The exported seven-page PDF is an earlier snapshot; this ledger carries the recovery update.
 
 ## Supporting evidence
 

@@ -232,6 +232,8 @@ export interface ImportCounts {
   suspiciousZeroRowFilings: number;
   /** Supported symbol mentions absent from both parsed and skipped rows. */
   unaccountedSymbolMentions?: number;
+  /** Supported symbols explicitly skipped with unresolved transaction structure. */
+  unresolvedSymbolRows?: number;
   /** Rows whose amount could not be read though one is present in the source. */
   amountParseFailures: number;
   /** Rows carrying no numeric amount, for any reason. */
@@ -314,6 +316,7 @@ export function emptyCounts(): ImportCounts {
     scannedFilings: 0,
     suspiciousZeroRowFilings: 0,
     unaccountedSymbolMentions: 0,
+    unresolvedSymbolRows: 0,
     amountParseFailures: 0,
     amountsUnknown: 0,
     wrappedRows: 0,
