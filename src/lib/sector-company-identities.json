@@ -1,0 +1,342 @@
+{
+  "source": "https://www.sec.gov/files/company_tickers.json",
+  "scope": "SEC identity snapshot for featured sector companies; not a complete security master.",
+  "updatedAt": "2026-09-08T18:57:02.033Z",
+  "entries": {
+    "AAPL": {
+      "ticker": "AAPL",
+      "cik": "0000320193",
+      "title": "Apple Inc."
+    },
+    "MSFT": {
+      "ticker": "MSFT",
+      "cik": "0000789019",
+      "title": "MICROSOFT CORP"
+    },
+    "NVDA": {
+      "ticker": "NVDA",
+      "cik": "0001045810",
+      "title": "NVIDIA CORP"
+    },
+    "AMD": {
+      "ticker": "AMD",
+      "cik": "0000002488",
+      "title": "ADVANCED MICRO DEVICES INC"
+    },
+    "AVGO": {
+      "ticker": "AVGO",
+      "cik": "0001730168",
+      "title": "Broadcom Inc."
+    },
+    "AMAT": {
+      "ticker": "AMAT",
+      "cik": "0000006951",
+      "title": "APPLIED MATERIALS INC /DE"
+    },
+    "JPM": {
+      "ticker": "JPM",
+      "cik": "0000019617",
+      "title": "JPMORGAN CHASE & CO"
+    },
+    "BAC": {
+      "ticker": "BAC",
+      "cik": "0000070858",
+      "title": "BANK OF AMERICA CORP /DE/"
+    },
+    "GS": {
+      "ticker": "GS",
+      "cik": "0000886982",
+      "title": "GOLDMAN SACHS GROUP INC"
+    },
+    "V": {
+      "ticker": "V",
+      "cik": "0001403161",
+      "title": "VISA INC."
+    },
+    "MA": {
+      "ticker": "MA",
+      "cik": "0001141391",
+      "title": "Mastercard Inc"
+    },
+    "BRK-B": {
+      "ticker": "BRK-B",
+      "cik": "0001067983",
+      "title": "BERKSHIRE HATHAWAY INC"
+    },
+    "GOOGL": {
+      "ticker": "GOOGL",
+      "cik": "0001652044",
+      "title": "Alphabet Inc."
+    },
+    "GOOG": {
+      "ticker": "GOOG",
+      "cik": "0001652044",
+      "title": "Alphabet Inc."
+    },
+    "META": {
+      "ticker": "META",
+      "cik": "0001326801",
+      "title": "Meta Platforms, Inc."
+    },
+    "NFLX": {
+      "ticker": "NFLX",
+      "cik": "0001065280",
+      "title": "NETFLIX INC"
+    },
+    "DIS": {
+      "ticker": "DIS",
+      "cik": "0001744489",
+      "title": "Walt Disney Co"
+    },
+    "T": {
+      "ticker": "T",
+      "cik": "0000732717",
+      "title": "AT&T INC."
+    },
+    "VZ": {
+      "ticker": "VZ",
+      "cik": "0000732712",
+      "title": "VERIZON COMMUNICATIONS INC"
+    },
+    "UNH": {
+      "ticker": "UNH",
+      "cik": "0000731766",
+      "title": "UNITEDHEALTH GROUP INC"
+    },
+    "LLY": {
+      "ticker": "LLY",
+      "cik": "0000059478",
+      "title": "ELI LILLY & Co"
+    },
+    "ABBV": {
+      "ticker": "ABBV",
+      "cik": "0001551152",
+      "title": "AbbVie Inc."
+    },
+    "JNJ": {
+      "ticker": "JNJ",
+      "cik": "0000200406",
+      "title": "JOHNSON & JOHNSON"
+    },
+    "PFE": {
+      "ticker": "PFE",
+      "cik": "0000078003",
+      "title": "PFIZER INC"
+    },
+    "MRK": {
+      "ticker": "MRK",
+      "cik": "0000310158",
+      "title": "Merck & Co., Inc."
+    },
+    "TSLA": {
+      "ticker": "TSLA",
+      "cik": "0001318605",
+      "title": "Tesla, Inc."
+    },
+    "AMZN": {
+      "ticker": "AMZN",
+      "cik": "0001018724",
+      "title": "AMAZON COM INC"
+    },
+    "HD": {
+      "ticker": "HD",
+      "cik": "0000354950",
+      "title": "HOME DEPOT, INC."
+    },
+    "LOW": {
+      "ticker": "LOW",
+      "cik": "0000060667",
+      "title": "LOWES COMPANIES INC"
+    },
+    "MCD": {
+      "ticker": "MCD",
+      "cik": "0000063908",
+      "title": "MCDONALDS CORP"
+    },
+    "NKE": {
+      "ticker": "NKE",
+      "cik": "0000320187",
+      "title": "NIKE, Inc."
+    },
+    "CAT": {
+      "ticker": "CAT",
+      "cik": "0000018230",
+      "title": "CATERPILLAR INC"
+    },
+    "GE": {
+      "ticker": "GE",
+      "cik": "0000040545",
+      "title": "GENERAL ELECTRIC CO"
+    },
+    "HON": {
+      "ticker": "HON",
+      "cik": "0000773840",
+      "title": "HONEYWELL INTERNATIONAL INC"
+    },
+    "RTX": {
+      "ticker": "RTX",
+      "cik": "0000101829",
+      "title": "RTX Corp"
+    },
+    "UPS": {
+      "ticker": "UPS",
+      "cik": "0001090727",
+      "title": "UNITED PARCEL SERVICE INC"
+    },
+    "DE": {
+      "ticker": "DE",
+      "cik": "0000315189",
+      "title": "DEERE & CO"
+    },
+    "KHC": {
+      "ticker": "KHC",
+      "cik": "0001637459",
+      "title": "Kraft Heinz Co"
+    },
+    "KO": {
+      "ticker": "KO",
+      "cik": "0000021344",
+      "title": "COCA COLA CO"
+    },
+    "PEP": {
+      "ticker": "PEP",
+      "cik": "0000077476",
+      "title": "PEPSICO INC"
+    },
+    "PG": {
+      "ticker": "PG",
+      "cik": "0000080424",
+      "title": "PROCTER & GAMBLE Co"
+    },
+    "WMT": {
+      "ticker": "WMT",
+      "cik": "0000104169",
+      "title": "Walmart Inc."
+    },
+    "COST": {
+      "ticker": "COST",
+      "cik": "0000909832",
+      "title": "COSTCO WHOLESALE CORP /NEW"
+    },
+    "XOM": {
+      "ticker": "XOM",
+      "cik": "0002115436",
+      "title": "ExxonMobil Holdings Corp"
+    },
+    "CVX": {
+      "ticker": "CVX",
+      "cik": "0000093410",
+      "title": "CHEVRON CORP"
+    },
+    "COP": {
+      "ticker": "COP",
+      "cik": "0001163165",
+      "title": "CONOCOPHILLIPS"
+    },
+    "HAL": {
+      "ticker": "HAL",
+      "cik": "0000045012",
+      "title": "HALLIBURTON CO"
+    },
+    "SLB": {
+      "ticker": "SLB",
+      "cik": "0000087347",
+      "title": "SLB LIMITED/NV"
+    },
+    "EOG": {
+      "ticker": "EOG",
+      "cik": "0000821189",
+      "title": "EOG RESOURCES INC"
+    },
+    "AEP": {
+      "ticker": "AEP",
+      "cik": "0000004904",
+      "title": "AMERICAN ELECTRIC POWER CO INC"
+    },
+    "NEE": {
+      "ticker": "NEE",
+      "cik": "0000753308",
+      "title": "NEXTERA ENERGY INC"
+    },
+    "DUK": {
+      "ticker": "DUK",
+      "cik": "0001326160",
+      "title": "Duke Energy CORP"
+    },
+    "SO": {
+      "ticker": "SO",
+      "cik": "0000092122",
+      "title": "SOUTHERN CO"
+    },
+    "CEG": {
+      "ticker": "CEG",
+      "cik": "0001868275",
+      "title": "Constellation Energy Corp"
+    },
+    "VST": {
+      "ticker": "VST",
+      "cik": "0001692819",
+      "title": "Vistra Corp."
+    },
+    "LIN": {
+      "ticker": "LIN",
+      "cik": "0001707925",
+      "title": "LINDE PLC"
+    },
+    "APD": {
+      "ticker": "APD",
+      "cik": "0000002969",
+      "title": "Air Products & Chemicals, Inc."
+    },
+    "FCX": {
+      "ticker": "FCX",
+      "cik": "0000831259",
+      "title": "FREEPORT-MCMORAN INC"
+    },
+    "NEM": {
+      "ticker": "NEM",
+      "cik": "0001164727",
+      "title": "NEWMONT Corp /DE/"
+    },
+    "SHW": {
+      "ticker": "SHW",
+      "cik": "0000089800",
+      "title": "SHERWIN WILLIAMS CO"
+    },
+    "NUE": {
+      "ticker": "NUE",
+      "cik": "0000073309",
+      "title": "NUCOR CORP"
+    },
+    "PLD": {
+      "ticker": "PLD",
+      "cik": "0001045609",
+      "title": "Prologis, Inc."
+    },
+    "AMT": {
+      "ticker": "AMT",
+      "cik": "0001053507",
+      "title": "AMERICAN TOWER CORP /MA/"
+    },
+    "EQIX": {
+      "ticker": "EQIX",
+      "cik": "0001101239",
+      "title": "EQUINIX INC"
+    },
+    "DLR": {
+      "ticker": "DLR",
+      "cik": "0001297996",
+      "title": "DIGITAL REALTY TRUST, INC."
+    },
+    "O": {
+      "ticker": "O",
+      "cik": "0000726728",
+      "title": "REALTY INCOME CORP"
+    },
+    "SPG": {
+      "ticker": "SPG",
+      "cik": "0001063761",
+      "title": "SIMON PROPERTY GROUP INC."
+    }
+  }
+}

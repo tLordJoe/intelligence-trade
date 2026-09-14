@@ -11,7 +11,7 @@ import { resolveTicker } from "@/lib/security-master";
 import { archiveRecords } from "@/lib/home-discovery";
 import { buildHomeWindow } from "@/lib/homepage-market";
 import type { DisclosureRecord } from "@/lib/congress-schema";
-import master from "../../../../data/security-master.json";
+import master from "@/lib/sector-company-identities.json";
 import liveData from "@/lib/congress-live.json";
 import "../../homepage.css";
 

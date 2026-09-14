@@ -24,7 +24,7 @@ test("all sector fund destinations resolve to their own dated, sourced profile",
   assert.equal(findSectorFund("XLV")?.expensePercent, 0.08);
 });
 test("every featured stock has an SEC-matched company identity", () => {
-  const master = JSON.parse(source("data/security-master.json"));
+  const master = JSON.parse(source("src/lib/sector-company-identities.json"));
   for (const sector of HOME_SECTORS) for (const ticker of sector.tickers) {
     const match = resolveTicker(ticker, master);
     assert.notEqual(match.resolution, "unknown", ticker);
