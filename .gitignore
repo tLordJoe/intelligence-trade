@@ -53,6 +53,7 @@ data/import-runs/latest-run-id.txt
 scripts/.probe/
 data/form4-runs/
 data/form4-candidate.json
+data/senate-runs/
 
 # Personal Claude Code preferences. `settings.json` is the shareable project
 # file; `settings.local.json` is per-developer and is never committed.

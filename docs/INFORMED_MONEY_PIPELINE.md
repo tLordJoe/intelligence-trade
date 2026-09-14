@@ -49,7 +49,10 @@ through a shared validated envelope; they do not write directly to public pages.
 ### Senate PTR
 
 - Source: Secretary of the Senate eFD system
-- Status: held until source-use legal review and separate collector validation
+- Status: initial local collector implemented; owner authorized the source access
+  agreement September 14, 2026. Electronic PTR collection and scan archiving are
+  separate from publication approval. See `SENATE_PIPELINE.md` for evidence and
+  remaining amendment, identity, scan-extraction and release gates.
 - Important limitation: separate source, terms, session flow, and review process
 
 ## Shared record envelope
