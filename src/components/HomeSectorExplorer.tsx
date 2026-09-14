@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Monitor, Wallet, MessagesSquare, Heart, ShoppingCart, Factory, ShoppingBasket, Flame, Zap, Layers3, Building2 } from "lucide-react";
 import { HOME_SECTORS, SECTOR_WEIGHTS, SECTOR_WEIGHT_DATE, SECTOR_WEIGHT_SOURCE, sectorDisplayWidth } from "@/lib/home-sectors";
 import type { HomeCompany } from "@/lib/homepage-market";
-import { TickerTile } from "./HomeTradingTable";
+import CompanyMark from "./CompanyMark";
 import { sectorFunds } from "@/lib/sector-funds";
 
 const icons = { monitor: Monitor, wallet: Wallet, messages: MessagesSquare, heart: Heart, cart: ShoppingCart,
@@ -34,13 +34,13 @@ export default function HomeSectorExplorer({ companies }: { companies: HomeCompa
         <div className="home-sector-heading"><span style={{ background: active.colors[0] }}><Icon size={28} aria-hidden="true" /></span><div><h3>{active.name}</h3><p>{active.description}</p></div></div>
         <h4>Disclosed House buying · Year to date</h4>
         <p className="home-muted">Among selected companies tracked in this sector—not a sector-wide ranking.</p>
-        {activity.length ? activity.map(company => <Link className="home-sector-company" key={company.ticker} href={`/congress?ticker=${encodeURIComponent(company.ticker)}`}>
-          <TickerTile ticker={company.ticker} /><span><strong>{company.ticker}</strong><small>{company.name}</small></span><span>{company.buyers}<small>buying {company.buyers === 1 ? "filer" : "filers"}</small></span>
+        {activity.length ? activity.map(company => <Link className="home-sector-company" key={company.ticker} href={`/stocks/${encodeURIComponent(company.ticker)}`}>
+          <CompanyMark ticker={company.ticker} cik={company.cik} /><span><strong>{company.ticker}</strong><small>{company.name}</small></span><span>{company.buyers}<small>buying {company.buyers === 1 ? "filer" : "filers"}</small></span>
         </Link>) : <p className="home-empty">No eligible YTD purchases found for these tracked companies. This is not a claim of no activity across the sector.</p>}
-        <p className="home-muted">Companies in this sector</p><div className="home-sector-tickers">{active.tickers.slice(0, 3).map(ticker => <Link href={`/congress?ticker=${encodeURIComponent(ticker)}`} key={ticker}>{ticker}</Link>)}</div>
+        <p className="home-muted">Companies in this sector</p><div className="home-sector-tickers">{active.tickers.slice(0, 3).map(ticker => <Link href={`/stocks/${encodeURIComponent(ticker)}`} key={ticker} aria-label={`Explore ${ticker} company overview`}>{ticker}</Link>)}</div>
         <h4 className="home-sector-fund-heading">ETFs covering this sector</h4>
         <p className="home-muted">Examples, not recommendations. Fund holdings differ.</p>
-        <div className="home-sector-tickers">{sectorFunds(active.id).map(fund => <Link href={`/sectors/${active.id}#funds`} key={fund.ticker} aria-label={`Explore ${fund.ticker} in ${active.name}`}>{fund.ticker}<small>{fund.provider}</small></Link>)}</div>
+        <div className="home-sector-tickers">{sectorFunds(active.id).map(fund => <Link href={`/etfs/${fund.ticker}`} key={fund.ticker} aria-label={`Explore ${fund.ticker} ETF overview`}>{fund.ticker}<small>{fund.provider}</small></Link>)}</div>
         <Link className="home-text-link sector-explore-link" href={`/sectors/${active.id}`}>Explore {active.name} →</Link>
       </div>
     </div>

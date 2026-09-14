@@ -36,6 +36,7 @@ export default function Navbar({ showCompare = false }: { showCompare?: boolean 
 
   function isActive(href: string) {
     if (href === "/") return pathname === "/";
+    if (href === "/explore") return ["/explore", "/sectors", "/stocks", "/etfs"].some(prefix => pathname === prefix || pathname.startsWith(prefix + "/"));
     return pathname.startsWith(href);
   }
 

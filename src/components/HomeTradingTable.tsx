@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import BuildoutStackIcon from "./BuildoutStackIcon";
+import CompanyMark from "./CompanyMark";
 import { HOME_FILER_IMAGES } from "@/lib/home-filer-images";
 import { filerProfilePath } from "@/lib/filer-profile";
 import { ArrowUpRight, Clock3, Layers3 } from "lucide-react";
@@ -27,10 +28,6 @@ function FilerLink({ person }: { person: HomeFiler }) {
     {portrait && !failed && <Image src={`/portraits/${portrait}.jpg`} alt="" width={38} height={38} style={{ opacity: loaded ? 1 : 0 }} onLoad={() => setLoaded(true)} onError={() => setFailed(true)} />}
   </Link>;
 }
-export function TickerTile({ ticker }: { ticker: string }) {
-  return <span className="home-ticker-tile" aria-hidden="true">{ticker}</span>;
-}
-
 export default function HomeTradingTable({ windows, updatedAt, scans }: {
   windows: Record<HomePeriod, HomeWindow>; updatedAt: string; scans: number;
 }) {
@@ -65,7 +62,7 @@ export default function HomeTradingTable({ windows, updatedAt, scans }: {
           <thead><tr><th scope="col">Company + ticker</th><th scope="col">Distinct buyers</th><th scope="col">Purchase records</th><th scope="col">Sale records</th><th scope="col">Buying filers</th></tr></thead>
           <tbody>{companies.map(company => <tr key={company.ticker}>
             <th scope="row"><Link className="home-company" href={`/congress?ticker=${encodeURIComponent(company.ticker)}`}>
-              <TickerTile ticker={company.ticker} /><span><strong>{company.ticker}</strong><small>{company.name}</small></span>
+              <CompanyMark ticker={company.ticker} cik={company.cik} /><span><strong>{company.ticker}</strong><small>{company.name}</small></span>
             </Link></th>
             <td data-label="Distinct buyers" className="home-count">{company.buyers}</td>
             <td data-label="Purchase records" className="home-count">{company.purchases}</td>
@@ -86,13 +83,14 @@ export default function HomeTradingTable({ windows, updatedAt, scans }: {
         <p>House records only. Ranked by distinct purchasing filers, then ticker. One buyer can contribute several purchase records. Sales are counted separately for these stocks. Options, exchanges, unresolved tickers, conflicting issuer identities, quarantined records and invalid dates are excluded. Each period uses transaction dates, not filing dates. Recent activity is incomplete, not zero.</p>
         <p>Archive refreshed {updatedAt.slice(0, 10)}. {scans > 0 && `${scans} scanned reports await recovery and are not included.`} {stale && <strong>Archive refresh overdue; recent activity may be missing.</strong>}</p>
         <Link href="/methodology">Read the methodology →</Link>
+        <p>Company marks identify the subjects of independent coverage, not sponsors. <a href="/company-logos/NOTICE.txt">Image sources and notices</a>.</p>
       </details>
     </section>
     <div className="home-latest-grid">
       <section className="home-panel" aria-labelledby="home-latest-title"><h2 id="home-latest-title">Latest disclosed purchases</h2>
         <p className="home-muted">Newest filings within the selected transaction window.</p>
         {current.recent.map(row => <article className="home-purchase" key={row.id}>
-          <TickerTile ticker={row.ticker} /><FilerLink person={row.filer} /><div className="home-purchase-person"><Link href={filerProfilePath(row.filer.key)}>{row.filer.name}</Link><span>{row.ticker} · {row.amount}</span></div>
+          <CompanyMark ticker={row.ticker} cik={row.cik} /><FilerLink person={row.filer} /><div className="home-purchase-person"><Link href={filerProfilePath(row.filer.key)}>{row.filer.name}</Link><span>{row.ticker} · {row.amount}</span></div>
           <a href={row.source} target="_blank" rel="noopener noreferrer" aria-label={`Original ${row.ticker} filing by ${row.filer.name}`}><span>Traded {row.traded}</span><span>Filed {row.filed}</span></a>
         </article>)}
         {!current.recent.length && <p className="home-empty">No eligible purchases in this window.</p>}

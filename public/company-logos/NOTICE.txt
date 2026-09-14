@@ -1,0 +1,16 @@
+Company logos identify the subjects of Outfox's independent disclosure coverage.
+Their owners do not sponsor or endorse Outfox. No API image-redistribution rights
+or advertising rights are granted by this notice.
+
+NVIDIA logo: Copyright NVIDIA Corporation. Wikimedia Commons distributes this
+file under Apache License 2.0, based on NVIDIA's BioNeMo source distribution.
+The Commons SVG is reproduced unchanged. License: /company-logos/LICENSE-NVIDIA.txt
+Source: https://commons.wikimedia.org/wiki/File:NVIDIA_logo.svg
+
+Other logo files carry public-domain copyright tags on their individual Commons
+file pages. Trademark restrictions remain. Apple's tag is specific to U.S.
+copyright status; it is not worldwide clearance. These source classifications
+are documented evidence, not a legal determination of every use or jurisdiction.
+
+Exact sources, hashes and qualifications are recorded in the public repository:
+https://github.com/tLordJoe/intelligence-trade/blob/main/docs/company-logo-manifest.json
