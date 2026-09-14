@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { layers } from "@/lib/data";
 import { blogPosts } from "@/lib/blog-data";
 import { learnEntries } from "@/lib/learn-data";
+import { HOME_SECTORS } from "@/lib/home-sectors";
 
 const BASE_URL = "https://outfoxmarkets.com";
 
@@ -37,5 +38,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...layerPages, ...articlePages, ...learnPages];
+  const sectorPages: MetadataRoute.Sitemap = HOME_SECTORS.map(sector => ({
+    url: `${BASE_URL}/sectors/${sector.id}`, changeFrequency: "weekly", priority: 0.8,
+  }));
+  return [...staticPages, ...layerPages, ...articlePages, ...learnPages, ...sectorPages];
 }

@@ -4,6 +4,7 @@
 import { useState } from "react";
 import { layers } from "@/lib/data";
 import { SUBCATEGORIES } from "@/lib/subcategories";
+import { MARKET_CAPS, STACK_GRADIENTS, stackWidth } from "@/lib/stack-presentation";
 import {
   Bot, Wrench, AppWindow, TrendingUp, Server, Building2, Globe, Zap, Atom,
   Flame, Network, Cable, Antenna, Cpu, CircuitBoard, Binary, MemoryStick,
@@ -31,34 +32,6 @@ function formatCapB(capB: number): string {
   if (capB >= 1000) return `$${(capB / 1000).toFixed(1)}T`;
   return `$${capB.toFixed(0)}B`;
 }
-
-
-const MARKET_CAPS: Record<string, number> = {
-  "software-models": 10.8e12,
-  "data-centers": 7.8e12,
-  "energy-infrastructure": 386e9,
-  networking: 1.5e12,
-  processors: 10.4e12,
-  "memory-storage": 575e9,
-  foundries: 1.3e12,
-  "semiconductor-equipment": 706e9,
-  "raw-materials": 180e9,
-  cybersecurity: 450e9,
-};
-
-
-const STACK_GRADIENTS: Record<string, string> = {
-  "software-models": "linear-gradient(120deg, #b91c1c 0%, #ef4444 100%)",
-  cybersecurity: "linear-gradient(120deg, #0f766e 0%, #14b8a6 100%)",
-  "data-centers": "linear-gradient(120deg, #0e7490 0%, #22b8cf 100%)",
-  "energy-infrastructure": "linear-gradient(120deg, #b45309 0%, #f59e0b 100%)",
-  networking: "linear-gradient(120deg, #6d28d9 0%, #8b5cf6 100%)",
-  processors: "linear-gradient(120deg, #047857 0%, #10b981 100%)",
-  "memory-storage": "linear-gradient(120deg, #be185d 0%, #ec4899 100%)",
-  foundries: "linear-gradient(120deg, #c2410c 0%, #f97316 100%)",
-  "semiconductor-equipment": "linear-gradient(120deg, #4338ca 0%, #6366f1 100%)",
-  "raw-materials": "linear-gradient(120deg, #44403c 0%, #78716c 100%)",
-};
 
 
 const SUBCATEGORY_LEADERS: Record<string, string[]> = {
@@ -108,7 +81,6 @@ export default function StackVisualization({
   onSelectLayer,
   onHoverLayer,
 }: Props) {
-  const maxCap = Math.max(...Object.values(MARKET_CAPS));
   const focus = highlightLayer ?? activeLayer;
   const [hoveredBubble, setHoveredBubble] = useState<string | null>(null);
 
@@ -141,7 +113,7 @@ export default function StackVisualization({
           {layers.map((layer) => {
             const cap = MARKET_CAPS[layer.slug] || 0;
             // 40% floor + proportional 60% keeps small layers legible
-            const width = 40 + (cap / maxCap) * 60;
+            const width = stackWidth(layer.slug);
             const isFocused = focus === layer.slug;
             const isPinned = activeLayer === layer.slug;
             const subs = SUBCATEGORIES[layer.slug] || [];
