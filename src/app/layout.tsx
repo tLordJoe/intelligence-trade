@@ -10,8 +10,12 @@ export const metadata: Metadata = {
   description:
     "Explore official U.S. House stock-trade disclosures and market data across the AI supply chain.",
   icons: {
-    icon: [{ url: "/brand/outfox-tail.svg", type: "image/svg+xml" }],
-    shortcut: "/brand/outfox-tail.svg",
+    icon: [
+      { url: "/brand/outfox-tail.svg", type: "image/svg+xml" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: "/favicon.ico",
   },
   openGraph: {
     title: "Outfox — Financial intelligence for the rest of us",
