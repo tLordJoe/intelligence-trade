@@ -1,3 +1,5 @@
+import type { CatalogEntry } from "./types.ts";
+
 /**
  * Identity keys and alias normalisation.
  *
@@ -78,4 +80,11 @@ export function personNameVariants(parts: { first: string; middle?: string | nul
 /** Seat-scoped key for a person alias. A name without a seat never matches. */
 export function personAliasKey(chamber: string, state: string, district: string | null | undefined, normalizedName: string): string {
   return `${chamber}|${state}|${district ?? ""}|${normalizedName}`;
+}
+
+/** A sponsor is also a traded company only with current SEC ticker evidence. */
+export function isCompanyEntry(entry: CatalogEntry): boolean {
+  return entry.kind === "company" || (entry.kind === "sponsor" &&
+    /^sec:cik:\d{10}$/.test(entry.identity) && entry.aliases.some(alias =>
+      alias.type === "ticker" && alias.status === "current" && alias.source === "SEC company_tickers.json"));
 }

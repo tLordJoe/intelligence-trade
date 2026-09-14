@@ -8,6 +8,7 @@ import test from "node:test";
 import { existsSync, readFileSync } from "node:fs";
 
 import type { Catalog } from "../src/lib/image-library/types.ts";
+import { isCompanyEntry } from "../src/lib/image-library/identity.ts";
 
 const catalog = JSON.parse(readFileSync(new URL("../src/lib/image-library/catalog.json", import.meta.url), "utf8")) as Catalog;
 const reportPath = new URL("../data/image-library/coverage.json", import.meta.url);
@@ -19,7 +20,10 @@ test("the coverage report exists and was built from the current catalog", () => 
   assert.equal(report.catalogGeneratedAt, catalog.generatedAt, "report is stale relative to the catalog");
   const unresolved = catalog.entries.filter((e) => e.status !== "resolved").map((e) => e.identity).sort();
   assert.deepEqual(report.unresolved.map((u) => u.identity).sort(), unresolved, "every unresolved identity must be listed");
-  assert.equal(report.companies.resolved, catalog.entries.filter((e) => e.kind === "company" && e.status === "resolved").length);
+  assert.equal(report.companies.resolved, catalog.entries.filter((e) => isCompanyEntry(e) && e.status === "resolved").length);
+  const universe = JSON.parse(readFileSync(new URL("../data/image-library/universe-companies.json", import.meta.url), "utf8"));
+  const uniqueCiks = new Set(universe.members.filter((m: { ciks: string[] }) => m.ciks.length === 1).map((m: { ciks: string[] }) => m.ciks[0]));
+  assert.equal(report.companies.issuersInUniverse, uniqueCiks.size);
 });
 
 test("the markdown names every unresolved identity and separates issuer from ticker coverage", () => {

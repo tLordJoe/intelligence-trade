@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-14T06:01:36.866Z",
+ "generatedAt": "2026-09-14T16:41:01.369Z",
  "catalogGeneratedAt": "2026-09-14T06:01:36.753Z",
  "universes": {
   "funds": {
@@ -11,9 +11,9 @@
   "companies": {
    "source": "Wikidata: items with P361 (part of) = Q242345 (S&P 500), joined to SEC company_tickers.json by P5531 (CIK)",
    "asOf": "2026-09-14",
-   "identities": 512,
-   "tickers": 672,
-   "note": "527 Wikidata items; 512 carry exactly one CIK; 15 carry none and 0 carry several, so they cannot be keyed and are listed in the coverage report. Membership as Wikidata records it — which includes some former constituents — not the index provider's official list."
+   "identities": 510,
+   "tickers": 670,
+   "note": "527 source items; 510 distinct CIKs. Company coverage includes sponsors with current SEC ticker evidence; sponsor-only identities are not assumed to be currently traded companies. Membership is as Wikidata records it, including former constituents, not the index provider's official list."
   },
   "congress": {
    "source": "unitedstates/congress-legislators legislators-current.json (CC0); portraits from unitedstates/images 225x275 (CC0 repository, GPO provenance stated)",
@@ -23,15 +23,15 @@
   }
  },
  "companies": {
-  "resolved": 347,
-  "missing": 69,
+  "resolved": 348,
+  "missing": 70,
   "ambiguous": 6,
   "failed": 0,
   "awaiting_review": 85,
-  "issuersInUniverse": 512,
-  "issuersResolved": 347,
-  "tickersInUniverse": 667,
-  "tickersResolved": 522,
+  "issuersInUniverse": 510,
+  "issuersResolved": 348,
+  "tickersInUniverse": 670,
+  "tickersResolved": 524,
   "manuallyReviewed": 10,
   "unkeyedWikidataItems": [
    {

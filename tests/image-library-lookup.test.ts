@@ -14,6 +14,54 @@ import { catalogSummary, getEntry, resolveCompanyMark, resolveFundMark, resolveP
 import { cikIdentity, normalizePersonName, personNameVariants, tickerSpellings } from "../src/lib/image-library/identity.ts";
 import type { Catalog } from "../src/lib/image-library/types.ts";
 
+test("malformed authoritative identifiers return fallbacks, never throw or use a ticker", () => {
+  for (const bad of ["", "bad-id", " 1045810", "12345678901"]) {
+    assert.equal(resolveCompanyMark({ ticker: "NVDA", cik: bad }).status, "fallback");
+    assert.equal(resolveFundMark({ ticker: "XLK", classId: bad }).status, "fallback");
+    assert.equal(resolvePortrait({ bioguide: bad }).status, "fallback");
+  }
+});
+
+test("a supplied portrait identity must agree with the supplied person and seat", () => {
+  for (const evidence of [
+    { name: "Ro Khanna", chamber: "House", state: "CA", district: "CA17" },
+    { name: "Nancy Pelosi", state: "TX" },
+    { name: "Nancy Pelosi", district: "CA17" },
+    { filerKey: "House:CA:CA17:ro khanna" },
+  ]) {
+    assert.deepEqual(resolvePortrait({ bioguide: "P000197", ...evidence }).status, "fallback");
+  }
+  assert.equal(resolvePortrait({ bioguide: "P000197", name: "Nancy Pelosi", chamber: "House", state: "CA", district: "CA11" }).status, "resolved");
+  assert.equal(resolvePortrait({ filerKey: "House:CA:CA11:nancy pelosi", name: "Someone Else" }).status, "fallback");
+});
+
+test("every unresolved fund state blocks sponsor fallback", () => {
+  const entry = getEntry("sec:class:C000017601")!;
+  const original = entry.status;
+  try {
+    for (const status of ["missing", "ambiguous", "failed", "awaiting_review"] as const) {
+      entry.status = status;
+      assert.deepEqual(resolveFundMark({ ticker: "XLK" }), { status: "fallback", reason: "not_resolved", label: "XLK" });
+    }
+  } finally { entry.status = original; }
+});
+
+test("an issuer that also sponsors funds resolves consistently with either lookup", () => {
+  const byTicker = resolveCompanyMark({ ticker: "STT" });
+  const byCik = resolveCompanyMark({ ticker: "STT", cik: "93751" });
+  assert.equal(byTicker.status, "resolved");
+  assert.deepEqual(byTicker, byCik);
+  if (byTicker.status === "resolved") {
+    assert.equal(byTicker.role, "company_mark");
+    const fund = resolveFundMark({ ticker: "XLK" });
+    assert.equal(fund.status, "resolved");
+    if (fund.status === "resolved") { assert.equal(fund.src, byTicker.src); assert.equal(fund.role, "sponsor_mark"); }
+  }
+  // Old BlackRock Finance CIK has no current SEC ticker evidence; do not invent
+  // a BLK alias merely because its corporate sponsor mark is available.
+  assert.equal(resolveCompanyMark({ ticker: "BLK", cik: "1364742" }).status, "fallback");
+});
+
 const catalog = JSON.parse(readFileSync(new URL("../src/lib/image-library/catalog.json", import.meta.url), "utf8")) as Catalog;
 
 // --- companies ---------------------------------------------------------------

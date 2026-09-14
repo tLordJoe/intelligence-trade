@@ -5,10 +5,11 @@
  */
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFileSync, readdirSync } from "node:fs";
 
 import { InvalidImage, LIMITS, formatFromContentType, sanitizeSvg, validateImage } from "../scripts/image-library/validate.ts";
 
-const svg = (inner: string, attrs = "") => Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ${attrs}>${inner}</svg>`);
+const svg = (inner: string, attrs = "") => Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" ${attrs}>${inner}</svg>`);
 
 test("a plain SVG passes unchanged and reports its dimensions", () => {
   const v = validateImage(svg(`<path d="M0 0h24v24H0z"/>`, `width="48" height="24"`), "svg");
@@ -23,14 +24,45 @@ test("script, foreignObject and event handlers are stripped and reported", () =>
 });
 
 test("external and data references are removed; an embedded external image is refused", () => {
-  const { bytes } = sanitizeSvg(svg(`<use xlink:href="https://evil.example/x.svg#a"/><a href="javascript:alert(1)">t</a>`));
+  const { bytes } = sanitizeSvg(svg(`<use xlink:href="https://evil.example/x.svg#a"/>`));
   assert.ok(!/https:\/\/evil|javascript:/i.test(bytes.toString()));
   assert.throws(() => sanitizeSvg(svg(`<image href="https://evil.example/tracker.png"/>`)), InvalidImage);
   assert.throws(() => sanitizeSvg(svg(`<style>rect{fill:url(https://evil.example/f)}</style>`)), InvalidImage);
 });
 
+test("XML namespaces and encoded references cannot bypass validation", () => {
+  for (const inner of [
+    '<s:script xmlns:s="http://www.w3.org/2000/svg">document.title="test"</s:script>',
+    '<image href="&#104;ttps://example.com/image.png"/>',
+    '<use href="../outside.svg#logo"/>',
+    '<image href="/tracking.png"/>',
+    '<use href="&#106;avascript:noop()"/>',
+    '<h:script xmlns:h="http://www.w3.org/1999/xhtml"/>',
+    '<g xml:base="https://example.com/"><use href="#shape"/></g>',
+    '<style>rect{fill:u\\72l(https://example.com/)}</style>',
+    '<style>@import "https://example.com/x.css";</style>',
+    '<style>rect{background:image-set("/tracking.png" 1x)}</style>',
+    '<path fill="u\\72l(https://example.com/paint)"/>',
+    '<g><path></g>',
+  ]) assert.throws(() => sanitizeSvg(svg(inner)), InvalidImage, inner);
+});
+
+test("safe SVG local references retain their exact bytes", () => {
+  const input = svg('<defs><linearGradient id="paint"><stop offset="0" stop-color="#fff"/></linearGradient></defs><path id="shape" fill="url(#paint)" d="M0 0h1v1z"/><use xlink:href="#shape"/>');
+  assert.deepEqual(sanitizeSvg(input).bytes, input);
+});
+
+test("every committed company/sponsor SVG passes the structural policy unchanged", () => {
+  const dir = new URL("../public/company-logos/", import.meta.url);
+  for (const name of readdirSync(dir).filter(name => name.endsWith(".svg"))) {
+    const bytes = readFileSync(new URL(name, dir));
+    assert.deepEqual(validateImage(bytes, "svg").bytes, bytes, `${name}: validation changed reviewed bytes`);
+  }
+});
+
 test("entity declarations are refused outright", () => {
   assert.throws(() => sanitizeSvg(Buffer.from(`<!DOCTYPE svg [<!ENTITY x "y">]><svg xmlns="http://www.w3.org/2000/svg"/>`)), InvalidImage);
+  assert.throws(() => sanitizeSvg(Buffer.from(`<!DOCTYPE svg SYSTEM "https://example.com/unknown.dtd"><svg xmlns="http://www.w3.org/2000/svg"/>`)), InvalidImage);
 });
 
 test("a file that only claims to be an image is refused", () => {

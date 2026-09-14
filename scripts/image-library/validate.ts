@@ -9,6 +9,7 @@
  */
 
 import { createHash } from "node:crypto";
+import { SaxesParser } from "saxes";
 
 export const LIMITS = {
   svgBytes: 256 * 1024,
@@ -39,6 +40,106 @@ const EVENT_ATTRS = /\s+on[a-z]+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi;
 const EXTERNAL_REF = /\s+(?:xlink:href|href|src)\s*=\s*("|')(?:\s*(?:https?:|\/\/|data:|javascript:|file:|ftp:))[^"']*\1/gi;
 const STYLE_URL = /url\s*\(\s*(?:"|')?\s*(?:https?:|\/\/|data:|javascript:)/i;
 
+const SVG_NS = "http://www.w3.org/2000/svg";
+const XMLNS_NS = "http://www.w3.org/2000/xmlns/";
+const XLINK_NS = "http://www.w3.org/1999/xlink";
+const XML_NS = "http://www.w3.org/XML/1998/namespace";
+// Only inert editor/provenance namespaces found in the reviewed source files.
+// Never admit HTML, MathML or an arbitrary foreign namespace.
+const INERT_NAMESPACES = new Set([
+  "http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd",
+  "http://www.inkscape.org/namespaces/inkscape",
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+  "http://creativecommons.org/ns#", "http://purl.org/dc/elements/1.1/",
+  "http://ns.adobe.com/Variables/1.0/", "http://ns.adobe.com/SaveForWeb/1.0/",
+  "http://ns.adobe.com/AdobeIllustrator/10.0/",
+]);
+const SVG_ELEMENTS = new Set(`svg g defs title desc metadata path rect circle ellipse line polyline polygon
+  linearGradient radialGradient stop clipPath mask pattern marker symbol use image style switch
+  filter feGaussianBlur feColorMatrix feOffset feComposite feFlood feBlend feMerge feMergeNode
+  text tspan textPath`.split(/\s+/));
+const SVG_ATTRIBUTES = new Set(`id class version width height x y x1 x2 y1 y2 d points viewBox
+  fill fill-rule fill-opacity stroke stroke-width stroke-linecap stroke-linejoin stroke-miterlimit stroke-opacity
+  stroke-dasharray stroke-dashoffset opacity transform style type offset cx cy fx fy r rx ry
+  gradientTransform gradientUnits spreadMethod stop-color stop-opacity clipPathUnits clip-path clip-rule
+  mask maskUnits maskContentUnits patternUnits patternContentUnits patternTransform preserveAspectRatio
+  color color-interpolation color-interpolation-filters filter filterUnits primitiveUnits stdDeviation
+  in in2 result dx dy values operator k1 k2 k3 k4 flood-color flood-opacity mode
+  markerWidth markerHeight markerUnits refX refY orient font-family font-size font-weight font-style
+  font-variant font-stretch font-feature-settings font-specification text-anchor dominant-baseline
+  alignment-baseline letter-spacing word-spacing text-decoration writing-mode direction unicode-bidi
+  overflow visibility display enable-background paint-order vector-effect shape-rendering text-rendering
+  image-rendering color-rendering fill-break href requiredFeatures requiredExtensions systemLanguage
+  lengthAdjust textLength startOffset media focusable role key`.split(/\s+/));
+
+function assertSafeCss(raw: string): void {
+  const css = raw.replace(/\/\*[\s\S]*?\*\//g, "");
+  // Reject escapes and at-rules instead of attempting a second CSS grammar.
+  if (/[\\@]/.test(css) || /(?:expression|binding|behavior)\s*[:(]/i.test(css)) throw new InvalidImage("Unsupported SVG CSS");
+  for (const match of css.matchAll(/([a-z-]+)\s*\(/gi)) {
+    if (!/^(?:url|rgb|rgba|hsl|hsla|var)$/.test(match[1].toLowerCase())) throw new InvalidImage("Unsupported SVG CSS function");
+  }
+  const withoutLocalUrls = css.replace(/url\s*\(\s*(["']?)#[A-Za-z0-9_.:-]+\1\s*\)/gi, "");
+  if (/url\s*\(|(?:https?:|data:|javascript:|file:|ftp:)|\/\//i.test(withoutLocalUrls)) throw new InvalidImage("SVG style references an external URL");
+}
+
+/** Validate the browser-parsed structure after legacy safe stripping. Namespaces
+ * and character references are resolved by XML parsing, not regex matching.
+ * Safe input is returned byte-for-byte so reviewed asset hashes do not change. */
+function assertSafeSvgStructure(text: string): void {
+  const parser = new SaxesParser({ xmlns: true });
+  let depth = 0;
+  let styleDepth = -1;
+  let css = "";
+  parser.on("error", error => { throw new InvalidImage(`Malformed SVG: ${error.message}`); });
+  parser.on("doctype", value => {
+    if (/[\[\]]/.test(value)) throw new InvalidImage("SVG declares entities");
+    const declaration = value.trim().replace(/\s+/g, " ");
+    const legacyDeclarations = new Set([
+      'svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"',
+      'svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"',
+      'svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"',
+    ]);
+    // Saxes never resolves DTDs. Keep only these legacy declarations already
+    // present in reviewed assets; reject arbitrary external systems/subsets.
+    if (!legacyDeclarations.has(declaration)) throw new InvalidImage("Unsupported SVG doctype");
+  });
+  parser.on("processinginstruction", () => { throw new InvalidImage("SVG processing instruction"); });
+  parser.on("opentag", node => {
+    if (depth === 0 && (node.uri !== SVG_NS || node.local !== "svg")) throw new InvalidImage("Not an SVG document");
+    if (node.uri === SVG_NS) {
+      if (!SVG_ELEMENTS.has(node.local)) throw new InvalidImage(`Unsupported SVG element: ${node.local}`);
+    } else if (!INERT_NAMESPACES.has(node.uri)) throw new InvalidImage("Unsupported SVG namespace");
+    for (const attr of Object.values(node.attributes)) {
+      if (attr.uri === XMLNS_NS) continue;
+      if (/^on/i.test(attr.local)) throw new InvalidImage("SVG event handler");
+      if (attr.uri === XML_NS) {
+        if (attr.local !== "space" && attr.local !== "lang") throw new InvalidImage("Unsupported XML attribute");
+        continue;
+      }
+      if (INERT_NAMESPACES.has(attr.uri)) continue;
+      if (attr.uri && attr.uri !== XLINK_NS) throw new InvalidImage("Unsupported SVG attribute namespace");
+      if (attr.uri === XLINK_NS || attr.local === "href" || attr.local === "src") {
+        if (attr.local !== "href" || !/^#[A-Za-z0-9_.:-]+$/.test(attr.value)) throw new InvalidImage("SVG nonlocal reference");
+        continue;
+      }
+      if (node.uri === SVG_NS && !SVG_ATTRIBUTES.has(attr.local) && !/^(?:data-|aria-)/.test(attr.local)) {
+        throw new InvalidImage(`Unsupported SVG attribute: ${attr.local}`);
+      }
+      if (["style", "fill", "stroke", "filter", "mask", "clip-path"].includes(attr.local) || /url\s*\(/i.test(attr.value)) assertSafeCss(attr.value);
+    }
+    depth += 1;
+    if (node.uri === SVG_NS && node.local === "style") { styleDepth = depth; css = ""; }
+  });
+  parser.on("text", value => { if (styleDepth !== -1) css += value; });
+  parser.on("cdata", value => { if (styleDepth !== -1) css += value; });
+  parser.on("closetag", () => {
+    if (depth === styleDepth) { assertSafeCss(css); styleDepth = -1; }
+    depth -= 1;
+  });
+  parser.write(text).close();
+}
+
 export function sanitizeSvg(input: Buffer): { bytes: Buffer; removed: string[] } {
   let text = input.toString("utf8");
   if (text.charCodeAt(0) === 0xfeff) text = text.slice(1);
@@ -62,6 +163,7 @@ export function sanitizeSvg(input: Buffer): { bytes: Buffer; removed: string[] }
   strip(EXTERNAL_REF, "external references");
   if (STYLE_URL.test(text)) throw new InvalidImage("SVG style references an external URL");
   if (/javascript:/i.test(text)) throw new InvalidImage("SVG still contains javascript:");
+  assertSafeSvgStructure(text);
   return { bytes: Buffer.from(text, "utf8"), removed };
 }
 

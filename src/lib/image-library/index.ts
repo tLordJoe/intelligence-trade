@@ -22,7 +22,7 @@
 
 import catalogJson from "./catalog.json" with { type: "json" };
 
-import { bioguideIdentity, cikIdentity, classIdentity, normalizePersonName, personAliasKey, tickerSpellings } from "./identity.ts";
+import { bioguideIdentity, cikIdentity, classIdentity, isCompanyEntry, normalizePersonName, personAliasKey, tickerSpellings } from "./identity.ts";
 import type { Catalog, CatalogEntry, ImageResolution } from "./types.ts";
 
 const catalog = catalogJson as unknown as Catalog;
@@ -115,7 +115,8 @@ export function resolveCompanyMark(input: { ticker: string; cik?: string | null 
   const label = input.ticker.trim().toUpperCase();
   const idx = getIndex();
 
-  if (input.cik && /^\d{1,10}$/.test(String(input.cik))) {
+  if (input.cik != null) {
+    if (!/^\d{1,10}$/.test(input.cik)) return fallback("unknown", label);
     const identity = cikIdentity(input.cik);
     const entry = idx.byIdentity.get(identity);
     if (!entry) return fallback("missing", label);
@@ -123,15 +124,22 @@ export function resolveCompanyMark(input: { ticker: string; cik?: string | null 
     // identity means the caller's record is inconsistent; refuse rather than
     // show the CIK's mark next to somebody else's symbol.
     const byTicker = identityForTicker(label);
+    if (byTicker.reason === "ambiguous") return fallback("ambiguous", label);
     if (byTicker.identity && byTicker.identity !== identity) return fallback("mismatch", label);
-    return serve(entry, label);
+    return serveCompany(entry, label);
   }
 
   const found = identityForTicker(label);
   if (!found.identity) return fallback(found.reason ?? "missing", label);
   const entry = idx.byIdentity.get(found.identity);
-  if (!entry || entry.kind !== "company") return fallback("missing", label);
-  return serve(entry, label);
+  if (!entry) return fallback("missing", label);
+  return serveCompany(entry, label);
+}
+
+function serveCompany(entry: CatalogEntry, label: string): ImageResolution {
+  if (!isCompanyEntry(entry)) return fallback("missing", label);
+  const result = serve(entry, label);
+  return result.status === "resolved" ? { ...result, role: "company_mark" } : result;
 }
 
 // --- funds -------------------------------------------------------------------
@@ -141,10 +149,12 @@ export function resolveFundMark(input: { ticker: string; classId?: string | null
   const idx = getIndex();
 
   let entry: CatalogEntry | undefined;
-  if (input.classId) {
+  if (input.classId != null) {
+    if (!/^C\d{9}$/.test(input.classId)) return fallback("unknown", label);
     entry = idx.byIdentity.get(classIdentity(input.classId));
     if (!entry) return fallback("missing", label);
     const byTicker = identityForTicker(label);
+    if (byTicker.reason === "ambiguous") return fallback("ambiguous", label);
     if (byTicker.identity && byTicker.identity !== entry.identity) return fallback("mismatch", label);
   } else {
     const found = identityForTicker(label);
@@ -152,6 +162,7 @@ export function resolveFundMark(input: { ticker: string; classId?: string | null
     entry = idx.byIdentity.get(found.identity);
   }
   if (!entry || entry.kind !== "fund") return fallback("missing", label);
+  if (entry.status !== "resolved") return fallback("not_resolved", label);
 
   // A fund with its own logo serves it. Otherwise it borrows the sponsor's mark
   // — and says so, through `role: "sponsor_mark"`, so a page can caption it.
@@ -181,9 +192,15 @@ export function resolvePortrait(input: {
   const idx = getIndex();
   const label = (input.name ?? input.filerKey ?? input.bioguide ?? "").trim();
 
-  if (input.bioguide) {
+  if (input.bioguide != null) {
+    if (!/^[A-Z]\d{6}$/.test(input.bioguide)) return fallback("unknown", label);
     const entry = idx.byIdentity.get(bioguideIdentity(input.bioguide));
-    return entry ? serve(entry, label) : fallback("missing", label);
+    if (!entry || entry.kind !== "person") return fallback("missing", label);
+    if (input.filerKey) {
+      const ids = idx.byFilerKey.get(input.filerKey);
+      if (!ids?.has(entry.identity) || ids.size !== 1) return fallback("mismatch", label);
+    }
+    return personAgrees(entry, input) ? serve(entry, label) : fallback("mismatch", label);
   }
 
   const candidates = new Set<string>();
@@ -195,7 +212,19 @@ export function resolvePortrait(input: {
   if (candidates.size === 0) return fallback("missing", label);
   if (candidates.size > 1) return fallback("ambiguous", label);
   const entry = idx.byIdentity.get([...candidates][0]);
-  return entry ? serve(entry, label) : fallback("missing", label);
+  if (!entry || entry.kind !== "person") return fallback("missing", label);
+  return personAgrees(entry, input) ? serve(entry, label) : fallback("mismatch", label);
+}
+
+function personAgrees(entry: CatalogEntry, input: {
+  name?: string | null; chamber?: string | null; state?: string | null; district?: string | null;
+}): boolean {
+  if (input.name == null && input.chamber == null && input.state == null && input.district == null) return true;
+  return entry.aliases.some(alias => alias.type === "person_name" &&
+    (input.name == null || normalizePersonName(input.name) === normalizePersonName(alias.value)) &&
+    (input.chamber == null || input.chamber === alias.chamber) &&
+    (input.state == null || input.state === alias.state) &&
+    (input.district == null || input.district === (alias.district ?? "")));
 }
 
 /** Convenience for pages that only want a path or null. */

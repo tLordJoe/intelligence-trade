@@ -9,7 +9,7 @@
 
 import { setTimeout as sleep } from "node:timers/promises";
 
-export const USER_AGENT = "OutfoxImageLibrary/1.0 (https://outfoxmarkets.com; joenoval@gmail.com)";
+export const USER_AGENT = "OutfoxImageLibrary/1.0 (https://outfoxmarkets.com; hello@outfoxmarkets.com)";
 
 /** Hosts the documented sources live on. Nothing else is reachable. */
 export const ALLOWED_HOSTS = new Set([

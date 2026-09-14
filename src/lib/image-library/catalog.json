@@ -11,9 +11,9 @@
   "companies": {
    "source": "Wikidata: items with P361 (part of) = Q242345 (S&P 500), joined to SEC company_tickers.json by P5531 (CIK)",
    "asOf": "2026-09-14",
-   "identities": 512,
-   "tickers": 672,
-   "note": "527 Wikidata items; 512 carry exactly one CIK; 15 carry none and 0 carry several, so they cannot be keyed and are listed in the coverage report. Membership as Wikidata records it — which includes some former constituents — not the index provider's official list."
+   "identities": 510,
+   "tickers": 670,
+   "note": "527 Wikidata items; 512 carry exactly one CIK, representing 510 distinct issuers; 15 carry none. Ticker count is deduplicated and includes sponsors with current SEC issuer aliases. Membership as Wikidata records it — which includes some former constituents — not the index provider's official list."
   },
   "congress": {
    "source": "unitedstates/congress-legislators legislators-current.json (CC0); portraits from unitedstates/images 225x275 (CC0 repository, GPO provenance stated)",

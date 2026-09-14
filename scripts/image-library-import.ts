@@ -208,11 +208,12 @@ async function importCompanies(): Promise<void> {
   const withCik = members.filter((m) => m.ciks.length === 1);
   const noCik = members.filter((m) => m.ciks.length === 0);
   const multiCik = members.filter((m) => m.ciks.length > 1);
-  const tickerCount = withCik.reduce((n, m) => n + (sec.get(m.ciks[0])?.tickers.length ?? 0), 0);
+  const distinctCiks = new Set(withCik.map(m => m.ciks[0]));
+  const tickerCount = new Set([...distinctCiks].flatMap(cik => sec.get(cik)?.tickers ?? [])).size;
   catalog.universes.companies = {
     source: "Wikidata: items with P361 (part of) = Q242345 (S&P 500), joined to SEC company_tickers.json by P5531 (CIK)",
-    asOf, identities: withCik.length, tickers: tickerCount,
-    note: `${members.length} Wikidata items; ${withCik.length} carry exactly one CIK; ${noCik.length} carry none and ${multiCik.length} carry several, so they cannot be keyed and are listed in the coverage report. Membership as Wikidata records it — which includes some former constituents — not the index provider's official list.`,
+    asOf, identities: distinctCiks.size, tickers: tickerCount,
+    note: `${members.length} Wikidata items; ${withCik.length} carry exactly one CIK, representing ${distinctCiks.size} distinct issuers; ${noCik.length} carry none and ${multiCik.length} carry several, so they cannot be keyed and are listed in the coverage report. Membership as Wikidata records it — which includes some former constituents — not the index provider's official list.`,
   };
   writeUniverse("companies", { asOf, members });
 
@@ -243,7 +244,7 @@ async function importCompanies(): Promise<void> {
     const wdOverlap = wdTickers.length === 0 || wdTickers.some((t) => tickerSpellings(t).some((sp) => secSpellings.has(sp)));
     const retired = wdTickers.filter((t) => !tickerSpellings(t).some((sp) => secSpellings.has(sp)));
     // Retired aliases are recomputed from today's sources, never accumulated.
-    const kept = (previous?.aliases ?? []).filter((a) => !(a.type === "ticker" && a.status === "retired"));
+    const kept = (previous?.aliases ?? []).filter((a) => a.type !== "ticker");
     const aliases = mergeAliases(kept, [
       ...(issuer?.tickers ?? []).map((t): Alias => ({ type: "ticker", value: t, status: "current", source: "SEC company_tickers.json" })),
       ...(issuer ? retired.map((t): Alias => ({ type: "ticker", value: t, status: "retired", source: `Wikidata P249 on a NYSE/Nasdaq listing of ${item.qid}; not in the SEC master, treated as a former symbol` })) : []),
@@ -251,7 +252,7 @@ async function importCompanies(): Promise<void> {
       { type: "wikidata", value: item.qid, source: "Wikidata" },
     ]);
     const base: CatalogEntry = {
-      identity, kind: "company", label: issuer?.tickers[0] ?? item.label, status: "missing", aliases,
+      identity, kind: previous?.kind === "sponsor" ? "sponsor" : "company", label: issuer?.tickers[0] ?? item.label, status: "missing", aliases,
       evidence: { source: "SEC company_tickers.json ↔ Wikidata P5531", checkedOn: asOf, detail: issuer ? `CIK ${cik} = ${issuer.title}; tickers ${issuer.tickers.join(", ")}` : `CIK ${cik} not present in SEC master` },
       updatedAt: NOW(),
     };
@@ -379,9 +380,10 @@ async function importFunds(): Promise<void> {
   const infos = await commonsFileInfo(sponsorFiles);
   for (const sponsor of Object.values(SPONSORS)) {
     if (catalog.entries.some((e) => e.identity === sponsor.identity && (settled(sponsor.identity) || e.asset?.source.reviewedBy === "manual"))) continue;
+    const previous = catalog.entries.find(e => e.identity === sponsor.identity);
     const base: CatalogEntry = {
-      identity: sponsor.identity, kind: "sponsor", label: sponsor.label, status: "missing",
-      aliases: [{ type: "name", value: sponsor.label, source: "image-sourcing memo" }, ...(sponsor.wikidata ? [{ type: "wikidata" as const, value: sponsor.wikidata, source: "Wikidata" }] : [])],
+      identity: sponsor.identity, kind: previous?.kind === "company" ? "company" : "sponsor", label: sponsor.label, status: "missing",
+      aliases: mergeAliases(previous?.aliases ?? [], [{ type: "name", value: sponsor.label, source: "image-sourcing memo" }, ...(sponsor.wikidata ? [{ type: "wikidata" as const, value: sponsor.wikidata, source: "Wikidata" }] : [])]),
       evidence: { source: "image-sourcing memo (Wikidata sponsor items; Commons file pages)", checkedOn: TODAY, detail: sponsor.note }, updatedAt: NOW(),
     };
     if (!sponsor.commonsFile) { upsert(catalog, { ...base, reason: "No documented public-domain mark for this sponsor. Not fetched from search results." }); record(sponsor.identity, "missing"); continue; }

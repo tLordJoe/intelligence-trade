@@ -45,6 +45,32 @@ purchases and `portrait` to filers, so `HomeTradingTable` and
 whose filer name and seat match a catalogued member resolves automatically;
 nothing per-page is edited.
 
+### Release-review corrections
+
+Supplied identity values are validated before lookup. A malformed ID or a
+person/name/seat contradiction returns a fallback; it cannot throw a page
+error or silently switch identities. A fund under review cannot borrow an
+otherwise available sponsor image. One SEC issuer may have both company and
+sponsor roles when current SEC ticker aliases establish the company role.
+Do not attach a current ticker to a former issuer just because a sponsor
+wordmark is available.
+
+Coverage counts deduplicate CIKs and tickers. Company and sponsor roles overlap,
+so their report rows must not be summed as distinct identities. The corrected
+source universe is 510 distinct CIKs, not 512 source items. Image bytes are
+unchanged; the existing State Street mark also resolves as its company mark.
+
+SVG validation uses a namespace-aware XML parser after removal of legacy active
+elements. It allows known static SVG primitives, inert editor/provenance
+namespaces, local fragment references and restricted CSS; unsupported constructs
+are rejected. The parser never fetches DTDs. Only the three legacy W3C SVG
+declarations already present in reviewed files are accepted. A regression test
+revalidates every committed SVG without altering its bytes.
+
+The client-boundary test follows transitive imports/re-exports throughout src,
+including relative imports. This is a CI guard, not a framework-level
+`server-only` package boundary. Production browser chunks are checked separately.
+
 ## Populating and refreshing
 
 ```bash
