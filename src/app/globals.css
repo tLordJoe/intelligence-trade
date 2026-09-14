@@ -3,10 +3,9 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
-  Outfox design system — Direction C, "Sly Modern"
-  Clean consumer fintech: white space, charcoal ink, one confident signal
-  green. Fox orange lives in the logo only. Swap brand colors here — every
-  component reads these variables.
+  Outfox approved September 13 palette: warm cream, lightly tinted header,
+  navy ink, original fox orange and green headline. These shared tokens keep
+  pages consistent; component layouts retain their own purpose.
 */
 
 :root {
@@ -15,21 +14,23 @@
   --accent: #0e9f6e; /* signal green — actions, active states, gains */
   --accent-dim: #0b8a5f;
   --accent-soft: rgba(14, 159, 110, 0.09);
-  --fox: #e8681c; /* fox orange — logo and rare brand moments only */
+  --fox: #f26a16;
+  --link-accent: #a94708; /* readable orange-family links on cream */
   --growth: #0e9f6e;
 
   /* Surfaces */
-  --bg: #fbfbfa;
+  --bg: #f7f4ef;
+  --bg-header: #f9f7f3;
   --bg-card: #ffffff;
-  --bg-card-hover: #f4f8f6;
-  --bg-inset: #f2f4f3;
+  --bg-card-hover: #f9f7f3;
+  --bg-inset: #f3efe8;
 
   /* Text */
-  --text: #14181d; /* charcoal */
+  --text: #0b1f44;
   --text-dim: #5c6670;
 
   /* Lines */
-  --border: #e6eae8;
+  --border: #e7e5e1;
 
   /* Signals */
   --green: #0e9f6e;
@@ -41,14 +42,16 @@
 }
 
 .dark {
+  --bg-header: #0e203b;
+  --link-accent: #ffad75;
   --accent: #1cbd85;
   --accent-dim: #17a271;
   --accent-soft: rgba(28, 189, 133, 0.13);
   --fox: #f07e2b;
   --growth: #1cbd85;
 
-  --bg: #14181d;
-  --bg-card: #1b2128;
+  --bg: #0b182b;
+  --bg-card: #12233b;
   --bg-card-hover: #20282f;
   --bg-inset: #1f252c;
 

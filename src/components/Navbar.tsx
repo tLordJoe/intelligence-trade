@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useSyncExternalStore } from "react";
+import { useState, useSyncExternalStore } from "react";
 
 function subscribeToTheme(onChange: () => void) {
   const observer = new MutationObserver(onChange);
@@ -26,6 +26,7 @@ const NAV_LINKS = [
 export default function Navbar({ showCompare = false }: { showCompare?: boolean }) {
   const pathname = usePathname();
   const dark = useSyncExternalStore(subscribeToTheme, readDarkTheme, serverDarkTheme);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   function toggleTheme() {
     const next = !readDarkTheme();
@@ -42,12 +43,11 @@ export default function Navbar({ showCompare = false }: { showCompare?: boolean 
     <header
       className="sticky top-0 z-50 border-b"
       style={{
-        backgroundColor: "var(--bg-card)",
+        backgroundColor: "var(--bg-header)",
         borderColor: "var(--border)",
-        boxShadow: "var(--shadow)",
       }}
     >
-      <div className="max-w-7xl mx-auto flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between px-4 md:px-8 py-3">
+      <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 px-4 md:px-8 py-3">
         <Link href="/" className="flex shrink-0 items-center gap-2" aria-label="Outfox home">
           <Image
             src="/brand/outfox-tail.svg"
@@ -65,14 +65,16 @@ export default function Navbar({ showCompare = false }: { showCompare?: boolean 
           </span>
         </Link>
 
-        <nav aria-label="Primary" className="flex flex-wrap items-center gap-1 w-full md:w-auto">
+        <button type="button" className="md:hidden border rounded-lg px-3 min-h-11 text-sm font-semibold" style={{ borderColor: "var(--border)" }} aria-expanded={menuOpen} aria-controls="outfox-primary-nav" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? "Close" : "Menu"}</button>
+        <nav id="outfox-primary-nav" aria-label="Primary" className={`${menuOpen ? "flex" : "hidden"} md:flex flex-wrap items-center gap-1 w-full md:w-auto`}>
           {NAV_LINKS.flatMap((link) => link.href === "/explore" && showCompare
             ? [link, { href: "/compare", label: "Compare · Preview" }] : [link]).map((link) => (
             <Link
               key={link.href}
+              onClick={() => setMenuOpen(false)}
               href={link.href}
               aria-current={isActive(link.href) ? "page" : undefined}
-              className="px-2.5 md:px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors"
+              className="px-2.5 md:px-3 py-1.5 min-h-11 inline-flex items-center rounded-full text-xs font-semibold whitespace-nowrap transition-colors"
               style={{
                 backgroundColor: isActive(link.href) ? "var(--accent-soft)" : "transparent",
                 color: isActive(link.href) ? "var(--accent)" : "var(--text-dim)",
@@ -83,7 +85,7 @@ export default function Navbar({ showCompare = false }: { showCompare?: boolean 
           ))}
           <button
             onClick={toggleTheme}
-            className="ml-1 md:ml-2 w-8 h-8 rounded-full flex items-center justify-center border transition-colors shrink-0"
+            className="ml-1 md:ml-2 w-11 h-11 rounded-full flex items-center justify-center border transition-colors shrink-0"
             style={{ borderColor: "var(--border)", color: "var(--text)" }}
             aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
           >
