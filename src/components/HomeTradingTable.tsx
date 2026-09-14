@@ -7,7 +7,7 @@ import BuildoutStackIcon from "./BuildoutStackIcon";
 import CompanyMark from "./CompanyMark";
 import { HOME_FILER_IMAGES } from "@/lib/home-filer-images";
 import { filerProfilePath } from "@/lib/filer-profile";
-import { ArrowUpRight, Clock3, Layers3 } from "lucide-react";
+import { ArrowUpRight, Clock3, Layers3, Landmark, Building2, BriefcaseBusiness, CalendarDays } from "lucide-react";
 import type { HomeFiler, HomePeriod, HomeWindow } from "@/lib/homepage-market";
 
 const periods: { key: HomePeriod; label: string }[] = [
@@ -45,14 +45,14 @@ export default function HomeTradingTable({ windows, updatedAt, scans }: {
       </div>
       <div className="home-controls">
         <div className="home-source-controls" role="group" aria-label="Disclosure source">
-          <button type="button" aria-pressed={source === "all"} onClick={() => setSource("all")}>All available</button>
-          <button type="button" aria-pressed={source === "house"} onClick={() => setSource("house")}>House-only</button>
-          {["Senate-only", "Corporate insiders", "Funds / institutions"].map(label =>
-            <button type="button" key={label} disabled title="This source is not connected yet">{label}<small>Coming soon</small></button>)}
+          <button type="button" aria-label="All available sources" aria-pressed={source === "all"} onClick={() => setSource("all")}><Layers3 size={18} aria-hidden="true" /><span>All</span></button>
+          <button type="button" aria-pressed={source === "house"} onClick={() => setSource("house")}><Landmark size={18} aria-hidden="true" /><span>House-only</span></button>
+          {[{ label: "Senate-only", Icon: Landmark }, { label: "Corporate insiders", Icon: Building2 }, { label: "Funds / institutions", Icon: BriefcaseBusiness }].map(({ label, Icon }) =>
+            <button type="button" key={label} disabled title="This source is not connected yet"><Icon size={18} aria-hidden="true" /><span>{label}<small>Coming soon</small></span></button>)}
         </div>
         <div className="home-period-controls" role="group" aria-label="Transaction date range">
           {periods.map(item => <button key={item.key} type="button" aria-pressed={period === item.key}
-            onClick={() => { setPeriod(item.key); setExpanded(false); }}>{item.label}</button>)}
+            onClick={() => { setPeriod(item.key); setExpanded(false); }}><CalendarDays size={18} aria-hidden="true" /><span>{item.label}</span></button>)}
         </div>
       </div>
       <p className="home-coverage" role="status"><Clock3 size={13} aria-hidden="true" /> House coverage only · Traded {current.start}–{current.end} · Delayed disclosures</p>
