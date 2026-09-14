@@ -4,11 +4,11 @@ import { archiveRecords, disclosureFilerKey, displayFiler, validDisclosureDate }
 export type HomePeriod = "ytd" | "30" | "90";
 export interface HomeFiler { key: string; name: string; state: string; district: string }
 export interface HomeCompany {
-  ticker: string; name: string; buyers: number; purchases: number; sales: number;
+  ticker: string; name: string; cik?: string; buyers: number; purchases: number; sales: number;
   filers: HomeFiler[];
 }
 export interface HomePurchase {
-  id: string; ticker: string; name: string; filer: HomeFiler;
+  id: string; ticker: string; name: string; cik?: string; filer: HomeFiler;
   amount: string; traded: string; filed: string; source: string;
 }
 export interface HomeWindow {
@@ -38,12 +38,12 @@ export function buildHomeWindow(records: DisclosureRecord[], period: HomePeriod,
     const purchases = group.filter(r => r.type === "Buy");
     if (!purchases.length) continue;
     const people = [...new Map(purchases.map(r => [disclosureFilerKey(r), filer(r)])).values()];
-    companies.push({ ticker, name: group[0].companyName, buyers: people.length,
+    companies.push({ ticker, name: group[0].companyName, cik: group.find(r => r.cik)?.cik, buyers: people.length,
       purchases: purchases.length, sales: group.filter(r => r.type === "Sell").length, filers: people });
   }
   companies.sort((a, b) => b.buyers - a.buyers || a.ticker.localeCompare(b.ticker));
   return { start, end: asOf, companies, recent: eligible.filter(r => r.type === "Buy" && accepted.has(r.ticker)).slice(0, 3).map(r => ({
-    id: r.id, ticker: r.ticker, name: r.companyName, filer: filer(r),
+    id: r.id, ticker: r.ticker, name: r.companyName, cik: r.cik, filer: filer(r),
     amount: r.amount || "Amount unavailable", traded: r.transactionDate, filed: r.filedDate, source: r.source,
   })) };
 }

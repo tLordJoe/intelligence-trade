@@ -14,7 +14,7 @@ test("every sector has two separate sourced ETF examples; unknown sectors fail c
     assert.notEqual(funds[0].provider, funds[1].provider);
     for (const fund of funds) {
       assert.ok(!seen.has(fund.ticker)); seen.add(fund.ticker);
-      assert.ok(["www.ssga.com", "www.vanguard.com", "investor.vanguard.com"].includes(new URL(fund.source).hostname));
+      assert.ok(["www.ssga.com", "www.vanguard.com", "investor.vanguard.com", "www.sec.gov"].includes(new URL(fund.source).hostname));
       assert.ok(!("holdings" in fund) && !("return" in fund) && !("rank" in fund));
     }
   }

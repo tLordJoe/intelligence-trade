@@ -1,0 +1,842 @@
+[
+  {
+    "ticker": "MSFT",
+    "file": "msft.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+    "evidence": "https://commons.wikimedia.org/wiki/File:Microsoft_logo.svg",
+    "reviewed": "2026-09-13",
+    "downloaded": "2026-09-14T02:54:24.073Z",
+    "license": "Public domain",
+    "restrictions": "trademarked",
+    "attributionRequired": "false",
+    "sha256": "3d41251f93127b4b42c2f69fa423d204946cf9c307d786ea36b8d9bef4179282",
+    "sourceMetadata": {
+      "DateTime": {
+        "value": "2021-07-29 02:10:49",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "Microsoft logo",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "With trademark|PD shape|Logos of Microsoft websites|Squares with 4 fields|Valid SVG created with Text Editor:Logos|PD-shape missing SDC copyright status|SVG logos of technology companies",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "ImageDescription": {
+        "value": "Microsoft logo",
+        "source": "commons-desc-page"
+      },
+      "DateTimeOriginal": {
+        "value": "2012",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "www.microsoft.com",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "Microsoft",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "Public domain",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Public domain",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "false",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Copyrighted": {
+        "value": "False",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "trademarked",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "License": {
+        "value": "pd",
+        "source": "commons-templates",
+        "hidden": ""
+      }
+    }
+  },
+  {
+    "ticker": "META",
+    "file": "meta.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Meta_Platforms_logo.svg",
+    "evidence": "https://commons.wikimedia.org/wiki/File:Meta_Platforms_logo.svg",
+    "reviewed": "2026-09-13",
+    "downloaded": "2026-09-14T02:54:24.118Z",
+    "license": "Public domain",
+    "restrictions": "trademarked",
+    "attributionRequired": "false",
+    "sha256": "c3a064cd48ab42937e5898827b86b12565dc91242dd55861fa427d2678941bc3",
+    "sourceMetadata": {
+      "DateTime": {
+        "value": "2025-06-27 18:00:29",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "Meta Platforms logo",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "With trademark|PD textlogo|Extracted images|SVG text logos|Black and blue logos with transparent background|4 letter logos|Four letter combinations including A|Four letter combinations including E|Four letter combinations including M|Four letter combinations including T|Valid SVG created with Text Editor:Logos|TOO-United States|SVG black text logos|Gradient logos|2 element logos (horizontally)|Meta Platforms, Inc. logos|SVG infinity symbols",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "ImageDescription": {
+        "value": "Logo of <a href=\"https://en.wikipedia.org/wiki/Meta_Platforms,_Inc.\" class=\"extiw\" title=\"w:Meta Platforms, Inc.\">Meta Platforms, Inc.</a>",
+        "source": "commons-desc-page"
+      },
+      "DateTimeOriginal": {
+        "value": "2021-12-01",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"url\"><a rel=\"nofollow\" class=\"external text\" href=\"https://about.meta.com/brand/resources/meta/company-brand\">about.meta.com/brand/resources/meta/company-brand</a></span>",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a href=\"https://en.wikipedia.org/wiki/Meta_Platforms\" class=\"extiw\" title=\"w:Meta Platforms\">Meta Platforms</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "Public domain",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Public domain",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "false",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Copyrighted": {
+        "value": "False",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "trademarked",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "License": {
+        "value": "pd",
+        "source": "commons-templates",
+        "hidden": ""
+      }
+    }
+  },
+  {
+    "ticker": "AAPL",
+    "file": "aapl.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
+    "evidence": "https://commons.wikimedia.org/wiki/File:Apple_logo_black.svg",
+    "reviewed": "2026-09-13",
+    "downloaded": "2026-09-14T02:54:24.153Z",
+    "license": "Public domain",
+    "restrictions": "trademarked",
+    "attributionRequired": "false",
+    "sha256": "9d00ea77a3240f291356c36261c5f45d7fa456f29c97a2f060caf0ed4b9c3231",
+    "sourceMetadata": {
+      "DateTime": {
+        "value": "2025-06-29 10:41:41",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "Apple logo black",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "Unicode E000-F8FF Private Use Area|With trademark|PD US no notice|Valid SVG created with Adobe Illustrator:Text logos|Black logos with transparent background|Plain black SVG fruit icons|SVG Apple Inc. logos",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "ImageDescription": {
+        "value": "Logo of the company Apple Inc.",
+        "source": "commons-desc-page"
+      },
+      "DateTimeOriginal": {
+        "value": "Application for trademark registration filed March 20, 1978 based on first use in commerce in 1977. See USPTO registration #1114431.",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://freepnglogo.com/apple-logo-png\">Apple logo png</a>",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<b>Original: </b> <a rel=\"nofollow\" class=\"external text\" href=\"https://robjanoff.com/\">Rob Janoff</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "Public domain",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Public domain",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "false",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Copyrighted": {
+        "value": "False",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "trademarked",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "License": {
+        "value": "pd",
+        "source": "commons-templates",
+        "hidden": ""
+      }
+    }
+  },
+  {
+    "ticker": "AMD",
+    "file": "amd.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/7/7c/AMD_Logo.svg",
+    "evidence": "https://commons.wikimedia.org/wiki/File:AMD_Logo.svg",
+    "reviewed": "2026-09-13",
+    "downloaded": "2026-09-14T02:54:24.183Z",
+    "license": "Public domain",
+    "restrictions": "trademarked",
+    "attributionRequired": "false",
+    "sha256": "00e845a95a362db8478969e4969b73f5cd105690011986c78ce78ca4c76c992d",
+    "sourceMetadata": {
+      "DateTime": {
+        "value": "2022-05-19 06:40:11",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "AMD Logo",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "With trademark|PD textlogo|SVG text logos|TOO-United States|AMD logos|SVG black logos|1995 logos|SVG logos of manufacturing companies of the United States|SVG logos of technology companies|SVG logos of computer hardware manufacturers",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "ImageDescription": {
+        "value": "<abbr title=\"Advanced Micro Devices\">AMD</abbr> corporate logo in use since 2013.",
+        "source": "commons-desc-page"
+      },
+      "DateTimeOriginal": {
+        "value": "2013",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"url\"><a rel=\"nofollow\" class=\"external text\" href=\"https://www.amd.com\">amd.com</a></span>",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "Advanced Micro Devices, Inc.",
+        "source": "commons-desc-page"
+      },
+      "Permission": {
+        "value": "There are many logos and trademarks in the United States that are not protected by copyright because they are below the threshold of originality required for copyright protection. There are some cases that even logos and trademarks that have been judged to be copyrighted in foreign countries have also been judged not to be copyrighted in the United States. However, some logos and trademarks are copyrighted in the United States. See <a href=\"//commons.wikimedia.org/wiki/Commons:CRT/United_States#Threshold_of_originality\" class=\"mw-redirect\" title=\"Commons:CRT/United States\">COM:CRT/United States#Threshold of originality</a> for more information.",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseShortName": {
+        "value": "Public domain",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Public domain",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "false",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Copyrighted": {
+        "value": "False",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "trademarked",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "License": {
+        "value": "pd",
+        "source": "commons-templates",
+        "hidden": ""
+      }
+    }
+  },
+  {
+    "ticker": "AMZN",
+    "file": "amzn.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/0/06/Amazon_2024.svg",
+    "evidence": "https://commons.wikimedia.org/wiki/File:Amazon_2024.svg",
+    "reviewed": "2026-09-13",
+    "downloaded": "2026-09-14T02:54:24.216Z",
+    "license": "Public domain",
+    "restrictions": "trademarked",
+    "attributionRequired": "false",
+    "sha256": "7026ea1e93b80e5aa3d88d9a8bfc9279f75ef4e263ad50da7e7d7a5cb2b735aa",
+    "sourceMetadata": {
+      "DateTime": {
+        "value": "2025-06-15 11:28:05",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "Amazon 2024",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "With trademark|PD textlogo|SVG text logos|Valid SVG created with Inkscape:Logos|Amazon.com, Inc. logos|TOO-United States|SVG logos of electronic commerce websites",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "ImageDescription": {
+        "value": "The new logo of Amazon, first revealed on April 15, 2024 on Amazon Live FAST channel promo on YouTube. It has slightly different wordmark and smile compared to the <a href=\"//commons.wikimedia.org/wiki/File:Amazon_logo.svg\" title=\"File:Amazon logo.svg\">2012–2024 logo</a>, where it used the custom font named Amazon Sans by NaN.",
+        "source": "commons-desc-page"
+      },
+      "DateTimeOriginal": {
+        "value": "2024-04-15",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://theslap.com\">https://theslap.com</a>",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "Amazon.com, Inc., Koto, and NaN (typeface creator)",
+        "source": "commons-desc-page"
+      },
+      "Permission": {
+        "value": "There are many logos and trademarks in the United States that are not protected by copyright because they are below the threshold of originality required for copyright protection. There are some cases that even logos and trademarks that have been judged to be copyrighted in foreign countries have also been judged not to be copyrighted in the United States. However, some logos and trademarks are copyrighted in the United States. See <a href=\"//commons.wikimedia.org/wiki/Commons:CRT/United_States#Threshold_of_originality\" class=\"mw-redirect\" title=\"Commons:CRT/United States\">COM:CRT/United States#Threshold of originality</a> for more information.",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseShortName": {
+        "value": "Public domain",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Public domain",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "false",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Copyrighted": {
+        "value": "False",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "trademarked",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "License": {
+        "value": "pd",
+        "source": "commons-templates",
+        "hidden": ""
+      }
+    }
+  },
+  {
+    "ticker": "NVDA",
+    "file": "nvda.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/a/a4/NVIDIA_logo.svg",
+    "evidence": "https://commons.wikimedia.org/wiki/File:NVIDIA_logo.svg",
+    "reviewed": "2026-09-13",
+    "downloaded": "2026-09-14T02:54:24.254Z",
+    "license": "Apache License 2.0",
+    "restrictions": "trademarked",
+    "attributionRequired": "true",
+    "sha256": "bb0f6d477d9acbc982070ac20332cd774015062ebd049c0814f7371c63d12a81",
+    "sourceMetadata": {
+      "DateTime": {
+        "value": "2025-04-13 13:34:03",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "NVIDIA logo",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "Apache License|With trademark|Black and green logos with transparent background|Valid SVG created with Other tools:Logos|Nvidia logos|SVG logos of computer hardware manufacturers",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "ImageDescription": {
+        "value": "Nvidia logo",
+        "source": "commons-desc-page"
+      },
+      "DateTimeOriginal": {
+        "value": "2024-08-15",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://github.com/NVIDIA/bionemo-framework/blob/main/docs/docs/assets/images/logo-white.svg\">https://github.com/NVIDIA/bionemo-framework/blob/main/docs/docs/assets/images/logo-white.svg</a> (<a rel=\"nofollow\" class=\"external text\" href=\"https://github.com/NVIDIA/bionemo-framework/blob/5d4995be85d258ca04e7c31d8b5d83af970850cf/docs/docs/assets/images/logo-white.svg\">Archive</a>)",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<bdi><a href=\"https://en.wikipedia.org/wiki/en:Nvidia\" class=\"extiw\" title=\"w:en:Nvidia\"><span title=\"American multinational technology company\">Nvidia</span></a></bdi>",
+        "source": "commons-desc-page"
+      },
+      "Permission": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://github.com/NVIDIA/bionemo-framework/blob/main/LICENSE/license.txt\">https://github.com/NVIDIA/bionemo-framework/blob/main/LICENSE/license.txt</a> (<a rel=\"nofollow\" class=\"external text\" href=\"https://web.archive.org/web/20241112032656/https://github.com/NVIDIA/bionemo-framework/blob/main/LICENSE/license.txt\">Archive</a>)",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseShortName": {
+        "value": "Apache License 2.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Apache License, Version 2.0",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "true",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://www.apache.org/licenses/LICENSE-2.0",
+        "source": "commons-desc-page"
+      },
+      "Copyrighted": {
+        "value": "True",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "trademarked",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  },
+  {
+    "ticker": "ACN",
+    "file": "acn.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg",
+    "evidence": "https://commons.wikimedia.org/wiki/File:Accenture.svg",
+    "reviewed": "2026-09-13",
+    "downloaded": "2026-09-14T02:54:24.288Z",
+    "license": "Public domain",
+    "restrictions": "trademarked",
+    "attributionRequired": "false",
+    "sha256": "f81bb9e387e5c93a5cfe75e5c529607090d1ab20e82ead310ff48fb49466d2a5",
+    "sourceMetadata": {
+      "DateTime": {
+        "value": "2024-12-09 17:02:18",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "Accenture",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "With trademark|PD textlogo|Files allowed to be overwritten by everyone|SVG simple text logos|Black and purple logos|Valid SVG created with Adobe Illustrator:Text logos|SVG logos of software companies|SVG logos of Accenture",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "ImageDescription": {
+        "value": "Logo of Accenture",
+        "source": "commons-desc-page"
+      },
+      "DateTimeOriginal": {
+        "value": "4 December 2020 (original upload date) (latest version)",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "Own work using: <a rel=\"nofollow\" class=\"external free\" href=\"http://www.accenture.com\">http://www.accenture.com</a> (svg file provided by Accenture)",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "Accenture",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "Public domain",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Public domain",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "false",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Copyrighted": {
+        "value": "False",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "trademarked",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "License": {
+        "value": "pd",
+        "source": "commons-templates",
+        "hidden": ""
+      }
+    }
+  },
+  {
+    "ticker": "AEP",
+    "file": "aep.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/5/5f/AEP_logo.svg",
+    "evidence": "https://commons.wikimedia.org/wiki/File:AEP_logo.svg",
+    "reviewed": "2026-09-13",
+    "downloaded": "2026-09-14T02:54:24.411Z",
+    "license": "Public domain",
+    "restrictions": "trademarked",
+    "attributionRequired": "false",
+    "sha256": "87a690ce5ddc9c1d0e6b02c161120a68b55f363ad2e35065fbd1c0340a960117",
+    "sourceMetadata": {
+      "DateTime": {
+        "value": "2019-03-01 00:16:20",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "AEP logo",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "With trademark|American Electric Power|PD textlogo|SVG text logos|Logos of companies based in Ohio|Logos of Columbus, Ohio|Valid SVG created with Other tools:Text logos|SVG logos of companies of the United States|Logos of energy companies of the United States|Electric (text)|SVG logos of energy companies",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "ImageDescription": {
+        "value": "Logo of <a href=\"https://en.wikipedia.org/wiki/American_Electric_Power\" class=\"extiw\" title=\"w:American Electric Power\">American Electric Power</a>",
+        "source": "commons-desc-page"
+      },
+      "DateTimeOriginal": {
+        "value": "2019-02-28",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "Extracted from official website: <span class=\"url\"><a rel=\"nofollow\" class=\"external text\" href=\"https://www.aep.com/\">aep.com</a></span>",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "American Electric Power",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "Public domain",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Public domain",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "false",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Copyrighted": {
+        "value": "False",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "trademarked",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "License": {
+        "value": "pd",
+        "source": "commons-templates",
+        "hidden": ""
+      }
+    }
+  },
+  {
+    "ticker": "FITB",
+    "file": "fitb.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/8/82/Fifth_Third_Bank_2023_logo-primary-shieldleft-full-marbletext.svg",
+    "evidence": "https://commons.wikimedia.org/wiki/File:Fifth_Third_Bank_2023_logo-primary-shieldleft-full-marbletext.svg",
+    "reviewed": "2026-09-13",
+    "downloaded": "2026-09-14T02:54:24.531Z",
+    "license": "Public domain",
+    "restrictions": "trademarked",
+    "attributionRequired": "false",
+    "sha256": "3ddd395e8ecebd388b8283f2625048da7f4fcf60adde25b0c8137b2021f7c819",
+    "sourceMetadata": {
+      "DateTime": {
+        "value": "2024-05-04 22:30:57",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "Fifth Third Bank 2023 logo-primary-shieldleft-full-marbletext",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "With trademark|PD textlogo|SVG text logos|Blue, green, white logos|Photographs taken on 2023-02-09|SVG logos of banks in the United States|Fifth Third Bank logos",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "ImageDescription": {
+        "value": "An official logo of Fifth Third Bank",
+        "source": "commons-desc-page"
+      },
+      "DateTimeOriginal": {
+        "value": "9 February 2023 (according to external metadata)",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.53.com/content/fifth-third/en/media-center/digital-assets.html\">https://www.53.com/content/fifth-third/en/media-center/digital-assets.html</a>",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "Fifth Third Bank",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "Public domain",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Public domain",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "false",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Copyrighted": {
+        "value": "False",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "trademarked",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "License": {
+        "value": "pd",
+        "source": "commons-templates",
+        "hidden": ""
+      }
+    }
+  },
+  {
+    "ticker": "UNH",
+    "file": "unh.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/f/f3/UnitedHealth_Group_logo.svg",
+    "evidence": "https://commons.wikimedia.org/wiki/File:UnitedHealth_Group_logo.svg",
+    "reviewed": "2026-09-13",
+    "downloaded": "2026-09-14T02:54:24.572Z",
+    "license": "Public domain",
+    "restrictions": "trademarked",
+    "attributionRequired": "false",
+    "sha256": "fbf20211231c5b6d74eb35308638540542cf0d7cca671b5f231da50744b87c2d",
+    "sourceMetadata": {
+      "DateTime": {
+        "value": "2018-03-23 05:22:56",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "UnitedHealth Group logo",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "With trademark|PD textlogo|SVG text logos|Logos of companies based in Minnesota|Valid SVG created with Inkscape:Text logos|UnitedHealth Group",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "ImageDescription": {
+        "value": "UnitedHealth Group logo",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "Own work using: <a rel=\"nofollow\" class=\"external text\" href=\"http://www.unitedhealthgroup.com/~/media/UHG/PDF/2016/UNH-2016-Annual-Review.ashx?la=en\">2016 Annual Review</a>",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "UnitedHealth Group",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "Public domain",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Public domain",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "false",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Copyrighted": {
+        "value": "False",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "trademarked",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "License": {
+        "value": "pd",
+        "source": "commons-templates",
+        "hidden": ""
+      }
+    }
+  }
+]
