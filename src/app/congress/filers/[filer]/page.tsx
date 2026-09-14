@@ -7,7 +7,7 @@ import DisclosureCard from "@/components/DisclosureCard";
 import liveData from "@/lib/congress-live.json";
 import type { DisclosureRecord } from "@/lib/congress-schema";
 import { buildFilerProfile, filerProfilePath, filerKeyFromRoute } from "@/lib/filer-profile";
-import { HOME_FILER_IMAGES } from "@/lib/home-filer-images";
+import { resolvePortrait, srcOrNull } from "@/lib/image-library";
 import { previewAccessFromEnv } from "@/lib/funds/access";
 
 export default async function FilerPage({ params, searchParams }: {
@@ -22,11 +22,11 @@ export default async function FilerPage({ params, searchParams }: {
   const pages = Math.max(1, Math.ceil(profile.records.length / 20));
   const requested = Number(query.page ?? "1");
   const page = Number.isInteger(requested) ? Math.min(pages, Math.max(1, requested)) : 1;
-  const portrait = HOME_FILER_IMAGES[profile.key];
+  const portrait = srcOrNull(resolvePortrait({ filerKey: profile.key, name: profile.name, chamber: "House", state: profile.state, district: profile.district }));
   return <><Navbar showCompare={previewAccessFromEnv().allowed} /><main className="max-w-7xl w-full mx-auto px-4 md:px-8 py-8 flex-1">
     <Link className="text-sm underline inline-flex min-h-11 items-center" href="/">← Back to what they’re trading</Link>
     <header className="flex items-center gap-5 my-7">
-      {portrait && <Image src={`/portraits/${portrait}.jpg`} alt={profile.name} width={90} height={110} className="rounded-xl" />}
+      {portrait && <Image src={portrait} alt={profile.name} width={90} height={110} className="rounded-xl" />}
       <div><p className="kicker mb-2">House disclosure profile</p><h1 className="text-3xl md:text-5xl font-extrabold">{profile.name}</h1><p className="text-sm mt-3" style={{ color: "var(--text-dim)" }}>{profile.district || profile.state} as reported in filings · Archive refreshed {liveData.updatedAt.slice(0, 10)}</p></div>
     </header>
     <p className="max-w-3xl text-sm leading-relaxed" style={{ color: "var(--text-dim)" }}>Disclosed activity across the available archive, including reported family holdings. These are filing records, not a complete portfolio or verified personal investment returns.</p>

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
 import CompanyMark from "@/components/CompanyMark";
+import { companyMark } from "@/lib/company-marks";
 import DisclosureCard from "@/components/DisclosureCard";
 import { HOME_SECTORS } from "@/lib/home-sectors";
 import { sectorFunds } from "@/lib/sector-funds";
@@ -32,7 +33,7 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
       <Link href="/#home-sectors-title">Market sectors</Link><span aria-hidden="true">/</span><Link href={`/sectors/${sector.id}`}>{sector.name}</Link>
       <span aria-hidden="true">/</span><span aria-current="page">{stock.ticker}</span></nav>
     <header className="instrument-hero"><p className="kicker">Company overview · {sector.name}</p>
-      <div className="instrument-title"><CompanyMark ticker={stock.ticker} cik={stock.cik} /><h1>{stock.ticker}</h1></div>
+      <div className="instrument-title"><CompanyMark ticker={stock.ticker} src={companyMark(stock.ticker, stock.cik)} /><h1>{stock.ticker}</h1></div>
       <h2>{stock.title}</h2><p className="instrument-summary">Company identity, sector context and disclosed House activity. Not a price chart or a complete company research profile.</p>
     </header>
     <nav className="sector-steps" aria-label="On this company page"><a href="#company-context">Company context</a><a href="#company-disclosures">House disclosures</a><a href="#sector-etfs">Sector ETFs</a></nav>

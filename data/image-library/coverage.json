@@ -1,0 +1,1572 @@
+{
+ "generatedAt": "2026-09-14T06:01:36.866Z",
+ "catalogGeneratedAt": "2026-09-14T06:01:36.753Z",
+ "universes": {
+  "funds": {
+   "source": "src/lib/sector-funds.ts directory + src/lib/funds identities, joined to SEC company_tickers_mf.json for CIK, series and class",
+   "asOf": "2026-09-14",
+   "identities": 26,
+   "note": "Share classes, not funds: a ticker names one class. Marks are the sponsor's unless a fund has its own documented logo, which none in this directory does."
+  },
+  "companies": {
+   "source": "Wikidata: items with P361 (part of) = Q242345 (S&P 500), joined to SEC company_tickers.json by P5531 (CIK)",
+   "asOf": "2026-09-14",
+   "identities": 512,
+   "tickers": 672,
+   "note": "527 Wikidata items; 512 carry exactly one CIK; 15 carry none and 0 carry several, so they cannot be keyed and are listed in the coverage report. Membership as Wikidata records it — which includes some former constituents — not the index provider's official list."
+  },
+  "congress": {
+   "source": "unitedstates/congress-legislators legislators-current.json (CC0); portraits from unitedstates/images 225x275 (CC0 repository, GPO provenance stated)",
+   "asOf": "2026-09-14",
+   "identities": 539,
+   "note": "439 House and 100 Senate members serving as of the dataset. Portraits are only ever fetched by Bioguide id."
+  }
+ },
+ "companies": {
+  "resolved": 347,
+  "missing": 69,
+  "ambiguous": 6,
+  "failed": 0,
+  "awaiting_review": 85,
+  "issuersInUniverse": 512,
+  "issuersResolved": 347,
+  "tickersInUniverse": 667,
+  "tickersResolved": 522,
+  "manuallyReviewed": 10,
+  "unkeyedWikidataItems": [
+   {
+    "qid": "Q27585",
+    "label": "AOL",
+    "ciks": []
+   },
+   {
+    "qid": "Q628051",
+    "label": "Autodesk",
+    "ciks": []
+   },
+   {
+    "qid": "Q27432",
+    "label": "Bethlehem Steel",
+    "ciks": []
+   },
+   {
+    "qid": "Q950380",
+    "label": "CBS Corporation",
+    "ciks": []
+   },
+   {
+    "qid": "Q842947",
+    "label": "Celgene",
+    "ciks": []
+   },
+   {
+    "qid": "Q5323987",
+    "label": "EQT",
+    "ciks": []
+   },
+   {
+    "qid": "Q5570993",
+    "label": "Globe Life",
+    "ciks": []
+   },
+   {
+    "qid": "Q967265",
+    "label": "Kohl's",
+    "ciks": []
+   },
+   {
+    "qid": "Q1321054",
+    "label": "Norfolk Southern Railway",
+    "ciks": []
+   },
+   {
+    "qid": "Q13683",
+    "label": "NYSE Euronext Liffe",
+    "ciks": []
+   },
+   {
+    "qid": "Q124129040",
+    "label": "Rapid Credit Boosters",
+    "ciks": []
+   },
+   {
+    "qid": "Q785943",
+    "label": "Staples Inc.",
+    "ciks": []
+   },
+   {
+    "qid": "Q1045758",
+    "label": "United Technologies Corporation",
+    "ciks": []
+   },
+   {
+    "qid": "Q30338243",
+    "label": "West Pharmaceutical Services (United States)",
+    "ciks": []
+   },
+   {
+    "qid": "Q303341",
+    "label": "Wyndham Worldwide",
+    "ciks": []
+   }
+  ]
+ },
+ "funds": {
+  "resolved": 24,
+  "missing": 2,
+  "ambiguous": 0,
+  "failed": 0,
+  "awaiting_review": 0,
+  "viaSponsorMark": 24,
+  "ownLogo": 0
+ },
+ "sponsors": {
+  "resolved": 3,
+  "missing": 2,
+  "ambiguous": 0,
+  "failed": 0,
+  "awaiting_review": 0
+ },
+ "congress": {
+  "resolved": 524,
+  "missing": 15,
+  "ambiguous": 0,
+  "failed": 0,
+  "awaiting_review": 0,
+  "manuallyReviewed": 14
+ },
+ "unresolved": [
+  {
+   "identity": "bioguide:A000383",
+   "kind": "person",
+   "label": "Alan Armstrong",
+   "status": "missing",
+   "reason": "No portrait published for this member at unitedstates/images.",
+   "candidate": ""
+  },
+  {
+   "identity": "bioguide:B001321",
+   "kind": "person",
+   "label": "Tom Barrett",
+   "status": "missing",
+   "reason": "No portrait published for this member at unitedstates/images.",
+   "candidate": ""
+  },
+  {
+   "identity": "bioguide:B001323",
+   "kind": "person",
+   "label": "Nicholas J. Begich III",
+   "status": "missing",
+   "reason": "No portrait published for this member at unitedstates/images.",
+   "candidate": ""
+  },
+  {
+   "identity": "bioguide:B001324",
+   "kind": "person",
+   "label": "Wesley Bell",
+   "status": "missing",
+   "reason": "No portrait published for this member at unitedstates/images.",
+   "candidate": ""
+  },
+  {
+   "identity": "bioguide:B001328",
+   "kind": "person",
+   "label": "Everton Blair Jr.",
+   "status": "missing",
+   "reason": "No portrait published for this member at unitedstates/images.",
+   "candidate": ""
+  },
+  {
+   "identity": "bioguide:F000485",
+   "kind": "person",
+   "label": "Clay Fuller",
+   "status": "missing",
+   "reason": "No portrait published for this member at unitedstates/images.",
+   "candidate": ""
+  },
+  {
+   "identity": "bioguide:G000606",
+   "kind": "person",
+   "label": "Adelita S. Grijalva",
+   "status": "missing",
+   "reason": "No portrait published for this member at unitedstates/images.",
+   "candidate": ""
+  },
+  {
+   "identity": "bioguide:G000607",
+   "kind": "person",
+   "label": "James Gallagher",
+   "status": "missing",
+   "reason": "No portrait published for this member at unitedstates/images.",
+   "candidate": ""
+  },
+  {
+   "identity": "bioguide:G000608",
+   "kind": "person",
+   "label": "Darline Graham",
+   "status": "missing",
+   "reason": "No portrait published for this member at unitedstates/images.",
+   "candidate": ""
+  },
+  {
+   "identity": "bioguide:H001104",
+   "kind": "person",
+   "label": "Jon Husted",
+   "status": "missing",
+   "reason": "No portrait published for this member at unitedstates/images.",
+   "candidate": ""
+  },
+  {
+   "identity": "bioguide:M001245",
+   "kind": "person",
+   "label": "Christian D. Menefee",
+   "status": "missing",
+   "reason": "No portrait published for this member at unitedstates/images.",
+   "candidate": ""
+  },
+  {
+   "identity": "bioguide:M001246",
+   "kind": "person",
+   "label": "Analilia Mejia",
+   "status": "missing",
+   "reason": "No portrait published for this member at unitedstates/images.",
+   "candidate": ""
+  },
+  {
+   "identity": "bioguide:V000139",
+   "kind": "person",
+   "label": "Matt Van Epps",
+   "status": "missing",
+   "reason": "No portrait published for this member at unitedstates/images.",
+   "candidate": ""
+  },
+  {
+   "identity": "bioguide:W000831",
+   "kind": "person",
+   "label": "James R. Walkinshaw",
+   "status": "missing",
+   "reason": "No portrait published for this member at unitedstates/images.",
+   "candidate": ""
+  },
+  {
+   "identity": "bioguide:W000832",
+   "kind": "person",
+   "label": "Aisha Wahab",
+   "status": "missing",
+   "reason": "No portrait published for this member at unitedstates/images.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000004447",
+   "kind": "company",
+   "label": "Hess Corporation",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000004977",
+   "kind": "company",
+   "label": "AFL",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000005513",
+   "kind": "company",
+   "label": "UNM",
+   "status": "awaiting_review",
+   "reason": "EDGAR records \"UNUMPROVIDENT CORP\" as a former name of CIK 0000005513, now \"Unum Group\"; Wikidata's logo file name (UnumProvident logo.svg) still carries the former name, so the logo may be the old brand. A reviewer must confirm the mark is current before it is shown.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:UnumProvident%20logo.svg"
+  },
+  {
+   "identity": "sec:cik:0000006201",
+   "kind": "company",
+   "label": "AAL",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000006769",
+   "kind": "company",
+   "label": "APA Corporation",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000008670",
+   "kind": "company",
+   "label": "ADP",
+   "status": "ambiguous",
+   "reason": "Wikidata lists 2 logo files: Automatic-Data-Processing-Logo.svg | Automatic Data Processing (logo).svg. A reviewer must pick one.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000008818",
+   "kind": "company",
+   "label": "AVY",
+   "status": "awaiting_review",
+   "reason": "Avery Dennison logo red.svg: SVG exceeds 262144 bytes",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000011544",
+   "kind": "company",
+   "label": "WRB",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000014693",
+   "kind": "company",
+   "label": "BF-B",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000016918",
+   "kind": "company",
+   "label": "STZ",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000020286",
+   "kind": "company",
+   "label": "CINF",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000023217",
+   "kind": "company",
+   "label": "CAG",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000024545",
+   "kind": "company",
+   "label": "TAP",
+   "status": "awaiting_review",
+   "reason": "EDGAR records \"MOLSON COORS BREWING CO\" as a former name of CIK 0000024545, now \"MOLSON COORS BEVERAGE CO\"; Wikidata's item label (Molson Coors Brewing Company) still carries the former name, so the logo may be the old brand. A reviewer must confirm the mark is current before it is shown.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:Molson%20Coors%20Beverage%20Company%20logo.svg"
+  },
+  {
+   "identity": "sec:cik:0000028412",
+   "kind": "company",
+   "label": "Comerica",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000029534",
+   "kind": "company",
+   "label": "DG",
+   "status": "ambiguous",
+   "reason": "Wikidata lists 2 logo files: Dollar General logo.svg | Logo DG Pinch Yellow.png. A reviewer must pick one.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000031791",
+   "kind": "company",
+   "label": "RVTY",
+   "status": "awaiting_review",
+   "reason": "EDGAR records \"PERKINELMER INC\" as a former name of CIK 0000031791, now \"REVVITY, INC.\"; Wikidata's item label (PerkinElmer) still carries the former name, so the logo may be the old brand. A reviewer must confirm the mark is current before it is shown.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:Logo%20PerkinElmer.svg"
+  },
+  {
+   "identity": "sec:cik:0000032604",
+   "kind": "company",
+   "label": "EMR",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000034088",
+   "kind": "company",
+   "label": "ExxonMobil",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000038777",
+   "kind": "company",
+   "label": "BEN",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000047217",
+   "kind": "company",
+   "label": "HPQ",
+   "status": "awaiting_review",
+   "reason": "EDGAR records \"HEWLETT PACKARD CO\" as a former name of CIK 0000047217, now \"HP INC\"; Wikidata's item label (Hewlett-Packard) still carries the former name, so the logo may be the old brand. A reviewer must confirm the mark is current before it is shown.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:HP%20logo%202025.svg"
+  },
+  {
+   "identity": "sec:cik:0000051644",
+   "kind": "company",
+   "label": "Interpublic Group of Companies",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000052988",
+   "kind": "company",
+   "label": "J",
+   "status": "awaiting_review",
+   "reason": "EDGAR records \"JACOBS ENGINEERING GROUP INC /DE/\" as a former name of CIK 0000052988, now \"JACOBS SOLUTIONS INC.\"; Wikidata's item label (Jacobs Engineering Group) still carries the former name, so the logo may be the old brand. A reviewer must confirm the mark is current before it is shown.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:Jacobs%20Engineering%20Group%202019%20logo.svg"
+  },
+  {
+   "identity": "sec:cik:0000054480",
+   "kind": "company",
+   "label": "Kansas City Southern",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000055067",
+   "kind": "company",
+   "label": "Kellanova",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000058492",
+   "kind": "company",
+   "label": "Leggett & Platt",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000059558",
+   "kind": "company",
+   "label": "LNC",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000062709",
+   "kind": "company",
+   "label": "MRSH",
+   "status": "awaiting_review",
+   "reason": "Wikidata lists ticker(s) MMC for this item but the SEC master lists MRSH for CIK 0000062709 (MARSH & MCLENNAN COMPANIES, INC.). The CIK link may be stale after a rename, or wrong; a reviewer must confirm before any mark is shown.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:MarshMcLennan%20h%20rgb%20c.svg"
+  },
+  {
+   "identity": "sec:cik:0000065984",
+   "kind": "company",
+   "label": "ETR",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000072207",
+   "kind": "company",
+   "label": "Noble Energy",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000073124",
+   "kind": "company",
+   "label": "NTRS",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000075677",
+   "kind": "company",
+   "label": "PKG",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000078239",
+   "kind": "company",
+   "label": "PVH",
+   "status": "awaiting_review",
+   "reason": "EDGAR records \"PHILLIPS VAN HEUSEN CORP /DE/\" as a former name of CIK 0000078239, now \"PVH CORP. /DE/\"; Wikidata's logo file name (Phillips-Van Heusen logo.svg) still carries the former name, so the logo may be the old brand. A reviewer must confirm the mark is current before it is shown.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:Phillips-Van%20Heusen%20logo.svg"
+  },
+  {
+   "identity": "sec:cik:0000079282",
+   "kind": "company",
+   "label": "BRO",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000084129",
+   "kind": "company",
+   "label": "Rite Aid",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000086312",
+   "kind": "company",
+   "label": "TRV",
+   "status": "awaiting_review",
+   "reason": "Commons Trav umb 5inch.jpg: licence \"CC BY-SA 3.0\" is not among the documented acceptable bases.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:Trav_umb_5inch.jpg"
+  },
+  {
+   "identity": "sec:cik:0000098246",
+   "kind": "company",
+   "label": "Tiffany & Co.",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000100517",
+   "kind": "company",
+   "label": "UAL",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000100885",
+   "kind": "company",
+   "label": "UNP",
+   "status": "awaiting_review",
+   "reason": "Union pacific railroad logo.svg: SVG declares entities",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000101778",
+   "kind": "company",
+   "label": "Marathon Oil",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000104169",
+   "kind": "company",
+   "label": "WMT",
+   "status": "ambiguous",
+   "reason": "Wikidata lists 2 logo files: Walmart logo (2025).svg | Walmart wordmark (2008).svg. A reviewer must pick one.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000109198",
+   "kind": "company",
+   "label": "TJX",
+   "status": "ambiguous",
+   "reason": "Wikidata lists 2 logo files: TJX Logo.svg | TJXLogo.svg. A reviewer must pick one.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000109380",
+   "kind": "company",
+   "label": "ZION",
+   "status": "awaiting_review",
+   "reason": "EDGAR records \"ZIONS BANCORPORATION /UT/\" as a former name of CIK 0000109380, now \"ZIONS BANCORPORATION, NATIONAL ASSOCIATION /UT/\"; Wikidata's logo file name (Zions Bancorporation logo.svg) still carries the former name, so the logo may be the old brand. A reviewer must confirm the mark is current before it is shown.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:Zions%20Bancorporation%20logo.svg"
+  },
+  {
+   "identity": "sec:cik:0000203527",
+   "kind": "company",
+   "label": "Varian Medical Systems",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000313927",
+   "kind": "company",
+   "label": "CHD",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000318154",
+   "kind": "company",
+   "label": "AMGN",
+   "status": "awaiting_review",
+   "reason": "Amgen.svg: Not an SVG document",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000354190",
+   "kind": "company",
+   "label": "AJG",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000701985",
+   "kind": "company",
+   "label": "BBWI",
+   "status": "awaiting_review",
+   "reason": "EDGAR records \"L Brands, Inc.\" as a former name of CIK 0000701985, now \"Bath & Body Works, Inc.\"; Wikidata's logo file name (L Brands logo 2019.png) still carries the former name, so the logo may be the old brand. A reviewer must confirm the mark is current before it is shown.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:L%20Brands%20logo%202019.png"
+  },
+  {
+   "identity": "sec:cik:0000712515",
+   "kind": "company",
+   "label": "Electronic Arts",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000718877",
+   "kind": "company",
+   "label": "Activision Blizzard",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000728535",
+   "kind": "company",
+   "label": "JBHT",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000740260",
+   "kind": "company",
+   "label": "VTR",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000743316",
+   "kind": "company",
+   "label": "Maxim Integrated",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000765880",
+   "kind": "company",
+   "label": "DOC",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000783280",
+   "kind": "company",
+   "label": "Duke Realty",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000783325",
+   "kind": "company",
+   "label": "WEC",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000789570",
+   "kind": "company",
+   "label": "MGM",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000804753",
+   "kind": "company",
+   "label": "Cerner",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000811156",
+   "kind": "company",
+   "label": "CMS",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000813828",
+   "kind": "company",
+   "label": "Paramount Global",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000815094",
+   "kind": "company",
+   "label": "AbioMed",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000822416",
+   "kind": "company",
+   "label": "PHM",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000827052",
+   "kind": "company",
+   "label": "EIX",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000832101",
+   "kind": "company",
+   "label": "IEX",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000858470",
+   "kind": "company",
+   "label": "Coterra Energy",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000859737",
+   "kind": "company",
+   "label": "Hologic",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000860730",
+   "kind": "company",
+   "label": "HCA",
+   "status": "awaiting_review",
+   "reason": "EDGAR records \"HCA Holdings, Inc.\" as a former name of CIK 0000860730, now \"HCA Healthcare, Inc.\"; Wikidata's logo file name (2019 HCA logo.svg) still carries the former name, so the logo may be the old brand. A reviewer must confirm the mark is current before it is shown.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:2019%20HCA%20logo.svg"
+  },
+  {
+   "identity": "sec:cik:0000860731",
+   "kind": "company",
+   "label": "TYL",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000861878",
+   "kind": "company",
+   "label": "Stericycle",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000865436",
+   "kind": "company",
+   "label": "Whole Foods Market",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000865752",
+   "kind": "company",
+   "label": "MNST",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000874766",
+   "kind": "company",
+   "label": "HIG",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000875045",
+   "kind": "company",
+   "label": "BIIB",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000877212",
+   "kind": "company",
+   "label": "ZBRA",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000877890",
+   "kind": "company",
+   "label": "Citrix Systems",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000878927",
+   "kind": "company",
+   "label": "ODFL",
+   "status": "awaiting_review",
+   "reason": "Commons Old Dominion Freight Line (2).jpg: licence \"CC BY 2.0\" is not among the documented acceptable bases.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:Old_Dominion_Freight_Line_(2).jpg"
+  },
+  {
+   "identity": "sec:cik:0000882095",
+   "kind": "company",
+   "label": "GILD",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000891024",
+   "kind": "company",
+   "label": "Patterson Companies",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000899866",
+   "kind": "company",
+   "label": "Alexion Pharmaceuticals",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000900075",
+   "kind": "company",
+   "label": "CPRT",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000906107",
+   "kind": "company",
+   "label": "VMRK",
+   "status": "awaiting_review",
+   "reason": "EDGAR records \"EQUITY RESIDENTIAL\" as a former name of CIK 0000906107, now \"VIVMARK RESIDENTIAL\"; Wikidata's logo file name (Equity Residential logo.svg) still carries the former name, so the logo may be the old brand. A reviewer must confirm the mark is current before it is shown.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:Equity%20Residential%20logo.svg"
+  },
+  {
+   "identity": "sec:cik:0000906163",
+   "kind": "company",
+   "label": "NVR",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000908255",
+   "kind": "company",
+   "label": "BWA",
+   "status": "awaiting_review",
+   "reason": "BorgWarner Logo Dark Blue (1).svg: SVG declares entities",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000912595",
+   "kind": "company",
+   "label": "MAA",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000914208",
+   "kind": "sponsor",
+   "label": "Invesco",
+   "status": "missing",
+   "reason": "No documented public-domain mark for this sponsor. Not fetched from search results.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000915912",
+   "kind": "company",
+   "label": "AvalonBay",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000916076",
+   "kind": "company",
+   "label": "MLM",
+   "status": "awaiting_review",
+   "reason": "Commons MLMcompanylogo.gif: licence \"Copyrighted free use\" is not among the documented acceptable bases.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:MLMcompanylogo.gif"
+  },
+  {
+   "identity": "sec:cik:0000920148",
+   "kind": "company",
+   "label": "LH",
+   "status": "awaiting_review",
+   "reason": "Commons Labcorp Logo updated 12-2020.svg: licence \"CC BY-SA 4.0\" is not among the documented acceptable bases.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:Labcorp_Logo_updated_12-2020.svg"
+  },
+  {
+   "identity": "sec:cik:0000920522",
+   "kind": "company",
+   "label": "ESS",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000927653",
+   "kind": "company",
+   "label": "MCK",
+   "status": "awaiting_review",
+   "reason": "Commons Mck logo pos col rgb.svg: licence \"CC BY-SA 4.0\" is not among the documented acceptable bases.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:Mck_logo_pos_col_rgb.svg"
+  },
+  {
+   "identity": "sec:cik:0000936340",
+   "kind": "company",
+   "label": "DTE",
+   "status": "awaiting_review",
+   "reason": "EDGAR records \"DTE HOLDINGS INC\" as a former name of CIK 0000936340, now \"DTE ENERGY CO\"; Wikidata's logo file name (DTE Logo Blue.svg) still carries the former name, so the logo may be the old brand. A reviewer must confirm the mark is current before it is shown.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:DTE%20Logo%20Blue.svg"
+  },
+  {
+   "identity": "sec:cik:0000940944",
+   "kind": "company",
+   "label": "DRI",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000943452",
+   "kind": "company",
+   "label": "WAB",
+   "status": "awaiting_review",
+   "reason": "EDGAR records \"WABTEC CORP\" as a former name of CIK 0000943452, now \"WESTINGHOUSE AIR BRAKE TECHNOLOGIES CORP\"; Wikidata's item label (Wabtec) still carries the former name, so the logo may be the old brand. A reviewer must confirm the mark is current before it is shown.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:Wabtec%20logo.svg"
+  },
+  {
+   "identity": "sec:cik:0000945841",
+   "kind": "company",
+   "label": "POOL",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0000947484",
+   "kind": "company",
+   "label": "ACGL",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001000228",
+   "kind": "company",
+   "label": "HSIC",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001000697",
+   "kind": "company",
+   "label": "WAT",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001001082",
+   "kind": "company",
+   "label": "Dish",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001011006",
+   "kind": "company",
+   "label": "Altaba",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001012100",
+   "kind": "company",
+   "label": "Sealed Air",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001013462",
+   "kind": "company",
+   "label": "Q295774",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001020569",
+   "kind": "company",
+   "label": "IRM",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001021860",
+   "kind": "company",
+   "label": "NOV",
+   "status": "awaiting_review",
+   "reason": "EDGAR records \"NATIONAL OILWELL VARCO INC\" as a former name of CIK 0001021860, now \"NOV Inc.\"; Wikidata's item label (National Oilwell Varco) still carries the former name, so the logo may be the old brand. A reviewer must confirm the mark is current before it is shown.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:National-Oilwell-Varco-Logo.svg"
+  },
+  {
+   "identity": "sec:cik:0001022079",
+   "kind": "company",
+   "label": "DGX",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001035443",
+   "kind": "company",
+   "label": "ARE",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001037540",
+   "kind": "company",
+   "label": "BXP",
+   "status": "awaiting_review",
+   "reason": "EDGAR records \"BOSTON PROPERTIES INC\" as a former name of CIK 0001037540, now \"BXP, Inc.\"; Wikidata's item label (Boston Properties) still carries the former name, so the logo may be the old brand. A reviewer must confirm the mark is current before it is shown.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:Bxp%20boston%20logo.png"
+  },
+  {
+   "identity": "sec:cik:0001038357",
+   "kind": "company",
+   "label": "Pioneer Natural Resources",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001039684",
+   "kind": "company",
+   "label": "OKE",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001040971",
+   "kind": "company",
+   "label": "SLG",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001043604",
+   "kind": "company",
+   "label": "Juniper Networks",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001045309",
+   "kind": "company",
+   "label": "W. R. Grace and Company",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001048695",
+   "kind": "company",
+   "label": "FFIV",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001050915",
+   "kind": "company",
+   "label": "PWR",
+   "status": "awaiting_review",
+   "reason": "Commons QScolorjpg.jpg: licence \"CC BY-SA 3.0\" is not among the documented acceptable bases.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:QScolorjpg.jpg"
+  },
+  {
+   "identity": "sec:cik:0001058090",
+   "kind": "company",
+   "label": "CMG",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001058290",
+   "kind": "company",
+   "label": "CTSH",
+   "status": "awaiting_review",
+   "reason": "Commons Cognizant Technology Solutions - Kolkata 2011-08-29 4824.JPG: licence \"CC BY 3.0\" is not among the documented acceptable bases.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:Cognizant_Technology_Solutions_-_Kolkata_2011-08-29_4824.JPG"
+  },
+  {
+   "identity": "sec:cik:0001087423",
+   "kind": "company",
+   "label": "Red Hat",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001093557",
+   "kind": "company",
+   "label": "DXCM",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001095073",
+   "kind": "company",
+   "label": "EG",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001111711",
+   "kind": "company",
+   "label": "NI",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001121788",
+   "kind": "company",
+   "label": "GRMN",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001132979",
+   "kind": "company",
+   "label": "First Republic Bank",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001136869",
+   "kind": "company",
+   "label": "ZBH",
+   "status": "awaiting_review",
+   "reason": "EDGAR records \"ZIMMER HOLDINGS INC\" as a former name of CIK 0001136869, now \"ZIMMER BIOMET HOLDINGS, INC.\"; Wikidata's logo file name (Zimmer Holdings logo.svg) still carries the former name, so the logo may be the old brand. A reviewer must confirm the mark is current before it is shown.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:Zimmer%20Holdings%20logo.svg"
+  },
+  {
+   "identity": "sec:cik:0001137774",
+   "kind": "company",
+   "label": "PRU",
+   "status": "awaiting_review",
+   "reason": "Commons Logo-prudential-do-brasil.png: licence \"CC BY-SA 3.0\" is not among the documented acceptable bases.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:Logo-prudential-do-brasil.png"
+  },
+  {
+   "identity": "sec:cik:0001140536",
+   "kind": "company",
+   "label": "WTW",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001144519",
+   "kind": "company",
+   "label": "Bunge Limited",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001163165",
+   "kind": "company",
+   "label": "COP",
+   "status": "awaiting_review",
+   "reason": "ConocoPhillips Logo.svg: SVG declares entities",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001164727",
+   "kind": "company",
+   "label": "NEM",
+   "status": "ambiguous",
+   "reason": "Wikidata lists 2 logo files: Newmont-logo.png | Newmont-Mining-Logo.svg. A reviewer must pick one.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001175454",
+   "kind": "company",
+   "label": "CPAY",
+   "status": "awaiting_review",
+   "reason": "EDGAR records \"FLEETCOR TECHNOLOGIES INC\" as a former name of CIK 0001175454, now \"CORPAY, INC.\"; Wikidata's logo file name (The logo of Fleetcor.png) still carries the former name, so the logo may be the old brand. A reviewer must confirm the mark is current before it is shown.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:The%20logo%20of%20Fleetcor.png"
+  },
+  {
+   "identity": "sec:cik:0001260221",
+   "kind": "company",
+   "label": "TDG",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001267238",
+   "kind": "company",
+   "label": "AIZ",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001278021",
+   "kind": "company",
+   "label": "MKTX",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001289490",
+   "kind": "company",
+   "label": "EXR",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001297996",
+   "kind": "company",
+   "label": "DLR",
+   "status": "awaiting_review",
+   "reason": "Commons Digital Realty TM Brandmark RGB Black.svg: licence \"CC BY-SA 4.0\" is not among the documented acceptable bases.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:Digital_Realty_TM_Brandmark_RGB_Black.svg"
+  },
+  {
+   "identity": "sec:cik:0001300514",
+   "kind": "company",
+   "label": "LVS",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001316835",
+   "kind": "company",
+   "label": "BLDR",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001335258",
+   "kind": "company",
+   "label": "LYV",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001339947",
+   "kind": "company",
+   "label": "Viacom",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001359841",
+   "kind": "company",
+   "label": "Hanesbrands",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001374310",
+   "kind": "company",
+   "label": "CBOE",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001378946",
+   "kind": "company",
+   "label": "People's United Financial",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001383312",
+   "kind": "company",
+   "label": "BR",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001393612",
+   "kind": "company",
+   "label": "Discover Financial",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001442145",
+   "kind": "company",
+   "label": "VRSK",
+   "status": "awaiting_review",
+   "reason": "Commons Verisk Analytics Logo.svg: licence \"CC BY-SA 4.0\" is not among the documented acceptable bases.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:Verisk_Analytics_Logo.svg"
+  },
+  {
+   "identity": "sec:cik:0001466258",
+   "kind": "company",
+   "label": "TT",
+   "status": "awaiting_review",
+   "reason": "EDGAR records \"Ingersoll-Rand plc\" as a former name of CIK 0001466258, now \"Trane Technologies plc\"; Wikidata's item label (Ingersoll Rand) still carries the former name, so the logo may be the old brand. A reviewer must confirm the mark is current before it is shown.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:Ingersoll%20Rand%20logo.svg"
+  },
+  {
+   "identity": "sec:cik:0001492633",
+   "kind": "company",
+   "label": "Nielsen Company",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001506307",
+   "kind": "company",
+   "label": "KMI",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001519751",
+   "kind": "company",
+   "label": "FBIN",
+   "status": "awaiting_review",
+   "reason": "EDGAR records \"Fortune Brands Home & Security, Inc.\" as a former name of CIK 0001519751, now \"Fortune Brands Innovations, Inc.\"; Wikidata's item label (Fortune Brands Home & Security) still carries the former name, so the logo may be the old brand. A reviewer must confirm the mark is current before it is shown.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001539838",
+   "kind": "company",
+   "label": "FANG",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001571949",
+   "kind": "company",
+   "label": "ICE",
+   "status": "awaiting_review",
+   "reason": "EDGAR records \"IntercontinentalExchange Group, Inc.\" as a former name of CIK 0001571949, now \"Intercontinental Exchange, Inc.\"; Wikidata's logo file name (Logo of the IntercontinentalExchange.svg) still carries the former name, so the logo may be the old brand. A reviewer must confirm the mark is current before it is shown.",
+   "candidate": "https://commons.wikimedia.org/wiki/File:Logo%20of%20the%20IntercontinentalExchange.svg"
+  },
+  {
+   "identity": "sec:cik:0001579241",
+   "kind": "company",
+   "label": "ALLE",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001596783",
+   "kind": "company",
+   "label": "Catalent Pharma Solutions",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001598014",
+   "kind": "company",
+   "label": "IHS Markit",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001601046",
+   "kind": "company",
+   "label": "KEYS",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001618921",
+   "kind": "company",
+   "label": "Walgreens Boots Alliance",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001623613",
+   "kind": "company",
+   "label": "Mylan",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001633917",
+   "kind": "company",
+   "label": "PYPL",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001707925",
+   "kind": "company",
+   "label": "LIN",
+   "status": "awaiting_review",
+   "reason": "Linde plc logo.png: Raster exceeds 524288 bytes",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001732845",
+   "kind": "company",
+   "label": "WRKCo, Inc.",
+   "status": "awaiting_review",
+   "reason": "Wikidata CIK is not in the SEC master; identity unverified.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001739940",
+   "kind": "company",
+   "label": "CI",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001748790",
+   "kind": "company",
+   "label": "AMCR",
+   "status": "ambiguous",
+   "reason": "Wikidata lists 2 logo files: Amcor-Logo.svg | Amcor logo.svg. A reviewer must pick one.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001751788",
+   "kind": "company",
+   "label": "DOW",
+   "status": "missing",
+   "reason": "No logo file on Wikidata (P154) and no Simple Icons link (P8972) for this issuer.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:cik:0001915657",
+   "kind": "company",
+   "label": "DINO",
+   "status": "awaiting_review",
+   "reason": "Wikidata lists ticker(s) HFC for this item but the SEC master lists DINO for CIK 0001915657 (HF Sinclair Corp). The CIK link may be stale after a rename, or wrong; a reviewer must confirm before any mark is shown.",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:class:C000105869",
+   "kind": "fund",
+   "label": "SMH",
+   "status": "missing",
+   "reason": "Sponsor VanEck has no resolved mark (missing).",
+   "candidate": ""
+  },
+  {
+   "identity": "sec:class:C000271435",
+   "kind": "fund",
+   "label": "QQQ",
+   "status": "missing",
+   "reason": "Sponsor Invesco has no resolved mark (missing).",
+   "candidate": ""
+  },
+  {
+   "identity": "sponsor:vaneck",
+   "kind": "sponsor",
+   "label": "VanEck",
+   "status": "missing",
+   "reason": "No documented public-domain mark for this sponsor. Not fetched from search results.",
+   "candidate": ""
+  }
+ ]
+}

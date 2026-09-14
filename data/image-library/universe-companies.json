@@ -1,0 +1,8880 @@
+{
+ "asOf": "2026-09-14",
+ "members": [
+  {
+   "qid": "Q159433",
+   "label": "3M",
+   "ciks": [
+    "0000066740"
+   ],
+   "logos": [
+    "3M wordmark.svg"
+   ],
+   "simpleIcons": [
+    "http://commons.wikimedia.org/wiki/Special:FilePath/3M%20wordmark.svg"
+   ],
+   "tickers": [
+    "MMM"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q4648219",
+   "label": "A. O. Smith",
+   "ciks": [
+    "0000091142"
+   ],
+   "logos": [
+    "AO Smith logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AOS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q306764",
+   "label": "Abbott Laboratories",
+   "ciks": [
+    "0000001800"
+   ],
+   "logos": [
+    "Abbott Laboratories 2025 logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ABT"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q14662364",
+   "label": "AbbVie",
+   "ciks": [
+    "0001551152"
+   ],
+   "logos": [
+    "AbbVie logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ABBV"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q4667884",
+   "label": "AbioMed",
+   "ciks": [
+    "0000815094"
+   ],
+   "logos": [
+    "ABIOMED logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ABMD"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q338825",
+   "label": "Accenture",
+   "ciks": [
+    "0001467373"
+   ],
+   "logos": [
+    "Accenture.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ACN"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q344341",
+   "label": "Activision Blizzard",
+   "ciks": [
+    "0000718877"
+   ],
+   "logos": [
+    "Activision Blizzard logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ATVI"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q11463",
+   "label": "Adobe",
+   "ciks": [
+    "0000796343"
+   ],
+   "logos": [
+    "Adobe Corporate wordmark.svg"
+   ],
+   "simpleIcons": [
+    "http://commons.wikimedia.org/wiki/Special:FilePath/Adobe%20Corporate%20Horizontal%20Red%20HEX.svg"
+   ],
+   "tickers": [
+    "ADBE"
+   ],
+   "exchangesSeen": [
+    "Q82059",
+    "Q171240"
+   ]
+  },
+  {
+   "qid": "Q4686051",
+   "label": "Advance Auto Parts",
+   "ciks": [
+    "0001158449"
+   ],
+   "logos": [
+    "AAP Logo STK 2C.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AAP"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q291508",
+   "label": "AES Corporation",
+   "ciks": [
+    "0000874761"
+   ],
+   "logos": [
+    "AES Corporation logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AES"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q26311",
+   "label": "Aflac",
+   "ciks": [
+    "0000004977"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "AFL"
+   ],
+   "exchangesSeen": [
+    "Q13677",
+    "Q217475"
+   ]
+  },
+  {
+   "qid": "Q393762",
+   "label": "Agilent Technologies",
+   "ciks": [
+    "0001090872"
+   ],
+   "logos": [
+    "Agilent Technologies-Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "A"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q407744",
+   "label": "Air Products & Chemicals",
+   "ciks": [
+    "0000002969"
+   ],
+   "logos": [
+    "Logo Air Products.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "APD"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q415598",
+   "label": "Akamai Technologies",
+   "ciks": [
+    "0001086222"
+   ],
+   "logos": [
+    "Akamai-2025.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AKAM"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q4033665",
+   "label": "Alaska Air Group",
+   "ciks": [
+    "0000766421"
+   ],
+   "logos": [
+    "Alaska Air Group.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ALK"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q127074",
+   "label": "Albemarle Corporation",
+   "ciks": [
+    "0000915913"
+   ],
+   "logos": [
+    "Albermarle Corporation.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ALB"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q48739877",
+   "label": "Alexandria Real Estate Equities",
+   "ciks": [
+    "0001035443"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "ARE"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q204727",
+   "label": "Alexion Pharmaceuticals",
+   "ciks": [
+    "0000899866"
+   ],
+   "logos": [
+    "Alexion Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ALXN"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q30272258",
+   "label": "Align Technology",
+   "ciks": [
+    "0001097149"
+   ],
+   "logos": [
+    "Align Technology logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ALGN"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q16738121",
+   "label": "Allegion",
+   "ciks": [
+    "0001579241"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "ALLE"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q4732492",
+   "label": "Alliant Energy",
+   "ciks": [
+    "0000352541"
+   ],
+   "logos": [
+    "Alliant Energy logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "LNT"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q2645636",
+   "label": "Allstate",
+   "ciks": [
+    "0000899051"
+   ],
+   "logos": [
+    "Allstate wordmark.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ALL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q20800404",
+   "label": "Alphabet Inc.",
+   "ciks": [
+    "0001652044"
+   ],
+   "logos": [
+    "Alphabet Inc Logo 2015.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "GOOGL",
+    "GOOG"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q30321616",
+   "label": "Altaba",
+   "ciks": [
+    "0001011006"
+   ],
+   "logos": [
+    "Altabalogo.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AABA"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q445007",
+   "label": "Altria",
+   "ciks": [
+    "0000764180"
+   ],
+   "logos": [
+    "Altria Group.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MO"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q3884",
+   "label": "Amazon",
+   "ciks": [
+    "0001018724"
+   ],
+   "logos": [
+    "Amazon 2024.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AMZN"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q460307",
+   "label": "Amcor",
+   "ciks": [
+    "0001748790"
+   ],
+   "logos": [
+    "Amcor logo.svg",
+    "Amcor-Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AMCR"
+   ],
+   "exchangesSeen": [
+    "Q732670",
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q128896",
+   "label": "AMD",
+   "ciks": [
+    "0000002488"
+   ],
+   "logos": [
+    "AMD Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AMD"
+   ],
+   "exchangesSeen": [
+    "Q13677",
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q462984",
+   "label": "Ameren",
+   "ciks": [
+    "0001002910"
+   ],
+   "logos": [
+    "Ameren logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AEE"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q4742937",
+   "label": "American Airlines Group",
+   "ciks": [
+    "0000006201"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "AAL"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q464092",
+   "label": "American Electric Power",
+   "ciks": [
+    "0000004904"
+   ],
+   "logos": [
+    "AEP logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AEP"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q194360",
+   "label": "American Express",
+   "ciks": [
+    "0000004962"
+   ],
+   "logos": [
+    "American Express logo (2018).svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AXP"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q212235",
+   "label": "American International Group",
+   "ciks": [
+    "0000005272"
+   ],
+   "logos": [
+    "AIG logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AIG"
+   ],
+   "exchangesSeen": [
+    "Q13677",
+    "Q217475"
+   ]
+  },
+  {
+   "qid": "Q4745263",
+   "label": "American Tower Corporation",
+   "ciks": [
+    "0001053507"
+   ],
+   "logos": [
+    "American Tower Corporation logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AMT"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q467238",
+   "label": "American Water Works",
+   "ciks": [
+    "0001410636"
+   ],
+   "logos": [
+    "American Water Works Company Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AWK"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q2843129",
+   "label": "Ameriprise Financial",
+   "ciks": [
+    "0000820027"
+   ],
+   "logos": [
+    "Ameriprise Financial logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AMP"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q470317",
+   "label": "Ametek",
+   "ciks": [
+    "0001037868"
+   ],
+   "logos": [
+    "Ametek-Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AME"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q470517",
+   "label": "Amgen",
+   "ciks": [
+    "0000318154"
+   ],
+   "logos": [
+    "Amgen.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AMGN"
+   ],
+   "exchangesSeen": [
+    "Q82059",
+    "Q496672"
+   ]
+  },
+  {
+   "qid": "Q474621",
+   "label": "Amphenol",
+   "ciks": [
+    "0000820313"
+   ],
+   "logos": [
+    "Logo Amphenol.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "APH"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q484930",
+   "label": "Analog Devices",
+   "ciks": [
+    "0000006281"
+   ],
+   "logos": [
+    "Analog Devices Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ADI"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q27585",
+   "label": "AOL",
+   "ciks": [],
+   "logos": [
+    "AOL logo (2024).svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [],
+   "exchangesSeen": []
+  },
+  {
+   "qid": "Q739518",
+   "label": "Aon plc",
+   "ciks": [
+    "0000315293"
+   ],
+   "logos": [
+    "Aon Corporation logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AON"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q119991",
+   "label": "APA Corporation",
+   "ciks": [
+    "0000006769"
+   ],
+   "logos": [
+    "Apache Corporation Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "APA"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q312",
+   "label": "Apple Inc.",
+   "ciks": [
+    "0000320193"
+   ],
+   "logos": [
+    "Apple logo white.svg",
+    "Apple logo black.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AAPL"
+   ],
+   "exchangesSeen": [
+    "Q217475",
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q621610",
+   "label": "Applied Materials",
+   "ciks": [
+    "0000006951"
+   ],
+   "logos": [
+    "Applied Materials Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AMAT"
+   ],
+   "exchangesSeen": [
+    "Q496672",
+    "Q2632892",
+    "Q82059",
+    "Q151139"
+   ]
+  },
+  {
+   "qid": "Q643626",
+   "label": "Aptiv",
+   "ciks": [
+    "0001521332"
+   ],
+   "logos": [
+    "Aptiv logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "APTV",
+    "DLPH"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q28155430",
+   "label": "Arch Capital Group",
+   "ciks": [
+    "0000947484"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "ACGL"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q632694",
+   "label": "Archer Daniels Midland",
+   "ciks": [
+    "0000007084"
+   ],
+   "logos": [
+    "Archer Daniels Midland logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ADM"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q2861324",
+   "label": "Arista Networks",
+   "ciks": [
+    "0001596532"
+   ],
+   "logos": [
+    "Arista-networks-logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ANET"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q4799191",
+   "label": "Arthur J. Gallagher & Co.",
+   "ciks": [
+    "0000354190"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "AJG"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q4810399",
+   "label": "Assurant",
+   "ciks": [
+    "0001267238"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "AIZ"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q35476",
+   "label": "AT&T",
+   "ciks": [
+    "0000732717"
+   ],
+   "logos": [
+    "AT&T logo 2016.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "T"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q4817084",
+   "label": "Atmos Energy",
+   "ciks": [
+    "0000731802"
+   ],
+   "logos": [
+    "Atmos Energy Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ATO"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q628051",
+   "label": "Autodesk",
+   "ciks": [],
+   "logos": [
+    "Autodesk Logo 2021.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ADSK"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q489080",
+   "label": "Automatic Data Processing",
+   "ciks": [
+    "0000008670"
+   ],
+   "logos": [
+    "Automatic Data Processing (logo).svg",
+    "Automatic-Data-Processing-Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ADP"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q4826087",
+   "label": "AutoZone",
+   "ciks": [
+    "0000866787"
+   ],
+   "logos": [
+    "Logo of AutoZone.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AZO"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q4827537",
+   "label": "AvalonBay",
+   "ciks": [
+    "0000915912"
+   ],
+   "logos": [
+    "Avalon-Bay-logo.jpg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AVB"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q790650",
+   "label": "Avery Dennison",
+   "ciks": [
+    "0000008818"
+   ],
+   "logos": [
+    "Avery Dennison logo red.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AVY"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q804353",
+   "label": "Baker Hughes",
+   "ciks": [
+    "0001701605"
+   ],
+   "logos": [
+    "Baker Hughes logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "BHI",
+    "BKR",
+    "BHGE"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q4034815",
+   "label": "Ball Corporation",
+   "ciks": [
+    "0000009389"
+   ],
+   "logos": [
+    "Ball Corporation logo 2024.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "BALL",
+    "BLL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q487907",
+   "label": "Bank of America",
+   "ciks": [
+    "0000070858"
+   ],
+   "logos": [
+    "Bank of America logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "BAC"
+   ],
+   "exchangesSeen": [
+    "Q217475",
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q810773",
+   "label": "Bath & Body Works",
+   "ciks": [
+    "0000701985"
+   ],
+   "logos": [
+    "Bath & Body Works logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "BBWI"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q931354",
+   "label": "Bath & Body Works, Inc.",
+   "ciks": [
+    "0000701985"
+   ],
+   "logos": [
+    "L Brands logo 2019.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "LB"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q761965",
+   "label": "Baxter International",
+   "ciks": [
+    "0000010456"
+   ],
+   "logos": [
+    "Baxter.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "BAX"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q813780",
+   "label": "Becton Dickinson",
+   "ciks": [
+    "0000010795"
+   ],
+   "logos": [
+    "BD (company) logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "BDX"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q217583",
+   "label": "Berkshire Hathaway",
+   "ciks": [
+    "0001067983"
+   ],
+   "logos": [
+    "Berkshire-Hathaway-Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "BRK.B",
+    "BRK.A"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q533415",
+   "label": "Best Buy",
+   "ciks": [
+    "0000764478"
+   ],
+   "logos": [
+    "Best Buy logo 2018.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "BBY"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q27432",
+   "label": "Bethlehem Steel",
+   "ciks": [],
+   "logos": [
+    "Bethlehem Steel logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [],
+   "exchangesSeen": []
+  },
+  {
+   "qid": "Q2904022",
+   "label": "Bio-Rad Laboratories",
+   "ciks": [
+    "0000012208"
+   ],
+   "logos": [
+    "Bio-Rad Laboratories Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "BIO"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q864338",
+   "label": "Biogen",
+   "ciks": [
+    "0000875045"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "BIIB"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q219635",
+   "label": "BlackRock",
+   "ciks": [
+    "0001364742"
+   ],
+   "logos": [
+    "BlackRock wordmark.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "BLK"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q66",
+   "label": "Boeing",
+   "ciks": [
+    "0000012927"
+   ],
+   "logos": [
+    "Boeing full logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "BA"
+   ],
+   "exchangesSeen": [
+    "Q217475",
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q18674747",
+   "label": "Booking Holdings",
+   "ciks": [
+    "0001075531"
+   ],
+   "logos": [
+    "Logo of Booking Holdings Inc,(lock up, stacked with Brands, full color).PNG"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "BKNG"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q825943",
+   "label": "BorgWarner",
+   "ciks": [
+    "0000908255"
+   ],
+   "logos": [
+    "BorgWarner Logo Dark Blue (1).svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "BWA"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q4844439",
+   "label": "Boston Properties",
+   "ciks": [
+    "0001037540"
+   ],
+   "logos": [
+    "Bxp boston logo.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "BXP"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q894585",
+   "label": "Boston Scientific",
+   "ciks": [
+    "0000885725"
+   ],
+   "logos": [
+    "Boston Scientific Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "BSX"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q266423",
+   "label": "Bristol-Myers Squibb",
+   "ciks": [
+    "0000014272"
+   ],
+   "logos": [
+    "Bristol-Myers Squibb logo (2020).svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "BMY"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q790060",
+   "label": "Broadcom",
+   "ciks": [
+    "0001730168"
+   ],
+   "logos": [
+    "Broadcom logo (2016-present).svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "AVGO"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q4972280",
+   "label": "Broadridge Financial Solutions",
+   "ciks": [
+    "0001383312"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "BR"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q4976010",
+   "label": "Brown & Brown",
+   "ciks": [
+    "0000079282"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "BRO"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q392221",
+   "label": "Brown-Forman",
+   "ciks": [
+    "0000014693"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "BF.B"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q27686100",
+   "label": "Builders FirstSource",
+   "ciks": [
+    "0001316835"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "BLDR"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1009458",
+   "label": "Bunge Limited",
+   "ciks": [
+    "0001144519"
+   ],
+   "logos": [
+    "Bunge Limited Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "BG"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q931200",
+   "label": "C. H. Robinson Worldwide",
+   "ciks": [
+    "0001043277"
+   ],
+   "logos": [
+    "C. H. Robinson logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CHRW"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q608776",
+   "label": "Cadence Design Systems",
+   "ciks": [
+    "0000813672"
+   ],
+   "logos": [
+    "Cadence-Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CDNS"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q1030544",
+   "label": "Campbell's",
+   "ciks": [
+    "0000016732"
+   ],
+   "logos": [
+    "Campbell's 2021.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CPB"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1034654",
+   "label": "Capital One",
+   "ciks": [
+    "0000927628"
+   ],
+   "logos": [
+    "Capital One logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "COF"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q902397",
+   "label": "Cardinal Health",
+   "ciks": [
+    "0000721371"
+   ],
+   "logos": [
+    "Cardinal Health Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CAH"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q5037190",
+   "label": "CarMax",
+   "ciks": [
+    "0001170010"
+   ],
+   "logos": [
+    "CarMax New Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "KMX"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1044059",
+   "label": "Carnival Corporation",
+   "ciks": [
+    "0000815097"
+   ],
+   "logos": [
+    "Carnival Corporation house flag.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CCL"
+   ],
+   "exchangesSeen": [
+    "Q13677",
+    "Q171240"
+   ]
+  },
+  {
+   "qid": "Q731912",
+   "label": "Carrier Corporation",
+   "ciks": [
+    "0001783180"
+   ],
+   "logos": [
+    "Logo of the Carrier Corporation.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CARR"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q19866242",
+   "label": "Catalent Pharma Solutions",
+   "ciks": [
+    "0001596783"
+   ],
+   "logos": [
+    "Catalent logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CTLT"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q459965",
+   "label": "Caterpillar Inc.",
+   "ciks": [
+    "0000018230"
+   ],
+   "logos": [
+    "Caterpillar logo.svg"
+   ],
+   "simpleIcons": [
+    "http://commons.wikimedia.org/wiki/Special:FilePath/Caterpillar-shortened.svg"
+   ],
+   "tickers": [
+    "CAT"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q30635731",
+   "label": "Cboe Global Markets, Inc.",
+   "ciks": [
+    "0001374310"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "CBOE"
+   ],
+   "exchangesSeen": [
+    "Q1071853",
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q1023013",
+   "label": "CBRE Group",
+   "ciks": [
+    "0001138118"
+   ],
+   "logos": [
+    "CBRE Group.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CBRE"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q950380",
+   "label": "CBS Corporation",
+   "ciks": [],
+   "logos": [
+    "CBS Corporation logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CBS",
+    "CBSA"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1023155",
+   "label": "CDW",
+   "ciks": [
+    "0001402057"
+   ],
+   "logos": [
+    "CDW Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CDW"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q842947",
+   "label": "Celgene",
+   "ciks": [],
+   "logos": [
+    "Celgene logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CELG"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q470156",
+   "label": "Cencora",
+   "ciks": [
+    "0001140859"
+   ],
+   "logos": [
+    "Cencora logo.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "COR",
+    "ABC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q5059102",
+   "label": "Centene Corporation",
+   "ciks": [
+    "0001071739"
+   ],
+   "logos": [
+    "Centene Corporation Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CNC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1053560",
+   "label": "CenterPoint Energy",
+   "ciks": [
+    "0001130310"
+   ],
+   "logos": [
+    "CenterPoint Energy logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CNP"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1055390",
+   "label": "Cerner",
+   "ciks": [
+    "0000804753"
+   ],
+   "logos": [
+    "Oracle Cerner logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CERN"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q905806",
+   "label": "CF Industries",
+   "ciks": [
+    "0001324404"
+   ],
+   "logos": [
+    "CF Industries New Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CF"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1066028",
+   "label": "Charles Schwab Corporation",
+   "ciks": [
+    "0000316709"
+   ],
+   "logos": [
+    "Charles Schwab Corporation logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "SCHW"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q319642",
+   "label": "Chevron Corporation",
+   "ciks": [
+    "0000093410"
+   ],
+   "logos": [
+    "Chevron Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CVX"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q465751",
+   "label": "Chipotle Mexican Grill",
+   "ciks": [
+    "0001058090"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "CMG"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1089060",
+   "label": "Chubb Corp.",
+   "ciks": [
+    "0000896159"
+   ],
+   "logos": [
+    "Chubb-Limited-logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CB"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q5116536",
+   "label": "Church & Dwight",
+   "ciks": [
+    "0000313927"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "CHD"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q5120253",
+   "label": "Cincinnati Financial",
+   "ciks": [
+    "0000020286"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "CINF"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q1092571",
+   "label": "Cintas",
+   "ciks": [
+    "0000723254"
+   ],
+   "logos": [
+    "Cintas-Logo.SVG"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CTAS"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q173395",
+   "label": "Cisco",
+   "ciks": [
+    "0000858877"
+   ],
+   "logos": [
+    "Cisco logo blue 2016.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CSCO"
+   ],
+   "exchangesSeen": [
+    "Q496672",
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q219508",
+   "label": "Citigroup",
+   "ciks": [
+    "0000831001"
+   ],
+   "logos": [
+    "Citi logo March 2023.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "C"
+   ],
+   "exchangesSeen": [
+    "Q217475",
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q5122694",
+   "label": "Citizens Financial Group",
+   "ciks": [
+    "0000759944"
+   ],
+   "logos": [
+    "Citizens Financial Group logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CFG"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q916196",
+   "label": "Citrix Systems",
+   "ciks": [
+    "0000877890"
+   ],
+   "logos": [
+    "Citrix Systems logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CTXS"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q910368",
+   "label": "Clorox",
+   "ciks": [
+    "0000021076"
+   ],
+   "logos": [
+    "The Clorox Company logo, 2021.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CLX"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1023876",
+   "label": "CME Group",
+   "ciks": [
+    "0001156375"
+   ],
+   "logos": [
+    "CME Group Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CME"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q5013012",
+   "label": "CMS Energy",
+   "ciks": [
+    "0000811156"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "CMS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1107035",
+   "label": "Cognizant Technology Solutions",
+   "ciks": [
+    "0001058290"
+   ],
+   "logos": [
+    "Cognizant Technology Solutions - Kolkata 2011-08-29 4824.JPG"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CTSH"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q609466",
+   "label": "Colgate-Palmolive Company",
+   "ciks": [
+    "0000021665"
+   ],
+   "logos": [
+    "Colgate-Palmolive (2025).svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1113804",
+   "label": "Comcast",
+   "ciks": [
+    "0001166691"
+   ],
+   "logos": [
+    "Comcast.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CMCSA"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q1114148",
+   "label": "Comerica",
+   "ciks": [
+    "0000028412"
+   ],
+   "logos": [
+    "Comerica Inc. logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CMA"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1123399",
+   "label": "Conagra Brands, Inc.",
+   "ciks": [
+    "0000023217"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "CAG"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q214763",
+   "label": "ConocoPhillips",
+   "ciks": [
+    "0001163165"
+   ],
+   "logos": [
+    "ConocoPhillips Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "COP"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1127536",
+   "label": "Consolidated Edison",
+   "ciks": [
+    "0001047862"
+   ],
+   "logos": [
+    "ConEd logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ED"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1128160",
+   "label": "Constellation Brands",
+   "ciks": [
+    "0000016918"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "STZ"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q16951448",
+   "label": "Copart",
+   "ciks": [
+    "0000900075"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "CPRT"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q5842736",
+   "label": "Corning Inc.",
+   "ciks": [
+    "0000024741"
+   ],
+   "logos": [
+    "Corning Incorporated Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "GLW"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q16838618",
+   "label": "Corpay",
+   "ciks": [
+    "0001175454"
+   ],
+   "logos": [
+    "The logo of Fleetcor.png",
+    "Corpay Logo.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CPAY",
+    "FLT"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q63197674",
+   "label": "Corteva",
+   "ciks": [
+    "0001755672"
+   ],
+   "logos": [
+    "Corteva logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CTVA"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q16988748",
+   "label": "CoStar Group",
+   "ciks": [
+    "0001057352"
+   ],
+   "logos": [
+    "CoStar Group logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CSGP"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q715583",
+   "label": "Costco",
+   "ciks": [
+    "0000909832"
+   ],
+   "logos": [
+    "Costco Wholesale logo 2010-10-26.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "COST"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q4035714",
+   "label": "Coterra Energy",
+   "ciks": [
+    "0000858470"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "COG",
+    "CTRA"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q5189320",
+   "label": "Crown Castle International Corp.",
+   "ciks": [
+    "0001051470"
+   ],
+   "logos": [
+    "Crown Castle Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CCI"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1024454",
+   "label": "CSX Corporation",
+   "ciks": [
+    "0000277948"
+   ],
+   "logos": [
+    "CSX Corporation logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CSX"
+   ],
+   "exchangesSeen": [
+    "Q82059",
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q173476",
+   "label": "Cummins",
+   "ciks": [
+    "0000026172"
+   ],
+   "logos": [
+    "Cummins logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CMI"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q624375",
+   "label": "CVS Health",
+   "ciks": [
+    "0000064803"
+   ],
+   "logos": [
+    "CVS Health Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CVS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q5203782",
+   "label": "D. R. Horton",
+   "ciks": [
+    "0000882184"
+   ],
+   "logos": [
+    "D. R. Horton logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "DHI"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1159256",
+   "label": "Danaher Corporation",
+   "ciks": [
+    "0000313616"
+   ],
+   "logos": [
+    "Danaher Corporation logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "DHR"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q742196",
+   "label": "Darden Restaurants",
+   "ciks": [
+    "0000940944"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "DRI"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q496302",
+   "label": "Deere & Company",
+   "ciks": [
+    "0000315189"
+   ],
+   "logos": [
+    "John Deere text only.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "DE"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q188920",
+   "label": "Delta Air Lines",
+   "ciks": [
+    "0000027904"
+   ],
+   "logos": [
+    "Delta logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "DAL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q23781052",
+   "label": "Dentsply Sirona",
+   "ciks": [
+    "0000818479"
+   ],
+   "logos": [
+    "Dentsply sirona logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "XRAY"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q1206980",
+   "label": "Devon Energy",
+   "ciks": [
+    "0001090012"
+   ],
+   "logos": [
+    "Devon-Energy-Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "DVN"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q15109865",
+   "label": "Dexcom",
+   "ciks": [
+    "0001093557"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "DXCM"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q65091423",
+   "label": "Diamondback Energy",
+   "ciks": [
+    "0001539838"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "FANG"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q5275969",
+   "label": "Digital Realty Trust",
+   "ciks": [
+    "0001297996"
+   ],
+   "logos": [
+    "Digital Realty TM Brandmark RGB Black.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "DLR"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q5281775",
+   "label": "Discover Financial",
+   "ciks": [
+    "0001393612"
+   ],
+   "logos": [
+    "Discover Card logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "DFS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1199757",
+   "label": "Dish",
+   "ciks": [
+    "0001001082"
+   ],
+   "logos": [
+    "Dish Network 2019.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "DISH"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q145168",
+   "label": "Dollar General",
+   "ciks": [
+    "0000029534"
+   ],
+   "logos": [
+    "Logo DG Pinch Yellow.png",
+    "Dollar General logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "DG"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q5289230",
+   "label": "Dollar Tree",
+   "ciks": [
+    "0000935703"
+   ],
+   "logos": [
+    "Dollar Tree logo.svg"
+   ],
+   "simpleIcons": [
+    "http://commons.wikimedia.org/wiki/Special:FilePath/Dollar%20tree.png"
+   ],
+   "tickers": [
+    "DLTR"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q677464",
+   "label": "Dominion Energy",
+   "ciks": [
+    "0000715957"
+   ],
+   "logos": [
+    "Dominion Energy logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "D"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q839466",
+   "label": "Domino's Pizza",
+   "ciks": [
+    "0001286681"
+   ],
+   "logos": [
+    "Domino's 2025.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "DPZ"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q16974527",
+   "label": "Dover Corporation",
+   "ciks": [
+    "0000029905"
+   ],
+   "logos": [
+    "Dover Corporation logo.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "DOV"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q62739842",
+   "label": "Dow Inc.",
+   "ciks": [
+    "0001751788"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "DOW"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q5206232",
+   "label": "DTE Energy",
+   "ciks": [
+    "0000936340"
+   ],
+   "logos": [
+    "DTE Logo Blue.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "DTE"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1264404",
+   "label": "Duke Energy",
+   "ciks": [
+    "0001326160"
+   ],
+   "logos": [
+    "Duke Energy logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "DUK"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q48742298",
+   "label": "Duke Realty",
+   "ciks": [
+    "0000783280"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "DRE"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q221062",
+   "label": "DuPont",
+   "ciks": [
+    "0001666700"
+   ],
+   "logos": [
+    "DuPont logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "DD",
+    "DWDP"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q28782856",
+   "label": "DXC Technology",
+   "ciks": [
+    "0001688568"
+   ],
+   "logos": [
+    "DXC-Logo-2025.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "DXC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q899022",
+   "label": "Eastman Chemical Company",
+   "ciks": [
+    "0000915389"
+   ],
+   "logos": [
+    "Eastman Chemical Company logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "EMN"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q48872",
+   "label": "Eaton Corporation",
+   "ciks": [
+    "0001551182"
+   ],
+   "logos": [
+    "Eaton Corporation Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ETN"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1282031",
+   "label": "Ecolab",
+   "ciks": [
+    "0000031462"
+   ],
+   "logos": [
+    "Ecolab.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ECL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q662095",
+   "label": "Edison International",
+   "ciks": [
+    "0000827052"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "EIX"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q16966841",
+   "label": "Edwards Lifesciences",
+   "ciks": [
+    "0001099800"
+   ],
+   "logos": [
+    "Edwards Lifesciences.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "EW"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q173941",
+   "label": "Electronic Arts",
+   "ciks": [
+    "0000712515"
+   ],
+   "logos": [
+    "Electronic Arts 2020.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "EA"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q677488",
+   "label": "Elevance Health, Inc.",
+   "ciks": [
+    "0001156039"
+   ],
+   "logos": [
+    "Elevance Health Logo 2022.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ELV"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q632240",
+   "label": "Eli Lilly and Company",
+   "ciks": [
+    "0000059478"
+   ],
+   "logos": [
+    "Eli Lilly and Company.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "LLY"
+   ],
+   "exchangesSeen": [
+    "Q13677",
+    "Q217475"
+   ]
+  },
+  {
+   "qid": "Q1335585",
+   "label": "Emerson Electric",
+   "ciks": [
+    "0000032604"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "EMR"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q17012234",
+   "label": "Enphase Energy",
+   "ciks": [
+    "0001463101"
+   ],
+   "logos": [
+    "Enphase logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ENPH"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q1344587",
+   "label": "Entergy",
+   "ciks": [
+    "0000065984"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "ETR"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1275577",
+   "label": "EOG Resources",
+   "ciks": [
+    "0000821189"
+   ],
+   "logos": [
+    "EOG Resources logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "EOG"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q5323987",
+   "label": "EQT",
+   "ciks": [],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "EQT"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q5384453",
+   "label": "Equifax",
+   "ciks": [
+    "0000033185"
+   ],
+   "logos": [
+    "Equifax.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "EFX"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q851641",
+   "label": "Equinix",
+   "ciks": [
+    "0001101239"
+   ],
+   "logos": [
+    "Equinix logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "EQIX"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q27964091",
+   "label": "Essex Property Trust, Inc.",
+   "ciks": [
+    "0000920522"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "ESS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1260606",
+   "label": "Estée Lauder Companies",
+   "ciks": [
+    "0001001250"
+   ],
+   "logos": [
+    "Estée Lauder Companies logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "EL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1381973",
+   "label": "Everest Re",
+   "ciks": [
+    "0001095073"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "EG",
+    "RE"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7987107",
+   "label": "Evergy",
+   "ciks": [
+    "0001711269"
+   ],
+   "logos": [
+    "Evergy logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "EVRG"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q3344199",
+   "label": "Eversource Energy",
+   "ciks": [
+    "0000072741"
+   ],
+   "logos": [
+    "Eversource Transparent.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ES"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1383669",
+   "label": "Exelon",
+   "ciks": [
+    "0001109357"
+   ],
+   "logos": [
+    "Exelon logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "EXC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q8085893",
+   "label": "Expedia Group",
+   "ciks": [
+    "0001324424"
+   ],
+   "logos": [
+    "Expedia Group logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "EXPE"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q1384324",
+   "label": "Expeditors International",
+   "ciks": [
+    "0000746515"
+   ],
+   "logos": [
+    "Expeditors logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "EXPD"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q5422162",
+   "label": "Extra Space Storage",
+   "ciks": [
+    "0001289490"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "EXR"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q156238",
+   "label": "ExxonMobil",
+   "ciks": [
+    "0000034088"
+   ],
+   "logos": [
+    "Exxon Mobil Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "XOM"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q3029296",
+   "label": "F5, Inc.",
+   "ciks": [
+    "0001048695"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "FFIV"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q3067119",
+   "label": "Fastenal",
+   "ciks": [
+    "0000815556"
+   ],
+   "logos": [
+    "Fastenal logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "FAST"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q27988152",
+   "label": "Federal Realty Investment Trust",
+   "ciks": [
+    "0000034903"
+   ],
+   "logos": [
+    "Federal Realty Investment Trust logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "FRT"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q459477",
+   "label": "FedEx",
+   "ciks": [
+    "0001048911"
+   ],
+   "logos": [
+    "FedEx Corporation - 2016 Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "FDX"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1411295",
+   "label": "Fidelity National Information Services",
+   "ciks": [
+    "0001136893"
+   ],
+   "logos": [
+    "FIS logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "FIS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q130624258",
+   "label": "Fifth Third Bancorp",
+   "ciks": [
+    "0000035527"
+   ],
+   "logos": [],
+   "simpleIcons": [
+    "http://commons.wikimedia.org/wiki/Special:FilePath/Fifth%20Third%20Bank%202023%20logo-shieldonly-primary.svg"
+   ],
+   "tickers": [
+    "FITB"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q5453752",
+   "label": "First Republic Bank",
+   "ciks": [
+    "0001132979"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "FRC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1419248",
+   "label": "FirstEnergy",
+   "ciks": [
+    "0001031296"
+   ],
+   "logos": [
+    "FirstEnergy Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "FE"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1420513",
+   "label": "Fiserv",
+   "ciks": [
+    "0000798354"
+   ],
+   "logos": [
+    "Fiserv Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "FI",
+    "FISV"
+   ],
+   "exchangesSeen": [
+    "Q13677",
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q1430331",
+   "label": "Flowserve",
+   "ciks": [
+    "0000030625"
+   ],
+   "logos": [
+    "Flowserve.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "FLS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q899183",
+   "label": "FMC Corporation",
+   "ciks": [
+    "0000037785"
+   ],
+   "logos": [
+    "FMC Corporation logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "FMC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q44294",
+   "label": "Ford Motor Company",
+   "ciks": [
+    "0000037996"
+   ],
+   "logos": [
+    "Ford logo flat.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "F"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q2749364",
+   "label": "Fortinet",
+   "ciks": [
+    "0001262039"
+   ],
+   "logos": [
+    "Fortinet logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "FTNT"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q27919383",
+   "label": "Fortive",
+   "ciks": [
+    "0001659166"
+   ],
+   "logos": [
+    "Fortive Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "FTV"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q5472859",
+   "label": "Fortune Brands Home & Security",
+   "ciks": [
+    "0001519751"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "FBHS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q60238941",
+   "label": "Fox Corporation",
+   "ciks": [
+    "0001754301"
+   ],
+   "logos": [
+    "FOX wordmark.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "FOXA",
+    "FOX"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q744683",
+   "label": "Franklin Templeton Investments",
+   "ciks": [
+    "0000038777"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "BEN"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1453620",
+   "label": "Freeport-McMoRan",
+   "ciks": [
+    "0000831259"
+   ],
+   "logos": [
+    "Freeport McMoRan.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "FCX"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q420822",
+   "label": "Gap Inc.",
+   "ciks": [
+    "0000039911"
+   ],
+   "logos": [
+    "New Gap logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "GAP"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q30338591",
+   "label": "Garmin Ltd.",
+   "ciks": [
+    "0001121788"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "GRMN"
+   ],
+   "exchangesSeen": [
+    "Q82059",
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q174198",
+   "label": "Gartner",
+   "ciks": [
+    "0000749251"
+   ],
+   "logos": [
+    "Gartner logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "IT"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1485061",
+   "label": "GE Aerospace",
+   "ciks": [
+    "0000040545"
+   ],
+   "logos": [
+    "GE Aerospace logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "GE"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q502940",
+   "label": "General Dynamics",
+   "ciks": [
+    "0000040533"
+   ],
+   "logos": [
+    "General-Dynamics-Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "GD"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q629998",
+   "label": "General Mills",
+   "ciks": [
+    "0000040704"
+   ],
+   "logos": [
+    "General Mills logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "GIS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q81965",
+   "label": "General Motors",
+   "ciks": [
+    "0001467858"
+   ],
+   "logos": [
+    "General motors logo with wordmark.svg"
+   ],
+   "simpleIcons": [
+    "http://commons.wikimedia.org/wiki/Special:FilePath/General%20Motors%20%282021%29.svg"
+   ],
+   "tickers": [
+    "GM"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q5533818",
+   "label": "Genuine Parts Company",
+   "ciks": [
+    "0000040987"
+   ],
+   "logos": [
+    "Genuine Parts Company logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "GPC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q663596",
+   "label": "Gilead Sciences",
+   "ciks": [
+    "0000882095"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "GILD"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q5570544",
+   "label": "Global Payments",
+   "ciks": [
+    "0001123360"
+   ],
+   "logos": [
+    "Global Payments Inc. logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "GPN"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q5570993",
+   "label": "Globe Life",
+   "ciks": [],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "GL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7825574",
+   "label": "Globe Life",
+   "ciks": [
+    "0000320335"
+   ],
+   "logos": [
+    "Globe Life logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "GL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q193326",
+   "label": "Goldman Sachs",
+   "ciks": [
+    "0000886982"
+   ],
+   "logos": [
+    "Goldman Sachs logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "GS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q656165",
+   "label": "Halliburton",
+   "ciks": [
+    "0000045012"
+   ],
+   "logos": [
+    "Halliburton logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "HAL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q5647768",
+   "label": "Hanesbrands",
+   "ciks": [
+    "0001359841"
+   ],
+   "logos": [
+    "HanesBrands.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "HBI"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q501476",
+   "label": "Hasbro",
+   "ciks": [
+    "0000046080"
+   ],
+   "logos": [
+    "Hasbro logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "HAS"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q1630431",
+   "label": "HCA Healthcare",
+   "ciks": [
+    "0000860730"
+   ],
+   "logos": [
+    "2019 HCA logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "HCA"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q16975567",
+   "label": "Healthpeak Properties",
+   "ciks": [
+    "0000765880"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "PEAK",
+    "DOC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q905086",
+   "label": "Henry Schein",
+   "ciks": [
+    "0001000228"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "HSIC"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q1615684",
+   "label": "Hess Corporation",
+   "ciks": [
+    "0000004447"
+   ],
+   "logos": [
+    "Hess Corporation Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "HES"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q19923099",
+   "label": "Hewlett Packard Enterprise",
+   "ciks": [
+    "0001645590"
+   ],
+   "logos": [
+    "Hewlett Packard Enterprise logo 2025 expanded.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "HPE"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q80978",
+   "label": "Hewlett-Packard",
+   "ciks": [
+    "0000047217"
+   ],
+   "logos": [
+    "HP logo 2025.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "HPQ",
+    "HWP"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q5881864",
+   "label": "HF Sinclair",
+   "ciks": [
+    "0001915657"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "HFC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1057464",
+   "label": "Hilton Worldwide",
+   "ciks": [
+    "0001585689"
+   ],
+   "logos": [
+    "Hilton Worldwide logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "HLT"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q5884072",
+   "label": "Hologic",
+   "ciks": [
+    "0000859737"
+   ],
+   "logos": [
+    "Hologic logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "HOLX"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q898208",
+   "label": "Honeywell",
+   "ciks": [
+    "0000773840"
+   ],
+   "logos": [
+    "Logo honeywell.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "HON"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1454852",
+   "label": "Hormel",
+   "ciks": [
+    "0000048465"
+   ],
+   "logos": [
+    "Hormel Foods logo.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "HRL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1630559",
+   "label": "Host Hotels & Resorts",
+   "ciks": [
+    "0001070750"
+   ],
+   "logos": [
+    "Logo Host Hotels & Resorts.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "HST"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q25104597",
+   "label": "Howmet Aerospace",
+   "ciks": [
+    "0000004281"
+   ],
+   "logos": [
+    "Howmet Aerospace logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "HWM",
+    "ARNC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q21404084",
+   "label": "HP Inc.",
+   "ciks": [
+    "0000047217"
+   ],
+   "logos": [
+    "HP logo 2025.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "HPQ"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q910866",
+   "label": "Humana",
+   "ciks": [
+    "0000049071"
+   ],
+   "logos": [
+    "Humana logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "HUM"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q798819",
+   "label": "Huntington Bancshares",
+   "ciks": [
+    "0000049196"
+   ],
+   "logos": [
+    "Huntington Bancshares Inc. logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "HBAN"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q7257522",
+   "label": "Huntington Ingalls Industries",
+   "ciks": [
+    "0001501585"
+   ],
+   "logos": [
+    "HII logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "HII"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q37156",
+   "label": "IBM",
+   "ciks": [
+    "0000051143"
+   ],
+   "logos": [
+    "IBM logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "IBM"
+   ],
+   "exchangesSeen": [
+    "Q13677",
+    "Q217475"
+   ]
+  },
+  {
+   "qid": "Q5970002",
+   "label": "IDEX Corporation",
+   "ciks": [
+    "0000832101"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "IEX"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1758392",
+   "label": "IDEXX Laboratories, Inc.",
+   "ciks": [
+    "0000874716"
+   ],
+   "logos": [
+    "IDEXX Labs.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "IDXX"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q121863186",
+   "label": "IHS Markit",
+   "ciks": [
+    "0001598014"
+   ],
+   "logos": [
+    "IHS Markit logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [],
+   "exchangesSeen": []
+  },
+  {
+   "qid": "Q1510378",
+   "label": "Illinois Tool Works",
+   "ciks": [
+    "0000049826"
+   ],
+   "logos": [
+    "ITW.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ITW"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q2068984",
+   "label": "Illumina",
+   "ciks": [
+    "0001110803"
+   ],
+   "logos": [
+    "Illumina logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ILMN"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q6015591",
+   "label": "Incyte",
+   "ciks": [
+    "0000879169"
+   ],
+   "logos": [
+    "Incyte logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "INCY"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q1663044",
+   "label": "Ingersoll Rand",
+   "ciks": [
+    "0001466258"
+   ],
+   "logos": [
+    "Ingersoll Rand logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "TT"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q248",
+   "label": "Intel",
+   "ciks": [
+    "0000050863"
+   ],
+   "logos": [
+    "Intel logo 2023.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "INTC"
+   ],
+   "exchangesSeen": [
+    "Q496672",
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q841458",
+   "label": "Intercontinental Exchange",
+   "ciks": [
+    "0001571949"
+   ],
+   "logos": [
+    "Logo of the IntercontinentalExchange.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ICE"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1666568",
+   "label": "International Flavors & Fragrances",
+   "ciks": [
+    "0000051253"
+   ],
+   "logos": [
+    "Iff-logo 2022.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "IFF"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q202972",
+   "label": "International Paper",
+   "ciks": [
+    "0000051434"
+   ],
+   "logos": [
+    "InternationalPaper logo 2023.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "IP"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1501630",
+   "label": "Interpublic Group of Companies",
+   "ciks": [
+    "0000051644"
+   ],
+   "logos": [
+    "Interpublic Group of Companies logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "IPG"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1318848",
+   "label": "Intuit",
+   "ciks": [
+    "0000896878"
+   ],
+   "logos": [
+    "Intuit logo 2022.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "INTU"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q2743863",
+   "label": "Intuitive Surgical",
+   "ciks": [
+    "0001035267"
+   ],
+   "logos": [
+    "Intuitive Surgical logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ISRG"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q522617",
+   "label": "Invesco",
+   "ciks": [
+    "0000914208"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "IVZ"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q5973024",
+   "label": "IPG Photonics",
+   "ciks": [
+    "0001111928"
+   ],
+   "logos": [
+    "IPG Photonics logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "IPGP"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q305473",
+   "label": "IQVIA Holdings, Inc.",
+   "ciks": [
+    "0001478242"
+   ],
+   "logos": [
+    "Iqvia-logo-color.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "IQV"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1673079",
+   "label": "Iron Mountain Incorporated",
+   "ciks": [
+    "0001020569"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "IRM"
+   ],
+   "exchangesSeen": [
+    "Q13677",
+    "Q732670"
+   ]
+  },
+  {
+   "qid": "Q4041705",
+   "label": "J. B. Hunt",
+   "ciks": [
+    "0000728535"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "JBHT"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q2171646",
+   "label": "Jabil",
+   "ciks": [
+    "0000898293"
+   ],
+   "logos": [
+    "Jabil Circuit Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "JBL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q6113060",
+   "label": "Jack Henry & Associates",
+   "ciks": [
+    "0000779152"
+   ],
+   "logos": [
+    "Jack-henry-logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "JKHY"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q3157622",
+   "label": "Jacobs Engineering Group",
+   "ciks": [
+    "0000052988"
+   ],
+   "logos": [
+    "Jacobs Engineering Group 2019 logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "J"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q333718",
+   "label": "Johnson & Johnson",
+   "ciks": [
+    "0000200406"
+   ],
+   "logos": [
+    "JNJ Logo New.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "JNJ"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q667865",
+   "label": "Johnson Controls",
+   "ciks": [
+    "0000833444"
+   ],
+   "logos": [
+    "Johnson Controls old logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "JCI"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q192314",
+   "label": "JPMorgan Chase",
+   "ciks": [
+    "0000019617"
+   ],
+   "logos": [
+    "Logo of JPMorganChase 2024.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "JPM"
+   ],
+   "exchangesSeen": [
+    "Q13677",
+    "Q217475"
+   ]
+  },
+  {
+   "qid": "Q1049080",
+   "label": "Juniper Networks",
+   "ciks": [
+    "0001043604"
+   ],
+   "logos": [
+    "Juniper Networks logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "JNPR"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q16980898",
+   "label": "Kansas City Southern",
+   "ciks": [
+    "0000054480"
+   ],
+   "logos": [
+    "Kansas City Southern Logo.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "KSU"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q856897",
+   "label": "Kellanova",
+   "ciks": [
+    "0000055067"
+   ],
+   "logos": [
+    "Kellanova logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "K"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1740314",
+   "label": "KeyBank",
+   "ciks": [
+    "0000091576"
+   ],
+   "logos": [
+    "KeyBank.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "KEY"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q17551096",
+   "label": "Keysight Technologies",
+   "ciks": [
+    "0001601046"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "KEYS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1741634",
+   "label": "Kimberly-Clark",
+   "ciks": [
+    "0000055785"
+   ],
+   "logos": [
+    "Kimberly-Clark logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "KMB"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q6410043",
+   "label": "Kimco Realty",
+   "ciks": [
+    "0000879101"
+   ],
+   "logos": [
+    "Kimco Logo.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "KIM"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q931032",
+   "label": "Kinder Morgan",
+   "ciks": [
+    "0001506307"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "KMI"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q624649",
+   "label": "KLA Corporation",
+   "ciks": [
+    "0000319201"
+   ],
+   "logos": [
+    "KLA Corp. logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "KLAC"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q967265",
+   "label": "Kohl's",
+   "ciks": [],
+   "logos": [
+    "Kohl's logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "KSS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q19681433",
+   "label": "Kraft Heinz",
+   "ciks": [
+    "0001637459"
+   ],
+   "logos": [
+    "KraftHeinz.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "KHC"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q153417",
+   "label": "Kroger",
+   "ciks": [
+    "0000056873"
+   ],
+   "logos": [
+    "Kroger logo (1961-2019).svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "KR"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q30291091",
+   "label": "L3Harris Technologies",
+   "ciks": [
+    "0000202058"
+   ],
+   "logos": [
+    "L3Harris Technologies logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "LHX"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q6466630",
+   "label": "LabCorp",
+   "ciks": [
+    "0000920148"
+   ],
+   "logos": [
+    "Labcorp Logo updated 12-2020.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "LH"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1342041",
+   "label": "Lam Research",
+   "ciks": [
+    "0000707549"
+   ],
+   "logos": [
+    "Lam-Research-Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "LRCX"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q3216600",
+   "label": "Lamb Weston",
+   "ciks": [
+    "0001679273"
+   ],
+   "logos": [
+    "Lamb Weston logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "LW"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1506045",
+   "label": "Las Vegas Sands",
+   "ciks": [
+    "0001300514"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "LVS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1812555",
+   "label": "Leggett & Platt",
+   "ciks": [
+    "0000058492"
+   ],
+   "logos": [
+    "Leggett & Platt logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "LEG"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q502132",
+   "label": "Leidos",
+   "ciks": [
+    "0001336920"
+   ],
+   "logos": [
+    "Leidos logo 2023.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "LDOS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q16981175",
+   "label": "Lennar Corporation",
+   "ciks": [
+    "0000920760"
+   ],
+   "logos": [
+    "Lennar Corporation logo.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "LEN"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1825763",
+   "label": "Lincoln National Corporation",
+   "ciks": [
+    "0000059558"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "LNC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q682759",
+   "label": "Linde Group",
+   "ciks": [
+    "0001707925"
+   ],
+   "logos": [
+    "Linde plc logo.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "LIN"
+   ],
+   "exchangesSeen": [
+    "Q82059",
+    "Q151139",
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1061903",
+   "label": "Live Nation Entertainment",
+   "ciks": [
+    "0001335258"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "LYV"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q20711490",
+   "label": "LKQ Corporation",
+   "ciks": [
+    "0001065696"
+   ],
+   "logos": [
+    "LKQ Corporation logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "LKQ"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q7240",
+   "label": "Lockheed Martin",
+   "ciks": [
+    "0000936468"
+   ],
+   "logos": [
+    "Lockheed Martin logo (2011–2022).svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "LMT"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q826526",
+   "label": "Loews Corporation",
+   "ciks": [
+    "0000060086"
+   ],
+   "logos": [
+    "Loews-Corporation-Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "L"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1373493",
+   "label": "Lowe's",
+   "ciks": [
+    "0000060667"
+   ],
+   "logos": [
+    "Lowes Companies Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "LOW"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q5063092",
+   "label": "Lumen Technologies",
+   "ciks": [
+    "0000018926"
+   ],
+   "logos": [
+    "Lumen Technologies logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "LUMN"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q899255",
+   "label": "LyondellBasell",
+   "ciks": [
+    "0001489393"
+   ],
+   "logos": [
+    "Logo of LyondellBasell (2023).svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "LYB"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q3272257",
+   "label": "M&T Bank",
+   "ciks": [
+    "0000036270"
+   ],
+   "logos": [
+    "M&T Bank wordmark.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MTB"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q27988239",
+   "label": "MAA",
+   "ciks": [
+    "0000912595"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "MAA"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q5479360",
+   "label": "Macy's, Inc.",
+   "ciks": [
+    "0000794367"
+   ],
+   "logos": [
+    "Macy's Inc. Logo 2023.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "M"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1577587",
+   "label": "Marathon Oil",
+   "ciks": [
+    "0000101778"
+   ],
+   "logos": [
+    "Marathon Oil logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MRO"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q458363",
+   "label": "Marathon Petroleum",
+   "ciks": [
+    "0001510295"
+   ],
+   "logos": [
+    "Marathon Petroleum logo 2022.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MPC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q55622230",
+   "label": "MarketAxess",
+   "ciks": [
+    "0001278021"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "MKTX"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q1141173",
+   "label": "Marriott International",
+   "ciks": [
+    "0001048286"
+   ],
+   "logos": [
+    "Marriott International.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MAR"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q1786345",
+   "label": "Marsh & McLennan Companies",
+   "ciks": [
+    "0000062709"
+   ],
+   "logos": [
+    "MarshMcLennan h rgb c.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MMC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q6776123",
+   "label": "Martin Marietta Materials",
+   "ciks": [
+    "0000916076"
+   ],
+   "logos": [
+    "MLMcompanylogo.gif"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MLM"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q6782872",
+   "label": "Masco",
+   "ciks": [
+    "0000062996"
+   ],
+   "logos": [
+    "Masco Co. logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MAS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q489921",
+   "label": "Mastercard",
+   "ciks": [
+    "0001141391"
+   ],
+   "logos": [
+    "Mastercard 2019 logo.svg"
+   ],
+   "simpleIcons": [
+    "http://commons.wikimedia.org/wiki/Special:FilePath/Mastercard%202019%20logo.svg"
+   ],
+   "tickers": [
+    "MA"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1784671",
+   "label": "Maxim Integrated",
+   "ciks": [
+    "0000743316"
+   ],
+   "logos": [
+    "Logo Maxim Integrated 2013.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MXIM"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q1915049",
+   "label": "McCormick & Company",
+   "ciks": [
+    "0000063754"
+   ],
+   "logos": [
+    "McCormick.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MKC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q38076",
+   "label": "McDonald's",
+   "ciks": [
+    "0000063908"
+   ],
+   "logos": [
+    "McDonald's with slogan 2020.svg"
+   ],
+   "simpleIcons": [
+    "http://commons.wikimedia.org/wiki/Special:FilePath/McDonald%27s%20square%202020.svg"
+   ],
+   "tickers": [
+    "MCD"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q570473",
+   "label": "McKesson Corporation",
+   "ciks": [
+    "0000927653"
+   ],
+   "logos": [
+    "Mck logo pos col rgb.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MCK"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q642189",
+   "label": "Medtronic plc",
+   "ciks": [
+    "0001613103"
+   ],
+   "logos": [
+    "Medtronic logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MDT"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q247489",
+   "label": "Merck & Co.",
+   "ciks": [
+    "0000310158"
+   ],
+   "logos": [
+    "Merck Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MRK"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q380",
+   "label": "Meta Platforms",
+   "ciks": [
+    "0001326801"
+   ],
+   "logos": [
+    "Meta Platforms Inc. logo.svg"
+   ],
+   "simpleIcons": [
+    "http://commons.wikimedia.org/wiki/Special:FilePath/Meta%20Platforms%20Inc.%20logo%20%28cropped%29.svg"
+   ],
+   "tickers": [
+    "FB",
+    "META"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q607131",
+   "label": "MetLife",
+   "ciks": [
+    "0001099219"
+   ],
+   "logos": [
+    "MetLife logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MET"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q680186",
+   "label": "Mettler Toledo",
+   "ciks": [
+    "0001037646"
+   ],
+   "logos": [
+    "Mettler Toledo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MTD"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q568532",
+   "label": "MGM Resorts International",
+   "ciks": [
+    "0000789570"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "MGM"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1545076",
+   "label": "Microchip Technology",
+   "ciks": [
+    "0000827054"
+   ],
+   "logos": [
+    "Microchip-Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MCHP"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q1197548",
+   "label": "Micron Technology",
+   "ciks": [
+    "0000723125"
+   ],
+   "logos": [
+    "Micron Technology logo 2024.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MU"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q2283",
+   "label": "Microsoft",
+   "ciks": [
+    "0000789019"
+   ],
+   "logos": [
+    "Microsoft logo (2012).svg"
+   ],
+   "simpleIcons": [
+    "http://commons.wikimedia.org/wiki/Special:FilePath/Microsoft%20icon.svg"
+   ],
+   "tickers": [
+    "MSFT"
+   ],
+   "exchangesSeen": [
+    "Q82059",
+    "Q496672"
+   ]
+  },
+  {
+   "qid": "Q6893780",
+   "label": "Mohawk Industries",
+   "ciks": [
+    "0000851968"
+   ],
+   "logos": [
+    "Mohawk Industries logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MHK"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q3319685",
+   "label": "Molson Coors Brewing Company",
+   "ciks": [
+    "0000024545"
+   ],
+   "logos": [
+    "Molson Coors Beverage Company logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "TAP"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q12857502",
+   "label": "Mondelez International",
+   "ciks": [
+    "0001103982"
+   ],
+   "logos": [
+    "Mondelez International.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MDLZ"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q22058448",
+   "label": "Monolithic Power Systems",
+   "ciks": [
+    "0001280452"
+   ],
+   "logos": [
+    "Monolithic Power Systems Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MPWR"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q1945295",
+   "label": "Monster Beverage",
+   "ciks": [
+    "0000865752"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "MNST"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q675585",
+   "label": "Moody's Corporation",
+   "ciks": [
+    "0001059556"
+   ],
+   "logos": [
+    "Moody's new logo.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MCO"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q334204",
+   "label": "Morgan Stanley",
+   "ciks": [
+    "0000895421"
+   ],
+   "logos": [
+    "Morgan Stanley Logo 2024.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q634815",
+   "label": "Motorola Solutions",
+   "ciks": [
+    "0000068505"
+   ],
+   "logos": [
+    "Motorola Solutions Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MSI"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q768773",
+   "label": "MSCI",
+   "ciks": [
+    "0001408198"
+   ],
+   "logos": [
+    "MSCI logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MSCI"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q899010",
+   "label": "Mylan",
+   "ciks": [
+    "0001623613"
+   ],
+   "logos": [
+    "Mylan Logo.svg",
+    "Mylan Laboratories logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MYL"
+   ],
+   "exchangesSeen": [
+    "Q1507974",
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q1472929",
+   "label": "Nasdaq, Inc.",
+   "ciks": [
+    "0001120193"
+   ],
+   "logos": [
+    "NASDAQ Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "NDAQ"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q1817417",
+   "label": "National Oilwell Varco",
+   "ciks": [
+    "0001021860"
+   ],
+   "logos": [
+    "National-Oilwell-Varco-Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "NOV"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q727883",
+   "label": "NetApp",
+   "ciks": [
+    "0001002047"
+   ],
+   "logos": [
+    "NetApp logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "NTAP"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q667599",
+   "label": "Newell Brands",
+   "ciks": [
+    "0000814453"
+   ],
+   "logos": [
+    "Newell Brands logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "NWL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1785405",
+   "label": "Newmont Mining Corporation",
+   "ciks": [
+    "0001164727"
+   ],
+   "logos": [
+    "Newmont-Mining-Logo.svg",
+    "Newmont-logo.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "NEM"
+   ],
+   "exchangesSeen": [
+    "Q818723",
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q14289857",
+   "label": "News Corp",
+   "ciks": [
+    "0001564708"
+   ],
+   "logos": [
+    "News Corp logo 2013.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "NWS",
+    "NWSA"
+   ],
+   "exchangesSeen": [
+    "Q82059",
+    "Q732670"
+   ]
+  },
+  {
+   "qid": "Q967868",
+   "label": "NextEra Energy",
+   "ciks": [
+    "0000753308"
+   ],
+   "logos": [
+    "NextEra Energy logo (1).svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "NEE"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q540891",
+   "label": "Nielsen Company",
+   "ciks": [
+    "0001492633"
+   ],
+   "logos": [
+    "Nielsen 2021.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "NLSN"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q483915",
+   "label": "Nike",
+   "ciks": [
+    "0000320187"
+   ],
+   "logos": [
+    "Logo NIKE.svg"
+   ],
+   "simpleIcons": [
+    "http://commons.wikimedia.org/wiki/Special:FilePath/Logo%20NIKE.svg"
+   ],
+   "tickers": [
+    "NKE"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1984481",
+   "label": "NiSource",
+   "ciks": [
+    "0001111711"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "NI"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q2659099",
+   "label": "Noble Energy",
+   "ciks": [
+    "0000072207"
+   ],
+   "logos": [
+    "Noble Energy logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "NBL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1321054",
+   "label": "Norfolk Southern Railway",
+   "ciks": [],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "NSC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q970695",
+   "label": "Northern Trust",
+   "ciks": [
+    "0000073124"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "NTRS"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q329953",
+   "label": "Northrop Grumman Corporation",
+   "ciks": [
+    "0001133421"
+   ],
+   "logos": [
+    "Northrop Grumman logo blue-on-clear 2020.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "NOC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q60767471",
+   "label": "Norwegian Cruise Line Holdings Ltd.",
+   "ciks": [
+    "0001513761"
+   ],
+   "logos": [
+    "NCLH logo.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "NCLH"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q6955139",
+   "label": "NRG Energy",
+   "ciks": [
+    "0001013871"
+   ],
+   "logos": [
+    "Logo NRG Energy.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "NRG"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1645081",
+   "label": "Nucor",
+   "ciks": [
+    "0000073309"
+   ],
+   "logos": [
+    "Nucor.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "NUE"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q182477",
+   "label": "Nvidia",
+   "ciks": [
+    "0001045810"
+   ],
+   "logos": [
+    "NVIDIA logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "NVDA"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q6955706",
+   "label": "NVR, Inc.",
+   "ciks": [
+    "0000906163"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "NVR"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q13683",
+   "label": "NYSE Euronext Liffe",
+   "ciks": [],
+   "logos": [
+    "NYSE Euronext 2012.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "NYX"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7071951",
+   "label": "O'Reilly Auto Parts",
+   "ciks": [
+    "0000898173"
+   ],
+   "logos": [
+    "O'Reilly Auto Parts Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ORLY"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q2013357",
+   "label": "Occidental Petroleum",
+   "ciks": [
+    "0000797468"
+   ],
+   "logos": [
+    "Occidental-Petroleum-Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "OXY"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7083862",
+   "label": "Old Dominion Freight Line",
+   "ciks": [
+    "0000878927"
+   ],
+   "logos": [
+    "Old Dominion Freight Line (2).jpg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ODFL"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q1519267",
+   "label": "Omnicom Group",
+   "ciks": [
+    "0000029989"
+   ],
+   "logos": [
+    "Omnicom.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "OMC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q11074156",
+   "label": "ONEOK",
+   "ciks": [
+    "0001039684"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "OKE"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q19900",
+   "label": "Oracle Corporation",
+   "ciks": [
+    "0001341439"
+   ],
+   "logos": [
+    "Oracle logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ORCL"
+   ],
+   "exchangesSeen": [
+    "Q13677",
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q903372",
+   "label": "Organon & Co.",
+   "ciks": [
+    "0001821825"
+   ],
+   "logos": [
+    "Organon-logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "OGN"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1134069",
+   "label": "Otis Worldwide Corporation",
+   "ciks": [
+    "0001781335"
+   ],
+   "logos": [
+    "Otis logo.SVG"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "OTIS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1477661",
+   "label": "PACCAR",
+   "ciks": [
+    "0000075362"
+   ],
+   "logos": [
+    "PACCAR-logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PCAR"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q16983334",
+   "label": "Packaging Corporation of America",
+   "ciks": [
+    "0000075677"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "PKG"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q76846862",
+   "label": "Paramount Global",
+   "ciks": [
+    "0000813828"
+   ],
+   "logos": [
+    "Paramount Global Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PARA"
+   ],
+   "exchangesSeen": [
+    "Q82059",
+    "Q242345"
+   ]
+  },
+  {
+   "qid": "Q1470619",
+   "label": "Parker Hannifin",
+   "ciks": [
+    "0000076334"
+   ],
+   "logos": [
+    "Parker Hannifin.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PH"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q538203",
+   "label": "Patterson Companies",
+   "ciks": [
+    "0000891024"
+   ],
+   "logos": [
+    "Patterson logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PDCO"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q946080",
+   "label": "Paychex",
+   "ciks": [
+    "0000723531"
+   ],
+   "logos": [
+    "Paychex logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PAYX"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q17084959",
+   "label": "Paycom",
+   "ciks": [
+    "0001590955"
+   ],
+   "logos": [
+    "Paycom logo (2015).png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PAYC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q135683211",
+   "label": "PayPal Holdings",
+   "ciks": [
+    "0001633917"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "PYPL"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q7165001",
+   "label": "Pentair",
+   "ciks": [
+    "0000077360"
+   ],
+   "logos": [
+    "Pentair Schroff Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PNR"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7165802",
+   "label": "People's United Financial",
+   "ciks": [
+    "0001378946"
+   ],
+   "logos": [
+    "People's United Financial, Inc. logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PBCT"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q334800",
+   "label": "PepsiCo",
+   "ciks": [
+    "0000077476"
+   ],
+   "logos": [
+    "PepsiCo (2025, wordmark).svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PEP"
+   ],
+   "exchangesSeen": [
+    "Q217475",
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q2066858",
+   "label": "PerkinElmer",
+   "ciks": [
+    "0000031791"
+   ],
+   "logos": [
+    "Logo PerkinElmer.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PKI"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q2916497",
+   "label": "Perrigo Company Plc",
+   "ciks": [
+    "0001585364"
+   ],
+   "logos": [
+    "Perrigo logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PRGO"
+   ],
+   "exchangesSeen": [
+    "Q1507974",
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q206921",
+   "label": "Pfizer",
+   "ciks": [
+    "0000078003"
+   ],
+   "logos": [
+    "Pfizer (2021).svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PFE"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1852556",
+   "label": "Philip Morris International",
+   "ciks": [
+    "0001413329"
+   ],
+   "logos": [
+    "Pmi logo text only.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PM"
+   ],
+   "exchangesSeen": [
+    "Q661834",
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1656230",
+   "label": "Phillips 66",
+   "ciks": [
+    "0001534701"
+   ],
+   "logos": [
+    "Phillips 66 logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PSX"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q26110522",
+   "label": "Pinnacle West Capital Corporation",
+   "ciks": [
+    "0000764622"
+   ],
+   "logos": [
+    "Pinnacle West Capital logo.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PNW"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q4046987",
+   "label": "Pioneer Natural Resources",
+   "ciks": [
+    "0001038357"
+   ],
+   "logos": [
+    "Pioneer Natural Resources logo.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PXD"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q38928",
+   "label": "PNC Financial Services",
+   "ciks": [
+    "0000713676"
+   ],
+   "logos": [
+    "PNClogo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PNC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q101209811",
+   "label": "Pool Corporation",
+   "ciks": [
+    "0000945841"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "POOL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q48754",
+   "label": "PPG Industries",
+   "ciks": [
+    "0000079879"
+   ],
+   "logos": [
+    "PPG Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PPG"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q2044512",
+   "label": "PPL",
+   "ciks": [
+    "0000922224"
+   ],
+   "logos": [
+    "Pennsylvania Power and Light logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PPL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q3403513",
+   "label": "Principal Financial Group",
+   "ciks": [
+    "0001126328"
+   ],
+   "logos": [
+    "Principal Financial Group logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PFG"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q212405",
+   "label": "Procter & Gamble",
+   "ciks": [
+    "0000080424"
+   ],
+   "logos": [
+    "Procter & Gamble logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PG"
+   ],
+   "exchangesSeen": [
+    "Q217475",
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7248721",
+   "label": "Progressive Corporation",
+   "ciks": [
+    "0000080661"
+   ],
+   "logos": [
+    "Logo of the Progressive Corporation.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PGR"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q16983765",
+   "label": "Prologis",
+   "ciks": [
+    "0001045609"
+   ],
+   "logos": [
+    "Prologis Logo Current.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PLD"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q2114414",
+   "label": "Prudential Financial",
+   "ciks": [
+    "0001137774"
+   ],
+   "logos": [
+    "Logo-prudential-do-brasil.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PRU"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q930919",
+   "label": "Public Service Enterprise Group",
+   "ciks": [
+    "0000788784"
+   ],
+   "logos": [
+    "PSEG logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PEG"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1156045",
+   "label": "Public Storage",
+   "ciks": [
+    "0001393311"
+   ],
+   "logos": [
+    "Public Storage Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PSA"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7259716",
+   "label": "PulteGroup",
+   "ciks": [
+    "0000822416"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "PHM"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1132272",
+   "label": "PVH Corp.",
+   "ciks": [
+    "0000078239"
+   ],
+   "logos": [
+    "Phillips-Van Heusen logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PVH"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1353939",
+   "label": "Q1353939",
+   "ciks": [
+    "0001370637"
+   ],
+   "logos": [
+    "Etsy logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ETSY"
+   ],
+   "exchangesSeen": [
+    "Q82059",
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1471346",
+   "label": "Q1471346",
+   "ciks": [
+    "0000106640"
+   ],
+   "logos": [
+    "Whirlpool Corporation Logo (as of 2017).svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "WHR"
+   ],
+   "exchangesSeen": [
+    "Q796297",
+    "Q739514",
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q295774",
+   "label": "Q295774",
+   "ciks": [
+    "0001013462"
+   ],
+   "logos": [
+    "Ansys logo (2019).svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ANSS"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q444110",
+   "label": "Q444110",
+   "ciks": [
+    "0000874766"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "HIG"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q483551",
+   "label": "Q483551",
+   "ciks": [
+    "0000104169"
+   ],
+   "logos": [
+    "Walmart wordmark (2008).svg",
+    "Walmart logo (2025).svg"
+   ],
+   "simpleIcons": [
+    "http://commons.wikimedia.org/wiki/Special:FilePath/Walmart%20spark%20%282025%29.svg"
+   ],
+   "tickers": [
+    "WMT"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q58024",
+   "label": "Q58024",
+   "ciks": [
+    "0001065088"
+   ],
+   "logos": [
+    "EBay logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "EBAY"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q677085",
+   "label": "Q677085",
+   "ciks": [
+    "0000849399"
+   ],
+   "logos": [
+    "Gen logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "GEN",
+    "NLOK",
+    "SYMC"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q18169198",
+   "label": "Qorvo",
+   "ciks": [
+    "0001604778"
+   ],
+   "logos": [
+    "Qorvo logo black.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "QRVO"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q544847",
+   "label": "Qualcomm",
+   "ciks": [
+    "0000804328"
+   ],
+   "logos": [
+    "Qualcomm-Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "QCOM"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q7268886",
+   "label": "Quanta Services",
+   "ciks": [
+    "0001050915"
+   ],
+   "logos": [
+    "QScolorjpg.jpg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "PWR"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7271456",
+   "label": "Quest Diagnostics",
+   "ciks": [
+    "0001022079"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "DGX"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1641437",
+   "label": "Ralph Lauren Corporation",
+   "ciks": [
+    "0001037038"
+   ],
+   "logos": [
+    "Ralph Lauren logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "RL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q124129040",
+   "label": "Rapid Credit Boosters",
+   "ciks": [],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [],
+   "exchangesSeen": []
+  },
+  {
+   "qid": "Q7298901",
+   "label": "Raymond James Financial",
+   "ciks": [
+    "0000720005"
+   ],
+   "logos": [
+    "Raymond James Logo.JPG"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "RJF"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7301386",
+   "label": "Realty Income Corporation",
+   "ciks": [
+    "0000726728"
+   ],
+   "logos": [
+    "Realty Income logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "O"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q485593",
+   "label": "Red Hat",
+   "ciks": [
+    "0001087423"
+   ],
+   "logos": [
+    "Red Hat logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "RHT"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7308000",
+   "label": "Regency Centers",
+   "ciks": [
+    "0000910606"
+   ],
+   "logos": [
+    "Regency Centers Corporation logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "REG"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7308054",
+   "label": "Regeneron Pharmaceuticals",
+   "ciks": [
+    "0000872589"
+   ],
+   "logos": [
+    "Regeneron logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "REGN"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q917131",
+   "label": "Regions Financial Corporation",
+   "ciks": [
+    "0001281761"
+   ],
+   "logos": [
+    "Regions Financial Corp logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "RF"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7314415",
+   "label": "Republic Services",
+   "ciks": [
+    "0001060391"
+   ],
+   "logos": [
+    "Republic Services logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "RSG"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7314903",
+   "label": "ResMed",
+   "ciks": [
+    "0000943819"
+   ],
+   "logos": [
+    "Resmed Logo 2025.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "RMD"
+   ],
+   "exchangesSeen": [
+    "Q13677",
+    "Q732670"
+   ]
+  },
+  {
+   "qid": "Q3433273",
+   "label": "Rite Aid",
+   "ciks": [
+    "0000084129"
+   ],
+   "logos": [
+    "Rite Aid.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "RAD"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q2157448",
+   "label": "Robert Half",
+   "ciks": [
+    "0000315213"
+   ],
+   "logos": [
+    "Robert Half logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "RHI"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1529234",
+   "label": "Rockwell Automation",
+   "ciks": [
+    "0001024478"
+   ],
+   "logos": [
+    "Rockwell Automation logo (2019).svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ROK"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7361273",
+   "label": "Rollins Inc.",
+   "ciks": [
+    "0000084839"
+   ],
+   "logos": [
+    "Rollins, Inc. Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ROL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q16932392",
+   "label": "Roper Technologies",
+   "ciks": [
+    "0000882835"
+   ],
+   "logos": [
+    "Roper Technologies logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ROP"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q3442791",
+   "label": "Ross Dress for Less",
+   "ciks": [
+    "0000745732"
+   ],
+   "logos": [
+    "Ross Stores logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ROST"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q427881",
+   "label": "Royal Caribbean Group",
+   "ciks": [
+    "0000884887"
+   ],
+   "logos": [
+    "Royal Caribbean Group logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "RCL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q89368734",
+   "label": "RTX",
+   "ciks": [
+    "0000101829"
+   ],
+   "logos": [
+    "RTX Raytheon Technologies logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "RTX"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q868587",
+   "label": "S&P Global",
+   "ciks": [
+    "0000064040"
+   ],
+   "logos": [
+    "S&P Global logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MHFI",
+    "SPGI"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q941127",
+   "label": "Salesforce",
+   "ciks": [
+    "0001108524"
+   ],
+   "logos": [
+    "Salesforce.com logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CRM"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7388926",
+   "label": "SBA Communications",
+   "ciks": [
+    "0001034054"
+   ],
+   "logos": [
+    "SBA Communications Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "SBAC"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q705392",
+   "label": "Seagate Technology",
+   "ciks": [
+    "0001137789"
+   ],
+   "logos": [
+    "Seagate logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "STX"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q7440621",
+   "label": "Sealed Air",
+   "ciks": [
+    "0001012100"
+   ],
+   "logos": [
+    "SEE SealedAirCorpLockup-01-01.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "SEE"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7449804",
+   "label": "Sempra",
+   "ciks": [
+    "0001032208"
+   ],
+   "logos": [
+    "Sempra Energy logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "SRE"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7455653",
+   "label": "ServiceNow",
+   "ciks": [
+    "0001373715"
+   ],
+   "logos": [
+    "ServiceNow logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "NOW"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q48881",
+   "label": "Sherwin-Williams",
+   "ciks": [
+    "0000089800"
+   ],
+   "logos": [
+    "Sherwin-Williams wordmark.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "SHW"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q2287759",
+   "label": "Simon Property Group",
+   "ciks": [
+    "0001063761"
+   ],
+   "logos": [
+    "Simon Property Group Logo 2014.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "SPG"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7538146",
+   "label": "Skyworks Solutions",
+   "ciks": [
+    "0000004127"
+   ],
+   "logos": [
+    "Skyworks logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "SWKS"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q7391016",
+   "label": "SL Green Realty",
+   "ciks": [
+    "0001040971"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "SLG"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1425316",
+   "label": "SLB",
+   "ciks": [
+    "0000087347"
+   ],
+   "logos": [
+    "SLB Logo 2022.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "SLB"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1631922",
+   "label": "Snap-on",
+   "ciks": [
+    "0000091440"
+   ],
+   "logos": [
+    "Snap-on logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "SNA"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q2304693",
+   "label": "Southern Company",
+   "ciks": [
+    "0000092122"
+   ],
+   "logos": [
+    "Southern Company newer logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "SO"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q503308",
+   "label": "Southwest Airlines",
+   "ciks": [
+    "0000092380"
+   ],
+   "logos": [
+    "Southwest Airlines logo 2014.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "LUV"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q2961234",
+   "label": "Spectrum",
+   "ciks": [
+    "0001091667"
+   ],
+   "logos": [
+    "Charter Communications Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "CHTR"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q706094",
+   "label": "Stanley Black & Decker",
+   "ciks": [
+    "0000093556"
+   ],
+   "logos": [
+    "Stanley Black & Decker Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "SWK"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q785943",
+   "label": "Staples Inc.",
+   "ciks": [],
+   "logos": [
+    "Staples 2019.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "SPLS"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q37158",
+   "label": "Starbucks",
+   "ciks": [
+    "0000829224"
+   ],
+   "logos": [
+    "Starbucks coffee wordmark.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "SBUX"
+   ],
+   "exchangesSeen": [
+    "Q496672",
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q2037125",
+   "label": "State Street Corporation",
+   "ciks": [
+    "0000093751"
+   ],
+   "logos": [
+    "State-street-logo-final.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "STT"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q3973262",
+   "label": "Stericycle",
+   "ciks": [
+    "0000861878"
+   ],
+   "logos": [
+    "Stericycle logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "SRCL"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q80947821",
+   "label": "Steris",
+   "ciks": [
+    "0001757898"
+   ],
+   "logos": [
+    "Steris logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "STE"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q2357515",
+   "label": "Stryker Corporation",
+   "ciks": [
+    "0000310764"
+   ],
+   "logos": [
+    "Stryker logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "SYK"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q18387139",
+   "label": "Synchrony Financial",
+   "ciks": [
+    "0001601712"
+   ],
+   "logos": [
+    "Synchrony Financial logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "SYF"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q2303478",
+   "label": "Synopsys",
+   "ciks": [
+    "0000883241"
+   ],
+   "logos": [
+    "Synopsys Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "SNPS"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q2376711",
+   "label": "Sysco",
+   "ciks": [
+    "0000096021"
+   ],
+   "logos": [
+    "Sysco-Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "SYY"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q3511885",
+   "label": "T-Mobile US",
+   "ciks": [
+    "0001283699"
+   ],
+   "logos": [
+    "T-Mobile US Logo 2022 RGB Magenta on Transparent.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "TMUS"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q3511946",
+   "label": "T. Rowe Price",
+   "ciks": [
+    "0001113169"
+   ],
+   "logos": [
+    "T. Rowe Price Logo 2017.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "TROW"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q94933",
+   "label": "Take-Two Interactive",
+   "ciks": [
+    "0000946581"
+   ],
+   "logos": [
+    "Take-Two Interactive Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "TTWO"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q56273715",
+   "label": "Tapestry, Inc.",
+   "ciks": [
+    "0001116132"
+   ],
+   "logos": [
+    "Tapestry logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "TPR"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1046951",
+   "label": "Target Corporation",
+   "ciks": [
+    "0000027419"
+   ],
+   "logos": [
+    "Target logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "TGT"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q663452",
+   "label": "TE Connectivity",
+   "ciks": [
+    "0001385157"
+   ],
+   "logos": [
+    "TE Connectivity logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "TEL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q30324333",
+   "label": "TechnipFMC",
+   "ciks": [
+    "0001681459"
+   ],
+   "logos": [
+    "TechnipFMC logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "FTI"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7696127",
+   "label": "Teledyne Technologies",
+   "ciks": [
+    "0001094285"
+   ],
+   "logos": [
+    "Teledyne logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "TDY"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7696143",
+   "label": "Teleflex",
+   "ciks": [
+    "0000096943"
+   ],
+   "logos": [
+    "Teleflex logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "TFX"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q2404292",
+   "label": "Teradyne",
+   "ciks": [
+    "0000097210"
+   ],
+   "logos": [
+    "Teradyne logo 2014.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "TER"
+   ],
+   "exchangesSeen": [
+    "Q13677",
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q478214",
+   "label": "Tesla",
+   "ciks": [
+    "0001318605"
+   ],
+   "logos": [
+    "Tesla Motors.svg"
+   ],
+   "simpleIcons": [
+    "http://commons.wikimedia.org/wiki/Special:FilePath/Tesla%20T%20symbol.svg"
+   ],
+   "tickers": [
+    "TSLA"
+   ],
+   "exchangesSeen": [
+    "Q171240",
+    "Q151139",
+    "Q82059",
+    "Q819468"
+   ]
+  },
+  {
+   "qid": "Q193412",
+   "label": "Texas Instruments",
+   "ciks": [
+    "0000097476"
+   ],
+   "logos": [
+    "TexasInstruments-Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "TXN"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q2140315",
+   "label": "Textron",
+   "ciks": [
+    "0000217346"
+   ],
+   "logos": [
+    "Textron.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "TXT"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q589288",
+   "label": "The Bank of New York Mellon",
+   "ciks": [
+    "0001390777"
+   ],
+   "logos": [
+    "BNY Mellon.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "BK",
+    "BNY"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q642271",
+   "label": "The Cigna Group",
+   "ciks": [
+    "0001739940"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "CI"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q3295867",
+   "label": "The Coca-Cola Company",
+   "ciks": [
+    "0000021344"
+   ],
+   "logos": [
+    "The Coca-Cola Company (2020).svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "KO"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1129792",
+   "label": "The Cooper Companies",
+   "ciks": [
+    "0000711404"
+   ],
+   "logos": [
+    "Cooper companies logo.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "COO"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1056637",
+   "label": "The Hershey Company",
+   "ciks": [
+    "0000047111"
+   ],
+   "logos": [
+    "HersheyCo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "HSY"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q864407",
+   "label": "The Home Depot",
+   "ciks": [
+    "0000354950"
+   ],
+   "logos": [
+    "TheHomeDepot.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "HD"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7742790",
+   "label": "The J.M. Smucker Company",
+   "ciks": [
+    "0000091419"
+   ],
+   "logos": [
+    "Smuckers logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "SJM"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7752327",
+   "label": "The Mosaic Company",
+   "ciks": [
+    "0001285785"
+   ],
+   "logos": [
+    "Mosaic Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "MOS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q942471",
+   "label": "The Travelers Companies",
+   "ciks": [
+    "0000086312"
+   ],
+   "logos": [
+    "Trav umb 5inch.jpg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "TRV"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7414",
+   "label": "The Walt Disney Company",
+   "ciks": [
+    "0001744489"
+   ],
+   "logos": [
+    "The Walt Disney Company Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "DIS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q643674",
+   "label": "Thermo Fisher Scientific Inc.",
+   "ciks": [
+    "0000097745"
+   ],
+   "logos": [
+    "Thermo Fisher Scientific logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "TMO"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1066858",
+   "label": "Tiffany & Co.",
+   "ciks": [
+    "0000098246"
+   ],
+   "logos": [
+    "Tiffany & Co. 2024 logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "TIF"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1285819",
+   "label": "TJX Companies",
+   "ciks": [
+    "0000109198"
+   ],
+   "logos": [
+    "TJXLogo.svg",
+    "TJX Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "TJX"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q15109925",
+   "label": "Tractor Supply Company",
+   "ciks": [
+    "0000916365"
+   ],
+   "logos": [
+    "TractorSupplyCompanylogo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "TSCO"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q7833612",
+   "label": "TransDigm Group Inc.",
+   "ciks": [
+    "0001260221"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "TDG"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q2297063",
+   "label": "Trimble",
+   "ciks": [
+    "0000864749"
+   ],
+   "logos": [
+    "Trimble Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "TRMB"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q1770710",
+   "label": "Tripadvisor",
+   "ciks": [
+    "0001526520"
+   ],
+   "logos": [
+    "Tripadvisor 2025 Logo.svg"
+   ],
+   "simpleIcons": [
+    "http://commons.wikimedia.org/wiki/Special:FilePath/Tripadvisor-logo-circle-owl-icon-black-green.svg"
+   ],
+   "tickers": [
+    "TRIP"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q795486",
+   "label": "Truist Financial",
+   "ciks": [
+    "0000092230"
+   ],
+   "logos": [
+    "Truist Financial logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "BBT",
+    "TFC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q48802335",
+   "label": "Tyler Technologies",
+   "ciks": [
+    "0000860731"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "TYL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1325987",
+   "label": "Tyson Foods",
+   "ciks": [
+    "0000100493"
+   ],
+   "logos": [
+    "Tyson Foods corporate logo (2024).svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "TSN"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q739084",
+   "label": "U.S. Bancorp",
+   "ciks": [
+    "0000036104"
+   ],
+   "logos": [
+    "US Bancorp logo 2023 color.svg"
+   ],
+   "simpleIcons": [
+    "http://commons.wikimedia.org/wiki/Special:FilePath/US%20Bank%20icon%202023%20red.svg"
+   ],
+   "tickers": [
+    "USB"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q780442",
+   "label": "Uber",
+   "ciks": [
+    "0001543151"
+   ],
+   "logos": [
+    "Uber logo 2018.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "UBER"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q27988153",
+   "label": "UDR",
+   "ciks": [
+    "0000074208"
+   ],
+   "logos": [
+    "UDR, Inc. logo.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "UDR"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7880076",
+   "label": "Ulta Beauty",
+   "ciks": [
+    "0001403568"
+   ],
+   "logos": [
+    "Ulta Beauty logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ULTA"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q2031485",
+   "label": "Under Armour",
+   "ciks": [
+    "0001336917"
+   ],
+   "logos": [
+    "Under armour logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "UAA",
+    "UA"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q20183163",
+   "label": "Union Pacific Corporation",
+   "ciks": [
+    "0000100885"
+   ],
+   "logos": [
+    "Union pacific railroad logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "UNP"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q871700",
+   "label": "United Airlines Holdings",
+   "ciks": [
+    "0000100517"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "UAL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q155026",
+   "label": "United Parcel Service",
+   "ciks": [
+    "0001090727"
+   ],
+   "logos": [
+    "United Parcel Service logo 2014.svg"
+   ],
+   "simpleIcons": [
+    "http://commons.wikimedia.org/wiki/Special:FilePath/United%20Parcel%20Service%20logo%202014.svg"
+   ],
+   "tickers": [
+    "UPS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7889101",
+   "label": "United Rentals",
+   "ciks": [
+    "0001067701"
+   ],
+   "logos": [
+    "United Rentals Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "URI"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1045758",
+   "label": "United Technologies Corporation",
+   "ciks": [],
+   "logos": [
+    "United technologies logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "UTX"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q2103926",
+   "label": "UnitedHealth Group",
+   "ciks": [
+    "0000731766"
+   ],
+   "logos": [
+    "UnitedHealth Group logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "UNH"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q7893967",
+   "label": "Universal Health Services",
+   "ciks": [
+    "0000352915"
+   ],
+   "logos": [
+    "UHS logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "UHS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q143435",
+   "label": "Unum",
+   "ciks": [
+    "0000005513"
+   ],
+   "logos": [
+    "UnumProvident logo.svg",
+    "Unum Group logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "UNM"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1283291",
+   "label": "Valero Energy",
+   "ciks": [
+    "0001035002"
+   ],
+   "logos": [
+    "Valero Energy logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "VLO"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q4993917",
+   "label": "Varian Medical Systems",
+   "ciks": [
+    "0000203527"
+   ],
+   "logos": [
+    "Varian company logo 2017.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "VAR"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q19865761",
+   "label": "Ventas, Inc.",
+   "ciks": [
+    "0000740260"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "VTR"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q734338",
+   "label": "Verisign",
+   "ciks": [
+    "0001014473"
+   ],
+   "logos": [
+    "Verisign logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "VRSN"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q7921370",
+   "label": "Verisk Analytics",
+   "ciks": [
+    "0001442145"
+   ],
+   "logos": [
+    "Verisk Analytics Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "VRSK"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q467752",
+   "label": "Verizon",
+   "ciks": [
+    "0000732712"
+   ],
+   "logos": [
+    "Verizon 2024.svg"
+   ],
+   "simpleIcons": [
+    "http://commons.wikimedia.org/wiki/Special:FilePath/Verizon%202024%20%28symbol%29.svg"
+   ],
+   "tickers": [
+    "VZ"
+   ],
+   "exchangesSeen": [
+    "Q13677",
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q2744099",
+   "label": "Vertex Pharmaceuticals",
+   "ciks": [
+    "0000875320"
+   ],
+   "logos": [
+    "VertexPharma-logo2.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "VRTX"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q457960",
+   "label": "VF Corporation",
+   "ciks": [
+    "0000103379"
+   ],
+   "logos": [
+    "VF Corporation logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "VFC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q214346",
+   "label": "Viacom",
+   "ciks": [
+    "0001339947"
+   ],
+   "logos": [
+    "Viacom logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "VIAB",
+    "VIA"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q101983981",
+   "label": "Viatris",
+   "ciks": [
+    "0001792044"
+   ],
+   "logos": [
+    "Viatris.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "VTRS"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q328840",
+   "label": "Visa Inc.",
+   "ciks": [
+    "0001403161"
+   ],
+   "logos": [
+    "Visa Inc. logo (2021–present).svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "V"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q187740",
+   "label": "Vivmark Residential",
+   "ciks": [
+    "0000906107"
+   ],
+   "logos": [
+    "Equity Residential logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "EQR",
+    "VMRK"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q101209850",
+   "label": "Vontier",
+   "ciks": [
+    "0001786842"
+   ],
+   "logos": [
+    "Vontier logo.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "VNT"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q368181",
+   "label": "Vornado Realty Trust",
+   "ciks": [
+    "0000899689"
+   ],
+   "logos": [
+    "Vornado Realty Trust logo.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "VNO"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1685287",
+   "label": "Vulcan Materials Company",
+   "ciks": [
+    "0001396009"
+   ],
+   "logos": [
+    "Vulcan Materials logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "VMC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1369955",
+   "label": "W. R. Berkley",
+   "ciks": [
+    "0000011544"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "WRB"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q498746",
+   "label": "W. R. Grace and Company",
+   "ciks": [
+    "0001045309"
+   ],
+   "logos": [
+    "Logo-wr grace.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "GRA"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1627894",
+   "label": "W. W. Grainger",
+   "ciks": [
+    "0000277135"
+   ],
+   "logos": [
+    "W. W. Grainger logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "GWW"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q741707",
+   "label": "Wabtec",
+   "ciks": [
+    "0000943452"
+   ],
+   "logos": [
+    "Wabtec logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "WAB"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q18712620",
+   "label": "Walgreens Boots Alliance",
+   "ciks": [
+    "0001618921"
+   ],
+   "logos": [
+    "Walgreens Boots Alliance Logo RGB.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "WBA"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q2552219",
+   "label": "Waste Management, Inc",
+   "ciks": [
+    "0000823768"
+   ],
+   "logos": [
+    "Waste-management.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "WM"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1322011",
+   "label": "Waters Corporation",
+   "ciks": [
+    "0001000697"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "WAT"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q8027166",
+   "label": "WEC Energy Group",
+   "ciks": [
+    "0000783325"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "WEC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q744149",
+   "label": "Wells Fargo",
+   "ciks": [
+    "0000072971"
+   ],
+   "logos": [
+    "Wells Fargo Logo (2020).svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "WFC"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q20486917",
+   "label": "Welltower",
+   "ciks": [
+    "0000766704"
+   ],
+   "logos": [
+    "Welltower Logo 2025.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "WELL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q30338243",
+   "label": "West Pharmaceutical Services (United States)",
+   "ciks": [],
+   "logos": [
+    "Logo of West Pharmaceutical Services (2020).svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "WST"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q738770",
+   "label": "Western Digital",
+   "ciks": [
+    "0000106040"
+   ],
+   "logos": [
+    "WD Logo.svg"
+   ],
+   "simpleIcons": [
+    "http://commons.wikimedia.org/wiki/Special:FilePath/Western%20Digital%20brand%20mark.svg"
+   ],
+   "tickers": [
+    "WDC"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q861042",
+   "label": "Western Union",
+   "ciks": [
+    "0001365135"
+   ],
+   "logos": [
+    "Western Union current logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "WU"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1780382",
+   "label": "Weyerhaeuser",
+   "ciks": [
+    "0000106535"
+   ],
+   "logos": [
+    "Weyerhaeuser.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "WY"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q1809448",
+   "label": "Whole Foods Market",
+   "ciks": [
+    "0000865436"
+   ],
+   "logos": [
+    "Whole Foods Market logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "WFM"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q930639",
+   "label": "Williams Companies",
+   "ciks": [
+    "0000107263"
+   ],
+   "logos": [
+    "Williams Companies logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "WMB"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q21189883",
+   "label": "Willis Towers Watson",
+   "ciks": [
+    "0001140536"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "WLTW",
+    "WTW"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q21016487",
+   "label": "WRKCo, Inc.",
+   "ciks": [
+    "0001732845"
+   ],
+   "logos": [
+    "WestRock new logo.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "WRK"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q303341",
+   "label": "Wyndham Worldwide",
+   "ciks": [],
+   "logos": [
+    "Wyndham Worldwide logo.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "WYN"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q2274089",
+   "label": "Wynn Resorts",
+   "ciks": [
+    "0001174922"
+   ],
+   "logos": [
+    "Wynn Resorts logo 2025.png"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "WYNN"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q1486956",
+   "label": "Xcel Energy",
+   "ciks": [
+    "0000072903"
+   ],
+   "logos": [
+    "Xcel-energy.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "XEL"
+   ],
+   "exchangesSeen": [
+    "Q82059",
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q152433",
+   "label": "Xerox",
+   "ciks": [
+    "0001770450"
+   ],
+   "logos": [
+    "Xerox logo 2026.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "XRX"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q3146975",
+   "label": "Xylem Inc.",
+   "ciks": [
+    "0001524472"
+   ],
+   "logos": [
+    "Xylem Logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "XYL"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q668737",
+   "label": "Yum! Brands",
+   "ciks": [
+    "0001041061"
+   ],
+   "logos": [
+    "Yum! Brands logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "YUM"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  },
+  {
+   "qid": "Q2443609",
+   "label": "Zebra Technologies",
+   "ciks": [
+    "0000877212"
+   ],
+   "logos": [],
+   "simpleIcons": [],
+   "tickers": [
+    "ZBRA"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q203552",
+   "label": "Zimmer Biomet Holdings",
+   "ciks": [
+    "0001136869"
+   ],
+   "logos": [
+    "Zimmer Holdings logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ZBH"
+   ],
+   "exchangesSeen": [
+    "Q13677",
+    "Q661834"
+   ]
+  },
+  {
+   "qid": "Q205378",
+   "label": "Zions Bancorporation",
+   "ciks": [
+    "0000109380"
+   ],
+   "logos": [
+    "Zions Bancorporation logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ZION"
+   ],
+   "exchangesSeen": [
+    "Q82059"
+   ]
+  },
+  {
+   "qid": "Q8073337",
+   "label": "Zoetis",
+   "ciks": [
+    "0001555280"
+   ],
+   "logos": [
+    "Zoetis logo.svg"
+   ],
+   "simpleIcons": [],
+   "tickers": [
+    "ZTS"
+   ],
+   "exchangesSeen": [
+    "Q13677"
+   ]
+  }
+ ]
+}

@@ -1,10 +1,16 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { companyMark } from "@/lib/company-marks";
 
-export default function CompanyMark({ ticker, cik }: { ticker: string; cik?: string }) {
-  const src = companyMark(ticker, cik);
+/**
+ * Renders a company or sponsor mark, or the ticker tile when there is none.
+ *
+ * The mark is resolved on the server through `@/lib/image-library` and passed
+ * in as `src`; this component never consults the catalog, so the catalog stays
+ * out of client bundles. A failed load falls back to the same tile a missing
+ * mark uses, so a broken file and an absent file look identical to a reader.
+ */
+export default function CompanyMark({ ticker, src }: { ticker: string; src?: string | null }) {
   const [failedSrc, setFailedSrc] = useState<string | null>(null);
   if (!src || failedSrc === src) return <span className="home-ticker-tile" aria-hidden="true">{ticker}</span>;
   return <span className="home-company-mark" aria-hidden="true">
