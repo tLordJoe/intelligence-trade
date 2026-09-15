@@ -1,6 +1,6 @@
 # Institutional holdings: gated implementation checkpoint
 
-The `/institutions` route and homepage link stay unavailable until a reviewed artifact is promoted. This checkpoint has **synthetic parser/reconciliation tests only**. It has not been validated against a real SEC filing corpus and must not be activated yet. No paid API is required.
+The `/institutions` route and homepage link stay unavailable until a reviewed artifact is promoted. The first real-source replay covers three archived Berkshire Hathaway filings; broader corpus and independent release review are still required. No paid API is required.
 
 ## Meaning and scope
 
@@ -8,9 +8,17 @@ Form 13F reports quarter-end positions, not execution dates, purchases, sales, c
 
 The parser checks complete-submission accession and filing date, XML manager CIK, quarter end, entry counts, and value totals. Filing dates before January 3, 2023 use thousands of dollars; later filings use dollars. Raw values remain available and each filing requires a separate units review because an issuer may have filed an incorrect value. Quantity calculations use decimal strings and integer arithmetic.
 
-All amendments (including new-holdings amendments), multiple originals, conflicting evidence, confidential omissions, combined reports, and shared-manager reports are conservatively held. Unsupported notices or failed filings block that manager. This version does not resolve amendment families; it never silently treats an amended original as final.
+All amendments (including new-holdings amendments), multiple originals, conflicting evidence, confidential omissions and combined reports are conservatively held. Unsupported notices or failed filings block that manager. This version does not resolve amendment families; it never silently treats an amended original as final.
 
-The position-change helper compares consecutive quarter ends for one manager, preserving security/class/option/discretion boundaries. Differences are **reported quantity differences**, not trades, and may reflect splits or other reporting changes. This helper is not yet displayed on the page.
+A holdings report may legitimately include other managers. Its declared included-manager count must match its numbered identity list; every row qualifier must resolve uniquely to that list. The original ordinal, name, CIK and 13F file number are retained. Stable comparison identities use normalized 13F file numbers (or a source CIK when no file number exists), never the filing-local ordinal or name alone. Rows expose reporting-manager and shared-discretion context; they are not independent purchases by every named manager, and duplicate reporting across different reporting managers must not be summed blindly. Unknown manager identities/qualifiers remain blocked.
+
+The position-change helper compares consecutive quarter ends for one reporting manager, preserving security/class/option/discretion and resolved included-manager boundaries. Optional FIGI enrichment does not define identity. Differences are **reported quantity differences**, not trades, and may reflect splits or other reporting changes. This helper is not yet displayed on the page.
+
+### Verified local Berkshire replay
+
+Run `institutions_341b46e8-2c03-4f10-889b-01b7c509422f` retains original SEC inventory and submission hashes. The replay parses accession `0001193125-26-054580` (2025-12-31, 110 rows), `0001193125-26-226661` (2026-03-31, 90 rows), and `0001193125-26-352200` (2026-06-30, 89 rows): 289 rows, three eligible filings, zero family holds or parse failures. The latest pair yields 93 attributed positions: 86 reported in both quarters (7 quantity increases, 9 decreases, 70 unchanged), 3 newly reported, 4 no longer reported. These counts are manager/security attribution groups, not trade counts. The public artifact remains unapproved.
+
+The archived-corpus regression runs when this local evidence directory exists and explicitly skips if it is absent (raw runs are not committed). Always-on synthetic regressions separately cover ordinal renumbering, optional FIGI, malformed manager lists, unresolved qualifiers and distinct stable manager identities.
 
 ## Collect a bounded official corpus
 

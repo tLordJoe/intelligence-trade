@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync } from "node:fs";
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync, existsSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { parseInstitutionalFiling, digest, filingUrl, type FilingReference } from "../src/lib/institutions/parse.ts";
@@ -91,4 +91,40 @@ test("public gate rejects pending, changed and held payloads",()=>{
   assert.throws(()=>approvedInstitutions({payload:{...payload,limitations:"changed"},approval}));
   const held={...payload,filings:[{...original,amendment:true}]};assert.throws(()=>approvedInstitutions({payload:held,approval:{...approval,sha256:payloadHash(held)}}));
   assert.equal(approvedInstitutions(JSON.parse(readFileSync(new URL("../src/lib/institutions-live.json",import.meta.url),"utf8"))),null);
+});
+
+const berkshireDirectory=new URL("../data/institution-runs/institutions_341b46e8-2c03-4f10-889b-01b7c509422f/",import.meta.url).pathname;
+test("archived official Berkshire reports resolve 14 included managers without false family holds",{skip:!existsSync(join(berkshireDirectory,"manifest.json"))&&"official local corpus unavailable"},()=>{
+  const replay=replayInstitutionRun(berkshireDirectory);
+  assert.equal(replay.failures.length,0);assert.equal(replay.filings.length,3);
+  const result=validateManagerCorpus(replay.filings,replay.failures);
+  assert.equal(result.held.length,0);assert.equal(result.comparison?.previousPeriod,"2026-03-31");assert.equal(result.comparison?.currentPeriod,"2026-06-30");
+  const current=replay.filings.find(f=>f.period==="2026-06-30")!,previous=replay.filings.find(f=>f.period==="2026-03-31")!;
+  assert.equal(previous.holdings.length,90);assert.equal(current.holdings.length,89);assert.equal(current.includedManagers.length,14);
+  assert.ok(current.holdings.every(row=>row.otherManagerIds.length>0));
+  const evidence=replay.run.filings.find(f=>f.reference.accession===current.reference.accession)!.evidence!;
+  const source=readFileSync(join(berkshireDirectory,"raw",evidence.file),"utf8");
+  const renumbered=source.replace(/<sequenceNumber>(\d+)<\/sequenceNumber>/g,(_,n)=>`<sequenceNumber>${Number(n)+100}</sequenceNumber>`).replace(/<otherManager>([\d, ]+)<\/otherManager>/g,(_,raw)=>`<otherManager>${raw.split(",").map((n:string)=>Number(n.trim())+100).join(",")}</otherManager>`).replace(/<figi>[^<]+<\/figi>/g,"");
+  const revised=parseInstitutionalFiling(renumbered,current.reference);
+  const summarize=(rows:ReturnType<typeof positionChanges>)=>rows.map(r=>({cusip:r.security.cusip,managers:r.security.otherManagerIds,status:r.status,previous:r.previousQuantity,current:r.currentQuantity,difference:r.observedQuantityDifference}));
+  assert.deepEqual(summarize(positionChanges(previous,revised)),summarize(positionChanges(previous,current)));
+  assert.throws(()=>parseInstitutionalFiling(source.replace("<otherIncludedManagersCount>14","<otherIncludedManagersCount>13"),current.reference),/count or identity/);
+  assert.throws(()=>parseInstitutionalFiling(source.replace(/<otherManager>[\d, ]+<\/otherManager>/,"<otherManager>999</otherManager>"),current.reference),/Unresolved/);
+  assert.throws(()=>parseInstitutionalFiling(source.replace("<sequenceNumber>2","<sequenceNumber>1"),current.reference),/count or identity/);
+});
+test("optional FIGI does not create false quarterly entries or exits",()=>{
+  const next={...original,period:"2026-06-30",reference:{...ref,accession:"0000000001-26-000002"},holdings:[{...original.holdings[0],figi:"BBG000B9XRY4"}]};
+  const result=positionChanges(original,next);assert.equal(result.length,1);assert.equal(result[0].observedQuantityDifference,"0");
+});
+test("included manager ordinals resolve to stable file identities and preserve attribution boundaries",()=>{
+  const included="<otherManagers2Info><otherManager2><sequenceNumber>1</sequenceNumber><otherManager><form13FFileNumber>28-00123</form13FFileNumber><name>Included synthetic manager</name></otherManager></otherManager2></otherManagers2Info>";
+  const source=fixture().replace("<otherIncludedManagersCount>0","<otherIncludedManagersCount>1").replace("</summaryPage>",`${included}</summaryPage>`).replace("<investmentDiscretion>SOLE</investmentDiscretion>","<investmentDiscretion>DFND</investmentDiscretion><otherManager>1</otherManager>");
+  const before=parseInstitutionalFiling(source,ref);assert.deepEqual(before.holdings[0].otherManagerIds,["13f:28-123"]);assert.equal(reconcileInstitutions([before]).held.length,0);
+  const nextRef={...ref,accession:"0000000001-26-000002",filedDate:"2026-08-15"};
+  const revised=source.replaceAll(ref.accession,nextRef.accession).replace("20260515","20260815").replaceAll("2026-03-31","2026-06-30").replace("<sequenceNumber>1","<sequenceNumber>9").replace("<otherManager>1</otherManager>","<otherManager>9</otherManager>").replace("28-00123","28-123");
+  const after=parseInstitutionalFiling(revised,nextRef);assert.equal(positionChanges(before,after)[0].observedQuantityDifference,"0");
+  const different=parseInstitutionalFiling(revised.replace("28-123","28-456"),nextRef);assert.equal(positionChanges(before,different).length,2);
+  assert.throws(()=>parseInstitutionalFiling(source.replace("<form13FFileNumber>28-00123</form13FFileNumber>",""),ref),/no stable/);
+  assert.throws(()=>parseInstitutionalFiling(source.replace("<otherManager>1</otherManager>","<otherManager>1,1</otherManager>"),ref),/Duplicate/);
+  assert.equal(reconcileInstitutions([{...before,holdings:[{...before.holdings[0],otherManagerIds:["forged"]}]}]).held[0].reason,"invalid_included_manager_attribution");
 });

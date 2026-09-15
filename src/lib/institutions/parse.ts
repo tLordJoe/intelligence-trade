@@ -29,13 +29,28 @@ const integer = (value: string) => { if (!/^\d+$/.test(value)) throw new Error("
 export interface Holding {
   id: string; issuerName: string; titleOfClass: string; cusip: string; figi: string | null;
   valueAsFiled: string; valueUsd: string; quantity: string; quantityType: "SH" | "PRN"; putCall: "Put" | "Call" | null;
-  investmentDiscretion: string; otherManagers: string; voting: { sole: string; shared: string; none: string };
+  investmentDiscretion: string; otherManagers: string; otherManagerIds: string[]; voting: { sole: string; shared: string; none: string };
 }
+export interface IncludedManager { sequenceNumber:string; name:string; cik:string|null; form13FFileNumber:string|null; stableId:string }
 export interface InstitutionalFiling {
   reference: FilingReference; sourceUrl: string; sourceSha256: string; period: string; managerName: string;
   amendment: boolean; amendmentType: string | null; amendmentNumber: string | null; reportType: string;
   valueUnit: "USD" | "USD_thousands"; declaredEntries: number; declaredValue: string; confidentialOmitted: boolean;
-  otherIncludedManagers: number; holdings: Holding[];
+  otherIncludedManagers: number; includedManagers: IncludedManager[]; holdings: Holding[];
+}
+export function managerIdentity(cik:string|null, fileNumber:string|null):string {
+  if(cik && (!/^\d{10}$/.test(cik)||Number(cik)===0))throw new Error("Invalid included-manager CIK");
+  if(fileNumber && !/^28-\d+$/.test(fileNumber))throw new Error("Invalid included-manager 13F file number");
+  if(fileNumber)return `13f:28-${BigInt(fileNumber.slice(3))}`;
+  if(cik)return `cik:${cik}`;
+  throw new Error("Included manager has no stable source identifier");
+}
+export function resolveManagerQualifiers(raw:string, managers:IncludedManager[]):string[] {
+  if(!raw)return [];
+  if(!/^\d+(?:\s*,\s*\d+)*$/.test(raw))throw new Error("Invalid other-manager row qualifiers");
+  const ordinals=raw.split(",").map(value=>integer(value.trim()));
+  if(new Set(ordinals).size!==ordinals.length)throw new Error("Duplicate other-manager row qualifier");
+  return ordinals.map(ordinal=>{const manager=managers.find(m=>m.sequenceNumber===ordinal);if(!manager)throw new Error("Unresolved other-manager row qualifier");return manager.stableId;}).sort();
 }
 /** Replays full EDGAR submission bytes; HTML-rendered tables are never parsed. */
 export function parseInstitutionalFiling(source: string, reference: FilingReference): InstitutionalFiling {
@@ -73,6 +88,18 @@ export function parseInstitutionalFiling(source: string, reference: FilingRefere
   const declaredEntries = Number(integer(text(summary, "tableEntryTotal")));
   if (!Number.isSafeInteger(declaredEntries) || declaredEntries > 100000) throw new Error("13F row limit exceeded");
   const declaredValue = integer(text(summary, "tableValueTotal"));
+  const otherIncludedManagers = Number(integer(text(summary, "otherIncludedManagersCount")));
+  if (!Number.isSafeInteger(otherIncludedManagers)) throw new Error("Invalid other-manager count");
+  const lists=children(summary,"otherManagers2Info");
+  if(lists.length>1 || lists.some(list=>list.children.some(n=>local(n)!=="otherManager2")))throw new Error("Ambiguous included-manager list");
+  const includedManagers:IncludedManager[]=(lists[0]?children(lists[0],"otherManager2"):[]).map(node=>{
+    const sequenceNumber=integer(text(node,"sequenceNumber")), manager=one(node,"otherManager");
+    const rawCik=text(manager,"cik",true), cik=rawCik?rawCik.padStart(10,"0"):null;
+    const form13FFileNumber=text(manager,"form13FFileNumber",true)||null;
+    if(sequenceNumber==="0")throw new Error("Included-manager sequence must be positive");
+    return {sequenceNumber,name:text(manager,"name"),cik,form13FFileNumber,stableId:managerIdentity(cik,form13FFileNumber)};
+  });
+  if(includedManagers.length!==otherIncludedManagers || new Set(includedManagers.map(m=>m.sequenceNumber)).size!==includedManagers.length || new Set(includedManagers.map(m=>m.stableId)).size!==includedManagers.length)throw new Error("Included-manager count or identity collision");
   const tableDocs = docs.filter(d => d.type === "INFORMATION TABLE");
   if (tableDocs.length !== 1 || !tableDocs[0].xml) throw new Error("Missing or multiple information tables require review");
   const table = parse(tableDocs[0].xml);
@@ -84,15 +111,15 @@ export function parseInstitutionalFiling(source: string, reference: FilingRefere
     const quantity = text(shares, "sshPrnamt"), quantityType = text(shares, "sshPrnamtType"), putCall = text(node, "putCall", true) || null;
     if (!/^\d+(?:\.\d{1,4})?$/.test(quantity) || !["SH", "PRN"].includes(quantityType) || (putCall && !["Put", "Call"].includes(putCall))) throw new Error("Unsupported quantity or option units");
     const valueAsFiled = integer(text(node, "value"));
+    const otherManagers=text(node,"otherManager",true), investmentDiscretion=text(node,"investmentDiscretion");
+    if(!["SOLE","DFND","OTR"].includes(investmentDiscretion))throw new Error("Unknown investment discretion");
     return { id: `${reference.accession}:${i + 1}`, issuerName: text(node, "nameOfIssuer"), titleOfClass: text(node, "titleOfClass"), cusip, figi,
       valueAsFiled, valueUsd: (BigInt(valueAsFiled) * BigInt(valueUnit === "USD" ? 1 : 1000)).toString(), quantity,
-      quantityType: quantityType as "SH" | "PRN", putCall: putCall as Holding["putCall"], investmentDiscretion: text(node, "investmentDiscretion"),
-      otherManagers: text(node, "otherManager", true), voting: { sole: integer(text(voting, "Sole")), shared: integer(text(voting, "Shared")), none: integer(text(voting, "None")) } };
+      quantityType: quantityType as "SH" | "PRN", putCall: putCall as Holding["putCall"], investmentDiscretion,
+      otherManagers, otherManagerIds:resolveManagerQualifiers(otherManagers,includedManagers), voting: { sole: integer(text(voting, "Sole")), shared: integer(text(voting, "Shared")), none: integer(text(voting, "None")) } };
   });
   if (holdings.length !== declaredEntries || holdings.reduce((sum, row) => sum + BigInt(row.valueAsFiled), BigInt(0)).toString() !== declaredValue) throw new Error("13F table totals do not reconcile");
-  const otherIncludedManagers = Number(integer(text(summary, "otherIncludedManagersCount")));
-  if (!Number.isSafeInteger(otherIncludedManagers)) throw new Error("Invalid other-manager count");
   return { reference, sourceUrl, sourceSha256: digest(source), period, managerName: text(one(cover, "filingManager"), "name"),
     amendment, amendmentType, amendmentNumber, reportType, valueUnit, declaredEntries, declaredValue,
-    confidentialOmitted: boolean(text(summary, "isConfidentialOmitted")), otherIncludedManagers, holdings };
+    confidentialOmitted: boolean(text(summary, "isConfidentialOmitted")), otherIncludedManagers, includedManagers, holdings };
 }
