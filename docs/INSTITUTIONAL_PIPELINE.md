@@ -77,3 +77,18 @@ Promotion replays official evidence again, requires the prepared payload to matc
 - Independently replay the candidate and source-bound ledger. No synthetic records may enter a release.
 - Test the enabled route in desktop and mobile browsers with reviewed real data. This checkpoint only guarantees the pending/disabled state.
 - Wider manager discovery, automated incremental scheduling, amendment adjudication, security-to-ticker mapping, and displayed quarter comparisons remain future work.
+
+## Resumable first cohort
+
+`data/institution-manager-universe.json` explicitly names 13 candidates: Berkshire Hathaway, Vanguard, State Street, FMR, JPMorgan Chase, Goldman Sachs, Morgan Stanley, Citadel Advisors, Renaissance Technologies, Two Sigma Investments, Bridgewater Associates, Coatue and Tiger Global. This deliberately mixes reporting-manager contexts; it is not a statistical sample, a ranking or universal institutional coverage. Except for the existing Berkshire replay, entries are candidate identity assertions pending exact SEC-name corroboration. A parent financial group is not assumed to hold every affiliated fund's portfolio, and no ETF issuer page is substituted for a reporting manager.
+
+```sh
+SEC_USER_AGENT='Outfox Markets hello@outfoxmarkets.com' node --experimental-strip-types scripts/collect-institution-cohort.ts --id first-cohort-2026-q2 --from 2026-01-01 --to 2026-09-15 --previous-period 2026-03-31 --current-period 2026-06-30 --max-filings 40 --max-managers 3
+SEC_USER_AGENT='Outfox Markets hello@outfoxmarkets.com' node --experimental-strip-types scripts/collect-institution-cohort.ts --id first-cohort-2026-q2 --resume --max-managers 3
+```
+
+Repeat the resume command until the cohort report has no pending entries, inspecting failures between attempts. `--max-managers` bounds new attempts per invocation. Transport failures stop the invocation, rather than hammering subsequent SEC endpoints. Failed or interrupted attempts can be resumed; held identity/amendment results remain held unless `--retry-held` is explicitly requested. Never use retries to evade a denial. After addressing the cause, a retry preserves prior attempts and creates fresh raw evidence. A crash leaves an exact `.lock` file: verify its recorded process is no longer active before removing that single stale lock.
+
+The immutable plan snapshot/hash pins manager identities, filing window and target quarters. Resume uses that saved plan, not later edits to the universe file. To change coverage or refresh the cutoff, create a new cohort ID. Every already-ready entry is replayed before it can be skipped; neither stale JSON nor an existing success label substitutes for source validation. The report under `data/institution-cohorts/` preserves per-manager accessions, dates, identities, source hashes, row counts, amendment holds, parser/transport failures and comparison counts. A manager is `ready_for_review` only when its official submissions name and filing names match the declared identity and both latest source quarters match the requested consecutive pair. This is preparation, not approval. No collector command changes the public artifact.
+
+Global candidate preparation currently scans the raw run directory and intentionally refuses incomplete runs. Cohort reports do not bypass that gate: preserve failed run evidence outside the active raw-run set before a later explicit release review. Broad real-source validation, coverage acceptance and source-bound reviews are still needed before publication; a 13-manager declaration alone is not coverage.

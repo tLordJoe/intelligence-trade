@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "first-cohort-v1",
+  "scope": "Named research cohort, not all institutional managers, largest-manager rankings, or ETF constituents. Each candidate identity must be corroborated by its archived SEC submissions record before readiness.",
+  "managers": [
+    {"cik":"0001067983","name":"Berkshire Hathaway","secNames":["BERKSHIRE HATHAWAY INC"],"selection":"Existing validated reporting-manager corpus"},
+    {"cik":"0000102909","name":"Vanguard Group","secNames":["VANGUARD GROUP INC"],"selection":"Large investment-manager reporting context"},
+    {"cik":"0000093751","name":"State Street","secNames":["STATE STREET CORP"],"selection":"Large investment-manager reporting context"},
+    {"cik":"0000315066","name":"FMR","secNames":["FMR LLC","FMR CORP"],"selection":"Diversified investment-manager reporting context"},
+    {"cik":"0000019617","name":"JPMorgan Chase","secNames":["JPMORGAN CHASE & CO"],"selection":"Bank-affiliated reporting-manager context"},
+    {"cik":"0000886982","name":"Goldman Sachs Group","secNames":["GOLDMAN SACHS GROUP INC"],"selection":"Bank-affiliated reporting-manager context"},
+    {"cik":"0000895421","name":"Morgan Stanley","secNames":["MORGAN STANLEY"],"selection":"Bank-affiliated reporting-manager context"},
+    {"cik":"0001423053","name":"Citadel Advisors","secNames":["CITADEL ADVISORS LLC"],"selection":"Alternative investment-manager reporting context"},
+    {"cik":"0001037389","name":"Renaissance Technologies","secNames":["RENAISSANCE TECHNOLOGIES LLC"],"selection":"Alternative investment-manager reporting context"},
+    {"cik":"0001179392","name":"Two Sigma Investments","secNames":["TWO SIGMA INVESTMENTS LP","TWO SIGMA INVESTMENTS LLC"],"selection":"Alternative investment-manager reporting context"},
+    {"cik":"0001350694","name":"Bridgewater Associates","secNames":["BRIDGEWATER ASSOCIATES LP"],"selection":"Alternative investment-manager reporting context"},
+    {"cik":"0001135730","name":"Coatue Management","secNames":["COATUE MANAGEMENT LLC"],"selection":"Alternative investment-manager reporting context"},
+    {"cik":"0001167483","name":"Tiger Global Management","secNames":["TIGER GLOBAL MANAGEMENT LLC"],"selection":"Alternative investment-manager reporting context"}
+  ]
+}
