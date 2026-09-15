@@ -317,6 +317,16 @@ without converting money to floats; raw text and footnote caveats survive. A
 source purchase code paired with a disposal direction remains excluded rather
 than being reinterpreted.
 
+Review reuses parsed universe and selected-index snapshots by fresh byte hashes
+within that audit only. Identical copies across batches share objects; changed
+bytes, date/URL contexts, or issuer sets are revalidated. Raw buffers are not
+cached. Source filing lookup and completeness checks use accession maps/sets,
+and XML reparses replace rather than duplicate the loaded candidate objects.
+This removes batch-count multiplication of the same evidence in memory; unique
+filings still require memory proportional to the archive size. The 2,517-filing,
+6,200-row checkpoint replays under a 256 MB JavaScript heap cap. Full-year scale
+must still be measured as the archive grows; this is not a full-year load test.
+
 `/insiders` and the homepage link stay unavailable until a reviewed payload is
 promoted. They include reporting owners, transaction and filing dates, reported
 shares/prices, ownership, source footnotes/remarks and separate purchase/sale
