@@ -263,16 +263,75 @@ issuer-filtered window as complete.
 
 - No computed transaction value. Deriving one needs decimal arithmetic and a
   documented basis, and must never be called cash paid.
-- No amendment resolution, by design (above).
+- Amendments require explicit, immutable row-level correction reviews; unresolved
+  corrections hold their entire issuer out of activity, not unrelated companies.
 - Quarterly full-index enumeration is exposed as a URL builder but the importer
   uses daily indexes only; a multi-quarter backfill would want the quarterly
   file instead of hundreds of daily fetches.
 - No exercise-leg pairing. Legs stay separate source rows; linking them is a
   later derived feature that requires evidence.
-- Ticker resolution is unresolved for every filing. The issuer's filed symbol is
-  preserved but never promoted to a resolved ticker.
+- The raw issuer symbol remains unchanged. The derived activity view additionally
+  requires an unambiguous SEC ticker/issuer-CIK match.
 - Five schema versions have fixture coverage (X0305, X0306, X0407, X0508,
   X0609). Anything else is refused as `unsupported_schema_version` rather than
   parsed optimistically.
 - Forms 3 and 5 share this schema and are explicitly refused, so they cannot
   enter a selection advertised as 4/4A only.
+
+## Broad insider release work — September 15, 2026
+
+Publication requires continuous January 1–latest available filing-date coverage
+for one frozen broad issuer universe. A small September sample is not releasable.
+The current snapshot derives from the cached SEC directory: 10,415 symbols,
+8,010 issuer CIKs; it does not claim every historical, delisted, private or foreign
+security. Its hash is recorded in every batch so changing the directory cannot
+silently change the meaning of the backfill.
+
+The index parser now retains all associated CIKs before accession de-duplication.
+Previously an owner appearing before an issuer could hide that issuer's filing;
+replaying the original September 8–11 sample finds 33 expected filings, not 23.
+The review loader reports those ten omissions rather than accepting the old
+summary's completeness claim.
+
+```bash
+node --experimental-strip-types scripts/prepare-insider-universe.ts
+SEC_USER_AGENT="Outfox Markets hello@outfoxmarkets.com" \
+  node --experimental-strip-types scripts/backfill-insiders.ts \
+  --from 2026-01-01 --to 2026-09-14 \
+  --universe data/form4-universe.json --batch-size 250
+```
+
+Universe preparation refuses to overwrite an existing snapshot. The backfill
+runs sequential two-day windows in bounded slices, resumes from verified passing
+batch manifests, and stops on failed source/parse gates. `--reuse-run` on the
+underlying importer can replay a failed slice's hash-verified archived XML and
+indexes without redownloading. A successful slice is not a completed window:
+every expected accession must be present before that window counts toward YTD.
+Do not run importer integration tests concurrently with a real import; both use
+the single-writer lock.
+
+The candidate review reparses archived original XML and indexes, verifies URL,
+accession, document hashes and filing dates, and ignores saved normalized values
+as publication evidence. Parser v2 supports leading-decimal values such as `.99`
+without converting money to floats; raw text and footnote caveats survive. A
+source purchase code paired with a disposal direction remains excluded rather
+than being reinterpreted.
+
+`/insiders` and the homepage link stay unavailable until a reviewed payload is
+promoted. They include reporting owners, transaction and filing dates, reported
+shares/prices, ownership, source footnotes/remarks and separate purchase/sale
+filters. Awards, derivatives, exercises and holdings are not called purchases.
+No calculated cash value or recommendation is generated.
+
+```bash
+node --experimental-strip-types scripts/promote-insiders.ts --prepare --through YYYY-MM-DD
+node --experimental-strip-types scripts/promote-insiders.ts --through YYYY-MM-DD \
+  --reviewed-by "REVIEWER" --acknowledge-bounded-coverage
+```
+
+Use the latest available official SEC filing date, after checking the newest
+index. Stale cutoffs before the preceding expected filing day are refused.
+Preparation requires complete broad YTD windows. Promotion replays the same
+source evidence, checks that the reviewed candidate hash still matches, and
+atomically updates only the insider live payload. Neither command deploys or
+modifies the House or Senate archives. Current public approval remains null.

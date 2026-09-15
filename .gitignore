@@ -53,6 +53,10 @@ data/import-runs/latest-run-id.txt
 scripts/.probe/
 data/form4-runs/
 data/form4-candidate.json
+data/form4-universe.json
+data/insider-public-candidate.json
+data/form4-correction-reviews.json
+data/form4-document-selections.json
 data/senate-runs/
 data/senate-roster-source.json
 data/senate-identity-roster.json

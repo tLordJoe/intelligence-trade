@@ -7,6 +7,8 @@ import HomeSectorExplorer from "@/components/HomeSectorExplorer";
 import liveData from "@/lib/congress-live.json";
 import senateRelease from "@/lib/senate-live.json";
 import { readApprovedSenateRelease } from "@/lib/senate/public-view";
+import insiderRelease from "@/lib/insider-live.json";
+import { readApprovedInsiderRelease } from "@/lib/form4/public-view";
 import type { DisclosureRecord } from "@/lib/congress-schema";
 import { buildHomeWindow, buildSenateHomeWindow, mergeHomeWindows, type HomePeriod } from "@/lib/homepage-market";
 import { previewAccessFromEnv } from "@/lib/funds/access";
@@ -42,7 +44,9 @@ export default function Home() {
         <div><h1>Trade smarter than<br /><span>the people in charge.</span></h1><p>Spot the stocks drawing attention.</p></div>
         <p className="home-hero-aside">The stocks. The people.<br />The bigger picture.</p>
       </section>
-      <HomeTradingTable windows={windows} houseWindows={houseWindows} senateWindows={senateWindows} updatedAt={liveData.updatedAt} scans={liveData.counts.scannedFilings} />
+      <HomeTradingTable windows={windows} houseWindows={houseWindows} senateWindows={senateWindows}
+        updatedAt={liveData.updatedAt} scans={liveData.counts.scannedFilings}
+        insidersAvailable={readApprovedInsiderRelease(insiderRelease) !== null} />
       <HomeSectorExplorer companies={windows.ytd.companies} />
       <NewsletterSignup variant="banner" />
     </main>

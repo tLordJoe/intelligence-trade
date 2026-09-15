@@ -27,9 +27,9 @@ function FilerLink({ person }: { person: HomeFiler }) {
     {portrait && !failed && <Image src={portrait} alt="" width={38} height={38} style={{ opacity: loaded ? 1 : 0 }} onLoad={() => setLoaded(true)} onError={() => setFailed(true)} />}
   </Link>;
 }
-export default function HomeTradingTable({ windows, houseWindows, senateWindows, updatedAt, scans }: {
+export default function HomeTradingTable({ windows, houseWindows, senateWindows, updatedAt, scans, insidersAvailable = false }: {
   windows: Record<HomePeriod, HomeWindow>; houseWindows: Record<HomePeriod, HomeWindow>; senateWindows: Record<HomePeriod, HomeWindow> | null;
-  updatedAt: string; scans: number;
+  updatedAt: string; scans: number; insidersAvailable?: boolean;
 }) {
   const [period, setPeriod] = useState<HomePeriod>("ytd");
   const [source, setSource] = useState("all");
@@ -50,7 +50,8 @@ export default function HomeTradingTable({ windows, houseWindows, senateWindows,
           <button type="button" aria-pressed={source === "house"} onClick={() => { setSource("house"); setExpanded(false); }}><Landmark size={18} aria-hidden="true" /><span>House-only</span></button>
           {senateAvailable ? <button type="button" aria-pressed={source === "senate"} onClick={() => { setSource("senate"); setExpanded(false); }}><Landmark size={18} aria-hidden="true" /><span>Senate-only<small>Partial coverage</small></span></button> :
             <button type="button" disabled title="This source is not connected yet"><Landmark size={18} aria-hidden="true" /><span>Senate-only<small>Coming soon</small></span></button>}
-          {[{ label: "Corporate insiders", Icon: Building2 }, { label: "Funds / institutions", Icon: BriefcaseBusiness }].map(({ label, Icon }) =>
+          {insidersAvailable && <Link className="home-source-link" href={`/insiders?period=${period}`}><Building2 size={18} aria-hidden="true" /><span>Corporate insiders<small>Source disclosures ↗</small></span></Link>}
+          {[...(!insidersAvailable ? [{ label: "Corporate insiders", Icon: Building2 }] : []), { label: "Funds / institutions", Icon: BriefcaseBusiness }].map(({ label, Icon }) =>
             <button type="button" key={label} disabled title="This source is not connected yet"><Icon size={18} aria-hidden="true" /><span>{label}<small>Coming soon</small></span></button>)}
         </div>
         <div className="home-period-controls" role="group" aria-label="Transaction date range">

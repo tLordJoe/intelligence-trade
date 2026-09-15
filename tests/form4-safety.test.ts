@@ -218,6 +218,10 @@ test("a present but malformed number is quarantined, not coerced", () => {
 });
 
 test("decimals are normalized as strings and never become floats", () => {
+  assert.equal(parseDecimal(".99").value, "0.99");
+  assert.equal(parseDecimal("-.9700").value, "-0.97");
+  assert.equal(parseDecimal(".99").raw, ".99");
+  assert.equal(parseDecimal(".").value, null);
   assert.equal(parseDecimal("0").value, "0");
   assert.equal(parseDecimal("0.00").value, "0", "zero in any spelling is zero");
   assert.equal(parseDecimal("1234.5600").value, "1234.56");
@@ -270,6 +274,8 @@ test("CIKs and accessions normalize to their canonical forms", () => {
   assert.equal(normalizeCik("1045810"), "0001045810");
   assert.equal(normalizeCik("0001045810"), "0001045810");
   assert.equal(normalizeCik(""), null);
+  assert.equal(normalizeCik("abc1045810"), null);
+  assert.equal(normalizeCik("12345678901"), null);
   assert.equal(normalizeAccession("000119764726000009"), "0001197647-26-000009");
   assert.equal(normalizeAccession("0001197647-26-000009"), "0001197647-26-000009");
   assert.equal(normalizeAccession("123"), null, "a short accession is refused, not padded");

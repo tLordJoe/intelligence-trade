@@ -47,7 +47,7 @@ export function parseDate(
 }
 
 /** Grammar for a decimal as ownership documents write them. */
-const DECIMAL_RE = /^-?\d+(\.\d+)?$/;
+const DECIMAL_RE = /^-?(?:\d+(?:\.\d+)?|\.\d+)$/;
 
 /**
  * A decimal, kept as a normalized string.
@@ -68,7 +68,7 @@ export function parseDecimal(
 
   // Normalize so "0", "0.00" and "0.0" compare equal as stored strings, while
   // preserving the distinction from absence.
-  let normalized = trimmed;
+  let normalized = trimmed.replace(/^(-?)\./, "$10.");
   if (normalized.includes(".")) {
     normalized = normalized.replace(/0+$/, "").replace(/\.$/, "");
   }
@@ -109,8 +109,8 @@ export function parseBoolean(raw: string | null | undefined): boolean | null {
 /** CIKs are compared as zero-padded ten-digit strings. */
 export function normalizeCik(raw: string | null | undefined): string | null {
   if (!raw) return null;
-  const digits = raw.trim().replace(/\D/g, "");
-  if (!digits) return null;
+  const digits = raw.trim();
+  if (!/^\d{1,10}$/.test(digits)) return null;
   return digits.padStart(10, "0");
 }
 
