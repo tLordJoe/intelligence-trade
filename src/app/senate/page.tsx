@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
 import CompanyMark from "@/components/CompanyMark";
+import { companyMark } from "@/lib/company-marks";
 import { CalendarDays } from "lucide-react";
 import release from "@/lib/senate-live.json";
 import { readApprovedSenateRelease, querySenateDisclosures, prepareSenatePublicRelease } from "@/lib/senate/public-view";
@@ -33,7 +34,7 @@ export default async function SenatePage({ searchParams }: { searchParams: Promi
       <p>Transaction dates {view.start}–{view.end}. Recent disclosures can arrive later; this is not real-time trading coverage.</p>
       <form className="senate-search" action="/senate"><label htmlFor="senate-query">Search a senator, company or ticker</label><input id="senate-query" name="q" defaultValue={view.q} maxLength={100} /><input type="hidden" name="period" value={view.period} /><button type="submit">Search</button></form><p>{view.total} matching source rows · Page {view.page} of {view.pages}.</p>
       <div className="sector-fund-grid">{view.records.map(row => <article className="home-panel" key={row.id}>
-        <div className="instrument-title"><CompanyMark ticker={row.ticker} cik={row.cik} /><h3>{row.ticker} · Reported {row.type === "Buy" ? "purchase" : "sale"}</h3></div>
+        <div className="instrument-title"><CompanyMark ticker={row.ticker} src={companyMark(row.ticker, row.cik)} /><h3>{row.ticker} · Reported {row.type === "Buy" ? "purchase" : "sale"}</h3></div>
         <p>{row.assetNameAsFiled}</p><p>{row.politician} · Senator, {row.state}</p>
         <dl className="instrument-facts"><div><dt>Account owner as disclosed</dt><dd>{row.owner}</dd></div><div><dt>Transaction date</dt><dd>{row.transactionDate}</dd></div><div><dt>Filed</dt><dd>{row.filedDate}</dd></div><div><dt>Disclosed amount range</dt><dd>{row.amount}</dd></div></dl>
         {row.sourceComment && <p><strong>Filing note for this row:</strong> {row.sourceComment}</p>}
