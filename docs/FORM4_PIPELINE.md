@@ -317,6 +317,15 @@ without converting money to floats; raw text and footnote caveats survive. A
 source purchase code paired with a disposal direction remains excluded rather
 than being reinterpreted.
 
+Parser v3 also reads the optional `Z` or `±HH:MM` timezone on XML Schema
+date-only values, with offsets bounded to ±14:00. It retains the reported
+calendar date and raw value instead of shifting the date into UTC; this is a
+display-date extraction, not an XML Schema canonical UTC conversion. See
+[W3C XML Schema date grammar](https://www.w3.org/TR/xmlschema-2/#date).
+SEC accession `0001640334-26-000020` contains `2026-01-01-05:00` and
+`2026-07-01-05:00`. Its derivative J-coded row remains `other_reported` and is
+excluded from purchase/sale activity after the date parsing correction.
+
 Review reuses parsed universe and selected-index snapshots by fresh byte hashes
 within that audit only. Identical copies across batches share objects; changed
 bytes, date/URL contexts, or issuer sets are revalidated. Raw buffers are not
