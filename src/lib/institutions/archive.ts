@@ -1,6 +1,6 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
-import { digest, parseInstitutionalFiling, parseInstitutionalNotice, filingUrl, type FilingReference, type InstitutionalFiling, type InstitutionalNotice } from "./parse.ts";
+import { digest, parseInstitutionalFiling, parseInstitutionalNotice, filingUrl, TableReconciliationError, type TableReconciliationIssue, type FilingReference, type InstitutionalFiling, type InstitutionalNotice } from "./parse.ts";
 import { allowedSecUrl, references, type SubmissionColumns } from "./source.ts";
 import { reconcileInstitutions } from "./reconcile.ts";
 
@@ -42,14 +42,14 @@ export function replayInstitutionRun(directory: string) {
   const ordered = (refs: FilingReference[]) => [...refs].sort((a,b)=>a.accession.localeCompare(b.accession));
   if (JSON.stringify(ordered([...inventory.values()])) !== JSON.stringify(ordered(run.references)) ||
       JSON.stringify(ordered(run.filings.map(f=>f.reference))) !== JSON.stringify(ordered(run.references))) throw new Error("Manifest references differ from SEC inventory");
-  const filings: InstitutionalFiling[] = [], notices:InstitutionalNotice[] = [], failures: string[] = [];
+  const filings: InstitutionalFiling[] = [], notices:InstitutionalNotice[] = [], failures: string[] = [], reconciliationIssues:TableReconciliationIssue[]=[];
   for (const item of run.filings) {
     if (!item.evidence || item.failure) { failures.push(item.reference.accession); continue; }
     if (item.evidence.url !== filingUrl(item.reference)) throw new Error("Source link differs from accession");
     try { if(item.reference.form.startsWith("13F-NT"))notices.push(parseInstitutionalNotice(read(item.evidence),item.reference));else filings.push(parseInstitutionalFiling(read(item.evidence),item.reference)); }
-    catch (error) { failures.push(`${item.reference.accession}: ${String(error)}`); }
+    catch (error) { if(error instanceof TableReconciliationError)reconciliationIssues.push(error.issue);failures.push(`${item.reference.accession}: ${String(error)}`); }
   }
-  return { run, filings, notices, failures };
+  return { run, filings, notices, failures,reconciliationIssues };
 }
 
 export function institutionalCandidate(root: string) {
@@ -57,6 +57,6 @@ export function institutionalCandidate(root: string) {
   const runs = readdirSync(directory).filter(name=>/^institutions_[a-f0-9-]{36}$/.test(name)).sort().map(name=>replayInstitutionRun(resolve(directory,name)));
   if (!runs.length) throw new Error("No completed official collection runs");
   const blockedManagers = runs.filter(run=>run.failures.length).map(run=>run.run.cik);
-  return { source: "SEC Form 13F" as const, runs: runs.map(({run,failures})=>({ runId:run.runId, cik:run.cik, from:run.from, to:run.to, collectedAt:run.collectedAt, failures })),
+  return { source: "SEC Form 13F" as const, runs: runs.map(({run,failures,reconciliationIssues})=>({ runId:run.runId, cik:run.cik, from:run.from, to:run.to, collectedAt:run.collectedAt, failures,reconciliationIssues })),
     notices:runs.flatMap(run=>run.notices),...reconcileInstitutions(runs.flatMap(run=>run.filings),blockedManagers,runs.flatMap(run=>run.notices)) };
 }

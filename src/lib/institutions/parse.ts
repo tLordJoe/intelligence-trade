@@ -42,8 +42,21 @@ export interface InstitutionalFiling {
   reference: FilingReference; sourceUrl: string; sourceSha256: string; period: string; managerName: string;
   amendment: boolean; amendmentType: string | null; amendmentNumber: string | null; reportType: string;
   amendmentFlagSource:"explicit"|"original_form_omitted_flag";
-  valueUnit: "USD" | "USD_thousands"; declaredEntries: number; declaredValue: string; confidentialOmitted: boolean;
+  valueUnit: "USD" | "USD_thousands"; declaredEntries: number; declaredValue: string; computedEntries:number; computedValue:string; confidentialOmitted: boolean;
   otherIncludedManagers: number; includedManagers: IncludedManager[]; holdings: Holding[];
+}
+export interface TableReconciliationIssue {
+  accession:string; sourceUrl:string; sourceSha256:string; period:string; valueUnit:"USD"|"USD_thousands";
+  declaredEntries:number; computedEntries:number; entryDifference:number;
+  declaredValue:string; computedValue:string; valueDifference:string;
+  declaredValueUsd:string; computedValueUsd:string; informationTableDocuments:number;
+}
+export class TableReconciliationError extends Error {
+  issue:TableReconciliationIssue;
+  constructor(issue:TableReconciliationIssue){
+    super(`13F table totals do not reconcile: entries declared=${issue.declaredEntries} computed=${issue.computedEntries}; value (${issue.valueUnit}) declared=${issue.declaredValue} computed=${issue.computedValue} difference=${issue.valueDifference}`);
+    this.name="TableReconciliationError";this.issue=issue;
+  }
 }
 export function managerIdentity(cik:string|null, fileNumber:string|null):string {
   if(cik && (!/^\d{10}$/.test(cik)||Number(cik)===0))throw new Error("Invalid included-manager CIK");
@@ -148,8 +161,14 @@ export function parseInstitutionalFiling(source: string, reference: FilingRefere
       quantityType: quantityType as "SH" | "PRN", putCall: putCall as Holding["putCall"], investmentDiscretion,
       otherManagers, otherManagerIds:resolveManagerQualifiers(otherManagers,includedManagers), voting: { sole: integer(text(voting, "Sole")), shared: integer(text(voting, "Shared")), none: integer(text(voting, "None")) } };
   });
-  if (holdings.length !== declaredEntries || holdings.reduce((sum, row) => sum + BigInt(row.valueAsFiled), BigInt(0)).toString() !== declaredValue) throw new Error("13F table totals do not reconcile");
+  const computedEntries=holdings.length,computedValue=holdings.reduce((sum,row)=>sum+BigInt(row.valueAsFiled),BigInt(0)).toString();
+  if(computedEntries!==declaredEntries||computedValue!==declaredValue){
+    const multiplier=BigInt(valueUnit==="USD"?1:1000);
+    throw new TableReconciliationError({accession:reference.accession,sourceUrl,sourceSha256:digest(source),period,valueUnit,
+      declaredEntries,computedEntries,entryDifference:computedEntries-declaredEntries,declaredValue,computedValue,valueDifference:(BigInt(computedValue)-BigInt(declaredValue)).toString(),
+      declaredValueUsd:(BigInt(declaredValue)*multiplier).toString(),computedValueUsd:(BigInt(computedValue)*multiplier).toString(),informationTableDocuments:tableDocs.length});
+  }
   return { reference, sourceUrl, sourceSha256: digest(source), period, managerName: text(one(cover, "filingManager"), "name"),
-    amendment, amendmentType, amendmentNumber, amendmentFlagSource, reportType, valueUnit, declaredEntries, declaredValue,
+    amendment, amendmentType, amendmentNumber, amendmentFlagSource, reportType, valueUnit, declaredEntries, declaredValue,computedEntries,computedValue,
     confidentialOmitted: boolean(text(summary, "isConfidentialOmitted")), otherIncludedManagers, includedManagers, holdings };
 }

@@ -30,6 +30,7 @@ export function reconcileInstitutions(filings: InstitutionalFiling[], blockedMan
       notices.some(n=>`${n.reference.cik}:${n.period}`===family) ? "notice_family_requires_other_reporting_manager_collection" :
       entries.some(f => conflicts.has(f.reference.cik)) ? "conflicting_source_versions" :
       entries.some(f => f.amendment) ? "amendment_family_requires_review" : entries.length !== 1 ? "multiple_originals_require_review" :
+      entries.some(f=>f.computedEntries!==f.declaredEntries||f.computedValue!==f.declaredValue) ? "table_totals_do_not_reconcile" :
       entries.some(invalidManagerAttribution) ? "invalid_included_manager_attribution" :
       entries.some(f => f.confidentialOmitted || f.reportType !== "13F HOLDINGS REPORT") ? "confidential_or_combination_report_requires_review" : null;
     if (reason) held.push({ family, accessions: entries.map(f => f.reference.accession), reason });

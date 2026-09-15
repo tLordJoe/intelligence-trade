@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync, existsSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { parseInstitutionalFiling, digest, filingUrl, type FilingReference } from "../src/lib/institutions/parse.ts";
+import { parseInstitutionalFiling, digest, filingUrl, TableReconciliationError, type FilingReference } from "../src/lib/institutions/parse.ts";
 import { positionChanges, reconcileInstitutions } from "../src/lib/institutions/reconcile.ts";
 import { references, allowedSecUrl, SecReader } from "../src/lib/institutions/source.ts";
 import { validateManagerCorpus } from "../src/lib/institutions/validation.ts";
@@ -135,4 +135,10 @@ test("omitted amendment checkbox needs corroborated X0202 original form, never b
   assert.throws(()=>parseInstitutionalFiling(source.replace("<schemaVersion>X0202","<schemaVersion>X9999"),ref));
   assert.throws(()=>parseInstitutionalFiling(source.replace("<filingManager>","<amendmentInfo/><filingManager>"),ref));
   assert.throws(()=>parseInstitutionalFiling(fixture().replace("<isAmendment>false</isAmendment>",""),ref));
+});
+test("even a one-dollar mismatch is preserved and held, not hidden by a tolerance",()=>{
+  assert.throws(()=>parseInstitutionalFiling(fixture().replace("<tableValueTotal>100","<tableValueTotal>101"),ref),(error:unknown)=>{
+    assert.ok(error instanceof TableReconciliationError);assert.equal(error.issue.declaredValue,"101");assert.equal(error.issue.computedValue,"100");assert.equal(error.issue.valueDifference,"-1");assert.equal(error.issue.computedEntries,1);return true;
+  });
+  assert.equal(reconcileInstitutions([{...original,computedValue:"99"}]).held[0].reason,"table_totals_do_not_reconcile");
 });
