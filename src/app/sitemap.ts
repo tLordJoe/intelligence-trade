@@ -3,6 +3,8 @@ import { layers } from "@/lib/data";
 import { blogPosts } from "@/lib/blog-data";
 import { learnEntries } from "@/lib/learn-data";
 import { HOME_SECTORS } from "@/lib/home-sectors";
+import senateRelease from "@/lib/senate-live.json";
+import { readApprovedSenateRelease } from "@/lib/senate/public-view";
 
 const BASE_URL = "https://outfoxmarkets.com";
 
@@ -17,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/about`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/corrections`, changeFrequency: "monthly", priority: 0.6 },
   ];
+  if (readApprovedSenateRelease(senateRelease)) staticPages.push({ url: `${BASE_URL}/senate`, changeFrequency: "daily", priority: 0.8 });
 
   const layerPages: MetadataRoute.Sitemap = layers.map((layer) => ({
     url: `${BASE_URL}/layer/${layer.slug}`,

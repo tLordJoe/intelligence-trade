@@ -1,0 +1,11 @@
+{
+  "payload": {
+    "schemaVersion": 1,
+    "source": "senate-efd",
+    "windows": [],
+    "limitations": "Senate release review has not completed.",
+    "omitted": { "paperOrUnparsedReports": 0, "reconciliationIssues": 0, "otherSourceRows": 0 },
+    "records": []
+  },
+  "approval": null
+}

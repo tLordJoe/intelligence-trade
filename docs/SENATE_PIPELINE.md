@@ -1,6 +1,7 @@
 # Senate collector — initial implementation
 
-Status: local source collection and parsing; not connected to production.
+Status: local collection, normalization and partial-disclosure release preparation;
+public route implemented but not approved or deployed.
 
 The owner explicitly authorized accepting the official eFD disclosure-use agreement
 in the September 14, 2026 conversation. The browser acceptance was completed and
@@ -92,6 +93,94 @@ build. This verifies code checks, not Senate publication readiness.
 
 Tests use expressly synthetic unit data; actual source evidence remains in local
 run artifacts. Passing unit tests does not substitute for these release gates.
+
+## Partial disclosure integration — September 15 checkpoint
+
+**Publication gate updated by the owner:** collect and validate January 1, 2026
+through the present date before publishing Senate data. The April–September
+candidate described below is a development checkpoint, not an authorized interim
+release. Promotion now enforces continuous received-date windows from January 1
+through the promotion date; the public reader also rejects coverage ending before
+September 15. The source's reporting lag remains explicit. YTD/30/90-day controls
+filter transaction dates separately, and the homepage passes its selected period
+into the Senate view.
+
+The candidate loader verifies every archived HTML filename hash and reparses the
+original bytes instead of trusting saved normalized rows. Repeated imports are
+deduplicated by report identity and exact bytes; changed bytes/reference metadata
+are held rather than overwritten. Across the collected windows this removes 25
+repeat August downloads without collapsing legitimately repeated transaction rows.
+
+Identity linkage uses the existing congress-legislators JSON source, its saved
+SHA-256, exact full-name aliases and active Senate terms. The derived roster is
+checked against the raw snapshot on every load. Where the source's official office
+label names the senator differently, the original document header must independently
+corroborate that exact office identity before linkage. It currently links 1,523
+source rows; five rows for two unresolved formal names remain unlinked. No
+last-name-only match or nickname guess is used. Issuer linkage additionally checks
+SEC ticker/CIK and strong name agreement; 735 rows pass that check. This does not
+classify a security as a company stock versus a fund.
+
+Amendment reconciliation is scoped to filer/report-date families. A held amendment,
+unparsed related report, changed document or unknown family date excludes that
+family, not unrelated reports. The worklist identifies 17 amendments, including
+14 whose originals remain outside collected windows. None has been silently
+resolved, and neither an amendment nor its potentially superseded original is
+released before reconciliation.
+
+After the January–March backfill and September 14–15 refresh, the archived windows
+continuously cover **January 1–September 15, 2026**. There are 114 unique electronic
+reports containing 1,528 raw rows, plus nine paper reports. All 52 archived scan
+pages have OCR review evidence, but no OCR transactions have been promoted.
+
+These checks prepare **550 source-reported purchase/sale rows across 15 filers**
+for an explicitly partial *listed-security disclosure* view. The YTD transaction-
+date filter selects **505** of those rows as of September 15; filings can report
+older transactions. These rows do not enter stock-only rankings. The remaining
+978 parsed source rows and nine paper reports are outside this view. Completion
+of the search date windows is not a claim that every report or asset has cleared
+review, nor a claim of all Senate trades or current holdings. The public payload
+remains pending approval; continuous date coverage alone does not promote it.
+
+Material row comments survive in the public payload and visible row details.
+Other notes in the same filing are available separately, explicitly not assigned
+to every transaction. This retains advisor-directed trading context rather than
+implying a senator personally selected every reported investment.
+
+```bash
+node --experimental-strip-types scripts/build-senate-candidate.ts
+```
+
+This writes ignored review artifacts and a pending public candidate; it never
+changes the live archive. `ENABLE_LOCAL_SENATE_REVIEW=1` in development exposes
+`/senate-review` with search, pagination, source links, row holds and the amendment
+worklist. It is inaccessible in hosted environments or production.
+
+`/senate` is implemented as a separate partial-disclosure page with breadcrumbs,
+source links, account owners, reported amount ranges, separate transaction/filing
+dates and explicit omissions. It returns not-found until a reviewed payload is
+promoted. The homepage Senate tab remains unchanged; no public release has been
+approved or deployed by this checkpoint. The homepage Senate control and sitemap
+activate only when an approved payload exists. Its link explicitly says partial
+coverage and opens the Senate disclosure view separately; House stock counts,
+date windows and sector rankings are unchanged.
+
+After source/coverage review, the explicit local promotion command is:
+
+```bash
+node --experimental-strip-types scripts/promote-senate.ts \
+  --reviewed-by "REVIEWER" --acknowledge-partial-coverage
+```
+
+Promotion replays current raw evidence, requires the prepared candidate to match,
+validates all public records, binds the approval to the entire payload hash, and
+atomically replaces only `src/lib/senate-live.json`. It does not push or deploy.
+The last-known-good live payload remains intact if any validation fails. Source
+collection, partial publication and API redistribution are separate decisions.
+
+Additional hash-bound ledgers (`data/senate-amendment-reviews.json` and
+`data/senate-security-reviews.json`) support reviewed amendment replacement and
+stock/fund classification. They start absent/empty, not implicitly approved.
 
 ## Offline review
 
