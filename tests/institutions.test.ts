@@ -5,7 +5,8 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { parseInstitutionalFiling, digest, filingUrl, type FilingReference } from "../src/lib/institutions/parse.ts";
 import { positionChanges, reconcileInstitutions } from "../src/lib/institutions/reconcile.ts";
-import { references, allowedSecUrl } from "../src/lib/institutions/source.ts";
+import { references, allowedSecUrl, SecReader } from "../src/lib/institutions/source.ts";
+import { validateManagerCorpus } from "../src/lib/institutions/validation.ts";
 import { replayInstitutionRun, type InstitutionRun } from "../src/lib/institutions/archive.ts";
 import { approvedInstitutions, payloadHash, limitations, type InstitutionPayload } from "../src/lib/institutions/release.ts";
 
@@ -18,6 +19,19 @@ FILED AS OF DATE: ${r.filedDate.replaceAll("-","")}
 <DOCUMENT><TYPE>INFORMATION TABLE
 <XML><informationTable><infoTable><nameOfIssuer>Synthetic Issuer</nameOfIssuer><titleOfClass>COM</titleOfClass><cusip>123456789</cusip><value>100</value><shrsOrPrnAmt><sshPrnamt>${quantity}</sshPrnamt><sshPrnamtType>SH</sshPrnamtType></shrsOrPrnAmt><investmentDiscretion>SOLE</investmentDiscretion><votingAuthority><Sole>12</Sole><Shared>0</Shared><None>0</None></votingAuthority></infoTable></informationTable></XML></DOCUMENT>`;}
 const original=parseInstitutionalFiling(fixture(),ref);
+test("collector contact must be explicit and header safe",()=>{
+  for(const agent of ["", "Outfox", "Outfox hello@example.com\nother: value"])assert.throws(()=>new SecReader(agent));
+  assert.doesNotThrow(()=>new SecReader("Outfox Markets hello@outfoxmarkets.com"));
+});
+test("single manager validation compares latest two quarters and never skips held latest filings",()=>{
+  const r={...ref,accession:"0000000001-26-000002",filedDate:"2026-08-15"};
+  const next=parseInstitutionalFiling(fixture(r,"2026-06-30","15"),r);
+  assert.equal(validateManagerCorpus([original,next]).comparison?.positions[0].observedQuantityDifference,"2.5");
+  assert.equal(validateManagerCorpus([original,next],["missing accession"]).comparison,null);
+  const amended={...next,amendment:true,reference:{...r,accession:"0000000001-26-000003",form:"13F-HR/A" as const}};
+  assert.equal(validateManagerCorpus([original,next,amended]).comparison,null);
+  assert.throws(()=>validateManagerCorpus([original,{...next,reference:{...r,cik:"0000000002"}}]));
+});
 test("13F retains quarter, filing date, accession, manager, security and value/share units",()=>{
   assert.equal(original.period,"2026-03-31");assert.equal(original.reference.filedDate,"2026-05-15");assert.equal(original.holdings[0].quantity,"12.5");
   assert.equal(original.holdings[0].cusip,"123456789");assert.equal(original.holdings[0].valueUsd,"100");assert.equal(original.valueUnit,"USD");

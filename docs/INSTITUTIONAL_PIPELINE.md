@@ -17,12 +17,21 @@ The position-change helper compares consecutive quarter ends for one manager, pr
 Run from the repository root, replacing the manager and window with a reviewed collection plan:
 
 ```sh
-node --experimental-strip-types scripts/import-institutions.ts --cik MANAGER_CIK --from YYYY-MM-DD --to YYYY-MM-DD --max-filings 10
+SEC_USER_AGENT='Outfox Markets hello@outfoxmarkets.com' node --experimental-strip-types scripts/import-institutions.ts --cik MANAGER_CIK --from YYYY-MM-DD --to YYYY-MM-DD --max-filings 10
 ```
 
 The collector uses SEC submissions JSON and complete filing text, follows relevant historical submissions shards, identifies requests with `hello@outfoxmarkets.com`, spaces requests at least 550 ms apart, refuses redirects, bounds response size/time, and refuses to truncate when the filing limit is exceeded. It does not retry or bypass a denial. Backfill uses explicit per-manager filing-date windows; a window is not a claim of all-market or full-history coverage. Later amendments outside the collected window cannot be discovered without a subsequent refresh.
 
 Each uniquely named `data/institution-runs/institutions_UUID` folder contains content-addressed raw bytes and a write-once manifest. Normalized output is never evidence. Review replays hashes and the archived SEC inventory, verifies historical-shard completeness, and reconciles duplicate filings across runs. Incomplete runs stop candidate preparation; keep them as evidence and deliberately move them outside the active run directory before retrying preparation. Individual filing failures remain visible and block affected managers.
+
+### First real-source validation: Berkshire Hathaway
+
+```sh
+SEC_USER_AGENT='Outfox Markets hello@outfoxmarkets.com' node --experimental-strip-types scripts/import-institutions.ts --cik 0001067983 --from 2026-01-01 --to 2026-09-15 --max-filings 30
+node --experimental-strip-types scripts/validate-institutions.ts --run institutions_UUID
+```
+
+Use the returned run ID. The read-only validator reports every accession, period, row count, hash, hold and failure, then compares the latest two reported periods only if both are eligible and consecutive. It does not presume that those quarters exist or fall back to an older pair when a newer quarter is held. The expected pair for this collection cutoff is March 31 and June 30, 2026; the source must establish that. The collector stops fetching after its first failed filing request, records remaining accessions as unattempted failures, and exits nonzero. No automatic retry or production change occurs.
 
 ## Review and local promotion
 
