@@ -27,8 +27,8 @@ function FilerLink({ person }: { person: HomeFiler }) {
     {portrait && !failed && <Image src={portrait} alt="" width={38} height={38} style={{ opacity: loaded ? 1 : 0 }} onLoad={() => setLoaded(true)} onError={() => setFailed(true)} />}
   </Link>;
 }
-export default function HomeTradingTable({ windows, updatedAt, scans }: {
-  windows: Record<HomePeriod, HomeWindow>; updatedAt: string; scans: number;
+export default function HomeTradingTable({ windows, updatedAt, scans, senateAvailable = false }: {
+  windows: Record<HomePeriod, HomeWindow>; updatedAt: string; scans: number; senateAvailable?: boolean;
 }) {
   const [period, setPeriod] = useState<HomePeriod>("ytd");
   const [source, setSource] = useState("all");
@@ -44,9 +44,11 @@ export default function HomeTradingTable({ windows, updatedAt, scans }: {
       </div>
       <div className="home-controls">
         <div className="home-source-controls" role="group" aria-label="Disclosure source">
-          <button type="button" aria-label="All available sources" aria-pressed={source === "all"} onClick={() => setSource("all")}><Layers3 size={18} aria-hidden="true" /><span>All</span></button>
+          <button type="button" aria-label={senateAvailable ? "All records in this House stock table" : "All available sources"} aria-pressed={source === "all"} onClick={() => setSource("all")}><Layers3 size={18} aria-hidden="true" /><span>{senateAvailable ? "All House" : "All"}</span></button>
           <button type="button" aria-pressed={source === "house"} onClick={() => setSource("house")}><Landmark size={18} aria-hidden="true" /><span>House-only</span></button>
-          {[{ label: "Senate-only", Icon: Landmark }, { label: "Corporate insiders", Icon: Building2 }, { label: "Funds / institutions", Icon: BriefcaseBusiness }].map(({ label, Icon }) =>
+          {senateAvailable ? <Link className="home-source-link" href={`/senate?period=${period}`} aria-label="Open Senate-only disclosures, partial coverage"><Landmark size={18} aria-hidden="true" /><span>Senate-only<small>Partial coverage ↗</small></span></Link> :
+            <button type="button" disabled title="This source is not connected yet"><Landmark size={18} aria-hidden="true" /><span>Senate-only<small>Coming soon</small></span></button>}
+          {[{ label: "Corporate insiders", Icon: Building2 }, { label: "Funds / institutions", Icon: BriefcaseBusiness }].map(({ label, Icon }) =>
             <button type="button" key={label} disabled title="This source is not connected yet"><Icon size={18} aria-hidden="true" /><span>{label}<small>Coming soon</small></span></button>)}
         </div>
         <div className="home-period-controls" role="group" aria-label="Transaction date range">
@@ -54,7 +56,7 @@ export default function HomeTradingTable({ windows, updatedAt, scans }: {
             onClick={() => { setPeriod(item.key); setExpanded(false); }}><CalendarDays size={18} aria-hidden="true" /><span>{item.label}</span></button>)}
         </div>
       </div>
-      <p className="home-coverage" role="status"><Clock3 size={13} aria-hidden="true" /> House coverage only · Traded {current.start}–{current.end} · Delayed disclosures</p>
+      <p className="home-coverage" role="status"><Clock3 size={13} aria-hidden="true" /> House coverage only · Traded {current.start}–{current.end} · Delayed disclosures{senateAvailable && " · Senate disclosures open separately"}</p>
       <div className="home-table-frame">
         <table className="home-market-table">
           <caption className="sr-only">Stocks with disclosed House purchases, ranked by distinct purchasing filers. Sales in the same period are shown separately.</caption>

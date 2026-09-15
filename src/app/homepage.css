@@ -11,13 +11,14 @@
 .home-controls { display:flex; justify-content:flex-start; align-items:center; gap:12px; flex-wrap:wrap; }
 .home-source-controls,.home-period-controls { display:flex; gap:6px; flex-wrap:wrap; }
 .home-period-controls { border-left:1px solid var(--border); padding-left:12px; }
-.home-controls button { display:inline-flex; align-items:center; justify-content:center; gap:8px; height:44px; min-height:44px; border:1px solid var(--home-tab-border); border-radius:6px; padding:4px 11px; font-size:13px; line-height:1.15; font-weight:650; cursor:pointer; color:var(--text); background:var(--bg-card); box-shadow:0 1px 2px rgb(11 31 68 / 4%); white-space:nowrap; }
-.home-controls button svg { flex-shrink:0; }
-.home-controls button>span { text-align:left; }
-.home-controls button small { display:block; margin-top:2px; font-size:10px; line-height:1.1; font-weight:400; color:var(--text-dim); }
+.home-controls :is(button,.home-source-link) { display:inline-flex; align-items:center; justify-content:center; gap:8px; height:44px; min-height:44px; border:1px solid var(--home-tab-border); border-radius:6px; padding:4px 11px; font-size:13px; line-height:1.15; font-weight:650; cursor:pointer; color:var(--text); background:var(--bg-card); box-shadow:0 1px 2px rgb(11 31 68 / 4%); white-space:nowrap; }
+.home-controls :is(button,.home-source-link) svg { flex-shrink:0; }
+.home-controls :is(button,.home-source-link)>span { text-align:left; }
+.home-controls :is(button,.home-source-link) small { display:block; margin-top:2px; font-size:10px; line-height:1.1; font-weight:400; color:var(--text-dim); }
 .home-controls button:disabled { cursor:not-allowed; color:var(--text-dim); opacity:1; }
-.home-controls button:not(:disabled):not([aria-pressed=true]):hover { border-color:var(--text); background:var(--bg-inset); }
+.home-controls :is(button,.home-source-link):not(:disabled):not([aria-pressed=true]):hover { border-color:var(--text); background:var(--bg-inset); }
 .home-source-controls button[aria-pressed=true] { background:#0b1f44; color:#ffffff; border-color:#0b1f44; }
+.home-controls .home-source-link[aria-current=page] { background:var(--fox); color:#0b1f44; border-color:var(--fox); }
 .home-period-controls button[aria-pressed=true] { background:var(--fox); color:#0b1f44; border-color:var(--fox); }
 .home-coverage { display:flex; align-items:center; gap:7px; margin:12px 0; font-size:11px; color:var(--text-dim); }
 .home-table-frame { border:1px solid var(--border); border-radius:9px; background:var(--bg-card); }
@@ -95,7 +96,7 @@
   .home-section-intro h2 { font-size:27px; } .home-section-intro p { font-size:13px; }
   .home-controls { gap:8px; min-width:0; }
   .home-source-controls { width:100%; flex-wrap:nowrap; overflow-x:auto; padding:2px 0 6px; }
-  .home-source-controls button { flex:0 0 auto; }
+  .home-source-controls :is(button,.home-source-link) { flex:0 0 auto; }
   .home-period-controls { width:100%; border-left:0; padding-left:0; } .home-period-controls button { flex:1; }
   .home-coverage { line-height:1.6; align-items:flex-start; } .home-coverage svg { flex-shrink:0; margin-top:3px; }
   .home-market-table thead { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
@@ -118,6 +119,10 @@
 .home-sector-tickers small { display:block; max-width:160px; color:var(--text-dim); font-size:10px; margin-top:3px; }
 .sector-explore-link { margin-top:16px; }
 .instrument-page { padding-top:20px; }
+.senate-search { display:flex; flex-wrap:wrap; gap:8px; margin:18px 0; max-width:680px; }
+.senate-search label { flex-basis:100%; font-size:13px; font-weight:650; }
+.senate-search input { flex:1 1 200px; min-width:0; min-height:44px; padding:9px 12px; border:1px solid var(--home-tab-border); border-radius:6px; background:var(--bg-card); color:var(--text); }
+.senate-search button { min-height:44px; padding:9px 18px; border-radius:6px; background:var(--fox); color:#0b1f44; font-weight:650; cursor:pointer; }
 #home-sectors-title { scroll-margin-top:100px; }
 .instrument-breadcrumb { display:flex; flex-wrap:wrap; align-items:center; gap:10px; font-size:12px; padding:8px 0; }
 .instrument-breadcrumb a { display:inline-flex; align-items:center; min-height:44px; text-decoration:underline; text-underline-offset:4px; }
