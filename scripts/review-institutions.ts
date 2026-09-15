@@ -21,6 +21,6 @@ if(args.includes("--promote")){
   writeFileSync(temporary,JSON.stringify(release,null,2)+"\n",{flag:"wx"});renameSync(temporary,target);
   console.log("Reviewed institutional data promoted locally; nothing deployed.");
 }else{
-  writeFileSync(path,JSON.stringify({payload,sha256:payloadHash(payload),held:candidate.held,runs:candidate.runs,approval:null},null,2)+"\n");
+  writeFileSync(path,JSON.stringify({payload,sha256:payloadHash(payload),held:candidate.held,notices:candidate.notices,runs:candidate.runs,approval:null},null,2)+"\n");
   console.log(JSON.stringify({eligibleFilings:payload.filings.length,heldFamilies:candidate.held.length,publicChanged:false}));
 }

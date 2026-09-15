@@ -1,4 +1,4 @@
-import type { Holding, InstitutionalFiling } from "./parse.ts";
+import type { Holding, InstitutionalFiling, InstitutionalNotice } from "./parse.ts";
 import { managerIdentity, resolveManagerQualifiers } from "./parse.ts";
 
 function invalidManagerAttribution(f:InstitutionalFiling):boolean {
@@ -11,7 +11,7 @@ function invalidManagerAttribution(f:InstitutionalFiling):boolean {
 }
 
 /** Conservative v1: any amendment or conflicting version holds its whole quarter. */
-export function reconcileInstitutions(filings: InstitutionalFiling[], blockedManagers: string[] = []) {
+export function reconcileInstitutions(filings: InstitutionalFiling[], blockedManagers: string[] = [], notices:InstitutionalNotice[] = []) {
   const versions = new Map<string, InstitutionalFiling>();
   const conflicts = new Set<string>();
   for (const filing of filings) {
@@ -27,6 +27,7 @@ export function reconcileInstitutions(filings: InstitutionalFiling[], blockedMan
   const active: InstitutionalFiling[] = [], held: { family: string; accessions: string[]; reason: string }[] = [];
   for (const [family, entries] of families) {
     const reason = entries.some(f => blockedManagers.includes(f.reference.cik)) ? "manager_has_unparsed_or_failed_filings" :
+      notices.some(n=>`${n.reference.cik}:${n.period}`===family) ? "notice_family_requires_other_reporting_manager_collection" :
       entries.some(f => conflicts.has(f.reference.cik)) ? "conflicting_source_versions" :
       entries.some(f => f.amendment) ? "amendment_family_requires_review" : entries.length !== 1 ? "multiple_originals_require_review" :
       entries.some(invalidManagerAttribution) ? "invalid_included_manager_attribution" :
@@ -34,6 +35,7 @@ export function reconcileInstitutions(filings: InstitutionalFiling[], blockedMan
     if (reason) held.push({ family, accessions: entries.map(f => f.reference.accession), reason });
     else active.push(entries[0]);
   }
+  for(const family of new Set(notices.map(n=>`${n.reference.cik}:${n.period}`)))if(!families.has(family))held.push({family,accessions:notices.filter(n=>`${n.reference.cik}:${n.period}`===family).map(n=>n.reference.accession),reason:"notice_family_requires_other_reporting_manager_collection"});
   return { active: active.sort((a,b) => a.reference.cik.localeCompare(b.reference.cik) || b.period.localeCompare(a.period)), held };
 }
 

@@ -21,19 +21,19 @@ export function validatePlan(plan:CohortPlan) {
   return digest(JSON.stringify(plan));
 }
 export function assessManagerRun(directory:string, manager:ManagerCandidate, plan:CohortPlan) {
-  const {run,filings,failures}=replayInstitutionRun(directory);
+  const {run,filings,notices,failures}=replayInstitutionRun(directory);
   if(run.cik!==manager.cik||run.from!==plan.from||run.to!==plan.to)throw new Error("Run differs from cohort coverage plan");
   const main=run.indexes.find(f=>f.url===`https://data.sec.gov/submissions/CIK${manager.cik}.json`)!;
   const source=JSON.parse(readFileSync(resolve(directory,"raw",main.file),"utf8"));
   const match=(name:unknown)=>typeof name==="string"&&manager.secNames.some(n=>normalizedName(n)===normalizedName(name));
-  const identityMatched=match(source.name)&&filings.every(f=>match(f.managerName));
-  const result=validateManagerCorpus(filings,failures),comparison=result.comparison;
+  const identityMatched=match(source.name)&&[...filings,...notices].every(f=>match(f.managerName));
+  const result=validateManagerCorpus(filings,failures,notices),comparison=result.comparison;
   const pairMatched=comparison?.previousPeriod===plan.previousPeriod&&comparison.currentPeriod===plan.currentPeriod;
   const ready=identityMatched&&pairMatched&&failures.length===0;
   return {cik:manager.cik,name:manager.name,secName:source.name,runId:run.runId,identityMatched,status:ready?"ready_for_review":"held",
     enumeratedFilings:run.references.length,parsedFilings:filings.length,parsedRows:result.parsedRows,
     requestedQuarterRows:filings.filter(f=>[plan.previousPeriod,plan.currentPeriod].includes(f.period)).reduce((sum,f)=>sum+f.holdings.length,0),
-    filings:result.filings,held:result.held,failures,latestReportedPeriods:result.latestReportedPeriods,
+    filings:result.filings,notices,held:result.held,failures,latestReportedPeriods:result.latestReportedPeriods,
     reason:!identityMatched?"SEC manager name requires identity review":!pairMatched?(result.comparisonHold??"Latest source quarters differ from requested pair"):null,
     comparison:ready&&comparison?{previousPeriod:comparison.previousPeriod,currentPeriod:comparison.currentPeriod,attributedPositions:comparison.positions.length,
       reportedInBoth:comparison.positions.filter(p=>p.status==="reported_in_both").length,newlyReported:comparison.positions.filter(p=>p.status==="newly_reported").length,noLongerReported:comparison.positions.filter(p=>p.status==="no_longer_reported").length}:null};

@@ -1,6 +1,6 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
-import { digest, parseInstitutionalFiling, filingUrl, type FilingReference, type InstitutionalFiling } from "./parse.ts";
+import { digest, parseInstitutionalFiling, parseInstitutionalNotice, filingUrl, type FilingReference, type InstitutionalFiling, type InstitutionalNotice } from "./parse.ts";
 import { allowedSecUrl, references, type SubmissionColumns } from "./source.ts";
 import { reconcileInstitutions } from "./reconcile.ts";
 
@@ -42,14 +42,14 @@ export function replayInstitutionRun(directory: string) {
   const ordered = (refs: FilingReference[]) => [...refs].sort((a,b)=>a.accession.localeCompare(b.accession));
   if (JSON.stringify(ordered([...inventory.values()])) !== JSON.stringify(ordered(run.references)) ||
       JSON.stringify(ordered(run.filings.map(f=>f.reference))) !== JSON.stringify(ordered(run.references))) throw new Error("Manifest references differ from SEC inventory");
-  const filings: InstitutionalFiling[] = [], failures: string[] = [];
+  const filings: InstitutionalFiling[] = [], notices:InstitutionalNotice[] = [], failures: string[] = [];
   for (const item of run.filings) {
     if (!item.evidence || item.failure) { failures.push(item.reference.accession); continue; }
     if (item.evidence.url !== filingUrl(item.reference)) throw new Error("Source link differs from accession");
-    try { filings.push(parseInstitutionalFiling(read(item.evidence),item.reference)); }
+    try { if(item.reference.form.startsWith("13F-NT"))notices.push(parseInstitutionalNotice(read(item.evidence),item.reference));else filings.push(parseInstitutionalFiling(read(item.evidence),item.reference)); }
     catch (error) { failures.push(`${item.reference.accession}: ${String(error)}`); }
   }
-  return { run, filings, failures };
+  return { run, filings, notices, failures };
 }
 
 export function institutionalCandidate(root: string) {
@@ -58,5 +58,5 @@ export function institutionalCandidate(root: string) {
   if (!runs.length) throw new Error("No completed official collection runs");
   const blockedManagers = runs.filter(run=>run.failures.length).map(run=>run.run.cik);
   return { source: "SEC Form 13F" as const, runs: runs.map(({run,failures})=>({ runId:run.runId, cik:run.cik, from:run.from, to:run.to, collectedAt:run.collectedAt, failures })),
-    ...reconcileInstitutions(runs.flatMap(run=>run.filings),blockedManagers) };
+    notices:runs.flatMap(run=>run.notices),...reconcileInstitutions(runs.flatMap(run=>run.filings),blockedManagers,runs.flatMap(run=>run.notices)) };
 }

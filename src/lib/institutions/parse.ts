@@ -32,16 +32,23 @@ export interface Holding {
   investmentDiscretion: string; otherManagers: string; otherManagerIds: string[]; voting: { sole: string; shared: string; none: string };
 }
 export interface IncludedManager { sequenceNumber:string; name:string; cik:string|null; form13FFileNumber:string|null; stableId:string }
+export interface InstitutionalNotice {
+  reference:FilingReference; sourceUrl:string; sourceSha256:string; period:string; managerName:string;
+  reportType:"13F NOTICE"; amendment:boolean; amendmentType:string|null; amendmentNumber:string|null;
+  amendmentFlagSource:"explicit"|"original_form_omitted_flag";
+  otherReportingManagers:Omit<IncludedManager,"sequenceNumber">[];
+}
 export interface InstitutionalFiling {
   reference: FilingReference; sourceUrl: string; sourceSha256: string; period: string; managerName: string;
   amendment: boolean; amendmentType: string | null; amendmentNumber: string | null; reportType: string;
+  amendmentFlagSource:"explicit"|"original_form_omitted_flag";
   valueUnit: "USD" | "USD_thousands"; declaredEntries: number; declaredValue: string; confidentialOmitted: boolean;
   otherIncludedManagers: number; includedManagers: IncludedManager[]; holdings: Holding[];
 }
 export function managerIdentity(cik:string|null, fileNumber:string|null):string {
   if(cik && (!/^\d{10}$/.test(cik)||Number(cik)===0))throw new Error("Invalid included-manager CIK");
-  if(fileNumber && !/^28-\d+$/.test(fileNumber))throw new Error("Invalid included-manager 13F file number");
-  if(fileNumber)return `13f:28-${BigInt(fileNumber.slice(3))}`;
+  if(fileNumber && !/^0?28-\d+$/.test(fileNumber))throw new Error("Invalid included-manager 13F file number");
+  if(fileNumber)return `13f:28-${BigInt(fileNumber.split("-")[1])}`;
   if(cik)return `cik:${cik}`;
   throw new Error("Included manager has no stable source identifier");
 }
@@ -53,7 +60,7 @@ export function resolveManagerQualifiers(raw:string, managers:IncludedManager[])
   return ordinals.map(ordinal=>{const manager=managers.find(m=>m.sequenceNumber===ordinal);if(!manager)throw new Error("Unresolved other-manager row qualifier");return manager.stableId;}).sort();
 }
 /** Replays full EDGAR submission bytes; HTML-rendered tables are never parsed. */
-export function parseInstitutionalFiling(source: string, reference: FilingReference): InstitutionalFiling {
+function readCover(source: string, reference: FilingReference) {
   const sourceUrl = filingUrl(reference);
   if (Buffer.byteLength(source) > 48 * 1024 * 1024) throw new Error("13F submission exceeds bounded parser size");
   const accession = /^ACCESSION NUMBER:\s*(\S+)/m.exec(source)?.[1];
@@ -65,11 +72,11 @@ export function parseInstitutionalFiling(source: string, reference: FilingRefere
     return { type, xml };
   });
   const coverDocs = docs.filter(d => d.type === reference.form);
-  if (coverDocs.length !== 1 || !coverDocs[0].xml || !["13F-HR", "13F-HR/A"].includes(reference.form)) throw new Error("Unsupported notice or ambiguous cover document");
+  if (coverDocs.length !== 1 || !coverDocs[0].xml) throw new Error("Ambiguous cover document");
   const parse = (xml: string) => parseXml(xml, { maxBytes: 40 * 1024 * 1024, maxDepth: 40 });
   const root = parse(coverDocs[0].xml);
   if (local(root) !== "edgarSubmission") throw new Error("Unexpected 13F root");
-  const header = one(root, "headerData"), form = one(root, "formData"), cover = one(form, "coverPage"), summary = one(form, "summaryPage");
+  const header = one(root, "headerData"), form = one(root, "formData"), cover = one(form, "coverPage");
   if (text(header, "submissionType") !== reference.form) throw new Error("Submission form mismatch");
   const filerInfo = one(header, "filerInfo");
   const cik = text(one(one(filerInfo, "filer"), "credentials"), "cik").padStart(10, "0");
@@ -78,11 +85,34 @@ export function parseInstitutionalFiling(source: string, reference: FilingRefere
   if (!/-(03-31|06-30|09-30|12-31)$/.test(period) || period > reference.filedDate) throw new Error("Invalid reporting quarter");
   if (date(text(filerInfo, "periodOfReport")) !== period) throw new Error("Conflicting report periods");
   const boolean = (value: string) => { if (!["true", "false"].includes(value)) throw new Error("Invalid 13F boolean"); return value === "true"; };
-  const amendment = boolean(text(cover, "isAmendment"));
+  const explicitFlag=text(cover,"isAmendment",true);
+  const originalForm=reference.form==="13F-HR"||reference.form==="13F-NT";
+  if(!explicitFlag && (!originalForm || text(root,"schemaVersion",true)!=="X0202" || root.attrs.xmlns!=="http://www.sec.gov/edgar/thirteenffiler" || /^CONFORMED SUBMISSION TYPE:\s*(\S+)/m.exec(source)?.[1]!==reference.form || children(cover,"amendmentNo").length || children(cover,"amendmentInfo").length))throw new Error("Missing amendment flag without corroborated original form");
+  const amendment = explicitFlag ? boolean(explicitFlag) : false;
   if (amendment !== reference.form.endsWith("/A")) throw new Error("Conflicting amendment flag");
+  if(!amendment&&(children(cover,"amendmentNo").length||children(cover,"amendmentInfo").length))throw new Error("Original form contains amendment metadata");
   const amendmentType = amendment ? text(one(cover, "amendmentInfo"), "amendmentType") : null;
   const amendmentNumber = amendment ? integer(text(cover, "amendmentNo")) : null;
   const reportType = text(cover, "reportType");
+  const amendmentFlagSource=explicitFlag?"explicit" as const:"original_form_omitted_flag" as const;
+  return {sourceUrl,docs,parse,form,cover,period,amendment,amendmentType,amendmentNumber,reportType,amendmentFlagSource,boolean};
+}
+export function parseInstitutionalNotice(source:string,reference:FilingReference):InstitutionalNotice {
+  const c=readCover(source,reference);
+  if(!["13F-NT","13F-NT/A"].includes(reference.form)||c.reportType!=="13F NOTICE"||c.docs.some(d=>d.type==="INFORMATION TABLE")||children(c.form,"summaryPage").length)throw new Error("Notice form conflicts with holdings content");
+  const list=one(c.cover,"otherManagersInfo");
+  if(!list.children.length||list.children.some(n=>local(n)!=="otherManager"))throw new Error("Invalid notice reporting-manager list");
+  const otherReportingManagers=list.children.map(manager=>{
+    const rawCik=text(manager,"cik",true),cik=rawCik?rawCik.padStart(10,"0"):null,form13FFileNumber=text(manager,"form13FFileNumber",true)||null;
+    return {name:text(manager,"name"),cik,form13FFileNumber,stableId:managerIdentity(cik,form13FFileNumber)};
+  });
+  if(new Set(otherReportingManagers.map(m=>m.stableId)).size!==otherReportingManagers.length)throw new Error("Duplicate notice reporting-manager identity");
+  return {reference,sourceUrl:c.sourceUrl,sourceSha256:digest(source),period:c.period,managerName:text(one(c.cover,"filingManager"),"name"),reportType:"13F NOTICE",amendment:c.amendment,amendmentType:c.amendmentType,amendmentNumber:c.amendmentNumber,amendmentFlagSource:c.amendmentFlagSource,otherReportingManagers};
+}
+export function parseInstitutionalFiling(source: string, reference: FilingReference): InstitutionalFiling {
+  const {sourceUrl,docs,parse,form,period,cover,amendment,amendmentType,amendmentNumber,reportType,amendmentFlagSource,boolean}=readCover(source,reference);
+  if(!["13F-HR","13F-HR/A"].includes(reference.form))throw new Error("Notice is not a holdings report");
+  const summary=one(form,"summaryPage");
   if (!["13F HOLDINGS REPORT", "13F COMBINATION REPORT"].includes(reportType)) throw new Error("Unsupported 13F report type");
   const valueUnit = reference.filedDate >= "2023-01-03" ? "USD" : "USD_thousands";
   const declaredEntries = Number(integer(text(summary, "tableEntryTotal")));
@@ -120,6 +150,6 @@ export function parseInstitutionalFiling(source: string, reference: FilingRefere
   });
   if (holdings.length !== declaredEntries || holdings.reduce((sum, row) => sum + BigInt(row.valueAsFiled), BigInt(0)).toString() !== declaredValue) throw new Error("13F table totals do not reconcile");
   return { reference, sourceUrl, sourceSha256: digest(source), period, managerName: text(one(cover, "filingManager"), "name"),
-    amendment, amendmentType, amendmentNumber, reportType, valueUnit, declaredEntries, declaredValue,
+    amendment, amendmentType, amendmentNumber, amendmentFlagSource, reportType, valueUnit, declaredEntries, declaredValue,
     confidentialOmitted: boolean(text(summary, "isConfidentialOmitted")), otherIncludedManagers, includedManagers, holdings };
 }

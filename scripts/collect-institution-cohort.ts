@@ -19,7 +19,7 @@ else {
 }
 const maximum=Number(arg("--max-managers")??state.plan.universe.managers.length);
 if(!Number.isSafeInteger(maximum)||maximum<1||maximum>state.plan.universe.managers.length)throw new Error("Invalid --max-managers");
-new SecReader(); // Verify contact before making changes.
+if(!args.includes("--replay-only"))new SecReader(); // Verify contact before network work.
 mkdirSync(resolve(root,"data/institution-cohorts"),{recursive:true});
 const lock=`${file}.lock`;
 writeFileSync(lock,JSON.stringify({pid:process.pid,startedAt:new Date().toISOString()}),{flag:"wx"});
@@ -33,10 +33,11 @@ try {
   checkpoint();let attempted=0;
   for(const manager of state.plan.universe.managers){
     const history=state.attempts[manager.cik]??[],last=history.at(-1);
-    if(last?.result?.status==="ready_for_review"&&last.runId){
+    if(last?.result&&last.runId){
       try{last.result=assessManagerRun(resolve(root,"data/institution-runs",last.runId),manager,state.plan);if(last.result.status==="ready_for_review"){checkpoint();continue;}}
       catch(error){last.failure=sourceFailure(error);delete last.result;}
     }
+    if(args.includes("--replay-only"))continue;
     if(last?.result?.status==="held"&&!args.includes("--retry-held"))continue;
     if(attempted>=maximum)break;attempted++;
     const attempt:Attempt={at:new Date().toISOString()};state.attempts[manager.cik]=[...history,attempt];checkpoint();
