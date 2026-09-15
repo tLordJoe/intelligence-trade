@@ -27,9 +27,9 @@ function FilerLink({ person }: { person: HomeFiler }) {
     {portrait && !failed && <Image src={portrait} alt="" width={38} height={38} style={{ opacity: loaded ? 1 : 0 }} onLoad={() => setLoaded(true)} onError={() => setFailed(true)} />}
   </Link>;
 }
-export default function HomeTradingTable({ windows, houseWindows, senateWindows, insiderWindows, updatedAt, scans }: {
+export default function HomeTradingTable({ windows, houseWindows, senateWindows, insiderWindows, updatedAt, scans, institutionsAvailable = false }: {
   windows: Record<HomePeriod, HomeWindow>; houseWindows: Record<HomePeriod, HomeWindow>; senateWindows: Record<HomePeriod, HomeWindow> | null;
-  insiderWindows: Record<HomePeriod, HomeWindow> | null; updatedAt: string; scans: number;
+  insiderWindows: Record<HomePeriod, HomeWindow> | null; updatedAt: string; scans: number; institutionsAvailable?: boolean;
 }) {
   const [period, setPeriod] = useState<HomePeriod>("ytd");
   const [source, setSource] = useState("all");
@@ -53,8 +53,8 @@ export default function HomeTradingTable({ windows, houseWindows, senateWindows,
             <button type="button" disabled title="This source is not connected yet"><Landmark size={18} aria-hidden="true" /><span>Senate-only<small>Coming soon</small></span></button>}
           {insiderWindows ? <button type="button" aria-pressed={source === "insiders"} onClick={() => { setSource("insiders"); setExpanded(false); }}><Building2 size={18} aria-hidden="true" /><span>Corporate insiders</span></button> :
             <button type="button" disabled title="This source is not connected yet"><Building2 size={18} aria-hidden="true" /><span>Corporate insiders<small>Coming soon</small></span></button>}
-          {[{ label: "Funds / institutions", Icon: BriefcaseBusiness }].map(({ label, Icon }) =>
-            <button type="button" key={label} disabled title="This source is not connected yet"><Icon size={18} aria-hidden="true" /><span>{label}<small>Coming soon</small></span></button>)}
+          {institutionsAvailable ? <Link className="home-source-link" href="/institutions" aria-label="Open quarterly institutional holdings, partial coverage"><BriefcaseBusiness size={18} aria-hidden="true"/><span>Funds / institutions<small>Quarterly holdings ↗</small></span></Link> :
+            <button type="button" disabled title="Quarterly institutional holdings await source validation and release review"><BriefcaseBusiness size={18} aria-hidden="true"/><span>Funds / institutions<small>Coming soon</small></span></button>}
         </div>
         <div className="home-period-controls" role="group" aria-label="Transaction date range">
           {periods.map(item => <button key={item.key} type="button" aria-pressed={period === item.key}

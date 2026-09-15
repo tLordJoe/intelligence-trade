@@ -9,6 +9,8 @@ import senateRelease from "@/lib/senate-live.json";
 import { readApprovedSenateRelease } from "@/lib/senate/public-view";
 import insiderRelease from "@/lib/insider-live.json";
 import { readApprovedInsiderRelease } from "@/lib/form4/public-view";
+import institutionsRelease from "@/lib/institutions-live.json";
+import { approvedInstitutions } from "@/lib/institutions/release";
 import type { DisclosureRecord } from "@/lib/congress-schema";
 import { buildHomeWindow, buildInsiderHomeWindow, buildSenateHomeWindow, mergeHomeWindows, type HomePeriod } from "@/lib/homepage-market";
 import { previewAccessFromEnv } from "@/lib/funds/access";
@@ -53,7 +55,8 @@ export default function Home() {
         <p className="home-hero-aside">The stocks. The people.<br />The bigger picture.</p>
       </section>
       <HomeTradingTable windows={windows} houseWindows={houseWindows} senateWindows={senateWindows} insiderWindows={insiderWindows}
-        updatedAt={liveData.updatedAt} scans={liveData.counts.scannedFilings} />
+        updatedAt={liveData.updatedAt} scans={liveData.counts.scannedFilings}
+        institutionsAvailable={approvedInstitutions(institutionsRelease) !== null} />
       <HomeSectorExplorer companies={windows.ytd.companies} />
       <NewsletterSignup variant="banner" />
     </main>
