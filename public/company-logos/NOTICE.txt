@@ -14,3 +14,13 @@ are documented evidence, not a legal determination of every use or jurisdiction.
 
 Exact sources, hashes and qualifications are recorded in the public repository:
 https://github.com/tLordJoe/intelligence-trade/blob/main/docs/company-logo-manifest.json
+
+Shared image library (added 2026-09-13). Files named cik##########.svg/.png and
+sponsor-*.svg were accepted by the importer's documented rule — a Commons file
+whose machine-readable licence is public domain or CC0, or a Simple Icons file
+with no per-icon licence — not by individual review. Each file's source URL,
+evidence page, fetch time, SHA-256 and licence fields are recorded in
+src/lib/image-library/catalog.json; docs/image-library-coverage.md lists
+every identity that was held for review or could not be resolved. Sponsor
+marks shown beside ETFs identify the sponsor, not the fund. The same limits
+apply: website identification only, no endorsement, no API redistribution.

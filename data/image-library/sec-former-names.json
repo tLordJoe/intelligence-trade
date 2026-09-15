@@ -1,0 +1,5270 @@
+{
+ "0000066740": {
+  "name": "3M CO",
+  "formerNames": [
+   {
+    "name": "MINNESOTA MINING & MANUFACTURING CO",
+    "from": "1993-08-13T04:00:00.000Z",
+    "to": "2002-02-06T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:30.316Z"
+ },
+ "0000091142": {
+  "name": "SMITH A O CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:30.558Z"
+ },
+ "0000001800": {
+  "name": "ABBOTT LABORATORIES",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:30.932Z"
+ },
+ "0001551152": {
+  "name": "AbbVie Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:31.262Z"
+ },
+ "0000815094": {
+  "name": "ABIOMED INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:31.748Z"
+ },
+ "0001467373": {
+  "name": "Accenture plc",
+  "formerNames": [
+   {
+    "name": "Accenture plc",
+    "from": "2009-09-01T04:00:00.000Z",
+    "to": "2026-09-08T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:31.957Z"
+ },
+ "0000718877": {
+  "name": "Activision Blizzard, Inc.",
+  "formerNames": [
+   {
+    "name": "ACTIVISION INC /NY",
+    "from": "1995-08-15T00:00:00.000Z",
+    "to": "2008-07-07T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:32.372Z"
+ },
+ "0000796343": {
+  "name": "ADOBE INC.",
+  "formerNames": [
+   {
+    "name": "ADOBE SYSTEMS INC",
+    "from": "1994-09-09T04:00:00.000Z",
+    "to": "2018-10-03T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:32.668Z"
+ },
+ "0001158449": {
+  "name": "ADVANCE AUTO PARTS INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:33.181Z"
+ },
+ "0000874761": {
+  "name": "AES CORP",
+  "formerNames": [
+   {
+    "name": "AES CORPORATION",
+    "from": "1996-10-09T04:00:00.000Z",
+    "to": "2005-01-11T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:33.473Z"
+ },
+ "0000004977": {
+  "name": "AFLAC INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:33.840Z"
+ },
+ "0001090872": {
+  "name": "AGILENT TECHNOLOGIES, INC.",
+  "formerNames": [
+   {
+    "name": "AGILENT TECHNOLOGIES INC",
+    "from": "1999-11-12T05:00:00.000Z",
+    "to": "2019-09-16T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:34.110Z"
+ },
+ "0000002969": {
+  "name": "Air Products & Chemicals, Inc.",
+  "formerNames": [
+   {
+    "name": "AIR PRODUCTS & CHEMICALS INC /DE/",
+    "from": "1994-03-15T05:00:00.000Z",
+    "to": "2022-04-07T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:34.458Z"
+ },
+ "0001086222": {
+  "name": "AKAMAI TECHNOLOGIES INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:34.769Z"
+ },
+ "0000766421": {
+  "name": "ALASKA AIR GROUP, INC.",
+  "formerNames": [
+   {
+    "name": "ALASKA AIR GROUP INC",
+    "from": "1994-02-15T05:00:00.000Z",
+    "to": "2012-05-18T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:35.128Z"
+ },
+ "0000915913": {
+  "name": "ALBEMARLE CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:35.486Z"
+ },
+ "0001035443": {
+  "name": "ALEXANDRIA REAL ESTATE EQUITIES, INC.",
+  "formerNames": [
+   {
+    "name": "ALEXANDRIA REAL ESTATE EQUITIES, INC.",
+    "from": "2019-08-12T04:00:00.000Z",
+    "to": "2026-09-11T04:00:00.000Z"
+   },
+   {
+    "name": "ALEXANDRIA REAL ESTATE EQUITIES INC",
+    "from": "1997-05-22T04:00:00.000Z",
+    "to": "2019-08-09T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:35.839Z"
+ },
+ "0000899866": {
+  "name": "ALEXION PHARMACEUTICALS, INC.",
+  "formerNames": [
+   {
+    "name": "ALEXION PHARMACEUTICALS INC",
+    "from": "1996-10-29T00:00:00.000Z",
+    "to": "2018-06-29T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:36.178Z"
+ },
+ "0001097149": {
+  "name": "ALIGN TECHNOLOGY INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:36.648Z"
+ },
+ "0001579241": {
+  "name": "Allegion plc",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:36.901Z"
+ },
+ "0000352541": {
+  "name": "ALLIANT ENERGY CORP",
+  "formerNames": [
+   {
+    "name": "ALLIANT ENERGY CORP",
+    "from": "1999-12-15T05:00:00.000Z",
+    "to": "2026-08-21T04:00:00.000Z"
+   },
+   {
+    "name": "INTERSTATE ENERGY CORP",
+    "from": "1998-05-27T04:00:00.000Z",
+    "to": "1999-05-13T04:00:00.000Z"
+   },
+   {
+    "name": "WPL HOLDINGS INC",
+    "from": "1994-11-14T05:00:00.000Z",
+    "to": "1998-02-23T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:37.351Z"
+ },
+ "0000899051": {
+  "name": "ALLSTATE CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:37.592Z"
+ },
+ "0001652044": {
+  "name": "Alphabet Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:37.942Z"
+ },
+ "0001011006": {
+  "name": "ALTABA INC.",
+  "formerNames": [
+   {
+    "name": "YAHOO INC",
+    "from": "1996-08-14T04:00:00.000Z",
+    "to": "2017-06-15T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:38.422Z"
+ },
+ "0000764180": {
+  "name": "ALTRIA GROUP, INC.",
+  "formerNames": [
+   {
+    "name": "ALTRIA GROUP INC",
+    "from": "2003-01-29T05:00:00.000Z",
+    "to": "2006-02-07T05:00:00.000Z"
+   },
+   {
+    "name": "PHILIP MORRIS COMPANIES INC",
+    "from": "1994-04-13T04:00:00.000Z",
+    "to": "2003-01-02T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:38.654Z"
+ },
+ "0001018724": {
+  "name": "AMAZON COM INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:38.994Z"
+ },
+ "0001748790": {
+  "name": "Amcor plc",
+  "formerNames": [
+   {
+    "name": "ARCTIC JERSEY Ltd",
+    "from": "2018-08-06T04:00:00.000Z",
+    "to": "2018-10-12T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:39.351Z"
+ },
+ "0000002488": {
+  "name": "ADVANCED MICRO DEVICES INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:39.701Z"
+ },
+ "0001002910": {
+  "name": "AMEREN CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:40.061Z"
+ },
+ "0000006201": {
+  "name": "American Airlines Group Inc.",
+  "formerNames": [
+   {
+    "name": "AMR CORP",
+    "from": "1994-05-16T04:00:00.000Z",
+    "to": "2013-12-09T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:40.415Z"
+ },
+ "0000004904": {
+  "name": "AMERICAN ELECTRIC POWER CO INC",
+  "formerNames": [
+   {
+    "name": "AMERICAN ELECTRIC POWER COMPANY INC",
+    "from": "1994-05-16T04:00:00.000Z",
+    "to": "2002-01-10T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:40.760Z"
+ },
+ "0000004962": {
+  "name": "AMERICAN EXPRESS CO",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:41.147Z"
+ },
+ "0000005272": {
+  "name": "AMERICAN INTERNATIONAL GROUP, INC.",
+  "formerNames": [
+   {
+    "name": "AMERICAN INTERNATIONAL GROUP INC",
+    "from": "1994-08-12T04:00:00.000Z",
+    "to": "2021-02-10T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:41.472Z"
+ },
+ "0001053507": {
+  "name": "AMERICAN TOWER CORP /MA/",
+  "formerNames": [
+   {
+    "name": "AMERICAN TOWER SYSTEMS CORP",
+    "from": "1998-02-13T05:00:00.000Z",
+    "to": "1998-05-08T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:41.817Z"
+ },
+ "0001410636": {
+  "name": "American Water Works Company, Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:42.243Z"
+ },
+ "0000820027": {
+  "name": "AMERIPRISE FINANCIAL INC",
+  "formerNames": [
+   {
+    "name": "AMERICAN EXPRESS FINANCIAL CORP",
+    "from": "2003-05-14T04:00:00.000Z",
+    "to": "2005-07-26T04:00:00.000Z"
+   },
+   {
+    "name": "AMERICAN EXPRESS FINANCIAL ADVISORS",
+    "from": "1995-10-25T04:00:00.000Z",
+    "to": "2003-03-10T05:00:00.000Z"
+   },
+   {
+    "name": "IDS FINANCIAL CORP/MN/",
+    "from": "1994-02-14T05:00:00.000Z",
+    "to": "1995-02-06T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:42.534Z"
+ },
+ "0001037868": {
+  "name": "AMETEK INC/",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:42.897Z"
+ },
+ "0000318154": {
+  "name": "AMGEN INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:43.235Z"
+ },
+ "0000820313": {
+  "name": "AMPHENOL CORP /DE/",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:43.575Z"
+ },
+ "0000006281": {
+  "name": "ANALOG DEVICES INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:43.934Z"
+ },
+ "0000315293": {
+  "name": "Aon plc",
+  "formerNames": [
+   {
+    "name": "AON CORP",
+    "from": "1995-11-14T05:00:00.000Z",
+    "to": "2012-04-02T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:44.279Z"
+ },
+ "0000006769": {
+  "name": "APACHE CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:44.750Z"
+ },
+ "0000320193": {
+  "name": "Apple Inc.",
+  "formerNames": [
+   {
+    "name": "APPLE INC",
+    "from": "2007-01-10T05:00:00.000Z",
+    "to": "2019-08-05T04:00:00.000Z"
+   },
+   {
+    "name": "APPLE COMPUTER INC",
+    "from": "1994-01-26T05:00:00.000Z",
+    "to": "2007-01-04T05:00:00.000Z"
+   },
+   {
+    "name": "APPLE COMPUTER INC/ FA",
+    "from": "1997-07-28T04:00:00.000Z",
+    "to": "1997-07-28T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:44.983Z"
+ },
+ "0000006951": {
+  "name": "APPLIED MATERIALS INC /DE",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:45.336Z"
+ },
+ "0001521332": {
+  "name": "Aptiv PLC",
+  "formerNames": [
+   {
+    "name": "Delphi Automotive PLC",
+    "from": "2011-05-25T04:00:00.000Z",
+    "to": "2017-11-29T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:45.681Z"
+ },
+ "0000947484": {
+  "name": "ARCH CAPITAL GROUP LTD.",
+  "formerNames": [
+   {
+    "name": "ARCH CAPITAL GROUP LTD",
+    "from": "2000-05-15T04:00:00.000Z",
+    "to": "2005-03-10T05:00:00.000Z"
+   },
+   {
+    "name": "RISK CAPITAL HOLDINGS INC",
+    "from": "1996-11-07T05:00:00.000Z",
+    "to": "2000-03-16T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:46.150Z"
+ },
+ "0000007084": {
+  "name": "Archer-Daniels-Midland Co",
+  "formerNames": [
+   {
+    "name": "Archer-Daniels-Midland Co",
+    "from": "2019-06-05T04:00:00.000Z",
+    "to": "2026-09-11T04:00:00.000Z"
+   },
+   {
+    "name": "ARCHER DANIELS MIDLAND CO",
+    "from": "1994-08-31T04:00:00.000Z",
+    "to": "2019-05-07T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:46.606Z"
+ },
+ "0001596532": {
+  "name": "Arista Networks, Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:46.747Z"
+ },
+ "0000354190": {
+  "name": "Arthur J. Gallagher & Co.",
+  "formerNames": [
+   {
+    "name": "GALLAGHER ARTHUR J & CO",
+    "from": "1994-01-25T05:00:00.000Z",
+    "to": "2019-08-14T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:47.133Z"
+ },
+ "0001267238": {
+  "name": "ASSURANT, INC.",
+  "formerNames": [
+   {
+    "name": "ASSURANT INC",
+    "from": "2003-10-24T04:00:00.000Z",
+    "to": "2019-08-22T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:47.452Z"
+ },
+ "0000732717": {
+  "name": "AT&T INC.",
+  "formerNames": [
+   {
+    "name": "SBC COMMUNICATIONS INC",
+    "from": "1995-05-26T04:00:00.000Z",
+    "to": "2005-11-18T05:00:00.000Z"
+   },
+   {
+    "name": "SOUTHWESTERN BELL CORP",
+    "from": "1994-06-24T04:00:00.000Z",
+    "to": "1995-04-26T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:47.866Z"
+ },
+ "0000731802": {
+  "name": "ATMOS ENERGY CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:48.167Z"
+ },
+ "0000008670": {
+  "name": "AUTOMATIC DATA PROCESSING INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:48.506Z"
+ },
+ "0000866787": {
+  "name": "AUTOZONE INC",
+  "formerNames": [
+   {
+    "name": "AUTOZONE INC",
+    "from": "1996-06-10T04:00:00.000Z",
+    "to": "2026-09-01T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:48.868Z"
+ },
+ "0000915912": {
+  "name": "AVALONBAY COMMUNITIES INC",
+  "formerNames": [
+   {
+    "name": "AVALON BAY COMMUNITIES INC",
+    "from": "1998-08-03T04:00:00.000Z",
+    "to": "1998-10-06T04:00:00.000Z"
+   },
+   {
+    "name": "BAY APARTMENT COMMUNITIES INC",
+    "from": "1995-02-13T05:00:00.000Z",
+    "to": "1998-06-02T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:49.216Z"
+ },
+ "0000008818": {
+  "name": "Avery Dennison Corp",
+  "formerNames": [
+   {
+    "name": "AVERY DENNISON CORPORATION",
+    "from": "1994-05-19T04:00:00.000Z",
+    "to": "2011-03-17T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:49.563Z"
+ },
+ "0001701605": {
+  "name": "Baker Hughes Co",
+  "formerNames": [
+   {
+    "name": "Baker Hughes a GE Co",
+    "from": "2017-04-26T04:00:00.000Z",
+    "to": "2019-10-10T04:00:00.000Z"
+   },
+   {
+    "name": "Bear Newco, Inc.",
+    "from": "2017-03-29T04:00:00.000Z",
+    "to": "2017-05-30T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:49.926Z"
+ },
+ "0000009389": {
+  "name": "BALL Corp",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:50.298Z"
+ },
+ "0000070858": {
+  "name": "BANK OF AMERICA CORP /DE/",
+  "formerNames": [
+   {
+    "name": "BANKAMERICA CORP/DE/",
+    "from": "1998-10-30T05:00:00.000Z",
+    "to": "1999-04-23T04:00:00.000Z"
+   },
+   {
+    "name": "NATIONSBANK CORP",
+    "from": "1994-05-13T04:00:00.000Z",
+    "to": "1998-09-28T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:50.655Z"
+ },
+ "0000701985": {
+  "name": "Bath & Body Works, Inc.",
+  "formerNames": [
+   {
+    "name": "L Brands, Inc.",
+    "from": "2013-04-02T04:00:00.000Z",
+    "to": "2021-07-30T04:00:00.000Z"
+   },
+   {
+    "name": "LIMITED BRANDS INC",
+    "from": "2002-06-17T04:00:00.000Z",
+    "to": "2013-03-22T04:00:00.000Z"
+   },
+   {
+    "name": "LIMITED INC",
+    "from": "1994-06-13T04:00:00.000Z",
+    "to": "2002-06-12T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:51.290Z"
+ },
+ "0000010456": {
+  "name": "BAXTER INTERNATIONAL INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:51.676Z"
+ },
+ "0000010795": {
+  "name": "BECTON DICKINSON & CO",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:52.027Z"
+ },
+ "0001067983": {
+  "name": "BERKSHIRE HATHAWAY INC",
+  "formerNames": [
+   {
+    "name": "NBH INC",
+    "from": "1998-08-10T04:00:00.000Z",
+    "to": "1999-01-05T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:52.385Z"
+ },
+ "0000764478": {
+  "name": "BEST BUY CO INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:52.981Z"
+ },
+ "0000012208": {
+  "name": "BIO-RAD LABORATORIES, INC.",
+  "formerNames": [
+   {
+    "name": "BIO RAD LABORATORIES INC",
+    "from": "1994-05-12T04:00:00.000Z",
+    "to": "2018-06-18T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:53.291Z"
+ },
+ "0000875045": {
+  "name": "BIOGEN INC.",
+  "formerNames": [
+   {
+    "name": "BIOGEN IDEC INC.",
+    "from": "2007-01-17T05:00:00.000Z",
+    "to": "2015-03-20T04:00:00.000Z"
+   },
+   {
+    "name": "BIOGEN IDEC INC",
+    "from": "2003-11-12T05:00:00.000Z",
+    "to": "2007-04-25T04:00:00.000Z"
+   },
+   {
+    "name": "IDEC PHARMACEUTICALS CORP / DE",
+    "from": "1997-10-01T04:00:00.000Z",
+    "to": "2003-11-12T05:00:00.000Z"
+   },
+   {
+    "name": "IDEC PHARMACEUTICALS CORP / CA",
+    "from": "1996-07-10T04:00:00.000Z",
+    "to": "1997-02-14T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:53.624Z"
+ },
+ "0001364742": {
+  "name": "BlackRock Finance, Inc.",
+  "formerNames": [
+   {
+    "name": "BlackRock Inc.",
+    "from": "2006-09-05T00:00:00.000Z",
+    "to": "2024-09-26T00:00:00.000Z"
+   },
+   {
+    "name": "BlackRock, Inc.",
+    "from": "2006-10-03T00:00:00.000Z",
+    "to": "2006-10-05T00:00:00.000Z"
+   },
+   {
+    "name": "New BlackRock, Inc.",
+    "from": "2006-06-09T00:00:00.000Z",
+    "to": "2006-09-29T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:53.797Z"
+ },
+ "0000012927": {
+  "name": "BOEING CO",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:54.382Z"
+ },
+ "0001075531": {
+  "name": "Booking Holdings Inc.",
+  "formerNames": [
+   {
+    "name": "Priceline Group Inc.",
+    "from": "2014-04-01T04:00:00.000Z",
+    "to": "2018-02-16T05:00:00.000Z"
+   },
+   {
+    "name": "PRICELINE COM INC",
+    "from": "1998-12-23T05:00:00.000Z",
+    "to": "2014-03-19T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:54.640Z"
+ },
+ "0000908255": {
+  "name": "BORGWARNER INC",
+  "formerNames": [
+   {
+    "name": "BORG WARNER AUTOMOTIVE INC",
+    "from": "1995-02-15T05:00:00.000Z",
+    "to": "2000-02-15T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:54.979Z"
+ },
+ "0001037540": {
+  "name": "BXP, Inc.",
+  "formerNames": [
+   {
+    "name": "BOSTON PROPERTIES INC",
+    "from": "1997-12-16T05:00:00.000Z",
+    "to": "2024-06-20T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:55.520Z"
+ },
+ "0000885725": {
+  "name": "BOSTON SCIENTIFIC CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:55.604Z"
+ },
+ "0000014272": {
+  "name": "BRISTOL MYERS SQUIBB CO",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:56.126Z"
+ },
+ "0001730168": {
+  "name": "Broadcom Inc.",
+  "formerNames": [
+   {
+    "name": "Broadcom Ltd",
+    "from": "2018-02-06T05:00:00.000Z",
+    "to": "2018-03-09T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:56.475Z"
+ },
+ "0001383312": {
+  "name": "BROADRIDGE FINANCIAL SOLUTIONS, INC.",
+  "formerNames": [
+   {
+    "name": "BROADRIDGE FINANCIAL SOLUTIONS, INC.",
+    "from": "2007-02-25T05:00:00.000Z",
+    "to": "2026-08-14T04:00:00.000Z"
+   },
+   {
+    "name": "BROADRIDGE FINANCIAL SOLUTIONS, LLC",
+    "from": "2007-02-09T05:00:00.000Z",
+    "to": "2007-03-21T04:00:00.000Z"
+   },
+   {
+    "name": "BSG LLC",
+    "from": "2006-12-19T05:00:00.000Z",
+    "to": "2006-12-19T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:56.818Z"
+ },
+ "0000079282": {
+  "name": "BROWN & BROWN, INC.",
+  "formerNames": [
+   {
+    "name": "BROWN & BROWN, INC",
+    "from": "2017-11-13T05:00:00.000Z",
+    "to": "2017-11-13T05:00:00.000Z"
+   },
+   {
+    "name": "BROWN & BROWN INC",
+    "from": "1999-08-09T04:00:00.000Z",
+    "to": "2017-11-03T04:00:00.000Z"
+   },
+   {
+    "name": "POE & BROWN INC",
+    "from": "1994-02-14T05:00:00.000Z",
+    "to": "1999-03-15T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:57.002Z"
+ },
+ "0000014693": {
+  "name": "BROWN FORMAN CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:57.537Z"
+ },
+ "0001316835": {
+  "name": "Builders FirstSource, Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:57.891Z"
+ },
+ "0001144519": {
+  "name": "BUNGELTD",
+  "formerNames": [
+   {
+    "name": "BUNGE LTD",
+    "from": "2005-03-01T00:00:00.000Z",
+    "to": "2020-04-09T00:00:00.000Z"
+   },
+   {
+    "name": "Bunge LTD",
+    "from": "2005-03-01T00:00:00.000Z",
+    "to": "2020-04-09T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:58.251Z"
+ },
+ "0001043277": {
+  "name": "C. H. ROBINSON WORLDWIDE, INC.",
+  "formerNames": [
+   {
+    "name": "C H ROBINSON WORLDWIDE INC",
+    "from": "1997-10-09T04:00:00.000Z",
+    "to": "2019-07-02T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:58.405Z"
+ },
+ "0000813672": {
+  "name": "CADENCE DESIGN SYSTEMS INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:58.758Z"
+ },
+ "0000016732": {
+  "name": "CAMPBELL'S Co",
+  "formerNames": [
+   {
+    "name": "CAMPBELL SOUP CO",
+    "from": "1994-12-14T05:00:00.000Z",
+    "to": "2024-11-12T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:59.114Z"
+ },
+ "0000927628": {
+  "name": "CAPITAL ONE FINANCIAL CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:56:59.474Z"
+ },
+ "0000721371": {
+  "name": "CARDINAL HEALTH INC",
+  "formerNames": [
+   {
+    "name": "CARDINAL HEALTH INC",
+    "from": "1994-08-19T04:00:00.000Z",
+    "to": "2026-08-20T04:00:00.000Z"
+   },
+   {
+    "name": "CARDINAL DISTRIBUTION INC",
+    "from": "1994-02-16T05:00:00.000Z",
+    "to": "1994-02-17T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:56:59.836Z"
+ },
+ "0001170010": {
+  "name": "CARMAX INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:00.167Z"
+ },
+ "0000815097": {
+  "name": "Carnival Corp Ltd.",
+  "formerNames": [
+   {
+    "name": "CARNIVAL CORP",
+    "from": "1995-03-21T05:00:00.000Z",
+    "to": "2026-04-29T04:00:00.000Z"
+   },
+   {
+    "name": "CARNIVAL CRUISE LINES INC",
+    "from": "1994-01-21T05:00:00.000Z",
+    "to": "1994-01-21T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:00.531Z"
+ },
+ "0001783180": {
+  "name": "CARRIER GLOBAL Corp",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:00.883Z"
+ },
+ "0001596783": {
+  "name": "Catalent, Inc.",
+  "formerNames": [
+   {
+    "name": "PTS Holdings Corp.",
+    "from": "2014-01-24T00:00:00.000Z",
+    "to": "2014-01-24T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:01.310Z"
+ },
+ "0000018230": {
+  "name": "CATERPILLAR INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:01.587Z"
+ },
+ "0001374310": {
+  "name": "Cboe Global Markets, Inc.",
+  "formerNames": [
+   {
+    "name": "CBOE Holdings, Inc.",
+    "from": "2007-01-25T05:00:00.000Z",
+    "to": "2017-10-13T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:01.934Z"
+ },
+ "0001138118": {
+  "name": "CBRE GROUP, INC.",
+  "formerNames": [
+   {
+    "name": "CB RICHARD ELLIS GROUP INC",
+    "from": "2004-02-18T05:00:00.000Z",
+    "to": "2011-09-09T04:00:00.000Z"
+   },
+   {
+    "name": "CB RICHARD ELLIS SERVICES INC",
+    "from": "2004-02-17T05:00:00.000Z",
+    "to": "2004-02-17T05:00:00.000Z"
+   },
+   {
+    "name": "CBRE HOLDING INC",
+    "from": "2001-07-16T04:00:00.000Z",
+    "to": "2003-12-05T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:02.286Z"
+ },
+ "0001402057": {
+  "name": "CDW Corp",
+  "formerNames": [
+   {
+    "name": "VH Holdings, Inc.",
+    "from": "2007-06-08T04:00:00.000Z",
+    "to": "2007-06-08T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:02.666Z"
+ },
+ "0001140859": {
+  "name": "Cencora, Inc.",
+  "formerNames": [
+   {
+    "name": "AMERISOURCEBERGEN CORP",
+    "from": "2001-10-19T04:00:00.000Z",
+    "to": "2023-08-15T04:00:00.000Z"
+   },
+   {
+    "name": "AMERISOURCE BERGEN CORP",
+    "from": "2001-06-05T04:00:00.000Z",
+    "to": "2001-10-09T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:02.994Z"
+ },
+ "0001071739": {
+  "name": "CENTENE CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:03.350Z"
+ },
+ "0001130310": {
+  "name": "CENTERPOINT ENERGY INC",
+  "formerNames": [
+   {
+    "name": "CENTERPOINT ENERGY INC",
+    "from": "2001-12-18T05:00:00.000Z",
+    "to": "2026-09-09T04:00:00.000Z"
+   },
+   {
+    "name": "RELIANT ENERGY REGCO INC",
+    "from": "2001-09-17T04:00:00.000Z",
+    "to": "2001-09-17T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:03.696Z"
+ },
+ "0000804753": {
+  "name": "CERNER Corp",
+  "formerNames": [
+   {
+    "name": "CERNER CORP /MO/",
+    "from": "1994-02-14T00:00:00.000Z",
+    "to": "2019-07-17T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:04.256Z"
+ },
+ "0001324404": {
+  "name": "CF Industries Holdings, Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:04.389Z"
+ },
+ "0000316709": {
+  "name": "SCHWAB CHARLES CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:04.838Z"
+ },
+ "0000093410": {
+  "name": "CHEVRON CORP",
+  "formerNames": [
+   {
+    "name": "CHEVRONTEXACO CORP",
+    "from": "2001-11-01T05:00:00.000Z",
+    "to": "2005-05-04T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:05.129Z"
+ },
+ "0001058090": {
+  "name": "CHIPOTLE MEXICAN GRILL INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:05.486Z"
+ },
+ "0000896159": {
+  "name": "Chubb Ltd",
+  "formerNames": [
+   {
+    "name": "ACE LTD",
+    "from": "2009-12-17T05:00:00.000Z",
+    "to": "2016-01-15T05:00:00.000Z"
+   },
+   {
+    "name": "ACE Ltd",
+    "from": "2009-12-17T05:00:00.000Z",
+    "to": "2016-01-15T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:05.802Z"
+ },
+ "0000313927": {
+  "name": "CHURCH & DWIGHT CO INC /DE/",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:06.433Z"
+ },
+ "0000020286": {
+  "name": "CINCINNATI FINANCIAL CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:06.495Z"
+ },
+ "0000723254": {
+  "name": "CINTAS CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:06.851Z"
+ },
+ "0000858877": {
+  "name": "CISCO SYSTEMS, INC.",
+  "formerNames": [
+   {
+    "name": "CISCO SYSTEMS, INC.",
+    "from": "2011-10-18T04:00:00.000Z",
+    "to": "2026-09-11T04:00:00.000Z"
+   },
+   {
+    "name": "CISCO SYSTEMS INC",
+    "from": "1995-02-13T05:00:00.000Z",
+    "to": "2011-11-22T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:07.166Z"
+ },
+ "0000831001": {
+  "name": "CITIGROUP INC",
+  "formerNames": [
+   {
+    "name": "CITIGROUP INC",
+    "from": "1994-02-01T05:00:00.000Z",
+    "to": "2026-09-11T04:00:00.000Z"
+   },
+   {
+    "name": "TRAVELERS GROUP INC",
+    "from": "1995-11-13T05:00:00.000Z",
+    "to": "1998-09-10T04:00:00.000Z"
+   },
+   {
+    "name": "TRAVELERS INC",
+    "from": "1994-02-10T05:00:00.000Z",
+    "to": "1995-01-30T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:07.595Z"
+ },
+ "0000759944": {
+  "name": "CITIZENS FINANCIAL GROUP INC/RI",
+  "formerNames": [
+   {
+    "name": "CITIZENS FINANCIAL GROUP INC/DE",
+    "from": "1999-07-01T04:00:00.000Z",
+    "to": "2000-02-08T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:08.082Z"
+ },
+ "0000877890": {
+  "name": "CITRIX SYSTEMS INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:08.368Z"
+ },
+ "0000021076": {
+  "name": "CLOROX CO /DE/",
+  "formerNames": [
+   {
+    "name": "CLOROX CO /DE/",
+    "from": "1994-03-28T05:00:00.000Z",
+    "to": "2026-08-07T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:08.674Z"
+ },
+ "0001156375": {
+  "name": "CME GROUP INC.",
+  "formerNames": [
+   {
+    "name": "CHICAGO MERCANTILE EXCHANGE HOLDINGS INC",
+    "from": "2001-08-07T04:00:00.000Z",
+    "to": "2007-07-13T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:08.967Z"
+ },
+ "0000811156": {
+  "name": "CMS ENERGY CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:09.314Z"
+ },
+ "0001058290": {
+  "name": "COGNIZANT TECHNOLOGY SOLUTIONS CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:09.668Z"
+ },
+ "0000021665": {
+  "name": "COLGATE PALMOLIVE CO",
+  "formerNames": [
+   {
+    "name": "COLGATE PALMOLIVE CO",
+    "from": "1994-05-18T04:00:00.000Z",
+    "to": "2026-08-26T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:10.027Z"
+ },
+ "0001166691": {
+  "name": "COMCAST CORP",
+  "formerNames": [
+   {
+    "name": "AT&T COMCAST CORP",
+    "from": "2002-04-10T04:00:00.000Z",
+    "to": "2002-11-18T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:10.416Z"
+ },
+ "0000028412": {
+  "name": "COMERICA INC",
+  "formerNames": [
+   {
+    "name": "COMERICA INC /NEW/",
+    "from": "1994-02-10T00:00:00.000Z",
+    "to": "2025-08-25T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:10.827Z"
+ },
+ "0000023217": {
+  "name": "CONAGRA BRANDS INC.",
+  "formerNames": [
+   {
+    "name": "CONAGRA FOODS INC /DE/",
+    "from": "2000-10-11T04:00:00.000Z",
+    "to": "2016-10-21T04:00:00.000Z"
+   },
+   {
+    "name": "CONAGRA INC /DE/",
+    "from": "1994-04-22T04:00:00.000Z",
+    "to": "2000-06-30T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:11.075Z"
+ },
+ "0001163165": {
+  "name": "CONOCOPHILLIPS",
+  "formerNames": [
+   {
+    "name": "CORVETTEPORSCHE CORP",
+    "from": "2001-12-07T05:00:00.000Z",
+    "to": "2001-12-07T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:11.448Z"
+ },
+ "0001047862": {
+  "name": "CONSOLIDATED EDISON INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:11.793Z"
+ },
+ "0000016918": {
+  "name": "CONSTELLATION BRANDS, INC.",
+  "formerNames": [
+   {
+    "name": "CONSTELLATION BRANDS INC",
+    "from": "2000-10-13T04:00:00.000Z",
+    "to": "2004-05-05T04:00:00.000Z"
+   },
+   {
+    "name": "CANANDAIGUA BRANDS INC",
+    "from": "1997-12-23T05:00:00.000Z",
+    "to": "2000-01-14T05:00:00.000Z"
+   },
+   {
+    "name": "CANANDAIGUA WINE CO INC",
+    "from": "1994-10-19T04:00:00.000Z",
+    "to": "1997-01-31T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:12.147Z"
+ },
+ "0000900075": {
+  "name": "COPART INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:12.484Z"
+ },
+ "0000024741": {
+  "name": "CORNING INC /NY",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:12.825Z"
+ },
+ "0001175454": {
+  "name": "CORPAY, INC.",
+  "formerNames": [
+   {
+    "name": "FLEETCOR TECHNOLOGIES INC",
+    "from": "2002-06-03T04:00:00.000Z",
+    "to": "2024-03-14T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:13.348Z"
+ },
+ "0001755672": {
+  "name": "Corteva, Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:13.535Z"
+ },
+ "0001057352": {
+  "name": "COSTAR GROUP, INC.",
+  "formerNames": [
+   {
+    "name": "COSTAR GROUP, INC.",
+    "from": "2019-07-23T04:00:00.000Z",
+    "to": "2026-08-21T04:00:00.000Z"
+   },
+   {
+    "name": "COSTAR GROUP INC",
+    "from": "1999-12-10T05:00:00.000Z",
+    "to": "2019-06-25T04:00:00.000Z"
+   },
+   {
+    "name": "REALTY INFORMATION GROUP INC",
+    "from": "1998-07-17T04:00:00.000Z",
+    "to": "1999-05-05T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:13.898Z"
+ },
+ "0000909832": {
+  "name": "COSTCO WHOLESALE CORP /NEW",
+  "formerNames": [
+   {
+    "name": "COSTCO COMPANIES INC",
+    "from": "1997-12-18T05:00:00.000Z",
+    "to": "1999-06-29T04:00:00.000Z"
+   },
+   {
+    "name": "PRICE/COSTCO INC",
+    "from": "1994-01-05T05:00:00.000Z",
+    "to": "1997-01-06T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:14.238Z"
+ },
+ "0000858470": {
+  "name": "Coterra Energy Inc.",
+  "formerNames": [
+   {
+    "name": "CABOT OIL & GAS CORP",
+    "from": "1994-05-12T04:00:00.000Z",
+    "to": "2021-09-29T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:14.699Z"
+ },
+ "0001051470": {
+  "name": "CROWN CASTLE INC.",
+  "formerNames": [
+   {
+    "name": "CROWN CASTLE INTERNATIONAL CORP",
+    "from": "1998-01-08T05:00:00.000Z",
+    "to": "2022-07-25T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:14.942Z"
+ },
+ "0000277948": {
+  "name": "CSX CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:15.301Z"
+ },
+ "0000026172": {
+  "name": "CUMMINS INC",
+  "formerNames": [
+   {
+    "name": "CUMMINS ENGINE CO INC",
+    "from": "1994-03-10T05:00:00.000Z",
+    "to": "2001-08-29T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:15.651Z"
+ },
+ "0000064803": {
+  "name": "CVS HEALTH Corp",
+  "formerNames": [
+   {
+    "name": "CVS CAREMARK CORP",
+    "from": "2006-12-27T05:00:00.000Z",
+    "to": "2014-09-03T04:00:00.000Z"
+   },
+   {
+    "name": "CVS/CAREMARK CORP",
+    "from": "2007-03-23T04:00:00.000Z",
+    "to": "2007-05-08T04:00:00.000Z"
+   },
+   {
+    "name": "CVS CORP",
+    "from": "1997-02-07T05:00:00.000Z",
+    "to": "2007-03-22T04:00:00.000Z"
+   },
+   {
+    "name": "MELVILLE CORP",
+    "from": "1994-03-31T05:00:00.000Z",
+    "to": "1997-01-10T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:16.003Z"
+ },
+ "0000882184": {
+  "name": "HORTON D R INC /DE/",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:16.345Z"
+ },
+ "0000313616": {
+  "name": "DANAHER CORP /DE/",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:16.709Z"
+ },
+ "0000940944": {
+  "name": "DARDEN RESTAURANTS INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:17.086Z"
+ },
+ "0000315189": {
+  "name": "DEERE & CO",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:17.416Z"
+ },
+ "0000027904": {
+  "name": "DELTA AIR LINES, INC.",
+  "formerNames": [
+   {
+    "name": "DELTA AIR LINES INC /DE/",
+    "from": "1994-02-14T00:00:00.000Z",
+    "to": "2019-08-08T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:17.788Z"
+ },
+ "0000818479": {
+  "name": "DENTSPLY SIRONA Inc.",
+  "formerNames": [
+   {
+    "name": "DENTSPLY INTERNATIONAL INC /DE/",
+    "from": "1995-02-13T05:00:00.000Z",
+    "to": "2016-02-29T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:18.116Z"
+ },
+ "0001090012": {
+  "name": "DEVON ENERGY CORP/DE",
+  "formerNames": [
+   {
+    "name": "DEVON ENERGY CORP",
+    "from": "1999-11-12T05:00:00.000Z",
+    "to": "2000-05-31T04:00:00.000Z"
+   },
+   {
+    "name": "DEVON DELAWARE CORP",
+    "from": "1999-08-19T04:00:00.000Z",
+    "to": "1999-08-16T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:18.461Z"
+ },
+ "0001093557": {
+  "name": "DEXCOM INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:18.818Z"
+ },
+ "0001539838": {
+  "name": "Diamondback Energy, Inc.",
+  "formerNames": [
+   {
+    "name": "Diamondback Energy, Inc.",
+    "from": "2012-02-14T05:00:00.000Z",
+    "to": "2026-09-11T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:19.166Z"
+ },
+ "0001297996": {
+  "name": "DIGITAL REALTY TRUST, INC.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:19.520Z"
+ },
+ "0001393612": {
+  "name": "Discover Financial Services",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:19.978Z"
+ },
+ "0001001082": {
+  "name": "DISH Network CORP",
+  "formerNames": [
+   {
+    "name": "ECHOSTAR COMMUNICATIONS CORP",
+    "from": "1996-08-13T00:00:00.000Z",
+    "to": "2008-01-14T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:20.290Z"
+ },
+ "0000029534": {
+  "name": "DOLLAR GENERAL CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:20.592Z"
+ },
+ "0000935703": {
+  "name": "DOLLAR TREE, INC.",
+  "formerNames": [
+   {
+    "name": "DOLLAR TREE INC",
+    "from": "2008-02-01T05:00:00.000Z",
+    "to": "2019-07-12T04:00:00.000Z"
+   },
+   {
+    "name": "DOLLAR TREE STORES INC",
+    "from": "1996-12-09T05:00:00.000Z",
+    "to": "2008-03-28T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:20.976Z"
+ },
+ "0000715957": {
+  "name": "DOMINION ENERGY, INC",
+  "formerNames": [
+   {
+    "name": "DOMINION ENERGY INC /VA/",
+    "from": "2017-05-15T04:00:00.000Z",
+    "to": "2019-10-03T04:00:00.000Z"
+   },
+   {
+    "name": "DOMINION RESOURCES INC /VA/",
+    "from": "1995-02-21T05:00:00.000Z",
+    "to": "2017-05-15T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:21.284Z"
+ },
+ "0001286681": {
+  "name": "DOMINOS PIZZA INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:21.621Z"
+ },
+ "0000029905": {
+  "name": "DOVER Corp",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:21.985Z"
+ },
+ "0001751788": {
+  "name": "DOW INC.",
+  "formerNames": [
+   {
+    "name": "Dow Holdings Inc.",
+    "from": "2018-09-07T04:00:00.000Z",
+    "to": "2019-02-12T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:22.331Z"
+ },
+ "0000936340": {
+  "name": "DTE ENERGY CO",
+  "formerNames": [
+   {
+    "name": "DTE HOLDINGS INC",
+    "from": "1995-03-09T05:00:00.000Z",
+    "to": "1995-02-01T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:22.679Z"
+ },
+ "0001326160": {
+  "name": "Duke Energy CORP",
+  "formerNames": [
+   {
+    "name": "Duke Energy Holding Corp.",
+    "from": "2005-07-01T04:00:00.000Z",
+    "to": "2006-04-03T04:00:00.000Z"
+   },
+   {
+    "name": "Deer Holding Corp.",
+    "from": "2005-05-09T04:00:00.000Z",
+    "to": "2005-06-22T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:23.073Z"
+ },
+ "0000783280": {
+  "name": "DUKE REALTY CORP",
+  "formerNames": [
+   {
+    "name": "DUKE WEEKS REALTY CORP",
+    "from": "1999-11-12T00:00:00.000Z",
+    "to": "2001-04-18T00:00:00.000Z"
+   },
+   {
+    "name": "DUKE REALTY INVESTMENTS INC",
+    "from": "1994-08-26T00:00:00.000Z",
+    "to": "1999-05-04T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:23.505Z"
+ },
+ "0001666700": {
+  "name": "DuPont de Nemours, Inc.",
+  "formerNames": [
+   {
+    "name": "DowDuPont Inc.",
+    "from": "2016-03-01T05:00:00.000Z",
+    "to": "2019-05-31T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:23.741Z"
+ },
+ "0001688568": {
+  "name": "DXC Technology Co",
+  "formerNames": [
+   {
+    "name": "Everett SpinCo, Inc.",
+    "from": "2016-11-02T04:00:00.000Z",
+    "to": "2017-03-31T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:24.171Z"
+ },
+ "0000915389": {
+  "name": "EASTMAN CHEMICAL CO",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:24.580Z"
+ },
+ "0001551182": {
+  "name": "Eaton Corp plc",
+  "formerNames": [
+   {
+    "name": "Eaton Corp Ltd",
+    "from": "2012-06-22T04:00:00.000Z",
+    "to": "2012-11-16T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:24.794Z"
+ },
+ "0000031462": {
+  "name": "ECOLAB INC.",
+  "formerNames": [
+   {
+    "name": "ECOLAB INC",
+    "from": "1994-02-10T05:00:00.000Z",
+    "to": "2015-09-10T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:25.241Z"
+ },
+ "0000827052": {
+  "name": "EDISON INTERNATIONAL",
+  "formerNames": [
+   {
+    "name": "SCECORP",
+    "from": "1994-02-14T05:00:00.000Z",
+    "to": "1996-01-12T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:25.518Z"
+ },
+ "0001099800": {
+  "name": "Edwards Lifesciences Corp",
+  "formerNames": [
+   {
+    "name": "CVG CONTROLLED INC",
+    "from": "1999-12-08T05:00:00.000Z",
+    "to": "2000-01-21T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:25.858Z"
+ },
+ "0000712515": {
+  "name": "ELECTRONIC ARTS INC.",
+  "formerNames": [
+   {
+    "name": "ELECTRONIC ARTS INC",
+    "from": "1994-09-08T04:00:00.000Z",
+    "to": "2007-09-05T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:26.307Z"
+ },
+ "0001156039": {
+  "name": "Elevance Health, Inc.",
+  "formerNames": [
+   {
+    "name": "Anthem, Inc.",
+    "from": "2014-12-02T05:00:00.000Z",
+    "to": "2022-06-24T04:00:00.000Z"
+   },
+   {
+    "name": "WELLPOINT, INC",
+    "from": "2010-01-06T05:00:00.000Z",
+    "to": "2014-11-12T05:00:00.000Z"
+   },
+   {
+    "name": "WELLPOINT INC",
+    "from": "2004-11-30T05:00:00.000Z",
+    "to": "2009-12-21T05:00:00.000Z"
+   },
+   {
+    "name": "ANTHEM INC",
+    "from": "2001-12-17T05:00:00.000Z",
+    "to": "2004-11-30T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:26.558Z"
+ },
+ "0000059478": {
+  "name": "ELI LILLY & Co",
+  "formerNames": [
+   {
+    "name": "LILLY ELI & CO",
+    "from": "1994-10-26T04:00:00.000Z",
+    "to": "2019-10-25T04:00:00.000Z"
+   },
+   {
+    "name": "LILLY ELI & CO ET AL",
+    "from": "1994-07-27T04:00:00.000Z",
+    "to": "1994-10-14T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:26.918Z"
+ },
+ "0000032604": {
+  "name": "EMERSON ELECTRIC CO",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:27.265Z"
+ },
+ "0001463101": {
+  "name": "Enphase Energy, Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:27.613Z"
+ },
+ "0000065984": {
+  "name": "ENTERGY CORP /DE/",
+  "formerNames": [
+   {
+    "name": "ENTERGY CORP/FL",
+    "from": "1994-02-14T05:00:00.000Z",
+    "to": "1994-02-09T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:27.967Z"
+ },
+ "0000821189": {
+  "name": "EOG RESOURCES INC",
+  "formerNames": [
+   {
+    "name": "ENRON OIL & GAS CO",
+    "from": "1994-02-08T05:00:00.000Z",
+    "to": "1999-08-10T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:28.313Z"
+ },
+ "0000033185": {
+  "name": "EQUIFAX INC",
+  "formerNames": [
+   {
+    "name": "EQUIFAX INC",
+    "from": "1994-02-14T05:00:00.000Z",
+    "to": "2026-09-08T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:28.664Z"
+ },
+ "0001101239": {
+  "name": "EQUINIX INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:29.015Z"
+ },
+ "0000920522": {
+  "name": "ESSEX PROPERTY TRUST, INC.",
+  "formerNames": [
+   {
+    "name": "ESSEX PORTFOLIO LP",
+    "from": "2018-12-11T05:00:00.000Z",
+    "to": "2018-12-11T05:00:00.000Z"
+   },
+   {
+    "name": "ESSEX PROPERTY TRUST INC",
+    "from": "1996-08-14T04:00:00.000Z",
+    "to": "2018-12-10T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:29.364Z"
+ },
+ "0001001250": {
+  "name": "ESTEE LAUDER COMPANIES INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:29.722Z"
+ },
+ "0001095073": {
+  "name": "EVEREST GROUP, LTD.",
+  "formerNames": [
+   {
+    "name": "EVEREST RE GROUP LTD",
+    "from": "2000-04-10T04:00:00.000Z",
+    "to": "2023-07-06T04:00:00.000Z"
+   },
+   {
+    "name": "EVEREST REINSURANCE GROUP LTD",
+    "from": "1999-12-22T05:00:00.000Z",
+    "to": "2000-03-08T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:30.065Z"
+ },
+ "0001711269": {
+  "name": "Evergy, Inc.",
+  "formerNames": [
+   {
+    "name": "Monarch Energy Holding, Inc.",
+    "from": "2017-07-10T04:00:00.000Z",
+    "to": "2017-11-16T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:30.434Z"
+ },
+ "0000072741": {
+  "name": "EVERSOURCE ENERGY",
+  "formerNames": [
+   {
+    "name": "NORTHEAST UTILITIES",
+    "from": "1994-07-28T04:00:00.000Z",
+    "to": "2015-04-29T04:00:00.000Z"
+   },
+   {
+    "name": "NORTHEAST UTILITIES SYSTEM",
+    "from": "1996-11-27T05:00:00.000Z",
+    "to": "2004-11-30T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:30.794Z"
+ },
+ "0001109357": {
+  "name": "EXELON CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:31.129Z"
+ },
+ "0001324424": {
+  "name": "Expedia Group, Inc.",
+  "formerNames": [
+   {
+    "name": "Expedia, Inc.",
+    "from": "2005-04-25T04:00:00.000Z",
+    "to": "2018-03-20T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:31.515Z"
+ },
+ "0000746515": {
+  "name": "EXPEDITORS INTERNATIONAL OF WASHINGTON INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:31.898Z"
+ },
+ "0001289490": {
+  "name": "Extra Space Storage Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:32.178Z"
+ },
+ "0000034088": {
+  "name": "EXXON MOBIL CORP",
+  "formerNames": [
+   {
+    "name": "EXXON CORP",
+    "from": "1994-05-11T04:00:00.000Z",
+    "to": "1999-11-30T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:32.708Z"
+ },
+ "0001048695": {
+  "name": "F5, INC.",
+  "formerNames": [
+   {
+    "name": "F5 NETWORKS, INC.",
+    "from": "2019-07-03T04:00:00.000Z",
+    "to": "2021-11-12T05:00:00.000Z"
+   },
+   {
+    "name": "F5 NETWORKS INC",
+    "from": "1999-06-03T04:00:00.000Z",
+    "to": "2019-05-31T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:32.939Z"
+ },
+ "0000815556": {
+  "name": "FASTENAL CO",
+  "formerNames": [
+   {
+    "name": "FASTENAL COMPANY",
+    "from": "1995-03-20T05:00:00.000Z",
+    "to": "2002-03-04T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:33.256Z"
+ },
+ "0000034903": {
+  "name": "FEDERAL REALTY INVESTMENT TRUST",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:33.599Z"
+ },
+ "0001048911": {
+  "name": "FEDEX CORP",
+  "formerNames": [
+   {
+    "name": "FDX CORP",
+    "from": "1997-11-04T05:00:00.000Z",
+    "to": "2000-02-10T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:33.949Z"
+ },
+ "0001136893": {
+  "name": "Fidelity National Information Services, Inc.",
+  "formerNames": [
+   {
+    "name": "CERTEGY INC",
+    "from": "2001-07-20T04:00:00.000Z",
+    "to": "2006-02-01T05:00:00.000Z"
+   },
+   {
+    "name": "EQUIFAX PS INC",
+    "from": "2001-04-03T04:00:00.000Z",
+    "to": "2001-05-18T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:34.301Z"
+ },
+ "0000035527": {
+  "name": "FIFTH THIRD BANCORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:34.641Z"
+ },
+ "0001132979": {
+  "name": "FIRST REPUBLIC BANK",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:35.081Z"
+ },
+ "0001031296": {
+  "name": "FIRSTENERGY CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:35.344Z"
+ },
+ "0000798354": {
+  "name": "FISERV INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:35.718Z"
+ },
+ "0000030625": {
+  "name": "FLOWSERVE CORP",
+  "formerNames": [
+   {
+    "name": "DURCO INTERNATIONAL INC",
+    "from": "1997-07-23T04:00:00.000Z",
+    "to": "1997-05-15T04:00:00.000Z"
+   },
+   {
+    "name": "DURIRON CO INC",
+    "from": "1994-05-13T04:00:00.000Z",
+    "to": "1997-03-14T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:36.236Z"
+ },
+ "0000037785": {
+  "name": "FMC CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:36.404Z"
+ },
+ "0000037996": {
+  "name": "FORD MOTOR CO",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:36.768Z"
+ },
+ "0001262039": {
+  "name": "Fortinet, Inc.",
+  "formerNames": [
+   {
+    "name": "FORTINET INC",
+    "from": "2003-08-29T04:00:00.000Z",
+    "to": "2019-05-08T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:37.109Z"
+ },
+ "0001659166": {
+  "name": "Fortive Corp",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:37.463Z"
+ },
+ "0001519751": {
+  "name": "Fortune Brands Innovations, Inc.",
+  "formerNames": [
+   {
+    "name": "Fortune Brands Home & Security, Inc.",
+    "from": "2011-06-02T04:00:00.000Z",
+    "to": "2022-12-14T05:00:00.000Z"
+   },
+   {
+    "name": "Fortune Brands Home & Security LLC",
+    "from": "2011-05-06T04:00:00.000Z",
+    "to": "2011-08-22T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:37.907Z"
+ },
+ "0001754301": {
+  "name": "Fox Corp",
+  "formerNames": [
+   {
+    "name": "NEW FOX, INC.",
+    "from": "2018-10-09T04:00:00.000Z",
+    "to": "2018-10-09T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:38.176Z"
+ },
+ "0000038777": {
+  "name": "FRANKLIN TEMPLETON INC",
+  "formerNames": [
+   {
+    "name": "FRANKLIN RESOURCES INC",
+    "from": "1994-11-10T05:00:00.000Z",
+    "to": "2026-08-14T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:38.520Z"
+ },
+ "0000831259": {
+  "name": "FREEPORT-MCMORAN INC",
+  "formerNames": [
+   {
+    "name": "FREEPORT MCMORAN COPPER & GOLD INC",
+    "from": "1994-01-12T05:00:00.000Z",
+    "to": "2014-07-02T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:38.865Z"
+ },
+ "0000039911": {
+  "name": "GAP INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:39.235Z"
+ },
+ "0001121788": {
+  "name": "GARMIN LTD",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:39.582Z"
+ },
+ "0000749251": {
+  "name": "GARTNER INC",
+  "formerNames": [
+   {
+    "name": "GARTNER GROUP INC",
+    "from": "1996-06-11T04:00:00.000Z",
+    "to": "2001-02-08T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:39.943Z"
+ },
+ "0000040545": {
+  "name": "GENERAL ELECTRIC CO",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:40.301Z"
+ },
+ "0000040533": {
+  "name": "GENERAL DYNAMICS CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:40.640Z"
+ },
+ "0000040704": {
+  "name": "GENERAL MILLS INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:41.003Z"
+ },
+ "0001467858": {
+  "name": "General Motors Co",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:41.367Z"
+ },
+ "0000040987": {
+  "name": "GENUINE PARTS CO",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:41.684Z"
+ },
+ "0000882095": {
+  "name": "GILEAD SCIENCES, INC.",
+  "formerNames": [
+   {
+    "name": "GILEAD SCIENCES INC",
+    "from": "1994-02-14T05:00:00.000Z",
+    "to": "2022-02-17T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:42.031Z"
+ },
+ "0001123360": {
+  "name": "GLOBAL PAYMENTS INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:42.415Z"
+ },
+ "0000320335": {
+  "name": "GLOBE LIFE INC.",
+  "formerNames": [
+   {
+    "name": "TORCHMARK CORP",
+    "from": "1994-02-22T05:00:00.000Z",
+    "to": "2019-08-02T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:42.742Z"
+ },
+ "0000886982": {
+  "name": "GOLDMAN SACHS GROUP INC",
+  "formerNames": [
+   {
+    "name": "GOLDMAN SACHS GROUP INC/",
+    "from": "2001-02-07T05:00:00.000Z",
+    "to": "2008-03-04T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:43.115Z"
+ },
+ "0000045012": {
+  "name": "HALLIBURTON CO",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:43.441Z"
+ },
+ "0001359841": {
+  "name": "Hanesbrands Inc.",
+  "formerNames": [
+   {
+    "name": "Hanesbrands Inc.",
+    "from": "2006-05-24T00:00:00.000Z",
+    "to": "2026-02-12T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:43.865Z"
+ },
+ "0000046080": {
+  "name": "HASBRO, INC.",
+  "formerNames": [
+   {
+    "name": "HASBRO INC",
+    "from": "1994-11-09T05:00:00.000Z",
+    "to": "2019-07-02T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:44.143Z"
+ },
+ "0000860730": {
+  "name": "HCA Healthcare, Inc.",
+  "formerNames": [
+   {
+    "name": "HCA Holdings, Inc.",
+    "from": "2010-06-03T04:00:00.000Z",
+    "to": "2017-05-05T04:00:00.000Z"
+   },
+   {
+    "name": "HCA INC/TN",
+    "from": "2001-08-07T04:00:00.000Z",
+    "to": "2010-11-24T05:00:00.000Z"
+   },
+   {
+    "name": "HCA THE HEALTHCARE CO",
+    "from": "2001-05-30T04:00:00.000Z",
+    "to": "2001-05-21T04:00:00.000Z"
+   },
+   {
+    "name": "HCA-THE HEALTHCARE CO",
+    "from": "2000-09-18T04:00:00.000Z",
+    "to": "2001-02-14T05:00:00.000Z"
+   },
+   {
+    "name": "COLUMBIA HCA HEALTHCARE CORP",
+    "from": "2000-05-26T04:00:00.000Z",
+    "to": "2000-05-19T04:00:00.000Z"
+   },
+   {
+    "name": "COLUMBIA HCA HEALTHCARE CORP/",
+    "from": "1994-05-16T04:00:00.000Z",
+    "to": "2000-02-16T05:00:00.000Z"
+   },
+   {
+    "name": "COLUMBIA HEALTHCARE CORP",
+    "from": "1994-02-14T05:00:00.000Z",
+    "to": "1994-03-01T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:44.498Z"
+ },
+ "0000765880": {
+  "name": "HEALTHPEAK PROPERTIES, INC.",
+  "formerNames": [
+   {
+    "name": "HCP, INC.",
+    "from": "2007-09-20T04:00:00.000Z",
+    "to": "2019-10-01T04:00:00.000Z"
+   },
+   {
+    "name": "HEALTH CARE PROPERTY INVESTORS INC",
+    "from": "1994-03-28T05:00:00.000Z",
+    "to": "2007-09-10T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:44.859Z"
+ },
+ "0001000228": {
+  "name": "HENRY SCHEIN INC",
+  "formerNames": [
+   {
+    "name": "SCHEIN HENRY INC",
+    "from": "1996-05-13T04:00:00.000Z",
+    "to": "2006-06-19T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:45.217Z"
+ },
+ "0000004447": {
+  "name": "HESS CORP",
+  "formerNames": [
+   {
+    "name": "AMERADA HESS CORP",
+    "from": "1994-05-12T00:00:00.000Z",
+    "to": "2006-05-02T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:45.643Z"
+ },
+ "0001645590": {
+  "name": "Hewlett Packard Enterprise Co",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:45.912Z"
+ },
+ "0000047217": {
+  "name": "HP INC",
+  "formerNames": [
+   {
+    "name": "HEWLETT PACKARD CO",
+    "from": "1994-01-26T05:00:00.000Z",
+    "to": "2015-10-23T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:49.044Z"
+ },
+ "0001915657": {
+  "name": "HF Sinclair Corp",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:46.618Z"
+ },
+ "0001585689": {
+  "name": "Hilton Worldwide Holdings Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:46.986Z"
+ },
+ "0000859737": {
+  "name": "HOLOGIC INC",
+  "formerNames": [
+   {
+    "name": "HOLOGIC INC",
+    "from": "1995-05-08T00:00:00.000Z",
+    "to": "2026-04-30T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:47.318Z"
+ },
+ "0000773840": {
+  "name": "HONEYWELL INTERNATIONAL INC",
+  "formerNames": [
+   {
+    "name": "ALLIEDSIGNAL INC",
+    "from": "1994-11-07T05:00:00.000Z",
+    "to": "1999-11-12T05:00:00.000Z"
+   },
+   {
+    "name": "ALLIED SIGNAL INC",
+    "from": "1994-06-23T04:00:00.000Z",
+    "to": "1994-08-15T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:47.672Z"
+ },
+ "0000048465": {
+  "name": "HORMEL FOODS CORP /DE/",
+  "formerNames": [
+   {
+    "name": "HORMEL GEO A & CO",
+    "from": "1994-06-14T04:00:00.000Z",
+    "to": "1995-03-14T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:48.025Z"
+ },
+ "0001070750": {
+  "name": "HOST HOTELS & RESORTS, INC.",
+  "formerNames": [
+   {
+    "name": "HOST MARRIOTT CORP/",
+    "from": "1998-12-31T05:00:00.000Z",
+    "to": "2006-04-14T04:00:00.000Z"
+   },
+   {
+    "name": "HMC MERGER CORP",
+    "from": "1998-10-02T04:00:00.000Z",
+    "to": "1998-11-10T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:48.396Z"
+ },
+ "0000004281": {
+  "name": "Howmet Aerospace Inc.",
+  "formerNames": [
+   {
+    "name": "Arconic Inc.",
+    "from": "2016-11-01T04:00:00.000Z",
+    "to": "2020-03-26T04:00:00.000Z"
+   },
+   {
+    "name": "ALCOA INC.",
+    "from": "2014-10-09T04:00:00.000Z",
+    "to": "2016-10-27T04:00:00.000Z"
+   },
+   {
+    "name": "ALCOA INC",
+    "from": "1999-02-10T05:00:00.000Z",
+    "to": "2014-10-03T04:00:00.000Z"
+   },
+   {
+    "name": "ALUMINUM CO OF AMERICA",
+    "from": "1994-02-08T05:00:00.000Z",
+    "to": "1999-01-04T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:48.732Z"
+ },
+ "0000049071": {
+  "name": "HUMANA INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:49.434Z"
+ },
+ "0000049196": {
+  "name": "HUNTINGTON BANCSHARES INC /MD/",
+  "formerNames": [
+   {
+    "name": "HUNTINGTON BANCSHARES INC /MD/",
+    "from": "2021-03-26T04:00:00.000Z",
+    "to": "2026-09-10T04:00:00.000Z"
+   },
+   {
+    "name": "HUNTINGTON BANCSHARES INC/MD",
+    "from": "1994-02-14T05:00:00.000Z",
+    "to": "2021-03-12T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:49.782Z"
+ },
+ "0001501585": {
+  "name": "HUNTINGTON INGALLS INDUSTRIES, INC.",
+  "formerNames": [
+   {
+    "name": "HUNTINGTON INGALLS INDUSTRIES, INC.",
+    "from": "2010-12-09T05:00:00.000Z",
+    "to": "2026-08-11T04:00:00.000Z"
+   },
+   {
+    "name": "New Ships, Inc.",
+    "from": "2010-10-15T04:00:00.000Z",
+    "to": "2010-11-24T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:50.132Z"
+ },
+ "0000051143": {
+  "name": "INTERNATIONAL BUSINESS MACHINES CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:50.498Z"
+ },
+ "0000832101": {
+  "name": "IDEX CORP /DE/",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:50.851Z"
+ },
+ "0000874716": {
+  "name": "IDEXX LABORATORIES INC /DE",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:51.189Z"
+ },
+ "0001598014": {
+  "name": "IHS Markit Ltd.",
+  "formerNames": [
+   {
+    "name": "Markit Ltd.",
+    "from": "2014-01-27T00:00:00.000Z",
+    "to": "2016-07-11T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:51.615Z"
+ },
+ "0000049826": {
+  "name": "ILLINOIS TOOL WORKS INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:51.887Z"
+ },
+ "0001110803": {
+  "name": "ILLUMINA, INC.",
+  "formerNames": [
+   {
+    "name": "ILLUMINA INC",
+    "from": "2000-04-14T04:00:00.000Z",
+    "to": "2019-08-19T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:52.340Z"
+ },
+ "0000879169": {
+  "name": "INCYTE CORP",
+  "formerNames": [
+   {
+    "name": "INCYTE INC",
+    "from": "2003-03-28T05:00:00.000Z",
+    "to": "2003-03-28T05:00:00.000Z"
+   },
+   {
+    "name": "INCYTE GENOMICS INC",
+    "from": "2000-08-03T04:00:00.000Z",
+    "to": "2003-02-25T05:00:00.000Z"
+   },
+   {
+    "name": "INCYTE PHARMACEUTICALS INC",
+    "from": "1994-06-07T04:00:00.000Z",
+    "to": "2000-04-18T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:52.616Z"
+ },
+ "0001466258": {
+  "name": "Trane Technologies plc",
+  "formerNames": [
+   {
+    "name": "Ingersoll-Rand plc",
+    "from": "2009-07-01T04:00:00.000Z",
+    "to": "2020-02-24T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:52.939Z"
+ },
+ "0000050863": {
+  "name": "INTEL CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:53.299Z"
+ },
+ "0001571949": {
+  "name": "Intercontinental Exchange, Inc.",
+  "formerNames": [
+   {
+    "name": "IntercontinentalExchange Group, Inc.",
+    "from": "2013-03-20T04:00:00.000Z",
+    "to": "2014-05-29T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:53.651Z"
+ },
+ "0000051253": {
+  "name": "INTERNATIONAL FLAVORS & FRAGRANCES INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:54.015Z"
+ },
+ "0000051434": {
+  "name": "INTERNATIONAL PAPER CO /NEW/",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:54.362Z"
+ },
+ "0000051644": {
+  "name": "INTERPUBLIC GROUP OF COMPANIES, INC.",
+  "formerNames": [
+   {
+    "name": "INTERPUBLIC GROUP OF COMPANIES INC",
+    "from": "1994-02-09T00:00:00.000Z",
+    "to": "2004-05-20T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:54.808Z"
+ },
+ "0000896878": {
+  "name": "INTUIT INC.",
+  "formerNames": [
+   {
+    "name": "INTUIT INC",
+    "from": "1996-10-17T04:00:00.000Z",
+    "to": "2023-03-08T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:55.157Z"
+ },
+ "0001035267": {
+  "name": "INTUITIVE SURGICAL INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:55.416Z"
+ },
+ "0000914208": {
+  "name": "Invesco Ltd.",
+  "formerNames": [
+   {
+    "name": "Invesco Asset Management Deutschland GMBH",
+    "from": "2021-11-08T05:00:00.000Z",
+    "to": "2021-11-08T05:00:00.000Z"
+   },
+   {
+    "name": "Invesco Ltd",
+    "from": "2008-05-09T04:00:00.000Z",
+    "to": "2008-05-16T04:00:00.000Z"
+   },
+   {
+    "name": "INVESCO PLC/LONDON/",
+    "from": "2007-05-31T04:00:00.000Z",
+    "to": "2007-12-04T05:00:00.000Z"
+   },
+   {
+    "name": "AMVESCAP PLC/LONDON/",
+    "from": "1999-12-23T05:00:00.000Z",
+    "to": "2007-05-24T04:00:00.000Z"
+   },
+   {
+    "name": "AMVESCAP /LONDON/",
+    "from": "1999-10-28T04:00:00.000Z",
+    "to": "1999-12-17T05:00:00.000Z"
+   },
+   {
+    "name": "INVESCO PLC /LONDON",
+    "from": "1994-01-07T05:00:00.000Z",
+    "to": "1994-01-07T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:55.758Z"
+ },
+ "0001111928": {
+  "name": "IPG PHOTONICS CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:56.229Z"
+ },
+ "0001478242": {
+  "name": "IQVIA HOLDINGS INC.",
+  "formerNames": [
+   {
+    "name": "Quintiles IMS Holdings, Inc.",
+    "from": "2016-10-03T04:00:00.000Z",
+    "to": "2017-11-03T04:00:00.000Z"
+   },
+   {
+    "name": "Quintiles Transnational Holdings Inc.",
+    "from": "2009-12-18T05:00:00.000Z",
+    "to": "2016-09-22T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:56.466Z"
+ },
+ "0001020569": {
+  "name": "IRON MOUNTAIN INC",
+  "formerNames": [
+   {
+    "name": "IRON MOUNTAIN INC/PA",
+    "from": "2000-02-14T05:00:00.000Z",
+    "to": "2005-06-09T04:00:00.000Z"
+   },
+   {
+    "name": "PIERCE LEAHY CORP",
+    "from": "1996-11-13T05:00:00.000Z",
+    "to": "1999-02-16T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:56.835Z"
+ },
+ "0000728535": {
+  "name": "HUNT J B TRANSPORT SERVICES INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:57:57.167Z"
+ },
+ "0000898293": {
+  "name": "JABIL INC",
+  "formerNames": [
+   {
+    "name": "JABIL CIRCUIT INC",
+    "from": "1996-07-15T04:00:00.000Z",
+    "to": "2017-06-05T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:57.782Z"
+ },
+ "0000779152": {
+  "name": "JACK HENRY & ASSOCIATES INC",
+  "formerNames": [
+   {
+    "name": "HENRY JACK & ASSOCIATES INC",
+    "from": "1995-11-14T05:00:00.000Z",
+    "to": "2023-03-16T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:57.945Z"
+ },
+ "0000052988": {
+  "name": "JACOBS SOLUTIONS INC.",
+  "formerNames": [
+   {
+    "name": "JACOBS ENGINEERING GROUP INC /DE/",
+    "from": "1994-05-12T04:00:00.000Z",
+    "to": "2022-08-19T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:58.219Z"
+ },
+ "0000200406": {
+  "name": "JOHNSON & JOHNSON",
+  "formerNames": [
+   {
+    "name": "JOHNSON & JOHNSON ET AL",
+    "from": "1995-10-06T04:00:00.000Z",
+    "to": "1996-01-23T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:58.753Z"
+ },
+ "0000833444": {
+  "name": "Johnson Controls International plc",
+  "formerNames": [
+   {
+    "name": "TYCO INTERNATIONAL plc",
+    "from": "2014-11-17T05:00:00.000Z",
+    "to": "2016-09-07T04:00:00.000Z"
+   },
+   {
+    "name": "TYCO INTERNATIONAL LTD",
+    "from": "2010-03-08T05:00:00.000Z",
+    "to": "2014-11-14T05:00:00.000Z"
+   },
+   {
+    "name": "TYCO INTERNATIONAL LTD /BER/",
+    "from": "1997-08-05T04:00:00.000Z",
+    "to": "2010-04-07T04:00:00.000Z"
+   },
+   {
+    "name": "ADT LIMITED",
+    "from": "1995-02-15T05:00:00.000Z",
+    "to": "1997-07-08T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:59.023Z"
+ },
+ "0000019617": {
+  "name": "JPMORGAN CHASE & CO",
+  "formerNames": [
+   {
+    "name": "JPMORGAN CHASE & CO",
+    "from": "2009-02-02T05:00:00.000Z",
+    "to": "2026-09-11T04:00:00.000Z"
+   },
+   {
+    "name": "J P MORGAN CHASE & CO",
+    "from": "2001-02-08T05:00:00.000Z",
+    "to": "2011-10-06T04:00:00.000Z"
+   },
+   {
+    "name": "CHASE MANHATTAN CORP /DE/",
+    "from": "1996-10-17T04:00:00.000Z",
+    "to": "2000-11-21T05:00:00.000Z"
+   },
+   {
+    "name": "CHEMICAL BANKING CORP",
+    "from": "1994-02-02T05:00:00.000Z",
+    "to": "1996-03-28T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:59.319Z"
+ },
+ "0001043604": {
+  "name": "JUNIPER NETWORKS INC",
+  "formerNames": [
+   {
+    "name": "JUNIPER NETWORKS INC",
+    "from": "1999-06-04T00:00:00.000Z",
+    "to": "2025-07-14T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:57:59.754Z"
+ },
+ "0000054480": {
+  "name": "KANSAS CITY SOUTHERN",
+  "formerNames": [
+   {
+    "name": "KANSAS CITY SOUTHERN INDUSTRIES INC",
+    "from": "1994-11-14T00:00:00.000Z",
+    "to": "2002-05-02T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:00.158Z"
+ },
+ "0000055067": {
+  "name": "KELLANOVA",
+  "formerNames": [
+   {
+    "name": "KELLOGG CO",
+    "from": "1994-04-29T00:00:00.000Z",
+    "to": "2023-09-28T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:00.449Z"
+ },
+ "0000091576": {
+  "name": "KEYCORP /NEW/",
+  "formerNames": [
+   {
+    "name": "KEYCORP/NEW",
+    "from": "1994-08-17T04:00:00.000Z",
+    "to": "1995-02-14T05:00:00.000Z"
+   },
+   {
+    "name": "SOCIETY CORP",
+    "from": "1994-02-15T05:00:00.000Z",
+    "to": "1994-04-12T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:00.716Z"
+ },
+ "0001601046": {
+  "name": "Keysight Technologies, Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:01.057Z"
+ },
+ "0000055785": {
+  "name": "KIMBERLY CLARK CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:01.399Z"
+ },
+ "0000879101": {
+  "name": "KIMCO REALTY CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:01.758Z"
+ },
+ "0001506307": {
+  "name": "KINDER MORGAN, INC.",
+  "formerNames": [
+   {
+    "name": "Kinder Morgan Holdco LLC",
+    "from": "2010-11-23T05:00:00.000Z",
+    "to": "2011-02-11T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:02.101Z"
+ },
+ "0000319201": {
+  "name": "KLA CORP",
+  "formerNames": [
+   {
+    "name": "KLA TENCOR CORP",
+    "from": "1997-09-10T04:00:00.000Z",
+    "to": "2019-07-03T04:00:00.000Z"
+   },
+   {
+    "name": "KLA INSTRUMENTS CORP",
+    "from": "1994-01-26T05:00:00.000Z",
+    "to": "1997-02-11T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:02.463Z"
+ },
+ "0001637459": {
+  "name": "Kraft Heinz Co",
+  "formerNames": [
+   {
+    "name": "H.J. Heinz Holding Corp",
+    "from": "2015-03-25T04:00:00.000Z",
+    "to": "2015-07-01T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:02.820Z"
+ },
+ "0000056873": {
+  "name": "KROGER CO",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:03.160Z"
+ },
+ "0000202058": {
+  "name": "L3HARRIS TECHNOLOGIES, INC. /DE/",
+  "formerNames": [
+   {
+    "name": "HARRIS CORP /DE/",
+    "from": "1994-09-09T04:00:00.000Z",
+    "to": "2019-06-25T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:03.518Z"
+ },
+ "0000920148": {
+  "name": "LABCORP HOLDINGS INC.",
+  "formerNames": [
+   {
+    "name": "LABORATORY CORP OF AMERICA HOLDINGS",
+    "from": "1995-09-26T04:00:00.000Z",
+    "to": "2024-05-16T04:00:00.000Z"
+   },
+   {
+    "name": "NATIONAL HEALTH LABORATORIES HOLDINGS INC",
+    "from": "1994-07-08T04:00:00.000Z",
+    "to": "1995-02-13T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:03.882Z"
+ },
+ "0000707549": {
+  "name": "LAM RESEARCH CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:04.231Z"
+ },
+ "0001679273": {
+  "name": "Lamb Weston Holdings, Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:04.585Z"
+ },
+ "0001300514": {
+  "name": "LAS VEGAS SANDS CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:04.931Z"
+ },
+ "0000058492": {
+  "name": "LEGGETT & PLATT INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:05.403Z"
+ },
+ "0001336920": {
+  "name": "Leidos Holdings, Inc.",
+  "formerNames": [
+   {
+    "name": "SAIC, Inc.",
+    "from": "2005-09-01T04:00:00.000Z",
+    "to": "2013-09-27T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:05.633Z"
+ },
+ "0000920760": {
+  "name": "LENNAR CORP /NEW/",
+  "formerNames": [
+   {
+    "name": "PACIFIC GREYSTONE CORP /DE/",
+    "from": "1996-06-27T04:00:00.000Z",
+    "to": "1997-09-26T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:05.980Z"
+ },
+ "0000059558": {
+  "name": "LINCOLN NATIONAL CORP",
+  "formerNames": [
+   {
+    "name": "LINCOLN NATIONAL CORP ET AL",
+    "from": "1994-08-01T04:00:00.000Z",
+    "to": "1994-08-16T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:06.328Z"
+ },
+ "0001707925": {
+  "name": "LINDE PLC",
+  "formerNames": [
+   {
+    "name": "ZAMALIGHT PLC",
+    "from": "2017-06-01T04:00:00.000Z",
+    "to": "2017-07-12T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:06.682Z"
+ },
+ "0001335258": {
+  "name": "Live Nation Entertainment, Inc.",
+  "formerNames": [
+   {
+    "name": "Live Nation, Inc.",
+    "from": "2005-09-09T04:00:00.000Z",
+    "to": "2010-01-26T05:00:00.000Z"
+   },
+   {
+    "name": "CCE Spinco, Inc.",
+    "from": "2005-08-10T04:00:00.000Z",
+    "to": "2006-01-10T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:07.048Z"
+ },
+ "0001065696": {
+  "name": "LKQ CORP",
+  "formerNames": [
+   {
+    "name": "LKQ CORP",
+    "from": "2003-07-28T04:00:00.000Z",
+    "to": "2026-09-02T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:07.505Z"
+ },
+ "0000936468": {
+  "name": "LOCKHEED MARTIN CORP",
+  "formerNames": [
+   {
+    "name": "LOCKHEED MARTIN CORP",
+    "from": "1995-03-09T00:00:00.000Z",
+    "to": "2026-08-28T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:07.735Z"
+ },
+ "0000060086": {
+  "name": "LOEWS CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:08.116Z"
+ },
+ "0000060667": {
+  "name": "LOWES COMPANIES INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:08.436Z"
+ },
+ "0000018926": {
+  "name": "Lumen Technologies, Inc.",
+  "formerNames": [
+   {
+    "name": "CENTURYLINK, INC",
+    "from": "2010-11-09T05:00:00.000Z",
+    "to": "2021-01-20T05:00:00.000Z"
+   },
+   {
+    "name": "CENTURYTEL INC",
+    "from": "1999-07-09T04:00:00.000Z",
+    "to": "2010-11-08T05:00:00.000Z"
+   },
+   {
+    "name": "CENTURY TELEPHONE ENTERPRISES INC",
+    "from": "1994-01-28T05:00:00.000Z",
+    "to": "1999-05-14T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:08.884Z"
+ },
+ "0001489393": {
+  "name": "LyondellBasell Industries N.V.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:09.150Z"
+ },
+ "0000036270": {
+  "name": "M&T BANK CORP",
+  "formerNames": [
+   {
+    "name": "FIRST EMPIRE STATE CORP",
+    "from": "1994-03-10T05:00:00.000Z",
+    "to": "1998-05-18T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:09.501Z"
+ },
+ "0000912595": {
+  "name": "MID AMERICA APARTMENT COMMUNITIES INC.",
+  "formerNames": [
+   {
+    "name": "MID AMERICA APARTMENT COMMUNITIES INC",
+    "from": "1995-02-03T05:00:00.000Z",
+    "to": "2018-05-03T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:09.851Z"
+ },
+ "0000794367": {
+  "name": "Macy's, Inc.",
+  "formerNames": [
+   {
+    "name": "FEDERATED DEPARTMENT STORES INC /DE/",
+    "from": "1995-05-31T04:00:00.000Z",
+    "to": "2007-05-31T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:10.301Z"
+ },
+ "0000101778": {
+  "name": "MARATHON OIL CORP",
+  "formerNames": [
+   {
+    "name": "USX CORP",
+    "from": "1994-08-29T00:00:00.000Z",
+    "to": "2002-01-09T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:10.677Z"
+ },
+ "0001510295": {
+  "name": "Marathon Petroleum Corp",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:10.900Z"
+ },
+ "0001278021": {
+  "name": "MARKETAXESS HOLDINGS INC",
+  "formerNames": [
+   {
+    "name": "MARKETAXESS HOLDINGS INC",
+    "from": "2004-05-07T04:00:00.000Z",
+    "to": "2026-09-11T04:00:00.000Z"
+   },
+   {
+    "name": "MARKETAXESS HOLDING INC",
+    "from": "2004-02-11T05:00:00.000Z",
+    "to": "2004-04-01T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:11.343Z"
+ },
+ "0001048286": {
+  "name": "MARRIOTT INTERNATIONAL INC /MD/",
+  "formerNames": [
+   {
+    "name": "MARRIOTT INTERNATIONAL INC /MD/",
+    "from": "1998-04-09T04:00:00.000Z",
+    "to": "2026-09-10T04:00:00.000Z"
+   },
+   {
+    "name": "NEW MARRIOTT MI INC",
+    "from": "1998-03-16T05:00:00.000Z",
+    "to": "1998-03-20T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:11.687Z"
+ },
+ "0000062709": {
+  "name": "MARSH & MCLENNAN COMPANIES, INC.",
+  "formerNames": [
+   {
+    "name": "MARSH & MCLENNAN COMPANIES INC",
+    "from": "1994-05-13T04:00:00.000Z",
+    "to": "2005-01-31T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:11.956Z"
+ },
+ "0000916076": {
+  "name": "MARTIN MARIETTA MATERIALS INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:12.308Z"
+ },
+ "0000062996": {
+  "name": "MASCO CORP /DE/",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:12.664Z"
+ },
+ "0001141391": {
+  "name": "Mastercard Inc",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:13.017Z"
+ },
+ "0000743316": {
+  "name": "MAXIM INTEGRATED PRODUCTS INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:13.364Z"
+ },
+ "0000063754": {
+  "name": "MCCORMICK & CO INC",
+  "formerNames": [
+   {
+    "name": "MCCORMICK & CO INC",
+    "from": "1994-04-08T04:00:00.000Z",
+    "to": "2026-09-10T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:13.715Z"
+ },
+ "0000063908": {
+  "name": "MCDONALDS CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:14.061Z"
+ },
+ "0000927653": {
+  "name": "MCKESSON CORP",
+  "formerNames": [
+   {
+    "name": "MCKESSON HBOC INC",
+    "from": "1999-09-10T04:00:00.000Z",
+    "to": "2001-08-13T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:14.434Z"
+ },
+ "0001613103": {
+  "name": "Medtronic plc",
+  "formerNames": [
+   {
+    "name": "Medtronic Ltd",
+    "from": "2015-01-15T05:00:00.000Z",
+    "to": "2015-01-15T05:00:00.000Z"
+   },
+   {
+    "name": "Medtronic Holdings Ltd",
+    "from": "2014-07-14T04:00:00.000Z",
+    "to": "2014-11-21T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:14.773Z"
+ },
+ "0000310158": {
+  "name": "Merck & Co., Inc.",
+  "formerNames": [
+   {
+    "name": "Merck & Co. Inc.",
+    "from": "2009-11-04T05:00:00.000Z",
+    "to": "2014-12-09T05:00:00.000Z"
+   },
+   {
+    "name": "SCHERING PLOUGH CORP",
+    "from": "1994-12-29T05:00:00.000Z",
+    "to": "2009-10-29T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:15.136Z"
+ },
+ "0001326801": {
+  "name": "Meta Platforms, Inc.",
+  "formerNames": [
+   {
+    "name": "Facebook Inc",
+    "from": "2005-05-06T04:00:00.000Z",
+    "to": "2021-10-27T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:15.482Z"
+ },
+ "0001099219": {
+  "name": "METLIFE INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:15.819Z"
+ },
+ "0001037646": {
+  "name": "METTLER TOLEDO INTERNATIONAL INC/",
+  "formerNames": [
+   {
+    "name": "MT INVESTORS INC/",
+    "from": "1997-12-16T05:00:00.000Z",
+    "to": "1998-02-13T05:00:00.000Z"
+   },
+   {
+    "name": "METTLER TOLEDO INTERNATIONAL INC",
+    "from": "1997-11-17T05:00:00.000Z",
+    "to": "1997-11-17T05:00:00.000Z"
+   },
+   {
+    "name": "MT INVESTORS INC",
+    "from": "1997-10-21T04:00:00.000Z",
+    "to": "1997-11-10T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:16.174Z"
+ },
+ "0000789570": {
+  "name": "MGM Resorts International",
+  "formerNames": [
+   {
+    "name": "MGM MIRAGE",
+    "from": "2000-10-16T04:00:00.000Z",
+    "to": "2010-05-19T04:00:00.000Z"
+   },
+   {
+    "name": "MGM GRAND INC",
+    "from": "1994-03-11T05:00:00.000Z",
+    "to": "2000-05-19T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:16.532Z"
+ },
+ "0000827054": {
+  "name": "MICROCHIP TECHNOLOGY INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:16.878Z"
+ },
+ "0000723125": {
+  "name": "MICRON TECHNOLOGY INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:17.230Z"
+ },
+ "0000789019": {
+  "name": "MICROSOFT CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:17.579Z"
+ },
+ "0000851968": {
+  "name": "MOHAWK INDUSTRIES INC",
+  "formerNames": [
+   {
+    "name": "MOHAWK INDUSTRIES INC.",
+    "from": "1995-02-08T05:00:00.000Z",
+    "to": "1995-02-08T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:18.038Z"
+ },
+ "0000024545": {
+  "name": "MOLSON COORS BEVERAGE CO",
+  "formerNames": [
+   {
+    "name": "MOLSON COORS BREWING CO",
+    "from": "2005-02-07T05:00:00.000Z",
+    "to": "2019-11-26T05:00:00.000Z"
+   },
+   {
+    "name": "COORS ADOLPH CO",
+    "from": "1994-03-28T05:00:00.000Z",
+    "to": "2005-02-08T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:18.286Z"
+ },
+ "0001103982": {
+  "name": "Mondelez International, Inc.",
+  "formerNames": [
+   {
+    "name": "KRAFT FOODS INC",
+    "from": "2000-01-24T05:00:00.000Z",
+    "to": "2012-09-28T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:18.626Z"
+ },
+ "0001280452": {
+  "name": "MONOLITHIC POWER SYSTEMS, INC.",
+  "formerNames": [
+   {
+    "name": "MONOLITHIC POWER SYSTEMS INC",
+    "from": "2004-07-13T04:00:00.000Z",
+    "to": "2026-07-15T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:18.981Z"
+ },
+ "0000865752": {
+  "name": "Monster Beverage Corp",
+  "formerNames": [
+   {
+    "name": "HANSEN NATURAL CORP",
+    "from": "1996-11-13T05:00:00.000Z",
+    "to": "2011-12-21T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:19.348Z"
+ },
+ "0001059556": {
+  "name": "MOODYS CORP /DE/",
+  "formerNames": [
+   {
+    "name": "DUN & BRADSTREET CORP /DE/",
+    "from": "1998-09-29T04:00:00.000Z",
+    "to": "2000-02-04T05:00:00.000Z"
+   },
+   {
+    "name": "NEW DUN & BRADSTREET CORP",
+    "from": "1998-04-16T04:00:00.000Z",
+    "to": "1998-06-26T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:19.698Z"
+ },
+ "0000895421": {
+  "name": "MORGAN STANLEY",
+  "formerNames": [
+   {
+    "name": "MORGAN STANLEY",
+    "from": "1999-11-23T05:00:00.000Z",
+    "to": "2026-09-11T04:00:00.000Z"
+   },
+   {
+    "name": "MORGAN STANLEY",
+    "from": "1999-11-23T05:00:00.000Z",
+    "to": "2026-09-11T04:00:00.000Z"
+   },
+   {
+    "name": "MORGAN STANLEY DEAN WITTER & CO",
+    "from": "1993-11-08T05:00:00.000Z",
+    "to": "2002-07-12T04:00:00.000Z"
+   },
+   {
+    "name": "MORGAN STANLEY DEAN WITTER DISCOVER & CO",
+    "from": "1997-06-19T04:00:00.000Z",
+    "to": "1998-03-18T05:00:00.000Z"
+   },
+   {
+    "name": "DEAN WITTER DISCOVER & CO",
+    "from": "1996-08-14T04:00:00.000Z",
+    "to": "1997-05-08T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:20.070Z"
+ },
+ "0000068505": {
+  "name": "Motorola Solutions, Inc.",
+  "formerNames": [
+   {
+    "name": "MOTOROLA INC",
+    "from": "1994-08-10T04:00:00.000Z",
+    "to": "2011-01-03T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:20.393Z"
+ },
+ "0001408198": {
+  "name": "MSCI Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:20.750Z"
+ },
+ "0001623613": {
+  "name": "Mylan II B.V.",
+  "formerNames": [
+   {
+    "name": "Mylan N.V.",
+    "from": "2015-02-27T05:00:00.000Z",
+    "to": "2020-11-06T05:00:00.000Z"
+   },
+   {
+    "name": "New Moon B.V.",
+    "from": "2014-11-05T05:00:00.000Z",
+    "to": "2014-12-24T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:21.192Z"
+ },
+ "0001120193": {
+  "name": "NASDAQ, INC.",
+  "formerNames": [
+   {
+    "name": "NASDAQ OMX GROUP, INC.",
+    "from": "2007-11-06T05:00:00.000Z",
+    "to": "2015-08-10T04:00:00.000Z"
+   },
+   {
+    "name": "NASDAQ STOCK MARKET INC",
+    "from": "2001-05-14T04:00:00.000Z",
+    "to": "2008-02-27T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:21.450Z"
+ },
+ "0001021860": {
+  "name": "NOV Inc.",
+  "formerNames": [
+   {
+    "name": "NATIONAL OILWELL VARCO INC",
+    "from": "2005-03-11T05:00:00.000Z",
+    "to": "2020-12-22T05:00:00.000Z"
+   },
+   {
+    "name": "NATIONAL OILWELL INC",
+    "from": "1996-10-04T04:00:00.000Z",
+    "to": "2005-03-08T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:21.868Z"
+ },
+ "0001002047": {
+  "name": "NetApp, Inc.",
+  "formerNames": [
+   {
+    "name": "NETWORK APPLIANCE INC",
+    "from": "1996-10-29T05:00:00.000Z",
+    "to": "2008-05-12T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:22.140Z"
+ },
+ "0000814453": {
+  "name": "NEWELL BRANDS INC.",
+  "formerNames": [
+   {
+    "name": "NEWELL BRANDS, INC.",
+    "from": "2019-10-17T04:00:00.000Z",
+    "to": "2019-10-25T04:00:00.000Z"
+   },
+   {
+    "name": "NEWELL BRANDS INC",
+    "from": "2016-02-11T05:00:00.000Z",
+    "to": "2019-10-09T04:00:00.000Z"
+   },
+   {
+    "name": "NEWELL RUBBERMAID INC",
+    "from": "1999-09-29T04:00:00.000Z",
+    "to": "2016-04-15T04:00:00.000Z"
+   },
+   {
+    "name": "NEWELL CO",
+    "from": "1995-08-10T04:00:00.000Z",
+    "to": "1999-03-23T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:22.610Z"
+ },
+ "0001164727": {
+  "name": "NEWMONT Corp /DE/",
+  "formerNames": [
+   {
+    "name": "NEWMONT GOLDCORP CORP /DE/",
+    "from": "2019-04-22T04:00:00.000Z",
+    "to": "2020-01-03T05:00:00.000Z"
+   },
+   {
+    "name": "NEWMONT MINING CORP /DE/",
+    "from": "2002-03-12T05:00:00.000Z",
+    "to": "2019-04-16T04:00:00.000Z"
+   },
+   {
+    "name": "DELTA HOLDCO CORP",
+    "from": "2002-02-15T05:00:00.000Z",
+    "to": "2002-02-05T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:22.848Z"
+ },
+ "0001564708": {
+  "name": "NEWS CORP",
+  "formerNames": [
+   {
+    "name": "New Newscorp Inc",
+    "from": "2013-06-12T04:00:00.000Z",
+    "to": "2013-06-28T04:00:00.000Z"
+   },
+   {
+    "name": "New Newscorp LLC",
+    "from": "2012-12-21T05:00:00.000Z",
+    "to": "2013-05-24T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:23.199Z"
+ },
+ "0000753308": {
+  "name": "NEXTERA ENERGY INC",
+  "formerNames": [
+   {
+    "name": "FPL GROUP INC",
+    "from": "1994-02-28T05:00:00.000Z",
+    "to": "2010-05-21T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:23.549Z"
+ },
+ "0001492633": {
+  "name": "Nielsen Holdings plc",
+  "formerNames": [
+   {
+    "name": "Nielsen N.V.",
+    "from": "2014-03-28T00:00:00.000Z",
+    "to": "2015-08-28T00:00:00.000Z"
+   },
+   {
+    "name": "Nielsen Holdings N.V.",
+    "from": "2010-06-30T00:00:00.000Z",
+    "to": "2014-05-05T00:00:00.000Z"
+   },
+   {
+    "name": "Nielsen Holdings B.V.",
+    "from": "2010-06-03T00:00:00.000Z",
+    "to": "2011-01-21T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:23.997Z"
+ },
+ "0000320187": {
+  "name": "NIKE, Inc.",
+  "formerNames": [
+   {
+    "name": "NIKE INC",
+    "from": "1995-01-20T05:00:00.000Z",
+    "to": "2019-08-05T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:24.300Z"
+ },
+ "0001111711": {
+  "name": "NISOURCE INC.",
+  "formerNames": [
+   {
+    "name": "NISOURCE INC/DE",
+    "from": "2000-11-03T05:00:00.000Z",
+    "to": "2019-06-26T04:00:00.000Z"
+   },
+   {
+    "name": "NEW NISOURCE INC",
+    "from": "2000-06-02T04:00:00.000Z",
+    "to": "2000-11-02T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:24.626Z"
+ },
+ "0000072207": {
+  "name": "NOBLE ENERGY INC",
+  "formerNames": [
+   {
+    "name": "NOBLE AFFILIATES INC",
+    "from": "1994-05-12T00:00:00.000Z",
+    "to": "2002-03-29T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:25.050Z"
+ },
+ "0000073124": {
+  "name": "NORTHERN TRUST CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:25.343Z"
+ },
+ "0001133421": {
+  "name": "NORTHROP GRUMMAN CORP /DE/",
+  "formerNames": [
+   {
+    "name": "NNG INC",
+    "from": "2001-02-01T05:00:00.000Z",
+    "to": "2001-04-02T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:25.658Z"
+ },
+ "0001513761": {
+  "name": "Norwegian Cruise Line Holdings Ltd.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:26.007Z"
+ },
+ "0001013871": {
+  "name": "NRG ENERGY, INC.",
+  "formerNames": [
+   {
+    "name": "NRG ENERGY, INC.",
+    "from": "2004-12-02T05:00:00.000Z",
+    "to": "2026-09-09T04:00:00.000Z"
+   },
+   {
+    "name": "NRG ENERGY INC",
+    "from": "1996-05-10T04:00:00.000Z",
+    "to": "2004-11-09T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:26.360Z"
+ },
+ "0000073309": {
+  "name": "NUCOR CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:26.721Z"
+ },
+ "0001045810": {
+  "name": "NVIDIA CORP",
+  "formerNames": [
+   {
+    "name": "NVIDIA CORP/CA",
+    "from": "1998-05-07T04:00:00.000Z",
+    "to": "2002-06-04T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:27.059Z"
+ },
+ "0000906163": {
+  "name": "NVR INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:27.415Z"
+ },
+ "0000898173": {
+  "name": "O REILLY AUTOMOTIVE INC",
+  "formerNames": [
+   {
+    "name": "OREILLY AUTOMOTIVE INC",
+    "from": "1996-08-13T04:00:00.000Z",
+    "to": "1998-04-10T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:27.756Z"
+ },
+ "0000797468": {
+  "name": "OCCIDENTAL PETROLEUM CORP /DE/",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:28.115Z"
+ },
+ "0000878927": {
+  "name": "OLD DOMINION FREIGHT LINE, INC.",
+  "formerNames": [
+   {
+    "name": "OLD DOMINION FREIGHT LINE INC/VA",
+    "from": "1996-02-09T05:00:00.000Z",
+    "to": "2019-08-21T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:28.467Z"
+ },
+ "0000029989": {
+  "name": "OMNICOM GROUP INC.",
+  "formerNames": [
+   {
+    "name": "OMNICOM GROUP INC",
+    "from": "1994-05-13T04:00:00.000Z",
+    "to": "2013-02-19T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:28.923Z"
+ },
+ "0001039684": {
+  "name": "ONEOK INC /NEW/",
+  "formerNames": [
+   {
+    "name": "ONEOK INC /NEW/",
+    "from": "1997-11-28T05:00:00.000Z",
+    "to": "2026-09-11T04:00:00.000Z"
+   },
+   {
+    "name": "WAI INC",
+    "from": "1997-11-21T05:00:00.000Z",
+    "to": "1997-11-28T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:29.242Z"
+ },
+ "0001341439": {
+  "name": "ORACLE CORP",
+  "formerNames": [
+   {
+    "name": "Ozark Holding Inc.",
+    "from": "2005-10-19T04:00:00.000Z",
+    "to": "2006-02-01T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:29.517Z"
+ },
+ "0001821825": {
+  "name": "Organon & Co.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:29.933Z"
+ },
+ "0001781335": {
+  "name": "Otis Worldwide Corp",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:30.229Z"
+ },
+ "0000075362": {
+  "name": "PACCAR INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:30.573Z"
+ },
+ "0000075677": {
+  "name": "PACKAGING CORP OF AMERICA",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:30.922Z"
+ },
+ "0000813828": {
+  "name": "Paramount Global",
+  "formerNames": [
+   {
+    "name": "ViacomCBS Inc.",
+    "from": "2019-12-04T05:00:00.000Z",
+    "to": "2022-02-15T05:00:00.000Z"
+   },
+   {
+    "name": "CBS CORP",
+    "from": "2006-01-09T05:00:00.000Z",
+    "to": "2019-12-04T05:00:00.000Z"
+   },
+   {
+    "name": "VIACOM INC",
+    "from": "1994-01-11T05:00:00.000Z",
+    "to": "2006-01-05T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:31.388Z"
+ },
+ "0000076334": {
+  "name": "Parker-Hannifin Corp",
+  "formerNames": [
+   {
+    "name": "PARKER HANNIFIN CORP",
+    "from": "1994-02-11T05:00:00.000Z",
+    "to": "2024-12-11T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:31.633Z"
+ },
+ "0000891024": {
+  "name": "PATTERSON COMPANIES, INC.",
+  "formerNames": [
+   {
+    "name": "PATTERSON DENTAL CO",
+    "from": "1996-12-13T00:00:00.000Z",
+    "to": "2004-07-01T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:32.082Z"
+ },
+ "0000723531": {
+  "name": "PAYCHEX INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:32.339Z"
+ },
+ "0001590955": {
+  "name": "Paycom Software, Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:32.767Z"
+ },
+ "0001633917": {
+  "name": "PayPal Holdings, Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:33.037Z"
+ },
+ "0000077360": {
+  "name": "PENTAIR plc",
+  "formerNames": [
+   {
+    "name": "PENTAIR LTD",
+    "from": "2012-10-09T04:00:00.000Z",
+    "to": "2014-06-03T04:00:00.000Z"
+   },
+   {
+    "name": "PENTAIR INC",
+    "from": "1994-01-05T05:00:00.000Z",
+    "to": "2012-10-02T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:33.385Z"
+ },
+ "0001378946": {
+  "name": "People's United Financial, Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:33.851Z"
+ },
+ "0000077476": {
+  "name": "PEPSICO INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:34.214Z"
+ },
+ "0000031791": {
+  "name": "REVVITY, INC.",
+  "formerNames": [
+   {
+    "name": "PERKINELMER INC",
+    "from": "1999-11-05T05:00:00.000Z",
+    "to": "2023-04-14T04:00:00.000Z"
+   },
+   {
+    "name": "EG&G INC",
+    "from": "1994-03-17T05:00:00.000Z",
+    "to": "1999-07-26T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:34.439Z"
+ },
+ "0001585364": {
+  "name": "PERRIGO Co plc",
+  "formerNames": [
+   {
+    "name": "PERRIGO Co Ltd",
+    "from": "2013-08-28T04:00:00.000Z",
+    "to": "2013-11-12T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:34.865Z"
+ },
+ "0000078003": {
+  "name": "PFIZER INC",
+  "formerNames": [
+   {
+    "name": "PFIZER INC",
+    "from": "1994-03-18T05:00:00.000Z",
+    "to": "2026-09-01T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:35.157Z"
+ },
+ "0001413329": {
+  "name": "Philip Morris International Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:35.498Z"
+ },
+ "0001534701": {
+  "name": "Phillips 66",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:35.854Z"
+ },
+ "0000764622": {
+  "name": "PINNACLE WEST CAPITAL CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:36.197Z"
+ },
+ "0001038357": {
+  "name": "PIONEER NATURAL RESOURCES CO",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:36.635Z"
+ },
+ "0000713676": {
+  "name": "PNC FINANCIAL SERVICES GROUP, INC.",
+  "formerNames": [
+   {
+    "name": "PNC FINANCIAL SERVICES GROUP INC",
+    "from": "2000-06-27T04:00:00.000Z",
+    "to": "2011-11-10T05:00:00.000Z"
+   },
+   {
+    "name": "PNC BANK CORP",
+    "from": "1994-02-14T05:00:00.000Z",
+    "to": "2000-02-11T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:37.020Z"
+ },
+ "0000945841": {
+  "name": "POOL CORP",
+  "formerNames": [
+   {
+    "name": "SCP POOL CORP",
+    "from": "1996-08-26T00:00:00.000Z",
+    "to": "2006-05-11T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:37.365Z"
+ },
+ "0000079879": {
+  "name": "PPG INDUSTRIES INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:37.716Z"
+ },
+ "0000922224": {
+  "name": "PPL Corp",
+  "formerNames": [
+   {
+    "name": "PP&L RESOURCES INC",
+    "from": "1995-04-27T04:00:00.000Z",
+    "to": "2000-02-07T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:37.972Z"
+ },
+ "0001126328": {
+  "name": "PRINCIPAL FINANCIAL GROUP INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:38.313Z"
+ },
+ "0000080424": {
+  "name": "PROCTER & GAMBLE Co",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:38.666Z"
+ },
+ "0000080661": {
+  "name": "PROGRESSIVE CORP/OH/",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:39.015Z"
+ },
+ "0001045609": {
+  "name": "Prologis, Inc.",
+  "formerNames": [
+   {
+    "name": "AMB PROPERTY CORP",
+    "from": "1997-10-28T05:00:00.000Z",
+    "to": "2011-06-03T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:39.364Z"
+ },
+ "0001137774": {
+  "name": "PRUDENTIAL FINANCIAL INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:39.734Z"
+ },
+ "0000788784": {
+  "name": "PUBLIC SERVICE ENTERPRISE GROUP INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:40.059Z"
+ },
+ "0001393311": {
+  "name": "Public Storage",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:40.423Z"
+ },
+ "0000822416": {
+  "name": "PULTEGROUP INC/MI/",
+  "formerNames": [
+   {
+    "name": "PULTE HOMES INC/MI/",
+    "from": "2001-12-20T05:00:00.000Z",
+    "to": "2010-03-23T04:00:00.000Z"
+   },
+   {
+    "name": "PULTE CORP",
+    "from": "1994-02-14T05:00:00.000Z",
+    "to": "2001-05-02T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:40.764Z"
+ },
+ "0000078239": {
+  "name": "PVH CORP. /DE/",
+  "formerNames": [
+   {
+    "name": "PHILLIPS VAN HEUSEN CORP /DE/",
+    "from": "1994-06-17T04:00:00.000Z",
+    "to": "2011-06-23T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:41.234Z"
+ },
+ "0001370637": {
+  "name": "ETSY INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:41.589Z"
+ },
+ "0000106640": {
+  "name": "WHIRLPOOL CORP /DE/",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:41.967Z"
+ },
+ "0001013462": {
+  "name": "ANSYS INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:42.269Z"
+ },
+ "0000874766": {
+  "name": "HARTFORD INSURANCE GROUP, INC.",
+  "formerNames": [
+   {
+    "name": "HARTFORD INSURANCE GROUP, INC.",
+    "from": "2025-02-06T05:00:00.000Z",
+    "to": "2026-09-09T04:00:00.000Z"
+   },
+   {
+    "name": "HARTFORD FINANCIAL SERVICES GROUP, INC.",
+    "from": "2019-06-07T04:00:00.000Z",
+    "to": "2025-01-30T05:00:00.000Z"
+   },
+   {
+    "name": "HARTFORD FINANCIAL SERVICES GROUP INC/DE",
+    "from": "1997-11-14T05:00:00.000Z",
+    "to": "2019-05-23T04:00:00.000Z"
+   },
+   {
+    "name": "ITT HARTFORD GROUP INC /DE",
+    "from": "1996-10-29T05:00:00.000Z",
+    "to": "1998-02-13T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:42.527Z"
+ },
+ "0000104169": {
+  "name": "Walmart Inc.",
+  "formerNames": [
+   {
+    "name": "Walmart Inc.",
+    "from": "2018-01-31T05:00:00.000Z",
+    "to": "2026-09-09T04:00:00.000Z"
+   },
+   {
+    "name": "WAL MART STORES INC",
+    "from": "1994-02-14T05:00:00.000Z",
+    "to": "2018-01-30T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:42.866Z"
+ },
+ "0001065088": {
+  "name": "EBAY INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:43.229Z"
+ },
+ "0000849399": {
+  "name": "Gen Digital Inc.",
+  "formerNames": [
+   {
+    "name": "NortonLifeLock Inc.",
+    "from": "2019-11-04T05:00:00.000Z",
+    "to": "2022-10-12T04:00:00.000Z"
+   },
+   {
+    "name": "SYMANTEC CORP",
+    "from": "1995-05-09T04:00:00.000Z",
+    "to": "2019-10-24T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:43.566Z"
+ },
+ "0001604778": {
+  "name": "Qorvo, Inc.",
+  "formerNames": [
+   {
+    "name": "Rocky Holding, Inc.",
+    "from": "2014-04-14T04:00:00.000Z",
+    "to": "2014-10-08T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:43.930Z"
+ },
+ "0000804328": {
+  "name": "QUALCOMM INC/DE",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:44.290Z"
+ },
+ "0001050915": {
+  "name": "QUANTA SERVICES, INC.",
+  "formerNames": [
+   {
+    "name": "QUANTA SERVICES INC",
+    "from": "1997-12-22T05:00:00.000Z",
+    "to": "2019-05-31T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:44.698Z"
+ },
+ "0001022079": {
+  "name": "QUEST DIAGNOSTICS INC",
+  "formerNames": [
+   {
+    "name": "CORNING CLINICAL LABORATORIES INC",
+    "from": "1996-12-13T05:00:00.000Z",
+    "to": "1997-03-19T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:44.992Z"
+ },
+ "0001037038": {
+  "name": "RALPH LAUREN CORP",
+  "formerNames": [
+   {
+    "name": "POLO RALPH LAUREN CORP",
+    "from": "1997-06-12T04:00:00.000Z",
+    "to": "2011-08-11T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:45.331Z"
+ },
+ "0000720005": {
+  "name": "RAYMOND JAMES FINANCIAL INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:45.688Z"
+ },
+ "0000726728": {
+  "name": "REALTY INCOME CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:46.062Z"
+ },
+ "0001087423": {
+  "name": "RED HAT INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:46.496Z"
+ },
+ "0000910606": {
+  "name": "REGENCY CENTERS CORP",
+  "formerNames": [
+   {
+    "name": "REGENCY REALTY CORP",
+    "from": "1994-02-11T05:00:00.000Z",
+    "to": "2001-02-12T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:46.735Z"
+ },
+ "0000872589": {
+  "name": "REGENERON PHARMACEUTICALS, INC.",
+  "formerNames": [
+   {
+    "name": "REGENERON PHARMACEUTICALS INC",
+    "from": "1995-07-26T04:00:00.000Z",
+    "to": "2019-06-19T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:47.087Z"
+ },
+ "0001281761": {
+  "name": "REGIONS FINANCIAL CORP",
+  "formerNames": [
+   {
+    "name": "NEW REGIONS FINANCIAL CORP",
+    "from": "2004-02-27T05:00:00.000Z",
+    "to": "2004-04-29T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:47.441Z"
+ },
+ "0001060391": {
+  "name": "REPUBLIC SERVICES, INC.",
+  "formerNames": [
+   {
+    "name": "REPUBLIC SERVICES INC",
+    "from": "1998-07-08T04:00:00.000Z",
+    "to": "2009-01-07T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:47.790Z"
+ },
+ "0000943819": {
+  "name": "RESMED INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:48.213Z"
+ },
+ "0000084129": {
+  "name": "NEW RITE AID, LLC",
+  "formerNames": [
+   {
+    "name": "RITE AID CORP",
+    "from": "1994-09-09T00:00:00.000Z",
+    "to": "2024-09-05T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:48.616Z"
+ },
+ "0000315213": {
+  "name": "ROBERT HALF INC.",
+  "formerNames": [
+   {
+    "name": "ROBERT HALF INTERNATIONAL INC.",
+    "from": "2019-07-23T04:00:00.000Z",
+    "to": "2023-05-19T04:00:00.000Z"
+   },
+   {
+    "name": "HALF ROBERT INTERNATIONAL INC /DE/",
+    "from": "1994-05-09T04:00:00.000Z",
+    "to": "2019-05-29T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:48.948Z"
+ },
+ "0001024478": {
+  "name": "ROCKWELL AUTOMATION, INC",
+  "formerNames": [
+   {
+    "name": "ROCKWELL AUTOMATION INC",
+    "from": "2006-11-09T05:00:00.000Z",
+    "to": "2019-06-19T04:00:00.000Z"
+   },
+   {
+    "name": "ROCKWELL  AUTOMATION INC",
+    "from": "2002-06-28T04:00:00.000Z",
+    "to": "2006-11-07T05:00:00.000Z"
+   },
+   {
+    "name": "ROCKWELL INTERNATIONAL CORP",
+    "from": "1997-06-30T04:00:00.000Z",
+    "to": "2002-05-07T04:00:00.000Z"
+   },
+   {
+    "name": "NEW ROCKWELL INTERNATIONAL CORP",
+    "from": "1996-11-27T05:00:00.000Z",
+    "to": "1997-01-03T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:49.183Z"
+ },
+ "0000084839": {
+  "name": "ROLLINS INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:49.557Z"
+ },
+ "0000882835": {
+  "name": "ROPER TECHNOLOGIES INC",
+  "formerNames": [
+   {
+    "name": "ROPER TECHNOLOGIES INC",
+    "from": "2015-04-27T04:00:00.000Z",
+    "to": "2026-08-14T04:00:00.000Z"
+   },
+   {
+    "name": "ROPER INDUSTRIES INC",
+    "from": "2008-06-04T04:00:00.000Z",
+    "to": "2015-04-24T04:00:00.000Z"
+   },
+   {
+    "name": "ROPER INDUSTRIES INC /DE/",
+    "from": "1994-03-09T05:00:00.000Z",
+    "to": "2008-05-14T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:49.889Z"
+ },
+ "0000745732": {
+  "name": "ROSS STORES, INC.",
+  "formerNames": [
+   {
+    "name": "ROSS STORES INC",
+    "from": "1994-02-14T05:00:00.000Z",
+    "to": "2019-07-15T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:50.245Z"
+ },
+ "0000884887": {
+  "name": "ROYAL CARIBBEAN CRUISES LTD",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:50.599Z"
+ },
+ "0000101829": {
+  "name": "RTX Corp",
+  "formerNames": [
+   {
+    "name": "RAYTHEON TECHNOLOGIES CORP",
+    "from": "2020-04-07T04:00:00.000Z",
+    "to": "2023-06-29T04:00:00.000Z"
+   },
+   {
+    "name": "UNITED TECHNOLOGIES CORP /DE/",
+    "from": "1994-01-24T05:00:00.000Z",
+    "to": "2020-04-06T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:50.951Z"
+ },
+ "0000064040": {
+  "name": "S&P Global Inc.",
+  "formerNames": [
+   {
+    "name": "MCGRAW HILL FINANCIAL INC",
+    "from": "2013-05-03T04:00:00.000Z",
+    "to": "2016-05-03T04:00:00.000Z"
+   },
+   {
+    "name": "MCGRAW-HILL COMPANIES INC",
+    "from": "1995-08-11T04:00:00.000Z",
+    "to": "2013-04-30T04:00:00.000Z"
+   },
+   {
+    "name": "MCGRAW HILL INC",
+    "from": "1994-06-29T04:00:00.000Z",
+    "to": "1995-02-24T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:51.298Z"
+ },
+ "0001108524": {
+  "name": "Salesforce, Inc.",
+  "formerNames": [
+   {
+    "name": "SALESFORCE.COM, INC.",
+    "from": "2019-06-14T04:00:00.000Z",
+    "to": "2022-03-31T04:00:00.000Z"
+   },
+   {
+    "name": "SALESFORCE COM INC",
+    "from": "2003-12-18T05:00:00.000Z",
+    "to": "2019-08-05T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:51.649Z"
+ },
+ "0001034054": {
+  "name": "SBA COMMUNICATIONS CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:51.999Z"
+ },
+ "0001137789": {
+  "name": "Seagate Technology Holdings plc",
+  "formerNames": [
+   {
+    "name": "Seagate Technology plc",
+    "from": "2010-07-09T04:00:00.000Z",
+    "to": "2021-05-19T04:00:00.000Z"
+   },
+   {
+    "name": "SEAGATE TECHNOLOGY",
+    "from": "2008-10-31T04:00:00.000Z",
+    "to": "2010-07-06T04:00:00.000Z"
+   },
+   {
+    "name": "Seagate Technology",
+    "from": "2008-10-31T04:00:00.000Z",
+    "to": "2010-07-06T04:00:00.000Z"
+   },
+   {
+    "name": "SEAGATE TECHNOLOGY HOLDINGS",
+    "from": "2001-04-20T04:00:00.000Z",
+    "to": "2002-12-12T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:52.342Z"
+ },
+ "0001012100": {
+  "name": "SEALED AIR CORP/DE",
+  "formerNames": [
+   {
+    "name": "WR GRACE & CO/DE",
+    "from": "1996-11-19T00:00:00.000Z",
+    "to": "1998-03-30T00:00:00.000Z"
+   },
+   {
+    "name": "GRACE HOLDING INC",
+    "from": "1996-08-09T00:00:00.000Z",
+    "to": "1996-10-07T00:00:00.000Z"
+   },
+   {
+    "name": "GRACE HOLDINGING INC",
+    "from": "1996-08-02T00:00:00.000Z",
+    "to": "1996-08-02T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:52.841Z"
+ },
+ "0001032208": {
+  "name": "SEMPRA",
+  "formerNames": [
+   {
+    "name": "SEMPRA ENERGY",
+    "from": "1998-08-14T00:00:00.000Z",
+    "to": "2023-05-15T00:00:00.000Z"
+   },
+   {
+    "name": "MINERAL ENERGY CO",
+    "from": "1997-03-26T00:00:00.000Z",
+    "to": "1998-06-05T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:53.050Z"
+ },
+ "0001373715": {
+  "name": "ServiceNow, Inc.",
+  "formerNames": [
+   {
+    "name": "SERVICE-NOW.COM",
+    "from": "2006-08-22T04:00:00.000Z",
+    "to": "2012-05-01T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:53.430Z"
+ },
+ "0000089800": {
+  "name": "SHERWIN WILLIAMS CO",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:53.752Z"
+ },
+ "0001063761": {
+  "name": "SIMON PROPERTY GROUP INC.",
+  "formerNames": [
+   {
+    "name": "SIMON PROPERTY GROUP INC /DE/",
+    "from": "1998-09-28T04:00:00.000Z",
+    "to": "2025-11-03T05:00:00.000Z"
+   },
+   {
+    "name": "CORPORATE PROPERTY INVESTORS INC",
+    "from": "1998-09-17T04:00:00.000Z",
+    "to": "1998-09-25T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:54.211Z"
+ },
+ "0000004127": {
+  "name": "SKYWORKS SOLUTIONS, INC.",
+  "formerNames": [
+   {
+    "name": "SKYWORKS SOLUTIONS INC",
+    "from": "2002-06-28T04:00:00.000Z",
+    "to": "2011-06-17T04:00:00.000Z"
+   },
+   {
+    "name": "ALPHA INDUSTRIES INC",
+    "from": "1995-02-08T05:00:00.000Z",
+    "to": "2002-06-17T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:54.452Z"
+ },
+ "0001040971": {
+  "name": "SL GREEN REALTY CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:54.947Z"
+ },
+ "0000087347": {
+  "name": "SLB LIMITED/NV",
+  "formerNames": [
+   {
+    "name": "SCHLUMBERGER LIMITED/NV",
+    "from": "2015-10-19T04:00:00.000Z",
+    "to": "2025-09-12T04:00:00.000Z"
+   },
+   {
+    "name": "SCHLUMBERGER LTD /NV/",
+    "from": "2002-10-02T04:00:00.000Z",
+    "to": "2016-10-03T04:00:00.000Z"
+   },
+   {
+    "name": "SCHLUMBERGER LTD /NY/",
+    "from": "1996-11-13T05:00:00.000Z",
+    "to": "2002-08-09T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:55.159Z"
+ },
+ "0000091440": {
+  "name": "Snap-on Inc",
+  "formerNames": [
+   {
+    "name": "SNAP ON INC",
+    "from": "1994-09-23T04:00:00.000Z",
+    "to": "2008-08-21T04:00:00.000Z"
+   },
+   {
+    "name": "SNAP ON TOOLS CORP",
+    "from": "1994-03-03T05:00:00.000Z",
+    "to": "1994-03-03T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:55.540Z"
+ },
+ "0000092122": {
+  "name": "SOUTHERN CO",
+  "formerNames": [
+   {
+    "name": "SOUTHERN CO",
+    "from": "1994-01-28T05:00:00.000Z",
+    "to": "2026-09-04T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:55.854Z"
+ },
+ "0000092380": {
+  "name": "SOUTHWEST AIRLINES CO",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:56.212Z"
+ },
+ "0001091667": {
+  "name": "CHARTER COMMUNICATIONS, INC. /MO/",
+  "formerNames": [
+   {
+    "name": "CHARTER COMMUNICATIONS INC /MO/",
+    "from": "1999-12-02T05:00:00.000Z",
+    "to": "2009-12-15T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:56.564Z"
+ },
+ "0000093556": {
+  "name": "STANLEY BLACK & DECKER, INC.",
+  "formerNames": [
+   {
+    "name": "STANLEY WORKS",
+    "from": "1994-03-11T05:00:00.000Z",
+    "to": "2010-03-12T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:57.018Z"
+ },
+ "0000829224": {
+  "name": "STARBUCKS CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:57.265Z"
+ },
+ "0000093751": {
+  "name": "STATE STREET CORP",
+  "formerNames": [
+   {
+    "name": "STATE STREET CORP",
+    "from": "2009-02-24T05:00:00.000Z",
+    "to": "2026-09-08T04:00:00.000Z"
+   },
+   {
+    "name": "STATE STREET Corp",
+    "from": "2009-02-24T05:00:00.000Z",
+    "to": "2026-09-08T04:00:00.000Z"
+   },
+   {
+    "name": "STATE STREET BOSTON CORP",
+    "from": "1994-03-14T05:00:00.000Z",
+    "to": "1997-03-03T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:57.616Z"
+ },
+ "0000861878": {
+  "name": "STERICYCLE INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:58.102Z"
+ },
+ "0001757898": {
+  "name": "STERIS plc",
+  "formerNames": [
+   {
+    "name": "STERIS Ltd",
+    "from": "2018-11-06T05:00:00.000Z",
+    "to": "2019-03-28T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:58.318Z"
+ },
+ "0000310764": {
+  "name": "STRYKER CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:58.665Z"
+ },
+ "0001601712": {
+  "name": "Synchrony Financial",
+  "formerNames": [
+   {
+    "name": "Synchrony Financial",
+    "from": "2014-03-13T04:00:00.000Z",
+    "to": "2026-08-19T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:58:59.016Z"
+ },
+ "0000883241": {
+  "name": "SYNOPSYS INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:59.368Z"
+ },
+ "0000096021": {
+  "name": "SYSCO CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:58:59.865Z"
+ },
+ "0001283699": {
+  "name": "T-Mobile US, Inc.",
+  "formerNames": [
+   {
+    "name": "METROPCS COMMUNICATIONS INC",
+    "from": "2004-03-23T05:00:00.000Z",
+    "to": "2013-04-29T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:00.072Z"
+ },
+ "0001113169": {
+  "name": "PRICE T ROWE GROUP INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:00.433Z"
+ },
+ "0000946581": {
+  "name": "TAKE TWO INTERACTIVE SOFTWARE INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:00.770Z"
+ },
+ "0001116132": {
+  "name": "TAPESTRY, INC.",
+  "formerNames": [
+   {
+    "name": "COACH INC",
+    "from": "2000-10-04T04:00:00.000Z",
+    "to": "2017-10-11T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:01.130Z"
+ },
+ "0000027419": {
+  "name": "TARGET CORP",
+  "formerNames": [
+   {
+    "name": "DAYTON HUDSON CORP",
+    "from": "1994-12-09T05:00:00.000Z",
+    "to": "1999-04-12T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:01.479Z"
+ },
+ "0001385157": {
+  "name": "TE Connectivity plc",
+  "formerNames": [
+   {
+    "name": "TE Connectivity Ltd.",
+    "from": "2008-02-29T05:00:00.000Z",
+    "to": "2024-09-23T04:00:00.000Z"
+   },
+   {
+    "name": "Tyco Electronics Ltd.",
+    "from": "2007-01-18T05:00:00.000Z",
+    "to": "2011-03-10T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:01.833Z"
+ },
+ "0001681459": {
+  "name": "TechnipFMC plc",
+  "formerNames": [
+   {
+    "name": "TechnipFMC Ltd",
+    "from": "2016-08-10T04:00:00.000Z",
+    "to": "2016-12-21T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:02.180Z"
+ },
+ "0001094285": {
+  "name": "TELEDYNE TECHNOLOGIES INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:02.639Z"
+ },
+ "0000096943": {
+  "name": "TELEFLEX INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:03.042Z"
+ },
+ "0000097210": {
+  "name": "TERADYNE, INC",
+  "formerNames": [
+   {
+    "name": "TERADYNE INC",
+    "from": "1994-05-06T04:00:00.000Z",
+    "to": "2006-10-11T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:03.318Z"
+ },
+ "0001318605": {
+  "name": "Tesla, Inc.",
+  "formerNames": [
+   {
+    "name": "TESLA MOTORS INC",
+    "from": "2005-02-17T05:00:00.000Z",
+    "to": "2017-01-27T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:03.588Z"
+ },
+ "0000097476": {
+  "name": "TEXAS INSTRUMENTS INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:03.941Z"
+ },
+ "0000217346": {
+  "name": "TEXTRON INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:04.285Z"
+ },
+ "0001390777": {
+  "name": "Bank of New York Mellon Corp",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:04.651Z"
+ },
+ "0001739940": {
+  "name": "Cigna Group",
+  "formerNames": [
+   {
+    "name": "Cigna Corp",
+    "from": "2018-12-26T05:00:00.000Z",
+    "to": "2023-02-09T05:00:00.000Z"
+   },
+   {
+    "name": "Halfmoon Parent, Inc.",
+    "from": "2018-05-16T04:00:00.000Z",
+    "to": "2018-12-20T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:05.014Z"
+ },
+ "0000021344": {
+  "name": "COCA COLA CO",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:05.347Z"
+ },
+ "0000711404": {
+  "name": "COOPER COMPANIES, INC.",
+  "formerNames": [
+   {
+    "name": "COOPER COMPANIES INC",
+    "from": "1994-08-01T04:00:00.000Z",
+    "to": "2019-06-26T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:05.704Z"
+ },
+ "0000047111": {
+  "name": "HERSHEY CO",
+  "formerNames": [
+   {
+    "name": "HERSHEY FOODS CORP",
+    "from": "1994-07-29T04:00:00.000Z",
+    "to": "2005-04-20T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:06.042Z"
+ },
+ "0000354950": {
+  "name": "HOME DEPOT, INC.",
+  "formerNames": [
+   {
+    "name": "HOME DEPOT INC",
+    "from": "1994-06-06T04:00:00.000Z",
+    "to": "2019-07-01T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:06.400Z"
+ },
+ "0000091419": {
+  "name": "J M SMUCKER Co",
+  "formerNames": [
+   {
+    "name": "SMUCKER J M CO",
+    "from": "1994-03-14T05:00:00.000Z",
+    "to": "2014-10-06T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:06.748Z"
+ },
+ "0001285785": {
+  "name": "MOSAIC CO",
+  "formerNames": [
+   {
+    "name": "GLOBAL NUTRITION SOLUTIONS INC",
+    "from": "2004-04-08T00:00:00.000Z",
+    "to": "2004-06-18T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:07.100Z"
+ },
+ "0000086312": {
+  "name": "TRAVELERS COMPANIES, INC.",
+  "formerNames": [
+   {
+    "name": "ST PAUL TRAVELERS COMPANIES INC",
+    "from": "2004-04-01T05:00:00.000Z",
+    "to": "2007-02-23T05:00:00.000Z"
+   },
+   {
+    "name": "ST PAUL COMPANIES INC /MN/",
+    "from": "1994-01-10T05:00:00.000Z",
+    "to": "2004-03-31T05:00:00.000Z"
+   },
+   {
+    "name": "ST PAUL FIRE & MARINE INSURANCE CO/MD",
+    "from": "1999-02-19T05:00:00.000Z",
+    "to": "1999-02-19T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:07.454Z"
+ },
+ "0001744489": {
+  "name": "Walt Disney Co",
+  "formerNames": [
+   {
+    "name": "TWDC Holdco 613 Corp",
+    "from": "2018-06-25T04:00:00.000Z",
+    "to": "2018-06-28T04:00:00.000Z"
+   },
+   {
+    "name": "TWDC Holdco 613 Corp.",
+    "from": "2018-06-27T04:00:00.000Z",
+    "to": "2018-06-27T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:07.804Z"
+ },
+ "0000097745": {
+  "name": "THERMO FISHER SCIENTIFIC INC.",
+  "formerNames": [
+   {
+    "name": "THERMO ELECTRON CORP",
+    "from": "1994-02-18T05:00:00.000Z",
+    "to": "2006-11-03T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:08.151Z"
+ },
+ "0000098246": {
+  "name": "TIFFANY & CO",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:08.615Z"
+ },
+ "0000109198": {
+  "name": "TJX COMPANIES INC /DE/",
+  "formerNames": [
+   {
+    "name": "TJX COMPANIES INC /DE/",
+    "from": "1994-04-22T00:00:00.000Z",
+    "to": "2026-08-28T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:08.852Z"
+ },
+ "0000916365": {
+  "name": "TRACTOR SUPPLY CO /DE/",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:09.359Z"
+ },
+ "0001260221": {
+  "name": "TransDigm Group INC",
+  "formerNames": [
+   {
+    "name": "TD HOLDING CORP",
+    "from": "2003-08-15T04:00:00.000Z",
+    "to": "2005-12-20T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:09.550Z"
+ },
+ "0000864749": {
+  "name": "TRIMBLE INC.",
+  "formerNames": [
+   {
+    "name": "TRIMBLE NAVIGATION LTD /CA/",
+    "from": "1996-06-26T04:00:00.000Z",
+    "to": "2016-09-06T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:09.920Z"
+ },
+ "0001526520": {
+  "name": "TripAdvisor, Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:10.255Z"
+ },
+ "0000092230": {
+  "name": "TRUIST FINANCIAL CORP",
+  "formerNames": [
+   {
+    "name": "BB&T CORP",
+    "from": "1997-06-06T04:00:00.000Z",
+    "to": "2019-12-06T05:00:00.000Z"
+   },
+   {
+    "name": "SOUTHERN NATIONAL CORP /NC/",
+    "from": "1994-05-19T04:00:00.000Z",
+    "to": "1997-05-14T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:10.630Z"
+ },
+ "0000860731": {
+  "name": "TYLER TECHNOLOGIES INC",
+  "formerNames": [
+   {
+    "name": "TYLER CORP /NEW/",
+    "from": "1996-08-14T04:00:00.000Z",
+    "to": "1999-03-31T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:10.961Z"
+ },
+ "0000100493": {
+  "name": "TYSON FOODS, INC.",
+  "formerNames": [
+   {
+    "name": "TYSON FOODS INC",
+    "from": "1994-04-15T04:00:00.000Z",
+    "to": "2019-02-07T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:11.317Z"
+ },
+ "0000036104": {
+  "name": "US BANCORP \\DE\\",
+  "formerNames": [
+   {
+    "name": "FIRST BANK SYSTEM INC",
+    "from": "1994-08-15T04:00:00.000Z",
+    "to": "1997-03-28T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:11.661Z"
+ },
+ "0001543151": {
+  "name": "Uber Technologies, Inc",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:12.014Z"
+ },
+ "0000074208": {
+  "name": "UDR, Inc.",
+  "formerNames": [
+   {
+    "name": "UNITED DOMINION REALTY TRUST INC",
+    "from": "1994-05-26T04:00:00.000Z",
+    "to": "2007-03-14T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:12.459Z"
+ },
+ "0001403568": {
+  "name": "Ulta Beauty, Inc.",
+  "formerNames": [
+   {
+    "name": "Ulta Salon, Cosmetics & Fragrance, Inc.",
+    "from": "2007-07-06T04:00:00.000Z",
+    "to": "2016-12-01T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:12.723Z"
+ },
+ "0001336917": {
+  "name": "Under Armour, Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:13.066Z"
+ },
+ "0000100885": {
+  "name": "UNION PACIFIC CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:13.413Z"
+ },
+ "0000100517": {
+  "name": "United Airlines Holdings, Inc.",
+  "formerNames": [
+   {
+    "name": "United Continental Holdings, Inc.",
+    "from": "2010-07-22T04:00:00.000Z",
+    "to": "2019-06-27T04:00:00.000Z"
+   },
+   {
+    "name": "UAL CORP /DE/",
+    "from": "1994-08-08T04:00:00.000Z",
+    "to": "2010-09-30T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:13.763Z"
+ },
+ "0001090727": {
+  "name": "UNITED PARCEL SERVICE INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:14.173Z"
+ },
+ "0001067701": {
+  "name": "UNITED RENTALS, INC.",
+  "formerNames": [
+   {
+    "name": "UNITED RENTALS INC /DE",
+    "from": "1998-11-16T05:00:00.000Z",
+    "to": "2019-07-01T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:14.495Z"
+ },
+ "0000731766": {
+  "name": "UNITEDHEALTH GROUP INC",
+  "formerNames": [
+   {
+    "name": "UNITED HEALTHCARE CORP",
+    "from": "1995-04-04T04:00:00.000Z",
+    "to": "2000-02-14T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:14.825Z"
+ },
+ "0000352915": {
+  "name": "UNIVERSAL HEALTH SERVICES INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:15.182Z"
+ },
+ "0000005513": {
+  "name": "Unum Group",
+  "formerNames": [
+   {
+    "name": "UNUMPROVIDENT CORP",
+    "from": "1999-08-05T04:00:00.000Z",
+    "to": "2007-04-10T04:00:00.000Z"
+   },
+   {
+    "name": "PROVIDENT COMPANIES INC /DE/",
+    "from": "1996-12-13T05:00:00.000Z",
+    "to": "1999-07-01T04:00:00.000Z"
+   },
+   {
+    "name": "PROVIDENT COMPANIES INC /TN/",
+    "from": "1996-05-09T04:00:00.000Z",
+    "to": "1996-12-03T05:00:00.000Z"
+   },
+   {
+    "name": "PROVIDENT LIFE & ACCIDENT INSURANCE CO OF AMERICA",
+    "from": "1995-08-30T04:00:00.000Z",
+    "to": "1996-01-09T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:15.527Z"
+ },
+ "0001035002": {
+  "name": "VALERO ENERGY CORP/TX",
+  "formerNames": [
+   {
+    "name": "VALERO REFINING & MARKETING CO",
+    "from": "1997-05-13T04:00:00.000Z",
+    "to": "1997-07-21T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:15.882Z"
+ },
+ "0000203527": {
+  "name": "VARIAN MEDICAL SYSTEMS INC",
+  "formerNames": [
+   {
+    "name": "VARIAN ASSOCIATES INC /DE/",
+    "from": "1994-10-20T00:00:00.000Z",
+    "to": "1999-04-19T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:16.267Z"
+ },
+ "0000740260": {
+  "name": "Ventas, Inc.",
+  "formerNames": [
+   {
+    "name": "VENTAS INC",
+    "from": "1998-11-19T05:00:00.000Z",
+    "to": "2019-06-25T04:00:00.000Z"
+   },
+   {
+    "name": "VENCOR INC",
+    "from": "1994-12-08T05:00:00.000Z",
+    "to": "1998-02-10T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:16.571Z"
+ },
+ "0001014473": {
+  "name": "VERISIGN INC/CA",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:16.941Z"
+ },
+ "0001442145": {
+  "name": "Verisk Analytics, Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:17.279Z"
+ },
+ "0000732712": {
+  "name": "VERIZON COMMUNICATIONS INC",
+  "formerNames": [
+   {
+    "name": "BELL ATLANTIC CORP",
+    "from": "1994-06-30T04:00:00.000Z",
+    "to": "2000-09-13T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:17.635Z"
+ },
+ "0000875320": {
+  "name": "VERTEX PHARMACEUTICALS INC / MA",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:17.999Z"
+ },
+ "0000103379": {
+  "name": "V F CORP",
+  "formerNames": [
+   {
+    "name": "V F CORP/NC",
+    "from": "2002-03-20T05:00:00.000Z",
+    "to": "2002-02-15T05:00:00.000Z"
+   },
+   {
+    "name": "V F CORP /PA/",
+    "from": "1994-04-29T04:00:00.000Z",
+    "to": "2001-01-10T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:18.348Z"
+ },
+ "0001339947": {
+  "name": "Viacom Inc.",
+  "formerNames": [
+   {
+    "name": "New Viacom Corp.",
+    "from": "2005-10-05T00:00:00.000Z",
+    "to": "2006-01-06T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:18.791Z"
+ },
+ "0001792044": {
+  "name": "Viatris Inc",
+  "formerNames": [
+   {
+    "name": "Upjohn Inc",
+    "from": "2019-10-25T04:00:00.000Z",
+    "to": "2020-11-10T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:19.235Z"
+ },
+ "0001403161": {
+  "name": "VISA INC.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:19.388Z"
+ },
+ "0000906107": {
+  "name": "VIVMARK RESIDENTIAL",
+  "formerNames": [
+   {
+    "name": "EQUITY RESIDENTIAL",
+    "from": "2002-11-13T05:00:00.000Z",
+    "to": "2026-08-12T04:00:00.000Z"
+   },
+   {
+    "name": "EQUITY RESIDENTIAL PROPERTIES TRUST",
+    "from": "1994-02-10T05:00:00.000Z",
+    "to": "2002-10-30T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:19.750Z"
+ },
+ "0001786842": {
+  "name": "Vontier Corp",
+  "formerNames": [
+   {
+    "name": "TTF Holdings Corp.",
+    "from": "2019-09-06T04:00:00.000Z",
+    "to": "2019-11-15T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:20.214Z"
+ },
+ "0000899689": {
+  "name": "VORNADO REALTY TRUST",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:20.477Z"
+ },
+ "0001396009": {
+  "name": "Vulcan Materials CO",
+  "formerNames": [
+   {
+    "name": "Virginia Holdco, Inc.",
+    "from": "2007-04-12T04:00:00.000Z",
+    "to": "2007-11-16T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:20.803Z"
+ },
+ "0000011544": {
+  "name": "BERKLEY W R CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:21.256Z"
+ },
+ "0001045309": {
+  "name": "W R GRACE & CO",
+  "formerNames": [
+   {
+    "name": "GRACE SPECIALTY CHEMICALS INC",
+    "from": "1998-03-30T00:00:00.000Z",
+    "to": "1998-04-06T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:21.587Z"
+ },
+ "0000277135": {
+  "name": "W.W. GRAINGER, INC.",
+  "formerNames": [
+   {
+    "name": "GRAINGER W W INC",
+    "from": "1994-03-24T05:00:00.000Z",
+    "to": "2019-10-15T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:21.850Z"
+ },
+ "0000943452": {
+  "name": "WESTINGHOUSE AIR BRAKE TECHNOLOGIES CORP",
+  "formerNames": [
+   {
+    "name": "WABTEC CORP",
+    "from": "2000-01-14T05:00:00.000Z",
+    "to": "2000-01-14T05:00:00.000Z"
+   },
+   {
+    "name": "WESTINGHOUSE AIR BRAKE CO /DE/",
+    "from": "1996-08-07T04:00:00.000Z",
+    "to": "1999-11-19T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:22.237Z"
+ },
+ "0001618921": {
+  "name": "Walgreens Boots Alliance, Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:22.666Z"
+ },
+ "0000823768": {
+  "name": "WASTE MANAGEMENT INC",
+  "formerNames": [
+   {
+    "name": "USA WASTE SERVICES INC",
+    "from": "1994-08-05T04:00:00.000Z",
+    "to": "1998-07-10T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:22.909Z"
+ },
+ "0001000697": {
+  "name": "WATERS CORP /DE/",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:23.356Z"
+ },
+ "0000783325": {
+  "name": "WEC ENERGY GROUP, INC.",
+  "formerNames": [
+   {
+    "name": "WISCONSIN ENERGY CORP",
+    "from": "1995-02-28T05:00:00.000Z",
+    "to": "2015-06-29T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:23.634Z"
+ },
+ "0000072971": {
+  "name": "WELLS FARGO & COMPANY/MN",
+  "formerNames": [
+   {
+    "name": "WELLS FARGO & CO/MN",
+    "from": "1998-11-30T05:00:00.000Z",
+    "to": "2012-04-10T04:00:00.000Z"
+   },
+   {
+    "name": "NORWEST CORP",
+    "from": "1994-09-12T04:00:00.000Z",
+    "to": "1998-10-21T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:23.965Z"
+ },
+ "0000766704": {
+  "name": "WELLTOWER INC.",
+  "formerNames": [
+   {
+    "name": "HEALTH CARE REIT INC /DE/",
+    "from": "1994-04-29T04:00:00.000Z",
+    "to": "2015-09-25T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:24.313Z"
+ },
+ "0000106040": {
+  "name": "WESTERN DIGITAL CORP",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:24.670Z"
+ },
+ "0001365135": {
+  "name": "Western Union CO",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:25.139Z"
+ },
+ "0000106535": {
+  "name": "WEYERHAEUSER CO",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:25.369Z"
+ },
+ "0000865436": {
+  "name": "WHOLE FOODS MARKET INC",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:25.832Z"
+ },
+ "0000107263": {
+  "name": "WILLIAMS COMPANIES, INC.",
+  "formerNames": [
+   {
+    "name": "WILLIAMS COMPANIES INC",
+    "from": "1994-12-16T05:00:00.000Z",
+    "to": "2019-06-14T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:26.075Z"
+ },
+ "0001140536": {
+  "name": "WILLIS TOWERS WATSON PLC",
+  "formerNames": [
+   {
+    "name": "WILLIS GROUP HOLDINGS PLC",
+    "from": "2010-01-19T05:00:00.000Z",
+    "to": "2016-01-05T05:00:00.000Z"
+   },
+   {
+    "name": "WILLIS GROUP HOLDINGS LTD",
+    "from": "2001-07-31T04:00:00.000Z",
+    "to": "2010-01-04T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:26.434Z"
+ },
+ "0001732845": {
+  "name": "WestRock Co",
+  "formerNames": [
+   {
+    "name": "Whiskey Holdco, Inc.",
+    "from": "2018-03-28T00:00:00.000Z",
+    "to": "2018-08-01T00:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:26.872Z"
+ },
+ "0001174922": {
+  "name": "WYNN RESORTS LTD",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:27.169Z"
+ },
+ "0000072903": {
+  "name": "XCEL ENERGY INC",
+  "formerNames": [
+   {
+    "name": "NORTHERN STATES POWER CO /MN/",
+    "from": "1994-01-25T05:00:00.000Z",
+    "to": "2000-02-14T05:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:27.473Z"
+ },
+ "0001770450": {
+  "name": "Xerox Holdings Corp",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:27.820Z"
+ },
+ "0001524472": {
+  "name": "Xylem Inc.",
+  "formerNames": [
+   {
+    "name": "ITT WCO, Inc.",
+    "from": "2011-07-11T04:00:00.000Z",
+    "to": "2011-07-11T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:28.201Z"
+ },
+ "0001041061": {
+  "name": "YUM BRANDS INC",
+  "formerNames": [
+   {
+    "name": "TRICON GLOBAL RESTAURANTS INC",
+    "from": "1997-08-20T04:00:00.000Z",
+    "to": "2002-05-03T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:28.543Z"
+ },
+ "0000877212": {
+  "name": "ZEBRA TECHNOLOGIES CORP",
+  "formerNames": [
+   {
+    "name": "ZEBRA TECHNOLOGIES CORP/DE",
+    "from": "1995-09-08T04:00:00.000Z",
+    "to": "2009-05-05T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:28.882Z"
+ },
+ "0001136869": {
+  "name": "ZIMMER BIOMET HOLDINGS, INC.",
+  "formerNames": [
+   {
+    "name": "ZIMMER HOLDINGS INC",
+    "from": "2001-03-26T05:00:00.000Z",
+    "to": "2015-06-08T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:29.235Z"
+ },
+ "0000109380": {
+  "name": "ZIONS BANCORPORATION, NATIONAL ASSOCIATION /UT/",
+  "formerNames": [
+   {
+    "name": "ZIONS BANCORPORATION /UT/",
+    "from": "1994-03-29T05:00:00.000Z",
+    "to": "2018-09-17T04:00:00.000Z"
+   }
+  ],
+  "fetchedAt": "2026-09-14T05:59:29.650Z"
+ },
+ "0001555280": {
+  "name": "Zoetis Inc.",
+  "formerNames": [],
+  "fetchedAt": "2026-09-14T05:59:29.930Z"
+ }
+}

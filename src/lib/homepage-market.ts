@@ -1,14 +1,15 @@
 import type { DisclosureRecord } from "./congress-schema.ts";
 import { archiveRecords, disclosureFilerKey, displayFiler, validDisclosureDate } from "./home-discovery.ts";
+import { resolveCompanyMark, resolvePortrait, srcOrNull } from "./image-library/index.ts";
 
 export type HomePeriod = "ytd" | "30" | "90";
-export interface HomeFiler { key: string; name: string; state: string; district: string }
+export interface HomeFiler { key: string; name: string; state: string; district: string; /** Resolved server-side from the image library; undefined means initials. */ portrait?: string }
 export interface HomeCompany {
-  ticker: string; name: string; cik?: string; buyers: number; purchases: number; sales: number;
+  ticker: string; name: string; cik?: string; /** Resolved server-side; undefined means ticker tile. */ mark?: string; buyers: number; purchases: number; sales: number;
   filers: HomeFiler[];
 }
 export interface HomePurchase {
-  id: string; ticker: string; name: string; cik?: string; filer: HomeFiler;
+  id: string; ticker: string; name: string; cik?: string; mark?: string; filer: HomeFiler;
   amount: string; traded: string; filed: string; source: string;
 }
 export interface HomeWindow {
@@ -20,7 +21,9 @@ export function homePeriodStart(period: HomePeriod, asOf: string): string {
     new Date(Date.parse(asOf) - (Number(period) - 1) * 86_400_000).toISOString().slice(0, 10);
 }
 function filer(record: DisclosureRecord): HomeFiler {
-  return { key: disclosureFilerKey(record), name: displayFiler(record.politician), state: record.state, district: record.district };
+  const key = disclosureFilerKey(record);
+  const portrait = srcOrNull(resolvePortrait({ filerKey: key, name: record.politician, chamber: record.chamber, state: record.state, district: record.district }));
+  return { key, name: displayFiler(record.politician), state: record.state, district: record.district, ...(portrait ? { portrait } : {}) };
 }
 /** Transaction-date windows; only filings public by asOf. Raw archive stays unchanged. */
 export function buildHomeWindow(records: DisclosureRecord[], period: HomePeriod, asOf: string): HomeWindow {
@@ -38,12 +41,14 @@ export function buildHomeWindow(records: DisclosureRecord[], period: HomePeriod,
     const purchases = group.filter(r => r.type === "Buy");
     if (!purchases.length) continue;
     const people = [...new Map(purchases.map(r => [disclosureFilerKey(r), filer(r)])).values()];
-    companies.push({ ticker, name: group[0].companyName, cik: group.find(r => r.cik)?.cik, buyers: people.length,
+    const cik = group.find(r => r.cik)?.cik;
+    const mark = srcOrNull(resolveCompanyMark({ ticker, cik: cik ?? null }));
+    companies.push({ ticker, name: group[0].companyName, cik, ...(mark ? { mark } : {}), buyers: people.length,
       purchases: purchases.length, sales: group.filter(r => r.type === "Sell").length, filers: people });
   }
   companies.sort((a, b) => b.buyers - a.buyers || a.ticker.localeCompare(b.ticker));
   return { start, end: asOf, companies, recent: eligible.filter(r => r.type === "Buy" && accepted.has(r.ticker)).slice(0, 3).map(r => ({
-    id: r.id, ticker: r.ticker, name: r.companyName, cik: r.cik, filer: filer(r),
+    id: r.id, ticker: r.ticker, name: r.companyName, cik: r.cik, ...(srcOrNull(resolveCompanyMark({ ticker: r.ticker, cik: r.cik ?? null })) ? { mark: srcOrNull(resolveCompanyMark({ ticker: r.ticker, cik: r.cik ?? null })) as string } : {}), filer: filer(r),
     amount: r.amount || "Amount unavailable", traded: r.transactionDate, filed: r.filedDate, source: r.source,
   })) };
 }

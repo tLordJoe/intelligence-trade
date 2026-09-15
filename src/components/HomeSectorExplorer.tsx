@@ -35,7 +35,7 @@ export default function HomeSectorExplorer({ companies }: { companies: HomeCompa
         <h4>Disclosed House buying · Year to date</h4>
         <p className="home-muted">Among selected companies tracked in this sector—not a sector-wide ranking.</p>
         {activity.length ? activity.map(company => <Link className="home-sector-company" key={company.ticker} href={`/stocks/${encodeURIComponent(company.ticker)}`}>
-          <CompanyMark ticker={company.ticker} cik={company.cik} /><span><strong>{company.ticker}</strong><small>{company.name}</small></span><span>{company.buyers}<small>buying {company.buyers === 1 ? "filer" : "filers"}</small></span>
+          <CompanyMark ticker={company.ticker} src={company.mark} /><span><strong>{company.ticker}</strong><small>{company.name}</small></span><span>{company.buyers}<small>buying {company.buyers === 1 ? "filer" : "filers"}</small></span>
         </Link>) : <p className="home-empty">No eligible YTD purchases found for these tracked companies. This is not a claim of no activity across the sector.</p>}
         <p className="home-muted">Companies in this sector</p><div className="home-sector-tickers">{active.tickers.slice(0, 3).map(ticker => <Link href={`/stocks/${encodeURIComponent(ticker)}`} key={ticker} aria-label={`Explore ${ticker} company overview`}>{ticker}</Link>)}</div>
         <h4 className="home-sector-fund-heading">ETFs covering this sector</h4>

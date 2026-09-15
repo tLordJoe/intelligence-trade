@@ -1,0 +1,5291 @@
+{
+ "attempts": {
+  "sec:cik:0000789019": {
+   "at": "2026-09-14T06:01:35.511Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "sec:cik:0001326801": {
+   "at": "2026-09-14T06:01:35.512Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "sec:cik:0000320193": {
+   "at": "2026-09-14T06:01:35.512Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "sec:cik:0000002488": {
+   "at": "2026-09-14T06:01:35.513Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "sec:cik:0001018724": {
+   "at": "2026-09-14T06:01:35.514Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "sec:cik:0001045810": {
+   "at": "2026-09-14T06:01:35.514Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "sec:cik:0001467373": {
+   "at": "2026-09-14T06:01:35.514Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "sec:cik:0000004904": {
+   "at": "2026-09-14T06:01:35.514Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "sec:cik:0000035527": {
+   "at": "2026-09-14T06:01:35.515Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "sec:cik:0000731766": {
+   "at": "2026-09-14T06:01:35.515Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "bioguide:C001123": {
+   "at": "2026-09-14T06:01:35.516Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "bioguide:R000619": {
+   "at": "2026-09-14T06:01:35.517Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "bioguide:T000490": {
+   "at": "2026-09-14T06:01:35.517Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "bioguide:M001217": {
+   "at": "2026-09-14T06:01:35.517Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "bioguide:F000110": {
+   "at": "2026-09-14T06:01:35.518Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "bioguide:M001239": {
+   "at": "2026-09-14T06:01:35.518Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "bioguide:S000168": {
+   "at": "2026-09-14T06:01:35.519Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "bioguide:L000595": {
+   "at": "2026-09-14T06:01:35.519Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "bioguide:L000560": {
+   "at": "2026-09-14T06:01:35.519Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "bioguide:C001055": {
+   "at": "2026-09-14T06:01:35.520Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "bioguide:G000583": {
+   "at": "2026-09-14T06:01:35.520Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "bioguide:K000398": {
+   "at": "2026-09-14T06:01:35.520Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "bioguide:J000309": {
+   "at": "2026-09-14T06:01:35.521Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "bioguide:P000197": {
+   "at": "2026-09-14T06:01:35.521Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
+  },
+  "sec:cik:0000093751": {
+   "at": "2026-09-14T05:33:40.561Z",
+   "outcome": "resolved"
+  },
+  "sponsor:the-vanguard-group": {
+   "at": "2026-09-14T05:33:40.700Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000914208": {
+   "at": "2026-09-14T05:33:40.701Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001364742": {
+   "at": "2026-09-14T05:33:41.046Z",
+   "outcome": "resolved"
+  },
+  "sponsor:vaneck": {
+   "at": "2026-09-14T05:33:41.046Z",
+   "outcome": "missing"
+  },
+  "sec:class:C000017601": {
+   "at": "2026-09-14T05:33:41.046Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000012227": {
+   "at": "2026-09-14T05:33:41.046Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000017597": {
+   "at": "2026-09-14T05:33:41.046Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000012221": {
+   "at": "2026-09-14T05:33:41.046Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000201048": {
+   "at": "2026-09-14T05:33:41.046Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000012209": {
+   "at": "2026-09-14T05:33:41.046Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000017598": {
+   "at": "2026-09-14T05:33:41.046Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000012223": {
+   "at": "2026-09-14T05:33:41.046Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000017594": {
+   "at": "2026-09-14T05:33:41.046Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000012215": {
+   "at": "2026-09-14T05:33:41.046Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000017599": {
+   "at": "2026-09-14T05:33:41.046Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000012225": {
+   "at": "2026-09-14T05:33:41.046Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000017595": {
+   "at": "2026-09-14T05:33:41.046Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000012217": {
+   "at": "2026-09-14T05:33:41.046Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000017596": {
+   "at": "2026-09-14T05:33:41.046Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000012219": {
+   "at": "2026-09-14T05:33:41.046Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000017602": {
+   "at": "2026-09-14T05:33:41.047Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000012213": {
+   "at": "2026-09-14T05:33:41.047Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000017600": {
+   "at": "2026-09-14T05:33:41.047Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000012206": {
+   "at": "2026-09-14T05:33:41.047Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000161049": {
+   "at": "2026-09-14T05:33:41.047Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000032424": {
+   "at": "2026-09-14T05:33:41.047Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000092055": {
+   "at": "2026-09-14T05:33:41.047Z",
+   "outcome": "resolved"
+  },
+  "sec:class:C000271435": {
+   "at": "2026-09-14T05:33:41.047Z",
+   "outcome": "missing"
+  },
+  "sec:class:C000105869": {
+   "at": "2026-09-14T05:33:41.047Z",
+   "outcome": "missing"
+  },
+  "sec:class:C000012084": {
+   "at": "2026-09-14T05:33:41.047Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000815094": {
+   "at": "2026-09-14T05:33:42.228Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000718877": {
+   "at": "2026-09-14T05:33:42.228Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000004977": {
+   "at": "2026-09-14T05:33:42.228Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001035443": {
+   "at": "2026-09-14T05:33:42.229Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000899866": {
+   "at": "2026-09-14T05:33:42.229Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001579241": {
+   "at": "2026-09-14T05:33:42.229Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001011006": {
+   "at": "2026-09-14T05:33:42.229Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001748790": {
+   "at": "2026-09-14T05:33:42.229Z",
+   "outcome": "ambiguous"
+  },
+  "sec:cik:0000006201": {
+   "at": "2026-09-14T05:33:42.229Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000006769": {
+   "at": "2026-09-14T05:33:42.229Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000947484": {
+   "at": "2026-09-14T05:33:42.229Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000354190": {
+   "at": "2026-09-14T05:33:42.229Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001267238": {
+   "at": "2026-09-14T05:33:42.229Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000008670": {
+   "at": "2026-09-14T05:33:42.229Z",
+   "outcome": "ambiguous"
+  },
+  "sec:cik:0000915912": {
+   "at": "2026-09-14T05:33:42.229Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000875045": {
+   "at": "2026-09-14T05:33:42.229Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001383312": {
+   "at": "2026-09-14T05:33:42.229Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000079282": {
+   "at": "2026-09-14T05:33:42.229Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000014693": {
+   "at": "2026-09-14T05:33:42.229Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001316835": {
+   "at": "2026-09-14T05:33:42.229Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001144519": {
+   "at": "2026-09-14T05:33:42.229Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001596783": {
+   "at": "2026-09-14T05:33:42.229Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001374310": {
+   "at": "2026-09-14T05:33:42.229Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000804753": {
+   "at": "2026-09-14T05:33:42.229Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001058090": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000313927": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000020286": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000877890": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000811156": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000028412": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000023217": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000016918": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000900075": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001175454": {
+   "at": "2026-09-14T06:01:36.733Z",
+   "outcome": "awaiting_review",
+   "note": "renamed since source recorded"
+  },
+  "sec:cik:0000858470": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000940944": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001093557": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001539838": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001393612": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001001082": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000029534": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "ambiguous"
+  },
+  "sec:cik:0001751788": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000783280": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000827052": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000712515": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000032604": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000065984": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000920522": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001095073": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001289490": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000034088": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001048695": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001132979": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001519751": {
+   "at": "2026-09-14T06:01:36.735Z",
+   "outcome": "awaiting_review",
+   "note": "renamed since source recorded"
+  },
+  "sec:cik:0000038777": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001121788": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000882095": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001359841": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000765880": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001000228": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000004447": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001915657": {
+   "at": "2026-09-14T06:01:36.737Z",
+   "outcome": "awaiting_review",
+   "note": "wikidata/sec ticker disagreement"
+  },
+  "sec:cik:0000859737": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000832101": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001598014": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000051644": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001020569": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000728535": {
+   "at": "2026-09-14T05:33:42.230Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001043604": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000054480": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000055067": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001601046": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001506307": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001300514": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000058492": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000059558": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001335258": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000912595": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000101778": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001278021": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000743316": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000789570": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000865752": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001623613": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001164727": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "ambiguous"
+  },
+  "sec:cik:0001492633": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001111711": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000072207": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000073124": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000906163": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001039684": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000075677": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000813828": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000891024": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001633917": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001378946": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001038357": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000945841": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000822416": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001013462": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000874766": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000104169": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "ambiguous"
+  },
+  "sec:cik:0001022079": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001087423": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000084129": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001012100": {
+   "at": "2026-09-14T05:33:42.231Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001040971": {
+   "at": "2026-09-14T05:33:42.232Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000861878": {
+   "at": "2026-09-14T05:33:42.232Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001739940": {
+   "at": "2026-09-14T05:33:42.232Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000098246": {
+   "at": "2026-09-14T05:33:42.232Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000109198": {
+   "at": "2026-09-14T05:33:42.232Z",
+   "outcome": "ambiguous"
+  },
+  "sec:cik:0001260221": {
+   "at": "2026-09-14T05:33:42.232Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000860731": {
+   "at": "2026-09-14T05:33:42.232Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000100517": {
+   "at": "2026-09-14T05:33:42.232Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000005513": {
+   "at": "2026-09-14T06:01:36.750Z",
+   "outcome": "awaiting_review",
+   "note": "renamed since source recorded"
+  },
+  "sec:cik:0000203527": {
+   "at": "2026-09-14T05:33:42.232Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000740260": {
+   "at": "2026-09-14T05:33:42.232Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001339947": {
+   "at": "2026-09-14T05:33:42.232Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000011544": {
+   "at": "2026-09-14T05:33:42.232Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001045309": {
+   "at": "2026-09-14T05:33:42.232Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001618921": {
+   "at": "2026-09-14T05:33:42.232Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001000697": {
+   "at": "2026-09-14T05:33:42.232Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000783325": {
+   "at": "2026-09-14T05:33:42.232Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000865436": {
+   "at": "2026-09-14T05:33:42.232Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001140536": {
+   "at": "2026-09-14T05:33:42.232Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0001732845": {
+   "at": "2026-09-14T05:33:42.232Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000877212": {
+   "at": "2026-09-14T05:33:42.232Z",
+   "outcome": "missing"
+  },
+  "sec:cik:0000066740": {
+   "at": "2026-09-14T05:33:47.770Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000091142": {
+   "at": "2026-09-14T05:33:48.088Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000001800": {
+   "at": "2026-09-14T05:33:48.440Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001551152": {
+   "at": "2026-09-14T05:33:48.722Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000796343": {
+   "at": "2026-09-14T05:33:49.088Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001158449": {
+   "at": "2026-09-14T05:33:49.509Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000874761": {
+   "at": "2026-09-14T05:33:49.905Z",
+   "outcome": "resolved",
+   "note": "sanitised: external references"
+  },
+  "sec:cik:0001090872": {
+   "at": "2026-09-14T05:33:50.210Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000002969": {
+   "at": "2026-09-14T05:33:50.489Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001086222": {
+   "at": "2026-09-14T05:33:50.842Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000766421": {
+   "at": "2026-09-14T05:33:51.315Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000915913": {
+   "at": "2026-09-14T05:33:51.613Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001097149": {
+   "at": "2026-09-14T05:33:51.956Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000352541": {
+   "at": "2026-09-14T05:33:52.358Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000899051": {
+   "at": "2026-09-14T05:33:52.605Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001652044": {
+   "at": "2026-09-14T05:33:52.943Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000764180": {
+   "at": "2026-09-14T05:33:53.383Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001002910": {
+   "at": "2026-09-14T05:33:53.723Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000004962": {
+   "at": "2026-09-14T05:33:54.006Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000005272": {
+   "at": "2026-09-14T05:33:54.417Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001053507": {
+   "at": "2026-09-14T05:33:54.848Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001410636": {
+   "at": "2026-09-14T05:49:32.795Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000820027": {
+   "at": "2026-09-14T05:34:06.889Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001037868": {
+   "at": "2026-09-14T05:34:07.392Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000318154": {
+   "at": "2026-09-14T05:34:07.527Z",
+   "outcome": "awaiting_review",
+   "note": "Not an SVG document"
+  },
+  "sec:cik:0000820313": {
+   "at": "2026-09-14T05:34:07.946Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000006281": {
+   "at": "2026-09-14T05:49:32.952Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000315293": {
+   "at": "2026-09-14T05:34:14.295Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000006951": {
+   "at": "2026-09-14T05:34:20.422Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001521332": {
+   "at": "2026-09-14T05:34:20.767Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000007084": {
+   "at": "2026-09-14T05:34:21.116Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001596532": {
+   "at": "2026-09-14T05:34:21.399Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000732717": {
+   "at": "2026-09-14T05:34:21.754Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000731802": {
+   "at": "2026-09-14T05:34:22.172Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000866787": {
+   "at": "2026-09-14T05:49:33.377Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000008818": {
+   "at": "2026-09-14T05:34:34.422Z",
+   "outcome": "awaiting_review",
+   "note": "SVG exceeds 262144 bytes"
+  },
+  "sec:cik:0001701605": {
+   "at": "2026-09-14T05:34:34.658Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000009389": {
+   "at": "2026-09-14T05:34:34.987Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000070858": {
+   "at": "2026-09-14T05:34:35.279Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000701985": {
+   "at": "2026-09-14T06:01:36.731Z",
+   "outcome": "awaiting_review",
+   "note": "renamed since source recorded"
+  },
+  "sec:cik:0000010456": {
+   "at": "2026-09-14T05:34:47.814Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000010795": {
+   "at": "2026-09-14T05:34:48.089Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001067983": {
+   "at": "2026-09-14T05:34:48.573Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000764478": {
+   "at": "2026-09-14T05:34:48.791Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000012208": {
+   "at": "2026-09-14T05:49:33.658Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000012927": {
+   "at": "2026-09-14T05:34:55.188Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001075531": {
+   "at": "2026-09-14T05:34:55.588Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000908255": {
+   "at": "2026-09-14T05:34:55.888Z",
+   "outcome": "awaiting_review",
+   "note": "SVG declares entities"
+  },
+  "sec:cik:0001037540": {
+   "at": "2026-09-14T06:01:36.731Z",
+   "outcome": "awaiting_review",
+   "note": "renamed since source recorded"
+  },
+  "sec:cik:0000885725": {
+   "at": "2026-09-14T05:35:02.351Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000014272": {
+   "at": "2026-09-14T05:35:02.638Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001730168": {
+   "at": "2026-09-14T05:35:03.048Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001043277": {
+   "at": "2026-09-14T05:35:03.465Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000813672": {
+   "at": "2026-09-14T05:49:34.003Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000016732": {
+   "at": "2026-09-14T05:35:15.499Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000927628": {
+   "at": "2026-09-14T05:35:15.786Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000721371": {
+   "at": "2026-09-14T05:35:16.206Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001170010": {
+   "at": "2026-09-14T05:35:16.553Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000815097": {
+   "at": "2026-09-14T05:49:34.355Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001783180": {
+   "at": "2026-09-14T05:35:22.892Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000018230": {
+   "at": "2026-09-14T05:35:23.239Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001138118": {
+   "at": "2026-09-14T05:35:29.345Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001402057": {
+   "at": "2026-09-14T05:35:29.696Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001140859": {
+   "at": "2026-09-14T05:35:30.115Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001071739": {
+   "at": "2026-09-14T05:35:30.339Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001130310": {
+   "at": "2026-09-14T05:35:30.688Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001324404": {
+   "at": "2026-09-14T05:35:31.106Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000316709": {
+   "at": "2026-09-14T05:35:31.455Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000093410": {
+   "at": "2026-09-14T05:35:31.738Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000896159": {
+   "at": "2026-09-14T05:49:34.715Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000723254": {
+   "at": "2026-09-14T05:35:43.912Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000858877": {
+   "at": "2026-09-14T05:35:44.188Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000831001": {
+   "at": "2026-09-14T05:35:44.539Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000759944": {
+   "at": "2026-09-14T05:35:44.956Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000021076": {
+   "at": "2026-09-14T05:35:45.361Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001156375": {
+   "at": "2026-09-14T05:35:45.663Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001058290": {
+   "at": "2026-09-14T05:35:45.664Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000021665": {
+   "at": "2026-09-14T05:49:35.135Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001166691": {
+   "at": "2026-09-14T05:35:51.976Z",
+   "outcome": "resolved",
+   "note": "sanitised: external references"
+  },
+  "sec:cik:0001163165": {
+   "at": "2026-09-14T05:35:58.121Z",
+   "outcome": "awaiting_review",
+   "note": "SVG declares entities"
+  },
+  "sec:cik:0001047862": {
+   "at": "2026-09-14T05:35:58.390Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000024741": {
+   "at": "2026-09-14T05:35:58.739Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001755672": {
+   "at": "2026-09-14T05:35:59.207Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001057352": {
+   "at": "2026-09-14T05:35:59.506Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000909832": {
+   "at": "2026-09-14T05:35:59.799Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001051470": {
+   "at": "2026-09-14T05:36:00.222Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000277948": {
+   "at": "2026-09-14T05:36:00.493Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000026172": {
+   "at": "2026-09-14T05:36:00.848Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000064803": {
+   "at": "2026-09-14T05:36:01.206Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000882184": {
+   "at": "2026-09-14T05:36:01.679Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000313616": {
+   "at": "2026-09-14T05:49:35.411Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000315189": {
+   "at": "2026-09-14T05:36:07.954Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000027904": {
+   "at": "2026-09-14T05:36:08.301Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000818479": {
+   "at": "2026-09-14T05:36:14.582Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001090012": {
+   "at": "2026-09-14T05:36:14.919Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001297996": {
+   "at": "2026-09-14T05:36:14.919Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000935703": {
+   "at": "2026-09-14T05:36:15.209Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000715957": {
+   "at": "2026-09-14T05:36:15.640Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001286681": {
+   "at": "2026-09-14T05:36:15.980Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000029905": {
+   "at": "2026-09-14T05:49:35.778Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000936340": {
+   "at": "2026-09-14T06:01:36.734Z",
+   "outcome": "awaiting_review",
+   "note": "renamed since source recorded"
+  },
+  "sec:cik:0001326160": {
+   "at": "2026-09-14T05:36:22.331Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001666700": {
+   "at": "2026-09-14T05:36:28.436Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001688568": {
+   "at": "2026-09-14T05:36:28.789Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000915389": {
+   "at": "2026-09-14T05:36:29.139Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001551182": {
+   "at": "2026-09-14T05:49:36.049Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000031462": {
+   "at": "2026-09-14T05:36:41.273Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001099800": {
+   "at": "2026-09-14T05:36:41.569Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001156039": {
+   "at": "2026-09-14T05:36:41.938Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000059478": {
+   "at": "2026-09-14T05:36:42.207Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001463101": {
+   "at": "2026-09-14T05:36:42.556Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000821189": {
+   "at": "2026-09-14T05:36:42.973Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000033185": {
+   "at": "2026-09-14T05:36:43.431Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001101239": {
+   "at": "2026-09-14T05:36:43.615Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001001250": {
+   "at": "2026-09-14T05:36:43.974Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001711269": {
+   "at": "2026-09-14T05:36:44.396Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000072741": {
+   "at": "2026-09-14T05:49:36.503Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001109357": {
+   "at": "2026-09-14T05:36:56.493Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001324424": {
+   "at": "2026-09-14T05:36:56.817Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000746515": {
+   "at": "2026-09-14T05:36:57.160Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000815556": {
+   "at": "2026-09-14T05:36:57.453Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000034903": {
+   "at": "2026-09-14T05:49:36.813Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001048911": {
+   "at": "2026-09-14T05:37:03.879Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001136893": {
+   "at": "2026-09-14T05:37:04.218Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001031296": {
+   "at": "2026-09-14T05:37:10.360Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000798354": {
+   "at": "2026-09-14T05:37:10.717Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000030625": {
+   "at": "2026-09-14T05:37:11.046Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000037785": {
+   "at": "2026-09-14T05:37:11.380Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000037996": {
+   "at": "2026-09-14T05:49:37.104Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001262039": {
+   "at": "2026-09-14T05:37:17.705Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001659166": {
+   "at": "2026-09-14T05:37:23.835Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001754301": {
+   "at": "2026-09-14T05:37:24.073Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000831259": {
+   "at": "2026-09-14T05:37:24.506Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000039911": {
+   "at": "2026-09-14T05:37:24.871Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000749251": {
+   "at": "2026-09-14T05:49:37.461Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000040545": {
+   "at": "2026-09-14T05:37:36.959Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000040533": {
+   "at": "2026-09-14T05:37:37.286Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000040704": {
+   "at": "2026-09-14T05:37:37.573Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001467858": {
+   "at": "2026-09-14T05:37:37.996Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000040987": {
+   "at": "2026-09-14T05:49:37.872Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001123360": {
+   "at": "2026-09-14T05:37:50.124Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000320335": {
+   "at": "2026-09-14T05:37:50.466Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000886982": {
+   "at": "2026-09-14T05:37:50.740Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000045012": {
+   "at": "2026-09-14T05:37:51.155Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000046080": {
+   "at": "2026-09-14T05:37:51.437Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000860730": {
+   "at": "2026-09-14T06:01:36.737Z",
+   "outcome": "awaiting_review",
+   "note": "renamed since source recorded"
+  },
+  "sec:cik:0001645590": {
+   "at": "2026-09-14T05:38:03.607Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000047217": {
+   "at": "2026-09-14T06:01:36.737Z",
+   "outcome": "awaiting_review",
+   "note": "renamed since source recorded"
+  },
+  "sec:cik:0001585689": {
+   "at": "2026-09-14T05:38:04.256Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000773840": {
+   "at": "2026-09-14T05:38:04.651Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000048465": {
+   "at": "2026-09-14T05:38:05.003Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001070750": {
+   "at": "2026-09-14T05:38:05.361Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000004281": {
+   "at": "2026-09-14T05:49:38.574Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000049071": {
+   "at": "2026-09-14T05:38:17.795Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000049196": {
+   "at": "2026-09-14T05:38:18.127Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001501585": {
+   "at": "2026-09-14T05:38:18.481Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000051143": {
+   "at": "2026-09-14T05:38:18.774Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000874716": {
+   "at": "2026-09-14T05:49:39.007Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000049826": {
+   "at": "2026-09-14T05:38:30.968Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001110803": {
+   "at": "2026-09-14T05:38:31.343Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000879169": {
+   "at": "2026-09-14T05:38:31.887Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001466258": {
+   "at": "2026-09-14T06:01:36.737Z",
+   "outcome": "awaiting_review",
+   "note": "renamed since source recorded"
+  },
+  "sec:cik:0000050863": {
+   "at": "2026-09-14T05:49:39.225Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001571949": {
+   "at": "2026-09-14T06:01:36.738Z",
+   "outcome": "awaiting_review",
+   "note": "renamed since source recorded"
+  },
+  "sec:cik:0000051253": {
+   "at": "2026-09-14T05:38:44.512Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000051434": {
+   "at": "2026-09-14T05:38:44.857Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000896878": {
+   "at": "2026-09-14T05:49:39.663Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001035267": {
+   "at": "2026-09-14T05:38:56.959Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001111928": {
+   "at": "2026-09-14T05:38:57.422Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001478242": {
+   "at": "2026-09-14T05:38:57.655Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000898293": {
+   "at": "2026-09-14T05:49:40.012Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000779152": {
+   "at": "2026-09-14T05:39:09.779Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000052988": {
+   "at": "2026-09-14T06:01:36.738Z",
+   "outcome": "awaiting_review",
+   "note": "renamed since source recorded"
+  },
+  "sec:cik:0000200406": {
+   "at": "2026-09-14T05:39:10.384Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000833444": {
+   "at": "2026-09-14T05:39:10.826Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000019617": {
+   "at": "2026-09-14T05:49:40.346Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000091576": {
+   "at": "2026-09-14T05:39:22.906Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000055785": {
+   "at": "2026-09-14T05:39:23.244Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000879101": {
+   "at": "2026-09-14T05:39:23.539Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000319201": {
+   "at": "2026-09-14T05:39:23.947Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001637459": {
+   "at": "2026-09-14T05:39:24.234Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000056873": {
+   "at": "2026-09-14T05:39:24.591Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000202058": {
+   "at": "2026-09-14T05:39:24.941Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000920148": {
+   "at": "2026-09-14T05:39:24.941Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000707549": {
+   "at": "2026-09-14T05:39:25.354Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001679273": {
+   "at": "2026-09-14T05:49:51.832Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001336920": {
+   "at": "2026-09-14T05:39:37.452Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000920760": {
+   "at": "2026-09-14T05:39:37.807Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001707925": {
+   "at": "2026-09-14T05:39:38.238Z",
+   "outcome": "awaiting_review",
+   "note": "Raster exceeds 524288 bytes"
+  },
+  "sec:cik:0001065696": {
+   "at": "2026-09-14T05:49:52.445Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000936468": {
+   "at": "2026-09-14T05:39:44.642Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000060086": {
+   "at": "2026-09-14T05:39:50.857Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000060667": {
+   "at": "2026-09-14T05:39:51.023Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000018926": {
+   "at": "2026-09-14T05:39:51.438Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001489393": {
+   "at": "2026-09-14T05:39:51.792Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000036270": {
+   "at": "2026-09-14T05:39:52.080Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000794367": {
+   "at": "2026-09-14T05:49:53.222Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001510295": {
+   "at": "2026-09-14T05:39:58.474Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001048286": {
+   "at": "2026-09-14T05:39:58.823Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000062709": {
+   "at": "2026-09-14T06:01:36.742Z",
+   "outcome": "awaiting_review",
+   "note": "wikidata/sec ticker disagreement"
+  },
+  "sec:cik:0000916076": {
+   "at": "2026-09-14T05:39:58.823Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000062996": {
+   "at": "2026-09-14T05:40:05.046Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001141391": {
+   "at": "2026-09-14T05:40:05.309Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000063754": {
+   "at": "2026-09-14T05:40:05.730Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000063908": {
+   "at": "2026-09-14T05:40:06.009Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000927653": {
+   "at": "2026-09-14T05:40:06.009Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001613103": {
+   "at": "2026-09-14T05:40:06.424Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000310158": {
+   "at": "2026-09-14T05:40:06.773Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001099219": {
+   "at": "2026-09-14T05:49:53.841Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001037646": {
+   "at": "2026-09-14T05:40:18.989Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000827054": {
+   "at": "2026-09-14T05:40:19.265Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000723125": {
+   "at": "2026-09-14T05:40:19.606Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000851968": {
+   "at": "2026-09-14T05:49:54.563Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000024545": {
+   "at": "2026-09-14T06:01:36.742Z",
+   "outcome": "awaiting_review",
+   "note": "renamed since source recorded"
+  },
+  "sec:cik:0001103982": {
+   "at": "2026-09-14T05:40:32.075Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001280452": {
+   "at": "2026-09-14T05:40:32.423Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001059556": {
+   "at": "2026-09-14T05:49:55.245Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000895421": {
+   "at": "2026-09-14T05:40:44.534Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000068505": {
+   "at": "2026-09-14T05:40:44.872Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001408198": {
+   "at": "2026-09-14T05:40:45.243Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001120193": {
+   "at": "2026-09-14T05:40:45.524Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001021860": {
+   "at": "2026-09-14T06:01:36.743Z",
+   "outcome": "awaiting_review",
+   "note": "renamed since source recorded"
+  },
+  "sec:cik:0001002047": {
+   "at": "2026-09-14T05:40:57.706Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000814453": {
+   "at": "2026-09-14T05:40:58.041Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001564708": {
+   "at": "2026-09-14T05:40:58.406Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000753308": {
+   "at": "2026-09-14T05:49:56.656Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000320187": {
+   "at": "2026-09-14T05:41:04.738Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001133421": {
+   "at": "2026-09-14T05:41:05.100Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001513761": {
+   "at": "2026-09-14T05:41:11.256Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001013871": {
+   "at": "2026-09-14T05:41:11.577Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000073309": {
+   "at": "2026-09-14T05:41:11.873Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000898173": {
+   "at": "2026-09-14T05:41:12.237Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000797468": {
+   "at": "2026-09-14T05:41:12.660Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000878927": {
+   "at": "2026-09-14T05:41:12.660Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000029989": {
+   "at": "2026-09-14T05:41:12.994Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001341439": {
+   "at": "2026-09-14T05:41:13.277Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001821825": {
+   "at": "2026-09-14T05:41:13.708Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001781335": {
+   "at": "2026-09-14T05:41:13.990Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000075362": {
+   "at": "2026-09-14T05:41:14.409Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000076334": {
+   "at": "2026-09-14T05:41:14.750Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000723531": {
+   "at": "2026-09-14T05:49:57.348Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001590955": {
+   "at": "2026-09-14T05:41:26.956Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000077360": {
+   "at": "2026-09-14T05:41:27.299Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000077476": {
+   "at": "2026-09-14T05:41:27.639Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000031791": {
+   "at": "2026-09-14T06:01:36.744Z",
+   "outcome": "awaiting_review",
+   "note": "renamed since source recorded"
+  },
+  "sec:cik:0001585364": {
+   "at": "2026-09-14T05:41:39.812Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000078003": {
+   "at": "2026-09-14T05:41:40.113Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001413329": {
+   "at": "2026-09-14T05:41:40.406Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001534701": {
+   "at": "2026-09-14T05:41:40.761Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000764622": {
+   "at": "2026-09-14T05:49:58.097Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000713676": {
+   "at": "2026-09-14T05:41:53.101Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000079879": {
+   "at": "2026-09-14T05:41:53.392Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000922224": {
+   "at": "2026-09-14T05:41:53.751Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001126328": {
+   "at": "2026-09-14T05:50:09.858Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000080424": {
+   "at": "2026-09-14T05:42:00.341Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000080661": {
+   "at": "2026-09-14T05:42:06.466Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001045609": {
+   "at": "2026-09-14T05:42:06.827Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001137774": {
+   "at": "2026-09-14T05:42:06.827Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000788784": {
+   "at": "2026-09-14T05:42:07.194Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001393311": {
+   "at": "2026-09-14T05:50:11.434Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000078239": {
+   "at": "2026-09-14T06:01:36.745Z",
+   "outcome": "awaiting_review",
+   "note": "renamed since source recorded"
+  },
+  "sec:cik:0001370637": {
+   "at": "2026-09-14T05:42:19.760Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000106640": {
+   "at": "2026-09-14T05:42:20.064Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001065088": {
+   "at": "2026-09-14T05:42:20.401Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000849399": {
+   "at": "2026-09-14T05:42:20.795Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001604778": {
+   "at": "2026-09-14T05:42:21.246Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000804328": {
+   "at": "2026-09-14T05:42:21.444Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001050915": {
+   "at": "2026-09-14T05:42:21.444Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001037038": {
+   "at": "2026-09-14T05:42:21.859Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000720005": {
+   "at": "2026-09-14T05:42:22.207Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000726728": {
+   "at": "2026-09-14T05:42:22.558Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000910606": {
+   "at": "2026-09-14T05:42:22.913Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000872589": {
+   "at": "2026-09-14T05:42:23.265Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001281761": {
+   "at": "2026-09-14T05:42:23.634Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001060391": {
+   "at": "2026-09-14T05:42:23.984Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000943819": {
+   "at": "2026-09-14T05:42:24.264Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000315213": {
+   "at": "2026-09-14T05:42:24.674Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001024478": {
+   "at": "2026-09-14T05:50:12.582Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000084839": {
+   "at": "2026-09-14T05:42:37.013Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000882835": {
+   "at": "2026-09-14T05:42:37.360Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000745732": {
+   "at": "2026-09-14T05:42:37.659Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000884887": {
+   "at": "2026-09-14T05:42:38.083Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000101829": {
+   "at": "2026-09-14T05:42:38.416Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000064040": {
+   "at": "2026-09-14T05:50:13.932Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001108524": {
+   "at": "2026-09-14T05:42:44.750Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001034054": {
+   "at": "2026-09-14T05:42:50.907Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001137789": {
+   "at": "2026-09-14T05:42:51.218Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001032208": {
+   "at": "2026-09-14T05:42:51.595Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001373715": {
+   "at": "2026-09-14T05:42:51.869Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000089800": {
+   "at": "2026-09-14T05:50:15.497Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001063761": {
+   "at": "2026-09-14T05:42:58.261Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000004127": {
+   "at": "2026-09-14T05:43:04.391Z",
+   "outcome": "resolved",
+   "note": "sanitised: external references"
+  },
+  "sec:cik:0000087347": {
+   "at": "2026-09-14T05:43:04.741Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000091440": {
+   "at": "2026-09-14T05:43:05.105Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000092122": {
+   "at": "2026-09-14T05:50:16.805Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000092380": {
+   "at": "2026-09-14T05:43:11.426Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001091667": {
+   "at": "2026-09-14T05:43:11.781Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000093556": {
+   "at": "2026-09-14T05:43:17.881Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000829224": {
+   "at": "2026-09-14T05:43:18.231Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001757898": {
+   "at": "2026-09-14T05:43:18.619Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000310764": {
+   "at": "2026-09-14T05:43:18.875Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001601712": {
+   "at": "2026-09-14T05:43:19.314Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000883241": {
+   "at": "2026-09-14T05:50:18.130Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000096021": {
+   "at": "2026-09-14T05:43:31.407Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001283699": {
+   "at": "2026-09-14T05:43:31.760Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001113169": {
+   "at": "2026-09-14T05:43:32.124Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000946581": {
+   "at": "2026-09-14T05:50:19.599Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001116132": {
+   "at": "2026-09-14T05:43:44.222Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000027419": {
+   "at": "2026-09-14T05:43:44.507Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001385157": {
+   "at": "2026-09-14T05:43:44.926Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001681459": {
+   "at": "2026-09-14T05:43:45.265Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001094285": {
+   "at": "2026-09-14T05:50:20.997Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000096943": {
+   "at": "2026-09-14T05:43:57.515Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000097210": {
+   "at": "2026-09-14T05:43:57.876Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001318605": {
+   "at": "2026-09-14T05:43:58.329Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000097476": {
+   "at": "2026-09-14T05:43:58.641Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000217346": {
+   "at": "2026-09-14T05:43:58.939Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001390777": {
+   "at": "2026-09-14T05:43:59.297Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000021344": {
+   "at": "2026-09-14T05:43:59.650Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000711404": {
+   "at": "2026-09-14T05:44:00.059Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000047111": {
+   "at": "2026-09-14T05:44:00.428Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000354950": {
+   "at": "2026-09-14T05:44:00.622Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000091419": {
+   "at": "2026-09-14T05:44:01.063Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001285785": {
+   "at": "2026-09-14T05:44:01.387Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000086312": {
+   "at": "2026-09-14T05:44:01.387Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0001744489": {
+   "at": "2026-09-14T05:44:01.685Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000097745": {
+   "at": "2026-09-14T05:44:02.093Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000916365": {
+   "at": "2026-09-14T05:44:02.457Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000864749": {
+   "at": "2026-09-14T05:44:02.793Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001526520": {
+   "at": "2026-09-14T05:44:03.082Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000092230": {
+   "at": "2026-09-14T05:50:22.418Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000100493": {
+   "at": "2026-09-14T05:44:09.482Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000036104": {
+   "at": "2026-09-14T05:44:15.622Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001543151": {
+   "at": "2026-09-14T05:44:15.954Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000074208": {
+   "at": "2026-09-14T05:44:16.308Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001403568": {
+   "at": "2026-09-14T05:50:23.797Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001336917": {
+   "at": "2026-09-14T05:44:22.642Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000100885": {
+   "at": "2026-09-14T05:44:22.992Z",
+   "outcome": "awaiting_review",
+   "note": "SVG declares entities"
+  },
+  "sec:cik:0001090727": {
+   "at": "2026-09-14T05:44:23.345Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001067701": {
+   "at": "2026-09-14T05:44:29.474Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000352915": {
+   "at": "2026-09-14T05:44:29.808Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001035002": {
+   "at": "2026-09-14T05:44:30.121Z",
+   "outcome": "resolved",
+   "note": "sanitised: external references"
+  },
+  "sec:cik:0001014473": {
+   "at": "2026-09-14T05:44:30.525Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001442145": {
+   "at": "2026-09-14T05:44:30.525Z",
+   "outcome": "awaiting_review"
+  },
+  "sec:cik:0000732712": {
+   "at": "2026-09-14T05:44:30.796Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000875320": {
+   "at": "2026-09-14T05:44:31.224Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000103379": {
+   "at": "2026-09-14T05:50:25.266Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001792044": {
+   "at": "2026-09-14T05:44:43.484Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001403161": {
+   "at": "2026-09-14T05:44:43.588Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000906107": {
+   "at": "2026-09-14T06:01:36.751Z",
+   "outcome": "awaiting_review",
+   "note": "renamed since source recorded"
+  },
+  "sec:cik:0001786842": {
+   "at": "2026-09-14T05:44:44.366Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000899689": {
+   "at": "2026-09-14T05:44:44.648Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001396009": {
+   "at": "2026-09-14T05:50:26.603Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000277135": {
+   "at": "2026-09-14T05:44:56.824Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000943452": {
+   "at": "2026-09-14T06:01:36.751Z",
+   "outcome": "awaiting_review",
+   "note": "renamed since source recorded"
+  },
+  "sec:cik:0000823768": {
+   "at": "2026-09-14T05:44:57.522Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000072971": {
+   "at": "2026-09-14T05:50:28.012Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000766704": {
+   "at": "2026-09-14T05:45:09.891Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000106040": {
+   "at": "2026-09-14T05:45:10.107Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001365135": {
+   "at": "2026-09-14T05:45:10.491Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000106535": {
+   "at": "2026-09-14T05:45:10.949Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000107263": {
+   "at": "2026-09-14T05:50:29.445Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001174922": {
+   "at": "2026-09-14T05:45:23.774Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0000072903": {
+   "at": "2026-09-14T05:45:24.100Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001770450": {
+   "at": "2026-09-14T05:45:24.482Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001524472": {
+   "at": "2026-09-14T05:45:24.836Z",
+   "outcome": "resolved",
+   "note": "sanitised: external references"
+  },
+  "sec:cik:0001041061": {
+   "at": "2026-09-14T05:45:25.094Z",
+   "outcome": "resolved"
+  },
+  "sec:cik:0001136869": {
+   "at": "2026-09-14T06:01:36.752Z",
+   "outcome": "awaiting_review",
+   "note": "renamed since source recorded"
+  },
+  "sec:cik:0000109380": {
+   "at": "2026-09-14T06:01:36.753Z",
+   "outcome": "awaiting_review",
+   "note": "renamed since source recorded"
+  },
+  "sec:cik:0001555280": {
+   "at": "2026-09-14T05:50:30.812Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C000127": {
+   "at": "2026-09-14T05:50:31.570Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000367": {
+   "at": "2026-09-14T05:50:31.914Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S000033": {
+   "at": "2026-09-14T05:50:32.272Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000802": {
+   "at": "2026-09-14T05:50:32.622Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001261": {
+   "at": "2026-09-14T05:50:32.979Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000437": {
+   "at": "2026-09-14T05:50:33.317Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001035": {
+   "at": "2026-09-14T05:50:33.674Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001056": {
+   "at": "2026-09-14T05:50:34.024Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000563": {
+   "at": "2026-09-14T05:50:34.396Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M000355": {
+   "at": "2026-09-14T05:50:34.774Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001176": {
+   "at": "2026-09-14T05:50:35.066Z",
+   "outcome": "resolved"
+  },
+  "bioguide:R000122": {
+   "at": "2026-09-14T05:50:35.410Z",
+   "outcome": "resolved"
+  },
+  "bioguide:R000584": {
+   "at": "2026-09-14T05:50:35.774Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001181": {
+   "at": "2026-09-14T05:50:36.166Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000805": {
+   "at": "2026-09-14T05:50:36.478Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000555": {
+   "at": "2026-09-14T05:50:36.819Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001088": {
+   "at": "2026-09-14T05:50:37.181Z",
+   "outcome": "resolved"
+  },
+  "bioguide:A000055": {
+   "at": "2026-09-14T05:50:37.540Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001230": {
+   "at": "2026-09-14T05:50:37.868Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001267": {
+   "at": "2026-09-14T05:50:38.241Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001257": {
+   "at": "2026-09-14T05:50:38.582Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B000490": {
+   "at": "2026-09-14T05:50:38.940Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001243": {
+   "at": "2026-09-14T05:50:39.284Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001277": {
+   "at": "2026-09-14T05:50:39.617Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001236": {
+   "at": "2026-09-14T05:50:39.997Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001260": {
+   "at": "2026-09-14T05:50:40.336Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C000059": {
+   "at": "2026-09-14T05:50:40.704Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001047": {
+   "at": "2026-09-14T05:50:41.036Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001072": {
+   "at": "2026-09-14T05:50:41.401Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001051": {
+   "at": "2026-09-14T05:50:41.739Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001075": {
+   "at": "2026-09-14T05:50:42.084Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001066": {
+   "at": "2026-09-14T05:50:42.459Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001080": {
+   "at": "2026-09-14T05:50:42.811Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001067": {
+   "at": "2026-09-14T05:50:43.149Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001061": {
+   "at": "2026-09-14T05:50:43.498Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C000537": {
+   "at": "2026-09-14T05:50:43.866Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001068": {
+   "at": "2026-09-14T05:50:44.230Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001053": {
+   "at": "2026-09-14T05:50:44.557Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001059": {
+   "at": "2026-09-14T05:50:44.917Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001069": {
+   "at": "2026-09-14T05:50:45.266Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C000880": {
+   "at": "2026-09-14T05:50:45.642Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001087": {
+   "at": "2026-09-14T05:50:45.964Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001063": {
+   "at": "2026-09-14T05:50:46.317Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000096": {
+   "at": "2026-09-14T05:50:46.680Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000197": {
+   "at": "2026-09-14T05:50:47.023Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000216": {
+   "at": "2026-09-14T05:50:47.380Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000616": {
+   "at": "2026-09-14T05:50:47.722Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000600": {
+   "at": "2026-09-14T05:50:48.086Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000399": {
+   "at": "2026-09-14T05:50:48.461Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000459": {
+   "at": "2026-09-14T05:50:48.780Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000450": {
+   "at": "2026-09-14T05:50:49.143Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000559": {
+   "at": "2026-09-14T05:50:49.489Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000565": {
+   "at": "2026-09-14T05:50:49.847Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000386": {
+   "at": "2026-09-14T05:50:50.190Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000546": {
+   "at": "2026-09-14T05:50:50.556Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000553": {
+   "at": "2026-09-14T05:50:50.905Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000568": {
+   "at": "2026-09-14T05:50:51.257Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000558": {
+   "at": "2026-09-14T05:50:51.604Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001052": {
+   "at": "2026-09-14T05:50:51.956Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001046": {
+   "at": "2026-09-14T05:50:52.328Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001047": {
+   "at": "2026-09-14T05:50:52.667Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001042": {
+   "at": "2026-09-14T05:50:53.027Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001061": {
+   "at": "2026-09-14T05:50:53.360Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H000874": {
+   "at": "2026-09-14T05:50:53.718Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001058": {
+   "at": "2026-09-14T05:50:54.074Z",
+   "outcome": "resolved"
+  },
+  "bioguide:J000288": {
+   "at": "2026-09-14T05:50:54.408Z",
+   "outcome": "resolved"
+  },
+  "bioguide:J000293": {
+   "at": "2026-09-14T05:50:54.779Z",
+   "outcome": "resolved"
+  },
+  "bioguide:J000289": {
+   "at": "2026-09-14T05:50:55.123Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000009": {
+   "at": "2026-09-14T05:50:55.482Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000375": {
+   "at": "2026-09-14T05:50:55.830Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000376": {
+   "at": "2026-09-14T05:50:56.177Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000575": {
+   "at": "2026-09-14T05:50:56.525Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000557": {
+   "at": "2026-09-14T05:50:56.895Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000566": {
+   "at": "2026-09-14T05:50:57.231Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000577": {
+   "at": "2026-09-14T05:50:57.579Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000397": {
+   "at": "2026-09-14T05:50:57.947Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000491": {
+   "at": "2026-09-14T05:50:58.299Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000570": {
+   "at": "2026-09-14T05:50:58.643Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000562": {
+   "at": "2026-09-14T05:50:58.992Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M000133": {
+   "at": "2026-09-14T05:50:59.354Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001163": {
+   "at": "2026-09-14T05:50:59.704Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001157": {
+   "at": "2026-09-14T05:51:00.065Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001177": {
+   "at": "2026-09-14T05:51:00.405Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001143": {
+   "at": "2026-09-14T05:51:00.765Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M000312": {
+   "at": "2026-09-14T05:51:01.111Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001137": {
+   "at": "2026-09-14T05:51:01.472Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001160": {
+   "at": "2026-09-14T05:51:01.813Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M000934": {
+   "at": "2026-09-14T05:51:02.169Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001153": {
+   "at": "2026-09-14T05:51:02.512Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001169": {
+   "at": "2026-09-14T05:51:02.869Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001111": {
+   "at": "2026-09-14T05:51:03.229Z",
+   "outcome": "resolved"
+  },
+  "bioguide:N000002": {
+   "at": "2026-09-14T05:51:03.581Z",
+   "outcome": "resolved"
+  },
+  "bioguide:N000015": {
+   "at": "2026-09-14T05:51:03.931Z",
+   "outcome": "resolved"
+  },
+  "bioguide:N000147": {
+   "at": "2026-09-14T05:51:04.317Z",
+   "outcome": "resolved"
+  },
+  "bioguide:P000034": {
+   "at": "2026-09-14T05:51:04.628Z",
+   "outcome": "resolved"
+  },
+  "bioguide:P000603": {
+   "at": "2026-09-14T05:51:04.984Z",
+   "outcome": "resolved"
+  },
+  "bioguide:P000595": {
+   "at": "2026-09-14T05:51:05.331Z",
+   "outcome": "resolved"
+  },
+  "bioguide:P000597": {
+   "at": "2026-09-14T05:51:05.685Z",
+   "outcome": "resolved"
+  },
+  "bioguide:Q000023": {
+   "at": "2026-09-14T05:51:06.030Z",
+   "outcome": "resolved"
+  },
+  "bioguide:R000395": {
+   "at": "2026-09-14T05:51:06.386Z",
+   "outcome": "resolved"
+  },
+  "bioguide:R000575": {
+   "at": "2026-09-14T05:51:06.755Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001176": {
+   "at": "2026-09-14T05:51:07.088Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001145": {
+   "at": "2026-09-14T05:51:07.446Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001150": {
+   "at": "2026-09-14T05:51:07.794Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S000148": {
+   "at": "2026-09-14T05:51:08.145Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001183": {
+   "at": "2026-09-14T05:51:08.571Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001189": {
+   "at": "2026-09-14T05:51:08.848Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S000185": {
+   "at": "2026-09-14T05:51:09.213Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001184": {
+   "at": "2026-09-14T05:51:09.563Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001185": {
+   "at": "2026-09-14T05:51:09.913Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S000344": {
+   "at": "2026-09-14T05:51:10.297Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001148": {
+   "at": "2026-09-14T05:51:10.604Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S000510": {
+   "at": "2026-09-14T05:51:10.956Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001172": {
+   "at": "2026-09-14T05:51:11.313Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S000522": {
+   "at": "2026-09-14T05:51:11.665Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001156": {
+   "at": "2026-09-14T05:51:12.016Z",
+   "outcome": "resolved"
+  },
+  "bioguide:T000193": {
+   "at": "2026-09-14T05:51:12.386Z",
+   "outcome": "resolved"
+  },
+  "bioguide:T000460": {
+   "at": "2026-09-14T05:51:12.718Z",
+   "outcome": "resolved"
+  },
+  "bioguide:T000467": {
+   "at": "2026-09-14T05:51:13.060Z",
+   "outcome": "resolved"
+  },
+  "bioguide:T000250": {
+   "at": "2026-09-14T05:51:13.431Z",
+   "outcome": "resolved"
+  },
+  "bioguide:T000469": {
+   "at": "2026-09-14T05:51:13.772Z",
+   "outcome": "resolved"
+  },
+  "bioguide:T000463": {
+   "at": "2026-09-14T05:51:14.115Z",
+   "outcome": "resolved"
+  },
+  "bioguide:V000128": {
+   "at": "2026-09-14T05:51:14.467Z",
+   "outcome": "resolved"
+  },
+  "bioguide:V000081": {
+   "at": "2026-09-14T05:51:14.834Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000798": {
+   "at": "2026-09-14T05:51:15.178Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000797": {
+   "at": "2026-09-14T05:51:15.528Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000187": {
+   "at": "2026-09-14T05:51:15.876Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000806": {
+   "at": "2026-09-14T05:51:16.236Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000800": {
+   "at": "2026-09-14T05:51:16.583Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000795": {
+   "at": "2026-09-14T05:51:16.938Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000808": {
+   "at": "2026-09-14T05:51:17.295Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000804": {
+   "at": "2026-09-14T05:51:17.638Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000809": {
+   "at": "2026-09-14T05:51:17.983Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000779": {
+   "at": "2026-09-14T05:51:18.340Z",
+   "outcome": "resolved"
+  },
+  "bioguide:Y000064": {
+   "at": "2026-09-14T05:51:18.701Z",
+   "outcome": "resolved"
+  },
+  "bioguide:A000369": {
+   "at": "2026-09-14T05:51:19.048Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001278": {
+   "at": "2026-09-14T05:51:19.403Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000617": {
+   "at": "2026-09-14T05:51:19.745Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001184": {
+   "at": "2026-09-14T05:51:20.091Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001194": {
+   "at": "2026-09-14T05:51:20.453Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000454": {
+   "at": "2026-09-14T05:51:20.812Z",
+   "outcome": "resolved"
+  },
+  "bioguide:T000468": {
+   "at": "2026-09-14T05:51:21.163Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001095": {
+   "at": "2026-09-14T05:51:21.514Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001068": {
+   "at": "2026-09-14T05:51:21.858Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001287": {
+   "at": "2026-09-14T05:51:22.215Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001285": {
+   "at": "2026-09-14T05:51:22.568Z",
+   "outcome": "resolved"
+  },
+  "bioguide:R000599": {
+   "at": "2026-09-14T05:51:22.918Z",
+   "outcome": "resolved"
+  },
+  "bioguide:T000472": {
+   "at": "2026-09-14T05:51:23.274Z",
+   "outcome": "resolved"
+  },
+  "bioguide:V000130": {
+   "at": "2026-09-14T05:51:23.616Z",
+   "outcome": "resolved"
+  },
+  "bioguide:P000608": {
+   "at": "2026-09-14T05:51:23.968Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000462": {
+   "at": "2026-09-14T05:51:24.348Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000622": {
+   "at": "2026-09-14T05:51:24.670Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001282": {
+   "at": "2026-09-14T05:51:25.033Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000817": {
+   "at": "2026-09-14T05:51:25.440Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000383": {
+   "at": "2026-09-14T05:51:25.736Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000812": {
+   "at": "2026-09-14T05:51:26.074Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000618": {
+   "at": "2026-09-14T05:51:26.458Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001067": {
+   "at": "2026-09-14T05:51:26.782Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001096": {
+   "at": "2026-09-14T05:51:27.138Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000463": {
+   "at": "2026-09-14T05:51:27.489Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001188": {
+   "at": "2026-09-14T05:51:27.847Z",
+   "outcome": "resolved"
+  },
+  "bioguide:J000294": {
+   "at": "2026-09-14T05:51:28.189Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001281": {
+   "at": "2026-09-14T05:51:28.554Z",
+   "outcome": "resolved"
+  },
+  "bioguide:J000295": {
+   "at": "2026-09-14T05:51:28.903Z",
+   "outcome": "resolved"
+  },
+  "bioguide:P000605": {
+   "at": "2026-09-14T05:51:29.256Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001098": {
+   "at": "2026-09-14T05:51:29.603Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000814": {
+   "at": "2026-09-14T05:51:29.946Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001091": {
+   "at": "2026-09-14T05:51:30.307Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000816": {
+   "at": "2026-09-14T05:51:30.695Z",
+   "outcome": "resolved"
+  },
+  "bioguide:V000131": {
+   "at": "2026-09-14T05:51:31.027Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000384": {
+   "at": "2026-09-14T05:51:31.403Z",
+   "outcome": "resolved"
+  },
+  "bioguide:P000607": {
+   "at": "2026-09-14T05:51:31.712Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000385": {
+   "at": "2026-09-14T05:51:32.078Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001195": {
+   "at": "2026-09-14T05:51:32.432Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001288": {
+   "at": "2026-09-14T05:51:32.805Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001101": {
+   "at": "2026-09-14T05:51:33.139Z",
+   "outcome": "resolved"
+  },
+  "bioguide:N000188": {
+   "at": "2026-09-14T05:51:33.478Z",
+   "outcome": "resolved"
+  },
+  "bioguide:A000370": {
+   "at": "2026-09-14T05:51:33.827Z",
+   "outcome": "resolved"
+  },
+  "bioguide:P000609": {
+   "at": "2026-09-14T05:51:34.185Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001072": {
+   "at": "2026-09-14T05:51:34.530Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000821": {
+   "at": "2026-09-14T05:51:35.200Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000574": {
+   "at": "2026-09-14T05:51:35.532Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000623": {
+   "at": "2026-09-14T05:51:35.819Z",
+   "outcome": "resolved"
+  },
+  "bioguide:A000371": {
+   "at": "2026-09-14T05:51:36.126Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000582": {
+   "at": "2026-09-14T05:51:36.443Z",
+   "outcome": "resolved"
+  },
+  "bioguide:T000474": {
+   "at": "2026-09-14T05:51:36.866Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001103": {
+   "at": "2026-09-14T05:51:37.092Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000583": {
+   "at": "2026-09-14T05:51:37.470Z",
+   "outcome": "resolved"
+  },
+  "bioguide:A000372": {
+   "at": "2026-09-14T05:51:37.787Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001295": {
+   "at": "2026-09-14T05:51:38.171Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001196": {
+   "at": "2026-09-14T05:51:38.488Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001194": {
+   "at": "2026-09-14T05:51:38.837Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000624": {
+   "at": "2026-09-14T05:51:39.193Z",
+   "outcome": "resolved"
+  },
+  "bioguide:E000294": {
+   "at": "2026-09-14T05:51:39.634Z",
+   "outcome": "resolved"
+  },
+  "bioguide:R000603": {
+   "at": "2026-09-14T05:51:39.898Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000822": {
+   "at": "2026-09-14T05:51:40.255Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001196": {
+   "at": "2026-09-14T05:51:40.630Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001296": {
+   "at": "2026-09-14T05:51:41.015Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001291": {
+   "at": "2026-09-14T05:51:41.334Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001292": {
+   "at": "2026-09-14T05:51:41.688Z",
+   "outcome": "resolved"
+  },
+  "bioguide:P000610": {
+   "at": "2026-09-14T05:51:42.082Z",
+   "outcome": "resolved"
+  },
+  "bioguide:N000189": {
+   "at": "2026-09-14T05:51:42.357Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000576": {
+   "at": "2026-09-14T05:51:42.705Z",
+   "outcome": "resolved"
+  },
+  "bioguide:R000600": {
+   "at": "2026-09-14T05:51:43.074Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001198": {
+   "at": "2026-09-14T05:51:43.412Z",
+   "outcome": "resolved"
+  },
+  "bioguide:E000295": {
+   "at": "2026-09-14T05:51:43.764Z",
+   "outcome": "resolved"
+  },
+  "bioguide:T000476": {
+   "at": "2026-09-14T05:51:44.129Z",
+   "outcome": "resolved"
+  },
+  "bioguide:R000605": {
+   "at": "2026-09-14T05:51:44.494Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000388": {
+   "at": "2026-09-14T05:51:44.848Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000585": {
+   "at": "2026-09-14T05:51:45.197Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000626": {
+   "at": "2026-09-14T05:51:45.581Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001108": {
+   "at": "2026-09-14T05:51:45.918Z",
+   "outcome": "resolved"
+  },
+  "bioguide:E000296": {
+   "at": "2026-09-14T05:51:46.296Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000393": {
+   "at": "2026-09-14T05:51:46.582Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001076": {
+   "at": "2026-09-14T05:51:46.981Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001113": {
+   "at": "2026-09-14T05:51:47.289Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001190": {
+   "at": "2026-09-14T05:51:47.686Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001302": {
+   "at": "2026-09-14T05:51:48.114Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000389": {
+   "at": "2026-09-14T05:51:48.362Z",
+   "outcome": "resolved"
+  },
+  "bioguide:P000613": {
+   "at": "2026-09-14T05:51:48.753Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001112": {
+   "at": "2026-09-14T05:51:49.058Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001300": {
+   "at": "2026-09-14T05:51:49.402Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001110": {
+   "at": "2026-09-14T05:51:49.890Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001303": {
+   "at": "2026-09-14T05:51:50.165Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000628": {
+   "at": "2026-09-14T05:51:50.452Z",
+   "outcome": "resolved"
+  },
+  "bioguide:R000609": {
+   "at": "2026-09-14T05:51:50.868Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001200": {
+   "at": "2026-09-14T05:51:51.168Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001199": {
+   "at": "2026-09-14T05:51:51.581Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000391": {
+   "at": "2026-09-14T05:51:51.930Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001299": {
+   "at": "2026-09-14T05:51:52.222Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001198": {
+   "at": "2026-09-14T05:51:52.568Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001077": {
+   "at": "2026-09-14T05:51:52.929Z",
+   "outcome": "resolved"
+  },
+  "bioguide:J000299": {
+   "at": "2026-09-14T05:51:53.332Z",
+   "outcome": "resolved"
+  },
+  "bioguide:R000606": {
+   "at": "2026-09-14T05:51:53.632Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001301": {
+   "at": "2026-09-14T05:51:53.977Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001305": {
+   "at": "2026-09-14T05:51:54.465Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001298": {
+   "at": "2026-09-14T05:51:54.695Z",
+   "outcome": "resolved"
+  },
+  "bioguide:R000608": {
+   "at": "2026-09-14T05:51:55.048Z",
+   "outcome": "resolved"
+  },
+  "bioguide:E000297": {
+   "at": "2026-09-14T05:51:55.384Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000466": {
+   "at": "2026-09-14T05:51:55.781Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001199": {
+   "at": "2026-09-14T05:51:56.109Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000392": {
+   "at": "2026-09-14T05:51:56.464Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000581": {
+   "at": "2026-09-14T05:51:56.800Z",
+   "outcome": "resolved"
+  },
+  "bioguide:A000375": {
+   "at": "2026-09-14T05:51:57.156Z",
+   "outcome": "resolved"
+  },
+  "bioguide:J000298": {
+   "at": "2026-09-14T05:51:57.492Z",
+   "outcome": "resolved"
+  },
+  "bioguide:E000298": {
+   "at": "2026-09-14T05:51:57.847Z",
+   "outcome": "resolved"
+  },
+  "bioguide:N000190": {
+   "at": "2026-09-14T05:51:58.363Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000585": {
+   "at": "2026-09-14T05:51:58.582Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001114": {
+   "at": "2026-09-14T05:51:58.922Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001203": {
+   "at": "2026-09-14T05:51:59.324Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001079": {
+   "at": "2026-09-14T05:51:59.609Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001115": {
+   "at": "2026-09-14T05:51:59.970Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001306": {
+   "at": "2026-09-14T05:52:00.382Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001082": {
+   "at": "2026-09-14T05:52:00.730Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001206": {
+   "at": "2026-09-14T05:52:01.013Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001205": {
+   "at": "2026-09-14T05:52:01.422Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001066": {
+   "at": "2026-09-14T05:52:01.727Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001211": {
+   "at": "2026-09-14T05:52:02.075Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001090": {
+   "at": "2026-09-14T05:52:02.453Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000593": {
+   "at": "2026-09-14T05:52:02.926Z",
+   "outcome": "resolved"
+  },
+  "bioguide:N000191": {
+   "at": "2026-09-14T05:52:03.135Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001121": {
+   "at": "2026-09-14T05:52:03.510Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001081": {
+   "at": "2026-09-14T05:52:04.083Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001214": {
+   "at": "2026-09-14T05:52:04.401Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001208": {
+   "at": "2026-09-14T05:52:04.619Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000469": {
+   "at": "2026-09-14T05:52:04.965Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000586": {
+   "at": "2026-09-14T05:52:05.321Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001117": {
+   "at": "2026-09-14T05:52:05.655Z",
+   "outcome": "resolved"
+  },
+  "bioguide:U000040": {
+   "at": "2026-09-14T05:52:06.108Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001307": {
+   "at": "2026-09-14T05:52:06.316Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000629": {
+   "at": "2026-09-14T05:52:06.682Z",
+   "outcome": "resolved"
+  },
+  "bioguide:T000482": {
+   "at": "2026-09-14T05:52:07.014Z",
+   "outcome": "resolved"
+  },
+  "bioguide:P000617": {
+   "at": "2026-09-14T05:52:07.384Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001208": {
+   "at": "2026-09-14T05:52:07.766Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001215": {
+   "at": "2026-09-14T05:52:08.122Z",
+   "outcome": "resolved"
+  },
+  "bioguide:T000481": {
+   "at": "2026-09-14T05:52:08.437Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001119": {
+   "at": "2026-09-14T05:52:08.781Z",
+   "outcome": "resolved"
+  },
+  "bioguide:O000173": {
+   "at": "2026-09-14T05:52:09.148Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001212": {
+   "at": "2026-09-14T05:52:09.524Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000591": {
+   "at": "2026-09-14T05:52:09.907Z",
+   "outcome": "resolved"
+  },
+  "bioguide:P000614": {
+   "at": "2026-09-14T05:52:10.188Z",
+   "outcome": "resolved"
+  },
+  "bioguide:V000133": {
+   "at": "2026-09-14T05:52:10.552Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000394": {
+   "at": "2026-09-14T05:52:10.904Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000590": {
+   "at": "2026-09-14T05:52:11.257Z",
+   "outcome": "resolved"
+  },
+  "bioguide:O000172": {
+   "at": "2026-09-14T05:52:11.718Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000631": {
+   "at": "2026-09-14T05:52:12.104Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001085": {
+   "at": "2026-09-14T05:52:12.309Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001204": {
+   "at": "2026-09-14T05:52:12.669Z",
+   "outcome": "resolved"
+  },
+  "bioguide:J000302": {
+   "at": "2026-09-14T05:52:13.000Z",
+   "outcome": "resolved"
+  },
+  "bioguide:R000610": {
+   "at": "2026-09-14T05:52:13.442Z",
+   "outcome": "resolved"
+  },
+  "bioguide:T000480": {
+   "at": "2026-09-14T05:52:13.713Z",
+   "outcome": "resolved"
+  },
+  "bioguide:J000301": {
+   "at": "2026-09-14T05:52:14.115Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001309": {
+   "at": "2026-09-14T05:52:14.545Z",
+   "outcome": "resolved"
+  },
+  "bioguide:R000612": {
+   "at": "2026-09-14T05:52:14.772Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001120": {
+   "at": "2026-09-14T05:52:15.116Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000589": {
+   "at": "2026-09-14T05:52:15.471Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000468": {
+   "at": "2026-09-14T05:52:15.830Z",
+   "outcome": "resolved"
+  },
+  "bioguide:E000299": {
+   "at": "2026-09-14T05:52:16.234Z",
+   "outcome": "resolved"
+  },
+  "bioguide:R000614": {
+   "at": "2026-09-14T05:52:16.532Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000587": {
+   "at": "2026-09-14T05:52:16.891Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001118": {
+   "at": "2026-09-14T05:52:17.230Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001216": {
+   "at": "2026-09-14T05:52:17.598Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001213": {
+   "at": "2026-09-14T05:52:17.938Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001205": {
+   "at": "2026-09-14T05:52:18.300Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001217": {
+   "at": "2026-09-14T05:52:18.653Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001089": {
+   "at": "2026-09-14T05:52:18.994Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000592": {
+   "at": "2026-09-14T05:52:19.337Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001210": {
+   "at": "2026-09-14T05:52:19.703Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M000687": {
+   "at": "2026-09-14T05:52:20.054Z",
+   "outcome": "resolved"
+  },
+  "bioguide:T000165": {
+   "at": "2026-09-14T05:52:20.410Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000377": {
+   "at": "2026-09-14T05:52:20.748Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000571": {
+   "at": "2026-09-14T05:52:21.116Z",
+   "outcome": "resolved"
+  },
+  "bioguide:I000056": {
+   "at": "2026-09-14T05:52:21.461Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S000250": {
+   "at": "2026-09-14T05:52:21.811Z",
+   "outcome": "resolved"
+  },
+  "bioguide:V000129": {
+   "at": "2026-09-14T05:52:22.178Z",
+   "outcome": "resolved"
+  },
+  "bioguide:T000278": {
+   "at": "2026-09-14T05:52:22.522Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H000273": {
+   "at": "2026-09-14T05:52:22.949Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H000601": {
+   "at": "2026-09-14T05:52:23.214Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001212": {
+   "at": "2026-09-14T05:52:23.578Z",
+   "outcome": "resolved"
+  },
+  "bioguide:O000019": {
+   "at": "2026-09-14T05:52:23.924Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000397": {
+   "at": "2026-09-14T05:52:24.431Z",
+   "outcome": "resolved"
+  },
+  "bioguide:J000305": {
+   "at": "2026-09-14T05:52:24.630Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B000825": {
+   "at": "2026-09-14T05:52:24.989Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001039": {
+   "at": "2026-09-14T05:52:25.337Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000472": {
+   "at": "2026-09-14T05:52:25.683Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000032": {
+   "at": "2026-09-14T05:52:26.032Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000593": {
+   "at": "2026-09-14T05:52:26.395Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000788": {
+   "at": "2026-09-14T05:52:27.114Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001116": {
+   "at": "2026-09-14T05:52:27.370Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001091": {
+   "at": "2026-09-14T05:52:27.799Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001215": {
+   "at": "2026-09-14T05:52:28.079Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000446": {
+   "at": "2026-09-14T05:52:28.308Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001211": {
+   "at": "2026-09-14T05:52:28.652Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001214": {
+   "at": "2026-09-14T05:52:29.029Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S000929": {
+   "at": "2026-09-14T05:52:29.436Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M000871": {
+   "at": "2026-09-14T05:52:29.885Z",
+   "outcome": "resolved"
+  },
+  "bioguide:A000148": {
+   "at": "2026-09-14T05:52:30.163Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001136": {
+   "at": "2026-09-14T05:52:30.481Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000470": {
+   "at": "2026-09-14T05:52:30.780Z",
+   "outcome": "resolved"
+  },
+  "bioguide:R000305": {
+   "at": "2026-09-14T05:52:31.138Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000273": {
+   "at": "2026-09-14T05:52:31.474Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000597": {
+   "at": "2026-09-14T05:52:31.824Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M000317": {
+   "at": "2026-09-14T05:52:32.307Z",
+   "outcome": "resolved"
+  },
+  "bioguide:T000486": {
+   "at": "2026-09-14T05:52:32.519Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B000740": {
+   "at": "2026-09-14T05:52:32.873Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B000668": {
+   "at": "2026-09-14T05:52:33.323Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M000194": {
+   "at": "2026-09-14T05:52:33.595Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001086": {
+   "at": "2026-09-14T05:52:33.970Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000246": {
+   "at": "2026-09-14T05:52:34.290Z",
+   "outcome": "resolved"
+  },
+  "bioguide:P000048": {
+   "at": "2026-09-14T05:52:34.635Z",
+   "outcome": "resolved"
+  },
+  "bioguide:J000304": {
+   "at": "2026-09-14T05:52:35.011Z",
+   "outcome": "resolved"
+  },
+  "bioguide:N000026": {
+   "at": "2026-09-14T05:52:35.354Z",
+   "outcome": "resolved"
+  },
+  "bioguide:V000134": {
+   "at": "2026-09-14T05:52:35.715Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001213": {
+   "at": "2026-09-14T05:52:36.030Z",
+   "outcome": "resolved"
+  },
+  "bioguide:O000086": {
+   "at": "2026-09-14T05:52:36.388Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001159": {
+   "at": "2026-09-14T05:52:36.739Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000471": {
+   "at": "2026-09-14T05:52:37.099Z",
+   "outcome": "resolved"
+  },
+  "bioguide:P000145": {
+   "at": "2026-09-14T05:52:37.451Z",
+   "outcome": "resolved"
+  },
+  "bioguide:O000174": {
+   "at": "2026-09-14T05:52:37.794Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000790": {
+   "at": "2026-09-14T05:52:38.150Z",
+   "outcome": "resolved"
+  },
+  "bioguide:T000478": {
+   "at": "2026-09-14T05:52:38.473Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001125": {
+   "at": "2026-09-14T05:52:38.847Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001218": {
+   "at": "2026-09-14T05:52:39.187Z",
+   "outcome": "resolved"
+  },
+  "bioguide:E000071": {
+   "at": "2026-09-14T05:52:39.552Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001313": {
+   "at": "2026-09-14T05:52:39.892Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001126": {
+   "at": "2026-09-14T05:52:40.250Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000474": {
+   "at": "2026-09-14T05:52:40.599Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000475": {
+   "at": "2026-09-14T05:52:41.017Z",
+   "outcome": "resolved"
+  },
+  "bioguide:R000579": {
+   "at": "2026-09-14T05:52:41.299Z",
+   "outcome": "resolved"
+  },
+  "bioguide:Y000067": {
+   "at": "2026-09-14T05:52:41.682Z",
+   "outcome": "resolved"
+  },
+  "bioguide:Z000018": {
+   "at": "2026-09-14T05:52:41.996Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001319": {
+   "at": "2026-09-14T05:52:42.373Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001227": {
+   "at": "2026-09-14T05:52:42.728Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000479": {
+   "at": "2026-09-14T05:52:43.063Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001220": {
+   "at": "2026-09-14T05:52:43.411Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001132": {
+   "at": "2026-09-14T05:52:43.788Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001133": {
+   "at": "2026-09-14T05:52:44.118Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000401": {
+   "at": "2026-09-14T05:52:44.501Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001225": {
+   "at": "2026-09-14T05:52:44.859Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000400": {
+   "at": "2026-09-14T05:52:45.270Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000598": {
+   "at": "2026-09-14T05:52:45.520Z",
+   "outcome": "resolved"
+  },
+  "bioguide:P000620": {
+   "at": "2026-09-14T05:52:45.877Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001314": {
+   "at": "2026-09-14T05:52:46.215Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001216": {
+   "at": "2026-09-14T05:52:46.578Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000476": {
+   "at": "2026-09-14T05:52:46.927Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000596": {
+   "at": "2026-09-14T05:52:47.287Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000597": {
+   "at": "2026-09-14T05:52:47.622Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001218": {
+   "at": "2026-09-14T05:52:47.997Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001129": {
+   "at": "2026-09-14T05:52:48.339Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001219": {
+   "at": "2026-09-14T05:52:48.679Z",
+   "outcome": "resolved"
+  },
+  "bioguide:T000487": {
+   "at": "2026-09-14T05:52:49.033Z",
+   "outcome": "resolved"
+  },
+  "bioguide:N000193": {
+   "at": "2026-09-14T05:52:49.388Z",
+   "outcome": "resolved"
+  },
+  "bioguide:R000617": {
+   "at": "2026-09-14T05:52:49.743Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001315": {
+   "at": "2026-09-14T05:52:50.168Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001225": {
+   "at": "2026-09-14T05:52:50.438Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001093": {
+   "at": "2026-09-14T05:52:50.818Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001220": {
+   "at": "2026-09-14T05:52:51.137Z",
+   "outcome": "resolved"
+  },
+  "bioguide:I000058": {
+   "at": "2026-09-14T05:52:51.608Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001221": {
+   "at": "2026-09-14T05:52:51.871Z",
+   "outcome": "resolved"
+  },
+  "bioguide:J000307": {
+   "at": "2026-09-14T05:52:52.219Z",
+   "outcome": "resolved"
+  },
+  "bioguide:T000488": {
+   "at": "2026-09-14T05:52:52.616Z",
+   "outcome": "resolved"
+  },
+  "bioguide:A000379": {
+   "at": "2026-09-14T05:52:52.941Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001316": {
+   "at": "2026-09-14T05:52:53.273Z",
+   "outcome": "resolved"
+  },
+  "bioguide:E000235": {
+   "at": "2026-09-14T05:52:53.606Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000230": {
+   "at": "2026-09-14T05:52:53.957Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000477": {
+   "at": "2026-09-14T05:52:54.298Z",
+   "outcome": "resolved"
+  },
+  "bioguide:E000246": {
+   "at": "2026-09-14T05:52:54.656Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001226": {
+   "at": "2026-09-14T05:52:55.008Z",
+   "outcome": "resolved"
+  },
+  "bioguide:V000136": {
+   "at": "2026-09-14T05:52:55.388Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000598": {
+   "at": "2026-09-14T05:52:55.714Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000599": {
+   "at": "2026-09-14T05:52:56.066Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000599": {
+   "at": "2026-09-14T05:52:56.415Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000600": {
+   "at": "2026-09-14T05:52:56.769Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000601": {
+   "at": "2026-09-14T05:52:57.112Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001222": {
+   "at": "2026-09-14T05:52:57.468Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001223": {
+   "at": "2026-09-14T05:52:57.830Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001317": {
+   "at": "2026-09-14T05:52:58.183Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001094": {
+   "at": "2026-09-14T05:52:58.540Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001226": {
+   "at": "2026-09-14T05:52:58.899Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000602": {
+   "at": "2026-09-14T05:52:59.248Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000530": {
+   "at": "2026-09-14T05:52:59.595Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001223": {
+   "at": "2026-09-14T05:52:59.941Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000478": {
+   "at": "2026-09-14T05:53:00.302Z",
+   "outcome": "resolved"
+  },
+  "bioguide:O000175": {
+   "at": "2026-09-14T05:53:00.651Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001224": {
+   "at": "2026-09-14T05:53:01.013Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001224": {
+   "at": "2026-09-14T05:53:01.355Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000603": {
+   "at": "2026-09-14T05:53:01.724Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000594": {
+   "at": "2026-09-14T05:53:02.061Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001130": {
+   "at": "2026-09-14T05:53:02.407Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001131": {
+   "at": "2026-09-14T05:53:02.765Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001095": {
+   "at": "2026-09-14T05:53:03.156Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000399": {
+   "at": "2026-09-14T05:53:03.471Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001318": {
+   "at": "2026-09-14T05:53:03.832Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000600": {
+   "at": "2026-09-14T05:53:04.196Z",
+   "outcome": "resolved"
+  },
+  "bioguide:V000135": {
+   "at": "2026-09-14T05:53:04.570Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001096": {
+   "at": "2026-09-14T05:53:04.887Z",
+   "outcome": "resolved"
+  },
+  "bioguide:R000618": {
+   "at": "2026-09-14T05:53:05.239Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001227": {
+   "at": "2026-09-14T05:53:05.583Z",
+   "outcome": "resolved"
+  },
+  "bioguide:A000380": {
+   "at": "2026-09-14T05:53:05.938Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001228": {
+   "at": "2026-09-14T05:53:06.324Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001201": {
+   "at": "2026-09-14T05:53:06.641Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000402": {
+   "at": "2026-09-14T05:53:06.983Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000480": {
+   "at": "2026-09-14T05:53:07.339Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001229": {
+   "at": "2026-09-14T05:53:07.714Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000829": {
+   "at": "2026-09-14T05:53:08.057Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001188": {
+   "at": "2026-09-14T05:53:08.400Z",
+   "outcome": "resolved"
+  },
+  "bioguide:A000382": {
+   "at": "2026-09-14T05:53:08.750Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001232": {
+   "at": "2026-09-14T05:53:09.098Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001242": {
+   "at": "2026-09-14T05:53:09.453Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001243": {
+   "at": "2026-09-14T05:53:09.807Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001323": {
+   "at": "2026-09-14T05:53:10.147Z",
+   "outcome": "missing",
+   "note": "No portrait published for this member at unitedstates/images."
+  },
+  "bioguide:F000481": {
+   "at": "2026-09-14T05:53:10.513Z",
+   "outcome": "resolved"
+  },
+  "bioguide:A000381": {
+   "at": "2026-09-14T05:53:10.866Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001098": {
+   "at": "2026-09-14T05:53:11.217Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001231": {
+   "at": "2026-09-14T05:53:11.564Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000605": {
+   "at": "2026-09-14T05:53:11.917Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000607": {
+   "at": "2026-09-14T05:53:12.270Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000830": {
+   "at": "2026-09-14T05:53:12.621Z",
+   "outcome": "resolved"
+  },
+  "bioguide:R000620": {
+   "at": "2026-09-14T05:53:12.975Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000483": {
+   "at": "2026-09-14T05:53:13.325Z",
+   "outcome": "resolved"
+  },
+  "bioguide:T000491": {
+   "at": "2026-09-14T05:53:13.672Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001241": {
+   "at": "2026-09-14T05:53:14.044Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001100": {
+   "at": "2026-09-14T05:53:14.380Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001137": {
+   "at": "2026-09-14T05:53:14.733Z",
+   "outcome": "resolved"
+  },
+  "bioguide:E000300": {
+   "at": "2026-09-14T05:53:15.085Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001238": {
+   "at": "2026-09-14T05:53:15.457Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001099": {
+   "at": "2026-09-14T05:53:15.791Z",
+   "outcome": "resolved"
+  },
+  "bioguide:J000311": {
+   "at": "2026-09-14T05:53:16.138Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001229": {
+   "at": "2026-09-14T05:53:16.497Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001233": {
+   "at": "2026-09-14T05:53:16.841Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001228": {
+   "at": "2026-09-14T05:53:17.219Z",
+   "outcome": "resolved"
+  },
+  "bioguide:O000176": {
+   "at": "2026-09-14T05:53:17.543Z",
+   "outcome": "resolved"
+  },
+  "bioguide:E000301": {
+   "at": "2026-09-14T05:53:17.898Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001232": {
+   "at": "2026-09-14T05:53:18.256Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001321": {
+   "at": "2026-09-14T05:53:18.585Z",
+   "outcome": "missing",
+   "note": "No portrait published for this member at unitedstates/images."
+  },
+  "bioguide:M001237": {
+   "at": "2026-09-14T05:53:18.967Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001234": {
+   "at": "2026-09-14T05:53:19.300Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001324": {
+   "at": "2026-09-14T05:53:19.649Z",
+   "outcome": "missing",
+   "note": "No portrait published for this member at unitedstates/images."
+  },
+  "bioguide:O000177": {
+   "at": "2026-09-14T05:53:20.012Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000404": {
+   "at": "2026-09-14T05:53:20.357Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000634": {
+   "at": "2026-09-14T05:53:20.700Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001240": {
+   "at": "2026-09-14T05:53:21.070Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001102": {
+   "at": "2026-09-14T05:53:21.406Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001101": {
+   "at": "2026-09-14T05:53:21.772Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000405": {
+   "at": "2026-09-14T05:53:22.152Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001236": {
+   "at": "2026-09-14T05:53:22.463Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000482": {
+   "at": "2026-09-14T05:53:23.010Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000604": {
+   "at": "2026-09-14T05:53:23.169Z",
+   "outcome": "resolved"
+  },
+  "bioguide:C001136": {
+   "at": "2026-09-14T05:53:23.522Z",
+   "outcome": "resolved"
+  },
+  "bioguide:P000621": {
+   "at": "2026-09-14T05:53:23.883Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000602": {
+   "at": "2026-09-14T05:53:24.213Z",
+   "outcome": "resolved"
+  },
+  "bioguide:L000606": {
+   "at": "2026-09-14T05:53:24.584Z",
+   "outcome": "resolved"
+  },
+  "bioguide:R000622": {
+   "at": "2026-09-14T05:53:24.933Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001231": {
+   "at": "2026-09-14T05:53:25.278Z",
+   "outcome": "resolved"
+  },
+  "bioguide:D000635": {
+   "at": "2026-09-14T05:53:25.632Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001326": {
+   "at": "2026-09-14T05:53:25.987Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001230": {
+   "at": "2026-09-14T05:53:26.347Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001327": {
+   "at": "2026-09-14T05:53:26.683Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001103": {
+   "at": "2026-09-14T05:53:27.058Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001325": {
+   "at": "2026-09-14T05:53:27.453Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000601": {
+   "at": "2026-09-14T05:53:27.756Z",
+   "outcome": "resolved"
+  },
+  "bioguide:G000603": {
+   "at": "2026-09-14T05:53:28.099Z",
+   "outcome": "resolved"
+  },
+  "bioguide:J000310": {
+   "at": "2026-09-14T05:53:28.445Z",
+   "outcome": "resolved"
+  },
+  "bioguide:K000403": {
+   "at": "2026-09-14T05:53:28.799Z",
+   "outcome": "resolved"
+  },
+  "bioguide:V000138": {
+   "at": "2026-09-14T05:53:29.145Z",
+   "outcome": "resolved"
+  },
+  "bioguide:S001230": {
+   "at": "2026-09-14T05:53:29.520Z",
+   "outcome": "resolved"
+  },
+  "bioguide:B001322": {
+   "at": "2026-09-14T05:53:29.870Z",
+   "outcome": "resolved"
+  },
+  "bioguide:R000621": {
+   "at": "2026-09-14T05:53:30.204Z",
+   "outcome": "resolved"
+  },
+  "bioguide:M001235": {
+   "at": "2026-09-14T05:53:30.581Z",
+   "outcome": "resolved"
+  },
+  "bioguide:J000312": {
+   "at": "2026-09-14T05:53:30.916Z",
+   "outcome": "resolved"
+  },
+  "bioguide:H001104": {
+   "at": "2026-09-14T05:53:31.255Z",
+   "outcome": "missing",
+   "note": "No portrait published for this member at unitedstates/images."
+  },
+  "bioguide:M001244": {
+   "at": "2026-09-14T05:53:31.612Z",
+   "outcome": "resolved"
+  },
+  "bioguide:P000622": {
+   "at": "2026-09-14T05:53:31.966Z",
+   "outcome": "resolved"
+  },
+  "bioguide:F000484": {
+   "at": "2026-09-14T05:53:32.322Z",
+   "outcome": "resolved"
+  },
+  "bioguide:W000831": {
+   "at": "2026-09-14T05:53:32.655Z",
+   "outcome": "missing",
+   "note": "No portrait published for this member at unitedstates/images."
+  },
+  "bioguide:G000606": {
+   "at": "2026-09-14T05:53:33.013Z",
+   "outcome": "missing",
+   "note": "No portrait published for this member at unitedstates/images."
+  },
+  "bioguide:V000139": {
+   "at": "2026-09-14T05:53:33.365Z",
+   "outcome": "missing",
+   "note": "No portrait published for this member at unitedstates/images."
+  },
+  "bioguide:M001245": {
+   "at": "2026-09-14T05:53:33.707Z",
+   "outcome": "missing",
+   "note": "No portrait published for this member at unitedstates/images."
+  },
+  "bioguide:A000383": {
+   "at": "2026-09-14T05:53:34.079Z",
+   "outcome": "missing",
+   "note": "No portrait published for this member at unitedstates/images."
+  },
+  "bioguide:F000485": {
+   "at": "2026-09-14T05:53:34.422Z",
+   "outcome": "missing",
+   "note": "No portrait published for this member at unitedstates/images."
+  },
+  "bioguide:M001246": {
+   "at": "2026-09-14T05:53:34.773Z",
+   "outcome": "missing",
+   "note": "No portrait published for this member at unitedstates/images."
+  },
+  "bioguide:G000607": {
+   "at": "2026-09-14T05:53:35.201Z",
+   "outcome": "missing",
+   "note": "No portrait published for this member at unitedstates/images."
+  },
+  "bioguide:G000608": {
+   "at": "2026-09-14T05:53:35.470Z",
+   "outcome": "missing",
+   "note": "No portrait published for this member at unitedstates/images."
+  },
+  "bioguide:B001328": {
+   "at": "2026-09-14T05:53:35.966Z",
+   "outcome": "missing",
+   "note": "No portrait published for this member at unitedstates/images."
+  },
+  "bioguide:W000832": {
+   "at": "2026-09-14T05:53:36.272Z",
+   "outcome": "missing",
+   "note": "No portrait published for this member at unitedstates/images."
+  }
+ },
+ "hashes": {
+  "3d41251f93127b4b42c2f69fa423d204946cf9c307d786ea36b8d9bef4179282": "/company-logos/msft.svg",
+  "c3a064cd48ab42937e5898827b86b12565dc91242dd55861fa427d2678941bc3": "/company-logos/meta.svg",
+  "9d00ea77a3240f291356c36261c5f45d7fa456f29c97a2f060caf0ed4b9c3231": "/company-logos/aapl.svg",
+  "00e845a95a362db8478969e4969b73f5cd105690011986c78ce78ca4c76c992d": "/company-logos/amd.svg",
+  "7026ea1e93b80e5aa3d88d9a8bfc9279f75ef4e263ad50da7e7d7a5cb2b735aa": "/company-logos/amzn.svg",
+  "bb0f6d477d9acbc982070ac20332cd774015062ebd049c0814f7371c63d12a81": "/company-logos/nvda.svg",
+  "f81bb9e387e5c93a5cfe75e5c529607090d1ab20e82ead310ff48fb49466d2a5": "/company-logos/acn.svg",
+  "87a690ce5ddc9c1d0e6b02c161120a68b55f363ad2e35065fbd1c0340a960117": "/company-logos/aep.svg",
+  "3ddd395e8ecebd388b8283f2625048da7f4fcf60adde25b0c8137b2021f7c819": "/company-logos/fitb.svg",
+  "fbf20211231c5b6d74eb35308638540542cf0d7cca671b5f231da50744b87c2d": "/company-logos/unh.svg",
+  "979f31a321eb9c6d049815d38d39879c94f418b6be211b38a09be6c7e15c0a5a": "/portraits/C001123.jpg",
+  "c077c28303746fbe347f3ac3c1fa51c551c5d9113bbed166bf520b5c01fd6d77": "/portraits/R000619.jpg",
+  "0d06bcd95079ee1d00f5548a23e4bb14f5dc39fa65abd1ec6c4ecadc76feba01": "/portraits/T000490.jpg",
+  "1dcecd6ed51765063676673febd4520d46283254c91f2b38c996a2c4c2d882e3": "/portraits/M001217.jpg",
+  "448fc9bc407ec2c2c6dee8f9af4d8073b3a027b5b443241589018c5672a1cd56": "/portraits/F000110.jpg",
+  "79ecc421ff260ed4417e5ebb401958b73c9dbc73b9db2564d768f1f8fc89ffb4": "/portraits/M001239.jpg",
+  "d6fa18a89c2043ad198543f5925da95502efce225b1e49b076a1cbb40d709a1b": "/portraits/S000168.jpg",
+  "ae350166fe5b0ff7fbdd2ddc8d59271fbde62ae8acabb43555de85af9c82b0f0": "/portraits/L000595.jpg",
+  "734fbfbb581801892841568834daddfa49fa073f9779cd98b2830b5dd8c193f2": "/portraits/L000560.jpg",
+  "f0a49a6caa9417a5f055f0a24d91a95e05e975cdfcf89d5e49e622ce20308d51": "/portraits/C001055.jpg",
+  "faee99dd40a0b6d5ae2c6022684cb3ef61c7e1c0d07bbd20a4f7638cc9d04e56": "/portraits/G000583.jpg",
+  "bacb2737e8d1c6e90f48fd8c635a16a8efda5bfc0912390723176510ca0ca975": "/portraits/K000398.jpg",
+  "bb31208dfaf46e4e1a6bea795988c46714564b4e2423a759b8748cf6cf82b16f": "/portraits/J000309.jpg",
+  "328193cb180fb89e817f8603f3936d7a2ff2c6dc3dcb2a1a162f2c9a98f41217": "/portraits/P000197.jpg",
+  "535628a4bff400ac559a916e7d057e7023dd471725436ddfdceb17c652ee1f42": "/company-logos/sec-cik-0000093751.svg",
+  "a57d967a90170c60454b132814d73231f16fb96319460c6f882800f4ba21211f": "/company-logos/sponsor-the-vanguard-group.svg",
+  "9bd982f011bf6444c39076e77b7d7d28b4db52f83f866e757befb71c7a90d643": "/company-logos/sec-cik-0001364742.svg",
+  "f1dc290891967c9e7e53d434406998daee2c31375575d0761534041d825adc05": "/company-logos/cik0000066740.svg",
+  "a6db6030725a4ae43388d042a1fd9f8b23be3d565809cbb2e453b11b286e921f": "/company-logos/cik0000091142.svg",
+  "951b07bfd60289b7411388e69a4fd1e1d4635a99bfed3309ced0d600de9eec90": "/company-logos/cik0000001800.svg",
+  "2fba8f9ddbd1022cbd727941a3d24d19a48510929d015c6bd0fe3c7b53c4d6e3": "/company-logos/cik0001551152.svg",
+  "1408380c0ca09132466dd65b8a7396564ef7473c327484a56e65934138988d58": "/company-logos/cik0000796343.svg",
+  "35c774a9f7ae269699882f3e1636d0c1b8ecc759de3fc04e96f3f899b6671c93": "/company-logos/cik0001158449.svg",
+  "6b9a6ce0a8e2bb887ab70d9b6c7eb6027da5c40fbd2dbbbc5949ec3ac1cf9978": "/company-logos/cik0000874761.svg",
+  "b162367ccade6f95340d6a5b3445765322190196335f915c6fe13ad64a0215d9": "/company-logos/cik0001090872.svg",
+  "c940a2c74ed48092db3c00b7b82661ce417d1445c13dc5fbe3e2efc8084bbce0": "/company-logos/cik0000002969.svg",
+  "9d1e5112bffbf5928124a6b591df5c4ed0e31e45ce7bad7ee7bac419e9106a61": "/company-logos/cik0001086222.svg",
+  "1b69e8c59540ba94ad618a438ec9678ce7dc8b8b58282c0cfd3be24baace7f61": "/company-logos/cik0000766421.svg",
+  "38679196f2e088710e76cf6579d8bf68bf7fdbfd52a75ba74e07cdf8d40add6e": "/company-logos/cik0000915913.svg",
+  "a31c5390e754e30311b7ea78c66dbae6a127e2ed26edf6beebab480a743ab672": "/company-logos/cik0001097149.svg",
+  "810a1eca487c42158f45dcaec959c79bd4bdb08aec0fea62370fe88375adfa7d": "/company-logos/cik0000352541.svg",
+  "3cf9a4174513bffb36aba9430e50feea8667b6bc061de8e491c2f625bb2ee18f": "/company-logos/cik0000899051.svg",
+  "1cb6d9192014b44168996592e75588aebb92b9f6d4e3ed6c99615f55b07d0de3": "/company-logos/cik0001652044.svg",
+  "97592ac4fb7fce4613256c6c1097cf1573c7afd667427fc1e160b270710ac85b": "/company-logos/cik0000764180.svg",
+  "54a1d330539388a70280aa25e5de5186d9c815421e61a77857d232c4a3944e1b": "/company-logos/cik0001002910.svg",
+  "3b766b47270f3836202108a22a4b4f6c2aed08de9318934ff15488fc9957bb28": "/company-logos/cik0000004962.svg",
+  "f7429f4390654b5c4534b28f3a6de11782572663c56b62a67b230aa36c4d3ba6": "/company-logos/cik0000005272.svg",
+  "579f84ae408a71868bb32e25a1cd6d963f72f84eab363b0994c951e38302c703": "/company-logos/cik0001053507.svg",
+  "5d55176f049e111358d804eb60e6a0c37ad579378ab0efe92a6755769b8caf09": "/company-logos/cik0000820027.svg",
+  "b4b359ba0922cba73a9b32c91567ee432ef9d71323e056f3450f4eb5ebeff9d7": "/company-logos/cik0001037868.svg",
+  "b284d9645aa361739a83551dbfa5dae88029832dba8bbc4cac8aeabe4564e105": "/company-logos/cik0000820313.svg",
+  "ac2000daa63e4ea29b4b1f649b98612e7de7e9591330b310db29a50d67ac582d": "/company-logos/cik0000315293.svg",
+  "4423b3f04cc28c942f0cb855ee6faeab9c95732c4ceadc5802d6afea36f2692c": "/company-logos/cik0000006951.svg",
+  "b9e0cd4401ce03760398a00c95beabf10ff774f636f02f01d112ed8f54268d97": "/company-logos/cik0001521332.svg",
+  "b808e54bf2a78795cf3bcf4414b6d9ea1b260fb9c5dbb96a94e5843468e80de6": "/company-logos/cik0000007084.svg",
+  "00dd4229dd352f8dd0269c555f0d904359b313f30ac306a8cf930cf602d628cd": "/company-logos/cik0001596532.svg",
+  "812b94162f025a5a0199c7d7630f639e8d436a351f60e619ec8a1ccca7c3a553": "/company-logos/cik0000732717.svg",
+  "3d360c8a67330b025f9adb2d09002f7941de9c357bbbec03898c1d4597f0a038": "/company-logos/cik0000731802.svg",
+  "affb8d27ce0e411bb864c9381e2d81e11f066bef3915cf683227e7d66e019e01": "/company-logos/cik0001701605.svg",
+  "1dce1d469ede7080f6081765c2b149f9291f30ac8fc41f51d1c7b8b0e6f9e983": "/company-logos/cik0000009389.svg",
+  "0d5fc086ee937d11bda5fb3985df459ff69ef5b4848c9c474174a5f63096236c": "/company-logos/cik0000070858.svg",
+  "e0d847ca22a72ad45b41a38e74305e7d29803e61443704d8be9f29a01f691ba5": "/company-logos/cik0000010456.svg",
+  "bc26f85948f4601ef6c6174068ef14a2a8d0823eb3ad633bfdfcf4a8b82484aa": "/company-logos/cik0000010795.svg",
+  "52868c93c01c2314613a62fce54c82c3b90f921e88175c36c86a7aa85b42b8b0": "/company-logos/cik0001067983.svg",
+  "df518f5f1cacbeb2439de84afe4d9f651666c58ccfa40303eb024f1c5a961f01": "/company-logos/cik0000764478.svg",
+  "6942323654a190407f870f7b0bdec028bdf4518ad033d539fd6397b941fddf26": "/company-logos/cik0000012927.svg",
+  "0b1b16451652e7f50efc4ae2ace3119947bca771990cb0c0a1eebe252bdb72a3": "/company-logos/cik0001075531.png",
+  "0f0cd818c29899f80ef5e3e2912c61e73ab02794287bfb7e20e32375a61b807d": "/company-logos/cik0000885725.svg",
+  "8819116d3b59ddc1d6c307266a30b23739aa53c2d44143ddc6ccfb342d94e2d9": "/company-logos/cik0000014272.svg",
+  "36bee3ef59a99352d71fd7fb22a72ac3f198a0b8614a067b5e916def64dcbd67": "/company-logos/cik0001730168.svg",
+  "e19d1dc1db3d606eed78c2c38dba1a54745b110c8012b48ea1bb1f51be9fe261": "/company-logos/cik0001043277.svg",
+  "8fcbea8888ce704a3bf008751437621b45969182f0a0b05a01e00fe9b267944b": "/company-logos/cik0000016732.svg",
+  "69d918170633be70ec4c0fd57f421ad7b70c59641580a0ee77e929964a157c96": "/company-logos/cik0000927628.svg",
+  "6052df824a11bedaeb79d1ea5d322a07efc22e215fd2e047f950ca87212d9b84": "/company-logos/cik0000721371.svg",
+  "f8fa171ebfd9c1cc29082b0041ec938eeeedd9ab6a5b5bb7213bedf724691106": "/company-logos/cik0001170010.svg",
+  "c15399b118dbe651c76cafc9b52825881e92c3636b781c339ab894b79214d662": "/company-logos/cik0001783180.svg",
+  "f08961cb2df47b03d971e5a7a87eac627d9a0798227ddbf5ac909041ed11b735": "/company-logos/cik0000018230.svg",
+  "0b3337276642ed96d86800dd7e1612c89be296412cd326658329844de39ccc13": "/company-logos/cik0001138118.svg",
+  "6b626ae2ac1bae831e0e8338121f43386ddeb21b6cd4a3bdc9e0a7c7447fcae2": "/company-logos/cik0001402057.svg",
+  "af75c5b083677a946a8d1610f41a6705f35b0366459ccec11a6c85944f97e67c": "/company-logos/cik0001140859.png",
+  "d66d316bcc85572f1ced15740597206b6c1dd4c9f69229c9ec2050912d8c18bb": "/company-logos/cik0001071739.svg",
+  "e17dae6600d85d35c06c001d9b1df0a78f9c6af814f94d8ea271a3b36cbf86bf": "/company-logos/cik0001130310.svg",
+  "f01cd4cb5132c2d36659b05339ce7bca44c3c95431fdbb85f9ccdf698703b221": "/company-logos/cik0001324404.svg",
+  "3a02e0bacb9ed9243562a47a0c65d329e3f0167cc29a360601848ba82c29845b": "/company-logos/cik0000316709.svg",
+  "9493eafb2e48bf909a88c744006d8c37e4973d1bad8abcde2db306f92d7adffc": "/company-logos/cik0000093410.svg",
+  "89da5623978e0aabc3bbbb4c923db9fafb33d83a6fc60c4ee805117ec4005e80": "/company-logos/cik0000723254.svg",
+  "5b4035237c926ae0f67b70853f708edaa9616aabeb57610538986a9e351a2581": "/company-logos/cik0000858877.svg",
+  "cb599b2ea12080cb20c66af5eba4accd5aab90fa28a9d72725cdcff78354f389": "/company-logos/cik0000831001.svg",
+  "2fc1db018fa1f6c7c42c6087813ac1b076717a16702445da688b2f0e85279104": "/company-logos/cik0000759944.svg",
+  "7fcea6bd0040e02eae676ed0c5f3718e8f17677e27bafd52b3eb92a6fa89c7d0": "/company-logos/cik0000021076.svg",
+  "a4b6fc6439bab1ecb70e6ed6a5a8459e1264806d75dbbe5185b20e96f65e4b55": "/company-logos/cik0001156375.svg",
+  "6cac3df3f20be47be9f29af7aa0d2f1e09015a55df6ce71a943f32921dee0ae8": "/company-logos/cik0001166691.svg",
+  "0869334d0c0c4e76c4e00e645146a1b3fea6b6938fe2b8a2a04188f9fb23327f": "/company-logos/cik0001047862.svg",
+  "bbf0cc681053b9ab0aa0420ecd2d6a1cd49be4838fffdd3b0eff229c0cbe6cc6": "/company-logos/cik0000024741.svg",
+  "51619117811792686659e12bb5916d97eff9bc6d5d3b5edb3fb70285794a27ec": "/company-logos/cik0001755672.svg",
+  "4af8d1d12e5cd07c072885854bb98ce9efe155064f48b4c04fd2252cfc9408b2": "/company-logos/cik0001057352.svg",
+  "9c769076aaad8c2cf16a888dee9326df7e67c4cf350fab0574209366e1fb61ac": "/company-logos/cik0000909832.svg",
+  "81f7b5d9002cc204cb9e32efe15205c21455cc31adf100623a904d39ad43e04a": "/company-logos/cik0001051470.svg",
+  "42840b281fc2cec39dbece73153409a501864bdafaac43df1cae992412f99c75": "/company-logos/cik0000277948.svg",
+  "ca09429f77496d0d39d872930d80344d19e0fea07be44d3bcb8a8e22178b8699": "/company-logos/cik0000026172.svg",
+  "77ca6f9a901ed197e2a890ace567202213507b1e0a59ddafac38289548ade48b": "/company-logos/cik0000064803.svg",
+  "001070bf455eefb0a7e0f714d95898f77a8ab00ed0e389848e67a4f3aecc4685": "/company-logos/cik0000882184.svg",
+  "50831ec7975836408932ea70954102af5e473d654767bbc8b1312386ad2fb592": "/company-logos/cik0000315189.png",
+  "5bb7dfe8c865366a5cc2bc4e5f0e2c7f2db8b4e6caf146011127ca14f1216378": "/company-logos/cik0000027904.svg",
+  "7bfbc38bc1f1954ec5d38a4413df9bee76ddc3e15e5a9f08e4d8087e30220625": "/company-logos/cik0000818479.svg",
+  "8ade47de1dea685c62e4aceacca2c8bf1e2966f7e7e4e845303ee3969aebef95": "/company-logos/cik0001090012.svg",
+  "4adc39a60daac53547b4d6ec47ec8a55f94d4e2dd68507cf15fcb3370d8ad0ed": "/company-logos/cik0000935703.svg",
+  "638060d96a1bf69a41b4c538bdcc4e1e801d4e0db4a69f61c15f213d73fdcd9f": "/company-logos/cik0000715957.svg",
+  "b5cd1df64bee13618fb66fd500c2d6af2c0036bcfa70b3273b106478c85ca2fd": "/company-logos/cik0001286681.svg",
+  "39c107d92698850f007ccd06039c17903ed279ad399a2cd47835f65017134c04": "/company-logos/cik0001326160.svg",
+  "50bb5aaf7fe0d4cf1854dbbffd6021e4ca8804033f8915cf13fdc99eece74cb7": "/company-logos/cik0001666700.svg",
+  "fe78f845587bad242cda0e7d093a709474cf2aadd8fb0e656e4b6fb5a90438d7": "/company-logos/cik0001688568.svg",
+  "cd1c577e259e851fdf6b97bb1b4b6283c11d92004ec91b34e9e786fb4d145983": "/company-logos/cik0000915389.svg",
+  "e891948aaa78473f4d278dfd781b22dee56638f5ff246a93a9e188e3310270c4": "/company-logos/cik0000031462.svg",
+  "75ee3a0ce2b88a758eabeb2e4ec05a45f6595f5cc2d9f5fc1a093377ff7f33c3": "/company-logos/cik0001099800.svg",
+  "5acf271605785b97cb02d20d97670c9b33c7a13981c5f1cef7cf45f8c5cdd4c0": "/company-logos/cik0001156039.svg",
+  "0cfc34726a793965a11f7e2807c68d8863525d3441ac551ea9ce6a492f9b1d6b": "/company-logos/cik0000059478.svg",
+  "feb614ab133b5bbff1d6fa249cf51b546848ca59344731ac1ed89d5fde395cad": "/company-logos/cik0001463101.svg",
+  "2951841cee99b751669a052a7da191121fe927e5bfbf20421ad6654640ed4ece": "/company-logos/cik0000821189.svg",
+  "e431ee08b3c29f638ec26acbfb17b136e663a22361037fff6ca33c63d34e705c": "/company-logos/cik0000033185.svg",
+  "af3d212ef00ed3bf12695b9dc76cba08f475316319c671efe1ce724df0130482": "/company-logos/cik0001101239.svg",
+  "edaecac08fbe3abb29bacc3048840ba246b3ea1d226ad8f9a6c4fc6a6bef902d": "/company-logos/cik0001001250.svg",
+  "df29b76a52ae6818b1ae0c40fb787d11edf383bd690add94fcd66bb8312f8382": "/company-logos/cik0001711269.svg",
+  "12b48bb5e8b47710625a6ccdedbf90c51c07740d9f4cd301a04a0fb9e3bfe4d1": "/company-logos/cik0001109357.svg",
+  "943858db4695bcb97fa4802beba684d3cff2a4fea0f809e938b650433a5f89c1": "/company-logos/cik0001324424.svg",
+  "bff35610c3ada1115fe991f8eca243ac12b83331811843431902869cd9cf0c6b": "/company-logos/cik0000746515.svg",
+  "6d5fd1276e805f0640edbe87b75d3d0978a60a66a36387cdfdae6757f1761e90": "/company-logos/cik0000815556.svg",
+  "760faff89e03ec17dee527861ab34ed3a048bd7ea7258e1210294447f1bad1a3": "/company-logos/cik0001048911.svg",
+  "08f6371bdcd773399be4b1aa80f0725739c2f5c691b27e31d609cbfb65355f14": "/company-logos/cik0001136893.svg",
+  "778372839b7b04d7984cc75fdf76a429ba6dbfff1c23286de3c95c6010640697": "/company-logos/cik0001031296.svg",
+  "630430b25a58e3e1ef9d680bfc671f175c8d6ca4dded9bfa8f0d236d1ee0624d": "/company-logos/cik0000798354.svg",
+  "23da186e07508ffff051577878d8e29a4703eeb62c4b5aba0d30473e05d8707b": "/company-logos/cik0000030625.svg",
+  "d4e1ccc1897ade7e8678525f689d85f2ad028576516e92e3ba40425dd5d93068": "/company-logos/cik0000037785.svg",
+  "982dee42949b13ff704e473951f0c7850799d559d0ed91b202caee9ecc77bca7": "/company-logos/cik0001262039.svg",
+  "246f06b9148f26755f604151ecd0f1719eed45426a88c85c4e6fb47167a2c58e": "/company-logos/cik0001659166.svg",
+  "c9c95d50382825b776f175936996e7350823d7feabdc68b09ed758afe1626b27": "/company-logos/cik0001754301.svg",
+  "2376802d27e34779336fc569435900357860b63563751a00a6b07ddba3f392b5": "/company-logos/cik0000831259.png",
+  "96e672a5f5d1879b7ed8b163b0ee58cf4baf012fa6bab8f44ceae580fe488b87": "/company-logos/cik0000039911.svg",
+  "1aa247a0aae4fddc26cf6767a427b9ff9535ee8a82f9702dcd45c9b05b4e3a11": "/company-logos/cik0000040545.svg",
+  "c71b2884c0716afe76a7413ff217d24a01355c811ca7d4b44784396994021972": "/company-logos/cik0000040533.svg",
+  "04607a78beb9d4d32d817fedca3be9f3034df1de96ce2a14bb41cd9f9c0eefc8": "/company-logos/cik0000040704.svg",
+  "461ef4daab0c9e924356ea0d8646fe6456ab6f21a8240b3b8e9c32a6dc0cf586": "/company-logos/cik0001467858.svg",
+  "200fef6e8748a8a8a94e3789f34b840ccaf0bb34b1f3f799087d19993221a152": "/company-logos/cik0001123360.svg",
+  "1afe1e41bd3a9f1f71566eef4054f090b22d4db1ac9d8baf7d6525d920107fa8": "/company-logos/cik0000320335.svg",
+  "2f2195e8160285319f742ce8ff81a61269c02a63427da7c3905fe244dfaa8d07": "/company-logos/cik0000886982.svg",
+  "7a7434777ac6ef36d8b09143f6cb0e791664af6b72c7302986e76be6f08beb4e": "/company-logos/cik0000045012.svg",
+  "48b58f037ce30949e020c023f67ae97a368f62146672fa750293611b2f1b44a1": "/company-logos/cik0000046080.svg",
+  "f8a2f54ff3aef844a37e1895c9d296fc471efe4ae42bb0a4bdeb03b488376fc5": "/company-logos/cik0001645590.svg",
+  "1ae74924acad3f60943cdfe02b58f38dec1c0c182f51f858e8b9f9b4224db4a1": "/company-logos/cik0001585689.svg",
+  "3d51482a9eb4d9897c5683ac77d72fc77e764382a47f0ad265ca8a6789bbfcee": "/company-logos/cik0000773840.svg",
+  "d8b7c28d02e3b6a708a83829e87bb06e1fb8337cd7f561e76aaa30e84be290f6": "/company-logos/cik0000048465.png",
+  "e839e396d5a1f9a1df008904f627fadae0d7ee7c08f46302860f3fbe0b8f9eda": "/company-logos/cik0001070750.svg",
+  "15b57ab258b6545da40cfcf5add8d3636fa60c7ca57b7c3d99ad67e843846a69": "/company-logos/cik0000049071.svg",
+  "94f57c9b8ead7b515213d6eb2c9478e89f14b737dc7eb49d6778e043f6775926": "/company-logos/cik0000049196.svg",
+  "d276faa914f03f8ec5ba4bdc86ffaf475f98ff4b1a3b7136f1168881ba1739d8": "/company-logos/cik0001501585.svg",
+  "e8cf75280cbf46bf015f59859182ecec0c83c1b3d3d03323e151c6e91d4c339c": "/company-logos/cik0000051143.svg",
+  "123628ac7402e1a45cc2009173188303b4d4d4c83552d0bfdb82593167391e9e": "/company-logos/cik0000049826.svg",
+  "35d50c955716cde5238c915c8b03b77993a86508403d4c65ab88321aafd8c242": "/company-logos/cik0001110803.svg",
+  "187dfeedd82ec4fb432b3a6e054e34c189c5c74e8117bcb0afd98bee486dc162": "/company-logos/cik0000879169.svg",
+  "674bccfd62976dceedfd761b0a9294d3eeb22e7cafb982e5cb9be804a898af2a": "/company-logos/cik0000051253.png",
+  "51af2924f570b2280b7cd00a2f617518e44847bd0241a783812c2acbb23595d2": "/company-logos/cik0000051434.svg",
+  "c264280dd715519ac7b043d293902dca08a851270f2ac108e67ff05e6d2120b3": "/company-logos/cik0001035267.svg",
+  "89c4707724013a6078d5d61db0a0c5757c4ed297aa2612fab3318a6176a3a8ac": "/company-logos/cik0001111928.svg",
+  "4c7e0d40e41fa248024ce339268c86faa188084bb1cee30fd8e85b9c1c115449": "/company-logos/cik0001478242.svg",
+  "109c7679536ff9fbae0d827ec26a2551d55aadbc21cc7431309422441bdaae0b": "/company-logos/cik0000779152.svg",
+  "a2936268a5b0c8e573eb7380956e22f217f86b4e7291963514c810f7d4275e26": "/company-logos/cik0000200406.svg",
+  "796c09f1e4bb9f0f50a1328ffc5d18ecef6d06464ea7a4a80f43b828468b2631": "/company-logos/cik0000833444.svg",
+  "fb8c75586a1f914bb0039638faf2594f35ee5e808395727d057abccede05e857": "/company-logos/cik0000091576.png",
+  "85cd249208af89e1ecd5f44a228494ca1be4546f112ab5a23c8b2fe8fa9ab758": "/company-logos/cik0000055785.svg",
+  "767929c166fdb42e42f6486df55e095d634b028cafd36ea289d6334e9bc13e23": "/company-logos/cik0000879101.png",
+  "9f37caa790cfca2f63908e375ebd9a6cbf045556522a5c2cd2cd4defd31d566d": "/company-logos/cik0000319201.svg",
+  "e336b8714065f4bbd73319b0ff3fa777f35c9adb74c576044f78ecd5fd25559a": "/company-logos/cik0001637459.svg",
+  "c6c6b5e4108c137e4e5648431bcc8e5739a8e32beb5e997220a5840fe56360ee": "/company-logos/cik0000056873.svg",
+  "58da3e7421b81e478ba579d82274c5c5ef58d8ec9241c8779731a214165d2af4": "/company-logos/cik0000202058.svg",
+  "8bec98542bc7acaa3c59440729cd37099175a456236d6ccb96f61c7d775c7dcb": "/company-logos/cik0000707549.svg",
+  "1189e68f9f53125a0b8f24c131d9fad34c7ecd9c82966c60e9900169de002797": "/company-logos/cik0001336920.svg",
+  "7c343a4a64cc842f13711aacc00f373f571105a311addbf7df4f8f46f4763d95": "/company-logos/cik0000920760.png",
+  "daf06d350e1187db275aac243b5cace81c74267d8780c2a7d6e81769c04be038": "/company-logos/cik0000936468.svg",
+  "d6af59c4ae6c14f0b0621e3e1328dfaa7a13e5a07dea83651ebcd2db37a68b0a": "/company-logos/cik0000060086.svg",
+  "4dda90a5e4ff558f436c2b0007c5335e4bfaf34d0790aa6f9ed3aa954e00c3e0": "/company-logos/cik0000060667.svg",
+  "761c3bc36c896cab8d3d25b7796b24ce54b6b8876e82b9db77ce9c7984ef89fa": "/company-logos/cik0000018926.svg",
+  "47e2a120442e1a5e3b1352c14e0362c381876acdf28593fafd8bc4273cdbf91a": "/company-logos/cik0001489393.svg",
+  "ef785e258615b51bfa7a40e54d2b291171f23252a2c1eaf73868775f0ae18cc4": "/company-logos/cik0000036270.svg",
+  "fba976af45f2c24990a5e0ca46f45dcb7034e3ee656ddd3e15dce96ff01fd8ee": "/company-logos/cik0001510295.svg",
+  "c256941fd5fd830755c717589f6533660eb7473af093690297be5ebcb8b8140f": "/company-logos/cik0001048286.svg",
+  "f20e76b402c853e733958dce5263099c7de011862443e900b4fde8484ef120b2": "/company-logos/cik0000062996.svg",
+  "4dfa227e514fd47fc63d7c25a5f9f1f6d6cae53aad951aa8aa8598b217838c17": "/company-logos/cik0001141391.svg",
+  "602df3320e0bcda214d64d4e78d8da2c02ebe28db8a0c5b6822335249408486e": "/company-logos/cik0000063754.svg",
+  "36b927450cabdab541fb64920d87d89ed14e6d9a2de39a881b678d1d9bdc567d": "/company-logos/cik0000063908.svg",
+  "37240d19b7a4ac6d637138494d0e832e543e440939732936cc880bb2b0662c0a": "/company-logos/cik0001613103.svg",
+  "553b3ffc8be1d610bbb04ef500dbd9e5cbddcb546967e8ef47a8812d233bcc99": "/company-logos/cik0000310158.svg",
+  "f0969481e0c740101633eb43fffe5310a546fd8d621c42e6d134121881e5f069": "/company-logos/cik0001037646.svg",
+  "5ccce20dc70a8983f4693ee0f005a51d84093ad5cc1c2c58b05391d10bb19059": "/company-logos/cik0000827054.svg",
+  "58efeb225ac55c7e0bf198e403f84815abbe49f4084178e1e199cb98c2eb59aa": "/company-logos/cik0000723125.svg",
+  "ee87c06fca00c1f7b38c6b950d55c606b295dff10c0411378ffc4a2c44bbd036": "/company-logos/cik0001103982.svg",
+  "a82019d4e43e878edcc1989512953c3ec452651dd3875e58b89e3b2368599333": "/company-logos/cik0001280452.svg",
+  "5e27e942d803e55231e501664599357b3b8d5e721b325743c46f6afa30d3185b": "/company-logos/cik0000895421.png",
+  "6c005f0daba0af3ca8f666e79c35bfb6f52d60e9f85c88b147dd8b805e5664f9": "/company-logos/cik0000068505.svg",
+  "23638086b79f8b5d92cb2a9d07d1d323a7550f009aa228ddd7ae79411abc32dd": "/company-logos/cik0001408198.svg",
+  "b86d39326a2d2e258b93454c4f11ee11a47c24eb33b3c0e88995db29967f6cba": "/company-logos/cik0001120193.svg",
+  "678da4bfed61803d1a8f92812bcad6130ec84d13c7f975ca02d0c3b58d5e6f57": "/company-logos/cik0001002047.svg",
+  "efe1e2b74da85f7c332702d355881f11b21535c64e7dc6e3451ea6b18a3ccc81": "/company-logos/cik0000814453.svg",
+  "f4d338b2667cf98d64b2718109fab1dd8f22bfd8e864e0e487699028df3c10ec": "/company-logos/cik0001564708.svg",
+  "54bb728904e14583753fcde786a9901b53ca9c8401ac207fb516841f9863c55a": "/company-logos/cik0000320187.svg",
+  "8ed150a91c66daa39667df2ffee154e62284a1ffdb069f898b9a532a575fd788": "/company-logos/cik0001133421.svg",
+  "f6191ac4c46a39fe4f07ce3b5ce6221e08dad9f6fcc0f3ac3fa2c4e1af6f7917": "/company-logos/cik0001513761.png",
+  "5791f7f8ea54163a69ea13d72cd8c6e1451fa8af0a0d890b96b2bb164168317f": "/company-logos/cik0001013871.svg",
+  "5ec5248f0cd586d9ab77c86e5d56f527843561f83628231c460b37928627e77e": "/company-logos/cik0000073309.svg",
+  "298dd6801193cba1fdc25e9dbf274cbec70ff8a218769f126f416122369c14a1": "/company-logos/cik0000898173.svg",
+  "a62abfe6c05136661a71ec24b432f68c777094d6bf07680542bb5511cbe42573": "/company-logos/cik0000797468.svg",
+  "6a00571123fc03e21e3ff04f92d26a665ffd880429b685c41030fad388b69c43": "/company-logos/cik0000029989.svg",
+  "305d310fda8165fb38e24273c643f2c61107e2440e12abc3c209bd49c2deff15": "/company-logos/cik0001341439.svg",
+  "d94172da269c7dba76e71e65eced6047b57c9f245eb09f0389c4869c77a0ce43": "/company-logos/cik0001821825.svg",
+  "ee6bddf0c6f0ef4557e36503eda9aef0fdea1a87cf5082fb388623758bb6264e": "/company-logos/cik0001781335.svg",
+  "c5f01fa8119399b2a04b014520ada1f00cf7a961c88e7962b9818538d24078a9": "/company-logos/cik0000075362.svg",
+  "7f50e3918f5f5fdc06d46a9716cbee903b536198e2ab60b29567c17a8e3541d1": "/company-logos/cik0000076334.svg",
+  "ac3b865d3609a57f74b9e69ab58ea5a937b0095b557a51e8eaa335c15e40d5a2": "/company-logos/cik0001590955.png",
+  "19b450d4d1213575772a07239bf14b33cab914f85b6bc2a2118db273ed85879b": "/company-logos/cik0000077360.svg",
+  "6b5f0a445da76f042162d87ef1b57054bf1ed44893ccbe64ca0b92eecddaab9a": "/company-logos/cik0000077476.svg",
+  "2d3dc36352b42b9e9e5168c969b4f618824e459ab4ca2b38e8b5e0269f252b36": "/company-logos/cik0001585364.svg",
+  "1cfc647a0572d7fd6bd1271ed70ab77cf0141b5de8426b6f246f6d0bb0e7b329": "/company-logos/cik0000078003.svg",
+  "0305540a5e55dcd5031da84ad71248a27c9ca4e6cb3091956eab94f8676629ef": "/company-logos/cik0001413329.svg",
+  "dc91d7e9469f64394962acd0dbd5d29874e3c0bc00804f496b442d67ef5a9c5c": "/company-logos/cik0001534701.svg",
+  "de051e12faa2a1f82baafd0407b34eb06411e13a834f894baa64b76ce67eb5e7": "/company-logos/cik0000713676.svg",
+  "6982d5b296700756c516e7d2b59444a95448f63474b9bd03e61f68da9268224b": "/company-logos/cik0000079879.svg",
+  "2576ce957fa6b21d22232001ac62ece103d4fafa852cb7bdcbc01e7ed11e908f": "/company-logos/cik0000922224.svg",
+  "80cfe6d9ad348d61fc3bf262fd6bab453ed3dc10e965f88aa4a7136de577fc4f": "/company-logos/cik0000080424.svg",
+  "df3c183d4f21ba479a028120f581a080e5adc7328a3829bce069417a6cbb637b": "/company-logos/cik0000080661.svg",
+  "21f06f8f4f9eca46ae9a70cbc824958a02c70d71b55327bbcc7dae9c1e9e1fdc": "/company-logos/cik0001045609.svg",
+  "27a891c4a64e18ad80adea4e02b759567dc7aa9ec54be5b4cccf14b623034d76": "/company-logos/cik0000788784.svg",
+  "16985af907b830df23df716a8a6e8956720f2a1de71fbb72a48465ae826269c4": "/company-logos/cik0001370637.svg",
+  "220cf64b23fca5d3c1e8ef491b097dcfaf9da2b15eaec1a142e3ef897fe39fe6": "/company-logos/cik0000106640.svg",
+  "a74b5e3fe552613af384eb20dfc082cd1a9a0e035a417d6df1ce760b6fac3967": "/company-logos/cik0001065088.svg",
+  "f2789eeb7bd2a0d73d341ae417532025aca2fc38a4a86b15bdc65ccc7e12fa47": "/company-logos/cik0000849399.svg",
+  "0c90cfa6a1caf8f429e2d804b1f9eb206b9d1ede72f0d976068d3be5b7a94e1e": "/company-logos/cik0001604778.png",
+  "4a3cbd87151061556d69331fcd8a254e0f7f833a695235accdedc20861e4a0f2": "/company-logos/cik0000804328.svg",
+  "74d02c248930e9ff8153bf4db48880245505902fa4ed87e3d7fc221c8a643d91": "/company-logos/cik0001037038.svg",
+  "681dfd50d4bf8146f2461acd08bdef52925069737c1b7871d5e425c6b3572efc": "/company-logos/cik0000720005.jpg",
+  "c9c7c6d0d1acd72b233a2b72b88cc3a50f2d3e5e108e3a2d8bb7b4c37584d379": "/company-logos/cik0000726728.svg",
+  "9b12c7060e5d334c1181301ebcbaa3ef260971eac964ef3660f5c1de841ad04c": "/company-logos/cik0000910606.svg",
+  "54d55c1611097bb73623f5ec68c93aea5a91915b96233e376e2a0fb9017ae7d1": "/company-logos/cik0000872589.svg",
+  "04ce91577eafdfaf5b8de29e71fba3d9eedc4ca301f57ab80b434e7fa66a1af6": "/company-logos/cik0001281761.svg",
+  "2b632bd1c8e8c45be7746b3a4cfa9265689757eea00e36d1487e42129f133e30": "/company-logos/cik0001060391.svg",
+  "98d38fd27edc6e747d26c9e1696dcb0e4a94b4ac79dd32323ab0a67faf203dbf": "/company-logos/cik0000943819.png",
+  "744da721519a56102f98395f9583818e4bfd08231c890569f8274b29066dfe27": "/company-logos/cik0000315213.svg",
+  "1742932e614313a28a225bee3149467d6534725b50c4c9f7f626da107fdd411f": "/company-logos/cik0000084839.svg",
+  "2570dd0b38a5fcec09cc3a32b87639888f8bd92c611bc055d8863ef26439742d": "/company-logos/cik0000882835.svg",
+  "82a9ab9fbfc5ead4fdd0dc8be4d528783160b50aea7aba0d9ff68a76833f6d56": "/company-logos/cik0000745732.svg",
+  "60dedeef427316aec34a276a07d0b1e17d8820d83e0dc55c20d93eaeaa9af02e": "/company-logos/cik0000884887.svg",
+  "ddba30aec590b55b73d4514f5576d072fd2d9560f550fa6bb84e6929b37a33aa": "/company-logos/cik0000101829.svg",
+  "b52421bd13f49ae3960601c2d86a1787133066ca5aadf4d1837c11c442b676b2": "/company-logos/cik0001108524.svg",
+  "94de7630bd71217fd4b4b19ec56a8c4878a59efd7902475913c66732f720036c": "/company-logos/cik0001034054.svg",
+  "941c62bb8b60eddd8fa0cd14ee0a3c049c672a8a09561149e0487ea0428df6a7": "/company-logos/cik0001137789.svg",
+  "da2080df228100469e866c7047cfc3c91cf9a932795c0ff610fa7dddfbb460f1": "/company-logos/cik0001032208.svg",
+  "8abcd4099f0529ace2e73ced5c3aec45d97b160d84966d37d5a353c9fab2cb31": "/company-logos/cik0001373715.svg",
+  "4f06ddffaa97af1e5e0c725d3e47469985d9df3c5f00e15828c35b4c9b04115a": "/company-logos/cik0001063761.svg",
+  "74849efa1599f6359f1309d8baeb5b05b69480adffad6e21f9523b73298473ad": "/company-logos/cik0000004127.svg",
+  "04978a1499d03545cf618e05c5b1204b6390e96fb219bc4602bafa8e587861b0": "/company-logos/cik0000087347.svg",
+  "92375ad0a091eab2979bebce2af085776310ba9f432bbb3df194d1ff60b09d03": "/company-logos/cik0000091440.svg",
+  "1d43f2e1685af4b60e8c30530348523fe1a860cc8c92214d97fc781a9e24b154": "/company-logos/cik0000092380.svg",
+  "2e5bba5bc86ca8813d2de4a621322effcc2dbd004acdbdc6b7f785f2422898ab": "/company-logos/cik0001091667.svg",
+  "804ba6f0dd16dbbe644242ac624637e6efdacad438e156cf97beb4d6525a7e9b": "/company-logos/cik0000093556.svg",
+  "6887395ea6964f283bb8f569eae847c32dcb00334de9888df4cb7825d3466e74": "/company-logos/cik0000829224.png",
+  "6cf85ef09dfe93ad693a1f975b79afa7494c429a9082b314dca09aa1dc6b03ab": "/company-logos/cik0001757898.svg",
+  "69675350956a035484ac21ddf5161a7e49ec0edef95d956f3d7037c7cb73dcba": "/company-logos/cik0000310764.svg",
+  "cf478ff64fe1524a361b828f258de2eb4d86be4dce670328e4eac4beb45f1eb3": "/company-logos/cik0001601712.svg",
+  "83ec4cd51a95346f7fe6648983c6a7fd3a64639e3b73ed681d02c5deb4d56659": "/company-logos/cik0000096021.svg",
+  "c6797214ab022c226ccc806ca05fceb0055cbf2c023668522c9ed2aebe3376ef": "/company-logos/cik0001283699.svg",
+  "347da8453cfabfcd3168c413b37726be78860457a717464988a504f149249dd8": "/company-logos/cik0001113169.png",
+  "688ec84aad3f6ebc80fe655c09c2b77c40ca3450344c0c5be4eb10b3dd1a3450": "/company-logos/cik0001116132.svg",
+  "7479e3e2eed94a91cbb9f119c0ca72383b6578c14cc3c188504d41a626c40b2b": "/company-logos/cik0000027419.svg",
+  "23f4690088780e151bf7cdb166267376c81f2f19a678df1765b34b9b932dce64": "/company-logos/cik0001385157.svg",
+  "eb065120a0dc386cafa8ee23f37884bf980d41959d024f71ffe92217f5a443a3": "/company-logos/cik0001681459.svg",
+  "1e410c5d1cb52d38d2135605177f3fb8a1b60d0d2a012a9a9918c72960a6c8a7": "/company-logos/cik0000096943.svg",
+  "a0d636285b6a30c4f9186bd0236a61409bd6d91f59c8da12c1eb4b0d5ac032c0": "/company-logos/cik0000097210.svg",
+  "63dffdd057fb53b00a6380476cff9bc424664b6eb3bbc82ef89f839f10717f6c": "/company-logos/cik0001318605.svg",
+  "4c77f1768f13d103770ba28939414fade3a8c4796d06b6f2d6b0f85dadca8491": "/company-logos/cik0000097476.svg",
+  "3e9bf8adfe058d0034c68f5862f0cda7faa2e6fa08e23f1d7c8aee40208e7251": "/company-logos/cik0000217346.svg",
+  "492873a91c2489dcf6e557c37ebe842030888576078fb5cfa34ff0fcd383a15f": "/company-logos/cik0001390777.svg",
+  "d2885ab26f57ed7da6129a38a70e8e293853d95f0b575c8a0d145d2c859e9b5b": "/company-logos/cik0000021344.svg",
+  "65c2d8d9bd2622c49b020ae1653a6a74089a5aca38c7c73ba8fcb462d9ce292d": "/company-logos/cik0000711404.png",
+  "dadb1505bbfa43f3011d333c01f5143be12501f21fb5838a8035873d8a524f5a": "/company-logos/cik0000047111.svg",
+  "72dc07b8739d9c1dc287a5b53cd1e8beb7fe78c11919942d88e9927dc07d77e9": "/company-logos/cik0000354950.svg",
+  "a24da26ed0a33f4469e2c4fdfcdf88e5e73747cb67769abb5cc0caae721f33db": "/company-logos/cik0000091419.svg",
+  "b66e155dd1d542508ee8134a3ecc9ca81e3919757e33a58864f69b0283344dd0": "/company-logos/cik0001285785.svg",
+  "85f10379577de4722f2a5854e99e5dcd50e013f5d773d81d38eac2f6692a7341": "/company-logos/cik0001744489.svg",
+  "46a07f628d6b7c550c4b3551faea69ecb6c1d761115c395779079a507590065f": "/company-logos/cik0000097745.svg",
+  "31d3d4e4a9b5e37ead22793e8eb56a9ed9a3fa84dd43518a02c389921f6a1a06": "/company-logos/cik0000916365.svg",
+  "9614474b2ca3de81a6513442f350b2002cf2725a0dd808e02b0bd3a8e8b09ee6": "/company-logos/cik0000864749.svg",
+  "792081a7514913e129cb8cf11578856a632d61fcecf8b3e891ba0c6f3df8c66b": "/company-logos/cik0001526520.svg",
+  "71852b083c0241f8265ae30a9b36e54380617cb488e712b8f9de3e4ae82e9f02": "/company-logos/cik0000100493.svg",
+  "8c836cb88ab82e90da26d1b4e2b3603ecc3377daa7f2217a9fbb1605f03e59d5": "/company-logos/cik0000036104.svg",
+  "be2e4d01f03207b8da8ff584516e52c2c861e1070487caab185dabcf55d6b156": "/company-logos/cik0001543151.svg",
+  "30c73a6ab75ccb0d83fa8da8b62073377ecba2bff94275b0f2330973b3337df1": "/company-logos/cik0000074208.png",
+  "1eec7dfd1ade118113c4d91e8664070a0d2767e0b7ccc8d92c471728399e63f8": "/company-logos/cik0001336917.svg",
+  "3b07d40f0cadfc766b26b0bb282cf37ad7af87c132883e5dae5777d9cb9baa65": "/company-logos/cik0001090727.svg",
+  "51114b9c7dce93db3ce8420f2e51847bb2e3374fbfdbc3e470ee1794eaa2af4c": "/company-logos/cik0001067701.svg",
+  "b7d62b82c8796323c0e5adc239423123152004f0da69761d68e95a6beeb2e6c6": "/company-logos/cik0000352915.svg",
+  "62f4722cc38c09ee25c36b5160c33a2a6e03bf5824906477589068138aa36d39": "/company-logos/cik0001035002.svg",
+  "b4bcb97d99de48ef4e8cc18311fdee325db89dd3fc5b3daf57b2a8ac2211d30c": "/company-logos/cik0001014473.svg",
+  "f2cdec4eac958c49281ac89d426ec077798e0a6d93f381c2b0c5dc25a2b6c155": "/company-logos/cik0000732712.svg",
+  "f144e46c5ce4ba3f4b6dc1c8e29aa6f5fc1bdaadd803578a4f0c3dbf1696a8f4": "/company-logos/cik0000875320.png",
+  "79b3f0b9ef4bbee4e0f5c3b643fc057a5c589c0737db82c8cb9a7bba9995b556": "/company-logos/cik0001792044.svg",
+  "a9800215097d4cfa792c723af023dbcbec92cd656e0f95df62af21c78f48b060": "/company-logos/cik0001403161.svg",
+  "dc91cd2182bd3e90350cefa4d123f8cfbeec68db4e86f66470169a28c9a93696": "/company-logos/cik0001786842.png",
+  "05e1f278d2a8a9cffc572dcc0aeff4962e1e88e1dc549b791dc44b89bce30e8c": "/company-logos/cik0000899689.png",
+  "51ea22bf412cf1625619505b304ca14481e27b38eaa523f6661193f4365d0a03": "/company-logos/cik0000277135.svg",
+  "7c7292590ef890b8b657612b502204bf3914301ecd8b4fd182293662f9a8216f": "/company-logos/cik0000823768.svg",
+  "748050615f0f4e8fe12a1405bbc5d30a557dc8d0fb32fd680416974c44ea9ddb": "/company-logos/cik0000766704.svg",
+  "7af5f208af83b47c5610aa366df61bbfdb4c115239d887efca9c1d598f4e0fbd": "/company-logos/cik0000106040.svg",
+  "94e944f9fdb5f3b528fe0da986a97a9927033ef4d579e96f961563adca68f3a3": "/company-logos/cik0001365135.svg",
+  "2ee42acd71c585993ac964a61decedc3c4817036202df1f433c5db5add7f4b17": "/company-logos/cik0000106535.svg",
+  "58b2c3b7b199926d6338596c678ef68e73671abf16323c4b21f286650a518edf": "/company-logos/cik0001174922.png",
+  "deec7ae0baff533af0007985c752aeb77c0c9f6f5579d8c0f7793671e4edfef7": "/company-logos/cik0000072903.svg",
+  "68a5bc57c94e33b3138853bf6af328f9f24feac6e4286ef5eac2bad7d966c767": "/company-logos/cik0001770450.svg",
+  "9192dc8e7a0e87e4b23cacb70011a8d729afc14ebe8179519faa28937845d001": "/company-logos/cik0001524472.svg",
+  "95854fa767aa67eaf6c76725b3dc709120988a070c6a0644833c9519c1ccb287": "/company-logos/cik0001041061.svg",
+  "7461fd26744a015bd5c01a1e44d9db7d346bfd152a6b5f6c75e58eefc6174422": "/company-logos/cik0001410636.svg",
+  "8c52bbff79a2ef34812120dfd9ddbdd209703faf2043687344db722a1fafb0fa": "/company-logos/cik0000006281.svg",
+  "8a31ecbb98aa6eaec7040d29a3cf9b4a56c31bd4cf1c91de5bf186c970b411e1": "/company-logos/cik0000866787.png",
+  "831c1d11232b431a189859ef614f9458cbc58b6beeed8f845cc0a21fb8b47ab8": "/company-logos/cik0000012208.svg",
+  "1fcb34cf2bf4377c832c2d72df24fc1a9779c9a094557c28855d78701cfeeada": "/company-logos/cik0000813672.svg",
+  "a38a04c145b430b3cd5100a627cedec9a7c20d5e9ad139ec5f4735d66b964fce": "/company-logos/cik0000815097.svg",
+  "ba7f661a30ea800303e703be78f074a74413834c0c0a8d5ad640a89d085db1ad": "/company-logos/cik0000896159.svg",
+  "db853ff352701bea2102af6c645fccc6445fee22fd42d8af7b92a12d7970ac8b": "/company-logos/cik0000021665.svg",
+  "a66631add9909f31c2c24c813afd847b370ae093d1b5a92c1944bd3cade9ece1": "/company-logos/cik0000313616.svg",
+  "0d446be5155185a871c900344cef899845749bb48caedba201a71dd2ea065b3f": "/company-logos/cik0000029905.png",
+  "a68449cdc761682b49df6928395be4c701a8e05f538fac9645fe2d9477ad1725": "/company-logos/cik0001551182.svg",
+  "96bc87143ec5ad58a368f850ba6355a917013f071983e16f2aae53fe10d20cc9": "/company-logos/cik0000072741.png",
+  "08b59c0ad99663d1eb07d680f4d9c08704c31e38b6f63ca0a37329aea7b3ebdf": "/company-logos/cik0000034903.svg",
+  "b7447830af9bf4ea2de945cb172f92f0e77aaf508304b4f1339c9572f352ae79": "/company-logos/cik0000037996.svg",
+  "01f9b1199f102eaaa51372a37485c04f627cecf56cf91a59efb3ea80b9b12140": "/company-logos/cik0000749251.svg",
+  "90f4469eb8218329c995dfbd171e6e618c6bef39f66073148cea9cacb877a234": "/company-logos/cik0000040987.svg",
+  "2a97f39d31a71601b225c0d2287e16cd5f354792971aa434e04bd2c75e76810c": "/company-logos/cik0000004281.svg",
+  "5720956845541c0a7b2eab882e50abbd7d691165522f13e22b4ee1796a1cb551": "/company-logos/cik0000874716.svg",
+  "1986c2a2d4b3991fc58bce96d18e75e170c59c15a1330c1289db66a7df4e5379": "/company-logos/cik0000050863.svg",
+  "9cc4aebbc9246a98c728136d7dca10b3809e31b7444ba564e35a7e5237815214": "/company-logos/cik0000896878.svg",
+  "c34444a2ff3e5de24fb6ffe10081a3b4e0e037e6349b7341e2eb64820c0b8519": "/company-logos/cik0000898293.svg",
+  "3a2138bfe8eb81abaf6e6ecaca6ed682e07982fc79877894d7cb26dcba1db772": "/company-logos/cik0000019617.svg",
+  "4ef7696ff35ead705e55227448f6e7eef2b22d5ea53e710d7046c1fe513850df": "/company-logos/cik0001679273.svg",
+  "a175c49bc0978b5c776d62c9f7987a9baff507b0c90c5e648cb70a6afdcedfdd": "/company-logos/cik0001065696.svg",
+  "dec4aaa7a34eba457c6d13da942bbba8c28b39d456d41a8ecf39ee22ea0a1aea": "/company-logos/cik0000794367.png",
+  "834f856018d58981b9797b1ab8d035941fc4e53f32774f73eff9b131f2c4964c": "/company-logos/cik0001099219.svg",
+  "08f20bb149922c5421a8dc20d09ffd0574c5cee55b4d37a302b9610ddf40c1b7": "/company-logos/cik0000851968.svg",
+  "fcbfbece5da6fc1b1fc54936031a918ed6bed2cc033dfadaeface0ab1333e780": "/company-logos/cik0001059556.png",
+  "3dc3c556b3398ec7906a2428c254f229ae31bbd1dbabf8f803e929494870d886": "/company-logos/cik0000753308.svg",
+  "ad8ed42a317b545a229423a1a289d079219f34087a610d9ce1662699fb77764c": "/company-logos/cik0000723531.svg",
+  "071ee056680b70f8e66cf7fcba16e522b7be095b8afdc45ee1aa5d832495adbe": "/company-logos/cik0000764622.png",
+  "6f2fad8f2e0188b5da5b57206e47edb7a4aced69351407dcee5771b8a9f56317": "/company-logos/cik0001126328.svg",
+  "071415cf105c8ddfc0eb35c636e03157aaf21075d183e4ba755fc5e6ea4f6cfe": "/company-logos/cik0001393311.svg",
+  "ad09f03a97cf3540e60e9ec2e608b016bfc806c91f5ed6ea2ec6b4f503830d82": "/company-logos/cik0001024478.svg",
+  "94d22ed55e08d889152031af4cb663d41434c6f23dfcbb8fabe9bbc5739f916d": "/company-logos/cik0000064040.svg",
+  "d20e72322ce775ffbc90bde1b2d4970542245c9ec486493cae693bbfd76ba7ee": "/company-logos/cik0000089800.svg",
+  "f4bbb1aea46c1d8747c9a0e64e866f52e614d446b0a32a79c377dff40294369c": "/company-logos/cik0000092122.svg",
+  "4546742a7feb055a895d2c3d4dcebd1dd91d18890c781b9d63328352750b5260": "/company-logos/cik0000883241.svg",
+  "c7a407f791a09b0973f1b86466669a94c4001d5b048692387ff2cdb9b18e0cb9": "/company-logos/cik0000946581.svg",
+  "16de0125ed601f6e36a22f691818014e1e067dc92a7938e1af1f7e91e2a7556f": "/company-logos/cik0001094285.svg",
+  "3c83ddfab516508483cbba41b0944bc618f2ac4d742473b66bb2e3b3e507e0c2": "/company-logos/cik0000092230.svg",
+  "c9be94848c986b6e5ada2d9dd376030f5df43c3c7925aec58fba78dea433a205": "/company-logos/cik0001403568.svg",
+  "0c10216d2b043404d69cf7efb2d0361364d20a93b8f5aeb18324e03c44f6d3aa": "/company-logos/cik0000103379.svg",
+  "64de48643ff7190a4676bb105221958dff3bc95ded08761d3565438e69f30af4": "/company-logos/cik0001396009.svg",
+  "d0bb253e04de6972500ebb3ac645db4dda03e35a779a447e29225ef614bae74a": "/company-logos/cik0000072971.svg",
+  "7a8724f6b3904a79cf9cceb98bf783ded26c4b18560b4a56e03d6fa25e25a680": "/company-logos/cik0000107263.svg",
+  "1d96751cfb61aacc92d173bd56f72b2e779f024feee409b73f1487cea4902081": "/company-logos/cik0001555280.svg",
+  "1f443352bf71b96b5387c0833e9bfdbfcefb8b7cd3973eeb8b938bf33a06be3d": "/portraits/C000127.jpg",
+  "e76ec1628f14ca4bfffb130b578235f888b1e9981c24d87135a44c0afc0f8c41": "/portraits/K000367.jpg",
+  "5df00f39cc3d22944fc949e947a72120268ac1cd0f43bbddce8c7c8d37c4d44b": "/portraits/S000033.jpg",
+  "c4292d8f3f859e0e64aaea57131ca72e67bdb1f3fd117b66c310d29c752ff4f6": "/portraits/W000802.jpg",
+  "e57499292e0df719f51c6a889a8d03bd57d1a40dce69b2a975ec4ec2995f4990": "/portraits/B001261.jpg",
+  "6817f985035d40acd05bb5655159ceed85c0869f0523c2bce7a99eea4fd6a149": "/portraits/W000437.jpg",
+  "7ed4fbd03bccc333e1dc7cb9f0f8847ed1dc88465940b67f1a5375614e505908": "/portraits/C001035.jpg",
+  "b30a1a87b9be24bb7a679e078694a503e38a358cdbbb3c10cabf16ad7f46acd3": "/portraits/C001056.jpg",
+  "b540bfaee8743af96b65a333a6334be6b7f98145941ae826100eb36cb2ceee82": "/portraits/D000563.jpg",
+  "abe3a266d1c73c8f5c062d1b589c64da23b1e3e36f31b312bea6b55243e86635": "/portraits/M000355.jpg",
+  "b2facf62a7ec1bd1380c69012016fb1197310647dba23d5bc445687c412827a3": "/portraits/M001176.jpg",
+  "9e973903950548385909cf129b1ad0625e91635ccf838a186e04d09312cfa12a": "/portraits/R000122.jpg",
+  "38dc807f5e155c0f690534fb05193f3f806392a861eb070aa0c8dee3abc274e7": "/portraits/R000584.jpg",
+  "7ca6c0cc6eb32e8fc1ec4e577b7abf13eecf97e94bf9dfab8b3346652fcd7e69": "/portraits/S001181.jpg",
+  "08ef2d14bc2db3e0675c6100c9cf1d6c75dfc9f0b511c175960e4c28de96adeb": "/portraits/W000805.jpg",
+  "97080c5c01a3e2f22e8c7f496a2410582e816617851f23749c8e4131d70fbbcd": "/portraits/G000555.jpg",
+  "3bcbea2133770a7d6368509f02950e49b3af6332f99beccd8d727b5b89297320": "/portraits/C001088.jpg",
+  "3df023212d7165563ccb95f3701b6fd6888ef889ebdefb29c372bb9e9fdd514c": "/portraits/A000055.jpg",
+  "d84e136530dbc5ccbd01f4740369986efaa3683077ae3f75d535b3c44a914278": "/portraits/B001230.jpg",
+  "09f97046ee4fb97c0a1c2f42a5aaefe9bfa1be4b420e3dd99b59e3565cab8ad1": "/portraits/B001267.jpg",
+  "abd3a018b18a58d08bfaa2fc3759c59df3e256ec82b9f6b956091c7b659a6741": "/portraits/B001257.jpg",
+  "b65020c833c18b565d0dc072e15685296c6b864c569437f5d126689412b3e89a": "/portraits/B000490.jpg",
+  "c6fd39bff8c7a5902520d56ed5c5f708b5798cbeddd435545ebd02c8581a54db": "/portraits/B001243.jpg",
+  "69d3287366ace1024f4bcc3af05ba92d6813fd6562c1fe973831ec299bf94461": "/portraits/B001277.jpg",
+  "88bec03b355b7d336930cfe0f8b020b6ae65264748fc648770bd375b4d04049d": "/portraits/B001236.jpg",
+  "fa460a457d4cbb01503ae389d82b7f6e4d6954b0a08a5c43515a591198e1f5e9": "/portraits/B001260.jpg",
+  "82d71ad599bf77ecdfef63f10a17c2542e104ef00af68d5c7f4f4f3e7807ba3f": "/portraits/C000059.jpg",
+  "76272bec8405f268b29388733d736cd45b789efc7a7a01339ec87f332059e7ad": "/portraits/C001047.jpg",
+  "669fa5e482903f5e57b8bde34838ef44f3f0c74fe96c7433f6238450874e25a3": "/portraits/C001072.jpg",
+  "92aa2f5ea30c0352db228d00b9185ed327329ea298c4de8426cd56cb0a01a5f5": "/portraits/C001051.jpg",
+  "89d27f879dd4eb5a0cf55b6968da530e225b579ef19052b1a7fff3785413dbee": "/portraits/C001075.jpg",
+  "5473b5943d741e33e3c5c04c07d311366a3c45bf3055b90134d1368abbe0a4fd": "/portraits/C001066.jpg",
+  "e0ff82f0914fb8b939c943becac6d3acabb1a53356dd49ba6548d41381e8d2b0": "/portraits/C001080.jpg",
+  "0ee2ccf1f1e3c3aaa02f164d875afb9b93f5bc90b347ce8b35bcae5956841454": "/portraits/C001067.jpg",
+  "fb75d63f327a69b11b4de507f8790c14c8050d268987bdf336cbfc7fbbf4ce35": "/portraits/C001061.jpg",
+  "9cad83415a842ead6ad704c0da443e80a8058c6b1129ea636270757650853e43": "/portraits/C000537.jpg",
+  "3c14c97b7995b7176002f4aad61e88462196d2d8889d4d7bbec4f2f3f315c145": "/portraits/C001068.jpg",
+  "d6c755cd713f21632547131b18544b65bbd758fe527ab37288b4e7eb2d260a65": "/portraits/C001053.jpg",
+  "e7838257ccb7c1c4515da88c3f24dd28919a9060e5786fcb09ceeeee5aacc4b0": "/portraits/C001059.jpg",
+  "99846005231c9649137f629f1698a450ec7998bcd326ec75b6efa30507e974e8": "/portraits/C001069.jpg",
+  "5a852aa3cb728371df780625623a32ca7e42a6fd8cc8495fd1f11d278653d051": "/portraits/C000880.jpg",
+  "61ce1ec3b97a6f7d1916428e5466de5fc86afe7146efea287d7c3e28afcc5178": "/portraits/C001087.jpg",
+  "277aa0a04f15903ff3bb6c93fcdf3ad24e20d75860839978d3716cd22d28331c": "/portraits/C001063.jpg",
+  "a0b73489e46debd2b3ff8e6b5f0454a601b0d019b030bb500958974e865fb546": "/portraits/D000096.jpg",
+  "43a67ea4d5a38e92f5674c65d76d81c74f2271b4680cbb8f26b708e83bc41703": "/portraits/D000197.jpg",
+  "b4c26af941f5b9704602a2783f29e148121e1a6bca174d0d909f67db97e5000d": "/portraits/D000216.jpg",
+  "a22814dd44c53f5dac9ff08b6b04248a04087de217d9683e40c3645b60806d81": "/portraits/D000616.jpg",
+  "72b4f36ef6581288462b9858e3087ba128d132a3e85850898c7ac7e3708dfff6": "/portraits/D000600.jpg",
+  "eaddac836f219df7f404106625f31c66db536233164a75c7ca0b9351a0cc5603": "/portraits/D000399.jpg",
+  "5ef8f723948e99a24ff40db8e1c852e99bc7a8a22262c0c73a55dd8c26c9f0ce": "/portraits/F000459.jpg",
+  "e5274746987a397ffb7b66794289916933fc5bede435326881677f5227ce924f": "/portraits/F000450.jpg",
+  "549152c4223a1a3691cce3c3013472524ec5e0f1df6db5f54a08ef03ea4f0b4a": "/portraits/G000559.jpg",
+  "9fb03affcd0abb856521ea2097b150e549bfd030546c0b5093e7e09c0ba36b2e": "/portraits/G000565.jpg",
+  "90785f9582d1f3fdeb718fd3defcb15657929ea5b54298fc9d3d3c134242e26f": "/portraits/G000386.jpg",
+  "cdf7943cdbc93b323230b990b1460b2f0e588ba755604c2df6440858dae91221": "/portraits/G000546.jpg",
+  "d0db688e666ea7be4ec82dfe9cc04d75c0c3c36f7edd11afcfd602594325de91": "/portraits/G000553.jpg",
+  "b105ed5c7866da79112d89413caf8ee7d550e365453ec36dab33fde877261cab": "/portraits/G000568.jpg",
+  "c4b4aac55d48252f1e41e149f9de980885c78006ce06e3e769853c633d65d3bc": "/portraits/G000558.jpg",
+  "62627515375f64e5b4cbb804e43a4fad8500927b3e200fe6e602a050503e5267": "/portraits/H001052.jpg",
+  "1e5f6c54619fdac63cf60bd94a6a9ecfe6bb14b6eb6f2b4f02fe11c50d1f04ef": "/portraits/H001046.jpg",
+  "5e49e54df0f230911c5aebd0764fbcc5ecfd43264a16f7101478d5342df4720d": "/portraits/H001047.jpg",
+  "e93c6691deab877b85cbc61443f9f44bcc11e70a166f353518274d3311bd862b": "/portraits/H001042.jpg",
+  "b38c1d44809389862b34ff37ef098e3d15c0283d0988e604377f0d2f8d5affc6": "/portraits/H001061.jpg",
+  "7740f211c90294ea9882a89d5fac5e1c27e53069349774fec3c751dc7f603fd3": "/portraits/H000874.jpg",
+  "cef0635ce6799c97991cd96f51a6e4c2a18cd90be206db842ba2b83cc8e6dd27": "/portraits/H001058.jpg",
+  "cb6ddeb00b5c2d75c7e319475152ea5fbe6bf017068e4236a6684d307e2d7662": "/portraits/J000288.jpg",
+  "d0cca466a9f7e8fa3f59c204502b5aa3f988f2cd8c5a892377074c88adc86c34": "/portraits/J000293.jpg",
+  "96a8b39d0fbead9479a722bb022bfa2f96787d2d54ea989082fa8008edc5d98f": "/portraits/J000289.jpg",
+  "864508cbde5ea42888f25ff6af911cf6bd864f3fb01b6e423ac812f378ecdc1b": "/portraits/K000009.jpg",
+  "86eb06da12106ceeea590a830127ad35580dac4eb5dd12a034c9662a89cf1168": "/portraits/K000375.jpg",
+  "45ccfa8b1e2425e60cc9b5862ffbdd6348b3839e6dfded8a2720ea11ef8b12c3": "/portraits/K000376.jpg",
+  "8b143fabb811079bae30095f8fe241c23ffe4f19d3c3e9555702d181887ed7ec": "/portraits/L000575.jpg",
+  "aa0f25eed96c4500e061334bd0cb2dda8c54002a9b149612788fa655ff93be28": "/portraits/L000557.jpg",
+  "0fda09aac0355e4382c08e3adb38ed1d9bef125d9f7e2687ad7324b659ee9d23": "/portraits/L000566.jpg",
+  "f674f95c878df5325d2f02b079024e7b8216a3a0df5ddf44b6f7668d61abf61c": "/portraits/L000577.jpg",
+  "3db9d09b2456f8984de8bc05d7c500014bc5c7c0254958081be4edf734564198": "/portraits/L000397.jpg",
+  "9123ca11272ae49f2cd288567bb787852c3a5193c2e3154826a908e239a47906": "/portraits/L000491.jpg",
+  "c6143c13afa39a1b113fece7849125e62a798a7144321ca04103cf6df70b5d97": "/portraits/L000570.jpg",
+  "0c09c88adab3c88ea237d741ae4aab6773b0c70c0a6c2d7ba957fe22628cd8c0": "/portraits/L000562.jpg",
+  "a7d051c85bd5e7d0b51632f413a11fd31cdd328bdc94d11d3d6d12b685d9d0b7": "/portraits/M000133.jpg",
+  "ceb05a58f65f45af7900e5fcb4c7b78b7a6bffda78fb3698296779dce1ffbaa4": "/portraits/M001163.jpg",
+  "8014e5cfdd2a18d1690c30c01f77f4dd40f3b63576505f404e0a2d71a866d530": "/portraits/M001157.jpg",
+  "89e3b004d885af4f5964e58c0c4e6ae754e7380c5e38cac15bd3ca8203f32204": "/portraits/M001177.jpg",
+  "64ff2dce09f426cd07123851df67cca75d9a5488a2a4131284715e522339aae6": "/portraits/M001143.jpg",
+  "506bb26a5574a012253bfbc7a81a758956d8d87eb4b1d85fd846f5a03c24c011": "/portraits/M000312.jpg",
+  "8159609be2db25225af330dcb37486005a0a13e9375e7f40c7fae072e74c6df2": "/portraits/M001137.jpg",
+  "f0f70b20a51b9e6c62b3f496b6a39635f9f6a29f9fe7e5d5c8fd1a8d269a289f": "/portraits/M001160.jpg",
+  "4c2de33c01eda79e866098e58bc82f58beae6c37899d6545048caa1490ccd1c7": "/portraits/M000934.jpg",
+  "d3de73827c808b1ecae98c3c9aa04c21355754d267218d6d2cd6d4560dcd6440": "/portraits/M001153.jpg",
+  "f6c417560ce9d4f12a6c90ebbd3323ba115acebe96bbb8f6a054331b80b37297": "/portraits/M001169.jpg",
+  "f6adbcd81fa60a1f16ad870a21b19ff69ebba9bf785c595db9097e3bcd3f4e95": "/portraits/M001111.jpg",
+  "134acde6c0064e9f0da9acf48d6ade9e41870506f7a46b2111acff1fdd668c3f": "/portraits/N000002.jpg",
+  "8c35645829380b4f657a855780a6d27ac178d24f6dc4b0b5503d0edc07b80fe8": "/portraits/N000015.jpg",
+  "59d05d2885edcba6f4c5546087fa7ebc480819be1c53437db6ceaed623c2b9eb": "/portraits/N000147.jpg",
+  "165380b8bec10de388c2e2e80455faf70dbffed9bd780f615d36bc3d6d05f2ef": "/portraits/P000034.jpg",
+  "5cc660d2514272d0a08b92ff58bffedf79e4a38f975426d78608e6fcb5cc3071": "/portraits/P000603.jpg",
+  "ba93c13e2dd7b0dac497d2b9a949b23798ae8f5a57ab991ea37541fcb7414d11": "/portraits/P000595.jpg",
+  "c7a334783147c2fe353244d8ba9b54b4b1c422c3273809990c8d3fc0b049200c": "/portraits/P000597.jpg",
+  "358579712c3909255529ee10eb237521d42ec932771fa5aaad83c32ff5f6b811": "/portraits/Q000023.jpg",
+  "ee76f90b3b71e114e97211f5e0787424b8555feca5258b6167aad8861ae7bfaa": "/portraits/R000395.jpg",
+  "d6188fd74d1c224beb15c9c3062c1383e918267668c4909703523dca8eb8ec2f": "/portraits/R000575.jpg",
+  "0f951ec5a8f764e2a32cbbf642eaafd7ab1b7b0dd9d2685a22895a46916b4654": "/portraits/S001176.jpg",
+  "11fe2a80e3a2138dcc0267735182da51151896471be4a659cbf77fbaf1a61796": "/portraits/S001145.jpg",
+  "e64c547aeaed48edb49350929eef0a771531bfa4e3cc41a67faed06db5f943c0": "/portraits/S001150.jpg",
+  "424f623dc1c06861262581c49a79fac99a9320eeb9f6d9cd2bc310f92c075f97": "/portraits/S000148.jpg",
+  "d2ba77d18dad9a45f3d9e4ee338f04f5321c63d22bf0b048e7967db9f2a54827": "/portraits/S001183.jpg",
+  "ca069cfe8f02cd0a998a8e6972ae92684765a83afbca449d6d42e51803301738": "/portraits/S001189.jpg",
+  "d09b7fcc4feb820f9a31af2fec3e6e5f14291e04613d1a86f9fce1340d78472d": "/portraits/S000185.jpg",
+  "796e30e4ee5a6fce63753adce01c80a7afd328f81d7b50ebba7d8cf5553cece7": "/portraits/S001184.jpg",
+  "72a6016178d95869ed807123b0aaf0272375365c6d19f3bd204283b8c29be28b": "/portraits/S001185.jpg",
+  "eafe49642f1ea5aa7b78a184db5a867f75f9115b05aa85d2156fd483a2180c19": "/portraits/S000344.jpg",
+  "4e0f89788c0933d9c7f9e9bf5ecce67b29382141c2ac0a2d08d642b4c6099ada": "/portraits/S001148.jpg",
+  "078b4780bdfdfaaffc1acdc667378339a3fd1f06dec48f1c638b4fda6ae1d33c": "/portraits/S000510.jpg",
+  "d1ca0af42eee625e50ca1dee09c6f30a04ed46aee66e71d5a59372e7202f2f07": "/portraits/S001172.jpg",
+  "eb64c7f9873f51746abf3ff333bfe718896d71d129a073aaff2628ce0013e544": "/portraits/S000522.jpg",
+  "d2c86b2b72b59eb58fda7b74a800b4691e9a7f0e006ab9b6bb74b92d1cd0f07d": "/portraits/S001156.jpg",
+  "6fe03ad422acd2440f28db7360ef1d988010047ac5d857c8e73a2146d8bd5274": "/portraits/T000193.jpg",
+  "3adb28212506c8a65bcfaec644c117cf27c87d6989b4eb60f0fcceb0031ae5c5": "/portraits/T000460.jpg",
+  "3edcef8b258ead958e8d981da76002b0171cf6a5579639b003a923c9b80edd87": "/portraits/T000467.jpg",
+  "bc61ca5fd7466dbb60345c98d3f24604df3b1c7fd6b4e9a5c39b5093a6dff6ea": "/portraits/T000250.jpg",
+  "24d89eac5b1419f5e23b6c9d46050c61a657a3e34e9d4d4e6336f29c8f65b43a": "/portraits/T000469.jpg",
+  "f47070cdb71da84831920a970e98878680aed44180e4afd59cf704e3276886ab": "/portraits/T000463.jpg",
+  "93a970b467dbcce555700fc4938cd93bd6900476c747481b90005020786dcffe": "/portraits/V000128.jpg",
+  "706afded3ba6d9af95487ef194ecef48408b02aeda4212713b98e35c25fcf126": "/portraits/V000081.jpg",
+  "1b68b62f9e2d94a226f7e9c8c3d8238f62cda54da805321f54caacf81563e28a": "/portraits/W000798.jpg",
+  "8f1bf9ded7a09fa49e8caf4514cef16d6c03df0eb72ad4c8d0994befb6b054b9": "/portraits/W000797.jpg",
+  "b43e6911d0e898109082538abf697ff31972f07923f1ee816da01578916470fa": "/portraits/W000187.jpg",
+  "f362a13628a10a53927ec2a0fc92e1d6697ce751f7bd37805e67efe31bb5b5a6": "/portraits/W000806.jpg",
+  "f3da5468080c2810ea93330405e1d379ed3c70d7d68dad062aaf3d3a22a6e7ce": "/portraits/W000800.jpg",
+  "d5af46c2af3fcb650e737c93c3d27bd58fc02ff72f8eaa208bc0b6356badee2e": "/portraits/W000795.jpg",
+  "2780c0f55fab9a6bbb83e64c1cae6ed4f68bb29196c739c8d0c2cc9784cba8a4": "/portraits/W000808.jpg",
+  "8f2f493827eb9c77b8709cc3f2aa759d8598e8732d134974cb92ab798b9c4940": "/portraits/W000804.jpg",
+  "21fb1e6d8247f5899837610ad50108b76454f4c83a6fd00bb55b8e87bad9a465": "/portraits/W000809.jpg",
+  "673e0c5aaeeb4757d2fdea06993a8cf2e2161761fe07f0a5f47b5cfc912b952b": "/portraits/W000779.jpg",
+  "3de16dc506f6998166f011711578063d6e036f7e8c16756d9f8d1c6a2e6123f9": "/portraits/Y000064.jpg",
+  "ccb61639dacbe443fc3babe5ee483fc181489cf61cbcbefdbf023c294972b6fc": "/portraits/A000369.jpg",
+  "1938b7d0eecb4d63fa6d0bcf0736d7578959168cf84f29594413c84447f94299": "/portraits/B001278.jpg",
+  "b7bb4fe9f805d64c0bb1488803e7a7a3216bc391aec9079c42a2d7e37c6530ab": "/portraits/D000617.jpg",
+  "0af2d1ee3455ae9df6a8d0728dc5bed4a71a604bff0b279195b42344ddce7cc5": "/portraits/M001184.jpg",
+  "740d0da1a29a7d6d779036bc124ea30f47140fe54722f1c4c9992fede0acfbab": "/portraits/S001194.jpg",
+  "07ec8cb536e355cf8c08fad12ee829adbc77b19a0dfa22bbf273588f987cd44f": "/portraits/F000454.jpg",
+  "7c098e328cf8ac28007928114cbc06de4542a01a2198a8b0a765757b4aac4889": "/portraits/T000468.jpg",
+  "7370e4c0c92405709cb9aec8b06b92e4d8cd058a947a609fb4d20c03c78f0efd": "/portraits/C001095.jpg",
+  "0763350508101592615e31a30f1bd1ba1e2207453a3e91f286b68de3a84cde2a": "/portraits/H001068.jpg",
+  "94d89ce36f7f3ab12fb4f21ae9138d6c22b61a6ea09abfc036606ac5f56bce73": "/portraits/B001287.jpg",
+  "f68e89eaf7e48580859d40a640c8fa465bf4ddc241dbbb8d2628fc12ed897f0e": "/portraits/B001285.jpg",
+  "68419e94bc069ef1676d17c631c0fbc4368784ed768f3b2482680236614f6e09": "/portraits/R000599.jpg",
+  "b973cbcb183eff1517c0ff47611b27f0cc7d91c43a68d95193f5fa742e66134d": "/portraits/T000472.jpg",
+  "4514701318421792b14f6e73b0faa8bdff2c1e11b2dbaf5c6ffcb80ae7d5ad24": "/portraits/V000130.jpg",
+  "55a176af41ec9412e219ccb29df6ef9e780b4fba93c7769981763a6e1436d77b": "/portraits/P000608.jpg",
+  "efe19f3dfe5a290915cdcda8a374f6e4f0accd5b0f22c60778138a943726d2c2": "/portraits/F000462.jpg",
+  "94b16e7eadf0f1cc563513851127767b3a37e08fa5cedfb86ebd25a719d34460": "/portraits/D000622.jpg",
+  "0ed8355844f12426ef629c8d8c56b299a5990a386cab20cfc85e57ec18dd80e2": "/portraits/B001282.jpg",
+  "6123851ad5e22eadd04c20cf79b79d61546692b771fb27601a0e316ae7e5cf0c": "/portraits/W000817.jpg",
+  "bb4aada09a7de82635cd2d5554d7e4e021a7f5e7d46de99023c576ca77584bc1": "/portraits/K000383.jpg",
+  "0d416ce3bcb29e7a06e134951887a17abfb9740c8694308db094db4627f736b1": "/portraits/W000812.jpg",
+  "60733980a98c31291fa76d377d149469c870b47a688b906b990f9526a638ae9f": "/portraits/D000618.jpg",
+  "dbbd62f594f630674a5663cdd004de7c2c8ae699882f854a1060ad2cca47ca64": "/portraits/H001067.jpg",
+  "63b741844c286c188ff290b189b13232d864eab931987f9ffbbc28396e543435": "/portraits/C001096.jpg",
+  "e0b8c5e7caa081a7aea094c0df4d9a31390604ac2c894458c0b882684b2807e3": "/portraits/F000463.jpg",
+  "cb634ac260183f4c7ec350b85041eaf7ced05fca110ed0442369184208c26a27": "/portraits/M001188.jpg",
+  "2e46b132c78b7702f86c8be996a64b6b075e1e433207218b39590744c37aef48": "/portraits/J000294.jpg",
+  "6ae5833bd79365e273b836f1879fa1a0c94c1c82f2b6eae552e53148f5198d10": "/portraits/B001281.jpg",
+  "0eb8fcb9930fd97820be4b7fbbebeb7ac7445f26dcb39a903c2c9542c344904d": "/portraits/J000295.jpg",
+  "146e0e727b60b2cc8191b9d89939d593bd2f61e2a051a94919642dcd220f4b9f": "/portraits/P000605.jpg",
+  "1bccea73aa405b760c6f1fc566e9b1ccf8c222e3cc92aff45a70f6a88c3c79ec": "/portraits/C001098.jpg",
+  "04ecc697c8744f45771fd00a142a4072043fd32841c15db3f3ee0ad7a9074c75": "/portraits/W000814.jpg",
+  "08805398734a8fa677884ab87db6493745123362fa4e12dc7bb3b0e2c0b2a689": "/portraits/C001091.jpg",
+  "ed8c375e7af3d23d0a2205d222f4bf5bd7511cd6e94ac6c9f36287f4eba04ee0": "/portraits/W000816.jpg",
+  "e11e7a3c0a3ff9a8653cc1c4a2c0ace9609eb2b0ac55141bc367cd781bfd94d0": "/portraits/V000131.jpg",
+  "ca4b9142a55bb6560b1af251e50c95a1ed535041de215cc3b89168f2738efde6": "/portraits/K000384.jpg",
+  "797287f71d6fcebe46195a5ff426cf67fd158f366bbe8c8399dcd8053019fd42": "/portraits/P000607.jpg",
+  "17f4d3b03facc06a82a62a6843fdbde17150dce8373a877f822534ee0453e251": "/portraits/K000385.jpg",
+  "92ef71ed07ba8053a43ad6ffe02ee44f80381e6dcd7f1828d1745a893783b93d": "/portraits/S001195.jpg",
+  "9a500874ecffca828d1e484334edd0204ae1100cada82c9304f969fc8d8e3cbb": "/portraits/B001288.jpg",
+  "7938ab376e82fa02033e21d376bb074b7d9b6f5901f506391f9b46e46c47cd97": "/portraits/C001101.jpg",
+  "ae6930e97f3a82561f457055d75b4abf2c3ba7c959a1f396a83ad9c89f5ba42b": "/portraits/N000188.jpg",
+  "da1a450df6ab28ae20fbfe10444b7b0eef919cf648ee12f48e722ec493bc0a0e": "/portraits/A000370.jpg",
+  "3077a735bb0f4edd472e57cc5ef7226b4700a4b35ad3d0e67dd217bb7b3f2f71": "/portraits/P000609.jpg",
+  "8f5526de8c1fada9df02e10899b4c50fe2b1fb5f4202b73d624c5b78345dab27": "/portraits/H001072.jpg",
+  "1b944b23654fde7917764cc4be3c2a164be9c9400c19bdc6ee944fa6af64855a": "/portraits/W000821.jpg",
+  "25541f1d33f7b7facfb10a27b025a22b49fba4bddd08fbba354bdaf0cba71ff8": "/portraits/G000574.jpg",
+  "b8823f7525fff6e50f6085e3a77b9286622503d4df3c87894d2c5b514e843164": "/portraits/D000623.jpg",
+  "3140a49c1b451545b906d37d41f348d1fc5ae75f3a0181ef3d9582c4d4e5aa10": "/portraits/A000371.jpg",
+  "d3bc8e99d7d369d7f1c5931d81b247ece2a4d8c5c46081282fc157ef03dc4fca": "/portraits/L000582.jpg",
+  "e1176ea9c1a7c5097243b72d791a53aefb8ba57208e17f3b432c0e9c31ef50af": "/portraits/T000474.jpg",
+  "d48bdcefaa1f218c75f6d93478cd20d3400b6c18a341f1719837234dabcaedc2": "/portraits/C001103.jpg",
+  "d925d58c2c62c9641014ce9413e58bb54062e13827ea8fea8864cf5a1c93382b": "/portraits/L000583.jpg",
+  "45cc69ae38cb6358d10caa326ba0897083500f115d58fc8485562b456433c521": "/portraits/A000372.jpg",
+  "bfd7111b6215351eb192410062b2a4bd93400f34caeab19b5a91850778bbc21c": "/portraits/B001295.jpg",
+  "c542dafe3a98394d08b22d9e88cdc4aa207668dc8f1ab0b2bf81ac588e024f45": "/portraits/M001196.jpg",
+  "d47d7d5dca6f9841e5113e48d5e6fd39e3daf0f8cea551e152799551c6527aad": "/portraits/M001194.jpg",
+  "cd41d3e9340bb23af9608658b2d32e78780d1af8d7a37188bd9d87931c10dff0": "/portraits/D000624.jpg",
+  "56c6eea407a0e1fbe39458456630df0ee1afdf5a69d614a876fa5afe0e1e9678": "/portraits/E000294.jpg",
+  "572f682c5b557eb91bd3198183bbf890a370025bb6e87f03c91e15fad044ce8b": "/portraits/R000603.jpg",
+  "c3490c44b56ed6c13b64a5fbaed99c70533c938fc897933b1ffcad41ddbc9f63": "/portraits/W000822.jpg",
+  "9825cdb0a5de7d1b7dc0de6e3837d3202d93b774f94fc8e7d6722898bc9b70a9": "/portraits/S001196.jpg",
+  "a058d6ad6be15986cf051499299693d9deafe57fa7d723be46a22928188e6da3": "/portraits/B001296.jpg",
+  "5a1d4f89974fef278c3f8a69c60529078c6da0b8756e19a083ad87c8b09bc533": "/portraits/B001291.jpg",
+  "cb37fd33e2de4d9efb409076f9303bf8349425687b175ffe993004b22c0af22d": "/portraits/B001292.jpg",
+  "b96ad7c1035e7a83356e8d22633a567ae01e3e0f6b31e963c089fdcc554dc9c0": "/portraits/P000610.jpg",
+  "86d3b2ac4ae63d53e2b598239282ffcbfb2bd389b954add9bdb2adf74c94bb8a": "/portraits/N000189.jpg",
+  "849a15697c6084b41396aee2181fd51cc807e8a64ca3acfe921b1a8480a6b816": "/portraits/G000576.jpg",
+  "039b590154a5de443d89bd363bb99412122b049e1780a4ac6e3ec38db474eecf": "/portraits/R000600.jpg",
+  "0bec633117963b31275cad1e6e778bfc5101a4243dd98eaf1c16b6a6540490f0": "/portraits/S001198.jpg",
+  "6ccf7abbe9a3cb1b78d0f72ab1faff34316c0f8d3dcd30ab9b10e91b219340b8": "/portraits/E000295.jpg",
+  "3e42a3fae7e70d90f1fdefef1b9e70225f47836bf34d692ae058aed1b0c93455": "/portraits/T000476.jpg",
+  "8d4be4a4730e3c9622055d2b9181f421eaaacd0c0461b861dfbbabe17499235c": "/portraits/R000605.jpg",
+  "92dd631ea7396d79d6613d1cd3c51c193c532093bc8ad14420563b0344f7bcef": "/portraits/K000388.jpg",
+  "6cf3236cada579def8937f2fc8abf6da8b4599cfca1dda4d6b085ada08565487": "/portraits/L000585.jpg",
+  "76457ae19efe491b08177efeb4c6ef0c72be865062b67d5a418fbc2cd2c10408": "/portraits/D000626.jpg",
+  "d7233c6faf3efb49bf12cd4b840b555daea3c55fba7d4f06ff60c935076f0ae3": "/portraits/C001108.jpg",
+  "27dcdfe153a751713275a41591fc2e4bff7896ab6320333dfb079cd340865893": "/portraits/E000296.jpg",
+  "7538e3e3339ae980cb230dc597dfbf4e64f5ba4adabbe14271939560e241704e": "/portraits/K000393.jpg",
+  "2a7e86998588166ffa0cd7689ba66dd4a8d64ea9bbc7241ac4484ff4a190539f": "/portraits/H001076.jpg",
+  "d9e7a950a1b0dae4488f178d090f7e3c4348d7d94ed3f7f8ebc594bef29e462a": "/portraits/C001113.jpg",
+  "3ae551c0fc7a5c7c1aad3ec2a96e23175d548b1dc88e837bcf0eaa09c66faed7": "/portraits/S001190.jpg",
+  "bb81589aa03f70dff15b15e15ffd294fc338750d137fcb1918659087fd9cbd0a": "/portraits/B001302.jpg",
+  "8947a627efacb7da27e8afcc6613072f7b9cf5a9c276f634fa3475a749fa1da3": "/portraits/K000389.jpg",
+  "71be96ed429b6ad8a0268ff230ad8494edd5e8a6fdf070533910ca9db7190665": "/portraits/P000613.jpg",
+  "92d9c99095be839245149b483b5f857496a6e02173b4d65ed7e740d762806851": "/portraits/C001112.jpg",
+  "18eefcde8c59022e2386e39d3fdeb65a3bb2aa0f76b99458666b3c0120f144ac": "/portraits/B001300.jpg",
+  "407aee6a4a7fdbc3fdd814952be9350d123240510ab6d7482cffad12e9564bdf": "/portraits/C001110.jpg",
+  "386b8e5986180512e15f53a8d19432e9ecd7f09f70e31076853c798f01217e74": "/portraits/B001303.jpg",
+  "7330c1c64405c32e5a6fe365839095083d6b5f4a627161829bcc125645cb7602": "/portraits/D000628.jpg",
+  "21cc1bab369677587eebd8def9acab3d8fa1828b467730e2657a5907d9423b41": "/portraits/R000609.jpg",
+  "971d3779ac2240b29ae2046e75aa8668b6461ede0e3c952cd03a9f8048005094": "/portraits/S001200.jpg",
+  "7bd42776255b06c78617c895b6b08d684761cfadebf853415b92775c6052cf62": "/portraits/M001199.jpg",
+  "1512ca4ceb40e2e179903ff673243e8faa4446c2802842072f3294add41089d8": "/portraits/K000391.jpg",
+  "b71661312df84b8ede15a65e96cc23c20fbb35febe704118e694867fb54833a1": "/portraits/B001299.jpg",
+  "4e01cbf652940f8973c2bac8218ef0514a1b03d3a94bff4aef2c4ce5e2c55d8b": "/portraits/M001198.jpg",
+  "93826b1197c4df62ce0626d1948712f99d67c920c416f7bb49b3acde72fdee0d": "/portraits/H001077.jpg",
+  "055e775ead499978a50fab264c8782a7fc3030cfa29afa7b40ce696b5ea47c64": "/portraits/J000299.jpg",
+  "03646de1b761eb470c1785a1a457d751a50aec3623af07593c82132f546f1849": "/portraits/R000606.jpg",
+  "dc19807aab59ba21c18bbe88ef3f9e42cc28611121f69f0605b8e34596c8bc19": "/portraits/B001301.jpg",
+  "cee4d1d69ec36dab08192b3ea23f60edc0bfee51776ed47fcb9b58de01d032a5": "/portraits/B001305.jpg",
+  "10713c69b56166a2e16f3141f6f9a5d0f915b97bdd8b3b89f37d5d399a2f16ef": "/portraits/B001298.jpg",
+  "a57ae539b2c507ba0ac5270f83f684dec0f7b38ec72309efcf6824789fc8bc76": "/portraits/R000608.jpg",
+  "0a535546a4309235d6e9e0bea97418c810797d3bdff61c68440265e4e07a1f3b": "/portraits/E000297.jpg",
+  "ac4f0f77d054292fb0709d4ae06ad17a07f343d02c837f6337a1caa89b58ed46": "/portraits/F000466.jpg",
+  "c16fdbe2b9ec66d788c21c17f518ffa32411abf35caefaad17c8996018f47d7f": "/portraits/S001199.jpg",
+  "1438398685d1864138b23a5b1e2e48435d1fb72916b5cf81c0377357d89e82a6": "/portraits/K000392.jpg",
+  "7eda4fe06e5a9ef467a4f35acefe528b3b573d8b6ca7da6532c3ad92897eb8e5": "/portraits/G000581.jpg",
+  "e8925fd47d6fcfd8e74c914394078efb8de856850572a1964ed285e3334dca4b": "/portraits/A000375.jpg",
+  "62d574037cd327e784c8abcb39a0af2d6c673ae91d6d0b338121ec23c852c660": "/portraits/J000298.jpg",
+  "b6ad65208d327a349a00755da3ee5401a9641978f54b1cf83d5f0981df55bf39": "/portraits/E000298.jpg",
+  "5a92b08b32404c0581f6a8dc21fc1cab722e21374227dbdbb4a573850231f367": "/portraits/N000190.jpg",
+  "46382ed44d37d41402d7bd38ff4638389e9e2e5f02278c8d1e626f548fa4cf2a": "/portraits/G000585.jpg",
+  "9a2fe1b5683afbf3f4ff2bc05c202e38404236960b81334f80a599e3ca44e357": "/portraits/C001114.jpg",
+  "96b3ee552ecbe987fc53acaa9aa15ef8fef8ff445bea57aef949fb79ab7119ff": "/portraits/S001203.jpg",
+  "b92ee719e1413c20f276894eb1fca6ddfe0db4a7d24be4296874f752fbd5d422": "/portraits/H001079.jpg",
+  "5fe93f2642a867f3ec7815363628768f4cf5d5053b6b486801a89d220fb7363b": "/portraits/C001115.jpg",
+  "62dce37fc0f4d6db311965dd76c064ddeb879a331ed08cba308355349e7347bd": "/portraits/B001306.jpg",
+  "dc8a64c8e764f8cb320df9ff879edcb9b2011e1a63eed4be6cf9c525726d4a0c": "/portraits/H001082.jpg",
+  "fd446ac501e7a3938d4d0f4befeafd3a4b7f427d8e2e67e62c42e32c6e4bd36e": "/portraits/M001206.jpg",
+  "436bd946df33b959e2b12c597967c09eb834ab6a4cdc3bccf247b049d46e6150": "/portraits/S001205.jpg",
+  "1af4e8fc1ca90dabbee0a1d565771683e3606c563395e4b77ba1ec16fb564596": "/portraits/H001066.jpg",
+  "57ad4afa078aeac5454763e78471f870d15680da1aa75ad79e1a6f3fe4edd506": "/portraits/S001211.jpg",
+  "bb77f586b1853cdf17ec55e36517af8cd3aa95e74b49f339efa3e293b92e2311": "/portraits/H001090.jpg",
+  "98e352c0bcf1220de9e81e4302b9c17d988d666bd2baadfa5f957ce6c2135f15": "/portraits/L000593.jpg",
+  "f51a5f666b63e632af1e0d27a261550d5345af8a676f84982e4968e8e5a25602": "/portraits/N000191.jpg",
+  "5e97f6d3fd1ab3cee9cb5bb86277aa2250402c41a00b43504cafc8cc900b660b": "/portraits/C001121.jpg",
+  "881aca7f26cb140986d6e38e28d52edf24220b5d11518cbdd7342e2ff0a357ca": "/portraits/H001081.jpg",
+  "3a3c6fd38f76b18621758d3dc1676d4a386b20a2d177fb15e98593bc97d587f9": "/portraits/S001214.jpg",
+  "231d232a67a3fa2be2f7e4e32576e5a6df1f8f3254ef6da3d81c1312cb3ecf9a": "/portraits/M001208.jpg",
+  "058061a66b525c960fdcab5519590197ba46320b968ca81927f47f0119658bbf": "/portraits/F000469.jpg",
+  "d421808baecb57a35e5e7842b6068cbac412e1198f99418062422b39730fd15a": "/portraits/G000586.jpg",
+  "c9dd7ddf0274c870952942f6ce94398b664f07061e84408096c093704fc02099": "/portraits/C001117.jpg",
+  "6f38885aa52bc5173dbbbdb30d0db815d0b6570255e40585857502b611245a52": "/portraits/U000040.jpg",
+  "1ea0f3e78365d0a70aefcf0f81043acb2af6d2e82037d2c1645bb87f49669ad6": "/portraits/B001307.jpg",
+  "ab9121ffe0bf86a1e064cb25f6027ce7dcec995198c3c36691ca1ac19c2aec29": "/portraits/D000629.jpg",
+  "a8dda01cf9f7ac180cb42c7c2d50735a61ce5d87a7976558e1fbbae340f806c2": "/portraits/T000482.jpg",
+  "433a5e19984332a065117c1dd67ae99da69582d266b93cb6b85d9e1453ec59b7": "/portraits/P000617.jpg",
+  "9a1748deac29e75ae2be7623a9eb5dce551315cd04a604f21f4925818b726403": "/portraits/S001208.jpg",
+  "134b7e9c1fd3f43a03f591fe60bae23251391c440237b0b825eb4ab25d20e0c1": "/portraits/S001215.jpg",
+  "fc82eac78e3f4468f88eccf24f1f151ba597378a54eda7565a0341347789b74f": "/portraits/T000481.jpg",
+  "c6cddc92df469884883349693c3dd06bea369865b3af83a71cca73c6ea6a4f92": "/portraits/C001119.jpg",
+  "081aeb6d063c70bd4aac2ab62395e7f17c979de13c1518405b993b35c9ee297d": "/portraits/O000173.jpg",
+  "87fa69bd732be4bada51c07dff734201c8e3deb4993bcada1ff7674cb4042c46": "/portraits/S001212.jpg",
+  "df09cd9a8432d61275f11548b592f8654d9e38e5885b0533951a37bb835db0db": "/portraits/G000591.jpg",
+  "fb065e414fd0834c6dd89fab56b6a0a4d89ef653c0a1a1c7555379043b0e1928": "/portraits/P000614.jpg",
+  "a877d4d71e6ed972b9161546cd796417a3182cc52d0daab120294b10bbc19f7b": "/portraits/V000133.jpg",
+  "fecca0717af273b09e7ba3ae3bfcdf79e294455563efe22ac06797922c331b9e": "/portraits/K000394.jpg",
+  "f956e2cb59f79c9d33a4d78a0b95313dd14862964bd246310357740df0309972": "/portraits/L000590.jpg",
+  "6d0f83dc81be78956e434b88a7be45208beed7720348286d0756848ab0dfa2a4": "/portraits/O000172.jpg",
+  "4700251843272f4e191bdfb4025fb5ab7d01504c14cc74a973fdc8ed883ac834": "/portraits/D000631.jpg",
+  "3aaa0cb87d0e7174d9c80a22776ed2d752d4a25394264e25c2313b7da8101724": "/portraits/H001085.jpg",
+  "2e86b9cd381be75549d594883beaf35f33b97ce9488fb13e115a0ff6491a22ba": "/portraits/M001204.jpg",
+  "18f1bcb27d6727de031581f89abe5cb77fc22c88a008b042868ac871891da21b": "/portraits/J000302.jpg",
+  "32771ebd1792c0f6d31c12a591c1e75539e279b566b9e44b3e77f286db9fb199": "/portraits/R000610.jpg",
+  "c33e3ae833948dcce2a93a723772b51db96330a961948afc01e1ef56ecb49bb9": "/portraits/T000480.jpg",
+  "33137ee17ad945cd0acc425af1b56e7b3f80127eb0f743e7f1eeaf5b0e88d970": "/portraits/J000301.jpg",
+  "c180f7020dbff94b038204bb4f189b911e0cd43a5c08393d14c1f5a3572b577d": "/portraits/B001309.jpg",
+  "0f83d51a896e57f3de0d3b15c20cc77a3305157404d9f704d61723293c61dc82": "/portraits/R000612.jpg",
+  "84778d2db531891983d9363f6fd6386e04ed64de1b8ee37ec1abbf1aa1f3a26f": "/portraits/C001120.jpg",
+  "34d3156adf79e6e3cca8f1ce96fac94092541c15c26c55fcbb69a2c35069ea3d": "/portraits/G000589.jpg",
+  "750b2de806344fc712092ea55f96b4ce2f1e1d2067a42a0601ed91fce7b83dd3": "/portraits/F000468.jpg",
+  "6dfc16585a374f0f43268e97d6b66a33d39cf5d57339a0c4e70e795923f896b0": "/portraits/E000299.jpg",
+  "e4078560d81d9c3df864c1a0acf78298b200f0a5782e5596dfd93b61ed10fe64": "/portraits/R000614.jpg",
+  "a46db1e659b7e2f44c15bd5388a66760ea9e5eda29e79ab3879a4cef93f051b5": "/portraits/G000587.jpg",
+  "4ee88176135977b0729a53e909a74d9797b38f9575073d0f14cacc0b856a1e7d": "/portraits/C001118.jpg",
+  "f5379b2486ca216885073950e6c1e907aa81fee1ac21de2a39b0dc4299ab12de": "/portraits/S001216.jpg",
+  "5577c53b0c592f85a9863617d1fe6e3302941bd29896d271e95cd674d6d7fc04": "/portraits/S001213.jpg",
+  "a6f7da3891a7b6b890fc4e065a44784e19283fa5c35fb639170a550bdd2e89a3": "/portraits/M001205.jpg",
+  "e97a647538b19f47d827d1dd721cc3b31f94637b844bbb114ad47ad63d1c41ff": "/portraits/S001217.jpg",
+  "a7c01da210d847834e73b42a178d4cc550b0c3111db4c36a7348553287bab960": "/portraits/H001089.jpg",
+  "9c5c1cfbb04646fc6f30f8e963346d3ae9e5c8e92e8fcfa524897de3e42b989d": "/portraits/G000592.jpg",
+  "00ce3787c7b9a92fdb166acdecf846f9bafed7880e35b7e9da71c785bc636fdd": "/portraits/M001210.jpg",
+  "a5db0915215fd5838acbe12e56197d66a0a739de2edad405ed5513da0d4133b7": "/portraits/M000687.jpg",
+  "30934d15cdc8766641dc817c0bcce5f1007ffa1f49e563247d5804f6f3e41799": "/portraits/T000165.jpg",
+  "3eb51ad82a76d129258e412329166c2ce23d356c04f78350f93650746ece0cb7": "/portraits/K000377.jpg",
+  "631046fb770a2be5adb19b5605af23c965a9344917456fb3fe8ead33c1c8fc4b": "/portraits/L000571.jpg",
+  "80645ae80781cc52fb35d61ff3369e4d3ba2d41440e0423b6db4c9c1ff30dede": "/portraits/I000056.jpg",
+  "4da231c8eb9756ad237eee6d179f71ef92016b466d9ed70f6c47cd9d6e4bc275": "/portraits/S000250.jpg",
+  "f2c9c35b9336951196ce505570cea092faca7905c53170a96bf9ae7cd3edecd3": "/portraits/V000129.jpg",
+  "182b207045b2134f064dec750447032923247c54f797040f0375e0b5a98deac0": "/portraits/T000278.jpg",
+  "af0c3965eca17758e2fda5060927ba5251af249cc67836c3c53fc5bf6dd2d725": "/portraits/H000273.jpg",
+  "b783dac8ea57a85e1d0307eede53edd1278b9c02c0fe6e4a688392f4d2e14bbd": "/portraits/H000601.jpg",
+  "131b23775a100fb32a5bd1c6d682fd3fe53aebdbd24bf4ffe6db4bed6c8f07fd": "/portraits/M001212.jpg",
+  "612ab63c4c8df09c84cb7eb52532efba254ecac6fba72680485cd6b263932e96": "/portraits/O000019.jpg",
+  "a0149a0557c2328cd0ef164f2863feddb9d2782c3a0f4135631d37424d550819": "/portraits/K000397.jpg",
+  "5c85d377b20d7762392c89b3386a5e391f9ffab1e800ab17813a3ecd941c9fa2": "/portraits/J000305.jpg",
+  "7080d948a6d6f2f7f6aed0e0e92ae80d60103966c49a5505b50d7d918a07c36f": "/portraits/B000825.jpg",
+  "0fb8cf1ff67710d9bb19348253727b425d527c29b65123a5b24f5957396b41e8": "/portraits/C001039.jpg",
+  "8c7c916fb2ee1ade651c25f1f581eebefde59f76d0f6ec57fa0dfe7772d869bb": "/portraits/F000472.jpg",
+  "f3fed0fc22707683dc12c521aedc55ed1e0b39de3ac2996f2d2dcb91fed09fa9": "/portraits/D000032.jpg",
+  "72102125902e34a05e4786bf6f510bd8552881b04e9918dcacf646fb3705a619": "/portraits/G000593.jpg",
+  "9029e8d75a2e54c936a54000e38c890997e5cd2e788412cafba38591ce7ff409": "/portraits/W000788.jpg",
+  "e71e8b800bc2e44898a32873ee213334343e96d8e8f008296508f44600a6328c": "/portraits/C001116.jpg",
+  "d5fa346010fe55d11406a696034b760302208abe1cbef4b89d29951cefe53dde": "/portraits/H001091.jpg",
+  "77fe245a0c6ae7ea034347f83e79e277dcb6426d7bade04e5318620dee1ff5f2": "/portraits/M001215.jpg",
+  "6980fbdfb09d7fb6e1c141c6eaf41d75ef03585e334eb0146491d987d043944f": "/portraits/F000446.jpg",
+  "8ab9de47fafeeb98f0eaa1010ca32449cfb7c4230e81dc663e5dd089d2ec29d7": "/portraits/M001211.jpg",
+  "a0c33fd720b54d1ad45c25e4ff69bf41d590b615c9a2cba9b88ba1a2588ff16d": "/portraits/M001214.jpg",
+  "b859426312d3e19a265121c7d0700098630cf07a44ce067f6df1395aa5ab0ef4": "/portraits/S000929.jpg",
+  "8a53034034deaca681b669d0eeebd401db99d48e44274ad213cc0814391dddbd": "/portraits/M000871.jpg",
+  "ea9de8937dfabf0aa30600c744d86fd8ccf7de8b8087227750f5978f24e2fbfb": "/portraits/A000148.jpg",
+  "0ce75fcbd917327657317e23f6a342fccacffdb4de8c209c6b29dd589941fb39": "/portraits/M001136.jpg",
+  "b63252d7b90565d70523c24d6c3bbe7b7adbcad33df1eb9f405dcf21c835e55f": "/portraits/F000470.jpg",
+  "53092bc582bc31ea67a97d885c9493fd0f8e7f5951b8fa3189c3cca4d646d658": "/portraits/R000305.jpg",
+  "225b2e97017c7cf1203ac40dc937754103c40d7744a8fae14c06661d4a351c52": "/portraits/L000273.jpg",
+  "80521b4ec75f02d7f5c4f082b21e3913de0db42a4ba285875e702fe8647550d8": "/portraits/G000597.jpg",
+  "b394f9134515061998aa35711ca3170b1b781f92e35bba18450b135e1496609b": "/portraits/M000317.jpg",
+  "dfcd267cb69043d9c627f4729ac7c577e374062f9f06d554c228c38b7a06eefe": "/portraits/T000486.jpg",
+  "57f298288f6e54b9cefbc2f9b38e29ab8842d8ffd1aa915b7e666261f413af4a": "/portraits/B000740.jpg",
+  "255cf4ce5f536d04602450d3ba2fc36acf93e429eddea374a03e10b5fc2dbc0b": "/portraits/B000668.jpg",
+  "011323c3158a16ee47f8caf9ae071498e23970045ce1785f16e92e7a44713a94": "/portraits/M000194.jpg",
+  "d462875bd53f376c86aca13250f5b3a11483d1826c45edc93bc4a48b36770ab2": "/portraits/H001086.jpg",
+  "7e82d81747a99868fb68b1c2a51935ac7eb80f02a8d09078e93c4d85b5b6c41d": "/portraits/F000246.jpg",
+  "e58fd1473736b41cc60fb85781f959593315a8e1ca5408b3cdbc5f8f3d6c4913": "/portraits/P000048.jpg",
+  "3fe1403f75c9f5ee2d01a6410ab4385ac3f0850233800ee093b906c544f0d4ec": "/portraits/J000304.jpg",
+  "91fb7222117c43c9adc00b941de06766c2677ca648dda5fc7fbdeaec0e759f74": "/portraits/N000026.jpg",
+  "5ec26ab7c8be6b466310bf080f5ae1c2f913964d169e735890f00ffd45d90713": "/portraits/V000134.jpg",
+  "b82ab1f96284709acafa88cf8798aa360be0b20d64637e83c58e48b3242a6157": "/portraits/M001213.jpg",
+  "55bbd0c28f1d76d9007af99129418a7fa1c69d15431722824800a610c7dd94bf": "/portraits/O000086.jpg",
+  "e233e424267db0b854fb87e447b9b1e31aabd73d6abb3dbd4ec065bbf51e70bf": "/portraits/S001159.jpg",
+  "7d642067e63572f55d8b93540a44771fffacec77316b80778d4329780d246f9f": "/portraits/F000471.jpg",
+  "875356fc7948f24536efa7ba34452f6a3f575c52de0806cffa4fb0f6642fe15b": "/portraits/P000145.jpg",
+  "2092bd2fc86f06c750def6001ebe9d7c70b4135cb98ccd72377250781880fba9": "/portraits/O000174.jpg",
+  "b623a62641b89b695c439b787c3b2612652889eeed7d2443b84c9667761aee16": "/portraits/W000790.jpg",
+  "b09b5f1f2844e06f04c10a9a2c8827441439706dc84c11005434d9008b1163bc": "/portraits/T000478.jpg",
+  "3573115f5c3734c6a2b7224c5c17ce891494f5022a71cf9b540aed338ad07102": "/portraits/C001125.jpg",
+  "58d5b2d0cc685f7e60c414ee4197034136e11029998c6d5d28d23d110b661e9e": "/portraits/S001218.jpg",
+  "dd214f476be5c369fd0f02b6b595f832dc5513f2ba58ca7789ed7ee2a3054a4f": "/portraits/E000071.jpg",
+  "b6393cd9c46ae3b1030a36bc7f1e76899c4e4e59754d8e203a87c1af1e0838f3": "/portraits/B001313.jpg",
+  "0cafdd2cff1739eeb866d07ecfdc2697af274323c77d2776bc45285214bfdf07": "/portraits/C001126.jpg",
+  "525911bf13fd828b9735dba2927830abfa927f76275039928442f21bc8d54037": "/portraits/F000474.jpg",
+  "7042beb82eb821830b518eec0781630a8797d82aca49b8ad667b8f8fbcc34c4b": "/portraits/F000475.jpg",
+  "df5deaf84c4dd66f71cfbfd47c3651c19c50856b361bb334119af7f6667a7dde": "/portraits/R000579.jpg",
+  "c9a60c8a7a6698cd7ca3317b7d4b8e4aa1056520c28f1f8e28763389c67af141": "/portraits/Y000067.jpg",
+  "2b0f9cb1dfd3105df05d342c329a387d646bf6cf08a29709bc55fc9267fa7a32": "/portraits/Z000018.jpg",
+  "a11cbbb6f3bd26c74d9b18630bfcc5e31dadff021bb5601ddb5172c30d4d6f72": "/portraits/B001319.jpg",
+  "4c34d502733f5b72f44a5ddf36002054bf149cb32cd70266565ca7cb69e28f3e": "/portraits/S001227.jpg",
+  "21f968cd7bc54961e43a19b56d14173f4a9552838a3b6cd8e5384007d5dac444": "/portraits/F000479.jpg",
+  "0121270e228cc97c9e4dcb167d31637aa45e59dff52992dd00b5b076897689a8": "/portraits/S001220.jpg",
+  "a0d2321d654eb23008a35cee12ef7ffb9ac460444ea1cf69a0165f5e8df161c7": "/portraits/C001132.jpg",
+  "f6c6f4494cc77c31bdcff5c54e7cadb4cbab409472d3d1f903acd2da7c9fd2eb": "/portraits/C001133.jpg",
+  "8562cf76b13c8d2bbcd288cdba99250bfbd847cadbdcbdcb7264e4d51784d0ce": "/portraits/K000401.jpg",
+  "98f6f608f90a5f1bdff59415ac8921ac45ab1a9af179a35e04d7ec085462f460": "/portraits/M001225.jpg",
+  "f17a98de5546dec0fcd39deaeefde59f003c6ed7ccd940de58586b42c413b052": "/portraits/K000400.jpg",
+  "44ae20d0905c565e9ced89678299b4ec8ae182288f4dac9043d7c604f4834c41": "/portraits/G000598.jpg",
+  "f9f69f8acfbadfa8c19460579c90d86314bca1c75215a5a93e429b611dbeb000": "/portraits/P000620.jpg",
+  "b1fd911da93876cf084609a86823122e02b15f03520d9935b0fdbf0aac7aa8aa": "/portraits/B001314.jpg",
+  "fe65002d9ae9b08606cbe6482a8cc32b8a1424de7c3f8958eec5280544dc79c9": "/portraits/M001216.jpg",
+  "cc6180ae3d7b328da2e6b56ec794ede13de33ee9816ea78368598617daf822ce": "/portraits/F000476.jpg",
+  "d2359c5ffdcb842c419f30b87fafe0def75d1627149d0574da2c01efbfc94220": "/portraits/L000596.jpg",
+  "664838f246177beeba847639c44a237c32e1344403594d4df012f161fd1bb4e7": "/portraits/L000597.jpg",
+  "213553df2323fe4edc8706de8a8e2c0ace703f2ac2817d2944b006801f139b62": "/portraits/M001218.jpg",
+  "8c42786278a8ac389a784102fe31c91f7d88f514762d839a3f78591837fe683e": "/portraits/C001129.jpg",
+  "378acf6cb3fcac4d18d960204006ecb927ed59c9e23e9a2145ca732d9b19c261": "/portraits/M001219.jpg",
+  "28f74102744de0ffbbac07057de89e5882c9633ea9839b00581995d1652d0416": "/portraits/T000487.jpg",
+  "1a6816bede935e61ef44a79672d99e62c43afab8a3dd849021ac6ced38828822": "/portraits/N000193.jpg",
+  "ba88b38241ad955a5c4a9b9c35bcf13d9553d806d99443dd11666cfbfe5dc2e2": "/portraits/R000617.jpg",
+  "9e85c3ce3bfb7a05143bd8ee605024628899900e0fbd2c8511909c64a743008b": "/portraits/B001315.jpg",
+  "cabf0ef5a317ecfd46bb6bcce008780adc5fb38e4f40be71769e4f404aa235ea": "/portraits/S001225.jpg",
+  "34ee1d31c031855fe6252aa2f72740c3d2ed0978110c5f7508c1d6063100b4e1": "/portraits/H001093.jpg",
+  "75648a634a1940c7991dab64d7fa2859fd794cae77b05e67fbbf37258ff247f5": "/portraits/M001220.jpg",
+  "2b874798f042b47446d50e5cee7f4a9b11c696decfe89fe1710e42417779b3d5": "/portraits/I000058.jpg",
+  "437a9f001071f6eaa1ee7ec96bba4f0d22928a180a963c74703bf48736ae3f44": "/portraits/S001221.jpg",
+  "15a4844d1b00e13dd35b74832a0fe7543b97f77faab77b99357200a499a9b453": "/portraits/J000307.jpg",
+  "c8932be008697991bb5fc5bfdb826ea1f4482ec08783a6f4fb0beadd704d41a2": "/portraits/T000488.jpg",
+  "c71367bc32f0ae07350482cb4988d5265ac44b729ab0d31051a71b3b810c90ec": "/portraits/A000379.jpg",
+  "5b157683d61835318da36f76efc13f49f791b14284f625dc7de412688e715918": "/portraits/B001316.jpg",
+  "64136877fe309e9cafbdd092930e20987354184bfd4379258f52a864b178ab3c": "/portraits/E000235.jpg",
+  "a613cad44589240585fe7d4fd6669c8136c75355f83678cd142c3e8f5db36143": "/portraits/D000230.jpg",
+  "b3255c860c3a6b9c3be0de1f352555227bb8e09fb283ccd0d454e4bb25c5e7e4": "/portraits/F000477.jpg",
+  "37c10bbf5fc4a1324eb323d39b092623056bf3bb9ecbd8e9248dd516d4142e45": "/portraits/E000246.jpg",
+  "31a7e307588f2690e87eee0ffa80235b406afe449e7af9b1fd5fa749cbe7e63c": "/portraits/M001226.jpg",
+  "46313281050dfebee58ae72f6012797c631256d65d156442c6fe2071dd7a4180": "/portraits/V000136.jpg",
+  "797dae96f00684b29561c6b36f57e24143659f0e7a7b5cbe1859d455e46ed8f0": "/portraits/L000598.jpg",
+  "fb31de6b2045fdae49bfcedf59b8864abaf52c8a4cd8066f35c223cb0bc929ed": "/portraits/G000599.jpg",
+  "f5fc218a51ec63fc20ddf933180cabd00a560b62e068bc36a7454bf400b123ef": "/portraits/L000599.jpg",
+  "74d95682d902da913ac8f25bed2d2a95a1379d442a4689ed51cd57536d03687d": "/portraits/L000600.jpg",
+  "bf0c48ab6140e01f40076cb745c02da04326070ca89f19e9e0f2f4e0a21c45a6": "/portraits/L000601.jpg",
+  "485bae664be0347cb629fb7117f5b79e0516b3bb2c4582a70d7768595e4dd5a8": "/portraits/M001222.jpg",
+  "d1fa60e4f93670e3481fdb37a9350aca5b40120b4b0144734f0de36ccd999a23": "/portraits/S001223.jpg",
+  "84a5a363a8e89f795bcba0b0ee23e29fbcd32e053af786cdeebc1b4f9af082a5": "/portraits/B001317.jpg",
+  "507003eafb9a453337b59089479704fbfe0d6d6f8c98db1ad994167399e55841": "/portraits/H001094.jpg",
+  "c5357d570beddb030e1263793566a848fcb55203e24834778ae60eea44e8bbaf": "/portraits/S001226.jpg",
+  "b1a521f38f2106b5371dcbdff7cc990234122f98794d0d91a96a9291fb474f9c": "/portraits/L000602.jpg",
+  "a231ef4578b65c2ccbf668df98375b8d4cad6ce4610f2b19a1eaf5cf790b71c4": "/portraits/D000530.jpg",
+  "578d0b8b981ab87e2d692b795c3d4ac2add29171bb5166e130ffb214d923966d": "/portraits/M001223.jpg",
+  "cc9ce4918cd48abe2238487f7b97861684d2bb35a577e4779217e5ed006daeb2": "/portraits/F000478.jpg",
+  "4554760375b1c686cdab4c5f70e72c4957e243623f9927beae12ba754db23c54": "/portraits/O000175.jpg",
+  "22eee60c033e96c2b55511a80c507922af560b4e1604f8d64dfabca6dd3e6070": "/portraits/M001224.jpg",
+  "4f774fd1063dc77e1a7d027221f393c83be485ceb33c6e6fd2c109f32f0e2567": "/portraits/S001224.jpg",
+  "292f0e44a2143463decc3f20f5ad43d01f887544aa0c20f422dde1e1adb06470": "/portraits/L000603.jpg",
+  "8b652c4d149f37a5c023c0ee69978167bebaa549a166ef2742835612911b452c": "/portraits/D000594.jpg",
+  "0738541f584af72bf0ab6d7afc7e1b598f65ede8e70e0eb23d518c37c4bc91b7": "/portraits/C001130.jpg",
+  "a8c4977e2d9925ca79d8ac52726ab936e741fcbe10443c4bd349c859d47856f8": "/portraits/C001131.jpg",
+  "93a78590dcacf15083ef597821cd1154a6bd436d4937952c3fa77a9fe7ecf766": "/portraits/H001095.jpg",
+  "f172a3c9aac84370c2c552b7c50da409967397346845018c940316d2fb74194d": "/portraits/K000399.jpg",
+  "da7c467d23ee8e77642a644192322367ff30bb078693948f81a58722d4a90f85": "/portraits/B001318.jpg",
+  "1632c6a887037eec5a9e12a8f466c109c7d8eb6191887367df43c7597442aa8b": "/portraits/G000600.jpg",
+  "6d72b2c5399e509027ccc562370ccaddcbad53e51f6d8c665e3bd6c162100560": "/portraits/V000135.jpg",
+  "8088c14c688d70b5deb26f2c39f805d030e7f52ddd96fb0f2998467d31ea16f2": "/portraits/H001096.jpg",
+  "d33d1fcce26e45556a8a91f63f1d8b4215169dde66a4d7a433a80656b02d0481": "/portraits/R000618.jpg",
+  "434fb58748be829c0b5007f3350d9bcf4d4551421139a7009d23f222812a9483": "/portraits/M001227.jpg",
+  "a4f92f035f2b53b6516ba79b38f0c87ddf302ac7a4d1d88495a75f2826c39fe0": "/portraits/A000380.jpg",
+  "440fceb2cd5de6d6df5ae9b23475feed4d377ff92352dfa21f67b8beab4bfa0c": "/portraits/M001228.jpg",
+  "7c65600424ae40ec35f8b9032068b9e13ffd610c96c7dc8ace71712671564845": "/portraits/S001201.jpg",
+  "096a89cc4ccb62bfc1e888b860b359d63387eb5f96bbac066b80e64978b8681d": "/portraits/K000402.jpg",
+  "967d0422e7c7fd469aeb2565b26ed2bc22df15f9cffc70d3c45a52398c2d79c4": "/portraits/F000480.jpg",
+  "f57b9b818b9dedd0bcb993109305caa8cef69c82836f61e782e21ecd3caab06e": "/portraits/M001229.jpg",
+  "eecda6d24194f22af87939bd9f9a8653b06025aae2b8fb0fe2128e19c262ba12": "/portraits/W000829.jpg",
+  "a2809b6c76116256ffe295c951e7fba5ba58e77226d695ee0cd9ed7add121d00": "/portraits/S001188.jpg",
+  "2222cb4d3a688308219acf7764875ae64d16c1f75ec9b48759de22f41bb1fe11": "/portraits/A000382.jpg",
+  "1862fedbfa1bff2ec52549b28971609e7ef9219a92aaf90bfa1675a09a88c19b": "/portraits/S001232.jpg",
+  "148acc34b1bada851c1272d88c560d7daf7679a3c381d4e1f3838ca063aaeb27": "/portraits/M001242.jpg",
+  "eeac0afb1906b1995bc4771f444934451f2fc894fe8dcd43cc26e492adee3a97": "/portraits/M001243.jpg",
+  "5b891b8a46c319df2c53fc7e9681bdc6627f2772c65789362e7b6467e43f3de5": "/portraits/F000481.jpg",
+  "40ae89b1bf5481583fecafb9f4a4887dcbaa71fa7d971c7df3c4f38c5a76862f": "/portraits/A000381.jpg",
+  "0ebc9c1f5884b68addadf3bb2df593a889d5b9038f2dbf802bcf2e2ac08ff194": "/portraits/H001098.jpg",
+  "f27f89a1ed5335634f00cab608661f01eb6bc1e4871ff2f15fafcdd2db82e40e": "/portraits/S001231.jpg",
+  "e8f036f70e2306c5fadd4d1f5420b25ae6d54508541e524302f07859c6abf346": "/portraits/G000605.jpg",
+  "a0db32bfba05bcc8b93b6bb25c31824195ec03967927422b1b989988fe64d81b": "/portraits/L000607.jpg",
+  "eda92c705757c25e0ad35da6e8f688525f29ec191bf0c6b2d2e0ed29a8d1e7f2": "/portraits/W000830.jpg",
+  "c67c400f9c69b98bbfd7bb6d838f719d0fd0b725615c4202854a64b63380a9ec": "/portraits/R000620.jpg",
+  "1a8c8ff27df2b276196b3cbe5ef97474c544de83df587f5951cf39ca870361d2": "/portraits/F000483.jpg",
+  "45cc9288ed259735097928f107f6158bf1aaaec55a89c95905ced7645d340b0b": "/portraits/T000491.jpg",
+  "bcd33ee75239cc2c6f76a5623fe66421289f00a81eff4db0d92bc9b8a7d4d144": "/portraits/M001241.jpg",
+  "b14837a8c50d1c57ec394c253a353e24a172e44bf46ea6049031972ce8361f25": "/portraits/H001100.jpg",
+  "9a016df3319941eeb13eec61db7819c538d8e856d89bdceaf94fa64a21da339d": "/portraits/C001137.jpg",
+  "3f07519d9d99586d81e65bf2f05f9266dde4606c256a05b1a3fa2e98ca903e5a": "/portraits/E000300.jpg",
+  "10466bffa9863cc01debf2209b38bcde589a74bcc08ee57806d96eca402a3e05": "/portraits/M001238.jpg",
+  "a9e18e72a9dfd19f338cc9e92e67787361d43c66a3b257dd9911dda183723c0e": "/portraits/H001099.jpg",
+  "c972a50d89b9b174a9a3cda269ab1b062087d7eef975157eaa69f5a445324244": "/portraits/J000311.jpg",
+  "7971be2fce91f9a800b0abd3c860f0510c41e713ad9e20beac17c3562e782194": "/portraits/S001229.jpg",
+  "6972044c514d96cd6b871fc3065eab48d725142ef8859fa61ffcc031d49903fd": "/portraits/M001233.jpg",
+  "959f8e9ee8e6efe766dec699270a815b7bf3cdd4d8f3189671db531d669682f7": "/portraits/S001228.jpg",
+  "c7374f3b63b2cc20fbc35949f45cc68aa2a9202df7d1a6a4d2ca9de2ef2a12ac": "/portraits/O000176.jpg",
+  "e5d854132b4d9d0c887d99c917818019db4797ddbc298f519f78fd32bd6ec59b": "/portraits/E000301.jpg",
+  "24de2d26b24c3ce7e7f20b176008b62457862cbda2a89297a5daa74cd53e7dc0": "/portraits/M001232.jpg",
+  "3520d046930454eb587ee62c6afe92bab386f3d2718671527a38655dba2e9442": "/portraits/M001237.jpg",
+  "44f3d4e27449858a065058e2a0b096a4d941533b6102af8e2a928ff0ebcea55f": "/portraits/M001234.jpg",
+  "8252c5f1dacc556d80a0486f9c000c463e4fb98995a4679c4c24d24b346862f4": "/portraits/O000177.jpg",
+  "cb4ebbfb665dede2a902e8e41fdbea068b3b56d8b4a921ef58fc754dcf5c30dc": "/portraits/K000404.jpg",
+  "08840319d776a47bf8cc379f031c317791d3b60b4c5ef1ef0bd23d276e79c688": "/portraits/D000634.jpg",
+  "adcf214b3722648581d9314080599f538703447627ca2482e82b59a92ede6293": "/portraits/M001240.jpg",
+  "665e821866edbe5dea68c833ef07f448fa0bbabf689c79b21ccbcd7a12b3d81d": "/portraits/H001102.jpg",
+  "157f9b00725076513d30b3c1f2ea07853e0df80cc1bc055fcef5e41f6817ace1": "/portraits/H001101.jpg",
+  "49cc5c64e247bf4ba705180504fb9c2c16a091d4985596b175d02b9a6d87ade6": "/portraits/K000405.jpg",
+  "ad9d5a41f457a920c09997bf5761e44124fabbb05300a4b05f3c9adcfde39940": "/portraits/M001236.jpg",
+  "22e9847b3b99957cef9a7568f60d994fde89a7d6e53078cc999b28081606a211": "/portraits/F000482.jpg",
+  "670471d61fd6305e51480de13424195c9003f051be4f15f90eca677b613cb23e": "/portraits/G000604.jpg",
+  "14f32fdbc02ccb52c044135b4af7282ee5797a40e67f9b4f15cbb673cea10957": "/portraits/C001136.jpg",
+  "1c36055945a0ecb885d0d5f9f227f7b6a2326f3cecc4c0da7662304f8eee78ba": "/portraits/P000621.jpg",
+  "b6fba910f31dd3806fe09a782d69eb38e1f76757eb558945c9f33f7667bd9b86": "/portraits/G000602.jpg",
+  "b773d8c728c2dafb9f577d9bfd63a4166a54d0bec72ede0302b36474e6ec133f": "/portraits/L000606.jpg",
+  "a2e8b524aeffc0639ed962f14da037afd441bb3e78e265b4b83c631a49bcbbd3": "/portraits/R000622.jpg",
+  "6607bb9a7c79463ba6ff385fdec44b2f0c7b3d65b4cda5271e372e3fc8b48361": "/portraits/M001231.jpg",
+  "b34e834e01753b3952d9839f248ab10dafbed7834970cb2bc2b107f4100b5d3e": "/portraits/D000635.jpg",
+  "2df2789466da6c5ca563de027d0a3af78c81f371efbfe93ebf1423933224d3d9": "/portraits/B001326.jpg",
+  "4f0e75f33c5cfe87cd2781367ec6acf4a8b28818211a4eab9333352bdf451a79": "/portraits/M001230.jpg",
+  "3b682023ad26a36c6e74ddd75d0a4591710c210b37ac7d3ebe11dfeee1f1900e": "/portraits/B001327.jpg",
+  "b815d8dd867406b0545fd1359b343ff669320453142458c15fce9a226c7b6a3c": "/portraits/H001103.jpg",
+  "0166e7dba46233ecc41f1030410b9b4ff2e2316702ac371f56f4d2266501e7bb": "/portraits/B001325.jpg",
+  "98ccc298b391ad6577c392c83ab91f6ee96b18bc3739e172a49d5b77bcd1c5d4": "/portraits/G000601.jpg",
+  "b23e20e894e28f08445f93f2cf3b6bf3211b0316e6f977a6aaca689c0943484b": "/portraits/G000603.jpg",
+  "be9d6d21c54c4a79a7a41763d35e99cdfebd799f491823024705d9844d9e017f": "/portraits/J000310.jpg",
+  "0fcf18eb40dc6b59135490bc018fd1c175e3d8aaab597dc31168d69aea76e494": "/portraits/K000403.jpg",
+  "bbfd4f8a932c2353fb7be8f774a94e8abc20f6f8a8d9a6fecfbfdf96c878c4a8": "/portraits/V000138.jpg",
+  "3dcdaadaa9d48f76990b02ff07dce4505f8f5cfd2f0ae518b9b7ebaa77686826": "/portraits/S001230.jpg",
+  "5bf004e327c4bb31025cf5db25c5b9dcc4cc690b19bb28ea742716a1bb51376e": "/portraits/B001322.jpg",
+  "bfa0684e069432040b5230560eeddb1dcd466f37d7675ce41a0439bdb94a3ae3": "/portraits/R000621.jpg",
+  "1590f2aebae3a9ec9a45cb7b84074755bf7afaaef629d9523cc9c2ffa496c720": "/portraits/M001235.jpg",
+  "d7ccdcb6fb94f9423176f804d8b27617cea94a38ed35ee6718df8e2508607ce6": "/portraits/J000312.jpg",
+  "c17060dcfc329da17b8f6bb7b2dbcfa7c496869bb5c1d3a8d3cd39f81e542268": "/portraits/M001244.jpg",
+  "38ac7cde732233bb910ed3b9a1c3db6142633652dce7d3b15a41e2f16b2dc814": "/portraits/P000622.jpg",
+  "ab6e14dc4732e331455e1a8be636341edf283e9760509ee946d616d25a695443": "/portraits/F000484.jpg"
+ },
+ "runs": [
+  {
+   "startedAt": "2026-09-14T05:33:41.047Z",
+   "universe": "funds",
+   "processed": 26
+  },
+  {
+   "startedAt": "2026-09-14T05:45:31.841Z",
+   "universe": "companies",
+   "processed": 499
+  },
+  {
+   "startedAt": "2026-09-14T05:50:30.812Z",
+   "universe": "companies",
+   "processed": 54
+  },
+  {
+   "startedAt": "2026-09-14T05:53:36.272Z",
+   "universe": "congress",
+   "processed": 525
+  },
+  {
+   "startedAt": "2026-09-14T05:59:29.958Z",
+   "universe": "companies",
+   "processed": 12
+  },
+  {
+   "startedAt": "2026-09-14T06:01:36.753Z",
+   "universe": "companies",
+   "processed": 21
+  }
+ ]
+}

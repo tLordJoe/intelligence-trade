@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import BuildoutStackIcon from "./BuildoutStackIcon";
 import CompanyMark from "./CompanyMark";
-import { HOME_FILER_IMAGES } from "@/lib/home-filer-images";
 import { filerProfilePath } from "@/lib/filer-profile";
 import { ArrowUpRight, Clock3, Layers3, Landmark, Building2, BriefcaseBusiness, CalendarDays } from "lucide-react";
 import type { HomeFiler, HomePeriod, HomeWindow } from "@/lib/homepage-market";
@@ -20,12 +19,12 @@ function initials(name: string) {
 function FilerLink({ person }: { person: HomeFiler }) {
   const [failed, setFailed] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const portrait = HOME_FILER_IMAGES[person.key];
+  const portrait = person.portrait;
   return <Link className="home-filer" href={filerProfilePath(person.key)}
     title={`${person.name} · ${person.district || person.state} · View disclosures`}
     aria-label={`View ${person.name}'s disclosures`}>
     <span aria-hidden="true">{initials(person.name)}</span>
-    {portrait && !failed && <Image src={`/portraits/${portrait}.jpg`} alt="" width={38} height={38} style={{ opacity: loaded ? 1 : 0 }} onLoad={() => setLoaded(true)} onError={() => setFailed(true)} />}
+    {portrait && !failed && <Image src={portrait} alt="" width={38} height={38} style={{ opacity: loaded ? 1 : 0 }} onLoad={() => setLoaded(true)} onError={() => setFailed(true)} />}
   </Link>;
 }
 export default function HomeTradingTable({ windows, updatedAt, scans }: {
@@ -62,7 +61,7 @@ export default function HomeTradingTable({ windows, updatedAt, scans }: {
           <thead><tr><th scope="col">Company + ticker</th><th scope="col">Distinct buyers</th><th scope="col">Purchase records</th><th scope="col">Sale records</th><th scope="col">Buying filers</th></tr></thead>
           <tbody>{companies.map(company => <tr key={company.ticker}>
             <th scope="row"><Link className="home-company" href={`/congress?ticker=${encodeURIComponent(company.ticker)}`}>
-              <CompanyMark ticker={company.ticker} cik={company.cik} /><span><strong>{company.ticker}</strong><small>{company.name}</small></span>
+              <CompanyMark ticker={company.ticker} src={company.mark} /><span><strong>{company.ticker}</strong><small>{company.name}</small></span>
             </Link></th>
             <td data-label="Distinct buyers" className="home-count">{company.buyers}</td>
             <td data-label="Purchase records" className="home-count">{company.purchases}</td>
@@ -90,7 +89,7 @@ export default function HomeTradingTable({ windows, updatedAt, scans }: {
       <section className="home-panel" aria-labelledby="home-latest-title"><h2 id="home-latest-title">Latest disclosed purchases</h2>
         <p className="home-muted">Newest filings within the selected transaction window.</p>
         {current.recent.map(row => <article className="home-purchase" key={row.id}>
-          <CompanyMark ticker={row.ticker} cik={row.cik} /><FilerLink person={row.filer} /><div className="home-purchase-person"><Link href={filerProfilePath(row.filer.key)}>{row.filer.name}</Link><span>{row.ticker} · {row.amount}</span></div>
+          <CompanyMark ticker={row.ticker} src={row.mark} /><FilerLink person={row.filer} /><div className="home-purchase-person"><Link href={filerProfilePath(row.filer.key)}>{row.filer.name}</Link><span>{row.ticker} · {row.amount}</span></div>
           <a href={row.source} target="_blank" rel="noopener noreferrer" aria-label={`Original ${row.ticker} filing by ${row.filer.name}`}><span>Traded {row.traded}</span><span>Filed {row.filed}</span></a>
         </article>)}
         {!current.recent.length && <p className="home-empty">No eligible purchases in this window.</p>}
