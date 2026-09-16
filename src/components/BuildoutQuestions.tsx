@@ -38,7 +38,7 @@ const questions = [
 
 export default function BuildoutQuestions() {
   return (
-    <section aria-labelledby="buildout-questions-heading" className="mt-6 overflow-hidden rounded-xl border" style={{ backgroundColor: "var(--bg-card)", borderColor: "var(--border)" }}>
+    <section aria-labelledby="buildout-questions-heading" className="mb-6 overflow-hidden rounded-xl border" style={{ backgroundColor: "var(--bg-card)", borderColor: "var(--border)" }}>
       <div className="p-5" style={{ backgroundColor: "var(--accent-soft)" }}>
         <div className="kicker mb-2">Beyond the headlines</div>
         <h2 id="buildout-questions-heading" className="text-xl font-bold" style={{ color: "var(--text)" }}>Understand the buildout</h2>
