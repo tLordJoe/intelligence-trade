@@ -105,7 +105,7 @@ export default function CongressTrades() {
   const { totalTrades, buyRatio, uniquePoliticians, uniqueTickers } = disclosureStats(filtered);
 
   return (
-    <section className="px-4 md:px-8 py-8">
+    <section className="py-5 md:py-6">
       <div
         className="rounded-lg border p-4 md:p-6"
         style={{ backgroundColor: "var(--bg-card)", borderColor: "var(--border)" }}

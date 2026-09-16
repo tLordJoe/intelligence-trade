@@ -12,8 +12,6 @@ import PerformanceChart from "@/components/PerformanceChart";
 import LayerCards from "@/components/LayerCards";
 import StockList from "@/components/StockList";
 import NewsFeed from "@/components/NewsFeed";
-import CongressTrades from "@/components/CongressTrades";
-import CongressChart from "@/components/CongressChart";
 import SiteFooter from "@/components/SiteFooter";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import type { DataMeta, StockQuoteResponse } from "@/lib/market-data";
@@ -114,8 +112,6 @@ export default function ExploreBuildout({ showCompare = false, activity }: { sho
           />
           <NewsletterSignup variant="banner" />
           <LayerCards activeLayer={activeLayer} onSelectLayer={handleSelectLayer} />
-          <CongressTrades />
-          <CongressChart />
           <NewsFeed ticker={selectedLayer.stocks[0]?.ticker} />
         </div>
       </main>
