@@ -86,6 +86,7 @@ export default function ExploreBuildout({ showCompare = false, activity }: { sho
               />
             </div>
             <div className="lg:col-span-2 px-4 md:px-8 py-8">
+              <BuildoutQuestions />
               <LayerDetail
                 layer={previewLayer}
                 prices={prices}
@@ -93,7 +94,6 @@ export default function ExploreBuildout({ showCompare = false, activity }: { sho
               />
               <LayerPurchaseActivity activity={activity} slug={previewLayer.slug} name={previewLayer.name}
                 previewing={Boolean(hoveredLayer && hoveredLayer !== activeLayer)} />
-              <BuildoutQuestions />
             </div>
           </div>
 
