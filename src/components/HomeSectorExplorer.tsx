@@ -17,7 +17,7 @@ export default function HomeSectorExplorer({ companies }: { companies: HomeCompa
   const Icon = icons[active.icon];
   const activity = companies.filter(c => (active.tickers as readonly string[]).includes(c.ticker)).slice(0, 3);
   return <section className="home-sectors" aria-labelledby="home-sectors-title">
-    <div className="home-section-intro"><h2 id="home-sectors-title">Explore the market by sector</h2><p>Sector sizes reflect S&amp;P 500 market weights—not buying activity. Select a sector to explore its companies and available disclosures.</p></div>
+    <div className="home-section-intro"><h2 id="home-sectors-title">Find your next investment idea</h2><p><strong>Explore the market by sector.</strong> Sector sizes reflect S&amp;P 500 market weights—not buying activity. Select a sector to explore its companies and available disclosures.</p></div>
     <div className="home-sector-grid">
       <div className="home-sector-bars" role="group" aria-label="Explore sectors" onMouseLeave={() => setHovered(null)}>
         {HOME_SECTORS.map(sector => { const SectorIcon = icons[sector.icon]; return <button key={sector.id} type="button"
@@ -32,7 +32,7 @@ export default function HomeSectorExplorer({ companies }: { companies: HomeCompa
       </div>
       <div className="home-panel home-sector-detail" id="home-sector-detail">
         <div className="home-sector-heading"><span style={{ background: active.colors[0] }}><Icon size={28} aria-hidden="true" /></span><div><h3>{active.name}</h3><p>{active.description}</p></div></div>
-        <h4>Disclosed House buying · Year to date</h4>
+        <h4>Disclosed buying · Year to date</h4>
         <p className="home-muted">Among selected companies tracked in this sector—not a sector-wide ranking.</p>
         {activity.length ? activity.map(company => <Link className="home-sector-company" key={company.ticker} href={`/stocks/${encodeURIComponent(company.ticker)}`}>
           <CompanyMark ticker={company.ticker} src={company.mark} /><span><strong>{company.ticker}</strong><small>{company.name}</small></span><span>{company.buyers}<small>buying {company.buyers === 1 ? "filer" : "filers"}</small></span>
