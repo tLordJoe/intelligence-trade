@@ -11,9 +11,9 @@ import { sectorFunds } from "@/lib/sector-funds";
 const icons = { monitor: Monitor, wallet: Wallet, messages: MessagesSquare, heart: Heart, cart: ShoppingCart,
   factory: Factory, basket: ShoppingBasket, flame: Flame, bolt: Zap, layers: Layers3, building: Building2 };
 export default function HomeSectorExplorer({ companies }: { companies: HomeCompany[] }) {
-  const [selected, setSelected] = useState<string>("healthcare");
+  const [selected, setSelected] = useState<string>("technology");
   const [hovered, setHovered] = useState<string | null>(null);
-  const active = HOME_SECTORS.find(s => s.id === (hovered ?? selected)) ?? HOME_SECTORS[3];
+  const active = HOME_SECTORS.find(s => s.id === (hovered ?? selected)) ?? HOME_SECTORS[0];
   const Icon = icons[active.icon];
   const activity = companies.filter(c => (active.tickers as readonly string[]).includes(c.ticker)).slice(0, 3);
   return <section className="home-sectors" aria-labelledby="home-sectors-title">
