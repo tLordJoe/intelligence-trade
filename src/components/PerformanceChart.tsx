@@ -65,7 +65,7 @@ export default function PerformanceChart({ comparedTickers, onAddTicker, onRemov
   const [failedTickers, setFailedTickers] = useState<string[]>([]);
   const [retryVersion, setRetryVersion] = useState(0);
   const [hoveredPoint, setHoveredPoint] = useState<{ timestamp: number; activeTicker: string } | null>(null);
-  const [chartMode, setChartMode] = useState<"investments" | "layers">("investments");
+  const [chartMode, setChartMode] = useState<"investments" | "layers">("layers");
   const [selectedLayers, setSelectedLayers] = useState<string[]>(layers.map((layer) => layer.slug));
 
   const tickers = useMemo(() => ["SPY", ...comparedTickers], [comparedTickers]);
