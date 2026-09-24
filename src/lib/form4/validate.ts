@@ -22,7 +22,9 @@ function absent(raw: string | null, reason: AbsenceReason, footnoteIds: string[]
  *
  * `new Date("2026-02-31")` rolls forward to March 3 rather than failing, so a
  * round-trip comparison is the only reliable check. Ownership documents may
- * append a time component; the date portion is what is validated.
+ * append a time component or an XML Schema date timezone. The reported date
+ * portion is retained, not shifted to a different day by UTC conversion.
+ * XML Schema date timezone grammar: https://www.w3.org/TR/xmlschema-2/#date
  */
 export function parseDate(
   raw: string | null,
@@ -32,7 +34,7 @@ export function parseDate(
     return absent(null, footnoteIds.length ? "footnote_instead_of_value" : "not_present_in_source", footnoteIds);
   }
   const trimmed = raw.trim();
-  const match = trimmed.match(/^(\d{4})-(\d{2})-(\d{2})(?:[T ].*)?$/);
+  const match = trimmed.match(/^(\d{4})-(\d{2})-(\d{2})(?:Z|[+-](?:0\d|1[0-3]):[0-5]\d|[+-]14:00|[T ].*)?$/);
   if (!match) return absent(raw, "unparseable", footnoteIds);
 
   const [, y, m, d] = match;
@@ -47,7 +49,7 @@ export function parseDate(
 }
 
 /** Grammar for a decimal as ownership documents write them. */
-const DECIMAL_RE = /^-?\d+(\.\d+)?$/;
+const DECIMAL_RE = /^-?(?:\d+(?:\.\d+)?|\.\d+)$/;
 
 /**
  * A decimal, kept as a normalized string.
@@ -68,7 +70,7 @@ export function parseDecimal(
 
   // Normalize so "0", "0.00" and "0.0" compare equal as stored strings, while
   // preserving the distinction from absence.
-  let normalized = trimmed;
+  let normalized = trimmed.replace(/^(-?)\./, "$10.");
   if (normalized.includes(".")) {
     normalized = normalized.replace(/0+$/, "").replace(/\.$/, "");
   }
@@ -109,8 +111,8 @@ export function parseBoolean(raw: string | null | undefined): boolean | null {
 /** CIKs are compared as zero-padded ten-digit strings. */
 export function normalizeCik(raw: string | null | undefined): string | null {
   if (!raw) return null;
-  const digits = raw.trim().replace(/\D/g, "");
-  if (!digits) return null;
+  const digits = raw.trim();
+  if (!/^\d{1,10}$/.test(digits)) return null;
   return digits.padStart(10, "0");
 }
 

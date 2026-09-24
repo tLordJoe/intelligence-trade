@@ -28,6 +28,8 @@ export interface IndexEntry {
   formType: "4" | "4/A";
   companyName: string;
   cik: string;
+  /** Every CIK associated with this accession in the index, before de-duplication. */
+  associatedCiks?: string[];
   filedDate: string;
   accessionNumber: string;
   /** Directory holding the filing's documents. */
@@ -191,7 +193,7 @@ export function parseFormIndex(body: string, url: string, date: string): IndexRe
   }
 
   const entries: IndexEntry[] = [];
-  const seenAccessions = new Set<string>();
+  const seenAccessions = new Map<string, IndexEntry>();
   let matchedLines = 0;
 
   for (const line of lines) {
@@ -208,19 +210,25 @@ export function parseFormIndex(body: string, url: string, date: string): IndexRe
     const [, fileCik, accessionNumber] = match;
 
     // One filing, listed once per associated CIK.
-    if (seenAccessions.has(accessionNumber)) continue;
-    seenAccessions.add(accessionNumber);
+    const existing = seenAccessions.get(accessionNumber);
+    if (existing) {
+      existing.associatedCiks = [...new Set([...(existing.associatedCiks ?? [existing.cik]), cik.padStart(10, "0")])];
+      continue;
+    }
 
     const noDashes = accessionNumber.replace(/-/g, "");
-    entries.push({
+    const entry: IndexEntry = {
       formType: formType as "4" | "4/A",
       companyName,
       cik: cik.padStart(10, "0"),
+      associatedCiks: [cik.padStart(10, "0")],
       filedDate: `${filedDate.slice(0, 4)}-${filedDate.slice(4, 6)}-${filedDate.slice(6, 8)}`,
       accessionNumber,
       archiveDir: `https://www.sec.gov/Archives/edgar/data/${fileCik}/${noDashes}`,
       indexHeaderUrl: `https://www.sec.gov/Archives/edgar/data/${fileCik}/${noDashes}/${accessionNumber}-index.htm`,
-    });
+    };
+    entries.push(entry);
+    seenAccessions.set(accessionNumber, entry);
   }
 
   return { url, date, availability: "available", detail: null, entries, matchedLines };
@@ -313,5 +321,5 @@ export function summarizeEnumeration(results: IndexResult[]): {
 export function filterByIssuerCik(entries: IndexEntry[], ciks: string[]): IndexEntry[] {
   if (ciks.length === 0) return entries;
   const wanted = new Set(ciks.map((c) => c.replace(/\D/g, "").padStart(10, "0")));
-  return entries.filter((e) => wanted.has(e.cik));
+  return entries.filter((e) => (e.associatedCiks ?? [e.cik]).some(cik => wanted.has(cik)));
 }

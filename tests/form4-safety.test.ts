@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { parseForm4 } from "../src/lib/form4/parse.ts";
+import { buildInsiderActivity } from "../src/lib/form4/activity.ts";
+import { reconcileForm4Rows } from "../src/lib/form4/reconcile.ts";
 import { DEFAULT_LIMITS, parseXml, XmlError } from "../src/lib/form4/xml.ts";
 import {
   normalizeAccession,
@@ -182,6 +184,45 @@ test("impossible calendar dates are rejected, not rolled forward", () => {
   assert.equal(parseDate("2024-02-29").value, "2024-02-29", "a real leap day parses");
 });
 
+test("XML date timezone suffixes preserve the reported calendar day and raw evidence", () => {
+  for (const raw of ["2026-01-01-05:00", "2026-07-01-05:00", "2026-01-01Z", "2026-01-01+14:00", "2026-01-01-14:00", "2026-01-01+13:59", "2026-01-01-00:00"]) {
+    const result = parseDate(raw, ["F1"]);
+    assert.equal(result.value, raw.slice(0, 10));
+    assert.equal(result.raw, raw);
+    assert.deepEqual(result.footnoteIds, ["F1"]);
+    assert.equal(result.reason, null);
+  }
+  for (const raw of ["2026-01-01+14:01", "2026-01-01-14:59", "2026-01-01+15:00", "2026-01-01-05:60", "2026-01-01-5:00", "2026-01-01-0500", "2026-01-01Zjunk", "2026-02-30-05:00", "2025-02-29Z"]) {
+    assert.equal(parseDate(raw).value, null, raw);
+    assert.equal(parseDate(raw).raw, raw);
+  }
+});
+
+test("timezone-bearing derivative J transaction parses without becoming a purchase", () => {
+  const xml = doc(`<derivativeTable><derivativeTransaction>
+<securityTitle><value>Series D Convertible Preferred Stock</value></securityTitle>
+<transactionDate><value>2026-01-01-05:00</value></transactionDate>
+<transactionCoding><transactionCode>J</transactionCode></transactionCoding>
+<transactionAmounts><transactionShares><value>2286</value></transactionShares>
+<transactionPricePerShare><value>0</value></transactionPricePerShare>
+<transactionAcquiredDisposedCode><value>A</value></transactionAcquiredDisposedCode></transactionAmounts>
+<exerciseDate><value>2026-07-01-05:00</value></exerciseDate>
+</derivativeTransaction></derivativeTable>`);
+  const filing = asFiling(run(xml));
+  const [row] = filing.rows;
+  assert.equal(row.transactionDate.value, "2026-01-01");
+  assert.equal(row.transactionDate.raw, "2026-01-01-05:00");
+  assert.equal(row.exerciseDate.value, "2026-07-01");
+  assert.equal(row.exerciseDate.raw, "2026-07-01-05:00");
+  assert.notEqual(row.validation, "quarantined");
+  assert.equal(row.table, "derivative");
+  assert.equal(row.transactionCodeRaw, "J");
+  assert.equal(row.classification, "other_reported");
+  const activity = buildInsiderActivity(reconcileForm4Rows([filing], []), [{ cik: "0000123456", ticker: "TST" }], "2026-01-01", "2026-09-30");
+  assert.equal(activity.records.length, 0);
+  assert.equal(activity.excluded.not_non_derivative_purchase_or_sale, 1);
+});
+
 test("an absent boolean is null, never false", () => {
   const xml = doc(``).replace("<isDirector>1</isDirector>", "");
   const filing = asFiling(run(xml));
@@ -218,6 +259,10 @@ test("a present but malformed number is quarantined, not coerced", () => {
 });
 
 test("decimals are normalized as strings and never become floats", () => {
+  assert.equal(parseDecimal(".99").value, "0.99");
+  assert.equal(parseDecimal("-.9700").value, "-0.97");
+  assert.equal(parseDecimal(".99").raw, ".99");
+  assert.equal(parseDecimal(".").value, null);
   assert.equal(parseDecimal("0").value, "0");
   assert.equal(parseDecimal("0.00").value, "0", "zero in any spelling is zero");
   assert.equal(parseDecimal("1234.5600").value, "1234.56");
@@ -270,6 +315,8 @@ test("CIKs and accessions normalize to their canonical forms", () => {
   assert.equal(normalizeCik("1045810"), "0001045810");
   assert.equal(normalizeCik("0001045810"), "0001045810");
   assert.equal(normalizeCik(""), null);
+  assert.equal(normalizeCik("abc1045810"), null);
+  assert.equal(normalizeCik("12345678901"), null);
   assert.equal(normalizeAccession("000119764726000009"), "0001197647-26-000009");
   assert.equal(normalizeAccession("0001197647-26-000009"), "0001197647-26-000009");
   assert.equal(normalizeAccession("123"), null, "a short accession is refused, not padded");

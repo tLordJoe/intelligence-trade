@@ -78,6 +78,13 @@ test("regression: one filing listed under two CIKs is enumerated once", () => {
     "the fixture contains a repeated accession, so matched lines exceed unique filings"
   );
 });
+test("issuer filtering retains an accession when the owner was listed first", () => {
+  const source = "EDGAR Form Type\n4  Owner Example  123  20260903  edgar/data/999/0000000999-26-000001.txt\n4  Issuer Example  456  20260903  edgar/data/999/0000000999-26-000001.txt";
+  const result = parseFormIndex(source, dailyIndexUrl("2026-09-03"), "2026-09-03");
+  assert.equal(result.entries.length, 1);
+  assert.deepEqual(result.entries[0].associatedCiks, ["0000000123", "0000000456"]);
+  assert.equal(filterByIssuerCik(result.entries, ["456"]).length, 1);
+});
 
 test("company names containing spaces survive column splitting", () => {
   const result = parsed();

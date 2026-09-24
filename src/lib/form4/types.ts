@@ -19,7 +19,7 @@ export const FORM4_SCHEMA_VERSION = 1;
  * Stored on every row so a stored interpretation can be traced to the code
  * that produced it.
  */
-export const FORM4_PARSER_VERSION = 1;
+export const FORM4_PARSER_VERSION = 3;
 
 export type Form4DocumentType = "4" | "4/A";
 

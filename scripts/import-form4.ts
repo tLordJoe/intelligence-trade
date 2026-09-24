@@ -23,7 +23,7 @@
 import {
   existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync,
 } from "node:fs";
-import { dirname, join } from "node:path";
+import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash, randomUUID } from "node:crypto";
 
@@ -35,6 +35,7 @@ import {
 } from "../src/lib/form4/enumerate.ts";
 import { mergeCandidate, readCandidate } from "../src/lib/form4/merge.ts";
 import type { Form4Filing, UnsupportedDocument } from "../src/lib/form4/types.ts";
+import { readInsiderUniverse, insiderUniverseHash } from "../src/lib/form4/universe.ts";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const FIXTURE_DIR = join(ROOT, "tests", "fixtures", "form4");
@@ -70,6 +71,10 @@ const SOURCE = (flag("source") ?? (MODE === "fixtures" ? "fixtures" : "edgar")) 
 const FROM = flag("from");
 const TO = flag("to");
 const ISSUERS = (flag("issuers") ?? "").split(",").map((s) => s.trim().toUpperCase()).filter(Boolean);
+const UNIVERSE_PATH = flag("universe");
+const OFFSET = Number(flag("offset") ?? "0");
+const MAX_FILINGS = Number(flag("max-filings") ?? "1000000");
+const REUSE_RUN = flag("reuse-run");
 /** Deterministically refuses promotion after evidence is written. */
 const SIMULATE_GATE_FAILURE = has("simulate-gate-failure");
 
@@ -103,6 +108,7 @@ async function politeFetch(url: string, userAgent: string): Promise<string> {
       res = await fetch(url, {
         headers: { "User-Agent": userAgent, "Accept-Encoding": "gzip, deflate" },
         signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+        redirect: "error",
       });
     } catch (error) {
       if (attempt === MAX_RETRIES) throw error;
@@ -132,7 +138,7 @@ async function politeFetch(url: string, userAgent: string): Promise<string> {
 function assertSecUrl(url: string): void {
   const parsed = new URL(url);
   if (parsed.protocol !== "https:") throw new Error(`refusing non-https url ${url}`);
-  if (parsed.hostname !== "www.sec.gov") throw new Error(`refusing non-SEC host ${parsed.hostname}`);
+  if (parsed.hostname !== "www.sec.gov" || parsed.username || parsed.password || parsed.port) throw new Error(`refusing non-SEC host ${parsed.hostname}`);
   if (!parsed.pathname.startsWith("/Archives/")) {
     throw new Error(`refusing unexpected SEC path ${parsed.pathname}`);
   }
@@ -191,13 +197,17 @@ async function selectFromEdgar(
   runDir: string
 ): Promise<{ documents: SelectedDocument[]; indexResults: IndexResult[]; summary: EnumerationSummary; selectedEntries: IndexEntry[] }> {
   if (!FROM || !TO) throw new Error("--from and --to are required for a networked run");
+  if (REUSE_RUN && !/^form4_[A-Za-z0-9_-]+$/.test(REUSE_RUN)) throw new Error("Invalid archived run ID");
+  const reuseDirectory = REUSE_RUN ? join(RUNS_DIR, REUSE_RUN) : null;
 
   const indexResults: IndexResult[] = [];
   for (const date of datesInRange(FROM, TO)) {
     const url = dailyIndexUrl(date);
     assertSecUrl(url);
     try {
-      const body = await politeFetch(url, userAgent);
+      const cached = reuseDirectory ? join(reuseDirectory, "indexes", `form.${date}.idx`) : null;
+      if (cached && !existsSync(cached)) throw new Error("Archived index is absent");
+      const body = cached ? readFileSync(cached, "utf8") : await politeFetch(url, userAgent);
       const result = parseFormIndex(body, url, date);
       // The index bytes are evidence too: what we enumerated from is archivable.
       writeFileSync(join(runDir, "indexes", `form.${date}.idx`), body);
@@ -212,8 +222,17 @@ async function selectFromEdgar(
   const { entries, summary } = summarizeEnumeration(indexResults);
 
   let selectedEntries = entries;
-  if (ISSUERS.length > 0) {
+  let universeSha256: string | null = null;
+  if (UNIVERSE_PATH) {
+    if (ISSUERS.length) throw new Error("Choose --universe or --issuers, not both");
+    const universe = readInsiderUniverse(JSON.parse(readFileSync(resolve(ROOT, UNIVERSE_PATH), "utf8")));
+    universeSha256 = insiderUniverseHash(universe);
+    writeFileSync(join(runDir, "universe.json"), JSON.stringify(universe, null, 2));
+    selectedEntries = filterByIssuerCik(entries, universe.entries.map(entry => entry.cik));
+  } else if (ISSUERS.length > 0) {
     const master = JSON.parse(readFileSync(join(ROOT, "data", "security-master.json"), "utf8"));
+    const unresolved = ISSUERS.filter(symbol => !master?.entries?.[symbol]?.cik);
+    if (unresolved.length) throw new Error(`no CIK found for requested issuers: ${unresolved.join(",")}`);
     const ciks = ISSUERS
       .map((symbol) => master?.entries?.[symbol]?.cik)
       .filter((cik: string | undefined): cik is string => Boolean(cik));
@@ -221,8 +240,25 @@ async function selectFromEdgar(
     selectedEntries = filterByIssuerCik(entries, ciks);
   }
 
+  selectedEntries.sort((a, b) => a.accessionNumber.localeCompare(b.accessionNumber));
+  if (!Number.isSafeInteger(OFFSET) || OFFSET < 0 || !Number.isSafeInteger(MAX_FILINGS) || MAX_FILINGS < 1 || OFFSET > selectedEntries.length) throw new Error("Invalid filing batch bounds");
+  const batch = selectedEntries.slice(OFFSET, OFFSET + MAX_FILINGS);
+  writeFileSync(join(runDir, "selection.json"), JSON.stringify({ schemaVersion: 1, universeSha256, total: selectedEntries.length,
+    offset: OFFSET, nextOffset: OFFSET + batch.length, complete: OFFSET === 0 && batch.length === selectedEntries.length,
+    allAccessions: selectedEntries.map(entry => entry.accessionNumber), batchAccessions: batch.map(entry => entry.accessionNumber) }, null, 2));
   const documents: SelectedDocument[] = [];
-  for (const entry of selectedEntries) {
+  const cacheManifest: { accessionNumber: string; sha256: string; documentUrl: string; documentName: string }[] = reuseDirectory ? JSON.parse(readFileSync(join(reuseDirectory, "manifest.json"), "utf8")) : [];
+  for (const entry of batch) {
+    if (reuseDirectory) {
+      const candidates = cacheManifest.filter(item => item.accessionNumber === entry.accessionNumber);
+      if (candidates.length !== 1 || !/^[a-f0-9]{64}$/.test(candidates[0].sha256)) throw new Error(`Archived document missing or ambiguous: ${entry.accessionNumber}`);
+      const cached = candidates[0];
+      const xml = readFileSync(join(reuseDirectory, "raw", `${entry.accessionNumber}_${cached.sha256.slice(0, 12)}.xml`), "utf8");
+      if (sha256(xml) !== cached.sha256 || cached.documentUrl !== `${entry.archiveDir}/${cached.documentName}`) throw new Error("Archived document hash or source mismatch");
+      documents.push({ accessionNumber: entry.accessionNumber, xml, documentUrl: cached.documentUrl, documentName: cached.documentName, indexUrl: entry.indexHeaderUrl, filedDate: entry.filedDate });
+      continue;
+    }
+    const before = documents.length;
     const listingUrl = `${entry.archiveDir}/index.json`;
     assertSecUrl(listingUrl);
     const listing = JSON.parse(await politeFetch(listingUrl, userAgent));
@@ -239,6 +275,11 @@ async function selectFromEdgar(
         filedDate: entry.filedDate, xml,
       });
       break;
+    }
+    // Gate against the index selection, not just documents we managed to find.
+    // Otherwise a missing ownership XML silently disappears from run counts.
+    if (documents.length === before) {
+      throw new Error(`selected filing has no ownership XML: ${entry.accessionNumber}`);
     }
   }
 
@@ -329,7 +370,7 @@ async function main(): Promise<void> {
     }
 
     const counts: RunCounts = {
-      selected: selected.length, downloaded: 0, fromCache: SOURCE === "fixtures" ? selected.length : 0,
+      selected: selected.length, downloaded: 0, fromCache: SOURCE === "fixtures" || REUSE_RUN ? selected.length : 0,
       parsed: 0, unsupported: 0, quarantinedFilings: 0, failed: 0, rows: 0, quarantinedRows: 0,
     };
     const filings: Form4Filing[] = [];
@@ -338,7 +379,7 @@ async function main(): Promise<void> {
     const manifest: Record<string, string>[] = [];
 
     for (const doc of selected) {
-      if (SOURCE === "edgar") counts.downloaded += 1;
+      if (SOURCE === "edgar" && !REUSE_RUN) counts.downloaded += 1;
       const hash = sha256(doc.xml);
       // Raw bytes archived by hash so any parse can be re-checked against them.
       writeFileSync(join(runDir, "raw", `${doc.accessionNumber}_${hash.slice(0, 12)}.xml`), doc.xml);

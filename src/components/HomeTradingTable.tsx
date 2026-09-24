@@ -27,15 +27,16 @@ function FilerLink({ person }: { person: HomeFiler }) {
     {portrait && !failed && <Image src={portrait} alt="" width={38} height={38} style={{ opacity: loaded ? 1 : 0 }} onLoad={() => setLoaded(true)} onError={() => setFailed(true)} />}
   </Link>;
 }
-export default function HomeTradingTable({ windows, houseWindows, senateWindows, updatedAt, scans }: {
+export default function HomeTradingTable({ windows, houseWindows, senateWindows, insiderWindows, updatedAt, scans }: {
   windows: Record<HomePeriod, HomeWindow>; houseWindows: Record<HomePeriod, HomeWindow>; senateWindows: Record<HomePeriod, HomeWindow> | null;
-  updatedAt: string; scans: number;
+  insiderWindows: Record<HomePeriod, HomeWindow> | null; updatedAt: string; scans: number;
 }) {
   const [period, setPeriod] = useState<HomePeriod>("ytd");
   const [source, setSource] = useState("all");
   const [expanded, setExpanded] = useState(false);
   const senateAvailable = senateWindows !== null;
-  const current = source === "house" ? houseWindows[period] : source === "senate" && senateWindows ? senateWindows[period] : windows[period];
+  const current = source === "house" ? houseWindows[period] : source === "senate" && senateWindows ? senateWindows[period] :
+    source === "insiders" && insiderWindows ? insiderWindows[period] : windows[period];
   const companies = expanded ? current.companies : current.companies.slice(0, 5);
   const stale = !Number.isFinite(Date.parse(updatedAt)) || Date.parse(current.end) - Date.parse(updatedAt) > 14 * 86_400_000;
   return <>
@@ -50,7 +51,9 @@ export default function HomeTradingTable({ windows, houseWindows, senateWindows,
           <button type="button" aria-pressed={source === "house"} onClick={() => { setSource("house"); setExpanded(false); }}><Landmark size={18} aria-hidden="true" /><span>House-only</span></button>
           {senateAvailable ? <button type="button" aria-pressed={source === "senate"} onClick={() => { setSource("senate"); setExpanded(false); }}><Landmark size={18} aria-hidden="true" /><span>Senate-only<small>Partial coverage</small></span></button> :
             <button type="button" disabled title="This source is not connected yet"><Landmark size={18} aria-hidden="true" /><span>Senate-only<small>Coming soon</small></span></button>}
-          {[{ label: "Corporate insiders", Icon: Building2 }, { label: "Funds / institutions", Icon: BriefcaseBusiness }].map(({ label, Icon }) =>
+          {insiderWindows ? <button type="button" aria-pressed={source === "insiders"} onClick={() => { setSource("insiders"); setExpanded(false); }}><Building2 size={18} aria-hidden="true" /><span>Corporate insiders</span></button> :
+            <button type="button" disabled title="This source is not connected yet"><Building2 size={18} aria-hidden="true" /><span>Corporate insiders<small>Coming soon</small></span></button>}
+          {[{ label: "Funds / institutions", Icon: BriefcaseBusiness }].map(({ label, Icon }) =>
             <button type="button" key={label} disabled title="This source is not connected yet"><Icon size={18} aria-hidden="true" /><span>{label}<small>Coming soon</small></span></button>)}
         </div>
         <div className="home-period-controls" role="group" aria-label="Transaction date range">
@@ -58,10 +61,10 @@ export default function HomeTradingTable({ windows, houseWindows, senateWindows,
             onClick={() => { setPeriod(item.key); setExpanded(false); }}><CalendarDays size={18} aria-hidden="true" /><span>{item.label}</span></button>)}
         </div>
       </div>
-      <p className="home-coverage" role="status"><Clock3 size={13} aria-hidden="true" /> {source === "senate" ? "Senate partial coverage" : source === "house" ? "House coverage" : senateAvailable ? "House + Senate coverage" : "House coverage"} · Traded {current.start}–{current.end} · Delayed disclosures</p>
+      <p className="home-coverage" role="status"><Clock3 size={13} aria-hidden="true" /> {source === "insiders" ? "SEC Form 4 coverage" : source === "senate" ? "Senate partial coverage" : source === "house" ? "House coverage" : [senateAvailable && "Senate", insiderWindows && "corporate insiders"].filter(Boolean).length ? `House + ${[senateAvailable && "Senate", insiderWindows && "corporate insiders"].filter(Boolean).join(" + ")} coverage` : "House coverage"} · Traded {current.start}–{current.end} · Delayed disclosures</p>
       <div className="home-table-frame">
         <table className="home-market-table">
-          <caption className="sr-only">Stocks with disclosed {source === "senate" ? "Senate" : source === "house" ? "House" : "House and Senate"} purchases, ranked by distinct purchasing filers. Sales in the same period are shown separately.</caption>
+          <caption className="sr-only">Stocks with disclosed {source === "insiders" ? "corporate insider" : source === "senate" ? "Senate" : source === "house" ? "House" : "available-source"} purchases, ranked by distinct purchasing filers. Sales in the same period are shown separately.</caption>
           <thead><tr><th scope="col">Company + ticker</th><th scope="col">Distinct buyers</th><th scope="col">Purchase records</th><th scope="col">Sale records</th><th scope="col">Buying filers</th></tr></thead>
           <tbody>{companies.map(company => <tr key={company.ticker}>
             <th scope="row"><Link className="home-company" href={company.href ?? `/congress?ticker=${encodeURIComponent(company.ticker)}`}>
@@ -83,9 +86,9 @@ export default function HomeTradingTable({ windows, houseWindows, senateWindows,
         {current.companies.length > 5 && <button type="button" onClick={() => setExpanded(!expanded)}>{expanded ? "Show fewer stocks" : `View all ${current.companies.length} stocks`} <ArrowUpRight size={15} aria-hidden="true" /></button>}
       </div>
       <details className="home-method"><summary>Coverage and how we count</summary>
-        <p>{source === "senate" ? "Senate electronic disclosure records with reviewed identities and securities." : source === "house" ? "House disclosure records." : senateAvailable ? "Reviewed House and Senate disclosure records." : "House disclosure records."} Ranked by distinct purchasing filers, then ticker. One buyer can contribute several purchase records. Sales are counted separately for these stocks. Options, exchanges, unresolved tickers, conflicting issuer identities, quarantined records and invalid dates are excluded. Each period uses transaction dates, not filing dates. Recent activity is incomplete, not zero.</p>
+        <p>{source === "insiders" ? "Reviewed SEC Form 4 records; only source-reported non-derivative purchases and sales are included." : source === "senate" ? "Senate electronic disclosure records with reviewed identities and securities." : source === "house" ? "House disclosure records." : "Reviewed records from every connected source."} Ranked by distinct purchasing filers, then ticker. One buyer can contribute several purchase records. Sales are counted separately for these stocks. Options, exchanges, unresolved tickers, conflicting issuer identities, quarantined records and invalid dates are excluded. Each period uses transaction dates, not filing dates. Recent activity is incomplete, not zero.</p>
         <p>Archive refreshed {updatedAt.slice(0, 10)}. {scans > 0 && `${scans} scanned reports await recovery and are not included.`} {stale && <strong>Archive refresh overdue; recent activity may be missing.</strong>}</p>
-        {source === "senate" ? <Link href={`/senate?period=${period}`}>View the full Senate archive →</Link> : <Link href="/methodology">Read the methodology →</Link>}
+        {source === "senate" ? <Link href={`/senate?period=${period}`}>View the full Senate archive →</Link> : source === "insiders" ? <Link href={`/insiders?period=${period}`}>View all corporate insider disclosures →</Link> : <Link href="/methodology">Read the methodology →</Link>}
         <p>Company marks identify the subjects of independent coverage, not sponsors. <a href="/company-logos/NOTICE.txt">Image sources and notices</a>.</p>
       </details>
     </section>
