@@ -52,9 +52,12 @@ export function replayInstitutionRun(directory: string) {
   return { run, filings, notices, failures,reconciliationIssues };
 }
 
-export function institutionalCandidate(root: string) {
+export function institutionalCandidate(root: string, selectedRunIds?: string[]) {
   const directory = resolve(root,"data/institution-runs");
-  const runs = readdirSync(directory).filter(name=>/^institutions_[a-f0-9-]{36}$/.test(name)).sort().map(name=>replayInstitutionRun(resolve(directory,name)));
+  const available = readdirSync(directory).filter(name=>/^institutions_[a-f0-9-]{36}$/.test(name)).sort();
+  const names=selectedRunIds ? [...new Set(selectedRunIds)].sort() : available;
+  if(!names.length||names.some(name=>!/^institutions_[a-f0-9-]{36}$/.test(name)||!available.includes(name)))throw new Error("Selected institutional run is missing or invalid");
+  const runs = names.map(name=>replayInstitutionRun(resolve(directory,name)));
   if (!runs.length) throw new Error("No completed official collection runs");
   const blockedManagers = runs.filter(run=>run.failures.length).map(run=>run.run.cik);
   return { source: "SEC Form 13F" as const, runs: runs.map(({run,failures,reconciliationIssues})=>({ runId:run.runId, cik:run.cik, from:run.from, to:run.to, collectedAt:run.collectedAt, failures,reconciliationIssues })),
