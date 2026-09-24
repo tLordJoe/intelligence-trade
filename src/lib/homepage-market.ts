@@ -2,6 +2,7 @@ import type { DisclosureRecord } from "./congress-schema.ts";
 import { archiveRecords, disclosureFilerKey, displayFiler, validDisclosureDate } from "./home-discovery.ts";
 import { resolveCompanyMark, resolvePortrait, srcOrNull } from "./image-library/index.ts";
 import type { SenatePublicPayload } from "./senate/public-view.ts";
+import type { InsiderPayload } from "./form4/public-view.ts";
 
 export type HomePeriod = "ytd" | "30" | "90";
 export interface HomeFiler { key: string; name: string; state: string; district: string; href?: string; /** Resolved server-side from the image library; undefined means initials. */ portrait?: string }
@@ -90,6 +91,47 @@ export function buildSenateHomeWindow(payload: SenatePublicPayload, period: Home
         href: `/senate/filers/${encodeURIComponent(row.bioguide)}`, ...(portrait ? { portrait } : {}) },
       amount: row.amount, traded: row.transactionDate, filed: row.filedDate, source: row.sourceUrl };
   }) };
+}
+
+/** Approved Form 4 rows adapted to the homepage without blending in awards, options, gifts or holdings. */
+export function buildInsiderHomeWindow(payload: InsiderPayload, period: HomePeriod, asOf: string): HomeWindow {
+  const start = homePeriodStart(period, asOf);
+  const eligible = payload.records.filter(row => row.transactionDate >= start && row.transactionDate <= asOf && row.filedDate <= asOf);
+  const groups = new Map<string, typeof eligible>();
+  for (const row of eligible) groups.set(row.ticker, [...(groups.get(row.ticker) ?? []), row]);
+  const companies: HomeCompany[] = [];
+  const accepted = new Set<string>();
+  for (const [ticker, group] of groups) {
+    if (new Set(group.map(row => row.issuerCik)).size !== 1) continue;
+    const purchases = group.filter(row => row.classification === "reported_purchase");
+    if (!purchases.length) continue;
+    accepted.add(ticker);
+    const filers = [...new Map(purchases.flatMap(row => row.reportingOwners).map(owner => {
+      const key = `insider:${owner.cik}`;
+      const name = owner.name ?? owner.cik;
+      const person: HomeFiler = { key, name, state: "", district: owner.officerTitle ?? "Corporate insider",
+        href: `/insiders?${new URLSearchParams({ q: name, period })}` };
+      return [key, person] as const;
+    })).values()];
+    const cik = group[0].issuerCik;
+    const mark = srcOrNull(resolveCompanyMark({ ticker, cik }));
+    companies.push({ ticker, name: group[0].issuerName ?? ticker, cik, href: `/stocks/${encodeURIComponent(ticker)}`,
+      ...(mark ? { mark } : {}), buyers: filers.length, purchases: purchases.length,
+      sales: group.filter(row => row.classification === "reported_sale").length, filers });
+  }
+  companies.sort((a, b) => b.buyers - a.buyers || a.ticker.localeCompare(b.ticker));
+  return { start, end: asOf, companies, recent: eligible
+    .filter(row => row.classification === "reported_purchase" && accepted.has(row.ticker))
+    .slice(0, 3).map(row => {
+      const owner = row.reportingOwners[0];
+      const key = `insider:${owner.cik}`;
+      const name = owner.name ?? owner.cik;
+      const mark = srcOrNull(resolveCompanyMark({ ticker: row.ticker, cik: row.issuerCik }));
+      return { id: row.id, ticker: row.ticker, name: row.issuerName ?? row.ticker, cik: row.issuerCik, ...(mark ? { mark } : {}),
+        filer: { key, name, state: "", district: owner.officerTitle ?? "Corporate insider",
+          href: `/insiders?${new URLSearchParams({ q: name, period })}` },
+        amount: `${row.reportedShares} shares`, traded: row.transactionDate, filed: row.filedDate, source: row.sourceUrl };
+    }) };
 }
 
 export function mergeHomeWindows(left: HomeWindow, right: HomeWindow): HomeWindow {

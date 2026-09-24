@@ -1,9 +1,10 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { buildHomeWindow, buildSenateHomeWindow, homePeriodStart } from "../src/lib/homepage-market.ts";
+import { buildHomeWindow, buildInsiderHomeWindow, buildSenateHomeWindow, homePeriodStart } from "../src/lib/homepage-market.ts";
 import type { DisclosureRecord } from "../src/lib/congress-schema.ts";
 import type { SenatePublicPayload } from "../src/lib/senate/public-view.ts";
+import type { InsiderPayload } from "../src/lib/form4/public-view.ts";
 const archive = JSON.parse(readFileSync(new URL("../src/lib/congress-live.json", import.meta.url), "utf8"));
 function row(id: string, patch: Partial<DisclosureRecord> = {}): DisclosureRecord {
   const base = archive.trades[0];
@@ -45,4 +46,16 @@ test("Senate homepage portraits link to a stable individual profile", () => {
   const result = buildSenateHomeWindow(payload, "ytd", "2026-09-17");
   assert.equal(result.recent[0].filer.href, "/senate/filers/B001236");
   assert.equal(result.companies[0].filers[0].href, "/senate/filers/B001236");
+});
+test("corporate insider windows count distinct reporting owners and keep sales separate", () => {
+  const owner = (cik: string, name: string) => ({ cik, name, isDirector: true, isOfficer: false, isTenPercentOwner: false, isOther: false, officerTitle: null, otherText: null });
+  const base = { issuerCik: "0001274494", issuerName: "First Solar", ticker: "FSLR", securityTitle: "Common Stock", transactionDate: "2026-08-13", filedDate: "2026-08-15", reportedShares: "100", reportedPrice: { value: "200", raw: "200", reason: null, footnoteIds: [] }, priceQuality: "exact" as const, ownership: "direct" as const, natureOfOwnership: { value: null, raw: null, reason: "not_present_in_source" as const, footnoteIds: [] }, filingPlanIndicator: false, accessionNumber: "0001274494-26-000001", sourceUrl: "https://www.sec.gov/Archives/edgar/data/1274494/000127449426000001/form4.xml", filingId: `0001274494-26-000001::${"a".repeat(64)}`, footnotes: {}, warnings: [], sourceDocumentSha256: "a".repeat(64), sourceRemarks: null };
+  const payload = { schemaVersion: 1 as const, source: "sec-form4" as const, coverageThrough: "2026-09-17", universeSha256: "b".repeat(64), universeSize: 10000, windows: [{ from: "2026-01-01", to: "2026-09-17", expectedFilings: 2 }], limitations: "test", excluded: {}, heldIssuers: [], records: [
+    { ...base, id: `${base.filingId}::nonDerivative::transaction::0`, classification: "reported_purchase" as const, reportingOwners: [owner("0000000001", "Alex Buyer")] },
+    { ...base, id: `${base.filingId}::nonDerivative::transaction::1`, classification: "reported_purchase" as const, reportingOwners: [owner("0000000001", "Alex Buyer"), owner("0000000002", "Jordan Buyer")] },
+    { ...base, id: `${base.filingId}::nonDerivative::transaction::2`, classification: "reported_sale" as const, reportingOwners: [owner("0000000002", "Jordan Buyer")] },
+  ] } satisfies InsiderPayload;
+  const result = buildInsiderHomeWindow(payload, "ytd", "2026-09-17");
+  assert.equal(result.companies[0].buyers, 2); assert.equal(result.companies[0].purchases, 2); assert.equal(result.companies[0].sales, 1);
+  assert.match(result.companies[0].filers[0].href ?? "", /^\/insiders\?/);
 });

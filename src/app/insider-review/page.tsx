@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
 import CompanyMark from "@/components/CompanyMark";
+import { companyMark } from "@/lib/company-marks";
 import { loadInsiderCandidateReview } from "@/lib/form4/candidate-review";
 import "../homepage.css";
 
@@ -37,7 +38,7 @@ export default function InsiderReviewPage() {
     <section className="sector-page-section" aria-labelledby="insider-records"><div className="home-section-intro"><h2 id="insider-records">Inspect the reported activity</h2>
       <p>Sorted by filing date. Transaction dates and reported prices stay separate from filing dates and execution prices.</p></div>
       <div className="sector-fund-grid">{review.records.map(record => <article className="home-panel" key={record.id}>
-        <div className="instrument-title"><CompanyMark ticker={record.ticker} cik={record.issuerCik} /><h3>{record.ticker} · {record.classification === "reported_purchase" ? "Reported purchase" : "Reported sale"}</h3></div>
+        <div className="instrument-title"><CompanyMark ticker={record.ticker} src={companyMark(record.ticker, record.issuerCik)} /><h3>{record.ticker} · {record.classification === "reported_purchase" ? "Reported purchase" : "Reported sale"}</h3></div>
         <p>{record.issuerName} · {record.securityTitle}</p>
         <p>{record.reportingOwners.map(owner => `${owner.name ?? owner.cik}${owner.officerTitle ? ` — ${owner.officerTitle}` : ""}`).join("; ")}</p>
         <dl className="instrument-facts"><div><dt>Transaction date</dt><dd>{record.transactionDate}</dd></div><div><dt>Filed</dt><dd>{record.filedDate}</dd></div><div><dt>Reported shares</dt><dd>{record.reportedShares}</dd></div><div><dt>Reported price per share</dt><dd>{record.reportedPrice.value ?? "Not specified"}</dd></div></dl>
