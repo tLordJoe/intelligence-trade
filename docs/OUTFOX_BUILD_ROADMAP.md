@@ -1,5 +1,7 @@
 # Outfox build roadmap and execution ledger
 
+Competitive scope is governed by `docs/COMPETITIVE_BASELINE.md`. Sequencing in this roadmap must not silently remove a baseline capability.
+
 Updated September 8, 2026. Owner: Codex; product decisions: Joe.
 
 ## The destination
