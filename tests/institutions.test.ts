@@ -128,6 +128,12 @@ test("included manager ordinals resolve to stable file identities and preserve a
   assert.throws(()=>parseInstitutionalFiling(source.replace("<otherManager>1</otherManager>","<otherManager>1,1</otherManager>"),ref),/Duplicate/);
   assert.equal(reconcileInstitutions([{...before,holdings:[{...before.holdings[0],otherManagerIds:["forged"]}]}]).held[0].reason,"invalid_included_manager_attribution");
 });
+test("SEC schema defaults an omitted confidentiality flag to false and 00 identifies the filing manager",()=>{
+  const withoutFlag=fixture().replace("<isConfidentialOmitted>false</isConfidentialOmitted>","");
+  assert.equal(parseInstitutionalFiling(withoutFlag,ref).confidentialOmitted,false);
+  const primaryManagerRow=withoutFlag.replace("<investmentDiscretion>SOLE</investmentDiscretion>","<investmentDiscretion>DFND</investmentDiscretion><otherManager>00</otherManager>");
+  assert.deepEqual(parseInstitutionalFiling(primaryManagerRow,ref).holdings[0].otherManagerIds,[]);
+});
 test("omitted amendment checkbox needs corroborated X0202 original form, never blanket false",()=>{
   const source=`CONFORMED SUBMISSION TYPE:\t13F-HR\n${fixture()}`.replace("<edgarSubmission>",'<edgarSubmission xmlns="http://www.sec.gov/edgar/thirteenffiler"><schemaVersion>X0202</schemaVersion>').replace("<isAmendment>false</isAmendment>","");
   assert.equal(parseInstitutionalFiling(source,ref).amendmentFlagSource,"original_form_omitted_flag");

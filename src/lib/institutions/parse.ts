@@ -70,7 +70,10 @@ export function resolveManagerQualifiers(raw:string, managers:IncludedManager[])
   if(!/^\d+(?:\s*,\s*\d+)*$/.test(raw))throw new Error("Invalid other-manager row qualifiers");
   const ordinals=raw.split(",").map(value=>integer(value.trim()));
   if(new Set(ordinals).size!==ordinals.length)throw new Error("Duplicate other-manager row qualifier");
-  return ordinals.map(ordinal=>{const manager=managers.find(m=>m.sequenceNumber===ordinal);if(!manager)throw new Error("Unresolved other-manager row qualifier");return manager.stableId;}).sort();
+  // Some SEC-accepted information tables use 00 for the filing manager itself.
+  // The filing manager is already the parent identity for every row, so it does
+  // not belong in the included-manager identity list.
+  return ordinals.filter(ordinal=>ordinal!=="0").map(ordinal=>{const manager=managers.find(m=>m.sequenceNumber===ordinal);if(!manager)throw new Error("Unresolved other-manager row qualifier");return manager.stableId;}).sort();
 }
 /** Replays full EDGAR submission bytes; HTML-rendered tables are never parsed. */
 function readCover(source: string, reference: FilingReference) {
@@ -168,7 +171,10 @@ export function parseInstitutionalFiling(source: string, reference: FilingRefere
       declaredEntries,computedEntries,entryDifference:computedEntries-declaredEntries,declaredValue,computedValue,valueDifference:(BigInt(computedValue)-BigInt(declaredValue)).toString(),
       declaredValueUsd:(BigInt(declaredValue)*multiplier).toString(),computedValueUsd:(BigInt(computedValue)*multiplier).toString(),informationTableDocuments:tableDocs.length});
   }
+  const confidentialOmittedFlag=text(summary,"isConfidentialOmitted",true);
   return { reference, sourceUrl, sourceSha256: digest(source), period, managerName: text(one(cover, "filingManager"), "name"),
     amendment, amendmentType, amendmentNumber, amendmentFlagSource, reportType, valueUnit, declaredEntries, declaredValue,computedEntries,computedValue,
-    confidentialOmitted: boolean(text(summary, "isConfidentialOmitted")), otherIncludedManagers, includedManagers, holdings };
+    // The SEC's current 13F XSD makes this element optional. Its absence means
+    // the filer did not mark confidential holdings as omitted.
+    confidentialOmitted: confidentialOmittedFlag ? boolean(confidentialOmittedFlag) : false, otherIncludedManagers, includedManagers, holdings };
 }
