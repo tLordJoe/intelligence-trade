@@ -1,14 +1,14 @@
-# Image library coverage — 2026-09-14
+# Image library coverage — 2026-09-24
 
 Counts are of identities, not of files or tickers. "Resolved" means an approved file is on disk for website display; it does not establish any right to redistribute files through an API. Every unresolved identity is listed at the end with its reason.
 
 - **funds** universe: 26 identities, as of 2026-09-14. Source: src/lib/sector-funds.ts directory + src/lib/funds identities, joined to SEC company_tickers_mf.json for CIK, series and class. Share classes, not funds: a ticker names one class. Marks are the sponsor's unless a fund has its own documented logo, which none in this directory does.
-- **companies** universe: 510 identities (670 tickers), as of 2026-09-14. Source: Wikidata: items with P361 (part of) = Q242345 (S&P 500), joined to SEC company_tickers.json by P5531 (CIK). 527 source items; 510 distinct CIKs. Company coverage includes sponsors with current SEC ticker evidence; sponsor-only identities are not assumed to be currently traded companies. Membership is as Wikidata records it, including former constituents, not the index provider's official list.
+- **companies** universe: 510 identities (671 tickers), as of 2026-09-14. Source: Wikidata: items with P361 (part of) = Q242345 (S&P 500), joined to SEC company_tickers.json by P5531 (CIK). 527 source items; 510 distinct CIKs. Company coverage includes sponsors with current SEC ticker evidence; sponsor-only identities are not assumed to be currently traded companies. Membership is as Wikidata records it, including former constituents, not the index provider's official list.
 - **congress** universe: 539 identities, as of 2026-09-14. Source: unitedstates/congress-legislators legislators-current.json (CC0); portraits from unitedstates/images 225x275 (CC0 repository, GPO provenance stated). 439 House and 100 Senate members serving as of the dataset. Portraits are only ever fetched by Bioguide id.
 
 | Kind | Resolved | Missing | Ambiguous | Failed | Awaiting review |
 |---|---:|---:|---:|---:|---:|
-| Companies (issuers) | 348 | 70 | 6 | 0 | 85 |
+| Companies (issuers) | 349 | 70 | 6 | 0 | 85 |
 | ETF share classes | 24 | 2 | 0 | 0 | 0 |
 | Sponsors | 3 | 2 | 0 | 0 | 0 |
 | Congress (people) | 524 | 15 | 0 | 0 | 0 |
@@ -17,8 +17,8 @@ Company and sponsor roles can overlap; do not sum those rows as distinct identit
 
 ## Companies: issuer coverage versus ticker coverage
 
-- Issuers resolved: 348 of 510 (68.2%), of which 10 were individually reviewed before this library.
-- Tickers resolved: 524 of 670 (78.2%). Ticker coverage exceeds issuer coverage wherever one issuer lists several symbols.
+- Issuers resolved: 349 of 510 (68.4%), of which 11 were individually reviewed before this library.
+- Tickers resolved: 525 of 671 (78.2%). Ticker coverage exceeds issuer coverage wherever one issuer lists several symbols.
 - 15 Wikidata S&P 500 items could not be keyed to one SEC issuer and are outside the catalog: AOL (Q27585, no CIK); Autodesk (Q628051, no CIK); Bethlehem Steel (Q27432, no CIK); CBS Corporation (Q950380, no CIK); Celgene (Q842947, no CIK); EQT (Q5323987, no CIK); Globe Life (Q5570993, no CIK); Kohl's (Q967265, no CIK); Norfolk Southern Railway (Q1321054, no CIK); NYSE Euronext Liffe (Q13683, no CIK); Rapid Credit Boosters (Q124129040, no CIK); Staples Inc. (Q785943, no CIK); United Technologies Corporation (Q1045758, no CIK); West Pharmaceutical Services (United States) (Q30338243, no CIK); Wyndham Worldwide (Q303341, no CIK).
 
 ## ETFs

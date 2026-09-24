@@ -1,8 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { buildHomeWindow, homePeriodStart } from "../src/lib/homepage-market.ts";
+import { buildHomeWindow, buildSenateHomeWindow, homePeriodStart } from "../src/lib/homepage-market.ts";
 import type { DisclosureRecord } from "../src/lib/congress-schema.ts";
+import type { SenatePublicPayload } from "../src/lib/senate/public-view.ts";
 const archive = JSON.parse(readFileSync(new URL("../src/lib/congress-live.json", import.meta.url), "utf8"));
 function row(id: string, patch: Partial<DisclosureRecord> = {}): DisclosureRecord {
   const base = archive.trades[0];
@@ -36,4 +37,12 @@ test("homepage excludes unknown, conflicting, future and invalid records", () =>
 test("empty periods do not invent rows or keep stale sample purchases", () => {
   const result = buildHomeWindow([], "ytd", "2026-09-13");
   assert.deepEqual(result.companies, []); assert.deepEqual(result.recent, []);
+});
+test("Senate homepage portraits link to a stable individual profile", () => {
+  const payload: SenatePublicPayload = { schemaVersion: 1, source: "senate-efd", windows: [{ from: "2026-01-01", to: "2026-09-15" }], limitations: "test", omitted: { paperOrUnparsedReports: 0, reconciliationIssues: 0, otherSourceRows: 0 }, records: [{
+    id: "senate:test:row", reportId: "test", politician: "John Boozman", bioguide: "B001236", state: "AR", ticker: "FSLR", issuerName: "First Solar", cik: "0001274494", assetNameAsFiled: "First Solar", assetTypeAsFiled: "Stock", securityClassification: "unclassified_listed_security", type: "Buy", owner: "Self", amount: "$1,001 - $15,000", amountLow: 1001, amountHigh: 15000, transactionDate: "2026-08-13", filedDate: "2026-09-11", receivedDate: "2026-09-11", sourceUrl: "https://efdsearch.senate.gov/search/view/ptr/test/", documentSha256: "a".repeat(64), sourceComment: null, filingNotes: [],
+  }] };
+  const result = buildSenateHomeWindow(payload, "ytd", "2026-09-17");
+  assert.equal(result.recent[0].filer.href, "/senate/filers/B001236");
+  assert.equal(result.companies[0].filers[0].href, "/senate/filers/B001236");
 });

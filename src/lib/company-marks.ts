@@ -15,6 +15,7 @@ export const COMPANY_MARKS: Record<string, { cik: string; file: string }> = {
   ACN: { cik: "0001467373", file: "acn.svg" },
   AEP: { cik: "0000004904", file: "aep.svg" },
   FITB: { cik: "0000035527", file: "fitb.svg" },
+  FSLR: { cik: "0001274494", file: "fslr.svg" },
   UNH: { cik: "0000731766", file: "unh.svg" },
 };
 

@@ -71,7 +71,7 @@ export function buildSenateHomeWindow(payload: SenatePublicPayload, period: Home
       const key = `senate:${row.bioguide}`;
       const portrait = srcOrNull(resolvePortrait({ filerKey: key, name: row.politician, chamber: "Senate", state: row.state, district: "" }));
       const person: HomeFiler = { key, name: row.politician, state: row.state, district: "Senate",
-        href: `/senate?${new URLSearchParams({ q: row.politician, period })}`, ...(portrait ? { portrait } : {}) };
+        href: `/senate/filers/${encodeURIComponent(row.bioguide)}`, ...(portrait ? { portrait } : {}) };
       return [key, person] as const;
     })).values()];
     const cik = group[0].cik;
@@ -87,7 +87,7 @@ export function buildSenateHomeWindow(payload: SenatePublicPayload, period: Home
     const mark = srcOrNull(resolveCompanyMark({ ticker: row.ticker, cik: row.cik }));
     return { id: row.id, ticker: row.ticker, name: row.issuerName, cik: row.cik, ...(mark ? { mark } : {}),
       filer: { key, name: row.politician, state: row.state, district: "Senate",
-        href: `/senate?${new URLSearchParams({ q: row.politician, period })}`, ...(portrait ? { portrait } : {}) },
+        href: `/senate/filers/${encodeURIComponent(row.bioguide)}`, ...(portrait ? { portrait } : {}) },
       amount: row.amount, traded: row.transactionDate, filed: row.filedDate, source: row.sourceUrl };
   }) };
 }
