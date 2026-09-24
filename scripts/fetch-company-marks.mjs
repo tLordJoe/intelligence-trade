@@ -12,7 +12,8 @@ const sources = [
   ["NVDA", "NVIDIA logo.svg", "Apache License 2.0"],
   ["ACN", "Accenture.svg", "Public domain"],
   ["AEP", "AEP logo.svg", "Public domain"],
-  ["FITB", "Fifth Third Bank 2023 logo-primary-shieldleft-full-marbletext.svg", "Public domain"],
+  ["FITB", "Fifth Third Bank 2023 logo-shieldonly-primary.svg", "Public domain"],
+  ["FSLR", "Logo FirstSolar.svg", "Public domain"],
   ["UNH", "UnitedHealth Group logo.svg", "Public domain"],
 ];
 async function download(url) {

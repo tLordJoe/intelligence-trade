@@ -1,6 +1,6 @@
 {
- "generatedAt": "2026-09-14T16:41:01.369Z",
- "catalogGeneratedAt": "2026-09-14T06:01:36.753Z",
+ "generatedAt": "2026-09-24T06:54:43.933Z",
+ "catalogGeneratedAt": "2026-09-24T06:54:43.849Z",
  "universes": {
   "funds": {
    "source": "src/lib/sector-funds.ts directory + src/lib/funds identities, joined to SEC company_tickers_mf.json for CIK, series and class",
@@ -12,7 +12,7 @@
    "source": "Wikidata: items with P361 (part of) = Q242345 (S&P 500), joined to SEC company_tickers.json by P5531 (CIK)",
    "asOf": "2026-09-14",
    "identities": 510,
-   "tickers": 670,
+   "tickers": 671,
    "note": "527 source items; 510 distinct CIKs. Company coverage includes sponsors with current SEC ticker evidence; sponsor-only identities are not assumed to be currently traded companies. Membership is as Wikidata records it, including former constituents, not the index provider's official list."
   },
   "congress": {
@@ -23,16 +23,16 @@
   }
  },
  "companies": {
-  "resolved": 348,
+  "resolved": 349,
   "missing": 70,
   "ambiguous": 6,
   "failed": 0,
   "awaiting_review": 85,
   "issuersInUniverse": 510,
-  "issuersResolved": 348,
-  "tickersInUniverse": 670,
-  "tickersResolved": 524,
-  "manuallyReviewed": 10,
+  "issuersResolved": 349,
+  "tickersInUniverse": 671,
+  "tickersResolved": 525,
+  "manuallyReviewed": 11,
   "unkeyedWikidataItems": [
    {
     "qid": "Q27585",

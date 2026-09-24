@@ -1,122 +1,122 @@
 {
  "attempts": {
   "sec:cik:0000789019": {
-   "at": "2026-09-14T06:01:35.511Z",
+   "at": "2026-09-24T06:54:43.835Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "sec:cik:0001326801": {
-   "at": "2026-09-14T06:01:35.512Z",
+   "at": "2026-09-24T06:54:43.835Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "sec:cik:0000320193": {
-   "at": "2026-09-14T06:01:35.512Z",
+   "at": "2026-09-24T06:54:43.835Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "sec:cik:0000002488": {
-   "at": "2026-09-14T06:01:35.513Z",
+   "at": "2026-09-24T06:54:43.835Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "sec:cik:0001018724": {
-   "at": "2026-09-14T06:01:35.514Z",
+   "at": "2026-09-24T06:54:43.835Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "sec:cik:0001045810": {
-   "at": "2026-09-14T06:01:35.514Z",
+   "at": "2026-09-24T06:54:43.835Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "sec:cik:0001467373": {
-   "at": "2026-09-14T06:01:35.514Z",
+   "at": "2026-09-24T06:54:43.835Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "sec:cik:0000004904": {
-   "at": "2026-09-14T06:01:35.514Z",
+   "at": "2026-09-24T06:54:43.835Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "sec:cik:0000035527": {
-   "at": "2026-09-14T06:01:35.515Z",
+   "at": "2026-09-24T06:54:43.835Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "sec:cik:0000731766": {
-   "at": "2026-09-14T06:01:35.515Z",
+   "at": "2026-09-24T06:54:43.836Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "bioguide:C001123": {
-   "at": "2026-09-14T06:01:35.516Z",
+   "at": "2026-09-24T06:54:43.837Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "bioguide:R000619": {
-   "at": "2026-09-14T06:01:35.517Z",
+   "at": "2026-09-24T06:54:43.837Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "bioguide:T000490": {
-   "at": "2026-09-14T06:01:35.517Z",
+   "at": "2026-09-24T06:54:43.838Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "bioguide:M001217": {
-   "at": "2026-09-14T06:01:35.517Z",
+   "at": "2026-09-24T06:54:43.838Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "bioguide:F000110": {
-   "at": "2026-09-14T06:01:35.518Z",
+   "at": "2026-09-24T06:54:43.838Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "bioguide:M001239": {
-   "at": "2026-09-14T06:01:35.518Z",
+   "at": "2026-09-24T06:54:43.839Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "bioguide:S000168": {
-   "at": "2026-09-14T06:01:35.519Z",
+   "at": "2026-09-24T06:54:43.839Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "bioguide:L000595": {
-   "at": "2026-09-14T06:01:35.519Z",
+   "at": "2026-09-24T06:54:43.839Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "bioguide:L000560": {
-   "at": "2026-09-14T06:01:35.519Z",
+   "at": "2026-09-24T06:54:43.840Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "bioguide:C001055": {
-   "at": "2026-09-14T06:01:35.520Z",
+   "at": "2026-09-24T06:54:43.840Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "bioguide:G000583": {
-   "at": "2026-09-14T06:01:35.520Z",
+   "at": "2026-09-24T06:54:43.840Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "bioguide:K000398": {
-   "at": "2026-09-14T06:01:35.520Z",
+   "at": "2026-09-24T06:54:43.841Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "bioguide:J000309": {
-   "at": "2026-09-14T06:01:35.521Z",
+   "at": "2026-09-24T06:54:43.841Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
   "bioguide:P000197": {
-   "at": "2026-09-14T06:01:35.521Z",
+   "at": "2026-09-24T06:54:43.841Z",
    "outcome": "resolved",
    "note": "seeded from reviewed manifest"
   },
@@ -4378,6 +4378,11 @@
    "at": "2026-09-14T05:53:36.272Z",
    "outcome": "missing",
    "note": "No portrait published for this member at unitedstates/images."
+  },
+  "sec:cik:0001274494": {
+   "at": "2026-09-24T06:54:43.836Z",
+   "outcome": "resolved",
+   "note": "seeded from reviewed manifest"
   }
  },
  "hashes": {
@@ -5254,7 +5259,9 @@
   "d7ccdcb6fb94f9423176f804d8b27617cea94a38ed35ee6718df8e2508607ce6": "/portraits/J000312.jpg",
   "c17060dcfc329da17b8f6bb7b2dbcfa7c496869bb5c1d3a8d3cd39f81e542268": "/portraits/M001244.jpg",
   "38ac7cde732233bb910ed3b9a1c3db6142633652dce7d3b15a41e2f16b2dc814": "/portraits/P000622.jpg",
-  "ab6e14dc4732e331455e1a8be636341edf283e9760509ee946d616d25a695443": "/portraits/F000484.jpg"
+  "ab6e14dc4732e331455e1a8be636341edf283e9760509ee946d616d25a695443": "/portraits/F000484.jpg",
+  "4f6962ccc8f9572086c2c683baa252c444a344366b5a09a74f8c5f27c6c7bb8a": "/company-logos/fitb.svg",
+  "4409e64df9255dc0441024e8132f4d3e2e497d9d8c2c0fe6a1719dc81f2d3de9": "/company-logos/fslr.svg"
  },
  "runs": [
   {

@@ -5,7 +5,7 @@
     "source": "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
     "evidence": "https://commons.wikimedia.org/wiki/File:Microsoft_logo.svg",
     "reviewed": "2026-09-13",
-    "downloaded": "2026-09-14T02:54:24.073Z",
+    "downloaded": "2026-09-24T06:54:42.851Z",
     "license": "Public domain",
     "restrictions": "trademarked",
     "attributionRequired": "false",
@@ -88,7 +88,7 @@
     "source": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Meta_Platforms_logo.svg",
     "evidence": "https://commons.wikimedia.org/wiki/File:Meta_Platforms_logo.svg",
     "reviewed": "2026-09-13",
-    "downloaded": "2026-09-14T02:54:24.118Z",
+    "downloaded": "2026-09-24T06:54:42.888Z",
     "license": "Public domain",
     "restrictions": "trademarked",
     "attributionRequired": "false",
@@ -109,7 +109,7 @@
         "hidden": ""
       },
       "Categories": {
-        "value": "With trademark|PD textlogo|Extracted images|SVG text logos|Black and blue logos with transparent background|4 letter logos|Four letter combinations including A|Four letter combinations including E|Four letter combinations including M|Four letter combinations including T|Valid SVG created with Text Editor:Logos|TOO-United States|SVG black text logos|Gradient logos|2 element logos (horizontally)|Meta Platforms, Inc. logos|SVG infinity symbols",
+        "value": "With trademark|PD textlogo|Extracted images|SVG text logos|Black and blue logos with transparent background|Valid SVG created with Text Editor:Logos|TOO-United States|Gradient logos|Meta Platforms, Inc. logos|SVG infinity symbols",
         "source": "commons-categories",
         "hidden": ""
       },
@@ -119,11 +119,11 @@
         "hidden": ""
       },
       "ImageDescription": {
-        "value": "Logo of <a href=\"https://en.wikipedia.org/wiki/Meta_Platforms,_Inc.\" class=\"extiw\" title=\"w:Meta Platforms, Inc.\">Meta Platforms, Inc.</a>",
+        "value": "Logo of <a href=\"https://en.wikipedia.org/wiki/Meta_Platforms,_Inc.\" class=\"extiw\" title=\"w:Meta Platforms, Inc.\">Meta Platforms, Inc.</a>.",
         "source": "commons-desc-page"
       },
       "DateTimeOriginal": {
-        "value": "2021-12-01",
+        "value": "Upload date:  1 December 2021",
         "source": "commons-desc-page"
       },
       "Credit": {
@@ -171,7 +171,7 @@
     "source": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
     "evidence": "https://commons.wikimedia.org/wiki/File:Apple_logo_black.svg",
     "reviewed": "2026-09-13",
-    "downloaded": "2026-09-14T02:54:24.153Z",
+    "downloaded": "2026-09-24T06:54:42.921Z",
     "license": "Public domain",
     "restrictions": "trademarked",
     "attributionRequired": "false",
@@ -254,7 +254,7 @@
     "source": "https://upload.wikimedia.org/wikipedia/commons/7/7c/AMD_Logo.svg",
     "evidence": "https://commons.wikimedia.org/wiki/File:AMD_Logo.svg",
     "reviewed": "2026-09-13",
-    "downloaded": "2026-09-14T02:54:24.183Z",
+    "downloaded": "2026-09-24T06:54:42.951Z",
     "license": "Public domain",
     "restrictions": "trademarked",
     "attributionRequired": "false",
@@ -342,7 +342,7 @@
     "source": "https://upload.wikimedia.org/wikipedia/commons/0/06/Amazon_2024.svg",
     "evidence": "https://commons.wikimedia.org/wiki/File:Amazon_2024.svg",
     "reviewed": "2026-09-13",
-    "downloaded": "2026-09-14T02:54:24.216Z",
+    "downloaded": "2026-09-24T06:54:42.983Z",
     "license": "Public domain",
     "restrictions": "trademarked",
     "attributionRequired": "false",
@@ -430,7 +430,7 @@
     "source": "https://upload.wikimedia.org/wikipedia/commons/a/a4/NVIDIA_logo.svg",
     "evidence": "https://commons.wikimedia.org/wiki/File:NVIDIA_logo.svg",
     "reviewed": "2026-09-13",
-    "downloaded": "2026-09-14T02:54:24.254Z",
+    "downloaded": "2026-09-24T06:54:43.015Z",
     "license": "Apache License 2.0",
     "restrictions": "trademarked",
     "attributionRequired": "true",
@@ -517,7 +517,7 @@
     "source": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg",
     "evidence": "https://commons.wikimedia.org/wiki/File:Accenture.svg",
     "reviewed": "2026-09-13",
-    "downloaded": "2026-09-14T02:54:24.288Z",
+    "downloaded": "2026-09-24T06:54:43.046Z",
     "license": "Public domain",
     "restrictions": "trademarked",
     "attributionRequired": "false",
@@ -600,7 +600,7 @@
     "source": "https://upload.wikimedia.org/wikipedia/commons/5/5f/AEP_logo.svg",
     "evidence": "https://commons.wikimedia.org/wiki/File:AEP_logo.svg",
     "reviewed": "2026-09-13",
-    "downloaded": "2026-09-14T02:54:24.411Z",
+    "downloaded": "2026-09-24T06:54:43.212Z",
     "license": "Public domain",
     "restrictions": "trademarked",
     "attributionRequired": "false",
@@ -680,22 +680,22 @@
   {
     "ticker": "FITB",
     "file": "fitb.svg",
-    "source": "https://upload.wikimedia.org/wikipedia/commons/8/82/Fifth_Third_Bank_2023_logo-primary-shieldleft-full-marbletext.svg",
-    "evidence": "https://commons.wikimedia.org/wiki/File:Fifth_Third_Bank_2023_logo-primary-shieldleft-full-marbletext.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/6/65/Fifth_Third_Bank_2023_logo-shieldonly-primary.svg",
+    "evidence": "https://commons.wikimedia.org/wiki/File:Fifth_Third_Bank_2023_logo-shieldonly-primary.svg",
     "reviewed": "2026-09-13",
-    "downloaded": "2026-09-14T02:54:24.531Z",
+    "downloaded": "2026-09-24T06:54:43.243Z",
     "license": "Public domain",
     "restrictions": "trademarked",
     "attributionRequired": "false",
-    "sha256": "3ddd395e8ecebd388b8283f2625048da7f4fcf60adde25b0c8137b2021f7c819",
+    "sha256": "4f6962ccc8f9572086c2c683baa252c444a344366b5a09a74f8c5f27c6c7bb8a",
     "sourceMetadata": {
       "DateTime": {
-        "value": "2024-05-04 22:30:57",
+        "value": "2024-05-04 22:32:06",
         "source": "mediawiki-metadata",
         "hidden": ""
       },
       "ObjectName": {
-        "value": "Fifth Third Bank 2023 logo-primary-shieldleft-full-marbletext",
+        "value": "Fifth Third Bank 2023 logo-shieldonly-primary",
         "source": "mediawiki-metadata"
       },
       "CommonsMetadataExtension": {
@@ -761,12 +761,95 @@
     }
   },
   {
+    "ticker": "FSLR",
+    "file": "fslr.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/0/05/Logo_FirstSolar.svg",
+    "evidence": "https://commons.wikimedia.org/wiki/File:Logo_FirstSolar.svg",
+    "reviewed": "2026-09-13",
+    "downloaded": "2026-09-24T06:54:43.411Z",
+    "license": "Public domain",
+    "restrictions": "trademarked",
+    "attributionRequired": "false",
+    "sha256": "4409e64df9255dc0441024e8132f4d3e2e497d9d8c2c0fe6a1719dc81f2d3de9",
+    "sourceMetadata": {
+      "DateTime": {
+        "value": "2021-01-13 15:48:32",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "Logo FirstSolar",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "With trademark|PD textlogo|SVG text logos|Unknown date|Template Unknown (author)|Logos of companies based in Arizona|SVG logos of companies of the United States|First Solar solar cell panels",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "ImageDescription": {
+        "value": "Logo des amerikanischen Unternehmens <a href=\"https://de.wikipedia.org/wiki/First_Solar\" class=\"extiw\" title=\"de:First Solar\">First Solar</a>",
+        "source": "commons-desc-page"
+      },
+      "DateTimeOriginal": {
+        "value": "Unknown date",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "Vektordaten extrahiert aus <a rel=\"nofollow\" class=\"external text\" href=\"https://www.firstsolar.com/-/media/First-Solar/Documents/Corporate-Collaterals/FS_Corporate_Factsheet.ashx\">dieser PDF-Datei</a> (abgerufen am 05.01.2021)",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "Unknown author<span style=\"display: none;\">Unknown author</span>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "Public domain",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Public domain",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "false",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Copyrighted": {
+        "value": "False",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "trademarked",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "License": {
+        "value": "pd",
+        "source": "commons-templates",
+        "hidden": ""
+      }
+    }
+  },
+  {
     "ticker": "UNH",
     "file": "unh.svg",
     "source": "https://upload.wikimedia.org/wikipedia/commons/f/f3/UnitedHealth_Group_logo.svg",
     "evidence": "https://commons.wikimedia.org/wiki/File:UnitedHealth_Group_logo.svg",
     "reviewed": "2026-09-13",
-    "downloaded": "2026-09-14T02:54:24.572Z",
+    "downloaded": "2026-09-24T06:54:43.448Z",
     "license": "Public domain",
     "restrictions": "trademarked",
     "attributionRequired": "false",

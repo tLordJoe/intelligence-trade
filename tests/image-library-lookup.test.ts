@@ -216,10 +216,10 @@ test("no alias of one type maps a current ticker to two company identities", () 
   assert.deepEqual(dupes, []);
 });
 
-test("the ten reviewed marks and fourteen reviewed portraits are present and untouched", () => {
+test("the eleven reviewed marks and fourteen reviewed portraits are present and untouched", () => {
   const manualMarks = catalog.entries.filter((e) => e.kind === "company" && e.asset?.source.reviewedBy === "manual");
   const manualPortraits = catalog.entries.filter((e) => e.kind === "person" && e.asset?.source.reviewedBy === "manual");
-  assert.equal(manualMarks.length, 10); assert.equal(manualPortraits.length, 14);
+  assert.equal(manualMarks.length, 11); assert.equal(manualPortraits.length, 14);
   const manifest = JSON.parse(readFileSync(new URL("../docs/company-logo-manifest.json", import.meta.url), "utf8")) as Array<{ ticker: string; sha256: string }>;
   for (const m of manifest) {
     const entry = manualMarks.find((e) => e.aliases.some((a) => a.type === "ticker" && a.value === m.ticker));
