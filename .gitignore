@@ -64,6 +64,10 @@ data/senate-candidate-review.json
 data/senate-amendment-reviews.json
 data/senate-security-reviews.json
 data/senate-public-candidate.json
+data/institution-runs/
+data/institution-candidate.json
+data/institution-filing-reviews.json
+data/institution-cohorts/
 
 # Personal Claude Code preferences. `settings.json` is the shareable project
 # file; `settings.local.json` is per-developer and is never committed.
