@@ -49,7 +49,7 @@ export default function HomeTradingTable({ windows, houseWindows, senateWindows,
         <div className="home-source-controls" role="group" aria-label="Disclosure source">
           <button type="button" aria-label="All available sources" aria-pressed={source === "all"} onClick={() => { setSource("all"); setExpanded(false); }}><Layers3 size={18} aria-hidden="true" /><span>All</span></button>
           <button type="button" aria-pressed={source === "house"} onClick={() => { setSource("house"); setExpanded(false); }}><Landmark size={18} aria-hidden="true" /><span>House-only</span></button>
-          {senateAvailable ? <button type="button" aria-pressed={source === "senate"} onClick={() => { setSource("senate"); setExpanded(false); }}><Landmark size={18} aria-hidden="true" /><span>Senate-only<small>Partial coverage</small></span></button> :
+          {senateAvailable ? <button type="button" aria-pressed={source === "senate"} onClick={() => { setSource("senate"); setExpanded(false); }}><Landmark size={18} aria-hidden="true" /><span>Senate-only</span></button> :
             <button type="button" disabled title="This source is not connected yet"><Landmark size={18} aria-hidden="true" /><span>Senate-only<small>Coming soon</small></span></button>}
           {insiderWindows ? <button type="button" aria-pressed={source === "insiders"} onClick={() => { setSource("insiders"); setExpanded(false); }}><Building2 size={18} aria-hidden="true" /><span>Corporate insiders</span></button> :
             <button type="button" disabled title="This source is not connected yet"><Building2 size={18} aria-hidden="true" /><span>Corporate insiders<small>Coming soon</small></span></button>}
