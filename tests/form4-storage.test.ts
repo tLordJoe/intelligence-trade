@@ -11,7 +11,7 @@ import type { CandidateArchive } from "../src/lib/form4/merge.ts";
 // Storage-only synthetic objects; parsing and eligibility are separately tested.
 const archive = (count: number): CandidateArchive => ({ schemaVersion: 1, updatedAt: "2026-09-28",
   runIds: ["form4_test"], filings: Array.from({ length: count }, (_, n) => ({ accessionNumber: String(n).padStart(8, "0"),
-    documentSha256: String(n), rows: [], timestamps: { firstObservedAt: "original" } })) as CandidateArchive["filings"] });
+    documentSha256: String(n), rows: [], timestamps: { firstObservedAt: "original" } })) as unknown as CandidateArchive["filings"] });
 function isolated(body: (path: string) => void) {
   const dir = mkdtempSync(join(tmpdir(), "outfox-form4-storage-"));
   try { body(join(dir, "candidate.json")); } finally { rmSync(dir, { recursive: true, force: true }); }
@@ -93,7 +93,7 @@ test("a failed later chunk leaves the previous archive readable", () => isolated
   const bad = archive(601);
   Object.assign(bad.filings[0], { changed: true });
   const chunksBefore = readdirSync(`${path}.chunks`).length;
-  Object.assign(bad.filings[600], { cannotSerialize: 1n });
+  Object.assign(bad.filings[600], { cannotSerialize: BigInt(1) });
   assert.throws(() => writeCandidateFile(path, bad), /BigInt/);
   assert.equal(readFileSync(path, "utf8"), before);
   assert.deepEqual(readCandidateFile(path), good);
