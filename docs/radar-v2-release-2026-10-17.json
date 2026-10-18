@@ -1,6 +1,6 @@
 {
   "reviewedBy": "Codex",
-  "reviewedAt": "2026-10-18T05:11:18.519Z",
+  "reviewedAt": "2026-10-18T05:19:32.897Z",
   "rules": {
     "version": "2.0",
     "transactionDays": 90,
@@ -39,8 +39,8 @@
       "sha256": "d4501445d2d0fb2fde9edb06b599fd79e12207c540c932006599ec022b747aa6"
     },
     {
-      "path": "data/security-master.json",
-      "sha256": "889612681ada8bce1542b10ec9445b023427aa127643f8a195408ff6a37b36c0"
+      "path": "src/lib/radar-identities.json",
+      "sha256": "1547daa73b45d333adc3a905229f0f40b07473623b0510f5e55d8a4b6053ea1f"
     },
     {
       "path": "src/lib/radar-security-links.json",

@@ -1,17 +1,17 @@
 import house from "./congress-live.json";
 import senate from "./senate-live.json";
-import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import links from "./radar-security-links.json";
 import { readApprovedSenateRelease } from "./senate/public-view.ts";
 import { publishedInsiders, publishedInstitutions } from "./published-disclosures.ts";
+import { readDisclosureRelease } from "./disclosure-storage.ts";
 import { buildSubstantiveRadar, type RadarV2View } from "./radar-engine.ts";
 import type { DisclosureRecord } from "./congress-schema.ts";
 
 /** Server projection only; never imported by a client component. */
 const cache=new Map<string,RadarV2View>();
 let identities:Record<string,{ticker:string;cik:string;title:string}>|undefined;
-const master=()=>identities??(identities=JSON.parse(readFileSync(join(process.cwd(),"data/security-master.json"),"utf8")).entries);
+const master=()=>identities??(identities=(readDisclosureRelease(join(process.cwd(),"src/lib/radar-identities.json")) as {entries:NonNullable<typeof identities>}).entries);
 export const radarIdentity=(ticker:string)=>master()[ticker]??null;
 export function currentRadar(asOf = new Date().toISOString().slice(0,10)) {
   if(!cache.has(asOf)){

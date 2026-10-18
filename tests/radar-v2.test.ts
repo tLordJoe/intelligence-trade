@@ -109,7 +109,9 @@ test("source row permutations and duplicate disclosures do not change ranking or
 });
 test("published-data scan uses four feeds and produces substantive, source-bound evidence—not AAPL's thin old pattern",()=>{
   const insiders=readDisclosureRelease(new URL("../src/lib/insider-live.json",import.meta.url).pathname) as {payload:InsiderPayload},institutions=readDisclosureRelease(new URL("../src/lib/institutions-live.json",import.meta.url).pathname) as {payload:InstitutionPayload};
-  const view=buildSubstantiveRadar({house:house.trades,senate:readApprovedSenateRelease(json("../src/lib/senate-live.json")),insiders:insiders.payload,institutions:institutions.payload,identities:json("../data/security-master.json").entries,securityLinks:json("../src/lib/radar-security-links.json").entries},asOf);
+  const directory=readDisclosureRelease(new URL("../src/lib/radar-identities.json",import.meta.url).pathname) as {entries:Parameters<typeof buildSubstantiveRadar>[0]["identities"]};
+  assert.ok(Object.keys(directory.entries).length>10000);
+  const view=buildSubstantiveRadar({house:house.trades,senate:readApprovedSenateRelease(json("../src/lib/senate-live.json")),insiders:insiders.payload,institutions:institutions.payload,identities:directory.entries,securityLinks:json("../src/lib/radar-security-links.json").entries},asOf);
   assert.equal(view.coverage.holdingRows,292522);assert.equal(view.coverage.insiderRows,3090);assert.equal(view.coverage.comparableManagers,9);assert.ok(view.coverage.fundSecuritiesScreened>3000);
   assert.equal(view.items.some(i=>i.ticker==="AAPL"||i.ticker==="BRK-B"),false);assert.ok(view.items.length>=4);
   const alphabet=view.items.find(i=>i.ticker==="GOOGL")!;assert.equal(alphabet.managers,4);assert.deepEqual(alphabet.tickers,["GOOG","GOOGL"]);assert.equal(view.items.filter(i=>i.cik==="0001652044").length,1);
