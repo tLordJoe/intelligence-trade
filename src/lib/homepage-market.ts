@@ -15,7 +15,20 @@ export interface HomePurchase {
   amount: string; traded: string; filed: string; source: string;
 }
 export interface HomeWindow {
-  start: string; end: string; companies: HomeCompany[]; recent: HomePurchase[];
+  start: string; end: string; companies: HomeCompany[]; recent: HomePurchase[]; companyCount?: number;
+}
+/** Bound client payloads while retaining the full, server-searchable list count. */
+export function previewHomeWindows(windows: Record<HomePeriod,HomeWindow>): Record<HomePeriod,HomeWindow> {
+  return Object.fromEntries((["ytd","30","90"] as HomePeriod[]).map(period=>[period,{
+    ...windows[period],companyCount:windows[period].companies.length,companies:windows[period].companies.slice(0,3),
+  }])) as Record<HomePeriod,HomeWindow>;
+}
+export function queryHomeActivity(window: HomeWindow, query: {q?:string;sort?:string;page?:string}) {
+  const q=(query.q??"").trim().slice(0,100),sort=["buyers","purchases","sales","ticker"].includes(query.sort??"")?query.sort!:"buyers";
+  const rows=window.companies.filter(row=>!q||`${row.ticker} ${row.name} ${row.filers.map(person=>person.name).join(" ")}`.toLowerCase().includes(q.toLowerCase()))
+    .sort((a,b)=>(sort==="ticker"?0:sort==="purchases"?b.purchases-a.purchases:sort==="sales"?b.sales-a.sales:b.buyers-a.buyers)||a.ticker.localeCompare(b.ticker));
+  const pages=Math.max(1,Math.ceil(rows.length/25)),requested=Number(query.page??1),page=Number.isSafeInteger(requested)?Math.min(pages,Math.max(1,requested)):1;
+  return {q,sort,page,pages,total:rows.length,companies:rows.slice((page-1)*25,page*25)};
 }
 export function homePeriodStart(period: HomePeriod, asOf: string): string {
   if (!validDisclosureDate(asOf)) throw new Error("Invalid homepage as-of date");

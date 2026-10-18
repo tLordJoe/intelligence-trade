@@ -15,6 +15,9 @@ const BASE_URL = "https://outfoxmarkets.com";
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: BASE_URL, changeFrequency: "daily", priority: 1 },
+    { url: `${BASE_URL}/radar`, changeFrequency: "daily", priority: 0.9 },
+    { url: `${BASE_URL}/radar/how-it-works`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/activity`, changeFrequency: "daily", priority: 0.8 },
     { url: `${BASE_URL}/explore`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE_URL}/congress`, changeFrequency: "daily", priority: 0.9 },
     { url: `${BASE_URL}/blog`, changeFrequency: "weekly", priority: 0.8 },
@@ -26,8 +29,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   if (readApprovedSenateRelease(senateRelease)) staticPages.push({ url: `${BASE_URL}/senate`, changeFrequency: "daily", priority: 0.8 });
   if (readApprovedInsiderRelease(insiderRelease)) staticPages.push({ url: `${BASE_URL}/insiders`, changeFrequency: "daily", priority: 0.8 });
   if (approvedInstitutions(institutionsRelease)) staticPages.push({ url: `${BASE_URL}/institutions`, changeFrequency: "monthly", priority: 0.8 });
-  if (readApprovedInsiderRelease(insiderRelease)) staticPages.push({ url: `${BASE_URL}/insiders`, changeFrequency: "daily", priority: 0.8 });
-
   const layerPages: MetadataRoute.Sitemap = layers.map((layer) => ({
     url: `${BASE_URL}/layer/${layer.slug}`,
     changeFrequency: "weekly",

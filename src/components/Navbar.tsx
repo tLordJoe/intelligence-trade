@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 function subscribeToTheme(onChange: () => void) {
   const observer = new MutationObserver(onChange);
@@ -15,6 +15,7 @@ function serverDarkTheme() { return false; }
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
+  { href: "/radar", label: "Radar" },
   { href: "/explore", label: "Explore" },
   { href: "/congress", label: "Congress" },
   { href: "/blog", label: "Briefing" },
@@ -27,6 +28,14 @@ export default function Navbar({ showCompare = false }: { showCompare?: boolean 
   const pathname = usePathname();
   const dark = useSyncExternalStore(subscribeToTheme, readDarkTheme, serverDarkTheme);
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  useEffect(()=>{
+    if(!menuOpen)return;
+    // Safari does not necessarily focus a button after a pointer tap.
+    const closeOnEscape=(event:KeyboardEvent)=>{if(event.key==="Escape"){setMenuOpen(false);menuButton.current?.focus();}};
+    document.addEventListener("keydown",closeOnEscape);
+    return ()=>document.removeEventListener("keydown",closeOnEscape);
+  },[menuOpen]);
 
   function toggleTheme() {
     const next = !readDarkTheme();
@@ -66,8 +75,8 @@ export default function Navbar({ showCompare = false }: { showCompare?: boolean 
           </span>
         </Link>
 
-        <button type="button" className="md:hidden border rounded-lg px-3 min-h-11 text-sm font-semibold" style={{ borderColor: "var(--border)" }} aria-expanded={menuOpen} aria-controls="outfox-primary-nav" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? "Close" : "Menu"}</button>
-        <nav id="outfox-primary-nav" aria-label="Primary" className={`${menuOpen ? "flex" : "hidden"} md:flex flex-wrap items-center gap-1 w-full md:w-auto`}>
+        <div className="flex items-center gap-2 md:hidden"><Link href="/radar" className="min-h-11 px-3 inline-flex items-center text-sm font-bold" style={{color:"var(--link-accent)"}}>Radar ↗</Link><button ref={menuButton} type="button" className="border rounded-lg px-3 min-h-11 text-sm font-semibold" style={{ borderColor: "var(--border)" }} aria-expanded={menuOpen} aria-controls="outfox-primary-nav" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? "Close" : "Menu"}</button></div>
+        <nav id="outfox-primary-nav" aria-label="Primary" className={`${menuOpen ? "grid" : "hidden"} grid-cols-2 md:flex flex-wrap items-center gap-1 w-full md:w-auto`}>
           {NAV_LINKS.flatMap((link) => link.href === "/explore" && showCompare
             ? [link, { href: "/compare", label: "Compare · Preview" }] : [link]).map((link) => (
             <Link
@@ -75,7 +84,7 @@ export default function Navbar({ showCompare = false }: { showCompare?: boolean 
               onClick={() => setMenuOpen(false)}
               href={link.href}
               aria-current={isActive(link.href) ? "page" : undefined}
-              className="px-2.5 md:px-3 py-1.5 min-h-11 inline-flex items-center rounded-full text-xs font-semibold whitespace-nowrap transition-colors"
+              className="px-2.5 md:px-3 py-1.5 min-h-11 inline-flex items-center rounded-lg md:rounded-full text-sm md:text-xs font-semibold whitespace-nowrap transition-colors"
               style={{
                 backgroundColor: isActive(link.href) ? "var(--accent-soft)" : "transparent",
                 color: isActive(link.href) ? "var(--accent)" : "var(--text-dim)",

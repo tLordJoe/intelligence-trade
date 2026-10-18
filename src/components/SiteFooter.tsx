@@ -18,12 +18,14 @@ export default function SiteFooter() {
               </span>
             </div>
             <p className="text-xs leading-relaxed" style={{ color: "var(--text-dim)" }}>
-              Financial intelligence for the rest of us. Official U.S. House
-              trade disclosures and market data across the AI supply chain.
+              Financial intelligence for the rest of us. Follow disclosed activity,
+              inspect the evidence, and connect the bigger picture.
             </p>
           </div>
 
           <div className="grid grid-cols-2 gap-x-12 gap-y-2 text-xs">
+            <Link href="/radar" className="hover:underline min-h-11 inline-flex items-center" style={{color:"var(--text-dim)"}}>On the Radar</Link>
+            <Link href="/activity" className="hover:underline min-h-11 inline-flex items-center" style={{color:"var(--text-dim)"}}>Browse stock activity</Link>
             <Link href="/congress" className="hover:underline" style={{ color: "var(--text-dim)" }}>
               Congress Trades
             </Link>
