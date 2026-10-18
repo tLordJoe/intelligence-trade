@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
-    "/*": ["./src/lib/insider-live.json", "./src/lib/institutions-live.json", "./src/lib/published-data/*.json.gz"],
+    "/*": ["./src/lib/insider-live.json", "./src/lib/institutions-live.json", "./src/lib/published-data/*.json.gz", "./data/security-master.json"],
   },
   async redirects() {
     return [

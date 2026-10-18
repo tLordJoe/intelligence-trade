@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "reviewedBy": "Codex",
+  "reviewedAt": "2026-10-17",
+  "basis": "CUSIP and share class read from official SEC filings, joined to the exact issuer CIK/ticker in the frozen SEC security master. No runtime fuzzy-name or CUSIP-prefix joins. These links label candidates after the full holdings corpus is screened; unlinked fund candidates remain visible under their CUSIP.",
+  "entries": [
+    { "cusip": "02079K305", "ticker": "GOOGL", "cik": "0001652044", "name": "Alphabet", "shareClass": "Class A", "sources": ["https://www.sec.gov/Archives/edgar/data/72971/000007297126000261/xslForm13F_X02/13F_3_2026.xml", "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000059/goog-20260602.htm"] },
+    { "cusip": "02079K107", "ticker": "GOOG", "cik": "0001652044", "name": "Alphabet", "shareClass": "Class C", "sources": ["https://www.sec.gov/Archives/edgar/data/1278249/000127824926000008/xslForm13F_X02/tba-13F_2q2026.xml", "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000059/goog-20260602.htm"] },
+    { "cusip": "15675D103", "ticker": "CBRS", "cik": "0002021728", "name": "Cerebras Systems", "shareClass": "Class A", "sources": ["https://www.sec.gov/Archives/edgar/data/1088875/000108887526000057/xslForm13F_X02/edgbgcojun26.xml", "https://www.sec.gov/Archives/edgar/data/1040197/000117266126003680/xslForm13F_X02/infotable.xml"] },
+    { "cusip": "595112103", "ticker": "MU", "cik": "0000723125", "name": "Micron Technology", "shareClass": "Common", "sources": ["https://www.sec.gov/Archives/edgar/data/1656456/000165645626000001/xslForm13F_X02/Form13FInfoTable.xml", "https://www.sec.gov/Archives/edgar/data/2052441/000205244126000002/xslForm13F_X02/InformationTableOutput.xml"] },
+    { "cusip": "30303M102", "ticker": "META", "cik": "0001326801", "name": "Meta Platforms", "shareClass": "Class A", "sources": ["https://www.sec.gov/Archives/edgar/data/1326801/000031506626002069/xslSCHEDULE_13G_X02/primary_doc.xml"] },
+    { "cusip": "44812J104", "ticker": "HUT", "cik": "0001964789", "name": "Hut 8", "shareClass": "Common", "sources": ["https://www.sec.gov/Archives/edgar/data/1868643/000186864326000001/xslForm13F_X02/file.XML"] },
+    { "cusip": "458140100", "ticker": "INTC", "cik": "0000050863", "name": "Intel", "shareClass": "Common", "sources": ["https://www.sec.gov/Archives/edgar/data/1657733/000165773325000006/xslForm13F_X02/13FQ32025.xml"] },
+    { "cusip": "84615Q103", "ticker": "SPCX", "cik": "0001181412", "name": "Space Exploration Technologies", "shareClass": "Class A", "sources": ["https://www.sec.gov/Archives/edgar/data/1181412/000121390026087780/xslSCHEDULE_13G_X02/primary_doc.xml"] }
+  ]
+}
