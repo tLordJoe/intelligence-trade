@@ -3,19 +3,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
-import CompanyMark from "@/components/CompanyMark";
-import { companyMark } from "@/lib/company-marks";
-import { currentRadar } from "@/lib/radar-data";
-import identities from "@/lib/sector-company-identities.json";
+import RadarEvidencePage from "@/components/RadarEvidencePage";
+import { currentRadar,radarIdentity } from "@/lib/radar-data";
 import "../../homepage.css";
 export async function generateMetadata({params}:{params:Promise<{ticker:string}>}):Promise<Metadata>{const ticker=(await params).ticker.toUpperCase();return {title:`${ticker} · On the Radar`,alternates:{canonical:`/radar/${ticker}`}};}
-export default async function RadarStock({params}:{params:Promise<{ticker:string}>}){const view=currentRadar(),ticker=(await params).ticker.toUpperCase(),item=view.items.find(row=>row.ticker===ticker);if(!item){
-  const identity=identities.entries[ticker as keyof typeof identities.entries];if(!identity)notFound();
-  return <><Navbar/><main className="home-shell instrument-page"><nav className="instrument-breadcrumb"><Link href="/radar">On the Radar</Link></nav><header className="instrument-hero"><p className="kicker">Current Radar status</p><h1>{ticker}</h1><h2>{identity.title}</h2><p className="instrument-summary">This stock is not currently in the Radar highlights. The current rules or display cutoff are not met; this is not a claim that no buying occurred.</p></header><p className="radar-scope">As of {view.asOf}. Radar is recomputed from current published evidence, not a permanent recommendation list. <Link href="/radar/how-it-works">Read the selection rules</Link> or <Link href="/radar">see the current highlights</Link>.</p></main><SiteFooter/></>;
-}return <><Navbar/><main className="home-shell instrument-page">
-  <nav className="instrument-breadcrumb"><Link href="/radar">On the Radar</Link><span>/</span><span>{item.ticker}</span></nav>
-  <header className="instrument-hero"><p className="kicker">Why this stock is on the Radar</p><div className="instrument-title"><CompanyMark ticker={ticker} src={companyMark(ticker,item.cik)}/><h1>{ticker}</h1></div><h2>{item.name}</h2><p className="instrument-summary">{item.buyers} filers disclosed buying; {item.repeatBuyers} bought on more than one date. {item.mixedActivity ? "There is also substantial selling in this window—this is mixed activity, not a consensus buy." : "Inspect the purchase and sale records together before drawing a conclusion."}</p></header>
-  <dl className="instrument-facts"><div><dt>Buying filers</dt><dd>{item.buyers}</dd></div><div><dt>Repeat buyers</dt><dd>{item.repeatBuyers}</dd></div><div><dt>Purchase / sale records</dt><dd>{item.purchases} / {item.sales}</dd></div><div><dt>Distinct selling filers</dt><dd>{item.sellers}</dd></div><div><dt>Buying sources</dt><dd>{item.chambers.join(" + ")}</dd></div><div><dt>Median purchase filing delay</dt><dd>{item.medianFilingDelayDays} days</dd></div></dl>
-  <p className="radar-scope">Transaction window {view.start}–{view.asOf}. Latest qualifying buy filed {item.latestBuyFiled}. Counts refer to reporting filers, including any disclosed family accounts—not proven independent buyers. <Link href="/radar/how-it-works">Read the exact selection rules →</Link></p>
-  <section className="sector-page-section"><div className="home-section-intro"><h2>Follow the evidence</h2><p>Purchases and sales from the same window. Reported amounts are brackets, not exact cash invested.</p></div><div className="radar-evidence-list">{item.evidence.map(row=><article className="home-panel radar-evidence" key={row.id}><div><span className={`radar-tag${row.side==="Sell"?" radar-tag-mixed":""}`}>{row.side==="Buy"?"Purchase":"Sale"}</span><h3><Link href={row.filerHref}>{row.filerName}</Link></h3><p>{row.chamber}{row.owner?` · Account as filed: ${row.owner}`:""}</p></div><dl><div><dt>Transaction</dt><dd>{row.traded}</dd></div><div><dt>Filed</dt><dd>{row.filed}</dd></div><div><dt>Reported amount</dt><dd>{row.amount}</dd></div></dl><a className="home-text-link" href={row.sourceUrl} target="_blank" rel="noopener noreferrer">Original filing ↗</a></article>)}</div></section><Link className="home-text-link" href="/radar">← All Radar highlights</Link>
-  </main><SiteFooter/></>;}
+export default async function RadarStock({params}:{params:Promise<{ticker:string}>}){
+  const ticker=(await params).ticker.toUpperCase(),view=currentRadar(),item=[...view.items,...view.watchItems].find(i=>i.tickers.includes(ticker));
+  if(item)return <RadarEvidencePage view={view} item={item}/>;
+  if(!radarIdentity(ticker))notFound();
+  return <><Navbar/><main className="home-shell instrument-page"><nav className="instrument-breadcrumb"><Link href="/radar">On the Radar</Link></nav><header className="instrument-hero"><p className="kicker">Current Radar status · Evidence v2</p><h1>{ticker.slice(0,20)}</h1><p className="instrument-summary">This name does not currently qualify for the stronger Radar shortlist. A handful of purchases alone is not sufficient. That is not a claim that no activity occurred.</p></header><p>As of {view.asOf}. <Link href="/radar/how-it-works">Inspect the published criteria</Link> or <Link href="/radar">explore the current evidence-led candidates</Link>.</p></main><SiteFooter/></>;
+}
