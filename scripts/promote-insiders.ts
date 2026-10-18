@@ -1,5 +1,6 @@
 /** Two-stage local preparation/promotion; never pushes or deploys. */
-import { readFileSync, writeFileSync, renameSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { writeDisclosureRelease } from "../src/lib/disclosure-storage.ts";
 import { resolve } from "node:path";
 import { loadInsiderCandidateReview } from "../src/lib/form4/candidate-review.ts";
 import { prepareInsiderRelease, prepareCurrentInsiderRelease, insiderPayloadHash, readApprovedInsiderRelease, type InsiderRelease } from "../src/lib/form4/public-view.ts";
@@ -23,7 +24,7 @@ else {
   if (insiderPayloadHash(fresh.payload) !== insiderPayloadHash(prepared.payload)) throw new Error("Prepared payload is stale; replay and review again");
   fresh.approval = { reviewedBy: arg("--reviewed-by"), reviewedAt: new Date().toISOString(), payloadSha256: insiderPayloadHash(fresh.payload), boundedCoverageAcknowledged: true };
   readApprovedInsiderRelease(fresh);
-  const target = resolve(root, "src/lib/insider-live.json"), temporary = `${target}.next`;
-  writeFileSync(temporary, JSON.stringify(fresh, null, 2), { flag: "wx" }); renameSync(temporary, target);
+  mkdirSync(resolve(root, "src/lib/published-data"), { recursive: true });
+  writeDisclosureRelease(resolve(root, "src/lib/insider-live.json"), fresh);
   console.log("Reviewed insider payload promoted locally; no push or deployment performed.");
 }

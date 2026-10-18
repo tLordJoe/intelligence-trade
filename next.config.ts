@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  outputFileTracingIncludes: {
+    "/*": ["./src/lib/insider-live.json", "./src/lib/institutions-live.json", "./src/lib/published-data/*.json.gz"],
+  },
   async redirects() {
     return [
       // Canonical host: send www to the apex domain

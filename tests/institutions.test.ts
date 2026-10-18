@@ -72,6 +72,17 @@ test("unparsed notices, confidential holdings and combination reports cannot be 
   assert.equal(reconcileInstitutions([original],[ref.cik]).active.length,0);
   for(const changed of [{...original,confidentialOmitted:true},{...original,otherIncludedManagers:1},{...original,reportType:"13F COMBINATION REPORT"}])assert.equal(reconcileInstitutions([changed]).active.length,0);
 });
+test("available filing mode exposes explicitly partial reported positions, never unresolved amendments or invalid attribution",()=>{
+  for(const changed of [{...original,confidentialOmitted:true},{...original,reportType:"13F COMBINATION REPORT"}]){
+    assert.equal(reconcileInstitutions([changed],[],[],true).active.length,1);
+    const payload:InstitutionPayload={schemaVersion:2,source:"SEC Form 13F",semantics:"quarter_end_reported_holdings",coverage:[{cik:ref.cik,from:"2026-01-01",to:"2026-09-15",collectedAt:"2026-09-15"}],limitations,filings:[changed]};
+    const approval={reviewedBy:"Synthetic test",reviewedAt:"2026-09-15",sha256:payloadHash(payload),partialCoverageAcknowledged:true};
+    assert.ok(approvedInstitutions({payload,approval}));
+    for(const invalid of [{...changed,amendment:true},{...changed,otherIncludedManagers:1},{...changed,computedEntries:99}]){
+      const unsafe={...payload,filings:[invalid]};assert.throws(()=>approvedInstitutions({payload:unsafe,approval:{...approval,sha256:payloadHash(unsafe)}}));
+    }
+  }
+});
 test("quarterly quantity differences preserve option/class/discretion boundaries, not trades",()=>{
   const r={...ref,accession:"0000000001-26-000002",filedDate:"2026-08-15"};const next=parseInstitutionalFiling(fixture(r,"2026-06-30","15"),r);
   const change=positionChanges(original,next)[0];assert.equal(change.observedQuantityDifference,"2.5");assert.match(change.caveat,/not executed trades/);

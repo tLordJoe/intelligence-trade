@@ -1,0 +1,466 @@
+{
+  "auditedAt": "2026-10-18T04:32:45.032Z",
+  "reviewer": "Codex",
+  "parser": "saxes, independent of application XML parser",
+  "publicationMode": "available_filings_without_required_comparison_pair",
+  "candidateSha256": "558f5b3db37543464c7803a1afad6b7c85011504f37bd540dedf09ce9acc7e16",
+  "filings": 47,
+  "reportingEntities": 20,
+  "rowsChecked": 292522,
+  "sourceReviews": [
+    {
+      "accession": "0000019617-26-000325",
+      "sourceSha256": "9691a80faaf95c1198a8ae84509fa49548c9f3d108203105154d23b141abdfc1",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:41.544Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 34064 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0000019617-26-000083",
+      "sourceSha256": "cb2470cffb4189c6517a25f3088e372479dd5a5f41944f7410bfdd94123f7d00",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:41.894Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 31795 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0000093751-26-000315",
+      "sourceSha256": "65918e9be386c34fe6caf67a6e4ecfc0cb2fa835ed620bc5ef9eb3d5b9552e65",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:41.949Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 4269 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0000093751-26-000100",
+      "sourceSha256": "5d6b186ec23e117b57c0d98bf356457a927fc7b562848bfdec3d25aeb1bccc0a",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:42.004Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 4288 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0000102909-26-000031",
+      "sourceSha256": "f49fd4b5f28eec22fabce717c059ef15444a7e27da4d80dfef1b771d691b511f",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:42.205Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 17686 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0000315066-26-001390",
+      "sourceSha256": "1ab6f62a0665785862de53ea6e00db3c66c28c08e7a030fc7cc989a400db13d7",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:42.339Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 13282 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0000315066-26-000611",
+      "sourceSha256": "19384f1cded07d09d399f13fe12df83ba6947c1cdbbcacf317872e342c546c40",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:42.476Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 13225 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0000886982-26-000519",
+      "sourceSha256": "1503b58b92f8e419e701a774ef6fe49728dd22c8a1d2c428465829e9292e2883",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:42.789Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 14070 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0000886982-26-000274",
+      "sourceSha256": "de7ff4f2e9a72d17ebc7362d7c834bfa90ff8438648449654b1d2495b6143e31",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:43.092Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 13579 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0000895421-26-000243",
+      "sourceSha256": "57f91071b927647b269abffa1addbc9513fb53db2a7b3067019d13e043da4e83",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:43.746Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 45905 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0000895421-26-000183",
+      "sourceSha256": "a96f39cba3654e61bb497c6c0bef1f28973e6c8364a44635191e96b752ee9d3a",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.347Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 45985 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001037389-26-000059",
+      "sourceSha256": "87a86ab29e9a389a76e0842711ad5b6725f97563310b253b7b7da94cc301e743",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.388Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 3140 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001037389-26-000033",
+      "sourceSha256": "ace75853a4bd02bc24581c8782c4a3488b59f9be12eb03c5829e1caa21cc1849",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.431Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 3213 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001037389-26-000023",
+      "sourceSha256": "25e75828c3476e415b5336a2b5ee2d4ee49f27808da5d829f48f4d448d9c7cf3",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.472Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 3185 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001040273-26-000003",
+      "sourceSha256": "426ac9f0e22f5d84c1b0e92958fe3970bc27f1441534fb7451c1fc72c72f7e34",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.473Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 43 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001040273-26-000002",
+      "sourceSha256": "0210b005832edc815ff8b49da2678462fdde4ed92cdcf2ea69a0682163c512ec",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.475Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 33 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001040273-26-000001",
+      "sourceSha256": "024902be9a9649084c55191db5e93bcab62798f5bd8edd0ef3826270d8d52332",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.476Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 44 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001193125-26-352200",
+      "sourceSha256": "19fc411d481abb83dc262b3ddeacaa3b6d8ae30c0d7ba76566595e2c60e62a0e",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.478Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 89 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001193125-26-226661",
+      "sourceSha256": "989d1c033140cef4b1aa6da937c0024f77a8fe37a99ac917df0af6aecbcee3cb",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.479Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 90 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001193125-26-054580",
+      "sourceSha256": "0b20c1867aefb1c2e4d94223bfa86d91aaaa3c91f1e783689d8f99b3db849522",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.481Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 110 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0000919574-26-005478",
+      "sourceSha256": "e95fe69be951f40cbb928b49ca6ebfddc9b54b85f5319fef081537e5eff63b2c",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.484Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 211 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0000919574-26-003501",
+      "sourceSha256": "a79b72e081a4da608cc44c65d8fdc7e680482eeb163e3ff7ff5bdda046ee5c47",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.486Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 198 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0000919574-26-005427",
+      "sourceSha256": "fa9124f99545cfa684616a2dc8fb86c8ddc3034b7b5afaee8157f9452f14d158",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.487Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 46 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0000919574-26-003362",
+      "sourceSha256": "0b9be0b3686a4703a56760625b0b27d18fd613ea784c7647a8962c4297dace54",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.488Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 54 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0000919574-26-001143",
+      "sourceSha256": "afefefe0a3966f6676fe4e04c58640c0cc40083726daa00b94578a75073c1719",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.489Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 54 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0000899140-26-000855",
+      "sourceSha256": "a577903530de044132aafadac5fa780d63c9ab9a33a0a214266468c73fda2b64",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.544Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 5017 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0000899140-26-000547",
+      "sourceSha256": "81ebf23a710572ecfb15219de70a5cea9f37287d09ebec6a0a3c1cc82f0e1e81",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.605Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 4546 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001172661-26-002336",
+      "sourceSha256": "90763a9f577675268e9b5e719983d0843925f6b09f3fc209ee6a7688ff7582c7",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.606Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 11 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001172661-26-001091",
+      "sourceSha256": "4b87c11149fec8f45b5bfa01bead92bae8fee19b46eead79118247e96fb5c036",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.606Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 11 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001350694-26-000003",
+      "sourceSha256": "10db3b5be5784fc280833ce0c20f050fea88e30f3c98828a0c561b9b265776f6",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.618Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 997 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001350694-26-000002",
+      "sourceSha256": "fb6dde8409663edbfe9e76e1d9284eee48fae46459588c058d666d100cb221ef",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.630Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 993 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001350694-26-000001",
+      "sourceSha256": "7a1ffbb22f98626d847326ff47064eea5fb188557ae7a0f1c9c3fc4d2cf7f743",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.643Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 1040 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001104659-26-062477",
+      "sourceSha256": "b89c075ca655fd89f92b0fc44e3764ad250162925e61ca627b0657e793ce648d",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:44.813Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 15589 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001104659-26-016408",
+      "sourceSha256": "593586bce6eb722ba768466e09c32752f4fe377cfcbb6382bc0df292eb2278cf",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:45.024Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 15403 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001536411-26-000002",
+      "sourceSha256": "66552424909a6984a60c540e070f4d1c9657d3de9fb2ca08fbab3475f00d9070",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:45.025Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 62 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001541617-26-000008",
+      "sourceSha256": "35e990f29c20b7519e75eac36cabde7c78cd1427ec0a22ab1de202003304e52f",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:45.026Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 20 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001541617-26-000006",
+      "sourceSha256": "8b9d5a0a72dcfaa0958aa3771b35e40cc29c14ac70f38a7ae09f750581376f22",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:45.026Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 13 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001541617-26-000002",
+      "sourceSha256": "161765f09cd11601338da2d3d73c036e4b5e684643d2039891792626d34333e9",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:45.027Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 18 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001647251-26-000007",
+      "sourceSha256": "52119cdea43a2787f5e564cbd717881b35428729eac4ac11ecfa444437c99c67",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:45.027Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 11 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001647251-26-000004",
+      "sourceSha256": "d9d60cb32c83acabbd508698eb38aa5950991eb409f6da28ec1a69a66e60f0cb",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:45.028Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 10 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001647251-26-000002",
+      "sourceSha256": "1f83cccfd5d5479b2b432dceca2f657d4282bf422e5cb1dfba15b3a285cd6f78",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:45.028Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 9 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001656456-26-000003",
+      "sourceSha256": "facc8dfb38d852307fc71979470a4313f4e4194e425441f8966247257e32b83a",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:45.029Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 27 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001656456-26-000002",
+      "sourceSha256": "ef7251f53fd07e4e34adfc67924d81c6f7927fb3924f78cea272b472d1b20d8d",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:45.030Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 31 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001656456-26-000001",
+      "sourceSha256": "d627fa0e3fdc0cb21c34d0a1ace37ded4c94ccd77adb2a6d923adcac42b93b3c",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:45.030Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 39 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001172661-26-003790",
+      "sourceSha256": "ce5e27e43bc76d8fea60fc5e2b146c017172653649e8433f0b3191dabfa5b310",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:45.031Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 15 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001172661-26-002339",
+      "sourceSha256": "e522f29dda22f8b85e6e96fa62e869856a776773a24129a90ce74abafdfb5d6c",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:45.031Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 1 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001172661-26-001095",
+      "sourceSha256": "e807ffd69ec892a907d2c0b591ed8c0e8b5b67e2e75486c157ac85f9fa5d4fc2",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T04:32:45.032Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 1 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    }
+  ],
+  "heldFamilies": [
+    {
+      "family": "0000093751:2026-06-30",
+      "accessions": [
+        "0000093751-26-000507",
+        "0000093751-26-000583"
+      ],
+      "reason": "amendment_family_requires_review"
+    },
+    {
+      "family": "0001135730:2025-12-31",
+      "accessions": [
+        "0000919574-26-001239",
+        "0000919574-26-003414"
+      ],
+      "reason": "amendment_family_requires_review"
+    },
+    {
+      "family": "0000886982:2025-12-31",
+      "accessions": [
+        "0000886982-26-000052",
+        "0000886982-26-000093"
+      ],
+      "reason": "amendment_family_requires_review"
+    },
+    {
+      "family": "0000019617:2026-03-31",
+      "accessions": [
+        "0000019617-26-000225"
+      ],
+      "reason": "amendment_family_requires_review"
+    },
+    {
+      "family": "0000895421:2025-12-31",
+      "accessions": [
+        "0000895421-26-000080",
+        "0000895421-26-000187"
+      ],
+      "reason": "amendment_family_requires_review"
+    },
+    {
+      "family": "0000895421:2025-09-30",
+      "accessions": [
+        "0000895421-26-000186"
+      ],
+      "reason": "amendment_family_requires_review"
+    },
+    {
+      "family": "0001423053:2026-06-30",
+      "accessions": [
+        "0001104659-26-097200",
+        "0001104659-26-104387"
+      ],
+      "reason": "amendment_family_requires_review"
+    },
+    {
+      "family": "0000102909:2026-03-31",
+      "accessions": [
+        "0000102909-26-002707"
+      ],
+      "reason": "notice_family_requires_other_reporting_manager_collection"
+    },
+    {
+      "family": "0000102909:2026-06-30",
+      "accessions": [
+        "0000102909-26-002714"
+      ],
+      "reason": "notice_family_requires_other_reporting_manager_collection"
+    },
+    {
+      "family": "0001336528:2026-06-30",
+      "accessions": [
+        "0001172661-26-003777"
+      ],
+      "reason": "notice_family_requires_other_reporting_manager_collection"
+    }
+  ],
+  "excludedManagers": []
+}

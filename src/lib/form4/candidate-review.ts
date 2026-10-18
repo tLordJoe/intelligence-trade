@@ -10,8 +10,8 @@ import { insiderUniverseHash, readInsiderUniverse } from "./universe.ts";
 import { EvidenceSnapshotCache } from "./evidence-cache.ts";
 
 /** Local review only. Validates archived evidence before producing display data. */
-export function loadInsiderCandidateReview(root: string) {
-  const dataDirectory = resolve(root, process.env.OUTFOX_FORM4_DATA_DIR || "data");
+export function loadInsiderCandidateReview(root: string, options: {dataDirectory?: string} = {}) {
+  const dataDirectory = resolve(root, options.dataDirectory || process.env.OUTFOX_FORM4_DATA_DIR || "data");
   const archive = readCandidateFile(resolve(dataDirectory, "form4-candidate.json"));
   const master = JSON.parse(readFileSync(resolve(root, "data/security-master.json"), "utf8"));
   const universeSnapshots = new EvidenceSnapshotCache<{ sha256: string; ciks: string[]; size: number }>();

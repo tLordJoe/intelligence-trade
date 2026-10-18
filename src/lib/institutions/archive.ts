@@ -1,6 +1,6 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
-import { digest, parseInstitutionalFiling, parseInstitutionalNotice, filingUrl, TableReconciliationError, type TableReconciliationIssue, type FilingReference, type InstitutionalFiling, type InstitutionalNotice } from "./parse.ts";
+import { digest, parseInstitutionalFiling, parseInstitutionalNotice, institutionalCoverIdentity, filingUrl, TableReconciliationError, type TableReconciliationIssue, type FilingReference, type InstitutionalFiling, type InstitutionalNotice } from "./parse.ts";
 import { allowedSecUrl, references, type SubmissionColumns } from "./source.ts";
 import { reconcileInstitutions } from "./reconcile.ts";
 
@@ -42,24 +42,37 @@ export function replayInstitutionRun(directory: string) {
   const ordered = (refs: FilingReference[]) => [...refs].sort((a,b)=>a.accession.localeCompare(b.accession));
   if (JSON.stringify(ordered([...inventory.values()])) !== JSON.stringify(ordered(run.references)) ||
       JSON.stringify(ordered(run.filings.map(f=>f.reference))) !== JSON.stringify(ordered(run.references))) throw new Error("Manifest references differ from SEC inventory");
-  const filings: InstitutionalFiling[] = [], notices:InstitutionalNotice[] = [], failures: string[] = [], reconciliationIssues:TableReconciliationIssue[]=[];
+  const filings: InstitutionalFiling[] = [], notices:InstitutionalNotice[] = [], failures: string[] = [], reconciliationIssues:TableReconciliationIssue[]=[], failedPeriods: string[]=[];
+  let unknownFailedPeriod = false;
   for (const item of run.filings) {
-    if (!item.evidence || item.failure) { failures.push(item.reference.accession); continue; }
+    if (!item.evidence || item.failure) { failures.push(item.reference.accession); unknownFailedPeriod=true; continue; }
     if (item.evidence.url !== filingUrl(item.reference)) throw new Error("Source link differs from accession");
     try { if(item.reference.form.startsWith("13F-NT"))notices.push(parseInstitutionalNotice(read(item.evidence),item.reference));else filings.push(parseInstitutionalFiling(read(item.evidence),item.reference)); }
-    catch (error) { if(error instanceof TableReconciliationError)reconciliationIssues.push(error.issue);failures.push(`${item.reference.accession}: ${String(error)}`); }
+    catch (error) {
+      if(error instanceof TableReconciliationError)reconciliationIssues.push(error.issue);
+      failures.push(`${item.reference.accession}: ${String(error)}`);
+      try { failedPeriods.push(institutionalCoverIdentity(read(item.evidence),item.reference).period); }
+      catch { unknownFailedPeriod=true; }
+    }
   }
-  return { run, filings, notices, failures,reconciliationIssues };
+  return { run, filings, notices, failures,reconciliationIssues,failedPeriods,unknownFailedPeriod };
 }
 
-export function institutionalCandidate(root: string, selectedRunIds?: string[]) {
+export function institutionalCandidate(root: string, selectedRunIds?: string[], availableFilings = false) {
   const directory = resolve(root,"data/institution-runs");
   const available = readdirSync(directory).filter(name=>/^institutions_[a-f0-9-]{36}$/.test(name)).sort();
   const names=selectedRunIds ? [...new Set(selectedRunIds)].sort() : available;
   if(!names.length||names.some(name=>!/^institutions_[a-f0-9-]{36}$/.test(name)||!available.includes(name)))throw new Error("Selected institutional run is missing or invalid");
   const runs = names.map(name=>replayInstitutionRun(resolve(directory,name)));
   if (!runs.length) throw new Error("No completed official collection runs");
-  const blockedManagers = runs.filter(run=>run.failures.length).map(run=>run.run.cik);
+  const blockedManagers = runs.filter(run=>availableFilings?run.unknownFailedPeriod:run.failures.length).map(run=>run.run.cik);
+  const reconciled = reconcileInstitutions(runs.flatMap(run=>run.filings),blockedManagers,runs.flatMap(run=>run.notices),availableFilings);
+  if(availableFilings){
+    const failedFamilies=new Set(runs.flatMap(r=>r.failedPeriods.map(p=>`${r.run.cik}:${p}`)));
+    const unsafe=reconciled.active.filter(f=>failedFamilies.has(`${f.reference.cik}:${f.period}`));
+    reconciled.active=reconciled.active.filter(f=>!unsafe.includes(f));
+    reconciled.held.push(...unsafe.map(f=>({family:`${f.reference.cik}:${f.period}`,accessions:[f.reference.accession],reason:"quarter_has_unparsed_or_failed_filings"})));
+  }
   return { source: "SEC Form 13F" as const, runs: runs.map(({run,failures,reconciliationIssues})=>({ runId:run.runId, cik:run.cik, from:run.from, to:run.to, collectedAt:run.collectedAt, failures,reconciliationIssues })),
-    notices:runs.flatMap(run=>run.notices),...reconcileInstitutions(runs.flatMap(run=>run.filings),blockedManagers,runs.flatMap(run=>run.notices)) };
+    notices:runs.flatMap(run=>run.notices),...reconciled };
 }

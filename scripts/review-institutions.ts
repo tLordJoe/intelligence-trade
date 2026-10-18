@@ -1,4 +1,5 @@
-import { readFileSync, writeFileSync, renameSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { writeDisclosureRelease } from "../src/lib/disclosure-storage.ts";
 import { resolve } from "node:path";
 import { institutionalCandidate } from "../src/lib/institutions/archive.ts";
 import { assessManagerRun, validatePlan, type CohortPlan, type ManagerUniverse } from "../src/lib/institutions/cohort.ts";
@@ -6,19 +7,21 @@ import { approvedInstitutions, payloadHash, limitations, type InstitutionPayload
 const root=resolve(import.meta.dirname,".."), args=process.argv.slice(2);
 const value=(key:string)=>{const index=args.indexOf(key);return index<0?undefined:args[index+1];};
 const cohortId=value("--cohort");
+const dataRoot=value("--data-root")?resolve(value("--data-root")!):root;
+const available=args.includes("--available-filings");
 if(!cohortId||!/^[a-z0-9][a-z0-9-]{0,70}$/.test(cohortId))throw new Error("Provide the reviewed --cohort id");
 type CohortState={schemaVersion:1;id:string;plan:CohortPlan&{universe:ManagerUniverse};planHash:string;attempts:Record<string,{runId?:string}[]>};
-const cohort:CohortState=JSON.parse(readFileSync(resolve(root,"data/institution-cohorts",`${cohortId}.json`),"utf8"));
+const cohort:CohortState=JSON.parse(readFileSync(resolve(dataRoot,"data/institution-cohorts",`${cohortId}.json`),"utf8"));
 if(cohort.schemaVersion!==1||cohort.id!==cohortId||cohort.planHash!==validatePlan(cohort.plan))throw new Error("Invalid or changed institutional cohort");
 const assessments=cohort.plan.universe.managers.map(manager=>{
   const runId=cohort.attempts[manager.cik]?.at(-1)?.runId;
   if(!runId)return {manager,runId:null,result:null};
-  return {manager,runId,result:assessManagerRun(resolve(root,"data/institution-runs",runId),manager,cohort.plan)};
+  return {manager,runId,result:assessManagerRun(resolve(dataRoot,"data/institution-runs",runId),manager,cohort.plan)};
 });
-const eligible=assessments.filter(item=>item.result?.status==="ready_for_review"&&item.runId).map(item=>item.runId!);
+const eligible=assessments.filter(item=>(available?item.result?.identityMatched:item.result?.status==="ready_for_review")&&item.runId).map(item=>item.runId!);
 if(!eligible.length)throw new Error("Cohort has no managers ready for review");
-const candidate=institutionalCandidate(root,eligible);
-const payload:InstitutionPayload={schemaVersion:1,source:"SEC Form 13F",semantics:"quarter_end_reported_holdings",coverage:candidate.runs.map(({cik,from,to,collectedAt})=>({cik,from,to,collectedAt})),limitations,filings:candidate.active};
+const candidate=institutionalCandidate(dataRoot,eligible,available);
+const payload:InstitutionPayload={schemaVersion:available?2:1,source:"SEC Form 13F",semantics:"quarter_end_reported_holdings",coverage:candidate.runs.map(({cik,from,to,collectedAt})=>({cik,from,to,collectedAt})),limitations:limitations+(available?" Available valid filings are searchable even without comparison quarters. Combination reports and confidential-omission flags describe incomplete reported portfolios; only disclosed positions are shown, with no inferred missing holdings. Separate reporting entities remain separate.":""),filings:candidate.active};
 const path=resolve(root,"data/institution-candidate.json");
 if(args.includes("--promote")){
   const i=args.indexOf("--reviewed-by"), reviewer=i>=0?args[i+1]:"";
@@ -31,11 +34,12 @@ if(args.includes("--promote")){
     if(matches.length!==1||matches[0].sourceSha256!==filing.sourceSha256||!matches[0].reviewedBy?.trim()||!Number.isFinite(Date.parse(matches[0].reviewedAt))||!matches[0].evidenceNote?.trim()||matches[0].unitsVerified!==true)throw new Error(`Source/unit review required: ${filing.reference.accession}`);}
   const release:InstitutionRelease={payload,approval:{reviewedBy:reviewer.trim(),reviewedAt:new Date().toISOString(),sha256:payloadHash(payload),partialCoverageAcknowledged:true}};
   approvedInstitutions(release);
-  const target=resolve(root,"src/lib/institutions-live.json"), temporary=`${target}.next`;
-  writeFileSync(temporary,JSON.stringify(release,null,2)+"\n",{flag:"wx"});renameSync(temporary,target);
+  mkdirSync(resolve(root,"src/lib/published-data"),{recursive:true});
+  writeDisclosureRelease(resolve(root,"src/lib/institutions-live.json"),release);
   console.log("Reviewed institutional data promoted locally; nothing deployed.");
 }else{
-  const excludedManagers=assessments.filter(item=>item.result?.status!=="ready_for_review").map(item=>({cik:item.manager.cik,name:item.manager.name,status:item.result?.status??"not_collected",reason:item.result?.reason??"No completed run"}));
+  const publishedCiks=new Set(payload.filings.map(f=>f.reference.cik));
+  const excludedManagers=assessments.filter(item=>!publishedCiks.has(item.manager.cik)).map(item=>({cik:item.manager.cik,name:item.manager.name,status:item.result?.status??"not_collected",reason:item.result?.reason??"No completed run"}));
   writeFileSync(path,JSON.stringify({cohortId,payload,sha256:payloadHash(payload),held:candidate.held,excludedManagers,notices:candidate.notices,runs:candidate.runs,approval:null},null,2)+"\n");
   console.log(JSON.stringify({cohortId,eligibleManagers:eligible.length,excludedManagers:excludedManagers.length,eligibleFilings:payload.filings.length,heldFamilies:candidate.held.length,publicChanged:false}));
 }

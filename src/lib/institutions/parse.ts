@@ -116,6 +116,12 @@ function readCover(source: string, reference: FilingReference) {
   const amendmentFlagSource=explicitFlag?"explicit" as const:"original_form_omitted_flag" as const;
   return {sourceUrl,docs,parse,form,cover,period,amendment,amendmentType,amendmentNumber,reportType,amendmentFlagSource,boolean};
 }
+/** Validated cover metadata remains useful even when its holdings table fails.
+ * It lets a bad quarter hold that quarter, not unrelated historical filings. */
+export function institutionalCoverIdentity(source: string, reference: FilingReference) {
+  const cover = readCover(source, reference);
+  return { period: cover.period, managerName: text(one(cover.cover, "filingManager"), "name") };
+}
 export function parseInstitutionalNotice(source:string,reference:FilingReference):InstitutionalNotice {
   const c=readCover(source,reference);
   const summaries=children(c.form,"summaryPage");
