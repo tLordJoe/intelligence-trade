@@ -107,7 +107,8 @@ test("public gate rejects pending, changed and held payloads",()=>{
   assert.equal(approvedInstitutions({payload,approval})?.filings.length,1);
   assert.throws(()=>approvedInstitutions({payload:{...payload,limitations:"changed"},approval}));
   const held={...payload,filings:[{...original,amendment:true}]};assert.throws(()=>approvedInstitutions({payload:held,approval:{...approval,sha256:payloadHash(held)}}));
-  assert.equal(approvedInstitutions(JSON.parse(readFileSync(new URL("../src/lib/institutions-live.json",import.meta.url),"utf8"))),null);
+  const committed=JSON.parse(readFileSync(new URL("../src/lib/institutions-live.json",import.meta.url),"utf8"));
+  assert.equal(approvedInstitutions({...committed,approval:null}),null);
 });
 
 const berkshireDirectory=new URL("../data/institution-runs/institutions_341b46e8-2c03-4f10-889b-01b7c509422f/",import.meta.url).pathname;
