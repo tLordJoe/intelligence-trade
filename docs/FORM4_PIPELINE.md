@@ -77,9 +77,33 @@ rollback, and preserve all valid recovery checkpoint chunks during quarantine.
 Synthetic regressions cover each reported edge case. Small-chunk compaction and
 reducing duplicate chunk reads remain future performance work.
 
-Outfox's own collection and parsing of SEC ownership documents (Forms 4 and
-4/A). This document covers the parser and the manual importer. There is no
-public UI, no schedule, and no production dataset in this stage.
+## Current filing-window publication
+
+The public `/insiders` page now supports a separately reviewed, schema-version-2
+filing-date window. Its first release contains the complete October 16 SEC index
+selection for the frozen 8,029-issuer universe: 452 collected filings, 320 eligible
+purchase/sale rows, with five issuers held for correction review. Original XML
+hashes and every displayed row were checked using an independent SAX reader;
+the evidence is in `docs/insider-release-2026-10-17.json`.
+
+This is **not** a completed historical or year-to-date backfill. The older
+collection remains blocked at a source document returning 404. Schema-version-1
+YTD publication still requires continuous coverage from January 1. Dated-window
+releases cannot populate homepage YTD/30/90 rankings, and the page labels filing
+dates explicitly because underlying transactions may be older. Homepage access
+is a “Latest filings” link rather than a misleading period filter.
+
+For a current collection in a separate data directory, run `promote-insiders.ts`
+with `--prepare --from YYYY-MM-DD --through YYYY-MM-DD`, independently review the
+prepared payload and original sources (the repeatable `audit-current-insiders.ts`
+checks XML fields without calling the application parser), then promote with the
+same dates, `--reviewed-by` and `--acknowledge-bounded-coverage`. Both stages replay
+official indexes and source hashes. `OUTFOX_FORM4_DATA_DIR` selects candidate,
+run evidence and review ledgers consistently; the security master remains in the
+repository's local `data/` directory. No collection schedule is enabled.
+
+Outfox collects and parses SEC ownership documents (Forms 4 and 4/A). This
+document also covers the parser and manual importer below.
 
 ## What exists
 

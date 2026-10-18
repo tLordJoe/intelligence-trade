@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { insiderCoverageReady, insiderPayloadHash, readApprovedInsiderRelease, queryInsiders, type InsiderPayload } from "../src/lib/form4/public-view.ts";
+import { insiderCoverageReady, insiderRangeCoverageReady, insiderPayloadHash, readApprovedInsiderRelease, queryInsiders, type InsiderPayload } from "../src/lib/form4/public-view.ts";
 const coverage = { from: "2026-01-01", to: "2026-09-14", universeSha256: "a".repeat(64), universeSize: 8010, expectedFilings: 1, missingAccessions: [] as string[] };
 const payload: InsiderPayload = { schemaVersion: 1, source: "sec-form4", coverageThrough: "2026-09-14", universeSha256: coverage.universeSha256, universeSize: coverage.universeSize,
   windows: [{ from: coverage.from, to: coverage.to, expectedFilings: 1 }], limitations: "Synthetic test only", heldIssuers: [], excluded: {}, records: [] };
@@ -27,4 +27,17 @@ test("empty insider query is explicit and query values are bounded", () => {
   assert.equal(result.period, "ytd"); assert.equal(result.from, "2026-01-01"); assert.equal(result.q.length, 100);
   assert.equal(result.page, 1); assert.equal(result.total, 0);
   assert.throws(() => queryInsiders(payload, {}, "2026-02-31"));
+});
+test("dated filing releases have their own complete-range gate, never silently pass the YTD gate", () => {
+  const current = {...coverage, from:"2026-10-16", to:"2026-10-16"};
+  assert.equal(insiderRangeCoverageReady([current], "2026-10-16", "2026-10-16"), true);
+  assert.equal(insiderCoverageReady([current], "2026-10-16"), false);
+  assert.equal(insiderRangeCoverageReady([current], "2026-10-15", "2026-10-16"), false);
+  assert.equal(insiderRangeCoverageReady([{...current, missingAccessions:["missing"]}], "2026-10-16", "2026-10-16"), false);
+  assert.equal(insiderRangeCoverageReady([{...current, expectedFilings:-1}], "2026-10-16", "2026-10-16"), false);
+  const dated:InsiderPayload={...payload,schemaVersion:2,coverageFrom:current.from,coverageThrough:current.to,coverageBasis:"filing_date_window",windows:[{from:current.from,to:current.to,expectedFilings:1}]};
+  assert.deepEqual(readApprovedInsiderRelease(approve(dated)), dated);
+  assert.throws(()=>readApprovedInsiderRelease(approve({...dated,coverageFrom:"2026-10-15"})));
+  const result=queryInsiders(dated,{period:"ytd"},"2026-10-17");
+  assert.equal(result.period,"filings");assert.equal(result.from,"2026-10-16");assert.equal(result.to,"2026-10-16");
 });

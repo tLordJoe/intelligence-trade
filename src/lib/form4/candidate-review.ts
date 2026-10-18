@@ -11,14 +11,15 @@ import { EvidenceSnapshotCache } from "./evidence-cache.ts";
 
 /** Local review only. Validates archived evidence before producing display data. */
 export function loadInsiderCandidateReview(root: string) {
-  const archive = readCandidateFile(resolve(root, "data/form4-candidate.json"));
+  const dataDirectory = resolve(root, process.env.OUTFOX_FORM4_DATA_DIR || "data");
+  const archive = readCandidateFile(resolve(dataDirectory, "form4-candidate.json"));
   const master = JSON.parse(readFileSync(resolve(root, "data/security-master.json"), "utf8"));
   const universeSnapshots = new EvidenceSnapshotCache<{ sha256: string; ciks: string[]; size: number }>();
   const expectedSnapshots = new EvidenceSnapshotCache<ReturnType<typeof filterByIssuerCik>>();
   const universeCiks = new Set<string>();
   const runs = archive.runIds.map(runId => {
     if (!/^form4_[A-Za-z0-9_-]+$/.test(runId)) throw new Error("Invalid candidate run identity");
-    const directory = resolve(root, "data/form4-runs", runId);
+    const directory = resolve(dataDirectory, "form4-runs", runId);
     const summary = JSON.parse(readFileSync(resolve(directory, "summary.json"), "utf8"));
     if (summary.runId !== runId || summary.source !== "edgar" || summary.passed !== true ||
         summary.promoted !== true || !summary.enumeration?.complete || summary.gateFailures?.length !== 0) {
@@ -93,7 +94,7 @@ export function loadInsiderCandidateReview(root: string) {
   const identities = Object.values(master.entries) as InsiderSecurityIdentity[];
   const from = runs.map(run => run.from).sort()[0];
   const to = runs.map(run => run.to).sort().at(-1)!;
-  const ledger = <T>(name: string): T[] => existsSync(resolve(root, "data", name)) ? JSON.parse(readFileSync(resolve(root, "data", name), "utf8")) : [];
+  const ledger = <T>(name: string): T[] => existsSync(resolve(dataDirectory, name)) ? JSON.parse(readFileSync(resolve(dataDirectory, name), "utf8")) : [];
   const reconciled = reconcileForm4ByIssuer(filings, ledger<Form4CorrectionReview>("form4-correction-reviews.json"), ledger<Form4DocumentSelection>("form4-document-selections.json"));
   // The preview is evidence review, not an inference that no future amendment exists.
   const activity = buildInsiderActivity(reconciled.eligible, identities, "1900-01-01", to);

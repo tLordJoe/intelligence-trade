@@ -9,6 +9,8 @@ import {
   existsSync,
   rmSync,
   cpSync,
+  statSync,
+  symlinkSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -31,8 +33,7 @@ import { publishRunPointer } from "../src/lib/import-artifacts.ts";
  *      uploaded as though it belonged to this one.
  *
  * These tests never mutate the repository. Anything that touches real files
- * does so inside a temporary directory, or snapshots and restores every
- * affected path in `finally`.
+ * does so inside a temporary directory, never the production data checkout.
  */
 
 function tempDir(): string {
@@ -157,143 +158,82 @@ test("a resolved id with no directory reports no evidence", () => {
 
 // --- end to end, hermetically ----------------------------------------------
 
-/**
- * Runs the real importer against a tripped gate.
- *
- * The repository is snapshotted and restored in `finally`, including when an
- * assertion fails, so the working tree is byte-identical afterwards. The
- * importer writes to several shared paths — the archive, the run index, the
- * report and the pointer — and every one of them is captured.
+/** Run the actual importer in an isolated source/data tree with pinned PDFs.
+ * The preload refuses every unmocked network request. No real archive, cached
+ * source, run pointer or evidence directory is ever changed by these tests.
  */
-test("e2e: a failed importer leaves uploadable evidence and no trace", { timeout: 120_000 }, (t) => {
-  const root = join(import.meta.dirname, "..");
-  if (!existsSync(join(root, "scripts", ".cache", "ptr-pdfs"))) {
-    t.skip("no cached filings available offline");
-    return;
-  }
-
-  const tracked = [
-    join(root, "src", "lib", "congress-live.json"),
-    join(root, "data", "congress-quarantine.json"),
-    join(root, "data", "last-import-report.txt"),
-    join(root, "data", "import-runs", "index.json"),
-    join(root, "data", "import-runs", "latest-run-id.txt"),
-  ];
-
-  // Snapshot: contents when present, a null marker when absent, so files the
-  // importer creates can be removed again.
-  const snapshot = new Map<string, string | null>();
-  for (const path of tracked) {
-    snapshot.set(path, existsSync(path) ? readFileSync(path, "utf8") : null);
-  }
-
-  const runsBackup = tempDir();
+function isolatedImporter() {
+  const sourceRoot = join(import.meta.dirname, "..");
+  const root = tempDir();
+  mkdirSync(join(root, "scripts", ".cache", "ptr-pdfs"), { recursive: true });
+  mkdirSync(join(root, "src"), { recursive: true });
+  mkdirSync(join(root, "data"), { recursive: true });
+  cpSync(join(sourceRoot, "scripts", "import-house.ts"), join(root, "scripts", "import-house.ts"));
+  cpSync(join(sourceRoot, "src", "lib"), join(root, "src", "lib"), {
+    recursive: true,
+    filter: path => statSync(path).isDirectory() || path.endsWith(".ts"),
+  });
+  symlinkSync(join(sourceRoot, "node_modules"), join(root, "node_modules"), "dir");
+  const archivePath = join(root, "src", "lib", "congress-live.json");
+  const archiveBefore = JSON.stringify({ schemaVersion: 1, trades: [] });
+  writeFileSync(archivePath, archiveBefore);
+  writeFileSync(join(root, "data", "house-party-map.json"), JSON.stringify({ "Cleo Fields": "D" }));
+  const entries = Object.fromEntries(Array.from({ length: 1001 }, (_, i) => [
+    `TEST${i}`, { ticker: `TEST${i}`, cik: String(i + 1).padStart(10, "0"), title: `Synthetic issuer ${i}` },
+  ]));
+  entries.NVDA = { ticker: "NVDA", cik: "0001045810", title: "NVIDIA CORP" };
+  writeFileSync(join(root, "data", "security-master.json"), JSON.stringify({ updatedAt: "2026-08-01", entries }));
+  cpSync(join(sourceRoot, "tests", "fixtures", "house-recovery", "20034894.pdf"),
+    join(root, "scripts", ".cache", "ptr-pdfs", "20034894.pdf"));
+  const preload = join(root, "offline.mjs");
+  writeFileSync(preload, `
+    globalThis.fetch = async url => {
+      if (!/^https:\\/\\/disclosures-clerk\\.house\\.gov\\/public_disc\\/financial-pdfs\\/\\d{4}FD\\.xml$/.test(String(url)))
+        throw new Error("Unexpected network access: " + url);
+      return new Response("<Member><First>Cleo</First><Last>Fields</Last><StateDst>LA06</StateDst><FilingDate>08/01/2026</FilingDate><FilingType>P</FilingType><DocID>20034894</DocID></Member>");
+    };
+  `);
   const runsDir = join(root, "data", "import-runs");
-  if (existsSync(runsDir)) cpSync(runsDir, join(runsBackup, "import-runs"), { recursive: true });
-
-  try {
-    let exitCode = 0;
+  function run(extra: string[]) {
+    let status = 0;
     try {
-      execFileSync(
-        process.execPath,
-        [
-          "--experimental-strip-types",
-          "scripts/import-house.ts",
-          "--limit",
-          "3",
-          "--simulate-gate-failure",
-        ],
-        { cwd: root, stdio: "pipe" }
-      );
-    } catch (error) {
-      exitCode = (error as { status?: number }).status ?? 0;
-    }
-
-    assert.equal(exitCode, 1, "an injected gate failure must exit non-zero");
-
-    // Production untouched.
-    assert.equal(
-      readFileSync(join(root, "src", "lib", "congress-live.json"), "utf8"),
-      snapshot.get(join(root, "src", "lib", "congress-live.json")),
-      "the archive must be byte-identical after a failed run"
-    );
-
-    // Evidence resolvable exactly as the workflow does it.
+      execFileSync(process.execPath, ["--import", preload, "--experimental-strip-types", "scripts/import-house.ts", ...extra],
+        { cwd: root, stdio: "pipe", env: { ...process.env, GITHUB_OUTPUT: "" } });
+    } catch (error) { status = (error as { status?: number }).status ?? -1; }
     const resolved = resolveEvidence(runsDir, undefined);
-    assert.ok(resolved.runId, "this run must publish a pointer");
-    assert.equal(resolved.hasEvidence, true, "evidence must be uploadable");
-
+    assert.equal(resolved.hasEvidence, true, "this isolated run must produce its own evidence");
     const runDir = join(runsDir, resolved.runId);
-    for (const file of ["report.txt", "summary.json", "quarantine.json"]) {
-      assert.ok(existsSync(join(runDir, file)), `${file} must be uploadable`);
-    }
-
     const summary = JSON.parse(readFileSync(join(runDir, "summary.json"), "utf8"));
+    return { status, summary, runDir, runId: resolved.runId };
+  }
+  return { root, archivePath, archiveBefore, run };
+}
+
+test("e2e: a failed importer leaves uploadable evidence without touching production", { timeout: 120_000 }, () => {
+  const fixture = isolatedImporter();
+  try {
+    const { status, summary, runDir } = fixture.run(["--limit", "3", "--simulate-gate-failure"]);
+    assert.equal(status, 1);
+    assert.equal(readFileSync(fixture.archivePath, "utf8"), fixture.archiveBefore);
+    for (const file of ["report.txt", "summary.json", "quarantine.json"])
+      assert.ok(existsSync(join(runDir, file)), `${file} must be uploadable`);
     assert.equal(summary.passed, false);
     assert.equal(summary.productionUpdated, false);
-    assert.ok(
-      summary.failures.includes("simulated_gate_failure"),
-      "the injected failure must be named in the evidence"
-    );
-  } finally {
-    // Restore unconditionally, including on assertion failure.
-    rmSync(runsDir, { recursive: true, force: true });
-    const backup = join(runsBackup, "import-runs");
-    if (existsSync(backup)) cpSync(backup, runsDir, { recursive: true });
-    rmSync(runsBackup, { recursive: true, force: true });
-
-    for (const [path, contents] of snapshot) {
-      if (contents === null) rmSync(path, { force: true });
-      else writeFileSync(path, contents);
-    }
-  }
+    assert.ok(summary.failures.includes("simulated_gate_failure"));
+  } finally { rmSync(fixture.root, { recursive: true, force: true }); }
 });
 
-test("the simulation flag is deterministic — it fails on a healthy full run too", { timeout: 180_000 }, (t) => {
-  const root = join(import.meta.dirname, "..");
-  if (!existsSync(join(root, "scripts", ".cache", "ptr-pdfs"))) {
-    t.skip("no cached filings available offline");
-    return;
-  }
-
-  const archivePath = join(root, "src", "lib", "congress-live.json");
-  const archiveBefore = readFileSync(archivePath, "utf8");
-  const runsDir = join(root, "data", "import-runs");
-  const runsBackup = tempDir();
-  if (existsSync(runsDir)) cpSync(runsDir, join(runsBackup, "import-runs"), { recursive: true });
-  const reportPath = join(root, "data", "last-import-report.txt");
-  const reportBefore = existsSync(reportPath) ? readFileSync(reportPath, "utf8") : null;
-
+test("the simulation flag fails on an otherwise healthy full run", { timeout: 120_000 }, () => {
+  const fixture = isolatedImporter();
   try {
-    let exitCode = 0;
-    try {
-      // A full window that would otherwise pass every gate.
-      execFileSync(
-        process.execPath,
-        ["--experimental-strip-types", "scripts/import-house.ts", "--simulate-gate-failure"],
-        { cwd: root, stdio: "pipe" }
-      );
-    } catch (error) {
-      exitCode = (error as { status?: number }).status ?? 0;
-    }
-
-    assert.equal(
-      exitCode,
-      1,
-      "simulation must fail regardless of what the source currently contains"
-    );
-    assert.equal(
-      readFileSync(archivePath, "utf8"),
-      archiveBefore,
-      "simulation must never write production, even on an otherwise healthy run"
-    );
-  } finally {
-    rmSync(runsDir, { recursive: true, force: true });
-    const backup = join(runsBackup, "import-runs");
-    if (existsSync(backup)) cpSync(backup, runsDir, { recursive: true });
-    rmSync(runsBackup, { recursive: true, force: true });
-    if (reportBefore === null) rmSync(reportPath, { force: true });
-    else writeFileSync(reportPath, reportBefore);
-    writeFileSync(archivePath, archiveBefore);
-  }
+    const healthy = fixture.run(["--dry-run"]);
+    assert.equal(healthy.status, 0, JSON.stringify(healthy.summary.failures));
+    assert.equal(healthy.summary.passed, true);
+    const simulated = fixture.run(["--simulate-gate-failure"]);
+    assert.equal(simulated.status, 1);
+    assert.notEqual(simulated.runId, healthy.runId, "never adopt the previous successful run");
+    assert.equal(simulated.summary.passed, false);
+    assert.deepEqual(simulated.summary.failures, ["simulated_gate_failure"]);
+    assert.equal(readFileSync(fixture.archivePath, "utf8"), fixture.archiveBefore);
+  } finally { rmSync(fixture.root, { recursive: true, force: true }); }
 });

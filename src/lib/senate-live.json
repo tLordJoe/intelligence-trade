@@ -5,52 +5,141 @@
     "windows": [
       {
         "from": "2026-01-01",
-        "to": "2026-01-31"
-      },
-      {
-        "from": "2026-02-01",
-        "to": "2026-02-28"
-      },
-      {
-        "from": "2026-03-01",
-        "to": "2026-03-31"
-      },
-      {
-        "from": "2026-04-01",
-        "to": "2026-04-30"
-      },
-      {
-        "from": "2026-05-01",
-        "to": "2026-05-31"
-      },
-      {
-        "from": "2026-06-01",
-        "to": "2026-06-30"
-      },
-      {
-        "from": "2026-07-01",
-        "to": "2026-07-31"
-      },
-      {
-        "from": "2026-08-01",
-        "to": "2026-08-31"
-      },
-      {
-        "from": "2026-09-01",
-        "to": "2026-09-13"
-      },
-      {
-        "from": "2026-09-14",
-        "to": "2026-09-15"
+        "to": "2026-10-18"
       }
     ],
     "limitations": "Partial electronic Senate disclosure coverage by received-date window. Paper reports, unresolved amendments and related originals, ambiguous filer names, and unmatched assets are omitted. These are source-reported purchases and sales, not exact executions or current holdings. The source labels some funds as Stock; stock versus fund classification is not established here. No stock-only rankings or investment recommendations are inferred.",
     "omitted": {
       "paperOrUnparsedReports": 9,
-      "reconciliationIssues": 17,
-      "otherSourceRows": 978
+      "reconciliationIssues": 18,
+      "otherSourceRows": 1019
     },
     "records": [
+      {
+        "id": "senate:6bf3b6f7-9e1b-499a-bd5a-990292ce2e72:0f6c6b780764112479fc1807443cf53816c4a8ed7bd39f2c4bd16a82cd83baa1:1",
+        "reportId": "6bf3b6f7-9e1b-499a-bd5a-990292ce2e72",
+        "politician": "Sheldon Whitehouse",
+        "bioguide": "W000802",
+        "state": "RI",
+        "ticker": "JPM",
+        "cik": "0000019617",
+        "issuerName": "JPMORGAN CHASE & CO",
+        "assetNameAsFiled": "JP Morgan Chase & Co. Common Stock",
+        "assetTypeAsFiled": "Stock",
+        "securityClassification": "unclassified_listed_security",
+        "type": "Sell",
+        "owner": "Spouse",
+        "amount": "$15,001 - $50,000",
+        "amountLow": 15001,
+        "amountHigh": 50000,
+        "transactionDate": "2026-09-04",
+        "filedDate": "2026-10-01",
+        "receivedDate": "2026-10-01",
+        "sourceUrl": "https://efdsearch.senate.gov/search/view/ptr/6bf3b6f7-9e1b-499a-bd5a-990292ce2e72/",
+        "documentSha256": "6d2b4767bb94d26fe7f7db1d1eec0629e35fde4508b4f58ac35a01517bfb3dfa",
+        "sourceComment": null,
+        "filingNotes": []
+      },
+      {
+        "id": "senate:6bf3b6f7-9e1b-499a-bd5a-990292ce2e72:38cc4174176a442a04b990375ef0ed68c6d0e6d0e7c412c2f9858d1ebd080eb1:1",
+        "reportId": "6bf3b6f7-9e1b-499a-bd5a-990292ce2e72",
+        "politician": "Sheldon Whitehouse",
+        "bioguide": "W000802",
+        "state": "RI",
+        "ticker": "V",
+        "cik": "0001403161",
+        "issuerName": "VISA INC.",
+        "assetNameAsFiled": "Visa Inc.",
+        "assetTypeAsFiled": "Stock",
+        "securityClassification": "unclassified_listed_security",
+        "type": "Sell",
+        "owner": "Self",
+        "amount": "$1,001 - $15,000",
+        "amountLow": 1001,
+        "amountHigh": 15000,
+        "transactionDate": "2026-09-04",
+        "filedDate": "2026-10-01",
+        "receivedDate": "2026-10-01",
+        "sourceUrl": "https://efdsearch.senate.gov/search/view/ptr/6bf3b6f7-9e1b-499a-bd5a-990292ce2e72/",
+        "documentSha256": "6d2b4767bb94d26fe7f7db1d1eec0629e35fde4508b4f58ac35a01517bfb3dfa",
+        "sourceComment": null,
+        "filingNotes": []
+      },
+      {
+        "id": "senate:6bf3b6f7-9e1b-499a-bd5a-990292ce2e72:58d2857d6c1fe48d472f6b240787dd9f606bdc1eac64c8624a54b8e7ce54c62c:1",
+        "reportId": "6bf3b6f7-9e1b-499a-bd5a-990292ce2e72",
+        "politician": "Sheldon Whitehouse",
+        "bioguide": "W000802",
+        "state": "RI",
+        "ticker": "ADI",
+        "cik": "0000006281",
+        "issuerName": "ANALOG DEVICES INC",
+        "assetNameAsFiled": "Analog Devices, Inc. - Common Stock",
+        "assetTypeAsFiled": "Stock",
+        "securityClassification": "unclassified_listed_security",
+        "type": "Sell",
+        "owner": "Spouse",
+        "amount": "$1,001 - $15,000",
+        "amountLow": 1001,
+        "amountHigh": 15000,
+        "transactionDate": "2026-09-04",
+        "filedDate": "2026-10-01",
+        "receivedDate": "2026-10-01",
+        "sourceUrl": "https://efdsearch.senate.gov/search/view/ptr/6bf3b6f7-9e1b-499a-bd5a-990292ce2e72/",
+        "documentSha256": "6d2b4767bb94d26fe7f7db1d1eec0629e35fde4508b4f58ac35a01517bfb3dfa",
+        "sourceComment": null,
+        "filingNotes": []
+      },
+      {
+        "id": "senate:6bf3b6f7-9e1b-499a-bd5a-990292ce2e72:e88192d53fbe3c59dd539492e7a0681c2d1e790cfaf884c463e2914f41e19057:1",
+        "reportId": "6bf3b6f7-9e1b-499a-bd5a-990292ce2e72",
+        "politician": "Sheldon Whitehouse",
+        "bioguide": "W000802",
+        "state": "RI",
+        "ticker": "JPM",
+        "cik": "0000019617",
+        "issuerName": "JPMORGAN CHASE & CO",
+        "assetNameAsFiled": "JP Morgan Chase & Co. Common Stock",
+        "assetTypeAsFiled": "Stock",
+        "securityClassification": "unclassified_listed_security",
+        "type": "Sell",
+        "owner": "Self",
+        "amount": "$15,001 - $50,000",
+        "amountLow": 15001,
+        "amountHigh": 50000,
+        "transactionDate": "2026-09-04",
+        "filedDate": "2026-10-01",
+        "receivedDate": "2026-10-01",
+        "sourceUrl": "https://efdsearch.senate.gov/search/view/ptr/6bf3b6f7-9e1b-499a-bd5a-990292ce2e72/",
+        "documentSha256": "6d2b4767bb94d26fe7f7db1d1eec0629e35fde4508b4f58ac35a01517bfb3dfa",
+        "sourceComment": null,
+        "filingNotes": []
+      },
+      {
+        "id": "senate:6bf3b6f7-9e1b-499a-bd5a-990292ce2e72:e9282df45826542d6aa73a2efb21e67804b57b0bcb366302e04c98503fe76738:1",
+        "reportId": "6bf3b6f7-9e1b-499a-bd5a-990292ce2e72",
+        "politician": "Sheldon Whitehouse",
+        "bioguide": "W000802",
+        "state": "RI",
+        "ticker": "V",
+        "cik": "0001403161",
+        "issuerName": "VISA INC.",
+        "assetNameAsFiled": "Visa Inc.",
+        "assetTypeAsFiled": "Stock",
+        "securityClassification": "unclassified_listed_security",
+        "type": "Sell",
+        "owner": "Spouse",
+        "amount": "$1,001 - $15,000",
+        "amountLow": 1001,
+        "amountHigh": 15000,
+        "transactionDate": "2026-09-04",
+        "filedDate": "2026-10-01",
+        "receivedDate": "2026-10-01",
+        "sourceUrl": "https://efdsearch.senate.gov/search/view/ptr/6bf3b6f7-9e1b-499a-bd5a-990292ce2e72/",
+        "documentSha256": "6d2b4767bb94d26fe7f7db1d1eec0629e35fde4508b4f58ac35a01517bfb3dfa",
+        "sourceComment": null,
+        "filingNotes": []
+      },
       {
         "id": "senate:0632f542-7ac2-46e4-bd9c-603e3673f0cd:2468a2443f083c5b216a2cb65fa2b4b20c36f73eee222be2dce30165a00be81a:1",
         "reportId": "0632f542-7ac2-46e4-bd9c-603e3673f0cd",
@@ -14528,9 +14617,9 @@
     ]
   },
   "approval": {
-    "reviewedBy": "Independent Codex review and Outfox owner authorization",
-    "reviewedAt": "2026-09-15T08:33:53.040Z",
-    "payloadSha256": "da711c7e43530b107ff63e01e24e64abb0ee13db8a5bbc92ab94f1a448bdd1bd",
+    "reviewedBy": "Codex",
+    "reviewedAt": "2026-10-18T03:45:56.908Z",
+    "payloadSha256": "05c49d855be83fa863b478271545c97d305d7192040bab5c44a0c5f4ded7186d",
     "partialCoverageAcknowledged": true
   }
 }

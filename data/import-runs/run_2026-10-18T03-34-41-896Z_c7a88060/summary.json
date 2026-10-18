@@ -1,0 +1,41 @@
+{
+  "runId": "run_2026-10-18T03-34-41-896Z_c7a88060",
+  "startedAt": "2026-10-18T03:34:41.896Z",
+  "finishedAt": "2026-10-18T03:34:43.812Z",
+  "passed": true,
+  "productionUpdated": true,
+  "dryRun": false,
+  "failures": [],
+  "warnings": [
+    "scanned_filings_unreadable:30"
+  ],
+  "counts": {
+    "sourceFilings": 430,
+    "selectedFilings": 200,
+    "downloadedFilings": 200,
+    "failedParses": 0,
+    "zeroRowFilings": 82,
+    "scannedFilings": 30,
+    "suspiciousZeroRowFilings": 0,
+    "unaccountedSymbolMentions": 0,
+    "unresolvedSymbolRows": 0,
+    "amountParseFailures": 0,
+    "amountsUnknown": 0,
+    "wrappedRows": 24,
+    "parsedFilings": 200,
+    "parsedRecords": 1313,
+    "accepted": 1313,
+    "warned": 601,
+    "quarantined": 0,
+    "duplicates": 0,
+    "missingParty": 1675,
+    "missingTicker": 0,
+    "missingFilingUrl": 0,
+    "added": 432,
+    "refreshed": 880,
+    "revised": 1,
+    "archiveBefore": 2591,
+    "archiveAfter": 3023
+  },
+  "quarantinedCount": 0
+}

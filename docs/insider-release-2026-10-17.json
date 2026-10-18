@@ -1,0 +1,26 @@
+{
+  "auditedAt": "2026-10-18T03:45:56.302Z",
+  "reviewer": "Codex",
+  "parser": "saxes (independent of application XML parser)",
+  "sourceDocumentsChecked": 452,
+  "publicRowsChecked": 320,
+  "payloadSha256": "c998b854ab340465bf8107c2507d0a9994b84573e6b3285f26f21238977bd96d",
+  "coverageFrom": "2026-10-16",
+  "coverageThrough": "2026-10-16",
+  "sourceRunIds": [
+    "form4_2026-10-18T03-33-32-605Z_0b18a73a"
+  ],
+  "checks": "Raw document hashes; row ordinal; issuer, owner and relationship fields; transaction code/direction/date; shares; price and references; ownership; plan flag; remarks; footnotes; source URLs. Official index enumeration and filing dates are independently replayed by the promotion gate.",
+  "heldIssuers": [
+    "0001572694",
+    "0001419536",
+    "0001354866",
+    "0001501989",
+    "0000909327"
+  ],
+  "excluded": {
+    "not_non_derivative_purchase_or_sale": 869,
+    "unresolved_issuer_symbol": 6,
+    "unresolved_issuer_reconciliation": 34
+  }
+}

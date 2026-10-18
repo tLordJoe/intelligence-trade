@@ -95,6 +95,7 @@ export function buildSenateHomeWindow(payload: SenatePublicPayload, period: Home
 
 /** Approved Form 4 rows adapted to the homepage without blending in awards, options, gifts or holdings. */
 export function buildInsiderHomeWindow(payload: InsiderPayload, period: HomePeriod, asOf: string): HomeWindow {
+  if (payload.schemaVersion !== 1) throw new Error("Dated insider filing windows cannot populate YTD/30/90-day homepage rankings");
   const start = homePeriodStart(period, asOf);
   const eligible = payload.records.filter(row => row.transactionDate >= start && row.transactionDate <= asOf && row.filedDate <= asOf);
   const groups = new Map<string, typeof eligible>();
