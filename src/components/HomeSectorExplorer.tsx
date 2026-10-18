@@ -10,7 +10,7 @@ import { sectorFunds } from "@/lib/sector-funds";
 
 const icons = { monitor: Monitor, wallet: Wallet, messages: MessagesSquare, heart: Heart, cart: ShoppingCart,
   factory: Factory, basket: ShoppingBasket, flame: Flame, bolt: Zap, layers: Layers3, building: Building2 };
-export default function HomeSectorExplorer({ companies }: { companies: HomeCompany[] }) {
+export default function HomeSectorExplorer({ companies }: { companies: Pick<HomeCompany,"ticker"|"name"|"buyers"|"mark">[] }) {
   const [selected, setSelected] = useState<string>("technology");
   const [hovered, setHovered] = useState<string | null>(null);
   const active = HOME_SECTORS.find(s => s.id === (hovered ?? selected)) ?? HOME_SECTORS[0];
@@ -19,6 +19,7 @@ export default function HomeSectorExplorer({ companies }: { companies: HomeCompa
   return <section className="home-sectors" aria-labelledby="home-sectors-title">
     <div className="home-section-intro"><h2 id="home-sectors-title">Find your next investment idea</h2><p><strong>Explore the market by sector.</strong> Sector sizes reflect S&amp;P 500 market weights—not buying activity. Select a sector to explore its companies and available disclosures.</p></div>
     <div className="home-sector-grid">
+      <div className="home-sector-picker"><label htmlFor="mobile-sector">Choose a market sector</label><select id="mobile-sector" value={selected} aria-controls="home-sector-detail" onChange={event=>{setSelected(event.target.value);setHovered(null);}}>{HOME_SECTORS.map(sector=><option key={sector.id} value={sector.id}>{sector.name}</option>)}</select></div>
       <div className="home-sector-bars" role="group" aria-label="Explore sectors" onMouseLeave={() => setHovered(null)}>
         {HOME_SECTORS.map(sector => { const SectorIcon = icons[sector.icon]; return <button key={sector.id} type="button"
           className="stack-bar home-sector-bar" aria-pressed={selected === sector.id} aria-controls="home-sector-detail"

@@ -1,0 +1,269 @@
+{
+  "reviewedBy": "Codex",
+  "reviewedAt": "2026-10-18T04:13:09.004Z",
+  "asOf": "2026-10-18",
+  "rules": {
+    "version": "1.0",
+    "lookbackDays": 90,
+    "freshFilingDays": 30,
+    "minimumBuyers": 2,
+    "minimumPurchases": 3,
+    "minimumRepeatBuyers": 1,
+    "maximumHighlights": 10
+  },
+  "inputs": [
+    {
+      "path": "src/lib/congress-live.json",
+      "sha256": "fb15bbe981c07d571974d370330110389dd514137f50bd69a17ef184f2b346cc"
+    },
+    {
+      "path": "src/lib/senate-live.json",
+      "sha256": "b8e0dc18c97e2eabc918a6b36bf1feec3111d8bedf2b89954516969d376f5289"
+    },
+    {
+      "path": "src/lib/sector-company-identities.json",
+      "sha256": "36a20287a315f768c5a6f35d3cfb0f459c1a7ae71acbc26be21d79844030c62a"
+    }
+  ],
+  "universeSize": 67,
+  "rankingSources": [
+    "Reviewed House disclosures",
+    "Reviewed Senate disclosures"
+  ],
+  "notScored": [
+    "Bounded current insider filing window",
+    "Quarterly institutional holdings without verified issuer links",
+    "Wealth, dollar size and fame"
+  ],
+  "highlights": [
+    {
+      "ticker": "BRK-B",
+      "cik": "0001067983",
+      "buyers": 2,
+      "sellers": 1,
+      "purchases": 5,
+      "sales": 1,
+      "repeatBuyers": 2,
+      "chambers": [
+        "House"
+      ],
+      "latestBuyFiled": "2026-10-14",
+      "medianFilingDelayDays": 15,
+      "mixedActivity": false,
+      "sourceRecords": [
+        {
+          "id": "house:20035651::8057ce9f05709b60::0",
+          "side": "Buy",
+          "filerKey": "House:GA:GA06:richard dean dr mccormick",
+          "traded": "2026-09-18",
+          "filed": "2026-10-14",
+          "sourceUrl": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035651.pdf"
+        },
+        {
+          "id": "house:20035562::2a8572321a61b578::0",
+          "side": "Sell",
+          "filerKey": "House:FL:FL27:maria elvira salazar",
+          "traded": "2026-09-24",
+          "filed": "2026-10-07",
+          "sourceUrl": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035562.pdf"
+        },
+        {
+          "id": "house:20035411::b6e38ed58c7dc9df::0",
+          "side": "Buy",
+          "filerKey": "House:FL:FL27:maria elvira salazar",
+          "traded": "2026-08-07",
+          "filed": "2026-09-09",
+          "sourceUrl": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035411.pdf"
+        },
+        {
+          "id": "house:20035204::db13e226aff16cf5::0",
+          "side": "Buy",
+          "filerKey": "House:GA:GA06:richard dean dr mccormick",
+          "traded": "2026-07-30",
+          "filed": "2026-08-14",
+          "sourceUrl": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035204.pdf"
+        },
+        {
+          "id": "house:20035138::238d4720666ff4a1::0",
+          "side": "Buy",
+          "filerKey": "House:FL:FL27:maria elvira salazar",
+          "traded": "2026-07-28",
+          "filed": "2026-08-07",
+          "sourceUrl": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035138.pdf"
+        },
+        {
+          "id": "house:20035138::78fca3ecd22b04fd::0",
+          "side": "Buy",
+          "filerKey": "House:FL:FL27:maria elvira salazar",
+          "traded": "2026-07-28",
+          "filed": "2026-08-07",
+          "sourceUrl": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035138.pdf"
+        }
+      ]
+    },
+    {
+      "ticker": "AAPL",
+      "cik": "0000320193",
+      "buyers": 2,
+      "sellers": 6,
+      "purchases": 3,
+      "sales": 7,
+      "repeatBuyers": 1,
+      "chambers": [
+        "House"
+      ],
+      "latestBuyFiled": "2026-10-01",
+      "medianFilingDelayDays": 20,
+      "mixedActivity": true,
+      "sourceRecords": [
+        {
+          "id": "house:20035464::e14a07158a46bc38::0",
+          "side": "Buy",
+          "filerKey": "House:LA:LA06:cleo fields",
+          "traded": "2026-09-08",
+          "filed": "2026-10-01",
+          "sourceUrl": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035464.pdf"
+        },
+        {
+          "id": "house:20035491::c3efe61e59da8aca::0",
+          "side": "Sell",
+          "filerKey": "House:OK:OK01:kevin hern",
+          "traded": "2026-09-08",
+          "filed": "2026-09-25",
+          "sourceUrl": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035491.pdf"
+        },
+        {
+          "id": "house:20035491::c3efe61e59da8aca::1",
+          "side": "Sell",
+          "filerKey": "House:OK:OK01:kevin hern",
+          "traded": "2026-09-08",
+          "filed": "2026-09-25",
+          "sourceUrl": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035491.pdf"
+        },
+        {
+          "id": "house:20035499::b4ab0bc33e4a7d68::0",
+          "side": "Sell",
+          "filerKey": "House:TX:TX17:pete sessions",
+          "traded": "2026-09-22",
+          "filed": "2026-09-22",
+          "sourceUrl": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035499.pdf"
+        },
+        {
+          "id": "house:20035450::b1ab695ce65b53dc::0",
+          "side": "Sell",
+          "filerKey": "House:FL:FL18:scott scott franklin",
+          "traded": "2026-08-20",
+          "filed": "2026-09-17",
+          "sourceUrl": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035450.pdf"
+        },
+        {
+          "id": "house:20035345::f846b64f191becf5::0",
+          "side": "Buy",
+          "filerKey": "House:LA:LA06:cleo fields",
+          "traded": "2026-08-13",
+          "filed": "2026-09-02",
+          "sourceUrl": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035345.pdf"
+        },
+        {
+          "id": "house:20035367::0f33e048ee9781a7::0",
+          "side": "Sell",
+          "filerKey": "house:va05:john-mcguire",
+          "traded": "2026-08-18",
+          "filed": "2026-09-02",
+          "sourceUrl": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035367.pdf"
+        },
+        {
+          "id": "house:20035275::f846b64f191becf5::0",
+          "side": "Buy",
+          "filerKey": "House:HI:HI01:ed case",
+          "traded": "2026-08-13",
+          "filed": "2026-08-18",
+          "sourceUrl": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035275.pdf"
+        },
+        {
+          "id": "house:20035204::c54abc62ccb2ae82::0",
+          "side": "Sell",
+          "filerKey": "House:GA:GA06:richard dean dr mccormick",
+          "traded": "2026-07-30",
+          "filed": "2026-08-14",
+          "sourceUrl": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035204.pdf"
+        },
+        {
+          "id": "senate:60c01547-0cf9-46c6-9ce6-f0102f5941f6:e444f2d42cd0c7b1b009a14117e7755157f8a9cac329414c0641743e8c64c5af:1",
+          "side": "Sell",
+          "filerKey": "senate:C001047",
+          "traded": "2026-07-21",
+          "filed": "2026-08-04",
+          "sourceUrl": "https://efdsearch.senate.gov/search/view/ptr/60c01547-0cf9-46c6-9ce6-f0102f5941f6/"
+        }
+      ]
+    },
+    {
+      "ticker": "AVGO",
+      "cik": "0001730168",
+      "buyers": 2,
+      "sellers": 1,
+      "purchases": 4,
+      "sales": 1,
+      "repeatBuyers": 1,
+      "chambers": [
+        "House"
+      ],
+      "latestBuyFiled": "2026-09-22",
+      "medianFilingDelayDays": 11.5,
+      "mixedActivity": false,
+      "sourceRecords": [
+        {
+          "id": "house:20035622::0878c8686c7fb0a4::0",
+          "side": "Sell",
+          "filerKey": "House:CA:CA31:gilbert cisneros",
+          "traded": "2026-09-16",
+          "filed": "2026-10-12",
+          "sourceUrl": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035622.pdf"
+        },
+        {
+          "id": "house:20035492::2ce3fab98e2d30bf::0",
+          "side": "Buy",
+          "filerKey": "House:GA:GA12:richard w allen",
+          "traded": "2026-08-12",
+          "filed": "2026-09-22",
+          "sourceUrl": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035492.pdf"
+        },
+        {
+          "id": "house:20035392::e3745d5c5bae789b::0",
+          "side": "Buy",
+          "filerKey": "House:OH:OH02:david j taylor",
+          "traded": "2026-08-26",
+          "filed": "2026-09-05",
+          "sourceUrl": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035392.pdf"
+        },
+        {
+          "id": "house:20035392::e3745d5c5bae789b::1",
+          "side": "Buy",
+          "filerKey": "House:OH:OH02:david j taylor",
+          "traded": "2026-08-26",
+          "filed": "2026-09-05",
+          "sourceUrl": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035392.pdf"
+        },
+        {
+          "id": "house:20035146::c7183e5b96e1f93f::0",
+          "side": "Buy",
+          "filerKey": "House:OH:OH02:david j taylor",
+          "traded": "2026-07-24",
+          "filed": "2026-08-06",
+          "sourceUrl": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035146.pdf"
+        }
+      ]
+    }
+  ],
+  "mobileChanges": [
+    "Radar before trading tables",
+    "All four source entry points visible",
+    "Bounded three-stock client previews",
+    "Searchable, sorted 25-result activity pages",
+    "Native mobile sector picker",
+    "Collapsible latest disclosures",
+    "Keyboard-accessible mobile menu"
+  ],
+  "predictivePerformanceValidated": false
+}
