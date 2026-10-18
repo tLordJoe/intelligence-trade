@@ -11,7 +11,7 @@ function invalidManagerAttribution(f:InstitutionalFiling):boolean {
 }
 
 /** Conservative v1: any amendment or conflicting version holds its whole quarter. */
-export function reconcileInstitutions(filings: InstitutionalFiling[], blockedManagers: string[] = [], notices:InstitutionalNotice[] = []) {
+export function reconcileInstitutions(filings: InstitutionalFiling[], blockedManagers: string[] = [], notices:InstitutionalNotice[] = [], allowPartialReports = false) {
   const versions = new Map<string, InstitutionalFiling>();
   const conflicts = new Set<string>();
   for (const filing of filings) {
@@ -32,7 +32,7 @@ export function reconcileInstitutions(filings: InstitutionalFiling[], blockedMan
       entries.some(f => f.amendment) ? "amendment_family_requires_review" : entries.length !== 1 ? "multiple_originals_require_review" :
       entries.some(f=>f.computedEntries!==f.declaredEntries||f.computedValue!==f.declaredValue) ? "table_totals_do_not_reconcile" :
       entries.some(invalidManagerAttribution) ? "invalid_included_manager_attribution" :
-      entries.some(f => f.confidentialOmitted || f.reportType !== "13F HOLDINGS REPORT") ? "confidential_or_combination_report_requires_review" : null;
+      entries.some(f => allowPartialReports ? !["13F HOLDINGS REPORT", "13F COMBINATION REPORT"].includes(f.reportType) : f.confidentialOmitted || f.reportType !== "13F HOLDINGS REPORT") ? "confidential_or_combination_report_requires_review" : null;
     if (reason) held.push({ family, accessions: entries.map(f => f.reference.accession), reason });
     else active.push(entries[0]);
   }

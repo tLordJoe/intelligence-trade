@@ -1,14 +1,13 @@
 import house from "./congress-live.json";
 import senateRelease from "./senate-live.json";
-import insiderRelease from "./insider-live.json";
 import { readApprovedSenateRelease } from "./senate/public-view";
-import { readApprovedInsiderRelease } from "./form4/public-view";
+import { publishedInsiders } from "./published-disclosures";
 import { buildHomeWindow, buildSenateHomeWindow, buildInsiderHomeWindow, mergeHomeWindows, type HomePeriod } from "./homepage-market";
 import type { DisclosureRecord } from "./congress-schema";
 
 /** Full projections stay on the server. The homepage sends only bounded previews. */
 export function homeMarketData(asOf = new Date().toISOString().slice(0,10)) {
-  const senate = readApprovedSenateRelease(senateRelease), insiders = readApprovedInsiderRelease(insiderRelease);
+  const senate = readApprovedSenateRelease(senateRelease), insiders = publishedInsiders();
   const periods = ["ytd","30","90"] as HomePeriod[];
   const houseWindows = Object.fromEntries(periods.map(period => [period,buildHomeWindow(house.trades as DisclosureRecord[],period,asOf)])) as Record<HomePeriod,ReturnType<typeof buildHomeWindow>>;
   const senateWindows = senate ? Object.fromEntries(periods.map(period=>[period,buildSenateHomeWindow(senate,period,asOf)])) as typeof houseWindows : null;

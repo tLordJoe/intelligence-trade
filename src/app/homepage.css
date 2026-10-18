@@ -301,3 +301,7 @@
   .instrument-page .sector-page-section>form:not(.senate-search)>:is(input,select) { width:100%; }
   .instrument-page .sector-page-section>form:not(.senate-search)>button { min-height:46px; padding:10px 16px; background:var(--home-hero-ink); color:var(--bg-card); border-radius:7px; font-weight:650; }
 }
+.disclosure-search { display: flex; flex-wrap: wrap; align-items: end; gap: 1rem; margin: 1.25rem 0; }
+.disclosure-search label { display: grid; gap: .4rem; flex: 1 1 13rem; min-width: 0; font-weight: 600; }
+.disclosure-search input, .disclosure-search select, .senate-search select { width: 100%; min-width: 0; max-width: 100%; padding: .8rem; border: 1px solid var(--home-border, #ddd); border-radius: .5rem; background: white; color: inherit; font: inherit; }
+.disclosure-search button { min-height: 48px; padding: .8rem 1rem; border: 0; border-radius: .5rem; background: var(--home-accent, #089d73); color: white; font: inherit; font-weight: 700; cursor: pointer; }
