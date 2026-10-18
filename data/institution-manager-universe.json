@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "first-cohort-v1",
+  "id": "featured-managers-v2",
   "scope": "Named research cohort, not all institutional managers, largest-manager rankings, or ETF constituents. Each candidate identity must be corroborated by its archived SEC submissions record before readiness.",
   "managers": [
     {"cik":"0001067983","name":"Berkshire Hathaway","secNames":["BERKSHIRE HATHAWAY INC"],"selection":"Existing validated reporting-manager corpus"},
@@ -15,6 +15,13 @@
     {"cik":"0001179392","name":"Two Sigma Investments","secNames":["TWO SIGMA INVESTMENTS LP","TWO SIGMA INVESTMENTS LLC"],"selection":"Alternative investment-manager reporting context"},
     {"cik":"0001350694","name":"Bridgewater Associates","secNames":["BRIDGEWATER ASSOCIATES LP"],"selection":"Alternative investment-manager reporting context"},
     {"cik":"0001135730","name":"Coatue Management","secNames":["COATUE MANAGEMENT LLC"],"selection":"Alternative investment-manager reporting context"},
-    {"cik":"0001167483","name":"Tiger Global Management","secNames":["TIGER GLOBAL MANAGEMENT LLC"],"selection":"Alternative investment-manager reporting context"}
+    {"cik":"0001167483","name":"Tiger Global Management","secNames":["TIGER GLOBAL MANAGEMENT LLC"],"selection":"Alternative investment-manager reporting context"},
+    {"cik":"0001541617","name":"Altimeter Capital Management","secNames":["ALTIMETER CAPITAL MANAGEMENT, LP"],"selection":"User-requested Brad Gerstner featured-manager coverage; reported portfolio, not personal trades"},
+    {"cik":"0001336528","name":"Pershing Square Capital Management","secNames":["PERSHING SQUARE CAPITAL MANAGEMENT, L.P."],"selection":"User-requested Bill Ackman coverage; preserve notice linkage to separate reporting entity"},
+    {"cik":"0002026053","name":"Pershing Square Inc.","secNames":["PERSHING SQUARE INC.","PERSHING SQUARE HOLDCO, L.P."],"selection":"Reporting entity explicitly named by Pershing Square Capital Management June 2026 notice; do not combine or compare across entities without reviewed lineage"},
+    {"cik":"0001656456","name":"Appaloosa LP","secNames":["APPALOOSA LP"],"selection":"User-requested David Tepper featured-manager coverage; reported portfolio, not personal trades"},
+    {"cik":"0001040273","name":"Third Point LLC","secNames":["THIRD POINT LLC"],"selection":"User-requested Daniel Loeb featured-manager coverage; reported portfolio, not personal trades"},
+    {"cik":"0001536411","name":"Duquesne Family Office LLC","secNames":["DUQUESNE FAMILY OFFICE LLC"],"selection":"User-requested Stanley Druckenmiller featured-manager coverage; reported portfolio, not personal trades"},
+    {"cik":"0001647251","name":"TCI Fund Management Ltd","secNames":["TCI FUND MANAGEMENT LTD"],"selection":"User-requested Chris Hohn featured-manager coverage; reported portfolio, not personal trades"}
   ]
 }

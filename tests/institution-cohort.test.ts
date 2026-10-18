@@ -5,7 +5,8 @@ import { validatePlan, assessManagerRun, type CohortPlan, type ManagerUniverse }
 const universe=JSON.parse(readFileSync(new URL("../data/institution-manager-universe.json",import.meta.url),"utf8")) as ManagerUniverse;
 const plan:CohortPlan={universe,from:"2026-01-01",to:"2026-09-15",previousPeriod:"2026-03-31",currentPeriod:"2026-06-30",maxFilings:40};
 test("first institutional cohort is explicit, unique, bounded and not asserted universal",()=>{
-  assert.equal(universe.managers.length,13);assert.match(universe.scope,/not all institutional managers/);
+  assert.equal(universe.managers.length,20);assert.match(universe.scope,/not all institutional managers/);
+  for(const cik of ["0001541617","0001336528","0002026053","0001656456","0001040273","0001536411","0001647251"])assert.ok(universe.managers.some(m=>m.cik===cik));
   assert.match(validatePlan(plan),/^[a-f0-9]{64}$/);
   assert.notEqual(validatePlan(plan),validatePlan({...plan,to:"2026-09-16"}));
   assert.throws(()=>validatePlan({...plan,universe:{...universe,managers:[universe.managers[0],universe.managers[0]]}}),/duplicate/);

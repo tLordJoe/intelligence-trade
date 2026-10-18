@@ -100,6 +100,13 @@ jobs:
           set -euo pipefail
           tracked=$(git ls-files -- \
             'data/form4-candidate.json' \
+            'data/form4-candidate.json.chunks/**' \
+            'data/form4-candidate.json.previous' \
+            'data/form4-candidate.json.legacy-backup' \
+            'data/form4-candidate.json.legacy-backup-*' \
+            'data/form4-backups/**' \
+            'data/form4-candidate.json.quarantine-*/**' \
+            'data/form4-candidate.json.recovery-*' \
             'data/form4-runs' \
             'data/form4-runs/**' || true)
           if [ -n "$tracked" ]; then

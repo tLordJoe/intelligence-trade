@@ -6,7 +6,7 @@ function invalidManagerAttribution(f:InstitutionalFiling):boolean {
     if(!Array.isArray(f.includedManagers)||f.includedManagers.length!==f.otherIncludedManagers)return true;
     if(new Set(f.includedManagers.map(m=>m.sequenceNumber)).size!==f.includedManagers.length || new Set(f.includedManagers.map(m=>m.stableId)).size!==f.includedManagers.length)return true;
     if(f.includedManagers.some(m=>!m.name.trim()||!/^\d+$/.test(m.sequenceNumber)||BigInt(m.sequenceNumber)<BigInt(1)||m.stableId!==managerIdentity(m.cik,m.form13FFileNumber)))return true;
-    return f.holdings.some(row=>JSON.stringify(row.otherManagerIds)!==JSON.stringify(resolveManagerQualifiers(row.otherManagers,f.includedManagers)));
+    return f.holdings.some(row=>JSON.stringify(row.otherManagerIds)!==JSON.stringify(resolveManagerQualifiers(row.otherManagers,f.includedManagers,row.investmentDiscretion)));
   }catch{return true;}
 }
 

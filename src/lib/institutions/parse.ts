@@ -27,7 +27,7 @@ function text(node: XmlNode, name: string, optional = false): string {
 }
 const integer = (value: string) => { if (!/^\d+$/.test(value)) throw new Error("Invalid integer amount"); return BigInt(value).toString(); };
 export interface Holding {
-  id: string; issuerName: string; titleOfClass: string; cusip: string; figi: string | null;
+  id: string; issuerName: string; titleOfClass: string; cusip: string; cusipAsFiled?: string; figi: string | null;
   valueAsFiled: string; valueUsd: string; quantity: string; quantityType: "SH" | "PRN"; putCall: "Put" | "Call" | null;
   investmentDiscretion: string; otherManagers: string; otherManagerIds: string[]; voting: { sole: string; shared: string; none: string };
 }
@@ -65,8 +65,11 @@ export function managerIdentity(cik:string|null, fileNumber:string|null):string 
   if(cik)return `cik:${cik}`;
   throw new Error("Included manager has no stable source identifier");
 }
-export function resolveManagerQualifiers(raw:string, managers:IncludedManager[]):string[] {
+export function resolveManagerQualifiers(raw:string, managers:IncludedManager[], discretion?:string):string[] {
   if(!raw)return [];
+  // Appaloosa's SEC tables explicitly use N/A for sole discretion with no
+  // included managers. Preserve the source text, but resolve no extra identity.
+  if(raw==="N/A"&&managers.length===0&&discretion==="SOLE")return [];
   if(!/^\d+(?:\s*,\s*\d+)*$/.test(raw))throw new Error("Invalid other-manager row qualifiers");
   const ordinals=raw.split(",").map(value=>integer(value.trim()));
   if(new Set(ordinals).size!==ordinals.length)throw new Error("Duplicate other-manager row qualifier");
@@ -115,7 +118,11 @@ function readCover(source: string, reference: FilingReference) {
 }
 export function parseInstitutionalNotice(source:string,reference:FilingReference):InstitutionalNotice {
   const c=readCover(source,reference);
-  if(!["13F-NT","13F-NT/A"].includes(reference.form)||c.reportType!=="13F NOTICE"||c.docs.some(d=>d.type==="INFORMATION TABLE")||children(c.form,"summaryPage").length)throw new Error("Notice form conflicts with holdings content");
+  const summaries=children(c.form,"summaryPage");
+  const emptySummary=summaries.length===0||(summaries.length===1&&!summaries[0].text.trim()&&
+    summaries[0].children.length===3&&new Set(summaries[0].children.map(local)).size===3&&
+    summaries[0].children.every(n=>["otherIncludedManagersCount","tableEntryTotal","tableValueTotal"].includes(local(n)!)&&!n.text.trim()&&!n.children.length));
+  if(!["13F-NT","13F-NT/A"].includes(reference.form)||c.reportType!=="13F NOTICE"||c.docs.some(d=>d.type==="INFORMATION TABLE")||!emptySummary)throw new Error("Notice form conflicts with holdings content");
   const list=one(c.cover,"otherManagersInfo");
   if(!list.children.length||list.children.some(n=>local(n)!=="otherManager"))throw new Error("Invalid notice reporting-manager list");
   const otherReportingManagers=list.children.map(manager=>{
@@ -152,17 +159,17 @@ export function parseInstitutionalFiling(source: string, reference: FilingRefere
   if (local(table) !== "informationTable" || table.children.some(n => local(n) !== "infoTable")) throw new Error("Unexpected information table structure");
   const holdings = children(table, "infoTable").map((node, i): Holding => {
     const shares = one(node, "shrsOrPrnAmt"), voting = one(node, "votingAuthority");
-    const cusip = text(node, "cusip"), figi = text(node, "figi", true) || null;
+    const cusipAsFiled = text(node, "cusip"), cusip = cusipAsFiled.replace(/[a-z]/g,c=>c.toUpperCase()), figi = text(node, "figi", true) || null;
     if (!/^[A-Z0-9*@#]{9}$/.test(cusip) || (figi && !/^[A-Z0-9]{12}$/.test(figi))) throw new Error("Invalid source security identifier");
     const quantity = text(shares, "sshPrnamt"), quantityType = text(shares, "sshPrnamtType"), putCall = text(node, "putCall", true) || null;
     if (!/^\d+(?:\.\d{1,4})?$/.test(quantity) || !["SH", "PRN"].includes(quantityType) || (putCall && !["Put", "Call"].includes(putCall))) throw new Error("Unsupported quantity or option units");
     const valueAsFiled = integer(text(node, "value"));
     const otherManagers=text(node,"otherManager",true), investmentDiscretion=text(node,"investmentDiscretion");
     if(!["SOLE","DFND","OTR"].includes(investmentDiscretion))throw new Error("Unknown investment discretion");
-    return { id: `${reference.accession}:${i + 1}`, issuerName: text(node, "nameOfIssuer"), titleOfClass: text(node, "titleOfClass"), cusip, figi,
+    return { id: `${reference.accession}:${i + 1}`, issuerName: text(node, "nameOfIssuer"), titleOfClass: text(node, "titleOfClass"), cusip, ...(cusipAsFiled!==cusip?{cusipAsFiled}:{}), figi,
       valueAsFiled, valueUsd: (BigInt(valueAsFiled) * BigInt(valueUnit === "USD" ? 1 : 1000)).toString(), quantity,
       quantityType: quantityType as "SH" | "PRN", putCall: putCall as Holding["putCall"], investmentDiscretion,
-      otherManagers, otherManagerIds:resolveManagerQualifiers(otherManagers,includedManagers), voting: { sole: integer(text(voting, "Sole")), shared: integer(text(voting, "Shared")), none: integer(text(voting, "None")) } };
+      otherManagers, otherManagerIds:resolveManagerQualifiers(otherManagers,includedManagers,investmentDiscretion), voting: { sole: integer(text(voting, "Sole")), shared: integer(text(voting, "Shared")), none: integer(text(voting, "None")) } };
   });
   const computedEntries=holdings.length,computedValue=holdings.reduce((sum,row)=>sum+BigInt(row.valueAsFiled),BigInt(0)).toString();
   if(computedEntries!==declaredEntries||computedValue!==declaredValue){
