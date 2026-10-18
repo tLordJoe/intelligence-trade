@@ -1,0 +1,907 @@
+{
+  "reviewedAt": "2026-10-18T03:17:01.475Z",
+  "reviewer": "Codex",
+  "independentParser": "saxes",
+  "unitAuthority": "https://www.sec.gov/files/form13f.pdf (Special Instructions 6(c), 8 and 11; X0202 source format)",
+  "cohortId": "featured-managers-2026-q2-oct17-release",
+  "candidateSha256": "9d940dd7ecad30c31cfd6f395e0b235d3e9eb24cc7a006d572b70842e7147d68",
+  "filings": 28,
+  "sourceRows": 41367,
+  "negativeTests": 3,
+  "results": [
+    {
+      "accession": "0000886982-26-000519",
+      "sourceSha256": "1503b58b92f8e419e701a774ef6fe49728dd22c8a1d2c428465829e9292e2883",
+      "managerName": "GOLDMAN SACHS GROUP INC",
+      "cik": "0000886982",
+      "filedDate": "2026-08-14",
+      "period": "2026-06-30",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 14070,
+      "valueTotal": "1151631766592",
+      "includedManagers": 8,
+      "sample": [
+        {
+          "issuer": "1 800 FLOWERS COM INC",
+          "valueUsd": "3664165",
+          "quantity": "1052921",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0000886982-26-000274",
+      "sourceSha256": "de7ff4f2e9a72d17ebc7362d7c834bfa90ff8438648449654b1d2495b6143e31",
+      "managerName": "GOLDMAN SACHS GROUP INC",
+      "cik": "0000886982",
+      "filedDate": "2026-05-15",
+      "period": "2026-03-31",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 13579,
+      "valueTotal": "870939686922",
+      "includedManagers": 8,
+      "sample": [
+        {
+          "issuer": "1 800 FLOWERS COM INC",
+          "valueUsd": "4072390",
+          "quantity": "1339602",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0001037389-26-000059",
+      "sourceSha256": "87a86ab29e9a389a76e0842711ad5b6725f97563310b253b7b7da94cc301e743",
+      "managerName": "RENAISSANCE TECHNOLOGIES LLC",
+      "cik": "0001037389",
+      "filedDate": "2026-08-13",
+      "period": "2026-06-30",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 3140,
+      "valueTotal": "72617871974",
+      "includedManagers": 0,
+      "sample": [
+        {
+          "issuer": "10X GENOMICS INC",
+          "valueUsd": "30750175",
+          "quantity": "802039",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0001037389-26-000033",
+      "sourceSha256": "ace75853a4bd02bc24581c8782c4a3488b59f9be12eb03c5829e1caa21cc1849",
+      "managerName": "RENAISSANCE TECHNOLOGIES LLC",
+      "cik": "0001037389",
+      "filedDate": "2026-05-14",
+      "period": "2026-03-31",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 3213,
+      "valueTotal": "63929893013",
+      "includedManagers": 0,
+      "sample": [
+        {
+          "issuer": "10X GENOMICS INC",
+          "valueUsd": "21415529",
+          "quantity": "1008739",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0001037389-26-000023",
+      "sourceSha256": "25e75828c3476e415b5336a2b5ee2d4ee49f27808da5d829f48f4d448d9c7cf3",
+      "managerName": "RENAISSANCE TECHNOLOGIES LLC",
+      "cik": "0001037389",
+      "filedDate": "2026-02-12",
+      "period": "2025-12-31",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 3185,
+      "valueTotal": "64461244358",
+      "includedManagers": 0,
+      "sample": [
+        {
+          "issuer": "10X GENOMICS INC",
+          "valueUsd": "25289291",
+          "quantity": "1550539",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0001040273-26-000003",
+      "sourceSha256": "426ac9f0e22f5d84c1b0e92958fe3970bc27f1441534fb7451c1fc72c72f7e34",
+      "managerName": "Third Point LLC",
+      "cik": "0001040273",
+      "filedDate": "2026-08-14",
+      "period": "2026-06-30",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 43,
+      "valueTotal": "4679571988",
+      "includedManagers": 0,
+      "sample": [
+        {
+          "issuer": "ALPHABET INC",
+          "valueUsd": "366304250",
+          "quantity": "1025000",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0001040273-26-000002",
+      "sourceSha256": "0210b005832edc815ff8b49da2678462fdde4ed92cdcf2ea69a0682163c512ec",
+      "managerName": "Third Point LLC",
+      "cik": "0001040273",
+      "filedDate": "2026-05-15",
+      "period": "2026-03-31",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 33,
+      "valueTotal": "2082795760",
+      "includedManagers": 0,
+      "sample": [
+        {
+          "issuer": "ALPHABET INC",
+          "valueUsd": "50323000",
+          "quantity": "175000",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0001040273-26-000001",
+      "sourceSha256": "024902be9a9649084c55191db5e93bcab62798f5bd8edd0ef3826270d8d52332",
+      "managerName": "Third Point LLC",
+      "cik": "0001040273",
+      "filedDate": "2026-02-17",
+      "period": "2025-12-31",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 44,
+      "valueTotal": "7274621868",
+      "includedManagers": 0,
+      "sample": [
+        {
+          "issuer": "ALIBABA GROUP HLDG LTD",
+          "valueUsd": "120928500",
+          "quantity": "825000",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0001193125-26-352200",
+      "sourceSha256": "19fc411d481abb83dc262b3ddeacaa3b6d8ae30c0d7ba76566595e2c60e62a0e",
+      "managerName": "Berkshire Hathaway Inc",
+      "cik": "0001067983",
+      "filedDate": "2026-08-14",
+      "period": "2026-06-30",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 89,
+      "valueTotal": "299253556246",
+      "includedManagers": 14,
+      "sample": [
+        {
+          "issuer": "ALLY FINL INC",
+          "valueUsd": "577211815",
+          "quantity": "12561737",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0001193125-26-226661",
+      "sourceSha256": "989d1c033140cef4b1aa6da937c0024f77a8fe37a99ac917df0af6aecbcee3cb",
+      "managerName": "Berkshire Hathaway Inc",
+      "cik": "0001067983",
+      "filedDate": "2026-05-15",
+      "period": "2026-03-31",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 90,
+      "valueTotal": "263095703570",
+      "includedManagers": 14,
+      "sample": [
+        {
+          "issuer": "ALLY FINL INC",
+          "valueUsd": "498992850",
+          "quantity": "12719675",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0001193125-26-054580",
+      "sourceSha256": "0b20c1867aefb1c2e4d94223bfa86d91aaaa3c91f1e783689d8f99b3db849522",
+      "managerName": "Berkshire Hathaway Inc",
+      "cik": "0001067983",
+      "filedDate": "2026-02-17",
+      "period": "2025-12-31",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 110,
+      "valueTotal": "274160086701",
+      "includedManagers": 14,
+      "sample": [
+        {
+          "issuer": "ALLY FINL INC",
+          "valueUsd": "576074081",
+          "quantity": "12719675",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0000919574-26-005478",
+      "sourceSha256": "e95fe69be951f40cbb928b49ca6ebfddc9b54b85f5319fef081537e5eff63b2c",
+      "managerName": "COATUE MANAGEMENT LLC",
+      "cik": "0001135730",
+      "filedDate": "2026-08-14",
+      "period": "2026-06-30",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 211,
+      "valueTotal": "48629053706",
+      "includedManagers": 27,
+      "sample": [
+        {
+          "issuer": "ADVANCED MICRO DEVICES INC",
+          "valueUsd": "55759808",
+          "quantity": "95987",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0000919574-26-003501",
+      "sourceSha256": "a79b72e081a4da608cc44c65d8fdc7e680482eeb163e3ff7ff5bdda046ee5c47",
+      "managerName": "COATUE MANAGEMENT LLC",
+      "cik": "0001135730",
+      "filedDate": "2026-05-15",
+      "period": "2026-03-31",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 198,
+      "valueTotal": "29056031305",
+      "includedManagers": 27,
+      "sample": [
+        {
+          "issuer": "ALPHABET INC",
+          "valueUsd": "586727935",
+          "quantity": "2040367",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0000919574-26-005427",
+      "sourceSha256": "fa9124f99545cfa684616a2dc8fb86c8ddc3034b7b5afaee8157f9452f14d158",
+      "managerName": "TIGER GLOBAL MANAGEMENT LLC",
+      "cik": "0001167483",
+      "filedDate": "2026-08-14",
+      "period": "2026-06-30",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 46,
+      "valueTotal": "23981506027",
+      "includedManagers": 0,
+      "sample": [
+        {
+          "issuer": "ACCELERANT HOLDINGS",
+          "valueUsd": "879000",
+          "quantity": "75000",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0000919574-26-003362",
+      "sourceSha256": "0b9be0b3686a4703a56760625b0b27d18fd613ea784c7647a8962c4297dace54",
+      "managerName": "TIGER GLOBAL MANAGEMENT LLC",
+      "cik": "0001167483",
+      "filedDate": "2026-05-15",
+      "period": "2026-03-31",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 54,
+      "valueTotal": "22845413829",
+      "includedManagers": 0,
+      "sample": [
+        {
+          "issuer": "ACCELERANT HOLDINGS",
+          "valueUsd": "1002000",
+          "quantity": "75000",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0000919574-26-001143",
+      "sourceSha256": "afefefe0a3966f6676fe4e04c58640c0cc40083726daa00b94578a75073c1719",
+      "managerName": "TIGER GLOBAL MANAGEMENT LLC",
+      "cik": "0001167483",
+      "filedDate": "2026-02-17",
+      "period": "2025-12-31",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 54,
+      "valueTotal": "29714313270",
+      "includedManagers": 0,
+      "sample": [
+        {
+          "issuer": "ACCELERANT HOLDINGS",
+          "valueUsd": "1226250",
+          "quantity": "75000",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0001350694-26-000003",
+      "sourceSha256": "10db3b5be5784fc280833ce0c20f050fea88e30f3c98828a0c561b9b265776f6",
+      "managerName": "Bridgewater Associates, LP",
+      "cik": "0001350694",
+      "filedDate": "2026-08-14",
+      "period": "2026-06-30",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 997,
+      "valueTotal": "24376086530",
+      "includedManagers": 0,
+      "sample": [
+        {
+          "issuer": "10X GENOMICS INC",
+          "valueUsd": "512798",
+          "quantity": "13375",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0001350694-26-000002",
+      "sourceSha256": "fb6dde8409663edbfe9e76e1d9284eee48fae46459588c058d666d100cb221ef",
+      "managerName": "Bridgewater Associates, LP",
+      "cik": "0001350694",
+      "filedDate": "2026-05-15",
+      "period": "2026-03-31",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 993,
+      "valueTotal": "22404547213",
+      "includedManagers": 0,
+      "sample": [
+        {
+          "issuer": "10X GENOMICS INC",
+          "valueUsd": "745194",
+          "quantity": "35101",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0001350694-26-000001",
+      "sourceSha256": "7a1ffbb22f98626d847326ff47064eea5fb188557ae7a0f1c9c3fc4d2cf7f743",
+      "managerName": "Bridgewater Associates, LP",
+      "cik": "0001350694",
+      "filedDate": "2026-02-13",
+      "period": "2025-12-31",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 1040,
+      "valueTotal": "27421613830",
+      "includedManagers": 0,
+      "sample": [
+        {
+          "issuer": "10X GENOMICS INC",
+          "valueUsd": "2898842",
+          "quantity": "177734",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0001541617-26-000008",
+      "sourceSha256": "35e990f29c20b7519e75eac36cabde7c78cd1427ec0a22ab1de202003304e52f",
+      "managerName": "Altimeter Capital Management, LP",
+      "cik": "0001541617",
+      "filedDate": "2026-08-14",
+      "period": "2026-06-30",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 20,
+      "valueTotal": "9829676383",
+      "includedManagers": 0,
+      "sample": [
+        {
+          "issuer": "APPLIED MATLS INC",
+          "valueUsd": "189389850",
+          "quantity": "261950",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0001541617-26-000006",
+      "sourceSha256": "8b9d5a0a72dcfaa0958aa3771b35e40cc29c14ac70f38a7ae09f750581376f22",
+      "managerName": "Altimeter Capital Management, LP",
+      "cik": "0001541617",
+      "filedDate": "2026-05-15",
+      "period": "2026-03-31",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 13,
+      "valueTotal": "5699287719",
+      "includedManagers": 0,
+      "sample": [
+        {
+          "issuer": "AMAZON COM INC",
+          "valueUsd": "435192245",
+          "quantity": "2089558",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0001541617-26-000002",
+      "sourceSha256": "161765f09cd11601338da2d3d73c036e4b5e684643d2039891792626d34333e9",
+      "managerName": "Altimeter Capital Management, LP",
+      "cik": "0001541617",
+      "filedDate": "2026-02-17",
+      "period": "2025-12-31",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 18,
+      "valueTotal": "6661973445",
+      "includedManagers": 0,
+      "sample": [
+        {
+          "issuer": "AMAZON COM INC",
+          "valueUsd": "511418641",
+          "quantity": "2215660",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0001647251-26-000007",
+      "sourceSha256": "52119cdea43a2787f5e564cbd717881b35428729eac4ac11ecfa444437c99c67",
+      "managerName": "TCI FUND MANAGEMENT LTD",
+      "cik": "0001647251",
+      "filedDate": "2026-08-14",
+      "period": "2026-06-30",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 11,
+      "valueTotal": "52769884406",
+      "includedManagers": 0,
+      "sample": [
+        {
+          "issuer": "ALPHABET INC",
+          "valueUsd": "878058090",
+          "quantity": "2457000",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0001647251-26-000004",
+      "sourceSha256": "d9d60cb32c83acabbd508698eb38aa5950991eb409f6da28ec1a69a66e60f0cb",
+      "managerName": "TCI FUND MANAGEMENT LTD",
+      "cik": "0001647251",
+      "filedDate": "2026-05-15",
+      "period": "2026-03-31",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 10,
+      "valueTotal": "45170870798",
+      "includedManagers": 0,
+      "sample": [
+        {
+          "issuer": "ALPHABET INC",
+          "valueUsd": "2539863890",
+          "quantity": "8854019",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0001647251-26-000002",
+      "sourceSha256": "1f83cccfd5d5479b2b432dceca2f657d4282bf422e5cb1dfba15b3a285cd6f78",
+      "managerName": "TCI FUND MANAGEMENT LTD",
+      "cik": "0001647251",
+      "filedDate": "2026-02-17",
+      "period": "2025-12-31",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 9,
+      "valueTotal": "53648816254",
+      "includedManagers": 0,
+      "sample": [
+        {
+          "issuer": "ALPHABET INC",
+          "valueUsd": "2383881802",
+          "quantity": "7596819",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0001656456-26-000003",
+      "sourceSha256": "facc8dfb38d852307fc71979470a4313f4e4194e425441f8966247257e32b83a",
+      "managerName": "APPALOOSA LP",
+      "cik": "0001656456",
+      "filedDate": "2026-08-14",
+      "period": "2026-06-30",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 27,
+      "valueTotal": "7725383349",
+      "includedManagers": 0,
+      "sample": [
+        {
+          "issuer": "ADVANCED MICRO DEVICES INC",
+          "valueUsd": "114729725",
+          "quantity": "197500",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0001656456-26-000002",
+      "sourceSha256": "ef7251f53fd07e4e34adfc67924d81c6f7927fb3924f78cea272b472d1b20d8d",
+      "managerName": "APPALOOSA LP",
+      "cik": "0001656456",
+      "filedDate": "2026-05-15",
+      "period": "2026-03-31",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 31,
+      "valueTotal": "5933477986",
+      "includedManagers": 0,
+      "sample": [
+        {
+          "issuer": "ADVANCED MICRO DEVICES INC",
+          "valueUsd": "45039402",
+          "quantity": "221400",
+          "putCall": null
+        }
+      ]
+    },
+    {
+      "accession": "0001656456-26-000001",
+      "sourceSha256": "d627fa0e3fdc0cb21c34d0a1ace37ded4c94ccd77adb2a6d923adcac42b93b3c",
+      "managerName": "APPALOOSA LP",
+      "cik": "0001656456",
+      "filedDate": "2026-02-17",
+      "period": "2025-12-31",
+      "schema": "X0202",
+      "valueUnit": "USD",
+      "rows": 39,
+      "valueTotal": "6925020650",
+      "includedManagers": 0,
+      "sample": [
+        {
+          "issuer": "ADVANCED MICRO DEVICES INC",
+          "valueUsd": "69602000",
+          "quantity": "325000",
+          "putCall": null
+        }
+      ]
+    }
+  ],
+  "sourceReviews": [
+    {
+      "accession": "0000886982-26-000519",
+      "sourceSha256": "1503b58b92f8e419e701a774ef6fe49728dd22c8a1d2c428465829e9292e2883",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 14070 source rows using saxes against the application parser: identity/CIK 0000886982, quarter 2026-06-30, filing date, included-manager attribution, quantities, voting and exact total 1151631766592 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0000886982-26-000274",
+      "sourceSha256": "de7ff4f2e9a72d17ebc7362d7c834bfa90ff8438648449654b1d2495b6143e31",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 13579 source rows using saxes against the application parser: identity/CIK 0000886982, quarter 2026-03-31, filing date, included-manager attribution, quantities, voting and exact total 870939686922 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0001037389-26-000059",
+      "sourceSha256": "87a86ab29e9a389a76e0842711ad5b6725f97563310b253b7b7da94cc301e743",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 3140 source rows using saxes against the application parser: identity/CIK 0001037389, quarter 2026-06-30, filing date, included-manager attribution, quantities, voting and exact total 72617871974 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0001037389-26-000033",
+      "sourceSha256": "ace75853a4bd02bc24581c8782c4a3488b59f9be12eb03c5829e1caa21cc1849",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 3213 source rows using saxes against the application parser: identity/CIK 0001037389, quarter 2026-03-31, filing date, included-manager attribution, quantities, voting and exact total 63929893013 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0001037389-26-000023",
+      "sourceSha256": "25e75828c3476e415b5336a2b5ee2d4ee49f27808da5d829f48f4d448d9c7cf3",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 3185 source rows using saxes against the application parser: identity/CIK 0001037389, quarter 2025-12-31, filing date, included-manager attribution, quantities, voting and exact total 64461244358 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0001040273-26-000003",
+      "sourceSha256": "426ac9f0e22f5d84c1b0e92958fe3970bc27f1441534fb7451c1fc72c72f7e34",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 43 source rows using saxes against the application parser: identity/CIK 0001040273, quarter 2026-06-30, filing date, included-manager attribution, quantities, voting and exact total 4679571988 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0001040273-26-000002",
+      "sourceSha256": "0210b005832edc815ff8b49da2678462fdde4ed92cdcf2ea69a0682163c512ec",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 33 source rows using saxes against the application parser: identity/CIK 0001040273, quarter 2026-03-31, filing date, included-manager attribution, quantities, voting and exact total 2082795760 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0001040273-26-000001",
+      "sourceSha256": "024902be9a9649084c55191db5e93bcab62798f5bd8edd0ef3826270d8d52332",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 44 source rows using saxes against the application parser: identity/CIK 0001040273, quarter 2025-12-31, filing date, included-manager attribution, quantities, voting and exact total 7274621868 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0001193125-26-352200",
+      "sourceSha256": "19fc411d481abb83dc262b3ddeacaa3b6d8ae30c0d7ba76566595e2c60e62a0e",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 89 source rows using saxes against the application parser: identity/CIK 0001067983, quarter 2026-06-30, filing date, included-manager attribution, quantities, voting and exact total 299253556246 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0001193125-26-226661",
+      "sourceSha256": "989d1c033140cef4b1aa6da937c0024f77a8fe37a99ac917df0af6aecbcee3cb",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 90 source rows using saxes against the application parser: identity/CIK 0001067983, quarter 2026-03-31, filing date, included-manager attribution, quantities, voting and exact total 263095703570 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0001193125-26-054580",
+      "sourceSha256": "0b20c1867aefb1c2e4d94223bfa86d91aaaa3c91f1e783689d8f99b3db849522",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 110 source rows using saxes against the application parser: identity/CIK 0001067983, quarter 2025-12-31, filing date, included-manager attribution, quantities, voting and exact total 274160086701 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0000919574-26-005478",
+      "sourceSha256": "e95fe69be951f40cbb928b49ca6ebfddc9b54b85f5319fef081537e5eff63b2c",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 211 source rows using saxes against the application parser: identity/CIK 0001135730, quarter 2026-06-30, filing date, included-manager attribution, quantities, voting and exact total 48629053706 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0000919574-26-003501",
+      "sourceSha256": "a79b72e081a4da608cc44c65d8fdc7e680482eeb163e3ff7ff5bdda046ee5c47",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 198 source rows using saxes against the application parser: identity/CIK 0001135730, quarter 2026-03-31, filing date, included-manager attribution, quantities, voting and exact total 29056031305 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0000919574-26-005427",
+      "sourceSha256": "fa9124f99545cfa684616a2dc8fb86c8ddc3034b7b5afaee8157f9452f14d158",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 46 source rows using saxes against the application parser: identity/CIK 0001167483, quarter 2026-06-30, filing date, included-manager attribution, quantities, voting and exact total 23981506027 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0000919574-26-003362",
+      "sourceSha256": "0b9be0b3686a4703a56760625b0b27d18fd613ea784c7647a8962c4297dace54",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 54 source rows using saxes against the application parser: identity/CIK 0001167483, quarter 2026-03-31, filing date, included-manager attribution, quantities, voting and exact total 22845413829 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0000919574-26-001143",
+      "sourceSha256": "afefefe0a3966f6676fe4e04c58640c0cc40083726daa00b94578a75073c1719",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 54 source rows using saxes against the application parser: identity/CIK 0001167483, quarter 2025-12-31, filing date, included-manager attribution, quantities, voting and exact total 29714313270 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0001350694-26-000003",
+      "sourceSha256": "10db3b5be5784fc280833ce0c20f050fea88e30f3c98828a0c561b9b265776f6",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 997 source rows using saxes against the application parser: identity/CIK 0001350694, quarter 2026-06-30, filing date, included-manager attribution, quantities, voting and exact total 24376086530 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0001350694-26-000002",
+      "sourceSha256": "fb6dde8409663edbfe9e76e1d9284eee48fae46459588c058d666d100cb221ef",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 993 source rows using saxes against the application parser: identity/CIK 0001350694, quarter 2026-03-31, filing date, included-manager attribution, quantities, voting and exact total 22404547213 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0001350694-26-000001",
+      "sourceSha256": "7a1ffbb22f98626d847326ff47064eea5fb188557ae7a0f1c9c3fc4d2cf7f743",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 1040 source rows using saxes against the application parser: identity/CIK 0001350694, quarter 2025-12-31, filing date, included-manager attribution, quantities, voting and exact total 27421613830 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0001541617-26-000008",
+      "sourceSha256": "35e990f29c20b7519e75eac36cabde7c78cd1427ec0a22ab1de202003304e52f",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 20 source rows using saxes against the application parser: identity/CIK 0001541617, quarter 2026-06-30, filing date, included-manager attribution, quantities, voting and exact total 9829676383 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0001541617-26-000006",
+      "sourceSha256": "8b9d5a0a72dcfaa0958aa3771b35e40cc29c14ac70f38a7ae09f750581376f22",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 13 source rows using saxes against the application parser: identity/CIK 0001541617, quarter 2026-03-31, filing date, included-manager attribution, quantities, voting and exact total 5699287719 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0001541617-26-000002",
+      "sourceSha256": "161765f09cd11601338da2d3d73c036e4b5e684643d2039891792626d34333e9",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 18 source rows using saxes against the application parser: identity/CIK 0001541617, quarter 2025-12-31, filing date, included-manager attribution, quantities, voting and exact total 6661973445 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0001647251-26-000007",
+      "sourceSha256": "52119cdea43a2787f5e564cbd717881b35428729eac4ac11ecfa444437c99c67",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 11 source rows using saxes against the application parser: identity/CIK 0001647251, quarter 2026-06-30, filing date, included-manager attribution, quantities, voting and exact total 52769884406 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0001647251-26-000004",
+      "sourceSha256": "d9d60cb32c83acabbd508698eb38aa5950991eb409f6da28ec1a69a66e60f0cb",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 10 source rows using saxes against the application parser: identity/CIK 0001647251, quarter 2026-03-31, filing date, included-manager attribution, quantities, voting and exact total 45170870798 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0001647251-26-000002",
+      "sourceSha256": "1f83cccfd5d5479b2b432dceca2f657d4282bf422e5cb1dfba15b3a285cd6f78",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 9 source rows using saxes against the application parser: identity/CIK 0001647251, quarter 2025-12-31, filing date, included-manager attribution, quantities, voting and exact total 53648816254 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0001656456-26-000003",
+      "sourceSha256": "facc8dfb38d852307fc71979470a4313f4e4194e425441f8966247257e32b83a",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 27 source rows using saxes against the application parser: identity/CIK 0001656456, quarter 2026-06-30, filing date, included-manager attribution, quantities, voting and exact total 7725383349 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0001656456-26-000002",
+      "sourceSha256": "ef7251f53fd07e4e34adfc67924d81c6f7927fb3924f78cea272b472d1b20d8d",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 31 source rows using saxes against the application parser: identity/CIK 0001656456, quarter 2026-03-31, filing date, included-manager attribution, quantities, voting and exact total 5933477986 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    },
+    {
+      "accession": "0001656456-26-000001",
+      "sourceSha256": "d627fa0e3fdc0cb21c34d0a1ace37ded4c94ccd77adb2a6d923adcac42b93b3c",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-10-18T03:17:01.475Z",
+      "evidenceNote": "Independently compared all 39 source rows using saxes against the application parser: identity/CIK 0001656456, quarter 2025-12-31, filing date, included-manager attribution, quantities, voting and exact total 6925020650 match. Raw cover is SEC X0202, LIVE 13F-HR; source values retained unscaled in USD per current Form 13F Special Instructions 6(c), 8 and 11 (https://www.sec.gov/files/form13f.pdf). No amendment, notice, combination or confidential omission admitted. Values describe the filed report, not independently verified market prices or trades.",
+      "unitsVerified": true
+    }
+  ],
+  "excludedManagers": [
+    {
+      "cik": "0000102909",
+      "name": "Vanguard Group",
+      "status": "held",
+      "reason": "Two latest reported quarters are not both eligible"
+    },
+    {
+      "cik": "0000093751",
+      "name": "State Street",
+      "status": "held",
+      "reason": "Two latest reported quarters are not both eligible"
+    },
+    {
+      "cik": "0000315066",
+      "name": "FMR",
+      "status": "held",
+      "reason": "Missing or unparsed official filings"
+    },
+    {
+      "cik": "0000019617",
+      "name": "JPMorgan Chase",
+      "status": "held",
+      "reason": "Missing or unparsed official filings"
+    },
+    {
+      "cik": "0000895421",
+      "name": "Morgan Stanley",
+      "status": "held",
+      "reason": "Two latest reported quarters are not both eligible"
+    },
+    {
+      "cik": "0001423053",
+      "name": "Citadel Advisors",
+      "status": "held",
+      "reason": "Two latest reported quarters are not both eligible"
+    },
+    {
+      "cik": "0001179392",
+      "name": "Two Sigma Investments",
+      "status": "held",
+      "reason": "Missing or unparsed official filings"
+    },
+    {
+      "cik": "0001336528",
+      "name": "Pershing Square Capital Management",
+      "status": "held",
+      "reason": "Two latest reported quarters are not both eligible"
+    },
+    {
+      "cik": "0002026053",
+      "name": "Pershing Square Inc.",
+      "status": "held",
+      "reason": "Two latest reported quarters are not both eligible"
+    },
+    {
+      "cik": "0001536411",
+      "name": "Duquesne Family Office LLC",
+      "status": "held",
+      "reason": "Missing or unparsed official filings"
+    }
+  ],
+  "heldFamilies": [
+    {
+      "family": "0001135730:2025-12-31",
+      "accessions": [
+        "0000919574-26-001239",
+        "0000919574-26-003414"
+      ],
+      "reason": "amendment_family_requires_review"
+    },
+    {
+      "family": "0000886982:2025-12-31",
+      "accessions": [
+        "0000886982-26-000052",
+        "0000886982-26-000093"
+      ],
+      "reason": "amendment_family_requires_review"
+    }
+  ]
+}

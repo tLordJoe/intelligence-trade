@@ -1,8 +1,10 @@
 import assert from "node:assert/strict";
-import test from "node:test";
+import test, { after } from "node:test";
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { existsSync, readFileSync, rmSync, readdirSync, writeFileSync, mkdirSync } from "node:fs";
+import { existsSync, readFileSync, rmSync, readdirSync, writeFileSync, mkdirSync, mkdtempSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { readCandidateFile } from "../src/lib/form4/candidate-storage.ts";
 import { join } from "node:path";
 
 /**
@@ -16,8 +18,10 @@ import { join } from "node:path";
 
 const ROOT = join(import.meta.dirname, "..");
 const SCRIPT = join(ROOT, "scripts", "import-form4.ts");
-const RUNS_DIR = join(ROOT, "data", "form4-runs");
-const CANDIDATE = join(ROOT, "data", "form4-candidate.json");
+const DATA_DIR = mkdtempSync(join(tmpdir(), "outfox-import-test-"));
+after(() => rmSync(DATA_DIR, { recursive: true, force: true }));
+const RUNS_DIR = join(DATA_DIR, "form4-runs");
+const CANDIDATE = join(DATA_DIR, "form4-candidate.json");
 const HOUSE_ARCHIVE = join(ROOT, "src", "lib", "congress-live.json");
 
 function runImporter(
@@ -28,7 +32,7 @@ function runImporter(
     const stdout = execFileSync(
       process.execPath,
       ["--experimental-strip-types", SCRIPT, ...args],
-      { cwd: ROOT, stdio: "pipe", encoding: "utf8", env: { ...process.env, ...env } }
+      { cwd: ROOT, stdio: "pipe", encoding: "utf8", env: { ...process.env, ...env, OUTFOX_FORM4_DATA_DIR: DATA_DIR } }
     );
     return { status: 0, stdout };
   } catch (error) {
@@ -112,12 +116,12 @@ test("a clean candidate run promotes, and the candidate is replaced whole", { ti
     assert.equal(status, 0);
     assert.ok(existsSync(CANDIDATE), "a passing run promotes");
 
-    const promoted = JSON.parse(readFileSync(CANDIDATE, "utf8"));
+    const promoted = readCandidateFile(CANDIDATE);
     assert.equal(promoted.schemaVersion, 1);
     assert.ok(Array.isArray(promoted.filings) && promoted.filings.length > 0);
     // No partial write survived the atomic replace.
     assert.equal(
-      readdirSync(join(ROOT, "data")).filter((f) => f.includes(".tmp")).length,
+      readdirSync(DATA_DIR).filter((f) => f.includes(".tmp")).length,
       0,
       "no temporary file is left behind"
     );
@@ -168,7 +172,7 @@ test("a networked mode refuses to run without a declared SEC contact", { timeout
 
 function candidateState(): { count: number; sha: string; accessions: string[] } {
   const raw = readFileSync(CANDIDATE, "utf8");
-  const parsed = JSON.parse(raw);
+  const parsed = readCandidateFile(CANDIDATE);
   return {
     count: parsed.filings.length,
     sha: createHash("sha256").update(raw).digest("hex"),

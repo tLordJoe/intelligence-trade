@@ -143,7 +143,12 @@ export function mergeCandidate(
 /** Read a candidate archive, tolerating absence but not corruption. */
 export function readCandidate(raw: string | null): CandidateArchive {
   if (raw === null) return { ...EMPTY_CANDIDATE };
-  const parsed = JSON.parse(raw);
+  return readCandidateObject(JSON.parse(raw));
+}
+
+/** Validate an already decoded legacy archive without parsing its large string twice. */
+export function readCandidateObject(value: unknown): CandidateArchive {
+  const parsed = value as Partial<CandidateArchive> | null;
   if (!parsed || typeof parsed !== "object" || !Array.isArray(parsed.filings)) {
     // Refusing is the point: silently starting from empty would turn a corrupt
     // file into a total archive loss on the next promotion.

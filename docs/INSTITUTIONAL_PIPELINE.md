@@ -1,5 +1,85 @@
 # Institutional holdings: gated implementation checkpoint
 
+## October 17 first public release
+
+The full 20-entity roster was refreshed through October 16. Ten managers remain
+eligible: Berkshire, Goldman Sachs, Renaissance, Bridgewater, Coatue, Tiger Global,
+Altimeter, Appaloosa, Third Point and TCI. The other ten entities and the older
+Goldman/Coatue amendment families remain excluded; this is not universal coverage.
+
+Codex independently checked all 28 eligible filings and 41,367 rows with saxes,
+separate from the application's custom XML reader: raw hashes, SEC identity,
+accession/filing date, quarter, X0202 format, USD units, exact totals, included
+manager attribution, quantities and voting authority agree. Three negative checks
+refused a thousand-fold value change, an incorrect manager CIK and modified raw
+bytes. The source-bound review ledger and exclusions are preserved in
+`docs/institution-release-2026-10-17.json`. This is Codex review, not an unreceived
+Claude sign-off. Values are reported source values, not independent price checks.
+
+The locally promoted, hash-approved artifact enables the homepage institutions
+link and `/institutions` after deployment. It contains quarter-end holdings, not
+trades, current personal portfolios or ETF constituents. No corporate-insider data
+is activated by this release: its year-to-date collection is still incomplete.
+
+## October 2 release preparation
+
+The refreshed `featured-managers-2026-q2-october-release` cohort checks the full
+20-entity roster through October 1. Ten managers qualify for source review:
+Berkshire, Goldman Sachs, Renaissance, Bridgewater, Coatue, Tiger Global,
+Altimeter, Appaloosa, Third Point and TCI. The pending public candidate contains
+28 eligible filings and 41,367 source rows. Earlier amended Goldman and Coatue
+families remain excluded. State Street's newly collected June amendment also
+holds its latest family; the older seven-manager assessment is superseded.
+
+Appaloosa's source `N/A` manager qualifier is accepted only with sole discretion
+and zero included managers; its source text is preserved. Parser and reconciliation
+use the same context, and a regression refuses shared or ambiguous attribution.
+All 26 institutional tests pass. The candidate is prepared locally, with no
+source/unit review ledger or public approval yet. Independent review material
+includes the eligible raw filings, SEC identity/submissions evidence, exact
+candidate hash, excluded-manager reasons, and publication/UI code.
+
+## September 29 featured-manager expansion (not published)
+
+The user also approved Appaloosa (David Tepper), Third Point (Daniel Loeb),
+Duquesne Family Office (Stanley Druckenmiller), and TCI (Chris Hohn). All four
+are now in the universe, bringing it to 20 reporting entities (not 20 people).
+Each collection enumerated and archived three filings without download failures:
+
+- Appaloosa: `institutions_3e085a44-e9f2-409e-81ce-8297899bcae7`.
+  All three remain blocked by other-manager row qualifier parsing.
+- Third Point: `institutions_632e455c-b468-47c5-93a1-2ed021514e58`.
+  All three replay and reconcile (44, 33, 43 rows); March-to-June comparison available.
+- Duquesne: `institutions_02fcf12a-717d-498d-9cb1-6793fe367885`.
+  March and June source totals differ from row sums by +1 and -4 reported units;
+  all publication is held, without introducing a tolerance or assuming units are correct.
+- TCI: `institutions_52f5bec8-6d0c-4653-ab44-35246033a380`.
+  All three replay and reconcile (9, 10, 11 rows); March-to-June comparison available.
+
+The 25 institutional tests pass after the expanded-universe assertions. Collection
+success is separate from parsing, independent source review, and public release.
+
+The manager universe now adds Altimeter, Pershing Square Capital Management,
+and its officially referenced reporting entity Pershing Square Inc. Existing
+13-manager cohort snapshots are unchanged; future collections use a new plan.
+Collection through September 29 yielded three filings for each new entity.
+
+Altimeter's three filings replay with 51 rows (18, 13, 20), exact totals and no
+holds. A lowercase ASCII letter in one source CUSIP is normalized for comparison
+while the original is retained as cusipAsFiled and in the raw source.
+
+Pershing Square Capital Management's June notice now parses its empty summary
+placeholder without treating it as holdings. Only the three known empty leaf
+fields are accepted; populated totals, extra fields and tables still fail.
+The notice explicitly refers to Pershing Square Inc. Its collected June holdings
+report has 15 rows; its earlier two filings are combination reports and remain
+held. No automatic cross-entity historical comparison or aggregation is approved.
+The earlier Capital Management holdings reports each contain 11 rows.
+
+These are source preparation results, not independent release approval. No public
+artifact was promoted. Source-bound units review, entity-lineage review for
+Pershing Square, website integration and release verification remain required.
+
 The `/institutions` route and homepage link stay unavailable until a reviewed artifact is promoted. The first real-source replay covers three archived Berkshire Hathaway filings; broader corpus and independent release review are still required. No paid API is required.
 
 ## Meaning and scope

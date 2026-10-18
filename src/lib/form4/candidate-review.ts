@@ -1,7 +1,7 @@
 import { readFileSync, existsSync } from "node:fs";
 import { resolve, sep } from "node:path";
 import { createHash } from "node:crypto";
-import { readCandidate } from "./merge.ts";
+import { readCandidateFile } from "./candidate-storage.ts";
 import { reconcileForm4ByIssuer, type Form4CorrectionReview, type Form4DocumentSelection } from "./reconcile.ts";
 import { buildInsiderActivity, type InsiderSecurityIdentity } from "./activity.ts";
 import { parseForm4 } from "./parse.ts";
@@ -11,7 +11,7 @@ import { EvidenceSnapshotCache } from "./evidence-cache.ts";
 
 /** Local review only. Validates archived evidence before producing display data. */
 export function loadInsiderCandidateReview(root: string) {
-  const archive = readCandidate(readFileSync(resolve(root, "data/form4-candidate.json"), "utf8"));
+  const archive = readCandidateFile(resolve(root, "data/form4-candidate.json"));
   const master = JSON.parse(readFileSync(resolve(root, "data/security-master.json"), "utf8"));
   const universeSnapshots = new EvidenceSnapshotCache<{ sha256: string; ciks: string[]; size: number }>();
   const expectedSnapshots = new EvidenceSnapshotCache<ReturnType<typeof filterByIssuerCik>>();

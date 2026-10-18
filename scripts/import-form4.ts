@@ -21,7 +21,7 @@
  */
 
 import {
-  existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync,
+  existsSync, mkdirSync, readFileSync, rmSync, writeFileSync,
 } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -33,14 +33,16 @@ import {
   summarizeEnumeration, unavailableIndex,
   type EnumerationSummary, type IndexEntry, type IndexResult,
 } from "../src/lib/form4/enumerate.ts";
-import { mergeCandidate, readCandidate } from "../src/lib/form4/merge.ts";
+import { mergeCandidate } from "../src/lib/form4/merge.ts";
+import { readCandidateFile, writeCandidateFile } from "../src/lib/form4/candidate-storage.ts";
 import type { Form4Filing, UnsupportedDocument } from "../src/lib/form4/types.ts";
 import { readInsiderUniverse, insiderUniverseHash } from "../src/lib/form4/universe.ts";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const FIXTURE_DIR = join(ROOT, "tests", "fixtures", "form4");
-const RUNS_DIR = join(ROOT, "data", "form4-runs");
-const CANDIDATE_PATH = join(ROOT, "data", "form4-candidate.json");
+const DATA_DIR = process.env.OUTFOX_FORM4_DATA_DIR || join(ROOT, "data");
+const RUNS_DIR = join(DATA_DIR, "form4-runs");
+const CANDIDATE_PATH = join(DATA_DIR, "form4-candidate.json");
 const LOCK_PATH = join(RUNS_DIR, ".import.lock");
 
 // SEC fair-access: conservative global ceiling, well under the published limit.
@@ -475,9 +477,7 @@ async function main(): Promise<void> {
     // replace an archive built from a far wider window, and the loss would be
     // invisible because the file would simply be smaller.
     if (passed && MODE === "candidate") {
-      const prior = readCandidate(
-        existsSync(CANDIDATE_PATH) ? readFileSync(CANDIDATE_PATH, "utf8") : null
-      );
+      const prior = readCandidateFile(CANDIDATE_PATH);
       const merged = mergeCandidate(prior, filings, runId, finishedAt);
 
       if (merged.lostAccessions.length > 0) {
@@ -485,9 +485,7 @@ async function main(): Promise<void> {
         // the archive is not written.
         gateFailures.push(`candidate_history_lost:${merged.lostAccessions.length}`);
       } else {
-        const tmp = `${CANDIDATE_PATH}.${runId}.tmp`;
-        writeFileSync(tmp, `${JSON.stringify(merged.archive, null, 2)}\n`);
-        renameSync(tmp, CANDIDATE_PATH); // atomic replace of a merged whole
+        writeCandidateFile(CANDIDATE_PATH, merged.archive);
         summary.promoted = true;
       }
 

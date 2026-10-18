@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync, existsSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { parseInstitutionalFiling, digest, filingUrl, TableReconciliationError, type FilingReference } from "../src/lib/institutions/parse.ts";
+import { parseInstitutionalFiling, digest, filingUrl, TableReconciliationError, resolveManagerQualifiers, type FilingReference } from "../src/lib/institutions/parse.ts";
 import { positionChanges, reconcileInstitutions } from "../src/lib/institutions/reconcile.ts";
 import { references, allowedSecUrl, SecReader } from "../src/lib/institutions/source.ts";
 import { validateManagerCorpus } from "../src/lib/institutions/validation.ts";
@@ -19,6 +19,23 @@ FILED AS OF DATE: ${r.filedDate.replaceAll("-","")}
 <DOCUMENT><TYPE>INFORMATION TABLE
 <XML><informationTable><infoTable><nameOfIssuer>Synthetic Issuer</nameOfIssuer><titleOfClass>COM</titleOfClass><cusip>123456789</cusip><value>100</value><shrsOrPrnAmt><sshPrnamt>${quantity}</sshPrnamt><sshPrnamtType>SH</sshPrnamtType></shrsOrPrnAmt><investmentDiscretion>SOLE</investmentDiscretion><votingAuthority><Sole>12</Sole><Shared>0</Shared><None>0</None></votingAuthority></infoTable></informationTable></XML></DOCUMENT>`;}
 const original=parseInstitutionalFiling(fixture(),ref);
+test("N/A resolves no additional manager only for sole discretion without included managers",()=>{
+  const source=fixture().replace("<investmentDiscretion>","<otherManager>N/A</otherManager><investmentDiscretion>");
+  const filing=parseInstitutionalFiling(source,ref),row=filing.holdings[0];
+  assert.equal(row.otherManagers,"N/A");assert.deepEqual(row.otherManagerIds,[]);
+  assert.equal(reconcileInstitutions([filing]).held.length,0);
+  assert.equal(reconcileInstitutions([{...filing,holdings:[{...row,investmentDiscretion:"DFND"}]}]).held[0].reason,"invalid_included_manager_attribution");
+  assert.throws(()=>parseInstitutionalFiling(source.replace(">SOLE<",">DFND<"),ref),/Invalid other-manager/);
+  assert.throws(()=>resolveManagerQualifiers("N/A",[{sequenceNumber:"1",name:"Other",cik:"0000000002",form13FFileNumber:null,stableId:"cik:0000000002"}],"SOLE"),/Invalid other-manager/);
+  assert.throws(()=>resolveManagerQualifiers("N/A",[]),/Invalid other-manager/);
+});
+test("ASCII lowercase CUSIP is normalized with original text preserved; invalid characters still fail",()=>{
+  const source=fixture().replace("123456789","15675d103");
+  const holding=parseInstitutionalFiling(source,ref).holdings[0];
+  assert.equal(holding.cusip,"15675D103");
+  assert.equal(holding.cusipAsFiled,"15675d103");
+  assert.throws(()=>parseInstitutionalFiling(source.replace("15675d103","15675!103"),ref),/security identifier/);
+});
 test("collector contact must be explicit and header safe",()=>{
   for(const agent of ["", "Outfox", "Outfox hello@example.com\nother: value"])assert.throws(()=>new SecReader(agent));
   assert.doesNotThrow(()=>new SecReader("Outfox Markets hello@outfoxmarkets.com"));

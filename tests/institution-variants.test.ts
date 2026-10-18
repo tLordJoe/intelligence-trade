@@ -22,6 +22,12 @@ test("Vanguard 000031 is a combination; 002707 and 002714 are notices, never zer
   const item=r.run.filings.find(f=>f.reference.form==="13F-NT")!,source=readFileSync(join(vanguard,"raw",item.evidence!.file),"utf8");
   assert.throws(()=>parseInstitutionalFiling(source,item.reference),/Notice is not/);
   assert.throws(()=>parseInstitutionalNotice(source.replace("13F NOTICE","13F HOLDINGS REPORT"),item.reference),/conflicts/);
+  const empty="<summaryPage><otherIncludedManagersCount/><tableEntryTotal/><tableValueTotal/></summaryPage>";
+  const withEmpty=source.replace("</formData>",empty+"</formData>");
+  assert.notEqual(withEmpty,source);
+  assert.deepEqual(parseInstitutionalNotice(withEmpty,item.reference).otherReportingManagers,parseInstitutionalNotice(source,item.reference).otherReportingManagers);
+  assert.throws(()=>parseInstitutionalNotice(withEmpty.replace("<tableEntryTotal/>","<tableEntryTotal>0</tableEntryTotal>"),item.reference),/conflicts/);
+  assert.throws(()=>parseInstitutionalNotice(withEmpty.replace("<tableValueTotal/>","<unknown/>"),item.reference),/conflicts/);
 });
 test("State Street 000100,000315,000507 omit the original-form amendment checkbox in X0202",{skip:!existsSync(join(stateStreet,"manifest.json"))&&"official local corpus unavailable"},()=>{
   const r=replayInstitutionRun(stateStreet),v=validateManagerCorpus(r.filings,r.failures,r.notices);

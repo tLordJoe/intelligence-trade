@@ -1,5 +1,82 @@
 # SEC Form 4 pipeline
 
+## Large candidate archive storage
+
+The local candidate now supports a version-2 manifest pointing at SHA-256-named
+JSON chunks in `data/form4-candidate.json.chunks`. Each chunk holds at most 250
+filings and 4 MiB. Every referenced chunk is verified before merging or review;
+missing or modified bytes stop the operation. The manifest replaces the previous
+checkpoint only after all chunk writes succeed. Old chunks are retained for
+readers of earlier checkpoints. All new saves use bounded chunks, including small
+candidates. Existing chunk membership is preserved by filing-version identity;
+new accessions do not reshuffle historical chunks. Files and parent directories
+are flushed before a save is considered complete. The prior manifest is retained
+as `.previous`; conversion preserves each distinct legacy file as
+`.legacy-backup-SHA256`. Copies are verified and installed atomically. An existing
+content-named backup with different bytes blocks conversion. Older fixed-name
+`.legacy-backup` files are retained but are not trusted as the new backup.
+
+This removes whole-archive JSON serialization limits. It does not yet make the
+merge or review constant-memory: all normalized filings still need heap space.
+Legacy candidates are read once and converted on the next successful write.
+For a non-destructive migration and per-filing round-trip verification, run:
+
+```bash
+node --max-old-space-size=4096 --experimental-strip-types scripts/migrate-form4-candidate.ts SOURCE DESTINATION
+```
+
+The destination must be new. The original is never deleted or overwritten by
+this migration command. The importer, backfill checkpoint and candidate review
+all understand both storage versions. Storage conversion is not publication
+approval and does not change source-validation or amendment gates.
+
+Migration acquires source and destination importer locks. Do not rename only a
+manifest: its chunks are resolved relative to its exact filename. Prefer migrating
+directly to the final destination. To relocate an existing archive offline, move
+the manifest, its matching `.chunks` directory and `.previous` together, preserving
+their common basename; verify a full read before changing importer configuration.
+
+Offline maintenance is explicit, not part of the writer. Stop all archive readers
+and writers first. `scripts/maintain-form4-candidate.ts inspect PATH` checks the
+current, previous and valid saved recovery generations. `quarantine PATH --readers-stopped` moves only
+unreferenced chunks into a uniquely named sibling quarantine directory. It does
+not delete bytes or reclaim disk space: retain it for review, then arrange a
+separate approved retention/deletion policy. Old readers beyond the retained
+generation must not remain active. An interruption during quarantine cannot
+remove chunks referenced by the validated retained checkpoints. Invalid recovery
+evidence (such as truncated JSON) is retained without being used as a checkpoint;
+a structurally valid recovery manifest with missing/corrupt chunks stops cleanup.
+
+`recover PATH --readers-stopped` verifies all previous-generation chunks, preserves
+the current/damaged manifest as a recovery evidence file, and atomically restores
+the previous manifest only if the current archive fails a full read or is absent.
+To deliberately roll back a healthy archive, add `--force`. Newer
+run IDs are absent and those batches must be replayed. Keep the quarantined files
+until recovery/replay has been verified. A filesystem flush is not a substitute
+for an independent backup or a guarantee against every hardware failure. In
+particular, Node's fsync does not guarantee flushing a drive's own cache on macOS.
+
+The backfill gives each importer child a 4 GiB heap limit. Importer fixture tests
+use a temporary data directory through `OUTFOX_FORM4_DATA_DIR`, never the real
+candidate path. Both the backfill and importer use this setting for their archive,
+run evidence and locks. The universe path remains explicitly selected by `--universe`.
+
+## October 2 independent review follow-up
+
+The second outside review passed all 162 Form 4 tests and cleared the storage
+blocker, recommending inspection and a full backup before continued collection.
+The real archive passed the stricter read (44,514 filings, 202 contributing runs).
+Inspection reported 107 unreferenced chunks; no chunks were removed or moved.
+A verified complete copy, including all 286 chunks and the previous manifest, is
+in `data/form4-backups/before-resume-2026-10-02-33c7a1b6-b11a-4b05-a856-f88912359bdf/`.
+The original legacy archive in `work/outfox-compare-review` remains separate.
+
+Follow-up corrections align the backfill's custom data folder with the importer,
+make legacy backups atomic and content-named, require explicit force for healthy
+rollback, and preserve all valid recovery checkpoint chunks during quarantine.
+Synthetic regressions cover each reported edge case. Small-chunk compaction and
+reducing duplicate chunk reads remain future performance work.
+
 Outfox's own collection and parsing of SEC ownership documents (Forms 4 and
 4/A). This document covers the parser and the manual importer. There is no
 public UI, no schedule, and no production dataset in this stage.
@@ -307,8 +384,8 @@ batch manifests, and stops on failed source/parse gates. `--reuse-run` on the
 underlying importer can replay a failed slice's hash-verified archived XML and
 indexes without redownloading. A successful slice is not a completed window:
 every expected accession must be present before that window counts toward YTD.
-Do not run importer integration tests concurrently with a real import; both use
-the single-writer lock.
+Importer integration tests use an isolated temporary archive and lock; they do
+not access the real candidate.
 
 The candidate review reparses archived original XML and indexes, verifies URL,
 accession, document hashes and filing dates, and ignores saved normalized values
