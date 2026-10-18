@@ -38,7 +38,7 @@ export default function Home() {
     "30": buildSenateHomeWindow(senate, "30", asOf),
     "90": buildSenateHomeWindow(senate, "90", asOf),
   } : null;
-  const insiderWindows = insiders ? {
+  const insiderWindows = insiders?.schemaVersion === 1 ? {
     ytd: buildInsiderHomeWindow(insiders, "ytd", asOf),
     "30": buildInsiderHomeWindow(insiders, "30", asOf),
     "90": buildInsiderHomeWindow(insiders, "90", asOf),
@@ -56,7 +56,7 @@ export default function Home() {
       </section>
       <HomeTradingTable windows={windows} houseWindows={houseWindows} senateWindows={senateWindows} insiderWindows={insiderWindows}
         updatedAt={liveData.updatedAt} scans={liveData.counts.scannedFilings}
-        institutionsAvailable={approvedInstitutions(institutionsRelease) !== null} />
+        institutionsAvailable={approvedInstitutions(institutionsRelease) !== null} insidersAvailable={insiders !== null} />
       <HomeSectorExplorer companies={windows.ytd.companies} />
       <NewsletterSignup variant="banner" />
     </main>

@@ -1,0 +1,65 @@
+{
+  "reviewer": "Codex",
+  "releaseDateLocal": "2026-10-17",
+  "reviewedAt": "2026-10-18T03:45:56.908Z",
+  "house": {
+    "runId": "run_2026-10-18T03-34-41-896Z_c7a88060",
+    "annualIndexFilings": 430,
+    "latestFilingsProcessed": 200,
+    "previousRecords": 2591,
+    "publishedRecords": 3023,
+    "addedRecords": 432,
+    "lostExistingIds": 0,
+    "unparsedScansInRefresh": 30,
+    "sourceSpotCheck": {
+      "documentId": "20035660",
+      "method": "Original Clerk PDF page image plus extracted table",
+      "filer": "David J. Taylor",
+      "rowsChecked": 4,
+      "tickers": ["T", "FITB", "PG", "RPM"],
+      "fields": "Filer, district, security, direction, transaction date, notification date and amount range",
+      "result": "All match the source"
+    },
+    "existingRevision": "CRNX 20035190::828945a21f0d882a::0: ticker resolution and warnings updated against the fresh SEC master; economic fields unchanged"
+  },
+  "senate": {
+    "runId": "senate_2026-10-18T03-36-40-665Z_bcf27cc0",
+    "coverageFrom": "2026-01-01",
+    "coverageThrough": "2026-10-18",
+    "sourceReports": 129,
+    "electronicReportsParsed": 120,
+    "sourceRows": 1574,
+    "publishedRecords": 555,
+    "addedRecords": 5,
+    "lostExistingIds": 0,
+    "paperReportsOmitted": 9,
+    "reconciliationIssues": 18,
+    "payloadSha256": "05c49d855be83fa863b478271545c97d305d7192040bab5c44a0c5f4ded7186d",
+    "newRowReview": {
+      "reportId": "6bf3b6f7-9e1b-499a-bd5a-990292ce2e72",
+      "documentSha256": "6d2b4767bb94d26fe7f7db1d1eec0629e35fde4508b4f58ac35a01517bfb3dfa",
+      "filer": "Sheldon Whitehouse",
+      "filedDate": "2026-10-01",
+      "transactionDate": "2026-09-04",
+      "method": "Full official HTML table read against all five new public rows, including owner, partial-sale direction and amount brackets",
+      "rows": ["Spouse JPM $15,001–$50,000", "Spouse ADI $1,001–$15,000", "Spouse V $1,001–$15,000", "Self V $1,001–$15,000", "Self JPM $15,001–$50,000"]
+    }
+  },
+  "insiders": {
+    "evidence": "insider-release-2026-10-17.json",
+    "coverageBasis": "filing_date_window",
+    "coverageFrom": "2026-10-16",
+    "coverageThrough": "2026-10-16",
+    "publishedRecords": 320,
+    "historicalYtdComplete": false,
+    "includedInHomepagePeriodRankings": false
+  },
+  "institutions": {
+    "changedInThisRelease": false,
+    "evidence": "institution-release-2026-10-17.json",
+    "managers": 10,
+    "filings": 28,
+    "holdingRows": 41367,
+    "sourceRefreshThrough": "2026-10-16"
+  }
+}

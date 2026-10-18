@@ -1,54 +1,54 @@
 ================================================================
 OUTFOX HOUSE DISCLOSURE IMPORT
 ================================================================
-  run id                       run_2026-09-08T19-11-58-715Z_22583495
-  started                      2026-09-08T19:11:58.715Z
-  finished                     2026-09-08T19:12:01.923Z
+  run id                       run_2026-10-18T03-34-41-896Z_c7a88060
+  started                      2026-10-18T03:34:41.896Z
+  finished                     2026-10-18T03:34:43.812Z
   source                       https://disclosures-clerk.house.gov/public_disc/financial-pdfs/2026FD.xml
 
 SOURCE AND PARSE
-  filings advertised           379
-  filings selected             379
-  filings downloaded           379 (100%)
-  filings parsed               379 (100%)
+  filings advertised           430
+  filings selected             200
+  filings downloaded           200 (100%)
+  filings parsed               200 (100%)
   parse failures               0
-  filings with zero rows       152
-    scanned / unreadable       45
+  filings with zero rows       82
+    scanned / unreadable       30
     unexplained (blocking)     0
-  transaction rows parsed      2591
+  transaction rows parsed      1313
   unaccounted symbol mentions  0
   unresolved supported rows    0
-    rows from wrapped rows     39
+    rows from wrapped rows     24
 
 VALIDATION
-  accepted (clean)             1056
-  accepted with warnings       1535
+  accepted (clean)             712
+  accepted with warnings       601
   quarantined                  0
   duplicate ids collapsed      0
-  missing party                1481
+  missing party                1675
   missing ticker               0
   missing filing url           0
   amount not available         0
     of which unreadable        0
 
 ARCHIVE
-  records before               997
-  added                        1594
-  refreshed (unchanged)        959
-  revised (corrected)          38
-  records after                2591
+  records before               2591
+  added                        432
+  refreshed (unchanged)        880
+  revised (corrected)          1
+  records after                3023
 
 WARNING CODES
-  unknown_party                1481
-  unknown_ticker               92
-  truncated_issuer_name        23
-  ticker_aliased               13
-  issuer_ticker_mismatch       11
+  unknown_party                1675
+  unknown_ticker               98
+  truncated_issuer_name        26
+  ticker_aliased               18
+  issuer_ticker_mismatch       12
   transaction_after_filing     2
 
 GATES
   result                       PASS
-  warning   scanned_filings_unreadable:45
+  warning   scanned_filings_unreadable:30
 
 OUTCOME
   production updated           yes — archive written

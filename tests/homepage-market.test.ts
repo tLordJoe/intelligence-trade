@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 import { buildHomeWindow, buildInsiderHomeWindow, buildSenateHomeWindow, homePeriodStart } from "../src/lib/homepage-market.ts";
 import type { DisclosureRecord } from "../src/lib/congress-schema.ts";
 import type { SenatePublicPayload } from "../src/lib/senate/public-view.ts";
-import type { InsiderPayload } from "../src/lib/form4/public-view.ts";
+import { queryInsiders, type InsiderPayload } from "../src/lib/form4/public-view.ts";
 const archive = JSON.parse(readFileSync(new URL("../src/lib/congress-live.json", import.meta.url), "utf8"));
 function row(id: string, patch: Partial<DisclosureRecord> = {}): DisclosureRecord {
   const base = archive.trades[0];
@@ -58,4 +58,11 @@ test("corporate insider windows count distinct reporting owners and keep sales s
   const result = buildInsiderHomeWindow(payload, "ytd", "2026-09-17");
   assert.equal(result.companies[0].buyers, 2); assert.equal(result.companies[0].purchases, 2); assert.equal(result.companies[0].sales, 1);
   assert.match(result.companies[0].filers[0].href ?? "", /^\/insiders\?/);
+  const dated={...payload,schemaVersion:2 as const,coverageFrom:"2026-08-15",coverageThrough:"2026-08-15",coverageBasis:"filing_date_window" as const,
+    windows:[{from:"2026-08-15",to:"2026-08-15",expectedFilings:2}]};
+  assert.throws(()=>buildInsiderHomeWindow(dated,"ytd","2026-09-17"),/cannot populate/);
+  const current=queryInsiders(dated,{period:"ytd"},"2026-09-17");
+  assert.equal(current.period,"filings");assert.equal(current.total,3);
+  assert.equal(current.records[0].transactionDate,"2026-08-13","earlier transactions remain visible when disclosed in the selected filing window");
+  assert.equal(queryInsiders(dated,{side:"buy"},"2026-09-17").total,2);
 });
