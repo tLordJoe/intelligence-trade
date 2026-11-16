@@ -5,6 +5,7 @@ import { readApprovedInsiderRelease, insiderCoverageReady } from "../src/lib/for
 import { readApprovedSenateRelease } from "../src/lib/senate/public-view.ts";
 import { buildInsiderHomeWindow } from "../src/lib/homepage-market.ts";
 import { readDisclosureRelease } from "../src/lib/disclosure-storage.ts";
+import { houseRunPath } from "../scripts/house-refresh-release.ts";
 const json = (path: string) => JSON.parse(readFileSync(new URL(path, import.meta.url), "utf8"));
 test("current insider publication is source-reviewed and never presented as complete YTD", () => {
   const release = readDisclosureRelease(new URL("../src/lib/insider-live.json",import.meta.url).pathname) as {payload:unknown;approval:{payloadSha256:string;reviewedBy:string}}, evidence = json("../docs/available-insiders-release-2026-10-17.json");
@@ -20,11 +21,21 @@ test("current insider publication is source-reviewed and never presented as comp
   assert.equal(insiderCoverageReady(payload.windows.map(window => ({...window, universeSha256:payload.universeSha256, universeSize:payload.universeSize,missingAccessions:[]})),payload.coverageThrough),false);
   assert.throws(() => buildInsiderHomeWindow(payload,"ytd","2026-10-18"), /cannot populate/);
 });
-test("House and Senate published counts agree with the refreshed source-review record", () => {
+test("House agrees with its current import receipt; Senate agrees with its reviewed release", () => {
   const evidence = json("../docs/current-disclosures-release-2026-10-17.json");
   const house = json("../src/lib/congress-live.json");
   const senateRelease = json("../src/lib/senate-live.json"), senate = readApprovedSenateRelease(senateRelease)!;
-  assert.equal(house.trades.length,evidence.house.publishedRecords);
+  const receipt = json(`../${houseRunPath(house.lastImportRunId)}/summary.json`);
+  assert.equal(receipt.runId, house.lastImportRunId);
+  assert.equal(receipt.passed, true);
+  assert.equal(receipt.dryRun, false);
+  assert.equal(receipt.productionUpdated, true);
+  assert.equal(house.updatedAt, receipt.finishedAt);
+  assert.equal(house.trades.length, receipt.counts.archiveAfter);
+  assert.equal(new Set(house.trades.map((row: { id: string }) => row.id)).size, house.trades.length);
+  if (house.lastImportRunId === evidence.house.runId) {
+    assert.equal(house.trades.length, evidence.house.publishedRecords);
+  }
   assert.equal(senate.records.length,evidence.senate.publishedRecords);
   assert.equal(senateRelease.approval.payloadSha256,evidence.senate.payloadSha256);
   assert.equal(senate.windows.at(-1)?.to,evidence.senate.coverageThrough);

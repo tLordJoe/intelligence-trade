@@ -341,12 +341,11 @@ covers regression, and classification covers the rest.
   ADRs. Treated as advisory.
 - **House only.** Senate disclosures are not ingested. The framework is designed
   to accept a second source, but no Senate collector exists yet.
-- **Scheduled refresh is disabled.** The daily workflow was removed during
-  containment. Its replacement,
-  `.github/workflows/supervised-house-refresh.yml`, is **manual only** — it has
-  a `workflow_dispatch` trigger and deliberately no `schedule:` block. It offers
-  three modes: `dry-run` (parse and validate, write nothing), `import` (full
-  import, commit only on a clean pass) and `simulate-failure`, which passes
+- **Scheduled House refresh requires opt-in.**
+  `.github/workflows/supervised-house-refresh.yml` skips scheduled work unless
+  `OUTFOX_HOUSE_REFRESH_MODE` is `dry-run` or `import`. It offers
+  three manual modes: `dry-run` (audit evidence only), `import` (full
+  import) and `simulate-failure`, which passes
   `--simulate-gate-failure` to inject a named gate failure after assessment.
   That injection is deterministic — it does not depend on the source happening
   to fail — and is refused outright in `import` mode. Because it forces
@@ -358,10 +357,23 @@ covers regression, and classification covers the rest.
   that crashed early attach a *previous* run's evidence to itself. Evidence is
   resolved only from the importer's own output or from a pointer written during
   that execution; if neither exists, the run reports no evidence and uploads
-  only its log rather than substituting an earlier run. Evidence is uploaded under
-  `if: always()` with 90-day retention, and the commit step is reachable only
-  when the importer exited zero. A schedule will be added only after one
-  complete supervised run has been reviewed.
+  only its log rather than substituting an earlier run. Audit evidence stays
+  available even after failure. A successful run with no new or revised records
+  retains the last published archive instead of deploying timestamp-only changes.
+
+  Collection runs with read-only repository permissions. A clean, separate
+  publication job consumes only allowlisted data and evidence on `main`.
+  Manual and scheduled runs share one concurrency group. A stale commit must
+  fail rather than force-push. Publishing is not verified until the public House
+  API serves both the exact candidate timestamp and record count.
+
+  Rollout: obtain independent review; start the weekday schedule in `dry-run`;
+  verify an injected failure cannot publish; then supervise one manual import
+  and check the live API. Only after a verified live deployment set
+  `OUTFOX_HOUSE_LIVE_VERIFIED=true` and select scheduled `import`. Remove the
+  mode variable to stop scheduled work. A successful Git push alone is not
+  proof that Vercel deployed. If the live check times out, keep scheduled
+  publishing off and reconcile the deployment before another attempt.
 
 ## Adding a source
 
