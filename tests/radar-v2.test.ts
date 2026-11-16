@@ -112,9 +112,16 @@ test("published-data scan uses four feeds and produces substantive, source-bound
   const directory=readDisclosureRelease(new URL("../src/lib/radar-identities.json",import.meta.url).pathname) as {entries:Parameters<typeof buildSubstantiveRadar>[0]["identities"]};
   assert.ok(Object.keys(directory.entries).length>10000);
   const view=buildSubstantiveRadar({house:house.trades,senate:readApprovedSenateRelease(json("../src/lib/senate-live.json")),insiders:insiders.payload,institutions:institutions.payload,identities:directory.entries,securityLinks:json("../src/lib/radar-security-links.json").entries},asOf);
-  assert.equal(view.coverage.holdingRows,292522);assert.equal(view.coverage.insiderRows,3090);assert.equal(view.coverage.comparableManagers,9);assert.ok(view.coverage.fundSecuritiesScreened>3000);
+  const fundAudit=json("../docs/available-institutions-release-2026-10-17.json"),insiderAudit=json("../docs/available-insiders-release-2026-10-17.json");
+  assert.equal(view.coverage.holdingRows,fundAudit.rowsChecked);assert.equal(view.coverage.insiderRows,insiderAudit.publicRows);assert.equal(view.coverage.comparableManagers,9);assert.ok(view.coverage.fundSecuritiesScreened>3000);
   assert.equal(view.items.some(i=>i.ticker==="AAPL"||i.ticker==="BRK-B"),false);assert.ok(view.items.length>=4);
   const alphabet=view.items.find(i=>i.ticker==="GOOGL")!;assert.equal(alphabet.managers,4);assert.deepEqual(alphabet.tickers,["GOOG","GOOGL"]);assert.equal(view.items.filter(i=>i.cik==="0001652044").length,1);
   assert.ok(view.watchItems.some(i=>i.ticker==="MU"));assert.ok(view.watchItems.some(i=>i.ticker==="META"));
   for(const item of [...view.items,...view.watchItems]){assert.ok(item.reasons.length>=2);assert.ok(item.funds.every(f=>f.currentSource.startsWith("https://www.sec.gov/Archives/")));assert.ok(item.funds.some(f=>f.qualifies));}
+  if(fundAudit.novemberRefresh){
+    const asFiled=institutions.payload.filings.map(f=>f.reference.filedDate).sort().at(-1)!;
+    const recent=radarFundEvidence(institutions.payload,asFiled);
+    assert.equal(recent.latestQuarter,fundAudit.novemberRefresh.quarter);
+    assert.ok(recent.evidence.every(row=>row.currentPeriod===recent.latestQuarter));
+  }
 });

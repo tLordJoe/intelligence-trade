@@ -18,6 +18,15 @@ test("current insider publication is source-reviewed and never presented as comp
   assert.ok(evidence.historical.importJournalVerifiedFilings>7000);
   assert.equal(evidence.recent.sourceDocumentsReplayed,452);
   assert.ok(payload.records.length>2792);
+  if (evidence.novemberRefresh) {
+    const refresh = evidence.novemberRefresh;
+    const after = payload.records.filter(r=>r.filedDate>=refresh.coverageFrom&&r.filedDate<=refresh.coverageThrough);
+    assert.equal(after.length, refresh.addedRows);
+    assert.equal(payload.records.length - after.length, refresh.retainedRows);
+    assert.equal(refresh.publicRowsChecked - refresh.rowsHeldFromPriorCollection, after.length);
+    assert.ok(payload.collectionScopes.some(scope=>scope.from===refresh.coverageFrom&&scope.to===refresh.coverageThrough&&scope.collectedFilings===refresh.sourceDocumentsChecked));
+    assert.ok(!payload.collectionScopes.some(scope=>scope.from<=refresh.gapTo&&scope.to>=refresh.gapFrom));
+  }
   assert.equal(insiderCoverageReady(payload.windows.map(window => ({...window, universeSha256:payload.universeSha256, universeSize:payload.universeSize,missingAccessions:[]})),payload.coverageThrough),false);
   assert.throws(() => buildInsiderHomeWindow(payload,"ytd","2026-10-18"), /cannot populate/);
 });

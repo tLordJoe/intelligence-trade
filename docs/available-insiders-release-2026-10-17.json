@@ -1,10 +1,10 @@
 {
-  "releasedAt": "2026-10-18T04:38:50.247Z",
+  "releasedAt": "2026-11-16T04:28:42.192Z",
   "reviewer": "Codex",
   "publicationMode": "available_collected_filings",
-  "payloadSha256": "97a52b611f2389a50adae66377b8b6d3c131a8a8b9fc883dcf1e31aed8a78e3a",
-  "publicRows": 3090,
-  "companies": 708,
+  "payloadSha256": "b1dfa0b4af744317a01b550b389e173506e7d0ba6e3ac5dc72890023f9a7d4d8",
+  "publicRows": 3611,
+  "companies": 859,
   "historical": {
     "archiveFilings": 53490,
     "importJournalVerifiedFilings": 7859,
@@ -213,6 +213,7 @@
     "0000093389",
     "0000094049",
     "0000094344",
+    "0000095029",
     "0000104918",
     "0000203596",
     "0000216228",
@@ -338,6 +339,7 @@
     "0001109116",
     "0001113169",
     "0001114927",
+    "0001116132",
     "0001116942",
     "0001124796",
     "0001125376",
@@ -351,6 +353,7 @@
     "0001165002",
     "0001174940",
     "0001175454",
+    "0001179929",
     "0001180262",
     "0001212545",
     "0001219601",
@@ -408,6 +411,7 @@
     "0001463000",
     "0001469367",
     "0001476034",
+    "0001476840",
     "0001477449",
     "0001478320",
     "0001482981",
@@ -489,6 +493,7 @@
     "0001759824",
     "0001761312",
     "0001772921",
+    "0001775194",
     "0001778922",
     "0001779128",
     "0001780312",
@@ -512,6 +517,7 @@
     "0001835632",
     "0001839341",
     "0001840229",
+    "0001840776",
     "0001841968",
     "0001842566",
     "0001843588",
@@ -535,6 +541,7 @@
     "0001966983",
     "0001971213",
     "0001979330",
+    "0001981599",
     "0001984060",
     "0002000178",
     "0002002473",
@@ -542,20 +549,25 @@
     "0002011286",
     "0002013745",
     "0002019804",
+    "0002028027",
     "0002030954",
     "0002038439",
     "0002039273",
     "0002042022",
     "0002059653",
     "0002086587",
+    "0002099039",
     "0002099656",
-    "0002100125"
+    "0002100125",
+    "0002130606"
   ],
   "excluded": {
-    "not_non_derivative_purchase_or_sale": 16467,
-    "unresolved_issuer_symbol": 39,
+    "not_non_derivative_purchase_or_sale": 17625,
+    "unresolved_issuer_symbol": 50,
     "classification_conflict": 8,
-    "unresolved_issuer_reconciliation": 34
+    "unresolved_issuer_reconciliation": 85,
+    "missing_security_or_positive_shares": 10,
+    "held_from_prior_collection": 37
   },
   "collectionScopes": [
     {
@@ -637,11 +649,60 @@
       "universeSize": 8029,
       "expectedFilings": 452,
       "collectedFilings": 452
+    },
+    {
+      "from": "2026-11-13",
+      "to": "2026-11-13",
+      "expectedFilings": 664,
+      "universeSha256": "8bd361c3fc1cf32c59e70084e999722dd6d6e796d384c2a7bf81801f88df0210",
+      "universeSize": 8029,
+      "collectedFilings": 664
     }
   ],
   "storage": {
-    "file": "c4f28ec0e23bc14220bd2ac6e9fdc0e4245d8d0ec0a6d8634c431a1ec4a7f5a8.json.gz",
-    "sha256": "c4f28ec0e23bc14220bd2ac6e9fdc0e4245d8d0ec0a6d8634c431a1ec4a7f5a8",
-    "compressedBytes": 535265
+    "file": "42291e317b20f3d79363623aef40975e84dff09958452ea2b6d34de26a613a6f.json.gz",
+    "sha256": "42291e317b20f3d79363623aef40975e84dff09958452ea2b6d34de26a613a6f",
+    "compressedBytes": 632390
+  },
+  "novemberRefresh": {
+    "auditedAt": "2026-11-16T04:26:24.645Z",
+    "reviewer": "Codex",
+    "parser": "saxes (independent of application XML parser)",
+    "sourceDocumentsChecked": 664,
+    "publicRowsChecked": 558,
+    "payloadSha256": "62610938d06ba035bfefe8bb324c05e1afbf999556de893fa0013271f461a6d6",
+    "coverageFrom": "2026-11-13",
+    "coverageThrough": "2026-11-13",
+    "sourceRunIds": [
+      "form4_2026-11-16T03-25-18-448Z_7f8c9cc2",
+      "form4_2026-11-16T03-29-02-861Z_15674c8f"
+    ],
+    "checks": "Raw document hashes; row ordinal; issuer, owner and relationship fields; transaction code/direction/date; shares; price and references; ownership; plan flag; remarks; footnotes; source URLs. Official index enumeration and filing dates are independently replayed by the promotion gate.",
+    "heldIssuers": [
+      "0000095029",
+      "0002028027",
+      "0001840776",
+      "0001476840",
+      "0002099039",
+      "0002130606",
+      "0001799191",
+      "0001116132",
+      "0001179929",
+      "0001971213",
+      "0001775194",
+      "0001981599"
+    ],
+    "excluded": {
+      "not_non_derivative_purchase_or_sale": 1158,
+      "missing_security_or_positive_shares": 10,
+      "unresolved_issuer_symbol": 11,
+      "unresolved_issuer_reconciliation": 51
+    },
+    "basePayloadSha256": "97a52b611f2389a50adae66377b8b6d3c131a8a8b9fc883dcf1e31aed8a78e3a",
+    "retainedRows": 3090,
+    "addedRows": 521,
+    "rowsHeldFromPriorCollection": 37,
+    "gapFrom": "2026-10-17",
+    "gapTo": "2026-11-12"
   }
 }

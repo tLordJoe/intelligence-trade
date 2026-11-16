@@ -1,12 +1,12 @@
 {
-  "auditedAt": "2026-10-18T04:32:45.032Z",
+  "auditedAt": "2026-11-16T04:28:42.192Z",
   "reviewer": "Codex",
   "parser": "saxes, independent of application XML parser",
   "publicationMode": "available_filings_without_required_comparison_pair",
-  "candidateSha256": "558f5b3db37543464c7803a1afad6b7c85011504f37bd540dedf09ce9acc7e16",
-  "filings": 47,
+  "candidateSha256": "991a9d254d301b4aee8a2a9ba043235c837e64ef2739658618c2268d1bc51590",
+  "filings": 51,
   "reportingEntities": 20,
-  "rowsChecked": 292522,
+  "rowsChecked": 381214,
   "sourceReviews": [
     {
       "accession": "0000019617-26-000325",
@@ -383,6 +383,38 @@
       "reviewedAt": "2026-10-18T04:32:45.032Z",
       "unitsVerified": true,
       "evidenceNote": "Independent SAX source audit: 1 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0000019617-26-000404",
+      "sourceSha256": "79b8b755f2cc5e282b8cde9731d639d57fe3f3dcb560a636530a1116eed81b1e",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-11-16T04:25:58.449Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 35990 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0000093751-26-000747",
+      "sourceSha256": "3b63c63204aeea3100685eb7a558deaac632619d604b449ff1df9de4cacfcb15",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-11-16T04:25:58.891Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 4310 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0000895421-26-000309",
+      "sourceSha256": "ab1b36461e9091ea2421da1e6fde48ac2e95250075407d2ebbbee459230bae1f",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-11-16T04:25:59.860Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 45241 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
+    },
+    {
+      "accession": "0001037389-26-000062",
+      "sourceSha256": "f080769352ba44c4c18c5d5a9f8db19f64abf44c2a7aba0913b9ed78a1d08a14",
+      "reviewedBy": "Codex",
+      "reviewedAt": "2026-11-16T04:26:00.529Z",
+      "unitsVerified": true,
+      "evidenceNote": "Independent SAX source audit: 3151 rows; issuer/class/CUSIP/FIGI, values and USD conversion, quantities/types/options, discretion/manager qualifiers, voting authority, quarter, manager, report type and exact entry/value totals. Combination reports retained as explicitly partial snapshots."
     }
   ],
   "heldFamilies": [
@@ -462,5 +494,36 @@
       "reason": "notice_family_requires_other_reporting_manager_collection"
     }
   ],
-  "excludedManagers": []
+  "excludedManagers": [],
+  "novemberRefresh": {
+    "quarter": "2026-09-30",
+    "retainedFilings": 47,
+    "addedFilings": 4,
+    "retainedRows": 292522,
+    "addedRows": 88692,
+    "newManagers": [
+      {
+        "cik": "0000019617",
+        "name": "JPMORGAN CHASE & CO",
+        "filedDate": "2026-11-12"
+      },
+      {
+        "cik": "0000093751",
+        "name": "STATE STREET CORP",
+        "filedDate": "2026-11-12"
+      },
+      {
+        "cik": "0000895421",
+        "name": "MORGAN STANLEY",
+        "filedDate": "2026-11-13"
+      },
+      {
+        "cik": "0001037389",
+        "name": "RENAISSANCE TECHNOLOGIES LLC",
+        "filedDate": "2026-11-12"
+      }
+    ],
+    "partialQuarter": true,
+    "sourceReviewedCandidateSha256": "e9bb5429ffbc022fe29f806eb2415c52bb2f97f5f2578dc39d5d3339e4b4b96f"
+  }
 }

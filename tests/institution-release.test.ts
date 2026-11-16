@@ -12,10 +12,19 @@ test("available institutional filings match their source-bound review ledger wit
   assert.equal(release.approval.reviewedBy, "Codex");
   assert.equal(payloadHash(payload), audit.candidateSha256);
   assert.equal(payload.schemaVersion, 2);
-  assert.equal(payload.filings.length, 47);
-  assert.equal(new Set(payload.filings.map(f => f.reference.cik)).size, 20);
-  assert.equal(payload.filings.reduce((sum, f) => sum + f.holdings.length, 0), 292522);
-  assert.equal(audit.rowsChecked, 292522);
+  assert.equal(payload.filings.length, audit.filings);
+  assert.equal(new Set(payload.filings.map(f => f.reference.cik)).size, audit.reportingEntities);
+  assert.equal(payload.filings.reduce((sum, f) => sum + f.holdings.length, 0), audit.rowsChecked);
+  const originalQuarters = payload.filings.filter(f=>f.period<="2026-06-30");
+  assert.equal(originalQuarters.length, 47);
+  assert.equal(new Set(originalQuarters.map(f=>f.reference.cik)).size, 20);
+  assert.equal(originalQuarters.reduce((sum,f)=>sum+f.holdings.length,0),292522);
+  if (audit.novemberRefresh) {
+    const added = payload.filings.filter(f=>f.period===audit.novemberRefresh.quarter);
+    assert.equal(audit.novemberRefresh.partialQuarter,true);
+    assert.equal(added.length, audit.novemberRefresh.addedFilings);
+    assert.equal(added.reduce((sum,f)=>sum+f.holdings.length,0), audit.novemberRefresh.addedRows);
+  }
   assert.equal(audit.sourceReviews.length, payload.filings.length);
   const excluded = new Set(audit.excludedManagers.map((m: { cik: string }) => m.cik));
   const held = new Set(audit.heldFamilies.flatMap((f: { accessions: string[] }) => f.accessions));
@@ -35,7 +44,7 @@ test("available institutional filings match their source-bound review ledger wit
     assert.equal(filing.confidentialOmitted, false);
     for (const row of filing.holdings) assert.equal(row.valueUsd, row.valueAsFiled);
   }
-  const byCik=(cik:string)=>payload.filings.filter(f=>f.reference.cik===cik);
+  const byCik=(cik:string)=>originalQuarters.filter(f=>f.reference.cik===cik);
   assert.equal(byCik("0002026053").find(f=>f.period==="2026-06-30")?.holdings.length,15);
   assert.deepEqual(byCik("0001536411").map(f=>f.period),["2025-12-31"]);
   assert.deepEqual(byCik("0000019617").map(f=>f.period),["2026-06-30","2025-12-31"]); // Failed Q1 amendment does not hide Q2.
