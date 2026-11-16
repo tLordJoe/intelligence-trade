@@ -29,6 +29,9 @@ export default function SiteFooter() {
             <Link href="/congress" className="hover:underline" style={{ color: "var(--text-dim)" }}>
               Congress Trades
             </Link>
+            <Link href="/executive" className="hover:underline" style={{ color: "var(--text-dim)" }}>
+              Executive Branch
+            </Link>
             <Link href="/blog" className="hover:underline" style={{ color: "var(--text-dim)" }}>
               The Briefing
             </Link>
