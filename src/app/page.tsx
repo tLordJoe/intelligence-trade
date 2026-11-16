@@ -25,9 +25,10 @@ export default function Home() {
   const asOf = new Date().toISOString().slice(0,10);
   const {windows,houseWindows,senateWindows,insiderWindows}=homeMarketData(asOf);
   const radar=currentRadar(asOf);
+  const radarTarget=radar.items.length||radar.activityItems.length?"#on-the-radar":"/radar";
   return <><Navbar showCompare={previewAccessFromEnv().allowed}/><main className="home-shell flex-1">
-    <section className="home-hero"><div><p className="kicker">The stocks. The people. The bigger picture.</p><h1>Follow the buying.<br/><span>Find your next idea.</span></h1><p>Start with the patterns. Follow the filings behind them.</p><div className="home-hero-actions"><a className="home-primary-link" href="#on-the-radar">See what’s on the Radar <ArrowUpRight size={17}/></a><Link href="/explore">Explore the market →</Link></div></div></section>
-    <nav className="home-section-jumps" aria-label="Homepage sections"><a href="#on-the-radar">On the Radar</a><a href="#trading-activity">Trading activity</a><a href="#home-sectors-title">Market sectors</a></nav>
+    <section className="home-hero"><div><p className="kicker">The stocks. The people. The bigger picture.</p><h1>Follow the buying.<br/><span>Find your next idea.</span></h1><p>Start with the patterns. Follow the filings behind them.</p><div className="home-hero-actions"><a className="home-primary-link" href={radarTarget}>See what’s on the Radar <ArrowUpRight size={17}/></a><Link href="/explore">Explore the market →</Link></div></div></section>
+    <nav className="home-section-jumps" aria-label="Homepage sections"><a href={radarTarget}>On the Radar</a><a href="#trading-activity">Trading activity</a><a href="#home-sectors-title">Market sectors</a></nav>
     <RadarCards view={radar} preview/>
     <section className="home-source-hub" aria-labelledby="source-hub-title"><div className="home-section-intro"><h2 id="source-hub-title">Follow the people behind the positions</h2><p>Browse the original disclosures behind the data.</p></div><div className="source-hub-grid">
       <Link href="/congress"><Landmark size={22}/><span><strong>House</strong><small>Member disclosures</small></span><ArrowUpRight size={17}/></Link>
