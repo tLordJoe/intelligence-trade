@@ -87,7 +87,7 @@ export default function HomeTradingTable({ windows, houseWindows, senateWindows,
         <p>Company marks identify the subjects of independent coverage, not sponsors. <a href="/company-logos/NOTICE.txt">Image sources and notices</a>.</p>
       </details>
     </section>
-    <details className="home-panel home-latest-compact"><summary><span>Latest disclosed purchases</span><small>{current.recent.length} recent filings · tap to open</small></summary><div>        {current.recent.map(row => <article className="home-purchase" key={row.id}>
+    <details open className="home-panel home-latest-compact"><summary><span>Latest disclosed purchases</span><small>{current.recent.length} {current.recent.length === 1 ? "entry" : "entries"}</small></summary><div>        {current.recent.map(row => <article className="home-purchase" key={row.id}>
           <CompanyMark ticker={row.ticker} src={row.mark} /><FilerLink person={row.filer} /><div className="home-purchase-person"><Link href={row.filer.href ?? filerProfilePath(row.filer.key)}>{row.filer.name}</Link><span>{row.ticker} · {row.amount}</span></div>
           <a href={row.source} target="_blank" rel="noopener noreferrer" aria-label={`Original ${row.ticker} filing by ${row.filer.name}`}><span>Traded {row.traded}</span><span>Filed {row.filed}</span></a>
         </article>)}
