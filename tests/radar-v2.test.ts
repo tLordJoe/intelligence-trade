@@ -107,6 +107,15 @@ test("substantive insider and cross-source purchase clusters can qualify without
 test("source row permutations and duplicate disclosures do not change ranking or evidence",()=>{
   const fs=[...pair("0001541617"),...pair("0001656456")],a=run(fs),b=run([...fs].reverse());assert.deepEqual(a,b);
 });
+test("a recent selling cluster remains inspectable even when it fails the buying shortlist",()=>{
+  const sales=[trade("sell-1","Seller 1","2026-10-01","Sell"),trade("sell-2","Seller 2","2026-10-02","Sell")];
+  const view=run([],sales);
+  assert.equal(view.qualifyingCount,0);
+  assert.equal(view.activityItems[0].kind,"selling");
+  assert.equal(view.activityItems[0].sellers,2);
+  const future=run([],sales.map(row=>({...row,filedDate:"2026-10-19"})));
+  assert.equal(future.activityItems.length,0);
+});
 test("published-data scan uses four feeds and produces substantive, source-bound evidence—not AAPL's thin old pattern",()=>{
   const insiders=readDisclosureRelease(new URL("../src/lib/insider-live.json",import.meta.url).pathname) as {payload:InsiderPayload},institutions=readDisclosureRelease(new URL("../src/lib/institutions-live.json",import.meta.url).pathname) as {payload:InstitutionPayload};
   const directory=readDisclosureRelease(new URL("../src/lib/radar-identities.json",import.meta.url).pathname) as {entries:Parameters<typeof buildSubstantiveRadar>[0]["identities"]};

@@ -7,6 +7,7 @@ import type { InstitutionPayload } from "./institutions/release.ts";
 import type { InstitutionalFiling, Holding } from "./institutions/parse.ts";
 import { archiveRecords, disclosureFilerKey, displayFiler, validDisclosureDate } from "./home-discovery.ts";
 import { filerProfilePath } from "./filer-profile.ts";
+import { rankRadarActivity, RADAR_ACTIVITY_RULES, summarizeRadarActivity, type RadarActivityItem } from "./radar-activity.ts";
 
 export const RADAR_V2_RULES = {
   version:"2.0", transactionDays:90, freshPurchaseDays:30, managerFilingDays:120, maximumQuarterAgeDays:150,
@@ -34,6 +35,7 @@ export interface RadarSecurityLink {cusip:string;ticker:string;cik:string;name:s
 export interface RadarTradeEvidence {
   id:string;source:"House"|"Senate"|"Corporate insiders";side:"Buy"|"Sell";actor:string;name:string;href:string;
   traded:string;filed:string;amount:string;sourceUrl:string;owner:string|null;
+  activitySaleContext?:true;
 }
 export interface RadarFundEvidence {
   cik:string;group:string;manager:string;cusip:string;issuerName:string;shareClass:string;
@@ -51,6 +53,8 @@ export interface RadarV2Item {
 }
 export interface RadarV2View {
   asOf:string;start:string;freshFrom:string;universeSize:number;items:RadarV2Item[];watchItems:RadarV2Item[];qualifyingCount:number;
+  activityItems:RadarActivityItem[];
+  activityFiledFrom:string;
   coverage:{houseRows:number;senateRows:number;insiderRows:number;holdingRows:number;fundSecuritiesScreened:number;comparableManagers:number;latestQuarter:string|null;insiderWindows:{from:string;to:string}[]};
 }
 const DAY=86400000,offset=(date:string,days:number)=>new Date(Date.parse(date)-days*DAY).toISOString().slice(0,10);
@@ -152,15 +156,22 @@ export function buildSubstantiveRadar(input:{house:DisclosureRecord[];senate:Sen
   for(const r of input.insiders?.records??[]){const owners=r.reportingOwners.map(o=>ownerRoot(o.cik)).sort();for(const id of owners.slice(1))ownerParents.set(ownerRoot(id),ownerRoot(owners[0]));}
   for(const r of input.insiders?.records??[])if(insiderRadarEligible(r))add(r.ticker,r.issuerCik,{id:`insider:${r.id}`,source:"Corporate insiders",side:r.classification==="reported_purchase"?"Buy":"Sell",
     actor:`insider:${ownerRoot(r.reportingOwners[0].cik)}`,name:r.reportingOwners.map(o=>o.name).join(" / "),href:`/insiders?q=${encodeURIComponent(r.ticker)}`,
-    traded:r.transactionDate,filed:r.filedDate,amount:`${r.reportedShares} reported shares${r.filingPlanIndicator===true?" · filing indicates a trading plan":""}`,sourceUrl:r.sourceUrl,owner:r.ownership});
+    traded:r.transactionDate,filed:r.filedDate,amount:`${r.reportedShares} reported shares${r.filingPlanIndicator===true?" · filing indicates a trading plan":""}`,sourceUrl:r.sourceUrl,owner:r.ownership,
+    activitySaleContext:r.classification==="reported_sale"&&(r.filingPlanIndicator===true||/sell.to.cover|sold to cover|tax withholding|withhold.*tax|tax obligation|10b5[ -]1|dividend reinvest|power to substitute/i.test(Object.values(r.footnotes).join(" ")+" "+(r.sourceRemarks??"")))?true:undefined});
   const funds=radarFundEvidence(input.institutions,asOf);
   for(const evidence of funds.evidence){
     const link=links.get(evidence.cusip),key=link?.cik??`cusip:${evidence.cusip}`;
     const group=ensure(key,link?.cik??null,link?.name??evidence.issuerName);
     group.cusips.add(evidence.cusip);if(link)group.tickers.add(link.ticker);group.funds.push(evidence);
   }
-  const items:RadarV2Item[]=[];
+  const items:RadarV2Item[]=[],activityItems:RadarActivityItem[]=[];
+  const activityFiledFrom=offset(asOf,RADAR_ACTIVITY_RULES.filingWindowDays-1);
   for(const [key,g]of groups){
+    const tickers=[...g.tickers].sort(),primary=tickers.includes("GOOGL")?"GOOGL":tickers[0]??null;
+    if(primary&&g.cik){
+      const activity=summarizeRadarActivity({key,cik:g.cik,name:g.name,ticker:primary,tickers},g.trades,activityFiledFrom);
+      if(activity)activityItems.push(activity);
+    }
     const stats=tradeStats(g.trades),congress=g.trades.filter(r=>r.source!=="Corporate insiders"),insiders=g.trades.filter(r=>r.source==="Corporate insiders"),cs=tradeStats(congress),is=tradeStats(insiders);
     const expansions=g.funds.filter(f=>f.qualifies),managerGroups=new Set(expansions.map(f=>f.group)),reductions=new Set(g.funds.filter(f=>f.meaningfulReduction).map(f=>f.group));
     const fresh=g.trades.some(r=>r.side==="Buy"&&r.filed>=freshFrom);
@@ -171,7 +182,6 @@ export function buildSubstantiveRadar(input:{house:DisclosureRecord[];senate:Sen
     const fundCluster=managerGroups.size>=RADAR_V2_RULES.minimumManagers&&managerGroups.size>reductions.size;
     const divided=!fundCluster&&managerGroups.size>=RADAR_V2_RULES.minimumManagers;
     if(!cross&&!insiderCluster&&!congressCluster&&!fundCluster&&!divided)continue;
-    const tickers=[...g.tickers].sort(),primary=tickers.includes("GOOGL")?"GOOGL":tickers[0]??null;
     const kind=cross?"cross_source":fundCluster?"manager_convergence":insiderCluster?"insider_cluster":congressCluster?"congress_cluster":"divided";
     const sourceLabels=[...(cs.buyers?[...new Set(congress.filter(r=>r.side==="Buy").map(r=>r.source))]:[]),...(is.buyers?["Corporate insiders"]:[]),...(expansions.length?["Funds / institutions"]:[])];
     const existingExpansionManagers=new Set(expansions.filter(f=>f.quantityChangePercent!==null).map(f=>f.group)).size,newlyReportedOnly=managerGroups.size>=2&&existingExpansionManagers===0;
@@ -189,5 +199,6 @@ export function buildSubstantiveRadar(input:{house:DisclosureRecord[];senate:Sen
   items.sort((a,b)=>b.existingExpansionManagers-a.existingExpansionManagers||b.managers-a.managers||b.buyers-a.buyers||b.repeatBuyers-a.repeatBuyers||b.latestEvidenceFiled.localeCompare(a.latestEvidenceFiled)||a.key.localeCompare(b.key));
   const qualified=items.filter(i=>i.kind!=="divided"),watchItems=items.filter(i=>i.kind==="divided");
   return {asOf,start,freshFrom,universeSize:Object.keys(input.identities).length,qualifyingCount:qualified.length,items:qualified.slice(0,RADAR_V2_RULES.maximumHighlights),watchItems:watchItems.slice(0,RADAR_V2_RULES.maximumHighlights),
+    activityItems:rankRadarActivity(activityItems),activityFiledFrom,
     coverage:{houseRows:input.house.length,senateRows:input.senate?.records.length??0,insiderRows:input.insiders?.records.length??0,holdingRows:(input.institutions?.filings??[]).reduce((n,f)=>n+f.holdings.length,0),fundSecuritiesScreened:funds.securities,comparableManagers:funds.comparableManagers,latestQuarter:funds.latestQuarter,insiderWindows:input.insiders?.windows??[]}};
 }

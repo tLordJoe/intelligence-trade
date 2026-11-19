@@ -249,6 +249,7 @@
 @media(max-width:1050px) {
   .radar-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .radar-preview .radar-card:nth-child(n+3) { display:none; }
+  .radar-preview .radar-activity-grid .radar-card:nth-child(n+3) { display:block; }
   .source-hub-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .source-hub-grid>a:last-child:nth-child(odd) { grid-column:1/-1; }
   .activity-filters { grid-template-columns:repeat(2,minmax(0,1fr)); }
